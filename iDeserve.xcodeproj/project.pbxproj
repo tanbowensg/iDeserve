@@ -19,6 +19,9 @@
 		D01026AA252430E600653A52 /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026A9252430E600653A52 /* TaskStore.swift */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D03F21B32529CF640055BF25 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21B22529CF640055BF25 /* TaskList.swift */; };
+		D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* TaskPage.swift */; };
+		D04BB01F252AC8330088912A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* Tab.swift */; };
+		D04BB024252AC93B0088912A /* RewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB023252AC93B0088912A /* RewardPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		D01026A9252430E600653A52 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		D03F21B22529CF640055BF25 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		D04BB016252AC7FB0088912A /* TaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPage.swift; sourceTree = "<group>"; };
+		D04BB01E252AC8330088912A /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		D04BB023252AC93B0088912A /* RewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		D01026602524241F00653A52 /* iDeserve */ = {
 			isa = PBXGroup;
 			children = (
+				D04BB015252AC7EB0088912A /* Container */,
 				D01026A7252430CE00653A52 /* Store */,
 				D010269D2524306400653A52 /* Components */,
 				D010268F2524243B00653A52 /* Interface */,
@@ -170,6 +177,16 @@
 				D01026A9252430E600653A52 /* TaskStore.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		D04BB015252AC7EB0088912A /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				D04BB016252AC7FB0088912A /* TaskPage.swift */,
+				D04BB01E252AC8330088912A /* Tab.swift */,
+				D04BB023252AC93B0088912A /* RewardPage.swift */,
+			);
+			path = Container;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,11 +319,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D01026A02524308300653A52 /* TaskRow.swift in Sources */,
+				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
+				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0102699252424EA00653A52 /* Reward.swift in Sources */,
 				D03F21B32529CF640055BF25 /* TaskList.swift in Sources */,
 				D01026AA252430E600653A52 /* TaskStore.swift in Sources */,
 				D01026642524241F00653A52 /* ContentView.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
+				D04BB01F252AC8330088912A /* Tab.swift in Sources */,
 				D01026912524246B00653A52 /* Task.swift in Sources */,
 				D01026622524241F00653A52 /* iDeserveApp.swift in Sources */,
 			);

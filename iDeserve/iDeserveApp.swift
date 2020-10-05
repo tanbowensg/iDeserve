@@ -11,7 +11,7 @@ import SwiftUI
 struct iDeserveApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Tab()
         }
     }
 }
