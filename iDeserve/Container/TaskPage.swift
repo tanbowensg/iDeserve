@@ -11,9 +11,13 @@ struct TaskPage: View {
 //    @EnvironmentObject private var tasksStore: TasksStore
 
     var body: some View {
-        VStack(alignment: .leading) {
-            TaskList(tasks: TasksStore().tasks)
-            Spacer()
+        ZStack(alignment: .bottomTrailing) {
+            VStack(alignment: .leading) {
+                TaskList(tasks: TasksStore().tasks)
+                Spacer()
+            }
+            CreateButton()
+                .offset(x: -32, y: -32)
         }
     }
 }
