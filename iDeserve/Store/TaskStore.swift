@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 let DefaultTasks: [Task] = [
-    Task(name: "学习 SwiftUI", value: 100, starred: true),
+    Task(name: "学习 SwiftUI", value: 100, starred: true, desc: "要做出 iDeserve 才行"),
     Task(name: "制定敦煌行程", done: true, value: 5, ddl: Date()),
     Task(name: "制作一档博客", value: 80, repeatFrequency: RepeatFrequency.weekly),
     Task(name: "读完《独裁者手册》", value: 77, repeatFrequency: RepeatFrequency.monthly, starred: true, ddl: Date()),

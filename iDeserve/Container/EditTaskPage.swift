@@ -14,6 +14,7 @@ struct EditTaskPage: View {
     @State var repeatFrequency: RepeatFrequency = RepeatFrequency.never
     @State var hasDdl: Bool = false
     @State var ddl: Date = Date()
+    @State var desc = ""
     
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
@@ -24,6 +25,7 @@ struct EditTaskPage: View {
             _value = State(initialValue: String(existTask.value))
             _repeatFrequency = State(initialValue: existTask.repeatFrequency)
             _hasDdl = State(initialValue: existTask.ddl != nil)
+            _desc = State(initialValue: existTask.desc)
             
             if let existDdl = existTask.ddl {
                 _ddl = State(initialValue: existDdl)
@@ -142,7 +144,7 @@ struct EditTaskPage: View {
                     .padding(.horizontal, 16.0)
                 Divider()
                 HStack() {
-                    Text("备注")
+                    TextField("备注", text: $desc)
                         .padding(.horizontal, 16.0)
                 }
                 Spacer()
