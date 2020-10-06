@@ -8,16 +8,30 @@
 import SwiftUI
 
 struct TaskPage: View {
-//    @EnvironmentObject private var tasksStore: TasksStore
+    @ObservedObject var tasksStore = TasksStore()
+    
+    func removeTask (index: IndexSet) {
+        let taskId = tasksStore.tasks[index.first!].id
+        tasksStore.deleteTask(id: taskId)
+    }
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            VStack(alignment: .leading) {
-                TaskList(tasks: TasksStore().tasks)
-                Spacer()
+        NavigationView() {
+            ZStack(alignment: .bottomTrailing) {
+                List {
+                    ForEach (tasksStore.tasks) { task in
+                        NavigationLink(destination: EditTaskPage(initTask: task)) {
+                            TaskRow(task: task)
+                        }
+                    }
+                    .onDelete(perform: removeTask)
+                }
+                NavigationLink(destination: EditTaskPage(initTask: nil)) {
+                    CreateButton()
+                        .offset(x: -32, y: -32)
+                }
             }
-            CreateButton()
-                .offset(x: -32, y: -32)
+                .navigationBarHidden(true)
         }
     }
 }

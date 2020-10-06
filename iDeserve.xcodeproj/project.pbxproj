@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DC7252B0B5900E4005B /* CreateButton.swift */; };
+		D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */; };
 		D01026622524241F00653A52 /* iDeserveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026612524241F00653A52 /* iDeserveApp.swift */; };
 		D01026642524241F00653A52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026632524241F00653A52 /* ContentView.swift */; };
 		D01026662524242000653A52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
@@ -19,7 +20,6 @@
 		D01026A02524308300653A52 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010269F2524308300653A52 /* TaskRow.swift */; };
 		D01026AA252430E600653A52 /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026A9252430E600653A52 /* TaskStore.swift */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
-		D03F21B32529CF640055BF25 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21B22529CF640055BF25 /* TaskList.swift */; };
 		D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* TaskPage.swift */; };
 		D04BB01F252AC8330088912A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* Tab.swift */; };
 		D04BB024252AC93B0088912A /* RewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB023252AC93B0088912A /* RewardPage.swift */; };
@@ -44,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		D0036DC7252B0B5900E4005B /* CreateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateButton.swift; sourceTree = "<group>"; };
+		D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPage.swift; sourceTree = "<group>"; };
 		D010265E2524241F00653A52 /* iDeserve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDeserve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01026612524241F00653A52 /* iDeserveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveApp.swift; sourceTree = "<group>"; };
 		D01026632524241F00653A52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		D010269F2524308300653A52 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		D01026A9252430E600653A52 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		D03F21B22529CF640055BF25 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		D04BB016252AC7FB0088912A /* TaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPage.swift; sourceTree = "<group>"; };
 		D04BB01E252AC8330088912A /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		D04BB023252AC93B0088912A /* RewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPage.swift; sourceTree = "<group>"; };
@@ -168,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				D010269F2524308300653A52 /* TaskRow.swift */,
-				D03F21B22529CF640055BF25 /* TaskList.swift */,
 				D0036DC7252B0B5900E4005B /* CreateButton.swift */,
 			);
 			path = Components;
@@ -188,6 +187,7 @@
 				D04BB016252AC7FB0088912A /* TaskPage.swift */,
 				D04BB01E252AC8330088912A /* Tab.swift */,
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
+				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -324,9 +324,9 @@
 				D01026A02524308300653A52 /* TaskRow.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
+				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0102699252424EA00653A52 /* Reward.swift in Sources */,
-				D03F21B32529CF640055BF25 /* TaskList.swift in Sources */,
 				D01026AA252430E600653A52 /* TaskStore.swift in Sources */,
 				D01026642524241F00653A52 /* ContentView.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
