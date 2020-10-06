@@ -20,9 +20,9 @@ struct EditTaskPage: View {
     @State var ddl: Date = Date()
     @State var desc = ""
     
-    @State var isShowRepeatPicker = false
+    @State var isShowRepeatPicker = true
     @State var isShowDatePicker = false
-    
+
     init (initTask: Task?, tasksStore: TasksStore) {
         self.initTask = initTask
         self.tasksStore = tasksStore
@@ -38,7 +38,7 @@ struct EditTaskPage: View {
             }
         }
     }
-    
+
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $name)
@@ -48,7 +48,7 @@ struct EditTaskPage: View {
             Divider()
         }
     }
-    
+
     var taskValue: some View {
         Group {
             HStack() {
@@ -63,7 +63,7 @@ struct EditTaskPage: View {
             Divider()
         }
     }
-    
+
     var taskRepeat: some View {
         Group {
             Button(action: {
@@ -194,12 +194,8 @@ struct EditTaskPage: View {
                     alignment: .topLeading
                 )
                 .navigationBarHidden(true)
-            if isShowRepeatPicker {
-                repeatPicker
-            }
-            if isShowDatePicker {
-                datePicker
-            }
+            Popup(isVisible: isShowRepeatPicker, content: repeatPicker)
+            Popup(isVisible: isShowDatePicker, content: datePicker)
         }
     }
     
