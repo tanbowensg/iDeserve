@@ -20,13 +20,13 @@ struct TaskPage: View {
             ZStack(alignment: .bottomTrailing) {
                 List {
                     ForEach (tasksStore.tasks) { task in
-                        NavigationLink(destination: EditTaskPage(initTask: task)) {
+                        NavigationLink(destination: EditTaskPage(initTask: task, tasksStore: tasksStore)) {
                             TaskRow(task: task)
                         }
                     }
                     .onDelete(perform: removeTask)
                 }
-                NavigationLink(destination: EditTaskPage(initTask: nil)) {
+                NavigationLink(destination: EditTaskPage(initTask: nil, tasksStore: tasksStore)) {
                     CreateButton()
                         .offset(x: -32, y: -32)
                 }

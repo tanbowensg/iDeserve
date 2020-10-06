@@ -40,4 +40,20 @@ final class TasksStore: ObservableObject {
         let index = self.tasks.firstIndex(where: { $0.id == id })!
         self.tasks[index].name = newName
     }
+    
+    func updateTask (
+        id: String,
+        name: String,
+        value: Int,
+        repeatFrequency: RepeatFrequency,
+        ddl: Date?,
+        desc: String
+    ) {
+        let index = self.tasks.firstIndex(where: { $0.id == id })!
+        self.tasks[index].name = name
+        self.tasks[index].value = value
+        self.tasks[index].repeatFrequency = repeatFrequency
+        self.tasks[index].ddl = ddl
+        self.tasks[index].desc = desc
+    }
 }

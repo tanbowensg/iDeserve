@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct EditTaskPage: View {
-//    var initTask: Task?
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var initTask: Task?
+    var tasksStore: TasksStore
+
     @State var name: String = ""
     @State var value: String = "0"
     @State var repeatFrequency: RepeatFrequency = RepeatFrequency.never
@@ -19,7 +23,9 @@ struct EditTaskPage: View {
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
     
-    init (initTask: Task?) {
+    init (initTask: Task?, tasksStore: TasksStore) {
+        self.initTask = initTask
+        self.tasksStore = tasksStore
         if let existTask = initTask {
             _name = State(initialValue: existTask.name)
             _value = State(initialValue: String(existTask.value))
@@ -78,18 +84,34 @@ struct EditTaskPage: View {
 
     var taskDdl: some View {
         Group {
-            Button(action: {
-                hasDdl = true
-                isShowDatePicker.toggle()
-            }) {
-                HStack() {
+            HStack() {
+                Button(action: {
+                    hasDdl = true
+                    isShowDatePicker.toggle()
+                }) {
                     Image(systemName: "calendar")
                     hasDdl ? Text("\(dateToString(ddl)) 截止") : Text("添加截止日期")
+                    Spacer()
                 }
-                .padding(.horizontal, 16.0)
-                .foregroundColor(.g80)
+                hasDdl ? cancelDdlBtn : nil
             }
+            .padding(.horizontal, 16.0)
+            .foregroundColor(.g80)
             Divider()
+        }
+    }
+    
+    var cancelDdlBtn: some View {
+        Button(action: {
+            hasDdl = false
+            ddl = Date()
+            isShowDatePicker.toggle()
+        }) {
+            Image(systemName: "xmark")
+                .resizable()
+                .foregroundColor(.g50)
+                .padding(8.0)
+                .frame(width: 24.0, height: 24.0)
         }
     }
     
@@ -131,10 +153,25 @@ struct EditTaskPage: View {
         }
             .background(Color.g10)
     }
+    
+    var backBtn: some View {
+        Button(action: {
+            self.saveTask()
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "chevron.left")
+                    .padding(.leading, 16.0)
+                    
+                Text("返回")
+            }
+        }
+    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(alignment: .leading) {
+                backBtn
                 taskTitle
                 taskValue
                 taskRepeat
@@ -156,7 +193,7 @@ struct EditTaskPage: View {
                     maxHeight: .infinity,
                     alignment: .topLeading
                 )
-                .navigationTitle("编辑任务")
+                .navigationBarHidden(true)
             if isShowRepeatPicker {
                 repeatPicker
             }
@@ -165,11 +202,25 @@ struct EditTaskPage: View {
             }
         }
     }
+    
+    func saveTask () {
+        if let taskId = initTask?.id {
+            tasksStore.updateTask(
+                id: taskId,
+                name: name,
+                value: Int(value) ?? 0,
+                repeatFrequency: repeatFrequency,
+                ddl: hasDdl ? ddl : nil,
+                desc: desc
+            )
+        }
+    }
 }
 
 struct EditTaskPage_Previews: PreviewProvider {
     static var previews: some View {
-        EditTaskPage(initTask: TasksStore().tasks[0])
-        EditTaskPage(initTask: nil)
+        let tasksStore = TasksStore()
+        EditTaskPage(initTask:tasksStore.tasks[0], tasksStore: tasksStore)
+        EditTaskPage(initTask: nil, tasksStore: tasksStore)
     }
 }
