@@ -23,7 +23,7 @@ struct TaskRow: View {
     var taskInfo: some View {
         HStack {
             task.starred ? Image(systemName: "star.fill") : nil
-            task.repeatable ? Image(systemName: "repeat") : nil
+            task.repeatFrequency != RepeatFrequency.never ? Image(systemName: "repeat") : nil
             task.ddl != nil ? Text("\(task.ddl!)截止") : nil
         }
     }

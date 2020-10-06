@@ -10,11 +10,16 @@ import SwiftUI
 struct EditTaskPage: View {
 //    var initTask: Task?
     @State var name: String = ""
+    @State var value: String = "0"
+    @State var repeatFrequency: RepeatFrequency = RepeatFrequency.never
+    
+    @State var isShowRepeatPicker = false
     
     init (initTask: Task?) {
         if let existTask = initTask {
             _name = State(initialValue: existTask.name)
-            print("init了")
+            _value = State(initialValue: String(existTask.value))
+            _repeatFrequency = State(initialValue: existTask.repeatFrequency)
         }
     }
     
@@ -34,7 +39,9 @@ struct EditTaskPage: View {
                 Image(systemName: "dollarsign.circle")
                 Text("分值")
                 Spacer()
-                Text("50")
+                TextField("0", text: $value)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
             }
                 .padding(.horizontal, 16.0)
             Divider()
@@ -43,13 +50,17 @@ struct EditTaskPage: View {
     
     var taskRepeat: some View {
         Group {
-            HStack() {
-                Image(systemName: "repeat")
-                Text("重复")
-                Spacer()
-                Text("不重复")
+            Button(action: {
+                isShowRepeatPicker.toggle()
+            }) {
+                HStack() {
+                    Image(systemName: "repeat")
+                    Text("重复")
+                    Spacer()
+                    Text(getRepeatFrequencyText(repeatFrequency))
+                }
+                    .padding(.horizontal, 16.0)
             }
-                .padding(.horizontal, 16.0)
             Divider()
         }
     }
@@ -66,29 +77,48 @@ struct EditTaskPage: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            taskTitle
-            taskValue
-            taskRepeat
-            taskDdl
-            Text("子任务")
-                .font(.headline)
-                .padding(.horizontal, 16.0)
-            Divider()
-            HStack() {
-                Text("备注")
+        ZStack(alignment: .bottom) {
+            VStack(alignment: .leading) {
+                taskTitle
+                taskValue
+                taskRepeat
+                taskDdl
+                Text("子任务")
+                    .font(.headline)
                     .padding(.horizontal, 16.0)
+                Divider()
+                HStack() {
+                    Text("备注")
+                        .padding(.horizontal, 16.0)
+                }
+                Spacer()
             }
-            Spacer()
+                .frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: .infinity,
+                    alignment: .topLeading
+                )
+                .navigationTitle("编辑任务")
+//          重复频率选择器
+            if isShowRepeatPicker {
+                VStack(alignment: .trailing, spacing: 0) {
+                    Button(action: {
+                        isShowRepeatPicker.toggle()
+                    }) {
+                        Text("完成")
+                    }
+                        .padding(8)
+                    Picker("重复频率", selection: $repeatFrequency) {
+                        ForEach(RepeatFrequency.allCases, id: \.self) {repeatOption in
+                            Text(getRepeatFrequencyText(repeatOption)).tag(repeatOption)
+                        }
+                    }
+                }
+                    .background(Color.g10)
+            }
         }
-            .frame(
-                minWidth: 0,
-                maxWidth: .infinity,
-                minHeight: 0,
-                maxHeight: .infinity,
-                alignment: .topLeading
-            )
-            .navigationTitle("编辑任务")
     }
 }
 
