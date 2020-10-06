@@ -10,6 +10,13 @@ import SwiftUI
 struct TaskRow: View {
 //    @EnvironmentObject private var tasksStore: TasksStore
     var task: Task
+    
+    var dateText: String? {
+        if let ddl = task.ddl {
+            return dateToString(ddl)
+        }
+        return nil
+    }
 
     var foregroundColor: Color {
          task.done ? Color.gray : Color.black
@@ -21,10 +28,10 @@ struct TaskRow: View {
 //    }
     
     var taskInfo: some View {
-        HStack {
+        return HStack {
             task.starred ? Image(systemName: "star.fill") : nil
             task.repeatFrequency != RepeatFrequency.never ? Image(systemName: "repeat") : nil
-            task.ddl != nil ? Text("\(task.ddl!)截止") : nil
+            dateText != nil ? Text("\(dateText!)截止") : nil
         }
     }
 

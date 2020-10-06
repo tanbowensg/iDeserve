@@ -11,9 +11,9 @@ import SwiftUI
 
 let DefaultTasks: [Task] = [
     Task(name: "学习 SwiftUI", value: 100, starred: true),
-    Task(name: "制定敦煌行程", done: true, value: 5, ddl: "2020年9月30日"),
+    Task(name: "制定敦煌行程", done: true, value: 5, ddl: Date()),
     Task(name: "制作一档博客", value: 80, repeatFrequency: RepeatFrequency.weekly),
-    Task(name: "读完《独裁者手册》", value: 77, repeatFrequency: RepeatFrequency.monthly, starred: true, ddl: "2020年9月30日"),
+    Task(name: "读完《独裁者手册》", value: 77, repeatFrequency: RepeatFrequency.monthly, starred: true, ddl: Date()),
     Task(name: "写完圣农发展研报", done: true, value: 48),
 ]
 

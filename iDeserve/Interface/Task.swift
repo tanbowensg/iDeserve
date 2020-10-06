@@ -18,7 +18,7 @@ struct Task: Hashable, Identifiable {
     //    重要任务
     var starred: Bool = false
     //    截止时间
-    var ddl: String?
+    var ddl: Date?
     //    描述
     var desc: String = ""
     //    父任务 id
