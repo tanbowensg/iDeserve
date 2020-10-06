@@ -60,6 +60,7 @@ struct EditTaskPage: View {
                     Text(getRepeatFrequencyText(repeatFrequency))
                 }
                     .padding(.horizontal, 16.0)
+                    .foregroundColor(.g80)
             }
             Divider()
         }
@@ -74,6 +75,24 @@ struct EditTaskPage: View {
                 .padding(.horizontal, 16.0)
             Divider()
         }
+    }
+    
+//    重复频率选择器
+    var repeatPicker: some View {
+        VStack(alignment: .trailing, spacing: 0) {
+            Button(action: {
+                isShowRepeatPicker.toggle()
+            }) {
+                Text("完成")
+            }
+                .padding(8)
+            Picker("重复频率", selection: $repeatFrequency) {
+                ForEach(RepeatFrequency.allCases, id: \.self) {repeatOption in
+                    Text(getRepeatFrequencyText(repeatOption)).tag(repeatOption)
+                }
+            }
+        }
+            .background(Color.g10)
     }
 
     var body: some View {
@@ -101,22 +120,8 @@ struct EditTaskPage: View {
                     alignment: .topLeading
                 )
                 .navigationTitle("编辑任务")
-//          重复频率选择器
             if isShowRepeatPicker {
-                VStack(alignment: .trailing, spacing: 0) {
-                    Button(action: {
-                        isShowRepeatPicker.toggle()
-                    }) {
-                        Text("完成")
-                    }
-                        .padding(8)
-                    Picker("重复频率", selection: $repeatFrequency) {
-                        ForEach(RepeatFrequency.allCases, id: \.self) {repeatOption in
-                            Text(getRepeatFrequencyText(repeatOption)).tag(repeatOption)
-                        }
-                    }
-                }
-                    .background(Color.g10)
+                repeatPicker
             }
         }
     }
