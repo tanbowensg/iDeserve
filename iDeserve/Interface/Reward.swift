@@ -15,7 +15,7 @@ struct Reward: Hashable, Codable, Identifiable {
     //    封面图片
     var cover: String
     //    可重复兑换
-    var repeatable: Bool
+    var repeatable: Bool = false
     //    已兑换完
-    var isSoldout: Bool
+    var isSoldout: Bool = false
 }

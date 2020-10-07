@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,8 +21,11 @@
 		D01026912524246B00653A52 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026902524246B00653A52 /* Task.swift */; };
 		D0102699252424EA00653A52 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0102698252424EA00653A52 /* Reward.swift */; };
 		D01026A02524308300653A52 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010269F2524308300653A52 /* TaskRow.swift */; };
-		D01026AA252430E600653A52 /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026A9252430E600653A52 /* TaskStore.swift */; };
+		D01026AA252430E600653A52 /* TasksStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026A9252430E600653A52 /* TasksStore.swift */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
+		D042F18B252D906500B08F97 /* RewardsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F18A252D906500B08F97 /* RewardsStore.swift */; };
+		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
+		D042F1A4252DAB7900B08F97 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = D042F1A3252DAB7900B08F97 /* URLImage */; };
 		D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* TaskPage.swift */; };
 		D04BB01F252AC8330088912A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* Tab.swift */; };
 		D04BB024252AC93B0088912A /* RewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB023252AC93B0088912A /* RewardPage.swift */; };
@@ -66,8 +69,10 @@
 		D01026902524246B00653A52 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D0102698252424EA00653A52 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		D010269F2524308300653A52 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
-		D01026A9252430E600653A52 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
+		D01026A9252430E600653A52 /* TasksStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksStore.swift; sourceTree = "<group>"; };
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		D042F18A252D906500B08F97 /* RewardsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsStore.swift; sourceTree = "<group>"; };
+		D042F195252D98DC00B08F97 /* RewardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardGrid.swift; sourceTree = "<group>"; };
 		D04BB016252AC7FB0088912A /* TaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPage.swift; sourceTree = "<group>"; };
 		D04BB01E252AC8330088912A /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		D04BB023252AC93B0088912A /* RewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPage.swift; sourceTree = "<group>"; };
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D042F1A4252DAB7900B08F97 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +192,7 @@
 				D010269F2524308300653A52 /* TaskRow.swift */,
 				D0036DC7252B0B5900E4005B /* CreateButton.swift */,
 				D0036E09252C840D00E4005B /* Popup.swift */,
+				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -193,7 +200,8 @@
 		D01026A7252430CE00653A52 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				D01026A9252430E600653A52 /* TaskStore.swift */,
+				D01026A9252430E600653A52 /* TasksStore.swift */,
+				D042F18A252D906500B08F97 /* RewardsStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -225,6 +233,9 @@
 			dependencies = (
 			);
 			name = iDeserve;
+			packageProductDependencies = (
+				D042F1A3252DAB7900B08F97 /* URLImage */,
+			);
 			productName = iDeserve;
 			productReference = D010265E2524241F00653A52 /* iDeserve.app */;
 			productType = "com.apple.product-type.application";
@@ -296,6 +307,9 @@
 				Base,
 			);
 			mainGroup = D01026552524241F00653A52;
+			packageReferences = (
+				D042F1A2252DAB7900B08F97 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = D010265F2524241F00653A52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -342,16 +356,18 @@
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
+				D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */,
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0102699252424EA00653A52 /* Reward.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
-				D01026AA252430E600653A52 /* TaskStore.swift in Sources */,
+				D01026AA252430E600653A52 /* TasksStore.swift in Sources */,
 				D01026642524241F00653A52 /* ContentView.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D04BB01F252AC8330088912A /* Tab.swift in Sources */,
 				D0036E0A252C840D00E4005B /* Popup.swift in Sources */,
 				D01026912524246B00653A52 /* Task.swift in Sources */,
+				D042F18B252D906500B08F97 /* RewardsStore.swift in Sources */,
 				D01026622524241F00653A52 /* iDeserveApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +682,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D042F1A2252DAB7900B08F97 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D042F1A3252DAB7900B08F97 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D042F1A2252DAB7900B08F97 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D01026562524241F00653A52 /* Project object */;
 }
