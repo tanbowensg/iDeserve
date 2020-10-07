@@ -20,8 +20,21 @@ let DefaultTasks: [Task] = [
 final class TasksStore: ObservableObject {
     @Published var tasks: [Task] = DefaultTasks
     
-    func createTask (name: String, value: Int) {
-        let newTask = Task(id: UUID().uuidString, name: name, value: value)
+    func createTask (
+        name: String,
+        value: Int,
+        repeatFrequency: RepeatFrequency = .never,
+        ddl: Date? = nil,
+        desc: String = ""
+    ) {
+        let newTask = Task(
+            id: UUID().uuidString,
+            name: name,
+            value: value,
+            repeatFrequency: repeatFrequency,
+            ddl: ddl,
+            desc: desc
+        )
         self.tasks += [newTask]
     }
     

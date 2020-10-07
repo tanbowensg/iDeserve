@@ -20,7 +20,7 @@ struct EditTaskPage: View {
     @State var ddl: Date = Date()
     @State var desc = ""
     
-    @State var isShowRepeatPicker = true
+    @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
 
     init (initTask: Task?, tasksStore: TasksStore) {
@@ -167,6 +167,20 @@ struct EditTaskPage: View {
             }
         }
     }
+    
+    var saveBtn: some View {
+        Button(action: {
+            self.saveTask()
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "chevron.left")
+                    .padding(.leading, 16.0)
+                    
+                Text("返回")
+            }
+        }
+    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -200,9 +214,20 @@ struct EditTaskPage: View {
     }
     
     func saveTask () {
+        if name == "" {
+            return
+        }
         if let taskId = initTask?.id {
             tasksStore.updateTask(
                 id: taskId,
+                name: name,
+                value: Int(value) ?? 0,
+                repeatFrequency: repeatFrequency,
+                ddl: hasDdl ? ddl : nil,
+                desc: desc
+            )
+        } else {
+            tasksStore.createTask(
                 name: name,
                 value: Int(value) ?? 0,
                 repeatFrequency: repeatFrequency,

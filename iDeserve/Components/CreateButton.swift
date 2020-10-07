@@ -11,7 +11,7 @@ struct CreateButton: View {
     var body: some View {
         Image(systemName: "plus")
             .foregroundColor(Color.white)
-            .frame(width: 64, height: 64, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: 64, height: 64, alignment: .center)
             .font(.system(size: 32))
             .background(Color.blue)
             .cornerRadius(32)

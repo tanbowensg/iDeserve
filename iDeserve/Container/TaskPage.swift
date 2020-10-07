@@ -26,10 +26,17 @@ struct TaskPage: View {
                     }
                     .onDelete(perform: removeTask)
                 }
-                NavigationLink(destination: EditTaskPage(initTask: nil, tasksStore: tasksStore)) {
-                    CreateButton()
-                        .offset(x: -32, y: -32)
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: EditTaskPage(initTask: nil, tasksStore: tasksStore)) {
+                            CreateButton()
+                        }
+                    }
+                    .padding(.trailing, 16)
                 }
+                .padding(.bottom, 16)
             }
                 .navigationBarHidden(true)
         }
