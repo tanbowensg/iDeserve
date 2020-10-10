@@ -20,20 +20,44 @@ struct RewardPage: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    
+    func genRewardGrid(reward: Reward) -> some View {
+        return NavigationLink(destination: EditRewardPage(initReward: reward, rewardsStore: rewardsStore)) {
+            RewardGrid(reward: reward)
+                .foregroundColor(.g80)
+        }
+    }
 
     var body: some View {
-        ScrollView {
-            RewardGrid(reward: sortedRewards[0])
-            LazyVGrid(
-                columns: columns,
-                alignment: .center,
-                spacing: 16
-            ) {
-                ForEach (sortedRewards) { reward in
-                    RewardGrid(reward: reward)
+        NavigationView() {
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    genRewardGrid(reward: sortedRewards[0])
+                    LazyVGrid(
+                        columns: columns,
+                        alignment: .center,
+                        spacing: 16
+                    ) {
+                        ForEach (sortedRewards) { reward in
+                            genRewardGrid(reward: reward)
+                        }
+                    }
+                    .padding(16)
                 }
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: EditRewardPage(initReward: nil, rewardsStore: rewardsStore)) {
+                                CreateButton()
+                        }
+                    }
+                        .padding(.trailing, 16)
+                }
+                    .padding(.bottom, 16)
             }
-            .padding(16)
+                .navigationBarHidden(true)
         }
     }
 }

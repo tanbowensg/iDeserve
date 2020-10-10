@@ -29,6 +29,9 @@
 		D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* TaskPage.swift */; };
 		D04BB01F252AC8330088912A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* Tab.swift */; };
 		D04BB024252AC93B0088912A /* RewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB023252AC93B0088912A /* RewardPage.swift */; };
+		D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A025318E7F008DE678 /* EditRewardPage.swift */; };
+		D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
+		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		D04BB016252AC7FB0088912A /* TaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPage.swift; sourceTree = "<group>"; };
 		D04BB01E252AC8330088912A /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		D04BB023252AC93B0088912A /* RewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPage.swift; sourceTree = "<group>"; };
+		D06806A025318E7F008DE678 /* EditRewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRewardPage.swift; sourceTree = "<group>"; };
+		D06806A52531939D008DE678 /* RepeatFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequency.swift; sourceTree = "<group>"; };
+		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +188,7 @@
 				D0102698252424EA00653A52 /* Reward.swift */,
 				D03F21AD25270EC40055BF25 /* Record.swift */,
 				D0036DD4252C56CD00E4005B /* Color.swift */,
+				D06806A52531939D008DE678 /* RepeatFrequency.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 				D0036DC7252B0B5900E4005B /* CreateButton.swift */,
 				D0036E09252C840D00E4005B /* Popup.swift */,
 				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
+				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -213,6 +221,7 @@
 				D04BB01E252AC8330088912A /* Tab.swift */,
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
+				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -353,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D01026A02524308300653A52 /* TaskRow.swift in Sources */,
+				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
@@ -362,11 +372,13 @@
 				D0102699252424EA00653A52 /* Reward.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
 				D01026AA252430E600653A52 /* TasksStore.swift in Sources */,
+				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
 				D01026642524241F00653A52 /* ContentView.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D04BB01F252AC8330088912A /* Tab.swift in Sources */,
 				D0036E0A252C840D00E4005B /* Popup.swift in Sources */,
 				D01026912524246B00653A52 /* Task.swift in Sources */,
+				D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */,
 				D042F18B252D906500B08F97 /* RewardsStore.swift in Sources */,
 				D01026622524241F00653A52 /* iDeserveApp.swift in Sources */,
 			);

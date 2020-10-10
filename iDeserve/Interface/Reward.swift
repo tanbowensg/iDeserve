@@ -7,15 +7,17 @@
 
 import Foundation
 
-struct Reward: Hashable, Codable, Identifiable {
+struct Reward: Hashable, Identifiable {
     var id = UUID().uuidString
     var name: String
     //    分值
     var value: Int
     //    封面图片
     var cover: String
-    //    可重复兑换
-    var repeatable: Bool = false
+    //    重复频率
+    var repeatFrequency: RepeatFrequency = RepeatFrequency.never
+    //    介绍
+    var desc: String = ""
     //    已兑换完
     var isSoldout: Bool = false
 }
