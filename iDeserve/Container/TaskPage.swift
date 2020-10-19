@@ -9,10 +9,15 @@ import SwiftUI
 
 struct TaskPage: View {
     @ObservedObject var tasksStore = TasksStore()
+    @ObservedObject var pointsStore = PointsStore()
     
     func removeTask (index: IndexSet) {
         let taskId = tasksStore.tasks[index.first!].id
         tasksStore.deleteTask(id: taskId)
+    }
+    
+    func completeTask (_ task: Task) {
+        pointsStore.minus(task.value)
     }
 
     var body: some View {

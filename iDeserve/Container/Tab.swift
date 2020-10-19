@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Tab: View {
+    @ObservedObject var pointsStore = PointsStore()
+
     func TabIcon (text: String, icon: String) -> some View {
         VStack() {
             Image(systemName: icon)
@@ -18,13 +20,19 @@ struct Tab: View {
     }
     
     var body: some View {
-        TabView {
-            TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
-            RewardPage().tabItem { TabIcon(text: "奖励", icon: "dollarsign.circle") }
-            TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
-            TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
+        VStack {
+            HStack {
+                Spacer()
+                Text(String(pointsStore.points))
+            }
+            TabView {
+                TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
+                RewardPage().tabItem { TabIcon(text: "奖励", icon: "dollarsign.circle") }
+                TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
+                TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
+            }
+            .edgesIgnoringSafeArea(.top)
         }
-        .edgesIgnoringSafeArea(.top)
     }
 }
 

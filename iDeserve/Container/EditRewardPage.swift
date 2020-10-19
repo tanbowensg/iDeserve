@@ -97,13 +97,13 @@ struct EditRewardPage: View {
             .background(Color.g10)
     }
 
-    var coverImage: some View {
+    @ViewBuilder var coverImage: some View {
         if let existCover = cover {
-            return Image(uiImage: existCover)
+            Image(uiImage: existCover)
                 .resizable()
                 .aspectRatio(4/3, contentMode: .fit)
         }
-        return Group {
+        Group {
             Button(action: {
                 self.isShowImagePicker.toggle()
             }) {

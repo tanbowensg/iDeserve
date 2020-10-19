@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskRow: View {
 //    @EnvironmentObject private var tasksStore: TasksStore
+    var onLongPress: ((_ task: Task) -> Void)?
     var task: Task
     
     var dateText: String? {
@@ -51,6 +52,10 @@ struct TaskRow: View {
         }
             .padding()
             .foregroundColor(self.foregroundColor)
+            .onLongPressGesture {
+                print("长安")
+                self.onLongPress?(task)
+            }
     }
 }
 

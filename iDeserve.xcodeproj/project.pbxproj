@@ -22,6 +22,7 @@
 		D0102699252424EA00653A52 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0102698252424EA00653A52 /* Reward.swift */; };
 		D01026A02524308300653A52 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010269F2524308300653A52 /* TaskRow.swift */; };
 		D01026AA252430E600653A52 /* TasksStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026A9252430E600653A52 /* TasksStore.swift */; };
+		D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D042F18B252D906500B08F97 /* RewardsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F18A252D906500B08F97 /* RewardsStore.swift */; };
 		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
@@ -32,6 +33,7 @@
 		D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A025318E7F008DE678 /* EditRewardPage.swift */; };
 		D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
+		D0D8E2802537459300764AB8 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E27F2537459300764AB8 /* PointsStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,7 @@
 		D0102698252424EA00653A52 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		D010269F2524308300653A52 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		D01026A9252430E600653A52 /* TasksStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksStore.swift; sourceTree = "<group>"; };
+		D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDeserve.xcdatamodel; sourceTree = "<group>"; };
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		D042F18A252D906500B08F97 /* RewardsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsStore.swift; sourceTree = "<group>"; };
 		D042F195252D98DC00B08F97 /* RewardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardGrid.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		D06806A025318E7F008DE678 /* EditRewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRewardPage.swift; sourceTree = "<group>"; };
 		D06806A52531939D008DE678 /* RepeatFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequency.swift; sourceTree = "<group>"; };
 		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D0D8E27F2537459300764AB8 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 				D01026652524242000653A52 /* Assets.xcassets */,
 				D010266A2524242000653A52 /* Info.plist */,
 				D01026672524242000653A52 /* Preview Content */,
+				D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */,
 			);
 			path = iDeserve;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			children = (
 				D01026A9252430E600653A52 /* TasksStore.swift */,
 				D042F18A252D906500B08F97 /* RewardsStore.swift */,
+				D0D8E27F2537459300764AB8 /* PointsStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -376,6 +382,8 @@
 				D01026642524241F00653A52 /* ContentView.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D04BB01F252AC8330088912A /* Tab.swift in Sources */,
+				D0D8E2802537459300764AB8 /* PointsStore.swift in Sources */,
+				D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */,
 				D0036E0A252C840D00E4005B /* Popup.swift in Sources */,
 				D01026912524246B00653A52 /* Task.swift in Sources */,
 				D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */,
@@ -713,6 +721,19 @@
 			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */,
+			);
+			currentVersion = D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */;
+			path = iDeserve.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D01026562524241F00653A52 /* Project object */;
 }
