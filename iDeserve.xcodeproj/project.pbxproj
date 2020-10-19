@@ -23,6 +23,8 @@
 		D01026AA252430E600653A52 /* TasksStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026A9252430E600653A52 /* TasksStore.swift */; };
 		D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D03B57C7253D471A00DC107F /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
+		D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57CB253D8B4900DC107F /* RecordPage.swift */; };
+		D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D042F18B252D906500B08F97 /* RewardsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F18A252D906500B08F97 /* RewardsStore.swift */; };
 		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
@@ -76,6 +78,8 @@
 		D01026A9252430E600653A52 /* TasksStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksStore.swift; sourceTree = "<group>"; };
 		D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDeserve.xcdatamodel; sourceTree = "<group>"; };
 		D03B57C6253D471A00DC107F /* saveContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveContext.swift; sourceTree = "<group>"; };
+		D03B57CB253D8B4900DC107F /* RecordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPage.swift; sourceTree = "<group>"; };
+		D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		D042F18A252D906500B08F97 /* RewardsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsStore.swift; sourceTree = "<group>"; };
 		D042F195252D98DC00B08F97 /* RewardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardGrid.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				D01026A9252430E600653A52 /* TasksStore.swift */,
 				D042F18A252D906500B08F97 /* RewardsStore.swift */,
 				D0D8E27F2537459300764AB8 /* PointsStore.swift */,
+				D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
+				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -375,10 +381,12 @@
 				D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */,
 				D03B57C7253D471A00DC107F /* saveContext.swift in Sources */,
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
+				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0102699252424EA00653A52 /* Reward.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
 				D01026AA252430E600653A52 /* TasksStore.swift in Sources */,
+				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D04BB01F252AC8330088912A /* Tab.swift in Sources */,

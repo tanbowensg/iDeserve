@@ -1,24 +1,24 @@
+////
+////  Record.swift
+////  iDeserve
+////
+////  Created by 谈博文 on 2020/10/2.
+////
 //
-//  Record.swift
-//  iDeserve
+//import SwiftUI
 //
-//  Created by 谈博文 on 2020/10/2.
+//enum RecordKind {
+//    case task
+//    case reward
+//}
 //
-
-import SwiftUI
-
-enum RecordKind {
-    case task
-    case reward
-}
-
-struct Record: Hashable, Identifiable {
-    var id = UUID().uuidString
-    var name: String
-    //    分值
-    var value: Int
-    //    记录类型
-    var kind: RecordKind
-    //    时间
-    var time: String
-}
+//struct Record: Hashable, Identifiable {
+//    var id = UUID().uuidString
+//    var name: String
+//    //    分值
+//    var value: Int
+//    //    记录类型
+//    var kind: RecordKind
+//    //    时间
+//    var time: String
+//}
