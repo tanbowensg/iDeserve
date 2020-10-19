@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct RecordPage: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(
-        entity: Record.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Record.date, ascending: true)
-        ]
-    ) var records: FetchedResults<Record>
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(fetchRequest: recordRequest) var records: FetchedResults<Record>
+
+    static var recordRequest: NSFetchRequest<Record> {
+        let request: NSFetchRequest<Record> = Record.fetchRequest()
+        request.sortDescriptors = []
+        return request
+   }
 
     var body: some View {
         NavigationView() {
@@ -38,21 +40,21 @@ struct RecordPage: View {
     }
     
     func insertRecord () {
-        let newRecord = Record(context: self.managedObjectContext)
+        let newRecord = Record(context: self.moc)
         newRecord.title = "学习 CoreData"
         newRecord.value = 999
         newRecord.date = Date()
         do {
-            try self.managedObjectContext.save()
+            try self.moc.save()
         } catch {
             // handle the Core Data error
         }
     }
-    
+
     func deleteRecord (at offsets: IndexSet) {
         for index in offsets {
             let record = records[index]
-            managedObjectContext.delete(record)
+            moc.delete(record)
         }
     }
 }
