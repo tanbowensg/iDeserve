@@ -9,20 +9,21 @@ import SwiftUI
 import URLImage
 
 struct RewardGrid: View {
-    var reward: Reward
+    @ObservedObject var reward: Reward
+    
+    var cover: some View {
+        Image(uiImage: UIImage(data: reward.cover!)!)
+            .resizable()
+            .aspectRatio(4/3, contentMode: .fit)
+            .cornerRadius(16)
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(reward.name)
+            Text(reward.name ?? "未知")
                 .font(.subheadline)
                 .foregroundColor(.g80)
-            URLImage(URL(string: reward.cover)!) { proxy in
-                proxy.image
-                    .resizable()
-                    .aspectRatio(4/3, contentMode: .fit)
-                    .cornerRadius(16)
-                
-            }
+            reward.cover != nil ? cover : nil
             VStack(alignment: .center){
                 Text(String(reward.value))
             }
@@ -34,8 +35,8 @@ struct RewardGrid: View {
     }
 }
 
-struct RewardGrid_Previews: PreviewProvider {
-    static var previews: some View {
-        RewardGrid(reward: DefaultRewards[2])
-    }
-}
+//struct RewardGrid_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RewardGrid(reward: DefaultRewards[2])
+//    }
+//}

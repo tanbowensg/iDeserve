@@ -7,7 +7,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Reward2" representedClassName="Reward2" syncable="YES" codeGenerationType="class">
+    <entity name="Reward" representedClassName="Reward" syncable="YES" codeGenerationType="class">
         <attribute name="cover" optional="YES" attributeType="Binary"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -30,6 +30,6 @@
     <elements>
         <element name="Record" positionX="-36" positionY="63" width="128" height="118"/>
         <element name="Task" positionX="-63" positionY="-18" width="128" height="178"/>
-        <element name="Reward2" positionX="-45" positionY="54" width="128" height="148"/>
+        <element name="Reward" positionX="-45" positionY="54" width="128" height="148"/>
     </elements>
 </model>

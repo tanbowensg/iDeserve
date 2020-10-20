@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct EditRewardPage: View {
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var initReward: Reward?
-    var rewardsStore: RewardsStore
 
     @State var name: String = ""
     @State var value: String = "0"
@@ -24,14 +24,14 @@ struct EditRewardPage: View {
 
     @State var image: Image? = nil
 
-    init (initReward: Reward?, rewardsStore: RewardsStore) {
+    init (initReward: Reward?) {
         self.initReward = initReward
-        self.rewardsStore = rewardsStore
         if let existReward = initReward {
-            _name = State(initialValue: existReward.name)
+            _name = State(initialValue: existReward.name ?? "")
+            _cover = State(initialValue: UIImage(data: existReward.cover!))
             _value = State(initialValue: String(existReward.value))
-            _repeatFrequency = State(initialValue: existReward.repeatFrequency)
-            _desc = State(initialValue: existReward.desc)
+            _repeatFrequency = State(initialValue: RepeatFrequency(rawValue: Int(existReward.repeatFrequency)) ?? RepeatFrequency.never)
+            _desc = State(initialValue: existReward.desc ?? "")
         }
     }
 
@@ -165,31 +165,51 @@ struct EditRewardPage: View {
         if name == "" {
             return
         }
-        if let rewardId = initReward?.id {
-            rewardsStore.updateReward(
-                id: rewardId,
-                name: name,
-                value: Int(value) ?? 0,
-                cover: initReward!.cover,
-                repeatFrequency: repeatFrequency,
-                desc: desc
-            )
+        if initReward?.id != nil {
+            updateReward()
         } else {
-            rewardsStore.createReward(
-                name: name,
-                value: Int(value) ?? 0,
-                cover: DefaultRewards[3].cover,
-                repeatFrequency: repeatFrequency,
-                desc: desc
-            )
+            createReward()
+        }
+    }
+    
+    func updateReward () {
+        let targetReward = initReward!
+        targetReward.name = name
+        targetReward.value = Int16(value) ?? 0
+        targetReward.repeatFrequency = Int16(repeatFrequency.rawValue)
+        targetReward.desc = desc
+        targetReward.isSoldout = false
+        targetReward.cover = cover?.pngData()
+
+        do {
+            try self.moc.save()
+        } catch {
+            fatalError("更新奖励到 coredata中失败")
+        }
+    }
+    
+    func createReward () {
+        let newReward = Reward(context: self.moc)
+        newReward.id = UUID()
+        newReward.name = name
+        newReward.value = Int16(value) ?? 0
+        newReward.repeatFrequency = Int16(repeatFrequency.rawValue)
+        newReward.desc = desc
+        newReward.isSoldout = false
+        newReward.cover = cover?.pngData()
+
+        do {
+            try self.moc.save()
+        } catch {
+            fatalError("创建奖励到 coredata中失败")
         }
     }
 }
-
-struct EditRewardPage_Previews: PreviewProvider {
-    static var previews: some View {
-        let rewardsStore = RewardsStore()
-        EditRewardPage(initReward:rewardsStore.rewards[0], rewardsStore: rewardsStore)
-        EditRewardPage(initReward: nil, rewardsStore: rewardsStore)
-    }
-}
+//
+//struct EditRewardPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let rewardsStore = RewardsStore()
+//        EditRewardPage(initReward:rewardsStore.rewards[0], rewardsStore: rewardsStore)
+//        EditRewardPage(initReward: nil, rewardsStore: rewardsStore)
+//    }
+//}

@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct RewardPage: View {
-    @ObservedObject var rewardsStore = RewardsStore()
-    
+    @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
+
+    static var rewardRequest: NSFetchRequest<Reward> {
+        let request: NSFetchRequest<Reward> = Reward.fetchRequest()
+        request.sortDescriptors = []
+        return request
+   }
+
     private var sortedRewards: [Reward] {
-        rewardsStore.rewards.sorted { (r1, r2) -> Bool in
+        rewards.sorted { (r1, r2) -> Bool in
             return r1.value > r2.value
         }
     }
@@ -22,7 +29,7 @@ struct RewardPage: View {
     ]
     
     func genRewardGrid(reward: Reward) -> some View {
-        return NavigationLink(destination: EditRewardPage(initReward: reward, rewardsStore: rewardsStore)) {
+        return NavigationLink(destination: EditRewardPage(initReward: reward)) {
             RewardGrid(reward: reward)
                 .foregroundColor(.g80)
         }
@@ -32,7 +39,7 @@ struct RewardPage: View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    genRewardGrid(reward: sortedRewards[0])
+                    sortedRewards.count > 0 ? genRewardGrid(reward: sortedRewards[0]) : nil
                     LazyVGrid(
                         columns: columns,
                         alignment: .center,
@@ -49,7 +56,7 @@ struct RewardPage: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        NavigationLink(destination: EditRewardPage(initReward: nil, rewardsStore: rewardsStore)) {
+                        NavigationLink(destination: EditRewardPage(initReward: nil)) {
                                 CreateButton()
                         }
                     }
@@ -61,9 +68,9 @@ struct RewardPage: View {
         }
     }
 }
-
-struct RewardPage_Previews: PreviewProvider {
-    static var previews: some View {
-        RewardPage()
-    }
-}
+//
+//struct RewardPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RewardPage()
+//    }
+//}
