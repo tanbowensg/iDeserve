@@ -10,6 +10,7 @@ import CoreData
 
 struct RewardPage: View {
     @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var pointsStore: PointsStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
     static var rewardRequest: NSFetchRequest<Reward> {
@@ -47,10 +48,10 @@ struct RewardPage: View {
         newRecord.date = Date()
         do {
             try self.moc.save()
+            pointsStore.minus(Int(reward.value))
         } catch {
             // handle the Core Data error
         }
-        try? moc.save()
     }
 
     var body: some View {

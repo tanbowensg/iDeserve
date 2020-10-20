@@ -10,7 +10,7 @@ import CoreData
 
 struct TaskPage: View {
     @Environment(\.managedObjectContext) var moc
-    @ObservedObject var pointsStore = PointsStore()
+    @EnvironmentObject var pointsStore: PointsStore
 
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
 
@@ -38,10 +38,10 @@ struct TaskPage: View {
         newRecord.date = Date()
         do {
             try self.moc.save()
+            pointsStore.add(Int(task.value))
         } catch {
             // handle the Core Data error
         }
-        try? moc.save()
     }
 
     var body: some View {

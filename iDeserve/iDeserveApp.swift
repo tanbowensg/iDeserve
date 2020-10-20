@@ -24,6 +24,7 @@ struct iDeserveApp: App {
         WindowGroup {
             Tab()
                 .environment(\.managedObjectContext, CoreDataContainer.shared.context)
+                .environmentObject(PointsStore.shared)
         }
     }
 }

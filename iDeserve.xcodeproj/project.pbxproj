@@ -28,10 +28,10 @@
 		D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* TaskPage.swift */; };
 		D04BB01F252AC8330088912A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* Tab.swift */; };
 		D04BB024252AC93B0088912A /* RewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB023252AC93B0088912A /* RewardPage.swift */; };
+		D05D2DDB253EE3CC00F7C882 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D2DDA253EE3CC00F7C882 /* PointsStore.swift */; };
 		D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A025318E7F008DE678 /* EditRewardPage.swift */; };
 		D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
-		D0D8E2802537459300764AB8 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D8E27F2537459300764AB8 /* PointsStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +78,10 @@
 		D04BB016252AC7FB0088912A /* TaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPage.swift; sourceTree = "<group>"; };
 		D04BB01E252AC8330088912A /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		D04BB023252AC93B0088912A /* RewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPage.swift; sourceTree = "<group>"; };
+		D05D2DDA253EE3CC00F7C882 /* PointsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointsStore.swift; path = ../../../../../.Trash/PointsStore.swift; sourceTree = "<group>"; };
 		D06806A025318E7F008DE678 /* EditRewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRewardPage.swift; sourceTree = "<group>"; };
 		D06806A52531939D008DE678 /* RepeatFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequency.swift; sourceTree = "<group>"; };
 		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		D0D8E27F2537459300764AB8 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +207,7 @@
 		D01026A7252430CE00653A52 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				D0D8E27F2537459300764AB8 /* PointsStore.swift */,
+				D05D2DDA253EE3CC00F7C882 /* PointsStore.swift */,
 				D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */,
 			);
 			path = Store;
@@ -376,10 +376,10 @@
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D04BB01F252AC8330088912A /* Tab.swift in Sources */,
-				D0D8E2802537459300764AB8 /* PointsStore.swift in Sources */,
 				D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */,
 				D0036E0A252C840D00E4005B /* Popup.swift in Sources */,
 				D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */,
+				D05D2DDB253EE3CC00F7C882 /* PointsStore.swift in Sources */,
 				D01026622524241F00653A52 /* iDeserveApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
