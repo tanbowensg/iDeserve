@@ -26,10 +26,13 @@ struct RecordPage: View {
                 }
                 List {
                     ForEach (records) { record in
-                        HStack {
-                            Text(record.title ?? "未知")
-                            Spacer()
-                            Text(String(record.value))
+                        VStack {
+                            HStack {
+                                Text(record.name ?? "未知")
+                                Spacer()
+                                Text(String(record.value))
+                            }
+                            Text(dateToString(record.date!))
                         }
                     }
                         .onDelete(perform: deleteRecord)
@@ -41,7 +44,7 @@ struct RecordPage: View {
     
     func insertRecord () {
         let newRecord = Record(context: self.moc)
-        newRecord.title = "学习 CoreData"
+        newRecord.name = "学习 CoreData"
         newRecord.value = 999
         newRecord.date = Date()
         do {

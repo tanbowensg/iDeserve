@@ -29,6 +29,18 @@ struct TaskPage: View {
 
     func completeTask (_ task: Task) {
         task.done = true
+//      插入完成记录
+        let newRecord = Record(context: self.moc)
+        newRecord.id = UUID()
+        newRecord.name = task.name
+        newRecord.kind = Int16(RecordKind.task.rawValue)
+        newRecord.value = task.value
+        newRecord.date = Date()
+        do {
+            try self.moc.save()
+        } catch {
+            // handle the Core Data error
+        }
         try? moc.save()
     }
 

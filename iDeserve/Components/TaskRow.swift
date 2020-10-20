@@ -26,11 +26,11 @@ struct TaskRow: View {
     }
 
     var longPress: some Gesture {
-        LongPressGesture(minimumDuration: 3)
+        LongPressGesture(minimumDuration: 0.8)
             .updating($isDetectingLongPress) { currentstate, gestureState,
                     transaction in
                 gestureState = currentstate
-                transaction.animation = Animation.easeIn(duration: 1.0)
+                transaction.animation = Animation.easeIn(duration: 0.8)
             }
             .onEnded { finished in
                 print("长按结束了")

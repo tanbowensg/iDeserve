@@ -7,10 +7,10 @@
 //
 //import SwiftUI
 //
-//enum RecordKind {
-//    case task
-//    case reward
-//}
+enum RecordKind: Int, CaseIterable {
+    case task = 1
+    case reward = 2
+}
 //
 //struct Record: Hashable, Identifiable {
 //    var id = UUID().uuidString
