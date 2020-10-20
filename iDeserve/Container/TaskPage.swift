@@ -26,10 +26,11 @@ struct TaskPage: View {
             moc.delete(task)
         }
     }
-//
-//    func completeTask (_ task: Task) {
-//        pointsStore.minus(task.value)
-//    }
+
+    func completeTask (_ task: Task) {
+        task.done = true
+        try? moc.save()
+    }
 
     var body: some View {
         NavigationView() {
@@ -37,11 +38,10 @@ struct TaskPage: View {
                 List {
                     ForEach (tasks, id: \.id) { task in
                         NavigationLink(destination: EditTaskPage(initTask: task)) {
-                            TaskRow(task: task)
+                            TaskRow(task: task, onLongPress: completeTask)
                         }
                     }
                     .onDelete(perform: removeTask)
-//                    .id(refreshingID)
                 }
                 VStack {
                     Spacer()
