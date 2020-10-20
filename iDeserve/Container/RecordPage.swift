@@ -21,9 +21,6 @@ struct RecordPage: View {
     var body: some View {
         NavigationView() {
             VStack {
-                Button (action: self.insertRecord) {
-                    Text("添加记录")
-                }
                 List {
                     ForEach (records) { record in
                         VStack {
@@ -39,18 +36,6 @@ struct RecordPage: View {
                 }
             }
                 .navigationTitle("历史记录")
-        }
-    }
-    
-    func insertRecord () {
-        let newRecord = Record(context: self.moc)
-        newRecord.name = "学习 CoreData"
-        newRecord.value = 999
-        newRecord.date = Date()
-        do {
-            try self.moc.save()
-        } catch {
-            // handle the Core Data error
         }
     }
 

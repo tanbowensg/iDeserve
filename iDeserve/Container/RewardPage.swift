@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct RewardPage: View {
+    @Environment(\.managedObjectContext) var moc
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
     static var rewardRequest: NSFetchRequest<Reward> {
@@ -30,9 +31,26 @@ struct RewardPage: View {
     
     func genRewardGrid(reward: Reward) -> some View {
         return NavigationLink(destination: EditRewardPage(initReward: reward)) {
-            RewardGrid(reward: reward)
+            RewardGrid(reward: reward, onLongPress: claimReward)
                 .foregroundColor(.g80)
         }
+    }
+    
+    func claimReward (_ reward: Reward) {
+        reward.isSoldout = true
+//      插入完成记录
+        let newRecord = Record(context: self.moc)
+        newRecord.id = UUID()
+        newRecord.name = reward.name
+        newRecord.kind = Int16(RecordKind.reward.rawValue)
+        newRecord.value = reward.value
+        newRecord.date = Date()
+        do {
+            try self.moc.save()
+        } catch {
+            // handle the Core Data error
+        }
+        try? moc.save()
     }
 
     var body: some View {

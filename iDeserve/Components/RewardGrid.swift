@@ -10,7 +10,25 @@ import URLImage
 
 struct RewardGrid: View {
     @ObservedObject var reward: Reward
-    
+    var onLongPress: ((_ reward: Reward) -> Void)?
+
+    @GestureState var isDetectingLongPress = false
+    @State var completedLongPress = false
+
+    var longPress: some Gesture {
+        LongPressGesture(minimumDuration: 0.8)
+            .updating($isDetectingLongPress) { currentstate, gestureState,
+                    transaction in
+                gestureState = currentstate
+                transaction.animation = Animation.easeIn(duration: 0.8)
+            }
+            .onEnded { finished in
+                print("长按结束了")
+                self.completedLongPress = finished
+                self.onLongPress?(reward)
+            }
+    }
+
     var cover: some View {
         Image(uiImage: UIImage(data: reward.cover!)!)
             .resizable()
@@ -30,8 +48,9 @@ struct RewardGrid: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
         }
             .padding(16)
-            .background(Color.g10)
+            .background(self.isDetectingLongPress && !reward.isSoldout ? Color.green : Color.g10)
             .cornerRadius(16)
+            .gesture(longPress)
     }
 }
 
