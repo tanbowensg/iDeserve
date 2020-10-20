@@ -10,7 +10,7 @@ import SwiftUI
 struct TaskRow: View {
 //    @EnvironmentObject private var tasksStore: TasksStore
     var onLongPress: ((_ task: Task) -> Void)?
-    var task: Task
+    @ObservedObject var task: Task
     
     var dateText: String? {
         if let ddl = task.ddl {
@@ -31,14 +31,14 @@ struct TaskRow: View {
     var taskInfo: some View {
         return HStack {
             task.starred ? Image(systemName: "star.fill") : nil
-            task.repeatFrequency != RepeatFrequency.never ? Image(systemName: "repeat") : nil
+            task.repeatFrequency != RepeatFrequency.never.rawValue ? Image(systemName: "repeat") : nil
             dateText != nil ? Text("\(dateText!)截止") : nil
         }
     }
 
     var leftPart: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(task.name)
+            Text(task.name!)
             taskInfo
         }
     }
@@ -59,16 +59,16 @@ struct TaskRow: View {
     }
 }
 
-struct TaskRow_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskRow(task: TasksStore().tasks[0])
-            .previewLayout(.fixed(width: 414, height: 64))
-        TaskRow(task: TasksStore().tasks[1])
-            .previewLayout(.fixed(width: 414, height: 64))
-        TaskRow(task: TasksStore().tasks[2])
-            .previewLayout(.fixed(width: 414, height: 64))
-        TaskRow(task: TasksStore().tasks[3])
-            .previewLayout(.fixed(width: 414, height: 64))
-//            .environmentObject(TasksStore())
-    }
-}
+//struct TaskRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskRow(task: TasksStore().tasks[0])
+//            .previewLayout(.fixed(width: 414, height: 64))
+//        TaskRow(task: TasksStore().tasks[1])
+//            .previewLayout(.fixed(width: 414, height: 64))
+//        TaskRow(task: TasksStore().tasks[2])
+//            .previewLayout(.fixed(width: 414, height: 64))
+//        TaskRow(task: TasksStore().tasks[3])
+//            .previewLayout(.fixed(width: 414, height: 64))
+////            .environmentObject(TasksStore())
+//    }
+//}

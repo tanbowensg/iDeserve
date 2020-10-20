@@ -6,9 +6,10 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Task2222" representedClassName="Task2222" syncable="YES" codeGenerationType="class">
+    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="ddl" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="done" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="parent" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -17,7 +18,7 @@
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Task2222" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="Record" positionX="-36" positionY="63" width="128" height="103"/>
+        <element name="Task" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>

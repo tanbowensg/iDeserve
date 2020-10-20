@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EditTaskPage: View {
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var initTask: Task?
-    var tasksStore: TasksStore
 
     @State var name: String = ""
     @State var value: String = "0"
@@ -23,15 +24,14 @@ struct EditTaskPage: View {
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
 
-    init (initTask: Task?, tasksStore: TasksStore) {
+    init (initTask: Task?) {
         self.initTask = initTask
-        self.tasksStore = tasksStore
         if let existTask = initTask {
-            _name = State(initialValue: existTask.name)
+            _name = State(initialValue: existTask.name ?? "")
             _value = State(initialValue: String(existTask.value))
-            _repeatFrequency = State(initialValue: existTask.repeatFrequency)
+            _repeatFrequency = State(initialValue: RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never)
             _hasDdl = State(initialValue: existTask.ddl != nil)
-            _desc = State(initialValue: existTask.desc)
+            _desc = State(initialValue: existTask.desc ?? "")
             
             if let existDdl = existTask.ddl {
                 _ddl = State(initialValue: existDdl)
@@ -203,31 +203,53 @@ struct EditTaskPage: View {
         if name == "" {
             return
         }
-        if let taskId = initTask?.id {
-            tasksStore.updateTask(
-                id: taskId,
-                name: name,
-                value: Int(value) ?? 0,
-                repeatFrequency: repeatFrequency,
-                ddl: hasDdl ? ddl : nil,
-                desc: desc
-            )
+
+        if initTask?.id != nil {
+            updateTask()
         } else {
-            tasksStore.createTask(
-                name: name,
-                value: Int(value) ?? 0,
-                repeatFrequency: repeatFrequency,
-                ddl: hasDdl ? ddl : nil,
-                desc: desc
-            )
+            createTask()
+        }
+    }
+    
+    func updateTask () {
+        let targetTask = initTask!
+        targetTask.name = name
+        targetTask.value = Int16(value) ?? 0
+        targetTask.repeatFrequency = Int16(repeatFrequency.rawValue)
+        targetTask.ddl = hasDdl ? ddl : nil
+        targetTask.desc = desc
+
+        do {
+            try self.moc.save()
+        } catch {
+            fatalError("更新任务到 coredata中失败")
+        }
+    }
+    
+    func createTask () {
+        let newTask = Task(context: self.moc)
+        newTask.id = UUID()
+        newTask.name = name
+        newTask.value = Int16(value) ?? 0
+        newTask.repeatFrequency = Int16(repeatFrequency.rawValue)
+        newTask.ddl = hasDdl ? ddl : nil
+        newTask.desc = desc
+        newTask.done = false
+        newTask.starred = false
+
+        do {
+            try self.moc.save()
+        } catch {
+            fatalError("创建任务到 coredata中失败")
         }
     }
 }
 
 struct EditTaskPage_Previews: PreviewProvider {
     static var previews: some View {
-        let tasksStore = TasksStore()
-        EditTaskPage(initTask:tasksStore.tasks[0], tasksStore: tasksStore)
-        EditTaskPage(initTask: nil, tasksStore: tasksStore)
+//        EditTaskPage(initTask:tasksStore.tasks[0])
+//            .environment(\.managedObjectContext, CoreDataContainer.shared.context)
+        EditTaskPage(initTask: nil)
+            .environment(\.managedObjectContext, CoreDataContainer.shared.context)
     }
 }

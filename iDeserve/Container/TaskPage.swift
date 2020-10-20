@@ -6,36 +6,48 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TaskPage: View {
-    @ObservedObject var tasksStore = TasksStore()
+    @Environment(\.managedObjectContext) var moc
     @ObservedObject var pointsStore = PointsStore()
-    
-    func removeTask (index: IndexSet) {
-        let taskId = tasksStore.tasks[index.first!].id
-        tasksStore.deleteTask(id: taskId)
+
+    @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
+
+    static var taskRequest: NSFetchRequest<Task> {
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        request.sortDescriptors = []
+        return request
+   }
+
+    func removeTask (at offsets: IndexSet) {
+        for index in offsets {
+            let task = tasks[index]
+            moc.delete(task)
+        }
     }
-    
-    func completeTask (_ task: Task) {
-        pointsStore.minus(task.value)
-    }
+//
+//    func completeTask (_ task: Task) {
+//        pointsStore.minus(task.value)
+//    }
 
     var body: some View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
                 List {
-                    ForEach (tasksStore.tasks) { task in
-                        NavigationLink(destination: EditTaskPage(initTask: task, tasksStore: tasksStore)) {
+                    ForEach (tasks, id: \.id) { task in
+                        NavigationLink(destination: EditTaskPage(initTask: task)) {
                             TaskRow(task: task)
                         }
                     }
                     .onDelete(perform: removeTask)
+//                    .id(refreshingID)
                 }
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
-                        NavigationLink(destination: EditTaskPage(initTask: nil, tasksStore: tasksStore)) {
+                        NavigationLink(destination: EditTaskPage(initTask: nil)) {
                             CreateButton()
                         }
                     }
@@ -51,5 +63,6 @@ struct TaskPage: View {
 struct TaskPage_Previews: PreviewProvider {
     static var previews: some View {
         TaskPage()
+            .environment(\.managedObjectContext, CoreDataContainer.shared.context)
     }
 }
