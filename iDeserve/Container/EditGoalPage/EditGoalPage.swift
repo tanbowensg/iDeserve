@@ -16,9 +16,9 @@ struct EditGoalPage: View {
     @State var name: String = ""
     @State var difficulty: Difficulty = Difficulty.easy
     @State var desc = ""
-    @State var tasks: [Task] = []
+    @State var tasks: [TaskState] = []
 
-    var tempTask: Task = Task()
+    @State var taskCache: TaskState = TaskState(originTask: nil)
     
     @State var isShowDifficultyPicker = false
     @State var isShowTaskSheet = false
@@ -29,9 +29,9 @@ struct EditGoalPage: View {
             _name = State(initialValue: existGoal.name ?? "")
             _difficulty = State(initialValue: Difficulty(rawValue: Int(existGoal.difficulty)) ?? Difficulty.easy)
             _desc = State(initialValue: existGoal.desc ?? "")
-            if (existGoal.tasks != nil) {
-                _tasks = State(initialValue: existGoal.tasks!.allObjects as! [Task])
-            }
+//            if (existGoal.tasks != nil) {
+//                _tasks = State(initialValue: existGoal.tasks!.allObjects as! [Task])
+//            }
         }
     }
 
@@ -105,21 +105,24 @@ struct EditGoalPage: View {
                 Text("任务")
                     .font(.headline)
                     .padding(.horizontal, 16.0)
+                Button(action: {
+                    isShowTaskSheet.toggle()
+                    taskCache = TaskState(originTask: nil)
+                }) {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("添加任务")
+                    }
+                }
+                    .sheet(isPresented: $isShowTaskSheet, onDismiss: addTask, content: {
+                        GoalTasksSheet(taskState: $taskCache)
+                    })
                 List {
                     ForEach (tasks, id: \.id) { task in
-                        TaskRow(task: task)
+                        Text(task.name)
+//                        TaskRow(task: task.toModel())
+//                        TaskRow(task: task.toModel())
                     }
-                    Button(action: {
-                        isShowTaskSheet.toggle()
-                    }) {
-                        HStack {
-                            Image(systemName: "plus")
-                            Text("添加任务")
-                        }
-                    }
-                        .sheet(isPresented: $isShowTaskSheet, onDismiss: nil, content: {
-                            Text("as")
-                        })
                 }
             }
             Divider()
@@ -147,12 +150,11 @@ struct EditGoalPage: View {
                 goalTitle
                 goalValue
                 goalDifficulty
-                goalTasks
                 HStack() {
                     TextField("备注", text: $desc)
                         .padding(.horizontal, 16.0)
                 }
-                Spacer()
+                goalTasks
             }
                 .frame(
                     minWidth: 0,
@@ -166,9 +168,16 @@ struct EditGoalPage: View {
         }
     }
     
+    func addTask () {
+        print(taskCache)
+        if (taskCache.name != "") {
+            tasks.append(taskCache)
+        }
+    }
+    
     func saveTask () {
         print("保存任务了")
-        print(tempTask)
+        print(taskCache)
     }
     
     func saveGoal () {

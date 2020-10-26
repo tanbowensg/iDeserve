@@ -27,7 +27,7 @@ struct EditTaskPage: View {
 
     init (originTask: Task?) {
         self.originTask = originTask
-        _taskState = State(initialValue: TaskState(initTask: originTask))
+        _taskState = State(initialValue: TaskState(originTask: originTask))
     }
 
     var backBtn: some View {
@@ -47,14 +47,7 @@ struct EditTaskPage: View {
     var body: some View {
         VStack(alignment: .leading) {
             backBtn
-            TaskForm(
-                name: $taskState.name,
-                value: $taskState.value,
-                repeatFrequency: $taskState.repeatFrequency,
-                hasDdl: $taskState.hasDdl,
-                ddl: $taskState.ddl,
-                desc: $taskState.desc
-            )
+            TaskForm(taskState: $taskState)
                 .navigationBarHidden(true)
         }
     }

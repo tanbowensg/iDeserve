@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct TaskForm: View {
-    @Binding var name: String
-    @Binding var value: String
-    @Binding var repeatFrequency: RepeatFrequency
-    @Binding var hasDdl: Bool
-    @Binding var ddl: Date
-    @Binding var desc: String
+    @Binding var taskState: TaskState
     
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
 
     var taskTitle: some View {
         Group {
-            TextField("任务标题", text: $name)
+            TextField("任务标题", text: $taskState.name)
                 .font(.title)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16.0)
@@ -34,7 +29,7 @@ struct TaskForm: View {
                 Image(systemName: "dollarsign.circle")
                 Text("分值")
                 Spacer()
-                TextField("0", text: $value)
+                TextField("0", text: $taskState.value)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
@@ -52,7 +47,7 @@ struct TaskForm: View {
                     Image(systemName: "repeat")
                     Text("重复")
                     Spacer()
-                    Text(getRepeatFrequencyText(repeatFrequency))
+                    Text(getRepeatFrequencyText(taskState.repeatFrequency))
                 }
                     .padding(.horizontal, 16.0)
                     .foregroundColor(.g80)
@@ -65,14 +60,14 @@ struct TaskForm: View {
         Group {
             HStack() {
                 Button(action: {
-                    hasDdl = true
+                    taskState.hasDdl = true
                     isShowDatePicker.toggle()
                 }) {
                     Image(systemName: "calendar")
-                    hasDdl ? Text("\(dateToString(ddl)) 截止") : Text("添加截止日期")
+                    taskState.hasDdl ? Text("\(dateToString(taskState.ddl)) 截止") : Text("添加截止日期")
                     Spacer()
                 }
-                hasDdl ? cancelDdlBtn : nil
+                taskState.hasDdl ? cancelDdlBtn : nil
             }
                 .padding(.horizontal, 16.0)
                 .foregroundColor(.g80)
@@ -82,8 +77,8 @@ struct TaskForm: View {
     
     var cancelDdlBtn: some View {
         Button(action: {
-            hasDdl = false
-            ddl = Date()
+            taskState.hasDdl = false
+            taskState.ddl = Date()
             isShowDatePicker.toggle()
         }) {
             Image(systemName: "xmark")
@@ -103,7 +98,7 @@ struct TaskForm: View {
                 Text("完成")
             }
                 .padding(8)
-            Picker("重复频率", selection: $repeatFrequency) {
+            Picker("重复频率", selection: $taskState.repeatFrequency) {
                 ForEach(RepeatFrequency.allCases, id: \.self) {repeatOption in
                     Text(getRepeatFrequencyText(repeatOption)).tag(repeatOption)
                 }
@@ -124,7 +119,7 @@ struct TaskForm: View {
                 .padding(8)
             DatePicker(
                 "日期选择",
-                selection: $ddl,
+                selection: $taskState.ddl,
                 displayedComponents: .date
             )
                 .datePickerStyle(GraphicalDatePickerStyle())
@@ -145,7 +140,7 @@ struct TaskForm: View {
                     .padding(.horizontal, 16.0)
                 Divider()
                 HStack() {
-                    TextField("备注", text: $desc)
+                    TextField("备注", text: $taskState.desc)
                         .padding(.horizontal, 16.0)
                 }
                 Spacer()
@@ -163,28 +158,16 @@ struct TaskForm: View {
     }
 }
 
-struct PreviewWrapper: View {
-    @State var name: String = "每天做算法题"
-    @State var value: String = "8"
-    @State var repeatFrequency: RepeatFrequency = .never
-    @State var hasDdl: Bool = true
-    @State var ddl: Date = Date()
-    @State var desc: String = "加油啊"
+struct TaskFormPreviewWrapper: View {
+    @State var taskState = TaskState(originTask: nil)
 
     var body: some View {
-        TaskForm(
-            name: $name,
-            value: $value,
-            repeatFrequency: $repeatFrequency,
-            hasDdl: $hasDdl,
-            ddl: $ddl,
-            desc: $desc
-        )
+        TaskForm(taskState: $taskState)
     }
 }
 
 struct TaskForm_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewWrapper()
+        TaskFormPreviewWrapper()
     }
 }

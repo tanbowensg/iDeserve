@@ -16,8 +16,8 @@ struct TaskState: Hashable, Identifiable {
     var ddl: Date = Date()
     var desc: String = ""
 
-    init (initTask: Task?) {
-        if let existTask = initTask {
+    init (originTask: Task?) {
+        if let existTask = originTask {
             name = existTask.name ?? ""
             value = String(existTask.value)
             repeatFrequency = RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never
@@ -28,5 +28,15 @@ struct TaskState: Hashable, Identifiable {
                 ddl = existDdl
             }
         }
+    }
+    
+    func toModel() -> Task {
+        let task = Task()
+        task.name = name
+        task.value = Int16(value) ?? 0
+        task.repeatFrequency = Int16(repeatFrequency.rawValue)
+        task.ddl = hasDdl ? ddl : nil
+        task.desc = desc
+        return task
     }
 }
