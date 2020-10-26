@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="difficulty" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task"/>
+    </entity>
     <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -28,8 +35,9 @@
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Record" positionX="-36" positionY="63" width="128" height="118"/>
-        <element name="Task" positionX="-63" positionY="-18" width="128" height="178"/>
-        <element name="Reward" positionX="-45" positionY="54" width="128" height="148"/>
+        <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
+        <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="148"/>
+        <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="178"/>
+        <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="118"/>
     </elements>
 </model>

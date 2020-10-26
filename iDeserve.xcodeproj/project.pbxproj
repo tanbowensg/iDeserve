@@ -32,6 +32,10 @@
 		D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
+		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
+		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
+		D08988AD254680BC0032BA96 /* GoalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988AC254680BC0032BA96 /* GoalRow.swift */; };
+		D08988B2254685A60032BA96 /* TaskForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988B1254685A60032BA96 /* TaskForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		D06806A52531939D008DE678 /* RepeatFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequency.swift; sourceTree = "<group>"; };
 		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
+		D08988A2254671E60032BA96 /* EditGoalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalPage.swift; sourceTree = "<group>"; };
+		D08988A7254672390032BA96 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		D08988AC254680BC0032BA96 /* GoalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRow.swift; sourceTree = "<group>"; };
+		D08988B1254685A60032BA96 /* TaskForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +196,7 @@
 				D03F21AD25270EC40055BF25 /* Record.swift */,
 				D0036DD4252C56CD00E4005B /* Color.swift */,
 				D06806A52531939D008DE678 /* RepeatFrequency.swift */,
+				D08988A7254672390032BA96 /* Difficulty.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -195,11 +204,13 @@
 		D010269D2524306400653A52 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D08988B6254685C70032BA96 /* TaskForm */,
 				D010269F2524308300653A52 /* TaskRow.swift */,
 				D0036DC7252B0B5900E4005B /* CreateButton.swift */,
 				D0036E09252C840D00E4005B /* Popup.swift */,
 				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
 				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
+				D08988AC254680BC0032BA96 /* GoalRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -222,8 +233,17 @@
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
+				D08988A2254671E60032BA96 /* EditGoalPage.swift */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		D08988B6254685C70032BA96 /* TaskForm */ = {
+			isa = PBXGroup;
+			children = (
+				D08988B1254685A60032BA96 /* TaskForm.swift */,
+			);
+			path = TaskForm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,18 +381,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08988AD254680BC0032BA96 /* GoalRow.swift in Sources */,
 				D01026A02524308300653A52 /* TaskRow.swift in Sources */,
 				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
+				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
 				D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */,
+				D08988B2254685A60032BA96 /* TaskForm.swift in Sources */,
 				D03B57C7253D471A00DC107F /* saveContext.swift in Sources */,
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
+				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D04BB01F252AC8330088912A /* Tab.swift in Sources */,
@@ -539,6 +563,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iDeserve/Preview Content\"";
+				DEVELOPMENT_TEAM = SY3R68BT34;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iDeserve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -560,6 +585,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iDeserve/Preview Content\"";
+				DEVELOPMENT_TEAM = SY3R68BT34;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iDeserve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

@@ -13,9 +13,16 @@ struct TaskPage: View {
     @EnvironmentObject var pointsStore: PointsStore
 
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
+    @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
+        request.sortDescriptors = []
+        return request
+   }
+
+    static var goalRequest: NSFetchRequest<Goal> {
+        let request: NSFetchRequest<Goal> = Goal.fetchRequest()
         request.sortDescriptors = []
         return request
    }
@@ -47,19 +54,32 @@ struct TaskPage: View {
     var body: some View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
-                List {
-                    ForEach (tasks, id: \.id) { task in
-                        NavigationLink(destination: EditTaskPage(initTask: task)) {
-                            TaskRow(task: task, onLongPress: completeTask)
+                VStack {
+                    List {
+                        ForEach (goals, id: \.id) { goal in
+                            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+                                GoalRow(goal: goal)
+                            }
                         }
+                        .onDelete(perform: removeTask)
                     }
-                    .onDelete(perform: removeTask)
+                    List {
+                        ForEach (tasks, id: \.id) { task in
+                            NavigationLink(destination: EditTaskPage(initTask: task)) {
+                                TaskRow(task: task, onLongPress: completeTask)
+                            }
+                        }
+                        .onDelete(perform: removeTask)
+                    }
                 }
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
                         NavigationLink(destination: EditTaskPage(initTask: nil)) {
+                            CreateButton()
+                        }
+                        NavigationLink(destination: EditGoalPage(initGoal: nil)) {
                             CreateButton()
                         }
                     }
