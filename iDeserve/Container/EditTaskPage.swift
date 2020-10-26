@@ -12,31 +12,22 @@ struct EditTaskPage: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    var initTask: Task?
+    var originTask: Task?
+    @State var taskState: TaskState
 
-    @State var name: String = ""
-    @State var value: String = "0"
-    @State var repeatFrequency: RepeatFrequency = RepeatFrequency.never
-    @State var hasDdl: Bool = false
-    @State var ddl: Date = Date()
-    @State var desc = ""
+//    @State var name: String = ""
+//    @State var value: String = "0"
+//    @State var repeatFrequency: RepeatFrequency = RepeatFrequency.never
+//    @State var hasDdl: Bool = false
+//    @State var ddl: Date = Date()
+//    @State var desc = ""
     
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
 
-    init (initTask: Task?) {
-        self.initTask = initTask
-        if let existTask = initTask {
-            _name = State(initialValue: existTask.name ?? "")
-            _value = State(initialValue: String(existTask.value))
-            _repeatFrequency = State(initialValue: RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never)
-            _hasDdl = State(initialValue: existTask.ddl != nil)
-            _desc = State(initialValue: existTask.desc ?? "")
-            
-            if let existDdl = existTask.ddl {
-                _ddl = State(initialValue: existDdl)
-            }
-        }
+    init (originTask: Task?) {
+        self.originTask = originTask
+        _taskState = State(initialValue: TaskState(initTask: originTask))
     }
 
     var backBtn: some View {
@@ -56,17 +47,24 @@ struct EditTaskPage: View {
     var body: some View {
         VStack(alignment: .leading) {
             backBtn
-            TaskForm(name: $name, value: $value, repeatFrequency: $repeatFrequency, hasDdl: $hasDdl, ddl: $ddl, desc: $desc)
+            TaskForm(
+                name: $taskState.name,
+                value: $taskState.value,
+                repeatFrequency: $taskState.repeatFrequency,
+                hasDdl: $taskState.hasDdl,
+                ddl: $taskState.ddl,
+                desc: $taskState.desc
+            )
                 .navigationBarHidden(true)
         }
     }
     
     func saveTask () {
-        if name == "" {
+        if taskState.name == "" {
             return
         }
 
-        if initTask?.id != nil {
+        if originTask?.id != nil {
             updateTask()
         } else {
             createTask()
@@ -74,12 +72,12 @@ struct EditTaskPage: View {
     }
     
     func updateTask () {
-        let targetTask = initTask!
-        targetTask.name = name
-        targetTask.value = Int16(value) ?? 0
-        targetTask.repeatFrequency = Int16(repeatFrequency.rawValue)
-        targetTask.ddl = hasDdl ? ddl : nil
-        targetTask.desc = desc
+        let targetTask = originTask!
+        targetTask.name = taskState.name
+        targetTask.value = Int16(taskState.value) ?? 0
+        targetTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
+        targetTask.ddl = taskState.hasDdl ? taskState.ddl : nil
+        targetTask.desc = taskState.desc
 
         do {
             try self.moc.save()
@@ -91,11 +89,11 @@ struct EditTaskPage: View {
     func createTask () {
         let newTask = Task(context: self.moc)
         newTask.id = UUID()
-        newTask.name = name
-        newTask.value = Int16(value) ?? 0
-        newTask.repeatFrequency = Int16(repeatFrequency.rawValue)
-        newTask.ddl = hasDdl ? ddl : nil
-        newTask.desc = desc
+        newTask.name = taskState.name
+        newTask.value = Int16(taskState.value) ?? 0
+        newTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
+        newTask.ddl = taskState.hasDdl ? taskState.ddl : nil
+        newTask.desc = taskState.desc
         newTask.done = false
         newTask.starred = false
 
@@ -111,7 +109,7 @@ struct EditTaskPage_Previews: PreviewProvider {
     static var previews: some View {
 //        EditTaskPage(initTask:tasksStore.tasks[0])
 //            .environment(\.managedObjectContext, CoreDataContainer.shared.context)
-        EditTaskPage(initTask: nil)
+        EditTaskPage(originTask: nil)
             .environment(\.managedObjectContext, CoreDataContainer.shared.context)
     }
 }

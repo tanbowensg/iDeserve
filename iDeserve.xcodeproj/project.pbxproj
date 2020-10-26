@@ -36,6 +36,8 @@
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
 		D08988AD254680BC0032BA96 /* GoalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988AC254680BC0032BA96 /* GoalRow.swift */; };
 		D08988B2254685A60032BA96 /* TaskForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988B1254685A60032BA96 /* TaskForm.swift */; };
+		D08988CA2546A9D00032BA96 /* EditGoalTasksPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988C92546A9D00032BA96 /* EditGoalTasksPage.swift */; };
+		D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		D08988A7254672390032BA96 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		D08988AC254680BC0032BA96 /* GoalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRow.swift; sourceTree = "<group>"; };
 		D08988B1254685A60032BA96 /* TaskForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskForm.swift; sourceTree = "<group>"; };
+		D08988C92546A9D00032BA96 /* EditGoalTasksPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalTasksPage.swift; sourceTree = "<group>"; };
+		D08988DD2546BDDC0032BA96 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,13 +231,13 @@
 		D04BB015252AC7EB0088912A /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				D08988CE2546A9D60032BA96 /* EditGoalPage */,
 				D04BB016252AC7FB0088912A /* TaskPage.swift */,
 				D04BB01E252AC8330088912A /* Tab.swift */,
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
-				D08988A2254671E60032BA96 /* EditGoalPage.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -242,8 +246,18 @@
 			isa = PBXGroup;
 			children = (
 				D08988B1254685A60032BA96 /* TaskForm.swift */,
+				D08988DD2546BDDC0032BA96 /* TaskState.swift */,
 			);
 			path = TaskForm;
+			sourceTree = "<group>";
+		};
+		D08988CE2546A9D60032BA96 /* EditGoalPage */ = {
+			isa = PBXGroup;
+			children = (
+				D08988A2254671E60032BA96 /* EditGoalPage.swift */,
+				D08988C92546A9D00032BA96 /* EditGoalTasksPage.swift */,
+			);
+			path = EditGoalPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +400,7 @@
 				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
+				D08988CA2546A9D00032BA96 /* EditGoalTasksPage.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
 				D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */,
@@ -394,6 +409,7 @@
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
+				D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
 				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,

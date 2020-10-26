@@ -17,8 +17,11 @@ struct EditGoalPage: View {
     @State var difficulty: Difficulty = Difficulty.easy
     @State var desc = ""
     @State var tasks: [Task] = []
+
+    var tempTask: Task = Task()
     
     @State var isShowDifficultyPicker = false
+    @State var isShowTaskSheet = false
 
     init (initGoal: Goal?) {
         self.initGoal = initGoal
@@ -80,6 +83,7 @@ struct EditGoalPage: View {
         VStack(alignment: .trailing, spacing: 0) {
             Button(action: {
                 isShowDifficultyPicker.toggle()
+//                tempTask = Task()
             }) {
                 Text("完成")
             }
@@ -105,12 +109,17 @@ struct EditGoalPage: View {
                     ForEach (tasks, id: \.id) { task in
                         TaskRow(task: task)
                     }
-                    NavigationLink(destination: EditTaskPage(initTask: nil)) {
+                    Button(action: {
+                        isShowTaskSheet.toggle()
+                    }) {
                         HStack {
                             Image(systemName: "plus")
                             Text("添加任务")
                         }
                     }
+                        .sheet(isPresented: $isShowTaskSheet, onDismiss: nil, content: {
+                            Text("as")
+                        })
                 }
             }
             Divider()
@@ -155,6 +164,11 @@ struct EditGoalPage: View {
                 .navigationBarHidden(true)
             Popup(isVisible: isShowDifficultyPicker, content: difficultyPicker)
         }
+    }
+    
+    func saveTask () {
+        print("保存任务了")
+        print(tempTask)
     }
     
     func saveGoal () {

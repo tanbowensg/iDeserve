@@ -18,21 +18,6 @@ struct TaskForm: View {
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
 
-//    init (initTask: Task?) {
-//        self.initTask = initTask
-//        if let existTask = initTask {
-//            _name = State(initialValue: existTask.name ?? "")
-//            _value = State(initialValue: String(existTask.value))
-//            _repeatFrequency = State(initialValue: RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never)
-//            _hasDdl = State(initialValue: existTask.ddl != nil)
-//            _desc = State(initialValue: existTask.desc ?? "")
-//
-//            if let existDdl = existTask.ddl {
-//                _ddl = State(initialValue: existDdl)
-//            }
-//        }
-//    }
-
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $name)
@@ -177,23 +162,29 @@ struct TaskForm: View {
         }
     }
 }
-//
-//struct TaskForm_Previews: PreviewProvider {
-//    @State var name: String = "每天3道算法题"
-//    @State var value: String = "8"
-//    @State var repeatFrequency: RepeatFrequency = .never
-//    @State var hasDdl: Bool = true
-//    @State var ddl: Date = Date()
-//    @State var desc: String = "加油啊"
-//
-//    static var previews: some View {
-//        TaskForm(
-//            name: name,
-//            value: String(value),
-//            repeatFrequency: repeatFrequency,
-//            hasDdl: hasDdl,
-//            ddl: ddl,
-//            desc: desc
-//        )
-//    }
-//}
+
+struct PreviewWrapper: View {
+    @State var name: String = "每天做算法题"
+    @State var value: String = "8"
+    @State var repeatFrequency: RepeatFrequency = .never
+    @State var hasDdl: Bool = true
+    @State var ddl: Date = Date()
+    @State var desc: String = "加油啊"
+
+    var body: some View {
+        TaskForm(
+            name: $name,
+            value: $value,
+            repeatFrequency: $repeatFrequency,
+            hasDdl: $hasDdl,
+            ddl: $ddl,
+            desc: $desc
+        )
+    }
+}
+
+struct TaskForm_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewWrapper()
+    }
+}

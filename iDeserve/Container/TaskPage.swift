@@ -65,7 +65,7 @@ struct TaskPage: View {
                     }
                     List {
                         ForEach (tasks, id: \.id) { task in
-                            NavigationLink(destination: EditTaskPage(initTask: task)) {
+                            NavigationLink(destination: EditTaskPage(originTask: task)) {
                                 TaskRow(task: task, onLongPress: completeTask)
                             }
                         }
@@ -76,7 +76,7 @@ struct TaskPage: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        NavigationLink(destination: EditTaskPage(initTask: nil)) {
+                        NavigationLink(destination: EditTaskPage(originTask: nil)) {
                             CreateButton()
                         }
                         NavigationLink(destination: EditGoalPage(initGoal: nil)) {
