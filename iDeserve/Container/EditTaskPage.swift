@@ -27,7 +27,7 @@ struct EditTaskPage: View {
 
     init (originTask: Task?) {
         self.originTask = originTask
-        _taskState = State(initialValue: TaskState(originTask: originTask))
+        _taskState = State(initialValue: TaskState(originTask))
     }
 
     var backBtn: some View {

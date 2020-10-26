@@ -159,7 +159,7 @@ struct TaskForm: View {
 }
 
 struct TaskFormPreviewWrapper: View {
-    @State var taskState = TaskState(originTask: nil)
+    @State var taskState = TaskState(nil)
 
     var body: some View {
         TaskForm(taskState: $taskState)

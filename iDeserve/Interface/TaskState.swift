@@ -8,6 +8,7 @@
 import Foundation
 
 struct TaskState: Hashable, Identifiable {
+    var originTask: Task?
     var id = UUID()
     var name: String = ""
     var value: String = "0"
@@ -15,14 +16,20 @@ struct TaskState: Hashable, Identifiable {
     var hasDdl: Bool = false
     var ddl: Date = Date()
     var desc: String = ""
+    var done: Bool = false
+    var starred: Bool = false
 
-    init (originTask: Task?) {
+    init (_ originTask: Task?) {
         if let existTask = originTask {
+            self.originTask = existTask
+
             name = existTask.name ?? ""
             value = String(existTask.value)
             repeatFrequency = RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never
             hasDdl = existTask.ddl != nil
             desc = existTask.desc ?? ""
+            done = existTask.done
+            starred = existTask.starred
             
             if let existDdl = existTask.ddl {
                 ddl = existDdl
@@ -37,6 +44,8 @@ struct TaskState: Hashable, Identifiable {
         task.repeatFrequency = Int16(repeatFrequency.rawValue)
         task.ddl = hasDdl ? ddl : nil
         task.desc = desc
+        task.done = done
+        task.starred = starred
         return task
     }
 }

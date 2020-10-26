@@ -66,7 +66,7 @@ struct TaskPage: View {
                     List {
                         ForEach (tasks, id: \.id) { task in
                             NavigationLink(destination: EditTaskPage(originTask: task)) {
-                                TaskRow(task: task, onLongPress: completeTask)
+                                TaskRow(task: TaskState(task), onLongPress: completeTask)
                             }
                         }
                         .onDelete(perform: removeTask)

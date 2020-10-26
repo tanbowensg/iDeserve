@@ -197,6 +197,7 @@
 		D010268F2524243B00653A52 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D08988DD2546BDDC0032BA96 /* TaskState.swift */,
 				D03F21AD25270EC40055BF25 /* Record.swift */,
 				D0036DD4252C56CD00E4005B /* Color.swift */,
 				D06806A52531939D008DE678 /* RepeatFrequency.swift */,
@@ -246,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				D08988B1254685A60032BA96 /* TaskForm.swift */,
-				D08988DD2546BDDC0032BA96 /* TaskState.swift */,
 			);
 			path = TaskForm;
 			sourceTree = "<group>";

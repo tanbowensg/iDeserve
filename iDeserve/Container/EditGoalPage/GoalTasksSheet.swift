@@ -34,7 +34,7 @@ struct GoalTasksSheet: View {
 }
 
 struct GoalTasksSheetPreviewWrapper: View {
-    @State var taskState = TaskState(originTask: nil)
+    @State var taskState = TaskState(nil)
 
     var body: some View {
         GoalTasksSheet(taskState: $taskState)

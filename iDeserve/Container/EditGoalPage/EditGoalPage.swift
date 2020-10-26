@@ -18,7 +18,7 @@ struct EditGoalPage: View {
     @State var desc = ""
     @State var tasks: [TaskState] = []
 
-    @State var taskCache: TaskState = TaskState(originTask: nil)
+    @State var taskCache: TaskState = TaskState(nil)
     
     @State var isShowDifficultyPicker = false
     @State var isShowTaskSheet = false
@@ -107,7 +107,7 @@ struct EditGoalPage: View {
                     .padding(.horizontal, 16.0)
                 Button(action: {
                     isShowTaskSheet.toggle()
-                    taskCache = TaskState(originTask: nil)
+                    taskCache = TaskState(nil)
                 }) {
                     HStack {
                         Image(systemName: "plus")
@@ -119,9 +119,12 @@ struct EditGoalPage: View {
                     })
                 List {
                     ForEach (tasks, id: \.id) { task in
-                        Text(task.name)
-//                        TaskRow(task: task.toModel())
-//                        TaskRow(task: task.toModel())
+                        Button(action: {
+                            taskCache = task
+                            isShowTaskSheet.toggle()
+                        }) {
+                            TaskRow(task: task)
+                        }
                     }
                 }
             }
@@ -169,20 +172,29 @@ struct EditGoalPage: View {
     }
     
     func addTask () {
-        print(taskCache)
-        if (taskCache.name != "") {
+        if (taskCache.name == "") {
+            return
+        }
+
+        let targetTaskIndex = tasks.firstIndex { item in
+            return item.id.uuidString == taskCache.id.uuidString
+        }
+
+        if let index = targetTaskIndex {
+            print("更新任务")
+            print(taskCache)
+            tasks[index] = taskCache
+        } else {
+            print("创建新任务")
             tasks.append(taskCache)
         }
     }
-    
+
     func saveTask () {
-        print("保存任务了")
         print(taskCache)
     }
     
     func saveGoal () {
-        print("saveGoal")
-        print(name)
         if name == "" {
             return
         }
