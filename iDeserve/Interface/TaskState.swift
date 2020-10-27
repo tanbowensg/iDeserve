@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct TaskState: Hashable, Identifiable {
     var originTask: Task?
@@ -37,8 +38,8 @@ struct TaskState: Hashable, Identifiable {
         }
     }
     
-    func toModel() -> Task {
-        let task = Task()
+    func toModel(context: NSManagedObjectContext) -> Task {
+        let task = Task(context: context)
         task.name = name
         task.value = Int16(value) ?? 0
         task.repeatFrequency = Int16(repeatFrequency.rawValue)

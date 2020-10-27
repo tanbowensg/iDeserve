@@ -29,9 +29,13 @@ struct EditGoalPage: View {
             _name = State(initialValue: existGoal.name ?? "")
             _difficulty = State(initialValue: Difficulty(rawValue: Int(existGoal.difficulty)) ?? Difficulty.easy)
             _desc = State(initialValue: existGoal.desc ?? "")
-//            if (existGoal.tasks != nil) {
-//                _tasks = State(initialValue: existGoal.tasks!.allObjects as! [Task])
-//            }
+            if let existTasks = existGoal.tasks {
+                let tasksArray = existTasks.allObjects as! [Task]
+                let taskStates = tasksArray.map {task in
+                    return TaskState(task)
+                }
+                _tasks = State(initialValue: taskStates)
+            }
         }
     }
 
@@ -211,8 +215,14 @@ struct EditGoalPage: View {
         targetGoal.name = name
         targetGoal.difficulty = Int16(difficulty.rawValue)
         targetGoal.desc = desc
+        let goalTasks = tasks.map { taskState in
+            return taskState.toModel(context: self.moc)
+        }
+        targetGoal.tasks = NSSet(array: goalTasks)
 
         do {
+            print("创建目标")
+            print(targetGoal)
             try self.moc.save()
         } catch {
             fatalError("更新任务到 coredata中失败")
@@ -226,8 +236,14 @@ struct EditGoalPage: View {
         newGoal.name = name
         newGoal.difficulty = Int16(difficulty.rawValue)
         newGoal.desc = desc
+        let goalTasks = tasks.map { taskState in
+            return taskState.toModel(context: self.moc)
+        }
+        newGoal.tasks = NSSet(array: goalTasks)
 
         do {
+            print("更新目标")
+            print(newGoal)
             try self.moc.save()
         } catch {
             fatalError("创建任务到 coredata中失败")
