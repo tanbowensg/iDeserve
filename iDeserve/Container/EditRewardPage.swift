@@ -28,10 +28,13 @@ struct EditRewardPage: View {
         self.initReward = initReward
         if let existReward = initReward {
             _name = State(initialValue: existReward.name ?? "")
-            _cover = State(initialValue: UIImage(data: existReward.cover!))
             _value = State(initialValue: String(existReward.value))
             _repeatFrequency = State(initialValue: RepeatFrequency(rawValue: Int(existReward.repeatFrequency)) ?? RepeatFrequency.never)
             _desc = State(initialValue: existReward.desc ?? "")
+            
+            if let existCover = existReward.cover {
+                _cover = State(initialValue: UIImage(data: existCover))
+            }
         }
     }
 
