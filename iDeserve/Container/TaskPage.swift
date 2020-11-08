@@ -55,19 +55,11 @@ struct TaskPage: View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
-                    List {
+                    ScrollView {
                         ForEach (goals, id: \.id) { goal in
-                            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+//                            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
                                 GoalRow(goal: goal)
-                            }
-                        }
-                        .onDelete(perform: removeTask)
-                    }
-                    List {
-                        ForEach (tasks, id: \.id) { task in
-                            NavigationLink(destination: EditTaskPage(originTask: task)) {
-                                TaskRow(task: TaskState(task), onLongPress: completeTask)
-                            }
+//                            }
                         }
                         .onDelete(perform: removeTask)
                     }

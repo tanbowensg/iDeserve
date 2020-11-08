@@ -24,6 +24,7 @@ struct TaskState: Hashable, Identifiable {
         if let existTask = originTask {
             self.originTask = existTask
 
+            id = existTask.id!
             name = existTask.name ?? ""
             value = String(existTask.value)
             repeatFrequency = RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never
@@ -40,6 +41,7 @@ struct TaskState: Hashable, Identifiable {
     
     func toModel(context: NSManagedObjectContext) -> Task {
         let task = Task(context: context)
+        task.id = id
         task.name = name
         task.value = Int16(value) ?? 0
         task.repeatFrequency = Int16(repeatFrequency.rawValue)
