@@ -54,15 +54,18 @@ struct TaskPage: View {
     var body: some View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
-                VStack {
-                    ScrollView {
-                        ForEach (goals, id: \.id) { goal in
-//                            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
-                                GoalRow(goal: goal)
-//                            }
-                        }
-                        .onDelete(perform: removeTask)
+                ScrollView {
+                    ForEach (goals, id: \.id) { goal in
+                        GoalRow(
+                            goal: goal,
+                            onRemoveTask: { task in
+                                print("删除")
+                                print(task)
+                                moc.delete(task)
+                            }
+                        )
                     }
+                    .onDelete(perform: removeTask)
                 }
                 VStack {
                     Spacer()

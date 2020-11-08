@@ -9,21 +9,11 @@ import SwiftUI
 
 struct GoalRow: View {
     @ObservedObject var goal: Goal
+    var onRemoveTask: (_ task: Task) -> Void
     
     @State var isExpanded = true
     
-//    var taskStates: [TaskState] {
-//        let tasks = self.goal.tasks?.allObjects as! [Task]
-//        let states =  tasks.map {task in
-//            return TaskState(task)
-//        }
-//        print("任务名称: \(goal.name)")
-//        print(states)
-//        return states
-//    }
-    
     var tasks: [Task] {
-        print(self.goal.tasks?.allObjects)
         return self.goal.tasks?.allObjects as! [Task]
     }
     
@@ -38,30 +28,39 @@ struct GoalRow: View {
     var goalRow: some View {
         HStack {
             self.expandArrow
-            Text(goal.name ?? "")
-            Spacer()
+            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+                Text(goal.name ?? "")
+                Spacer()
+            }
         }
     }
     
     var taskList: some View {
-        ForEach(tasks, id: \.id) { task in
-            NavigationLink(destination: EditTaskPage(originTask: task)) {
-                TaskRow(task: TaskState(task))
+        List {
+            ForEach(tasks, id: \.id) { task in
+                NavigationLink(destination: EditTaskPage(originTask: task)) {
+                    TaskRow(task: TaskState(task))
+                }
             }
+            .onDelete(perform: { indexSet in
+                for index in indexSet {
+                    let task = tasks[index]
+                    onRemoveTask(task)
+                }
+            })
         }
-        .onDelete(perform: { indexSet in
-            print(indexSet)
-        })
+        .frame(height: CGFloat(tasks.count * 64))
     }
 
     var body: some View {
         VStack(alignment: .leading) {
             self.goalRow
             isExpanded ? self.taskList : nil
+            Spacer()
         }
     }
 }
-
+//
 //struct GoalRow_Previews: PreviewProvider {
 //    static var previews: some View {
 //        GoalRow()
