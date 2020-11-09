@@ -23,8 +23,8 @@ struct iDeserveApp: App {
     var body: some Scene {
         WindowGroup {
             Tab()
-                .environment(\.managedObjectContext, CoreDataContainer.shared.context)
-                .environmentObject(PointsStore.shared)
+                .environment(\.managedObjectContext, GlobalStore.shared.moc)
+                .environmentObject(GlobalStore.shared)
         }
     }
 }

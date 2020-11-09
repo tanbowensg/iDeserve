@@ -10,10 +10,11 @@ import CoreData
 
 struct TaskPage: View {
     @Environment(\.managedObjectContext) var moc
-    @EnvironmentObject var pointsStore: PointsStore
+//    @EnvironmentObject var pointsStore: PointsStore
+    @EnvironmentObject var globalStore: GlobalStore
 
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
-    @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
+//    @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
@@ -21,11 +22,11 @@ struct TaskPage: View {
         return request
    }
 
-    static var goalRequest: NSFetchRequest<Goal> {
-        let request: NSFetchRequest<Goal> = Goal.fetchRequest()
-        request.sortDescriptors = []
-        return request
-   }
+//    static var goalRequest: NSFetchRequest<Goal> {
+//        let request: NSFetchRequest<Goal> = Goal.fetchRequest()
+//        request.sortDescriptors = []
+//        return request
+//   }
 
     func removeTask (at offsets: IndexSet) {
         for index in offsets {
@@ -45,7 +46,7 @@ struct TaskPage: View {
         newRecord.date = Date()
         do {
             try self.moc.save()
-            pointsStore.add(Int(task.value))
+            globalStore.pointsStore.add(Int(task.value))
         } catch {
             // handle the Core Data error
         }
@@ -55,7 +56,7 @@ struct TaskPage: View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    ForEach (goals, id: \.id) { goal in
+                    ForEach (globalStore.goals, id: \.id) { goal in
                         GoalRow(
                             goal: goal,
                             onRemoveTask: { task in

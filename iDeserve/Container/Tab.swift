@@ -9,7 +9,7 @@ import SwiftUI
 //import CoreData
 
 struct Tab: View {
-    @EnvironmentObject var pointsStore: PointsStore
+    @EnvironmentObject var globalStore: GlobalStore
     @Environment(\.managedObjectContext) var managedObjectContext
 
     func TabIcon (text: String, icon: String) -> some View {
@@ -25,7 +25,7 @@ struct Tab: View {
         VStack {
             HStack {
                 Spacer()
-                Text(String(pointsStore.points))
+                Text(String(globalStore.pointsStore.points))
             }
             TabView {
                 TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
