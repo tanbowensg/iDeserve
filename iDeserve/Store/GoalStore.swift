@@ -38,7 +38,7 @@ final class GoalStore: ObservableObject {
         targetGoal.difficulty = Int16(difficulty.rawValue)
         targetGoal.desc = desc
         let goalTasks = tasks.map { taskState in
-            return self.taskStore.updateOrCreate(taskState: taskState)
+            return self.taskStore.updateOrCreate(taskState: taskState, goal: targetGoal)
         }
         targetGoal.tasks = NSSet(array: goalTasks)
 

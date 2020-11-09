@@ -13,6 +13,7 @@ struct EditTaskPage: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var originTask: Task?
+    var goal: Goal?
     @State var taskState: TaskState
 
 //    @State var name: String = ""
@@ -60,15 +61,13 @@ struct EditTaskPage: View {
         if originTask?.id != nil {
             let _ = gs.taskStore.updateTask(targetTask: originTask!, taskState: taskState)
         } else {
-            let _ = gs.taskStore.createTask(taskState: taskState)
+            let _ = gs.taskStore.createTask(taskState: taskState, goal: goal)
         }
     }
 }
 
 struct EditTaskPage_Previews: PreviewProvider {
     static var previews: some View {
-//        EditTaskPage(initTask:tasksStore.tasks[0])
-//            .environment(\.managedObjectContext, CoreDataContainer.shared.context)
         EditTaskPage(originTask: nil)
             .environment(\.managedObjectContext, CoreDataContainer.shared.context)
     }

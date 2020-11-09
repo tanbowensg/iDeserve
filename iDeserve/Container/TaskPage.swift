@@ -25,13 +25,6 @@ struct TaskPage: View {
         return request
    }
 
-    func removeTask (at offsets: IndexSet) {
-//        for index in offsets {
-//            let task = tasks[index]
-//            moc.delete(task)
-//        }
-    }
-
     func completeTask (_ task: Task) {
         task.done = true
 //      插入完成记录
@@ -57,13 +50,11 @@ struct TaskPage: View {
                         GoalRow(
                             goal: goal,
                             onRemoveTask: { task in
-                                print("删除")
-                                print(task)
-                                moc.delete(task)
+                                gs.taskStore.removeTask(task)
                             }
                         )
                     }
-                        .onDelete(perform: removeTask)
+//                    无用，纯粹为了在任务更新时刷新目标列表
                     Text(self.refreshing ? "" : "")
                 }
                     .onReceive(self.didSave) { _ in

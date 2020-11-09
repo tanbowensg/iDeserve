@@ -32,9 +32,10 @@ struct EditGoalPage: View {
             _desc = State(initialValue: existGoal.desc ?? "")
             if let existTasks = existGoal.tasks {
                 let tasksArray = existTasks.allObjects as! [Task]
-                let taskStates = tasksArray.map {task in
-                    return TaskState(task)
-                }
+                let taskStates = tasksArray
+                    .map {task in
+                        return TaskState(task)
+                    }
                 _tasks = State(initialValue: taskStates)
             }
         }
@@ -203,7 +204,7 @@ struct EditGoalPage: View {
         if name == "" {
             return
         }
-        print(initGoal?.id)
+        print(tasks)
         if initGoal?.id != nil {
 //            id存在就更新
             gs.goalStore.updateGoal(
