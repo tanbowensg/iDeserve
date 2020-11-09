@@ -39,6 +39,7 @@
 		D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */; };
 		D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
 		D0EE547C255908C80091302D /* GlobalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE547B255908C80091302D /* GlobalStore.swift */; };
+		D0EE548125591D1C0091302D /* GoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548025591D1C0091302D /* GoalStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTasksSheet.swift; sourceTree = "<group>"; };
 		D08988DD2546BDDC0032BA96 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		D0EE547B255908C80091302D /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
+		D0EE548025591D1C0091302D /* GoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 				D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */,
 				D089889D25466ECC0032BA96 /* PointsStore.swift */,
 				D0EE547B255908C80091302D /* GlobalStore.swift */,
+				D0EE548025591D1C0091302D /* GoalStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
+				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
 				D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,

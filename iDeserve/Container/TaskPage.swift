@@ -10,23 +10,15 @@ import CoreData
 
 struct TaskPage: View {
     @Environment(\.managedObjectContext) var moc
-//    @EnvironmentObject var pointsStore: PointsStore
-    @EnvironmentObject var globalStore: GlobalStore
+    @EnvironmentObject var gs: GlobalStore
 
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
-//    @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         request.sortDescriptors = []
         return request
    }
-
-//    static var goalRequest: NSFetchRequest<Goal> {
-//        let request: NSFetchRequest<Goal> = Goal.fetchRequest()
-//        request.sortDescriptors = []
-//        return request
-//   }
 
     func removeTask (at offsets: IndexSet) {
         for index in offsets {
@@ -46,7 +38,7 @@ struct TaskPage: View {
         newRecord.date = Date()
         do {
             try self.moc.save()
-            globalStore.pointsStore.add(Int(task.value))
+            gs.pointsStore.add(Int(task.value))
         } catch {
             // handle the Core Data error
         }
@@ -56,7 +48,7 @@ struct TaskPage: View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    ForEach (globalStore.goals, id: \.id) { goal in
+                    ForEach (gs.goalStore.goals, id: \.id) { goal in
                         GoalRow(
                             goal: goal,
                             onRemoveTask: { task in
