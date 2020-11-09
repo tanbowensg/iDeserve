@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditGoalPage: View {
     @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var gs: GlobalStore
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var initGoal: Goal?
@@ -202,51 +203,24 @@ struct EditGoalPage: View {
         if name == "" {
             return
         }
-
+        print(initGoal?.id)
         if initGoal?.id != nil {
-            updateGoal()
+//            id存在就更新
+            gs.goalStore.updateGoal(
+                targetGoal: initGoal!,
+                name: name,
+                difficulty: difficulty,
+                desc: desc,
+                tasks: tasks
+            )
         } else {
-            createGoal()
-        }
-    }
-    
-    func updateGoal () {
-        let targetGoal = initGoal!
-        targetGoal.name = name
-        targetGoal.difficulty = Int16(difficulty.rawValue)
-        targetGoal.desc = desc
-        let goalTasks = tasks.map { taskState in
-            return taskState.toModel(context: self.moc)
-        }
-        targetGoal.tasks = NSSet(array: goalTasks)
-
-        do {
-            print("创建目标")
-            print(targetGoal)
-            try self.moc.save()
-        } catch {
-            fatalError("更新任务到 coredata中失败")
-        }
-    }
-    
-    func createGoal () {
-        print("createGoal")
-        let newGoal = Goal(context: self.moc)
-        newGoal.id = UUID()
-        newGoal.name = name
-        newGoal.difficulty = Int16(difficulty.rawValue)
-        newGoal.desc = desc
-        let goalTasks = tasks.map { taskState in
-            return taskState.toModel(context: self.moc)
-        }
-        newGoal.tasks = NSSet(array: goalTasks)
-
-        do {
-            print("更新目标")
-            print(newGoal)
-            try self.moc.save()
-        } catch {
-            fatalError("创建任务到 coredata中失败")
+//            id不存在就创建
+            gs.goalStore.createGoal(
+                name: name,
+                difficulty: difficulty,
+                desc: desc,
+                tasks: tasks
+            )
         }
     }
 }

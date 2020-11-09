@@ -12,7 +12,14 @@ struct TaskPage: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var gs: GlobalStore
 
+    @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
+
+    static var goalRequest: NSFetchRequest<Goal> {
+        let request: NSFetchRequest<Goal> = Goal.fetchRequest()
+        request.sortDescriptors = []
+        return request
+   }
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
@@ -48,7 +55,7 @@ struct TaskPage: View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    ForEach (gs.goalStore.goals, id: \.id) { goal in
+                    ForEach (goals, id: \.id) { goal in
                         GoalRow(
                             goal: goal,
                             onRemoveTask: { task in
