@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct EditTaskPage: View {
-    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var gs: GlobalStore
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var originTask: Task?
@@ -58,42 +58,9 @@ struct EditTaskPage: View {
         }
 
         if originTask?.id != nil {
-            updateTask()
+            let _ = gs.taskStore.updateTask(targetTask: originTask!, taskState: taskState)
         } else {
-            createTask()
-        }
-    }
-    
-    func updateTask () {
-        let targetTask = originTask!
-        targetTask.name = taskState.name
-        targetTask.value = Int16(taskState.value) ?? 0
-        targetTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
-        targetTask.ddl = taskState.hasDdl ? taskState.ddl : nil
-        targetTask.desc = taskState.desc
-
-        do {
-            try self.moc.save()
-        } catch {
-            fatalError("更新任务到 coredata中失败")
-        }
-    }
-    
-    func createTask () {
-        let newTask = Task(context: self.moc)
-        newTask.id = UUID()
-        newTask.name = taskState.name
-        newTask.value = Int16(taskState.value) ?? 0
-        newTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
-        newTask.ddl = taskState.hasDdl ? taskState.ddl : nil
-        newTask.desc = taskState.desc
-        newTask.done = false
-        newTask.starred = false
-
-        do {
-            try self.moc.save()
-        } catch {
-            fatalError("创建任务到 coredata中失败")
+            let _ = gs.taskStore.createTask(taskState: taskState)
         }
     }
 }

@@ -15,4 +15,5 @@ final class GlobalStore: ObservableObject {
 
     var pointsStore = PointsStore.shared
     var goalStore = GoalStore.shared
+    var taskStore = TaskStore.shared
 }

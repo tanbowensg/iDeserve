@@ -13,7 +13,11 @@ struct TaskPage: View {
     @EnvironmentObject var gs: GlobalStore
 
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
-    @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
+    
+//    为了在任务更新的时候重新渲染目标
+//    https://stackoverflow.com/questions/58643094/how-to-update-fetchrequest-when-a-related-entity-changes-in-swiftui
+    @State private var refreshing = false
+    private var didSave =  NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
 
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
@@ -21,17 +25,11 @@ struct TaskPage: View {
         return request
    }
 
-    static var taskRequest: NSFetchRequest<Task> {
-        let request: NSFetchRequest<Task> = Task.fetchRequest()
-        request.sortDescriptors = []
-        return request
-   }
-
     func removeTask (at offsets: IndexSet) {
-        for index in offsets {
-            let task = tasks[index]
-            moc.delete(task)
-        }
+//        for index in offsets {
+//            let task = tasks[index]
+//            moc.delete(task)
+//        }
     }
 
     func completeTask (_ task: Task) {
@@ -65,8 +63,12 @@ struct TaskPage: View {
                             }
                         )
                     }
-                    .onDelete(perform: removeTask)
+                        .onDelete(perform: removeTask)
+                    Text(self.refreshing ? "" : "")
                 }
+                    .onReceive(self.didSave) { _ in
+                        self.refreshing.toggle()
+                    }
                 VStack {
                     Spacer()
                     HStack {

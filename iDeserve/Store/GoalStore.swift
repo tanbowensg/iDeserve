@@ -12,6 +12,7 @@ import CoreData
 final class GoalStore: ObservableObject {
     var moc = CoreDataContainer.shared.context
     static var shared = GoalStore()
+    private var taskStore = TaskStore.shared
 
 //    @Published var goals: [Goal] = []
 
@@ -37,7 +38,7 @@ final class GoalStore: ObservableObject {
         targetGoal.difficulty = Int16(difficulty.rawValue)
         targetGoal.desc = desc
         let goalTasks = tasks.map { taskState in
-            return taskState.toModel(context: self.moc)
+            return self.taskStore.updateOrCreate(taskState: taskState)
         }
         targetGoal.tasks = NSSet(array: goalTasks)
 

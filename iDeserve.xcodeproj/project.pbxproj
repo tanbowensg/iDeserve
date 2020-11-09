@@ -40,6 +40,7 @@
 		D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
 		D0EE547C255908C80091302D /* GlobalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE547B255908C80091302D /* GlobalStore.swift */; };
 		D0EE548125591D1C0091302D /* GoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548025591D1C0091302D /* GoalStore.swift */; };
+		D0EE5486255944680091302D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE5485255944680091302D /* TaskStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		D08988DD2546BDDC0032BA96 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		D0EE547B255908C80091302D /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
 		D0EE548025591D1C0091302D /* GoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStore.swift; sourceTree = "<group>"; };
+		D0EE5485255944680091302D /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				D089889D25466ECC0032BA96 /* PointsStore.swift */,
 				D0EE547B255908C80091302D /* GlobalStore.swift */,
 				D0EE548025591D1C0091302D /* GoalStore.swift */,
+				D0EE5485255944680091302D /* TaskStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
+				D0EE5486255944680091302D /* TaskStore.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
 				D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */,
 				D08988B2254685A60032BA96 /* TaskForm.swift in Sources */,
