@@ -25,23 +25,6 @@ struct TaskPage: View {
         return request
    }
 
-    func completeTask (_ task: Task) {
-        task.done = true
-//      插入完成记录
-        let newRecord = Record(context: self.moc)
-        newRecord.id = UUID()
-        newRecord.name = task.name
-        newRecord.kind = Int16(RecordKind.task.rawValue)
-        newRecord.value = task.value
-        newRecord.date = Date()
-        do {
-            try self.moc.save()
-            gs.pointsStore.add(Int(task.value))
-        } catch {
-            // handle the Core Data error
-        }
-    }
-
     var body: some View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
@@ -49,6 +32,9 @@ struct TaskPage: View {
                     ForEach (goals, id: \.id) { goal in
                         GoalRow(
                             goal: goal,
+                            onCompleteTask: { task in
+                                gs.taskStore.completeTask(task)
+                            },
                             onRemoveTask: { task in
                                 gs.taskStore.removeTask(task)
                             }

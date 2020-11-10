@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoalRow: View {
     @ObservedObject var goal: Goal
+    var onCompleteTask: (_ task: Task) -> Void
     var onRemoveTask: (_ task: Task) -> Void
     
     @State var isExpanded = true
@@ -39,7 +40,7 @@ struct GoalRow: View {
         List {
             ForEach(tasks, id: \.id) { task in
                 NavigationLink(destination: EditTaskPage(originTask: task)) {
-                    TaskRow(task: TaskState(task))
+                    TaskRow(task: TaskState(task), onLongPress: onCompleteTask)
                 }
             }
             .onDelete(perform: { indexSet in

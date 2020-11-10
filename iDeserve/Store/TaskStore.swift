@@ -12,6 +12,7 @@ import CoreData
 final class TaskStore: ObservableObject {
     var moc = CoreDataContainer.shared.context
     static var shared = TaskStore()
+    private var recordStore = RecordStore.shared
     
 //    用于替代原来的 TaskState.toModel
     func updateOrCreate (taskState: TaskState, goal: Goal) -> Task {
@@ -64,6 +65,19 @@ final class TaskStore: ObservableObject {
         newTask.parent = goal
 
         return self.updateTask(targetTask: newTask, taskState: taskState)
+    }
+    
+    func completeTask (_ task: Task) {
+        task.done = true
+//      插入完成记录
+        self.recordStore.createRecord(name: task.name!, kind: .task, value: Int(task.value))
+
+        do {
+            try self.moc.save()
+        } catch {
+            print("完成任务失败")
+        }
+        
     }
     
     func removeTask(_ task: Task) {

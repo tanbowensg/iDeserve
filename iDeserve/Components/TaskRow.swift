@@ -61,7 +61,7 @@ struct TaskRow: View {
             .padding()
             .background(self.isDetectingLongPress && !task.done ? Color.green : Color.g0)
             .foregroundColor(self.foregroundColor)
-//            .gesture(longPress)
+            .gesture(longPress)
     }
 }
 
