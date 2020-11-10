@@ -37,6 +37,21 @@ struct TaskForm: View {
             Divider()
         }
     }
+    
+    var repeatTimes: some View {
+        Group {
+            HStack() {
+                Image(systemName: "repeat")
+                Text("重复次数")
+                Spacer()
+                TextField("0", text: $taskState.repeatTimes)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+            }
+                .padding(.horizontal, 16.0)
+            Divider()
+        }
+    }
 
     var taskRepeat: some View {
         Group {
@@ -45,7 +60,7 @@ struct TaskForm: View {
             }) {
                 HStack() {
                     Image(systemName: "repeat")
-                    Text("重复")
+                    Text("重复频率")
                     Spacer()
                     Text(getRepeatFrequencyText(taskState.repeatFrequency))
                 }
@@ -53,6 +68,7 @@ struct TaskForm: View {
                     .foregroundColor(.g80)
             }
             Divider()
+            taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
         }
     }
 

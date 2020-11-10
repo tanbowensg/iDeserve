@@ -43,6 +43,7 @@ final class TaskStore: ObservableObject {
         targetTask.name = taskState.name
         targetTask.value = Int16(taskState.value) ?? 0
         targetTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
+        targetTask.repeatTimes = Int16(taskState.repeatTimes) ?? 1
         targetTask.ddl = taskState.hasDdl ? taskState.ddl : nil
         targetTask.desc = taskState.desc
         targetTask.done = taskState.done
@@ -70,6 +71,8 @@ final class TaskStore: ObservableObject {
     
     func completeTask (_ task: Task) {
         task.done = true
+        task.lastCompleteTime = Date()
+        task.completeTimes = task.completeTimes + 1
 //        加分
         self.pointsStore.add(Int(task.value))
 //      插入完成记录

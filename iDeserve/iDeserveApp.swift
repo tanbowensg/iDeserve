@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 
+//重置任务完成状态的定时任务
 func resetTaskStatus () {
     let moc = GlobalStore.shared.moc
     let taskRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Task")
@@ -15,7 +16,9 @@ func resetTaskStatus () {
     do {
         let fetchedTasks = try moc.fetch(taskRequest) as! [Task]
         fetchedTasks.forEach {task in
-            task.done = false
+            if (task.done && task.completeTimes < task.repeatTimes) {
+                task.done = false
+            }
         }
         try moc.save()
     } catch {

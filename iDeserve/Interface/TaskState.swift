@@ -13,6 +13,7 @@ struct TaskState: Hashable, Identifiable {
     var name: String = ""
     var value: String = "0"
     var repeatFrequency: RepeatFrequency = .never
+    var repeatTimes: String = "0"
     var hasDdl: Bool = false
     var ddl: Date = Date()
     var desc: String = ""
@@ -27,6 +28,7 @@ struct TaskState: Hashable, Identifiable {
             name = existTask.name ?? ""
             value = String(existTask.value)
             repeatFrequency = RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never
+            repeatTimes = String(existTask.repeatTimes)
             hasDdl = existTask.ddl != nil
             desc = existTask.desc ?? ""
             done = existTask.done

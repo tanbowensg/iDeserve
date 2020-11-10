@@ -24,20 +24,23 @@
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
+        <attribute name="completeTimes" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="ddl" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="desc" optional="YES" attributeType="String"/>
-        <attribute name="done" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="repeatFrequency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="starred" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="desc" attributeType="String" defaultValueString="一些任务描述"/>
+        <attribute name="done" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastCompleteTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="repeatFrequency" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="repeatTimes" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="starred" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="value" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="tasks" inverseEntity="Goal"/>
     </entity>
     <elements>
         <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="118"/>
         <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
         <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="148"/>
-        <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="178"/>
+        <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="223"/>
     </elements>
 </model>
