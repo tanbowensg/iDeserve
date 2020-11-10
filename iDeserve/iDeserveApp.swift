@@ -8,24 +8,40 @@
 import SwiftUI
 import CoreData
 
+func resetTaskStatus () {
+    let moc = GlobalStore.shared.moc
+    let taskRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Task")
+    
+    do {
+        let fetchedTasks = try moc.fetch(taskRequest) as! [Task]
+        fetchedTasks.forEach {task in
+            task.done = false
+        }
+        try moc.save()
+    } catch {
+        print("执行任务状态重置")
+    }
+}
+
 @main
 struct iDeserveApp: App {
-//    var persistentContainer: NSPersistentContainer = {
-//        let container = NSPersistentContainer(name: "iDeserve")
-//        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-//            if let error = error as NSError? {
-//                fatalError("Unresolved error \(error), \(error.userInfo)")
-//            }
-//        })
-//        return container
-//    }()
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
+        
         WindowGroup {
             Tab()
                 .environment(\.managedObjectContext, GlobalStore.shared.moc)
                 .environmentObject(GlobalStore.shared)
                 .environmentObject(PointsStore.shared)
+        }
+        .onChange(of: scenePhase) { phase in
+            switch phase {
+                case .active:
+                    resetTaskStatus()
+                default:
+                    print(phase)
+            }
         }
     }
 }
