@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditRewardPage: View {
-    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject private var gs: GlobalStore
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var initReward: Reward?
@@ -169,42 +169,9 @@ struct EditRewardPage: View {
             return
         }
         if initReward?.id != nil {
-            updateReward()
+            gs.rewardStore.updateReward(targetReward: initReward!, name: name, value: Int(value)!, repeatFrequency: repeatFrequency, desc: desc, isSoldout: false, cover: cover?.pngData())
         } else {
-            createReward()
-        }
-    }
-    
-    func updateReward () {
-        let targetReward = initReward!
-        targetReward.name = name
-        targetReward.value = Int16(value) ?? 0
-        targetReward.repeatFrequency = Int16(repeatFrequency.rawValue)
-        targetReward.desc = desc
-        targetReward.isSoldout = false
-        targetReward.cover = cover?.pngData()
-
-        do {
-            try self.moc.save()
-        } catch {
-            fatalError("更新奖励到 coredata中失败")
-        }
-    }
-    
-    func createReward () {
-        let newReward = Reward(context: self.moc)
-        newReward.id = UUID()
-        newReward.name = name
-        newReward.value = Int16(value) ?? 0
-        newReward.repeatFrequency = Int16(repeatFrequency.rawValue)
-        newReward.desc = desc
-        newReward.isSoldout = false
-        newReward.cover = cover?.pngData()
-
-        do {
-            try self.moc.save()
-        } catch {
-            fatalError("创建奖励到 coredata中失败")
+            gs.rewardStore.createReward(name: name, value: Int(value)!, repeatFrequency: repeatFrequency, desc: desc, isSoldout: false, cover: cover?.pngData())
         }
     }
 }

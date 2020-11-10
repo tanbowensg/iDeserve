@@ -17,4 +17,5 @@ final class GlobalStore: ObservableObject {
     var goalStore = GoalStore.shared
     var taskStore = TaskStore.shared
     var recordStore = RecordStore.shared
+    var rewardStore = RewardStore.shared
 }

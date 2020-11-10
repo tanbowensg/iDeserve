@@ -25,6 +25,7 @@ struct iDeserveApp: App {
             Tab()
                 .environment(\.managedObjectContext, GlobalStore.shared.moc)
                 .environmentObject(GlobalStore.shared)
+                .environmentObject(PointsStore.shared)
         }
     }
 }

@@ -13,6 +13,7 @@ final class TaskStore: ObservableObject {
     var moc = CoreDataContainer.shared.context
     static var shared = TaskStore()
     private var recordStore = RecordStore.shared
+    private var pointsStore = PointsStore.shared
     
 //    用于替代原来的 TaskState.toModel
     func updateOrCreate (taskState: TaskState, goal: Goal) -> Task {
@@ -69,6 +70,8 @@ final class TaskStore: ObservableObject {
     
     func completeTask (_ task: Task) {
         task.done = true
+//        加分
+        self.pointsStore.add(Int(task.value))
 //      插入完成记录
         self.recordStore.createRecord(name: task.name!, kind: .task, value: Int(task.value))
 
