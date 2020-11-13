@@ -22,6 +22,7 @@
 		D03B57C7253D471A00DC107F /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
 		D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57CB253D8B4900DC107F /* RecordPage.swift */; };
 		D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */; };
+		D03C5D14255CE88400778EEE /* MyDayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C5D13255CE88400778EEE /* MyDayPage.swift */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
 		D042F1A4252DAB7900B08F97 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = D042F1A3252DAB7900B08F97 /* URLImage */; };
@@ -84,6 +85,7 @@
 		D03B57C6253D471A00DC107F /* saveContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveContext.swift; sourceTree = "<group>"; };
 		D03B57CB253D8B4900DC107F /* RecordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPage.swift; sourceTree = "<group>"; };
 		D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
+		D03C5D13255CE88400778EEE /* MyDayPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayPage.swift; sourceTree = "<group>"; };
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		D042F195252D98DC00B08F97 /* RewardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardGrid.swift; sourceTree = "<group>"; };
 		D04BB016252AC7FB0088912A /* TaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPage.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
+				D03C5D13255CE88400778EEE /* MyDayPage.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
 				D0EE5486255944680091302D /* TaskStore.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
+				D03C5D14255CE88400778EEE /* MyDayPage.swift in Sources */,
 				D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */,
 				D08988B2254685A60032BA96 /* TaskForm.swift in Sources */,
 				D03B57C7253D471A00DC107F /* saveContext.swift in Sources */,

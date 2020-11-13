@@ -14,7 +14,7 @@ struct Tab: View {
     func TabIcon (text: String, icon: String) -> some View {
         VStack() {
             Image(systemName: icon)
-                .frame(width: 32, height: 32)
+//                .frame(width: 24, height: 32)
             Text(text)
                 .font(.system(size: 12))
         }
@@ -29,8 +29,8 @@ struct Tab: View {
             TabView {
                 TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
                 RewardPage().tabItem { TabIcon(text: "奖励", icon: "dollarsign.circle") }
+                MyDayPage().tabItem { TabIcon(text: "我的一天", icon: "sun.max") }
                 RecordPage().tabItem { TabIcon(text: "历史记录", icon: "clock") }
-                TaskPage().tabItem { TabIcon(text: "任务", icon: "list.dash") }
             }
             .edgesIgnoringSafeArea(.top)
         }
