@@ -67,6 +67,8 @@ struct TaskPage: View {
 }
 
 struct TaskPage_Previews: PreviewProvider {
+    let tasks = genMockTasks(CoreDataContainer.shared.context)
+    
     static var previews: some View {
         TaskPage()
             .environment(\.managedObjectContext, CoreDataContainer.shared.context)

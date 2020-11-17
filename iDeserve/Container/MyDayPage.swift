@@ -18,17 +18,21 @@ struct MyDayPage: View {
    }
     
     var body: some View {
-        List {
-            ForEach (tasks, id: \.id) { task in
-                TaskRow(task: TaskState(task))
+        ScrollView {
+            VStack {
+                ForEach (tasks, id: \.id) { task in
+                    TaskRow(task: TaskState(task))
+                }
             }
         }
-        Text(String(tasks.count))
     }
 }
 
 struct MyDayPage_Previews: PreviewProvider {
     static var previews: some View {
+        let context = NSPersistentContainer(name: "iDeserve").viewContext
+        let _ = genMockTasks(context)
         MyDayPage()
+            .environment(\.managedObjectContext, context)
     }
 }

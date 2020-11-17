@@ -44,4 +44,11 @@ extension Color {
     public static var g60 = Color(hex: "8C8C8C")
     public static var g70 = Color(hex: "595959")
     public static var g80 = Color(hex: "262626")
+    public static var bg = Color(hex: "F7F6F1")
+    public static var goldColor = Color(hex: "ef9c49")
+    public static var normalText = Color(hex: "363636")
+    public static var tagColor = Color(hex: "6d859b")
+    public static var tagBg = Color(hex: "dceeff")
+    public static var warning = Color(hex: "e9614d")
+    public static var shadow = Color(red: 0, green: 0, blue: 0, opacity: 0.05)
 }

@@ -32,5 +32,6 @@ func genMockTasks (_ context: NSManagedObjectContext) -> [Task] {
     doneTask.name = "剪辑九寨沟旅游的vlog"
     doneTask.value = 100
     doneTask.done = true
+
     return [normalTask, repeatTask, ddlTask, doneTask]
 }

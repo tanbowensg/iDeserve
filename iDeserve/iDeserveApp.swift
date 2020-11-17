@@ -33,10 +33,14 @@ struct iDeserveApp: App {
     var body: some Scene {
         
         WindowGroup {
-            Tab()
-                .environment(\.managedObjectContext, GlobalStore.shared.moc)
-                .environmentObject(GlobalStore.shared)
-                .environmentObject(PointsStore.shared)
+            ZStack {
+                    Color.bg
+                        .ignoresSafeArea()
+                    Tab()
+                        .environment(\.managedObjectContext, GlobalStore.shared.moc)
+                        .environmentObject(GlobalStore.shared)
+                        .environmentObject(PointsStore.shared)
+            }
         }
         .onChange(of: scenePhase) { phase in
             switch phase {
