@@ -10,6 +10,7 @@ import CoreData
 
 struct TaskItem: View {
     var task: TaskState
+    var onCompleteTask: () -> Void
 
     var dateText: String? {
         return dateToString(task.ddl)
@@ -64,8 +65,8 @@ struct TaskItem: View {
             .fontWeight(.black)
             .foregroundColor(Color.goldColor)
     }
-
-    var body: some View {
+    
+    var taskItem: some View {
         HStack {
             leftPart
             Spacer()
@@ -79,6 +80,10 @@ struct TaskItem: View {
                     .shadow(color: .shadow, radius: 6, x: 0, y: 3)
             )
     }
+
+    var body: some View {
+        SwipeWrapper(content: taskItem, height: 82, onRelease: self.onCompleteTask)
+    }
 }
 
 struct TaskItem_Previews: PreviewProvider {
@@ -88,7 +93,7 @@ struct TaskItem_Previews: PreviewProvider {
         ScrollView {
             VStack(spacing: 16.0) {
                 ForEach (tasks) {task in
-                    TaskItem(task: TaskState(task))
+                    TaskItem(task: TaskState(task), onCompleteTask: emptyFunc)
                 }
             }
         }

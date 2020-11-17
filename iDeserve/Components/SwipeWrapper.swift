@@ -10,21 +10,23 @@ import SwiftUI
 struct SwipeWrapper<Content: View>: View {
     var content: Content
     var height: Int
-    @State var offset = CGSize.zero
+    var onRelease: (() -> Void)?
+
+    @State var offsetX = 0
     
-    let actionWidth: Int = 100
+    let slotWidth: Int = 100
     
     var slotOffset: CGFloat {
-        return CGFloat(-self.actionWidth + Int(offset.width))
+        return CGFloat(-self.slotWidth + Int(offsetX))
     }
     
     var contentOffset: CGFloat {
-        return CGFloat(offset.width)
+        return CGFloat(offsetX)
     }
     
     var customContent: some View {
         content
-            .animation(.spring())
+            .animation(.default)
     }
     
     var leftAction: some View {
@@ -34,19 +36,22 @@ struct SwipeWrapper<Content: View>: View {
             Text("搞定")
         }
             .padding(.horizontal, 30.0)
-            .frame(width: CGFloat(self.actionWidth), height: CGFloat(self.height))
+            .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
             .foregroundColor(.g0)
             .background( Color.completeColor)
-            .animation(.spring())
+            .animation(.default)
     }
     
     var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                self.offset = value.translation
+                self.offsetX = max(0, Int(value.translation.width))
             }
             .onEnded { value in
-                self.offset = .zero
+                if self.offsetX > self.slotWidth {
+                    self.onRelease?()
+                }
+                self.offsetX = .zero
             }
     }
 
@@ -57,7 +62,8 @@ struct SwipeWrapper<Content: View>: View {
             customContent
                 .offset(x: contentOffset)
         }
-            .background(Color.completeColor)
+//        这是为了方式在删除元素的时候出现背景色
+            .background(offsetX != 0 ? Color.completeColor : nil)
             .gesture(gesture)
     }
 }

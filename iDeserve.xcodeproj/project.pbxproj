@@ -51,6 +51,7 @@
 		D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0262563D336008B6EBB /* SlidableModifier.swift */; };
 		D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B02B2563D357008B6EBB /* Extensions.swift */; };
 		D0F3B0312563D3E3008B6EBB /* demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0302563D3E3008B6EBB /* demo.swift */; };
+		D0F3B0362563F836008B6EBB /* emptyFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0352563F836008B6EBB /* emptyFunc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		D0F3B0262563D336008B6EBB /* SlidableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidableModifier.swift; sourceTree = "<group>"; };
 		D0F3B02B2563D357008B6EBB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0F3B0302563D3E3008B6EBB /* demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demo.swift; sourceTree = "<group>"; };
+		D0F3B0352563F836008B6EBB /* emptyFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emptyFunc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				D0036E01252C6AEF00E4005B /* dateToString.swift */,
 				D03B57C6253D471A00DC107F /* saveContext.swift */,
 				D0F3B00225636C4B008B6EBB /* genMockTasks.swift */,
+				D0F3B0352563F836008B6EBB /* emptyFunc.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				D01026A02524308300653A52 /* TaskRow.swift in Sources */,
 				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
+				D0F3B0362563F836008B6EBB /* emptyFunc.swift in Sources */,
 				D0EE5490255A6D140091302D /* RewardStore.swift in Sources */,
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
 				D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */,

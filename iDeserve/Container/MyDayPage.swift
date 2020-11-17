@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct MyDayPage: View {
+    @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
 
     static var taskRequest: NSFetchRequest<Task> {
@@ -21,13 +22,14 @@ struct MyDayPage: View {
         ScrollView {
             LazyVStack {
                 ForEach (tasks, id: \.id) { task in
-                    TaskItem(task: TaskState(task))
+                    TaskItem(
+                        task: TaskState(task),
+                        onCompleteTask: {
+                            self.gs.taskStore.removeTask(task)
+                        }
+                    )
                 }
-                .onDelete(perform: { indexSet in
-                    print(indexSet)
-                })
             }
-            .frame(height: 600)
         }
     }
 }
@@ -38,5 +40,6 @@ struct MyDayPage_Previews: PreviewProvider {
         let _ = genMockTasks(context)
         MyDayPage()
             .environment(\.managedObjectContext, context)
+            .environmentObject(GlobalStore.shared)
     }
 }
