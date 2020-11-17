@@ -19,11 +19,15 @@ struct MyDayPage: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            LazyVStack {
                 ForEach (tasks, id: \.id) { task in
-                    TaskRow(task: TaskState(task))
+                    TaskItem(task: TaskState(task))
                 }
+                .onDelete(perform: { indexSet in
+                    print(indexSet)
+                })
             }
+            .frame(height: 600)
         }
     }
 }

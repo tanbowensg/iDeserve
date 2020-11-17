@@ -46,6 +46,11 @@
 		D0EE5490255A6D140091302D /* RewardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548F255A6D140091302D /* RewardStore.swift */; };
 		D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
 		D0F3B00325636C4B008B6EBB /* genMockTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockTasks.swift */; };
+		D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
+		D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B01E2563D307008B6EBB /* Slot.swift */; };
+		D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0262563D336008B6EBB /* SlidableModifier.swift */; };
+		D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B02B2563D357008B6EBB /* Extensions.swift */; };
+		D0F3B0312563D3E3008B6EBB /* demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0302563D3E3008B6EBB /* demo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +115,11 @@
 		D0EE548F255A6D140091302D /* RewardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardStore.swift; sourceTree = "<group>"; };
 		D0F3AFFD25636A36008B6EBB /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		D0F3B00225636C4B008B6EBB /* genMockTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genMockTasks.swift; sourceTree = "<group>"; };
+		D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeWrapper.swift; sourceTree = "<group>"; };
+		D0F3B01E2563D307008B6EBB /* Slot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
+		D0F3B0262563D336008B6EBB /* SlidableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidableModifier.swift; sourceTree = "<group>"; };
+		D0F3B02B2563D357008B6EBB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D0F3B0302563D3E3008B6EBB /* demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +236,7 @@
 		D010269D2524306400653A52 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D0F3B01D2563D2F3008B6EBB /* SwipeCell */,
 				D0F3AFFD25636A36008B6EBB /* TaskItem.swift */,
 				D08988B6254685C70032BA96 /* TaskForm */,
 				D010269F2524308300653A52 /* TaskRow.swift */,
@@ -234,6 +245,7 @@
 				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
 				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
 				D08988AC254680BC0032BA96 /* GoalRow.swift */,
+				D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -282,6 +294,17 @@
 				D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */,
 			);
 			path = EditGoalPage;
+			sourceTree = "<group>";
+		};
+		D0F3B01D2563D2F3008B6EBB /* SwipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				D0F3B01E2563D307008B6EBB /* Slot.swift */,
+				D0F3B0262563D336008B6EBB /* SlidableModifier.swift */,
+				D0F3B02B2563D357008B6EBB /* Extensions.swift */,
+				D0F3B0302563D3E3008B6EBB /* demo.swift */,
+			);
+			path = SwipeCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,11 +443,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08988AD254680BC0032BA96 /* GoalRow.swift in Sources */,
+				D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */,
 				D01026A02524308300653A52 /* TaskRow.swift in Sources */,
 				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
 				D0EE5490255A6D140091302D /* RewardStore.swift in Sources */,
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
+				D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */,
+				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
@@ -437,6 +463,7 @@
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
 				D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
+				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
 				D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */,
@@ -447,6 +474,7 @@
 				D0F3B00325636C4B008B6EBB /* genMockTasks.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D0EE547C255908C80091302D /* GlobalStore.swift in Sources */,
+				D0F3B0312563D3E3008B6EBB /* demo.swift in Sources */,
 				D04BB01F252AC8330088912A /* Tab.swift in Sources */,
 				D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */,
 				D0036E0A252C840D00E4005B /* Popup.swift in Sources */,

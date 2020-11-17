@@ -51,4 +51,5 @@ extension Color {
     public static var tagBg = Color(hex: "dceeff")
     public static var warning = Color(hex: "e9614d")
     public static var shadow = Color(red: 0, green: 0, blue: 0, opacity: 0.05)
+    public static var completeColor = Color(hex: "a6c2a7")
 }

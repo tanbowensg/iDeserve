@@ -10,10 +10,6 @@ import CoreData
 
 struct TaskItem: View {
     var task: TaskState
-    var onLongPress: ((_ task: Task) -> Void)?
-
-    @GestureState var isDetectingLongPress = false
-    @State var completedLongPress = false
 
     var dateText: String? {
         return dateToString(task.ddl)
@@ -23,20 +19,6 @@ struct TaskItem: View {
          task.done ? Color.gray : Color.normalText
     }
 
-    var longPress: some Gesture {
-        LongPressGesture(minimumDuration: 0.8)
-            .updating($isDetectingLongPress) { currentstate, gestureState,
-                    transaction in
-                gestureState = currentstate
-                transaction.animation = Animation.easeIn(duration: 0.8)
-            }
-            .onEnded { finished in
-                print("长按结束了")
-                self.completedLongPress = finished
-                self.onLongPress?(task.originTask!)
-            }
-    }
-    
     var taskGoal: some View {
         Text("考出CPA证书")
             .font(.system(size: 10))
@@ -96,7 +78,6 @@ struct TaskItem: View {
                 Color.g0
                     .shadow(color: .shadow, radius: 6, x: 0, y: 3)
             )
-            .gesture(longPress)
     }
 }
 
