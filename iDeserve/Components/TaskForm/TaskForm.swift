@@ -12,6 +12,7 @@ struct TaskForm: View {
     
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
+    @State var isShowDifficultyPicker = false
 
     var taskTitle: some View {
         Group {
@@ -23,13 +24,52 @@ struct TaskForm: View {
         }
     }
 
-    var taskValue: some View {
+    var taskDifficulty: some View {
+        Group {
+            Button(action: {
+                isShowDifficultyPicker.toggle()
+            }) {
+                HStack() {
+                    Image(systemName: "repeat")
+                    Text("难度")
+                    Spacer()
+                    Text(getDifficultyText(taskState.difficulty))
+                }
+                    .padding(.horizontal, 16.0)
+                    .foregroundColor(.g80)
+            }
+            Divider()
+        }
+    }
+    
+//    难度选择器
+    var difficultyPicker: some View {
+        VStack(alignment: .trailing, spacing: 0) {
+            Button(action: {
+                isShowDifficultyPicker.toggle()
+//                tempTask = Task()
+            }) {
+                Text("完成")
+            }
+                .padding(8)
+            Picker("难度", selection: $taskState.difficulty) {
+                ForEach(Difficulty.allCases, id: \.self) {difficultyOption in
+                    Text(getDifficultyText(difficultyOption)).tag(difficultyOption)
+                }
+                .labelsHidden()
+            }
+        }
+            .background(Color.g10)
+    }
+ 
+    
+    var taskTimeCost: some View {
         Group {
             HStack() {
-                Image(systemName: "dollarsign.circle")
-                Text("分值")
+                Image(systemName: "time")
+                Text("耗时（单位半个小时）")
                 Spacer()
-                TextField("0", text: $taskState.value)
+                TextField("1", text: $taskState.timeCost)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
@@ -37,7 +77,7 @@ struct TaskForm: View {
             Divider()
         }
     }
-    
+
     var repeatTimes: some View {
         Group {
             HStack() {
@@ -148,7 +188,8 @@ struct TaskForm: View {
         ZStack(alignment: .bottom) {
             VStack(alignment: .leading) {
                 taskTitle
-                taskValue
+                taskDifficulty
+                taskTimeCost
                 taskRepeat
                 taskDdl
                 Text("子任务")
@@ -170,6 +211,7 @@ struct TaskForm: View {
                 )
             Popup(isVisible: isShowRepeatPicker, content: repeatPicker)
             Popup(isVisible: isShowDatePicker, content: datePicker)
+            Popup(isVisible: isShowDifficultyPicker, content: difficultyPicker)
         }
     }
 }

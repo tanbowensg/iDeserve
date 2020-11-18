@@ -8,9 +8,9 @@
 import Foundation
 
 enum Difficulty: Int, CaseIterable {
-    case easy = 0
-    case medium = 1
-    case hard = 2
+    case easy = 1
+    case medium = 2
+    case hard = 4
 }
 
 func getDifficultyText (_ value: Difficulty) -> String {

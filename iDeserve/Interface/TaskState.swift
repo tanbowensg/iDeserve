@@ -11,7 +11,6 @@ struct TaskState: Hashable, Identifiable {
     var originTask: Task?
     var id = UUID()
     var name: String = ""
-    var value: String = "0"
     var repeatFrequency: RepeatFrequency = .never
     var repeatTimes: String = "0"
     var hasDdl: Bool = false
@@ -20,6 +19,13 @@ struct TaskState: Hashable, Identifiable {
     var done: Bool = false
     var starred: Bool = false
     var goalName: String = ""
+    var timeCost: String = "1"
+    var difficulty: Difficulty = .easy
+    
+    var value: Int {
+        let time = Int(timeCost) ?? 1
+        return time * difficulty.rawValue
+    }
 
     init (_ originTask: Task?) {
         if let existTask = originTask {
@@ -27,7 +33,6 @@ struct TaskState: Hashable, Identifiable {
 
             id = existTask.id!
             name = existTask.name ?? ""
-            value = String(existTask.value)
             repeatFrequency = RepeatFrequency(rawValue: Int(existTask.repeatFrequency)) ?? .never
             repeatTimes = String(existTask.repeatTimes)
             hasDdl = existTask.ddl != nil
@@ -35,6 +40,8 @@ struct TaskState: Hashable, Identifiable {
             done = existTask.done
             starred = existTask.starred
             goalName = existTask.parent?.name ?? ""
+            timeCost = String(existTask.timeCost)
+            difficulty = Difficulty(rawValue: Int(existTask.difficulty)) ?? .easy
             
             if let existDdl = existTask.ddl {
                 ddl = existDdl

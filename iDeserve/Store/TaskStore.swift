@@ -41,13 +41,14 @@ final class TaskStore: ObservableObject {
         taskState: TaskState
     ) -> Task {
         targetTask.name = taskState.name
-        targetTask.value = Int16(taskState.value) ?? 0
         targetTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
         targetTask.repeatTimes = Int16(taskState.repeatTimes) ?? 1
         targetTask.ddl = taskState.hasDdl ? taskState.ddl : nil
         targetTask.desc = taskState.desc
         targetTask.done = taskState.done
         targetTask.starred = taskState.starred
+        targetTask.difficulty = Int16(taskState.difficulty.rawValue)
+        targetTask.timeCost = Int16(taskState.timeCost) ?? 1
     
         do {
             try self.moc.save()
@@ -73,10 +74,11 @@ final class TaskStore: ObservableObject {
         task.done = true
         task.lastCompleteTime = Date()
         task.completeTimes = task.completeTimes + 1
+        let taskValue = task.timeCost * task.difficulty
 //        加分
-        self.pointsStore.add(Int(task.value))
+        self.pointsStore.add(Int(taskValue))
 //      插入完成记录
-        self.recordStore.createRecord(name: task.name!, kind: .task, value: Int(task.value))
+        self.recordStore.createRecord(name: task.name!, kind: .task, value: Int(taskValue))
 
         do {
             try self.moc.save()
