@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct RewardGrid: View {
     @ObservedObject var reward: Reward

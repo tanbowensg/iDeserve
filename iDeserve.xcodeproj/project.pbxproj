@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,7 +25,6 @@
 		D03C5D14255CE88400778EEE /* MyDayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C5D13255CE88400778EEE /* MyDayPage.swift */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
-		D042F1A4252DAB7900B08F97 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = D042F1A3252DAB7900B08F97 /* URLImage */; };
 		D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* TaskPage.swift */; };
 		D04BB01F252AC8330088912A /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* Tab.swift */; };
 		D04BB024252AC93B0088912A /* RewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB023252AC93B0088912A /* RewardPage.swift */; };
@@ -129,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D042F1A4252DAB7900B08F97 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +325,6 @@
 			);
 			name = iDeserve;
 			packageProductDependencies = (
-				D042F1A3252DAB7900B08F97 /* URLImage */,
 			);
 			productName = iDeserve;
 			productReference = D010265E2524241F00653A52 /* iDeserve.app */;
@@ -401,7 +398,6 @@
 			);
 			mainGroup = D01026552524241F00653A52;
 			packageReferences = (
-				D042F1A2252DAB7900B08F97 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = D010265F2524241F00653A52 /* Products */;
 			projectDirPath = "";
@@ -800,25 +796,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D042F1A2252DAB7900B08F97 /* XCRemoteSwiftPackageReference "url-image" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.19;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D042F1A3252DAB7900B08F97 /* URLImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D042F1A2252DAB7900B08F97 /* XCRemoteSwiftPackageReference "url-image" */;
-			productName = URLImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */ = {
