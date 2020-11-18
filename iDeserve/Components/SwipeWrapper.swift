@@ -10,16 +10,24 @@ import SwiftUI
 struct SwipeWrapper<Content: View>: View {
     var content: Content
     var height: Int
-    var onRelease: (() -> Void)?
+    var onLeftSwipe: (() -> Void)?
+    var onRightSwipe: (() -> Void)?
 
     @State var offsetX = 0
     
     let slotWidth: Int = 100
     
-    var slotOffset: CGFloat {
+    let leftSlotBg = Color.completeColor
+    let rightSlotBg = Color.red
+    
+    var leftSlotOffset: CGFloat {
         return CGFloat(-self.slotWidth + Int(offsetX))
     }
     
+    var rightSlotOffset: CGFloat {
+        return CGFloat(self.slotWidth + Int(offsetX))
+    }
+
     var contentOffset: CGFloat {
         return CGFloat(offsetX)
     }
@@ -29,42 +37,58 @@ struct SwipeWrapper<Content: View>: View {
             .animation(.default)
     }
     
-    var leftAction: some View {
-        Button(action: {
-            print("哈哈哈")
-        }) {
-            Text("搞定")
+    var alignment: Alignment {
+        if (offsetX <= 0) {
+            return .trailing
+        } else {
+            return .leading
         }
+    }
+
+    var leftSlot: some View {
+        Text("搞定")
             .padding(.horizontal, 30.0)
             .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
             .foregroundColor(.g0)
-            .background( Color.completeColor)
+            .background(leftSlotBg)
             .animation(.default)
     }
     
+    var rightSlot: some View {
+        Text("删除")
+            .padding(.horizontal, 30.0)
+            .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
+            .foregroundColor(.g0)
+            .background(rightSlotBg)
+            .animation(.default)
+    }
+
     var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                self.offsetX = max(0, Int(value.translation.width))
+                self.offsetX = Int(value.translation.width)
             }
             .onEnded { value in
                 if self.offsetX > self.slotWidth {
-                    self.onRelease?()
+                    self.onLeftSwipe?()
+                } else if -self.offsetX > self.slotWidth {
+                    self.onRightSwipe?()
                 }
                 self.offsetX = .zero
             }
     }
 
     var body: some View {
-        ZStack(alignment: .leading) {
-            leftAction
-                .offset(x: slotOffset)
+        ZStack(alignment: alignment) {
             customContent
                 .offset(x: contentOffset)
+            offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
+            offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil
         }
-//        这是为了方式在删除元素的时候出现背景色
-            .background(offsetX != 0 ? Color.completeColor : nil)
+            .background(offsetX >= 0 ? leftSlotBg : rightSlotBg)
             .gesture(gesture)
+//        这是为了方式在删除元素的时候出现背景色
+            .animation(.default)
     }
 }
 

@@ -11,6 +11,7 @@ import CoreData
 struct TaskItem: View {
     var task: TaskState
     var onCompleteTask: () -> Void
+    var onRemoveTask: () -> Void
 
     var dateText: String? {
         return dateToString(task.ddl)
@@ -82,7 +83,7 @@ struct TaskItem: View {
     }
 
     var body: some View {
-        SwipeWrapper(content: taskItem, height: 82, onRelease: self.onCompleteTask)
+        SwipeWrapper(content: taskItem, height: 82, onLeftSwipe: onCompleteTask, onRightSwipe: onRemoveTask)
     }
 }
 
@@ -93,7 +94,7 @@ struct TaskItem_Previews: PreviewProvider {
         ScrollView {
             VStack(spacing: 16.0) {
                 ForEach (tasks) {task in
-                    TaskItem(task: TaskState(task), onCompleteTask: emptyFunc)
+                    TaskItem(task: TaskState(task), onCompleteTask: emptyFunc, onRemoveTask: emptyFunc)
                 }
             }
         }

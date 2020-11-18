@@ -25,6 +25,9 @@ struct MyDayPage: View {
                     TaskItem(
                         task: TaskState(task),
                         onCompleteTask: {
+                            self.gs.taskStore.completeTask(task)
+                        },
+                        onRemoveTask: {
                             self.gs.taskStore.removeTask(task)
                         }
                     )
