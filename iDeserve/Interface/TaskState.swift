@@ -19,6 +19,7 @@ struct TaskState: Hashable, Identifiable {
     var desc: String = ""
     var done: Bool = false
     var starred: Bool = false
+    var goalName: String = ""
 
     init (_ originTask: Task?) {
         if let existTask = originTask {
@@ -33,6 +34,7 @@ struct TaskState: Hashable, Identifiable {
             desc = existTask.desc ?? ""
             done = existTask.done
             starred = existTask.starred
+            goalName = existTask.parent?.name ?? ""
             
             if let existDdl = existTask.ddl {
                 ddl = existDdl

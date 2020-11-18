@@ -22,7 +22,7 @@ struct TaskItem: View {
     }
 
     var taskGoal: some View {
-        Text("考出CPA证书")
+        Text(task.goalName)
             .font(.system(size: 10))
             .fontWeight(.bold)
             .padding(.horizontal, 12)
@@ -51,7 +51,7 @@ struct TaskItem: View {
 
     var leftPart: some View {
         VStack(alignment: .leading, spacing: 5) {
-            taskGoal
+            task.goalName != "" ? taskGoal : nil
             Text(task.name)
                 .font(.system(size: 14))
                 .fontWeight(.bold)
