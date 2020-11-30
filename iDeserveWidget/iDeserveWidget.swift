@@ -42,9 +42,10 @@ struct SimpleEntry: TimelineEntry {
 
 struct iDeserveWidgetEntryView : View {
     var entry: Provider.Entry
+    var taskState = TaskState(name: "hahha")
 
     var body: some View {
-        Text(entry.date, style: .time)
+        TaskItem(task: taskState, onCompleteTask: {}, onRemoveTask: {})
     }
 }
 

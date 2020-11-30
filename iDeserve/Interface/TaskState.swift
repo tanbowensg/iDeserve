@@ -48,4 +48,8 @@ struct TaskState: Hashable, Identifiable {
             }
         }
     }
+
+    init (name: String) {
+        self.name = name
+    }
 }

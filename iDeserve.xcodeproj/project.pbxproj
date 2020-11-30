@@ -31,6 +31,25 @@
 		D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A025318E7F008DE678 /* EditRewardPage.swift */; };
 		D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
+		D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
+		D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
+		D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913372574F198007B9767 /* iDeserveWidget.swift */; };
+		D079133B2574F198007B9767 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D079133A2574F198007B9767 /* Assets.xcassets */; };
+		D079133D2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */; };
+		D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */; };
+		D07913412574F198007B9767 /* iDeserveWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D07913582574F55C007B9767 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
+		D07913652574F632007B9767 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
+		D07913662574F632007B9767 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DD4252C56CD00E4005B /* Color.swift */; };
+		D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
+		D07913682574F632007B9767 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
+		D07913692574F632007B9767 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
+		D079137A2574F65B007B9767 /* dateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E01252C6AEF00E4005B /* dateToString.swift */; };
+		D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0352563F836008B6EBB /* emptyFunc.swift */; };
+		D079137C2574F65B007B9767 /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
+		D079137D2574F65B007B9767 /* genMockTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockTasks.swift */; };
+		D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
+		D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
 		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
@@ -68,7 +87,28 @@
 			remoteGlobalIDString = D010265D2524241F00653A52;
 			remoteInfo = iDeserve;
 		};
+		D079133F2574F198007B9767 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D01026562524241F00653A52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D079132F2574F198007B9767;
+			remoteInfo = iDeserveWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D07913422574F198007B9767 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D07913412574F198007B9767 /* iDeserveWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D0036DC7252B0B5900E4005B /* CreateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateButton.swift; sourceTree = "<group>"; };
@@ -101,6 +141,13 @@
 		D06806A025318E7F008DE678 /* EditRewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRewardPage.swift; sourceTree = "<group>"; };
 		D06806A52531939D008DE678 /* RepeatFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequency.swift; sourceTree = "<group>"; };
 		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iDeserveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D07913322574F198007B9767 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D07913342574F198007B9767 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D07913372574F198007B9767 /* iDeserveWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveWidget.swift; sourceTree = "<group>"; };
+		D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iDeserveWidget.intentdefinition; sourceTree = "<group>"; };
+		D079133A2574F198007B9767 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D079133C2574F198007B9767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
 		D08988A2254671E60032BA96 /* EditGoalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalPage.swift; sourceTree = "<group>"; };
 		D08988A7254672390032BA96 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
@@ -145,6 +192,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D079132D2574F198007B9767 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */,
+				D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -165,6 +221,8 @@
 				D01026602524241F00653A52 /* iDeserve */,
 				D01026722524242000653A52 /* iDeserveTests */,
 				D010267D2524242100653A52 /* iDeserveUITests */,
+				D07913362574F198007B9767 /* iDeserveWidget */,
+				D07913312574F198007B9767 /* Frameworks */,
 				D010265F2524241F00653A52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -175,6 +233,7 @@
 				D010265E2524241F00653A52 /* iDeserve.app */,
 				D010266F2524242000653A52 /* iDeserveTests.xctest */,
 				D010267A2524242100653A52 /* iDeserveUITests.xctest */,
+				D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,6 +339,26 @@
 			path = Container;
 			sourceTree = "<group>";
 		};
+		D07913312574F198007B9767 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D07913322574F198007B9767 /* WidgetKit.framework */,
+				D07913342574F198007B9767 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D07913362574F198007B9767 /* iDeserveWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D07913372574F198007B9767 /* iDeserveWidget.swift */,
+				D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */,
+				D079133A2574F198007B9767 /* Assets.xcassets */,
+				D079133C2574F198007B9767 /* Info.plist */,
+			);
+			path = iDeserveWidget;
+			sourceTree = "<group>";
+		};
 		D08988B6254685C70032BA96 /* TaskForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,10 +397,12 @@
 				D010265A2524241F00653A52 /* Sources */,
 				D010265B2524241F00653A52 /* Frameworks */,
 				D010265C2524241F00653A52 /* Resources */,
+				D07913422574F198007B9767 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D07913402574F198007B9767 /* PBXTargetDependency */,
 			);
 			name = iDeserve;
 			packageProductDependencies = (
@@ -366,13 +447,30 @@
 			productReference = D010267A2524242100653A52 /* iDeserveUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D079132F2574F198007B9767 /* iDeserveWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D07913452574F198007B9767 /* Build configuration list for PBXNativeTarget "iDeserveWidgetExtension" */;
+			buildPhases = (
+				D079132C2574F198007B9767 /* Sources */,
+				D079132D2574F198007B9767 /* Frameworks */,
+				D079132E2574F198007B9767 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iDeserveWidgetExtension;
+			productName = iDeserveWidgetExtension;
+			productReference = D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D01026562524241F00653A52 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					D010265D2524241F00653A52 = {
@@ -385,6 +483,9 @@
 					D01026792524242100653A52 = {
 						CreatedOnToolsVersion = 12.0.1;
 						TestTargetID = D010265D2524241F00653A52;
+					};
+					D079132F2574F198007B9767 = {
+						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -406,6 +507,7 @@
 				D010265D2524241F00653A52 /* iDeserve */,
 				D010266E2524242000653A52 /* iDeserveTests */,
 				D01026792524242100653A52 /* iDeserveUITests */,
+				D079132F2574F198007B9767 /* iDeserveWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -434,6 +536,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D079132E2574F198007B9767 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D079133B2574F198007B9767 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -451,6 +561,7 @@
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
 				D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */,
 				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
+				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
@@ -500,6 +611,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D079132C2574F198007B9767 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */,
+				D079137A2574F65B007B9767 /* dateToString.swift in Sources */,
+				D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */,
+				D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */,
+				D07913682574F632007B9767 /* Difficulty.swift in Sources */,
+				D079133D2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
+				D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */,
+				D079137C2574F65B007B9767 /* saveContext.swift in Sources */,
+				D07913652574F632007B9767 /* Record.swift in Sources */,
+				D07913662574F632007B9767 /* Color.swift in Sources */,
+				D07913692574F632007B9767 /* TaskState.swift in Sources */,
+				D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */,
+				D07913582574F55C007B9767 /* TaskItem.swift in Sources */,
+				D079137D2574F65B007B9767 /* genMockTasks.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -512,6 +644,11 @@
 			isa = PBXTargetDependency;
 			target = D010265D2524241F00653A52 /* iDeserve */;
 			targetProxy = D010267B2524242100653A52 /* PBXContainerItemProxy */;
+		};
+		D07913402574F198007B9767 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D079132F2574F198007B9767 /* iDeserveWidgetExtension */;
+			targetProxy = D079133F2574F198007B9767 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -635,6 +772,7 @@
 		D01026842524242100653A52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -647,6 +785,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -657,6 +796,7 @@
 		D01026852524242100653A52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -669,6 +809,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -756,6 +897,50 @@
 			};
 			name = Release;
 		};
+		D07913432574F198007B9767 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY3R68BT34;
+				INFOPLIST_FILE = iDeserveWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D07913442574F198007B9767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY3R68BT34;
+				INFOPLIST_FILE = iDeserveWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -791,6 +976,15 @@
 			buildConfigurations = (
 				D010268A2524242100653A52 /* Debug */,
 				D010268B2524242100653A52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D07913452574F198007B9767 /* Build configuration list for PBXNativeTarget "iDeserveWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D07913432574F198007B9767 /* Debug */,
+				D07913442574F198007B9767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
