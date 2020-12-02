@@ -36,7 +36,7 @@ struct iDeserveApp: App {
             ZStack {
                     Color.bg
                         .ignoresSafeArea()
-                    Tab()
+                    TabWapper()
                         .environment(\.managedObjectContext, GlobalStore.shared.moc)
                         .environmentObject(GlobalStore.shared)
                         .environmentObject(PointsStore.shared)

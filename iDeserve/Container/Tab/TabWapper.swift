@@ -15,7 +15,7 @@ enum TabPages: String {
     case record = "record"
 }
 
-struct Tab: View {
+struct TabWapper: View {
     @EnvironmentObject var pointsStore: PointsStore
     
     @State var currentTab = TabPages.myDay
@@ -65,7 +65,7 @@ struct Tab: View {
 struct Tab_Previews: PreviewProvider {
     static var previews: some View {
         VStack() {
-            Tab()
+            TabWapper()
                 .environmentObject(PointsStore.shared)
         }
     }
