@@ -19,20 +19,25 @@ struct MyDayPage: View {
    }
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach (tasks, id: \.id) { task in
-                    TaskItem(
-                        task: TaskState(task),
-                        onCompleteTask: {
-                            self.gs.taskStore.completeTask(task)
-                        },
-                        onRemoveTask: {
-                            self.gs.taskStore.removeTask(task)
-                        }
-                    )
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                LazyVStack {
+                    ForEach (tasks, id: \.id) { task in
+                        TaskItem(
+                            task: TaskState(task),
+                            onCompleteTask: {
+                                self.gs.taskStore.completeTask(task)
+                            },
+                            onRemoveTask: {
+                                self.gs.taskStore.removeTask(task)
+                            }
+                        )
+                    }
                 }
             }
+            CreateButton()
+                .padding([.bottom, .trailing], 30)
+                
         }
     }
 }
