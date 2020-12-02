@@ -50,6 +50,8 @@
 		D079137D2574F65B007B9767 /* genMockTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockTasks.swift */; };
 		D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
+		D07913BF257768E9007B9767 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913BE257768E9007B9767 /* TabContainer.swift */; };
+		D07913C925776963007B9767 /* TabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913C825776963007B9767 /* TabIcon.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
 		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
@@ -148,6 +150,8 @@
 		D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iDeserveWidget.intentdefinition; sourceTree = "<group>"; };
 		D079133A2574F198007B9767 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D079133C2574F198007B9767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D07913BE257768E9007B9767 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
+		D07913C825776963007B9767 /* TabIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIcon.swift; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
 		D08988A2254671E60032BA96 /* EditGoalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalPage.swift; sourceTree = "<group>"; };
 		D08988A7254672390032BA96 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 		D010269D2524306400653A52 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D07913BD257768DA007B9767 /* Tab */,
 				D0F3B01D2563D2F3008B6EBB /* SwipeCell */,
 				D0F3AFFD25636A36008B6EBB /* TaskItem.swift */,
 				D08988B6254685C70032BA96 /* TaskForm */,
@@ -357,6 +362,15 @@
 				D079133C2574F198007B9767 /* Info.plist */,
 			);
 			path = iDeserveWidget;
+			sourceTree = "<group>";
+		};
+		D07913BD257768DA007B9767 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				D07913BE257768E9007B9767 /* TabContainer.swift */,
+				D07913C825776963007B9767 /* TabIcon.swift */,
+			);
+			path = Tab;
 			sourceTree = "<group>";
 		};
 		D08988B6254685C70032BA96 /* TaskForm */ = {
@@ -572,6 +586,7 @@
 				D08988B2254685A60032BA96 /* TaskForm.swift in Sources */,
 				D03B57C7253D471A00DC107F /* saveContext.swift in Sources */,
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
+				D07913BF257768E9007B9767 /* TabContainer.swift in Sources */,
 				D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
@@ -579,6 +594,7 @@
 				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
 				D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
+				D07913C925776963007B9767 /* TabIcon.swift in Sources */,
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
 				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
