@@ -23,7 +23,7 @@ struct TaskItem: View {
 
     var taskGoal: some View {
         Text(task.goalName)
-            .font(.system(size: 10))
+            .font(.hiraginoSansGb16Pt2)
             .fontWeight(.bold)
             .padding(.horizontal, 12)
             .padding(.vertical, 4)

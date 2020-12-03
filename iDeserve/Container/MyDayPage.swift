@@ -36,6 +36,7 @@ struct MyDayPage: View {
             .fontWeight(.bold)
             .padding(.leading, 30.0)
             .foregroundColor(.myBlack)
+            .padding(/*@START_MENU_TOKEN@*/.vertical, 20.0/*@END_MENU_TOKEN@*/)
     }
 
     var body: some View {
