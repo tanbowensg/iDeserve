@@ -23,7 +23,7 @@ struct TaskItem: View {
 
     var taskGoal: some View {
         Text(task.goalName)
-            .font(.hiraginoSansGb16Pt2)
+            .font(.system(size: 10))
             .fontWeight(.bold)
             .padding(.horizontal, 12)
             .padding(.vertical, 4)
@@ -53,6 +53,7 @@ struct TaskItem: View {
         VStack(alignment: .leading, spacing: 5) {
             task.goalName != "" ? taskGoal : nil
             Text(task.name)
+                .font(.hiraginoSansGb16Pt2)
                 .font(.system(size: 14))
                 .fontWeight(.bold)
                 .frame(height: 24.0)
