@@ -10,7 +10,12 @@ import CoreData
 
 struct MyDayPage: View {
     @EnvironmentObject var gs: GlobalStore
+    @State var offsetY: Double = 0
+    @State var shouldOpenSheet = false
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
+    @State var taskCache = TaskState(nil)
+    
+    let scrollThreshold = 100
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
@@ -23,10 +28,6 @@ struct MyDayPage: View {
     }
     
     var uncompletedTasks: [Task] {
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
         return tasks.filter{ return !$0.done }
     }
     
@@ -36,36 +37,53 @@ struct MyDayPage: View {
             .fontWeight(.bold)
             .padding(.leading, 30.0)
             .foregroundColor(.myBlack)
-            .padding(/*@START_MENU_TOKEN@*/.vertical, 20.0/*@END_MENU_TOKEN@*/)
+            .padding(.vertical, 20.0)
+    }
+    
+    func onOffsetChange (_ offset: CGFloat) -> Void {
+        offsetY = Double(offset)
+        print(offsetY)
+        if (offsetY >= Double(scrollThreshold)) {
+            shouldOpenSheet = true
+        }
     }
 
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading) {
-                header("今天的任务")
-                ForEach (uncompletedTasks, id: \.id) { task in
-                    TaskItem(
-                        task: TaskState(task),
-                        onCompleteTask: {
-                            self.gs.taskStore.completeTask(task)
-                        },
-                        onRemoveTask: {
-                            self.gs.taskStore.removeTask(task)
-                        }
-                    )
+        ZStack(alignment: .top) {
+            Text("下拉创建任务")
+                .opacity(Double(offsetY / 100))
+                .sheet(isPresented: $shouldOpenSheet, content: {
+                    GoalTasksSheet(taskState: $taskCache)
+                })
+            CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
+//               TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
+                VStack(alignment: .leading) {
+                    header("今天的任务")
+                    ForEach (uncompletedTasks, id: \.id) { task in
+                        TaskItem(
+                            task: TaskState(task),
+                            onCompleteTask: {
+                                self.gs.taskStore.completeTask(task)
+                            },
+                            onRemoveTask: {
+                                self.gs.taskStore.removeTask(task)
+                            }
+                        )
+                    }
+                    header("完成的任务")
+                    ForEach (completedTasks, id: \.id) { task in
+                        TaskItem(
+                            task: TaskState(task),
+                            onCompleteTask: {
+                                self.gs.taskStore.completeTask(task)
+                            },
+                            onRemoveTask: {
+                                self.gs.taskStore.removeTask(task)
+                            }
+                        )
+                    }
                 }
-                header("完成的任务")
-                ForEach (completedTasks, id: \.id) { task in
-                    TaskItem(
-                        task: TaskState(task),
-                        onCompleteTask: {
-                            self.gs.taskStore.completeTask(task)
-                        },
-                        onRemoveTask: {
-                            self.gs.taskStore.removeTask(task)
-                        }
-                    )
-                }
+                    .animation(.easeInOut)
             }
         }
     }

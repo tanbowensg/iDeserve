@@ -68,6 +68,7 @@
 		D0EE5486255944680091302D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE5485255944680091302D /* TaskStore.swift */; };
 		D0EE548B255A61F80091302D /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548A255A61F80091302D /* RecordStore.swift */; };
 		D0EE5490255A6D140091302D /* RewardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548F255A6D140091302D /* RewardStore.swift */; };
+		D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */; };
 		D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
 		D0F3B00325636C4B008B6EBB /* genMockTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockTasks.swift */; };
 		D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
@@ -170,6 +171,7 @@
 		D0EE5485255944680091302D /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		D0EE548A255A61F80091302D /* RecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStore.swift; sourceTree = "<group>"; };
 		D0EE548F255A6D140091302D /* RewardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardStore.swift; sourceTree = "<group>"; };
+		D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		D0F3AFFD25636A36008B6EBB /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		D0F3B00225636C4B008B6EBB /* genMockTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genMockTasks.swift; sourceTree = "<group>"; };
 		D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeWrapper.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
 				D08988AC254680BC0032BA96 /* GoalRow.swift */,
 				D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */,
+				D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
+				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
 				D0EE5486255944680091302D /* TaskStore.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
