@@ -18,10 +18,43 @@ struct MyDayPage: View {
         return request
    }
     
+    var completedTasks: [Task] {
+        tasks.filter{ return $0.done }
+    }
+    
+    var uncompletedTasks: [Task] {
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
+        return tasks.filter{ return !$0.done }
+    }
+    
+    func header(_ text: String) -> some View {
+        Text(text)
+            .font(.hiraginoSansGb14Pt2)
+            .fontWeight(.bold)
+            .padding(.leading, 30.0)
+            .foregroundColor(.myBlack)
+    }
+
     var body: some View {
         ScrollView {
-            LazyVStack {
-                ForEach (tasks, id: \.id) { task in
+            LazyVStack(alignment: .leading) {
+                header("今天的任务")
+                ForEach (uncompletedTasks, id: \.id) { task in
+                    TaskItem(
+                        task: TaskState(task),
+                        onCompleteTask: {
+                            self.gs.taskStore.completeTask(task)
+                        },
+                        onRemoveTask: {
+                            self.gs.taskStore.removeTask(task)
+                        }
+                    )
+                }
+                header("完成的任务")
+                ForEach (completedTasks, id: \.id) { task in
                     TaskItem(
                         task: TaskState(task),
                         onCompleteTask: {

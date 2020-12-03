@@ -59,6 +59,9 @@
 		D08988B2254685A60032BA96 /* TaskForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988B1254685A60032BA96 /* TaskForm.swift */; };
 		D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */; };
 		D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
+		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
+		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
+		D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
 		D0EE547C255908C80091302D /* GlobalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE547B255908C80091302D /* GlobalStore.swift */; };
 		D0EE548125591D1C0091302D /* GoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548025591D1C0091302D /* GoalStore.swift */; };
 		D0EE5486255944680091302D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE5485255944680091302D /* TaskStore.swift */; };
@@ -159,6 +162,8 @@
 		D08988B1254685A60032BA96 /* TaskForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskForm.swift; sourceTree = "<group>"; };
 		D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTasksSheet.swift; sourceTree = "<group>"; };
 		D08988DD2546BDDC0032BA96 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
+		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W6.otf"; sourceTree = "<group>"; };
 		D0EE547B255908C80091302D /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
 		D0EE548025591D1C0091302D /* GoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStore.swift; sourceTree = "<group>"; };
 		D0EE5485255944680091302D /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
@@ -245,6 +250,7 @@
 		D01026602524241F00653A52 /* iDeserve */ = {
 			isa = PBXGroup;
 			children = (
+				D0D23CD92578883200AAFE27 /* Fonts */,
 				D0036E00252C6AE500E4005B /* Tool */,
 				D04BB015252AC7EB0088912A /* Container */,
 				D01026A7252430CE00653A52 /* Store */,
@@ -293,6 +299,7 @@
 				D0036DD4252C56CD00E4005B /* Color.swift */,
 				D06806A52531939D008DE678 /* RepeatFrequency.swift */,
 				D08988A7254672390032BA96 /* Difficulty.swift */,
+				D0D23CD3257882A700AAFE27 /* Font.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -388,6 +395,14 @@
 				D04BB01E252AC8330088912A /* TabWapper.swift */,
 			);
 			path = Tab;
+			sourceTree = "<group>";
+		};
+		D0D23CD92578883200AAFE27 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D0F3B01D2563D2F3008B6EBB /* SwipeCell */ = {
@@ -531,6 +546,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
 				D01026692524242000653A52 /* Preview Assets.xcassets in Resources */,
 				D01026662524242000653A52 /* Assets.xcassets in Resources */,
 			);
@@ -555,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D079133B2574F198007B9767 /* Assets.xcassets in Resources */,
+				D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +594,7 @@
 				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
 				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
+				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
 				D0EE5486255944680091302D /* TaskStore.swift in Sources */,
