@@ -18,6 +18,12 @@ final class CoreDataContainer {
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "iDeserve")
+        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.iDeserve")!
+        let storeURL = containerURL.appendingPathComponent("iDeserve.sqlite")
+
+        let description = NSPersistentStoreDescription(url: storeURL)
+        container.persistentStoreDescriptions = [description]
+
         container.loadPersistentStores { description, error in
             if let error = error {
                 print("coreData加载失败")
