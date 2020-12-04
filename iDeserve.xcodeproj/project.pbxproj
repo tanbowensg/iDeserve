@@ -259,13 +259,13 @@
 			isa = PBXGroup;
 			children = (
 				D0D23CD92578883200AAFE27 /* Fonts */,
-				D079139D257748F2007B9767 /* iDeserveRelease.entitlements */,
 				D0036E00252C6AE500E4005B /* Tool */,
 				D04BB015252AC7EB0088912A /* Container */,
 				D01026A7252430CE00653A52 /* Store */,
 				D010269D2524306400653A52 /* Components */,
 				D010268F2524243B00653A52 /* Interface */,
 				D01026612524241F00653A52 /* iDeserveApp.swift */,
+				D079139D257748F2007B9767 /* iDeserveRelease.entitlements */,
 				D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */,
 				D01026652524242000653A52 /* Assets.xcassets */,
 				D010266A2524242000653A52 /* Info.plist */,
