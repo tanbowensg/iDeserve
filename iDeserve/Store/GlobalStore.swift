@@ -12,7 +12,7 @@ import CoreData
 final class GlobalStore: ObservableObject {
     var moc = CoreDataContainer.shared.context
     static var shared = GlobalStore()
-
+    var coreDataContainer = CoreDataContainer.shared
     var pointsStore = PointsStore.shared
     var goalStore = GoalStore.shared
     var taskStore = TaskStore.shared

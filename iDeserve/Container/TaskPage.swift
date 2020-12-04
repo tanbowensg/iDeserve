@@ -25,7 +25,9 @@ struct TaskPage: View {
 
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
-        request.sortDescriptors = []
+        request.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Goal.pos, ascending: true)
+        ]
         return request
    }
 
@@ -80,19 +82,12 @@ struct TaskPage: View {
 struct DragRelocateDelegate: DropDelegate {
     let item: Goal
 //    @Binding var listData: [Goal]
+//    var goals: [Goal]
     @Binding var current: Goal?
 
     func dropEntered(info: DropInfo) {
         print("drop进入")
         print(item.name)
-//        if item != current {
-//            let from = listData.firstIndex(of: current!)!
-//            let to = listData.firstIndex(of: item)!
-//            if listData[to].id != current!.id {
-//                listData.move(fromOffsets: IndexSet(integer: from),
-//                    toOffset: to > from ? to + 1 : to)
-//            }
-//        }
     }
 
     func dropUpdated(info: DropInfo) -> DropProposal? {
@@ -102,7 +97,24 @@ struct DragRelocateDelegate: DropDelegate {
 
     func performDrop(info: DropInfo) -> Bool {
         print("drop了")
+        
+        if item.id != current?.id && current != nil {
+//            let from = goals.firstIndex(of: current!)!
+//            let to = goals.firstIndex(of: item)!
+            let newPos = item.pos - 1
+            print(newPos)
+            current!.pos = newPos
+            
+            GlobalStore.shared.coreDataContainer.saveContext()
+            
+//            if listData[to].id != current!.id {
+//                listData.move(fromOffsets: IndexSet(integer: from),
+//                    toOffset: to > from ? to + 1 : to)
+//            }
+        }
+
         self.current = nil
+
         return true
     }
 }
