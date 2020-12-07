@@ -18,6 +18,7 @@
 		D01026742524242100653A52 /* iDeserveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026732524242100653A52 /* iDeserveTests.swift */; };
 		D010267F2524242100653A52 /* iDeserveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010267E2524242100653A52 /* iDeserveUITests.swift */; };
 		D01026A02524308300653A52 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010269F2524308300653A52 /* TaskRow.swift */; };
+		D030B6B2257E0A8900967015 /* resetGoalPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030B6B1257E0A8900967015 /* resetGoalPos.swift */; };
 		D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D03B57C7253D471A00DC107F /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
 		D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57CB253D8B4900DC107F /* RecordPage.swift */; };
@@ -137,6 +138,7 @@
 		D010267E2524242100653A52 /* iDeserveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveUITests.swift; sourceTree = "<group>"; };
 		D01026802524242100653A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D010269F2524308300653A52 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		D030B6B1257E0A8900967015 /* resetGoalPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetGoalPos.swift; sourceTree = "<group>"; };
 		D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDeserve.xcdatamodel; sourceTree = "<group>"; };
 		D03B57C6253D471A00DC107F /* saveContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveContext.swift; sourceTree = "<group>"; };
 		D03B57CB253D8B4900DC107F /* RecordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPage.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				D03B57C6253D471A00DC107F /* saveContext.swift */,
 				D0F3B00225636C4B008B6EBB /* genMockTasks.swift */,
 				D0F3B0352563F836008B6EBB /* emptyFunc.swift */,
+				D030B6B1257E0A8900967015 /* resetGoalPos.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
+				D030B6B2257E0A8900967015 /* resetGoalPos.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,

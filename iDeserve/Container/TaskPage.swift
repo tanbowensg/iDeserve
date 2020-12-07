@@ -51,7 +51,7 @@ struct TaskPage: View {
                             self.draggedGoal = goal
                             return NSItemProvider(object: goal.id!.uuidString as NSString)
                         }
-                        .onDrop(of: [UTType.text], delegate: DragRelocateDelegate(item: goal, current: $draggedGoal))
+                        .onDrop(of: [UTType.text], delegate: DragRelocateDelegate(item: goal, goals: goals, current: $draggedGoal))
                     }
 //                    无用，纯粹为了在任务更新时刷新目标列表
                     Text(self.refreshing ? "" : "")
@@ -81,36 +81,41 @@ struct TaskPage: View {
 
 struct DragRelocateDelegate: DropDelegate {
     let item: Goal
-//    @Binding var listData: [Goal]
-//    var goals: [Goal]
+    var goals: FetchedResults<Goal>
     @Binding var current: Goal?
+    
+    func moveBefore() {
+        let itemIndex = Int(goals.firstIndex(of: item)!)
+        var beforePos: Int
+        if itemIndex == 0 {
+            beforePos = 0
+        } else {
+            beforePos = Int(goals[itemIndex - 1].pos)
+        }
+
+        let newPos = (Int(item.pos) + beforePos) / 2
+        print("newPos:\(newPos)")
+//        万一pos值用尽的应急方案
+        if (current!.pos == Int16(newPos)) {
+            resetGoalPos()
+            moveBefore()
+            return
+        } else {
+            current!.pos = Int16(newPos)
+            GlobalStore.shared.coreDataContainer.saveContext()
+        }
+    }
 
     func dropEntered(info: DropInfo) {
-        print("drop进入")
-        print(item.name)
     }
 
     func dropUpdated(info: DropInfo) -> DropProposal? {
-//        print("更新")
         return DropProposal(operation: .move)
     }
 
     func performDrop(info: DropInfo) -> Bool {
-        print("drop了")
-        
         if item.id != current?.id && current != nil {
-//            let from = goals.firstIndex(of: current!)!
-//            let to = goals.firstIndex(of: item)!
-            let newPos = item.pos - 1
-            print(newPos)
-            current!.pos = newPos
-            
-            GlobalStore.shared.coreDataContainer.saveContext()
-            
-//            if listData[to].id != current!.id {
-//                listData.move(fromOffsets: IndexSet(integer: from),
-//                    toOffset: to > from ? to + 1 : to)
-//            }
+            moveBefore()
         }
 
         self.current = nil
