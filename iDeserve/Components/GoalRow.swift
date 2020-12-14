@@ -68,7 +68,6 @@ struct GoalRow: View {
             shouldExpand ? self.taskList : nil
         }
         .frame(minHeight: shouldExpand ? nil : GOAL_ROW_HEIGHT)
-        .background(Color.red)
     }
 }
 //
