@@ -89,8 +89,11 @@ struct DragRelocateDelegate: DropDelegate {
     @Binding var current: Goal?
     @Binding var forceCollapse: Bool
     
+    var itemIndex: Int {
+        return Int(goals.firstIndex(of: item)!)
+    }
+    
     func moveBefore() {
-        let itemIndex = Int(goals.firstIndex(of: item)!)
         var beforePos: Int
         if itemIndex == 0 {
             beforePos = 0
@@ -113,7 +116,6 @@ struct DragRelocateDelegate: DropDelegate {
     }
     
     func moveAfter() {
-        let itemIndex = Int(goals.firstIndex(of: item)!)
         var afterPos: Int
         if itemIndex == goals.count - 1 {
             afterPos = MAX_POS
@@ -139,14 +141,20 @@ struct DragRelocateDelegate: DropDelegate {
     }
 
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        print(info.location)
         return DropProposal(operation: .move)
     }
 
     func performDrop(info: DropInfo) -> Bool {
         if item.id != current?.id && current != nil {
-//            moveBefore()
-            moveAfter()
+            let y = info.location.y
+            let remainder = y.truncatingRemainder(dividingBy: GOAL_ROW_HEIGHT)
+            if remainder < GOAL_ROW_HEIGHT / 2 {
+                print("目前在:\(item.name!) 上面")
+                moveBefore()
+            } else {
+                print("目前在:\(item.name!) 下面")
+                moveBefore()
+            }
         }
 
         self.current = nil

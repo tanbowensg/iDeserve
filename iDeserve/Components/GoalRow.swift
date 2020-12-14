@@ -63,11 +63,12 @@ struct GoalRow: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             self.goalRow
             shouldExpand ? self.taskList : nil
-            Spacer()
         }
+        .frame(minHeight: shouldExpand ? nil : GOAL_ROW_HEIGHT)
+        .background(Color.red)
     }
 }
 //

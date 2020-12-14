@@ -6,5 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
 
 let MAX_POS = 32767
+
+let GOAL_ROW_HEIGHT: CGFloat = 40
