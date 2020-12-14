@@ -9,10 +9,19 @@ import SwiftUI
 
 struct GoalRow: View {
     @ObservedObject var goal: Goal
+    var forceCollapse: Bool?
+    var isBeingDragged: Bool?
     var onCompleteTask: (_ task: Task) -> Void
     var onRemoveTask: (_ task: Task) -> Void
     
+//    仅表示组建内部的展开状态
     @State var isExpanded = true
+
+//    这里主要是处理拖拽的情况。进入拖拽的时候会强制收起所有的goalrow。
+//    但如果当前goalrow正在被拖拽，那就免受强制收起影响
+    var shouldExpand: Bool {
+        return isExpanded && (forceCollapse != true || isBeingDragged == true)
+    }
     
     var tasks: [Task] {
         return self.goal.tasks?.allObjects as! [Task]
@@ -22,7 +31,7 @@ struct GoalRow: View {
         return Button(action: {
             isExpanded.toggle()
         }) {
-            Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+            Image(systemName: shouldExpand ? "chevron.down" : "chevron.right")
         }
     }
     
@@ -56,7 +65,7 @@ struct GoalRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             self.goalRow
-            isExpanded ? self.taskList : nil
+            shouldExpand ? self.taskList : nil
             Spacer()
         }
     }

@@ -16,6 +16,8 @@ struct TaskPage: View {
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     
     @State private var draggedGoal: Goal?
+//    强制所有goalRow收起
+    @State private var forceCollapse = false
     
 //    为了在任务更新的时候重新渲染目标
 //    https://stackoverflow.com/questions/58643094/how-to-update-fetchrequest-when-a-related-entity-changes-in-swiftui
@@ -37,6 +39,8 @@ struct TaskPage: View {
                     ForEach (goals, id: \.id) { goal in
                         GoalRow(
                             goal: goal,
+                            forceCollapse: forceCollapse,
+                            isBeingDragged: draggedGoal?.id == goal.id,
                             onCompleteTask: { task in
                                 gs.taskStore.completeTask(task)
                             },
@@ -48,9 +52,10 @@ struct TaskPage: View {
                         .onDrag {
                             print("开始拖")
                             self.draggedGoal = goal
+                            self.forceCollapse = true
                             return NSItemProvider(object: goal.id!.uuidString as NSString)
                         }
-                        .onDrop(of: [UTType.text], delegate: DragRelocateDelegate(item: goal, goals: goals, current: $draggedGoal))
+                        .onDrop(of: [UTType.text], delegate: DragRelocateDelegate(item: goal, goals: goals, current: $draggedGoal, forceCollapse: $forceCollapse))
                     }
 //                    无用，纯粹为了在任务更新时刷新目标列表
                     Text(self.refreshing ? "" : "")
@@ -82,6 +87,7 @@ struct DragRelocateDelegate: DropDelegate {
     let item: Goal
     var goals: FetchedResults<Goal>
     @Binding var current: Goal?
+    @Binding var forceCollapse: Bool
     
     func moveBefore() {
         let itemIndex = Int(goals.firstIndex(of: item)!)
@@ -144,6 +150,7 @@ struct DragRelocateDelegate: DropDelegate {
         }
 
         self.current = nil
+        self.forceCollapse = false
 
         return true
     }
