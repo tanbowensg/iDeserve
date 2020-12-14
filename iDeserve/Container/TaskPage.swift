@@ -16,7 +16,6 @@ struct TaskPage: View {
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     
     @State private var draggedGoal: Goal?
-    @State var dragOver = false
     
 //    为了在任务更新的时候重新渲染目标
 //    https://stackoverflow.com/questions/58643094/how-to-update-fetchrequest-when-a-related-entity-changes-in-swiftui
@@ -94,28 +93,54 @@ struct DragRelocateDelegate: DropDelegate {
         }
 
         let newPos = (Int(item.pos) + beforePos) / 2
-        print("newPos:\(newPos)")
+        print("前一个newPos:\(newPos)")
+
 //        万一pos值用尽的应急方案
         if (current!.pos == Int16(newPos)) {
             resetGoalPos()
             moveBefore()
             return
-        } else {
-            current!.pos = Int16(newPos)
-            GlobalStore.shared.coreDataContainer.saveContext()
         }
+
+        current!.pos = Int16(newPos)
+        GlobalStore.shared.coreDataContainer.saveContext()
+    }
+    
+    func moveAfter() {
+        let itemIndex = Int(goals.firstIndex(of: item)!)
+        var afterPos: Int
+        if itemIndex == goals.count - 1 {
+            afterPos = MAX_POS
+        } else {
+            afterPos = Int(goals[itemIndex + 1].pos)
+        }
+
+        let newPos = (Int(item.pos) + afterPos) / 2
+        print("后一个newPos:\(newPos)")
+
+//        万一pos值用尽的应急方案
+        if (current!.pos == Int16(newPos)) {
+            resetGoalPos()
+            moveAfter()
+            return
+        }
+
+        current!.pos = Int16(newPos)
+        GlobalStore.shared.coreDataContainer.saveContext()
     }
 
     func dropEntered(info: DropInfo) {
     }
 
     func dropUpdated(info: DropInfo) -> DropProposal? {
+        print(info.location)
         return DropProposal(operation: .move)
     }
 
     func performDrop(info: DropInfo) -> Bool {
         if item.id != current?.id && current != nil {
-            moveBefore()
+//            moveBefore()
+            moveAfter()
         }
 
         self.current = nil

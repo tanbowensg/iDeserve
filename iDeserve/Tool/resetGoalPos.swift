@@ -19,7 +19,7 @@ func resetGoalPos () {
     do {
         let fetchedGoals = try moc.fetch(goalRequest) as! [Goal]
         fetchedGoals.indices.forEach {i in
-            fetchedGoals[i].pos = Int16((i + 1) * 32767 / fetchedGoals.count)
+            fetchedGoals[i].pos = Int16((i + 1) * MAX_POS / fetchedGoals.count)
         }
         try moc.save()
     } catch {
