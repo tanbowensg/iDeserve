@@ -186,7 +186,24 @@ struct TaskForm: View {
             Divider()
         }
     }
-    
+
+    var taskMyDay: some View {
+        Group {
+            HStack() {
+                Button(action: {
+                    taskState.starred.toggle()
+                }) {
+                    Image(systemName: "sun.max")
+                    taskState.starred ? Text("从“我的一天”移除") : Text("添加到“我的一天”")
+                    Spacer()
+                }
+            }
+                .padding(.horizontal, 16.0)
+                .foregroundColor(.g80)
+            Divider()
+        }
+    }
+
     var cancelDdlBtn: some View {
         Button(action: {
             taskState.hasDdl = false
@@ -247,6 +264,7 @@ struct TaskForm: View {
                 showGoal ? taskGoal : nil
                 taskDifficulty
                 taskTimeCost
+                taskMyDay
                 taskRepeat
                 taskDdl
                 Text("子任务")
@@ -257,7 +275,7 @@ struct TaskForm: View {
                     TextField("备注", text: $taskState.desc)
                         .padding(.horizontal, 16.0)
                 }
-                Spacer()
+//                Spacer()
             }
                 .frame(
                     minWidth: 0,

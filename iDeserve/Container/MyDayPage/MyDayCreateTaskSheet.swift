@@ -11,7 +11,15 @@ struct MyDayCreateTaskSheet: View {
     @EnvironmentObject var gs: GlobalStore
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    @State var newTaskState = TaskState(nil)
+    @State var newTaskState: TaskState
+    
+    init() {
+//        从我的一天创建的任务默认添加到我的一天
+        var taskState = TaskState(nil)
+        taskState.starred = true
+        _newTaskState = State(initialValue: taskState)
+//        print(newTaskState)
+    }
     
     func saveTask () {
         if newTaskState.name == "" {
