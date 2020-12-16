@@ -6,14 +6,70 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TaskForm: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
+
     @Binding var taskState: TaskState
+    var showGoal: Bool = false
     
+    @State var isShowGoalPicker = false
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
     @State var isShowDifficultyPicker = false
 
+    
+    static var goalRequest: NSFetchRequest<Goal> {
+        let request: NSFetchRequest<Goal> = Goal.fetchRequest()
+        request.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Goal.pos, ascending: true)
+        ]
+        return request
+    }
+
+    var taskGoal: some View {
+        Group {
+            Button(action: {
+                isShowGoalPicker.toggle()
+            }) {
+                HStack() {
+                    Image(systemName: "repeat")
+                    Text("所属目标")
+                    Spacer()
+                    Text(taskState.goalName)
+                }
+                    .padding(.horizontal, 16.0)
+                    .foregroundColor(.g80)
+            }
+            Divider()
+        }
+    }
+    
+//    目标选择器
+    var goalPicker: some View {
+        return VStack(alignment: .trailing, spacing: 0) {
+            Button(action: {
+                isShowGoalPicker.toggle()
+            }) {
+                Text("完成")
+            }
+                .padding(8)
+            Picker("所属目标", selection: $taskState.goalId) {
+                ForEach(goals, id: \.id) {goalOption in
+                    Text(goalOption.name!).tag(goalOption)
+                }
+                .labelsHidden()
+            }
+            .onChange (of: taskState.goalId) { selectedGoalId in
+                let targetGoal = goals.first{ $0.id == selectedGoalId }
+                taskState.goalName = targetGoal!.name!
+             }
+        }
+            .background(Color.g10)
+    }
+ 
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $taskState.name)
@@ -188,6 +244,7 @@ struct TaskForm: View {
         ZStack(alignment: .bottom) {
             VStack(alignment: .leading) {
                 taskTitle
+                showGoal ? taskGoal : nil
                 taskDifficulty
                 taskTimeCost
                 taskRepeat
@@ -209,6 +266,7 @@ struct TaskForm: View {
                     maxHeight: .infinity,
                     alignment: .topLeading
                 )
+            Popup(isVisible: isShowGoalPicker, content: goalPicker)
             Popup(isVisible: isShowRepeatPicker, content: repeatPicker)
             Popup(isVisible: isShowDatePicker, content: datePicker)
             Popup(isVisible: isShowDifficultyPicker, content: difficultyPicker)

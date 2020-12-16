@@ -19,6 +19,7 @@ struct TaskState: Hashable, Identifiable {
     var done: Bool = false
     var starred: Bool = false
     var goalName: String = ""
+    var goalId: UUID?
     var timeCost: String = "1"
     var difficulty: Difficulty = .easy
     
@@ -40,8 +41,11 @@ struct TaskState: Hashable, Identifiable {
             done = existTask.done
             starred = existTask.starred
             goalName = existTask.parent?.name ?? ""
+            goalId = existTask.parent?.id
             timeCost = String(existTask.timeCost)
             difficulty = Difficulty(rawValue: Int(existTask.difficulty)) ?? .easy
+            goalName = existTask.parent?.name ?? ""
+            goalId = existTask.parent?.id
             
             if let existDdl = existTask.ddl {
                 ddl = existDdl

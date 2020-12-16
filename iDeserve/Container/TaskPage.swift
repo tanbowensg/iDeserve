@@ -86,19 +86,11 @@ struct TaskPage: View {
                     }
                 }
                 VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        NavigationLink(destination: EditTaskPage(originTask: nil)) {
-                            CreateButton()
-                        }
-                        NavigationLink(destination: EditGoalPage(initGoal: nil)) {
-                            CreateButton()
-                        }
+                    NavigationLink(destination: EditGoalPage(initGoal: nil)) {
+                        CreateButton()
                     }
-                    .padding(.trailing, 16)
                 }
-                .padding(.bottom, 16)
+                .padding([.trailing, .bottom], 16)
             }
             .navigationBarHidden(true)
         }

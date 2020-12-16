@@ -13,7 +13,6 @@ struct MyDayPage: View {
     @State var offsetY: Double = 0
     @State var shouldOpenSheet = false
     @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
-    @State var taskCache = TaskState(nil)
     
     let scrollThreshold = 100
 
@@ -53,7 +52,7 @@ struct MyDayPage: View {
             Text("下拉创建任务")
                 .opacity(Double(offsetY / 100))
                 .sheet(isPresented: $shouldOpenSheet, content: {
-                    GoalTasksSheet(taskState: $taskCache)
+                    MyDayCreateTaskSheet()
                 })
             CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
 //               TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明

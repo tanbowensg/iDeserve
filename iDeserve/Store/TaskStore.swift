@@ -25,7 +25,7 @@ final class TaskStore: ObservableObject {
             let fetchedTasks = try moc.fetch(taskRequest) as! [Task]
             if fetchedTasks.count == 0 {
     //            若不存在这个任务，就创建它
-                return self.createTask(taskState: taskState, goal: goal)
+                return self.createTask(taskState: taskState)
             } else {
     //            若存在任务就直接修改已存在任务
                 return self.updateTask(targetTask: fetchedTasks[0], taskState: taskState)
@@ -47,6 +47,7 @@ final class TaskStore: ObservableObject {
         targetTask.desc = taskState.desc
         targetTask.done = taskState.done
         targetTask.starred = taskState.starred
+        targetTask.starred = taskState.starred
         targetTask.difficulty = Int16(taskState.difficulty.rawValue)
         targetTask.timeCost = Int16(taskState.timeCost) ?? 1
     
@@ -59,14 +60,24 @@ final class TaskStore: ObservableObject {
         return targetTask
     }
 
-    func createTask (
-        taskState: TaskState,
-        goal: Goal?
-    ) -> Task {
+    func createTask (taskState: TaskState) -> Task {
         let newTask = Task(context: self.moc)
         newTask.id = UUID()
-        newTask.parent = goal
+        
+        if taskState.goalId != nil {
+    //        首先根据uuid从coredata中看看有没有这个目标，把目标添加上去
+            let goalRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
+            goalRequest.predicate = NSPredicate(format: "%K == %@", "id", taskState.goalId! as CVarArg)
 
+            do {
+                let fetchedGoals = try moc.fetch(goalRequest) as! [Goal]
+                if fetchedGoals.count > 0 {
+                    newTask.parent = fetchedGoals[0]
+                }
+            } catch {
+                print("保存任务的时候没有从coredata中找到对应的目标")
+            }
+        }
         return self.updateTask(targetTask: newTask, taskState: taskState)
     }
     

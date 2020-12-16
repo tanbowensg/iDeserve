@@ -61,7 +61,7 @@ struct EditTaskPage: View {
         if originTask?.id != nil {
             let _ = gs.taskStore.updateTask(targetTask: originTask!, taskState: taskState)
         } else {
-            let _ = gs.taskStore.createTask(taskState: taskState, goal: goal)
+            let _ = gs.taskStore.createTask(taskState: taskState)
         }
     }
 }
