@@ -12,7 +12,7 @@ struct MyDayPage: View {
     @EnvironmentObject var gs: GlobalStore
     @State var offsetY: Double = 0
     @State var shouldOpenSheet = false
-    @FetchRequest(fetchRequest: taskRequest) var tasks: FetchedResults<Task>
+    @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
     
     let scrollThreshold = 100
 
@@ -22,12 +22,16 @@ struct MyDayPage: View {
         return request
    }
     
+    var myDayTasks: [Task] {
+        return filterMyDayTask(allTasks)
+    }
+    
     var completedTasks: [Task] {
-        tasks.filter{ return $0.done }
+        myDayTasks.filter{ return $0.done }
     }
     
     var uncompletedTasks: [Task] {
-        return tasks.filter{ return !$0.done }
+        myDayTasks.filter{ return !$0.done }
     }
     
     func header(_ text: String) -> some View {

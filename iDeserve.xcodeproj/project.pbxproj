@@ -14,6 +14,7 @@
 		D0036E0A252C840D00E4005B /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E09252C840D00E4005B /* Popup.swift */; };
 		D007CFB525873512008CA76D /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
 		D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */; };
+		D00CB089258A2FF900460D06 /* filterMyDayTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */; };
 		D01026622524241F00653A52 /* iDeserveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026612524241F00653A52 /* iDeserveApp.swift */; };
 		D01026662524242000653A52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
 		D01026692524242000653A52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026682524242000653A52 /* Preview Assets.xcassets */; };
@@ -130,6 +131,7 @@
 		D0036E09252C840D00E4005B /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		D007CFB425873512008CA76D /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayCreateTaskSheet.swift; sourceTree = "<group>"; };
+		D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterMyDayTasks.swift; sourceTree = "<group>"; };
 		D010265E2524241F00653A52 /* iDeserve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDeserve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01026612524241F00653A52 /* iDeserveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveApp.swift; sourceTree = "<group>"; };
 		D01026652524242000653A52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				D03C5D13255CE88400778EEE /* MyDayPage.swift */,
 				D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */,
+				D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */,
 			);
 			path = MyDayPage;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				D01026A02524308300653A52 /* TaskRow.swift in Sources */,
 				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
+				D00CB089258A2FF900460D06 /* filterMyDayTasks.swift in Sources */,
 				D0F3B0362563F836008B6EBB /* emptyFunc.swift in Sources */,
 				D0EE5490255A6D140091302D /* RewardStore.swift in Sources */,
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
