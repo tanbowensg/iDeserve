@@ -43,7 +43,7 @@ struct TaskItem: View {
 
     var taskInfo: some View {
         return HStack {
-            task.starred ? Image(systemName: "star.fill") : nil
+            task.starred ? Image(systemName: "sun.max") : nil
             task.repeatFrequency != RepeatFrequency.never ? Image(systemName: "repeat") : nil
             task.hasDdl ? ddlText : nil
         }
@@ -84,7 +84,12 @@ struct TaskItem: View {
     }
 
     var body: some View {
-        SwipeWrapper(content: taskItem, height: 82, onLeftSwipe: onCompleteTask, onRightSwipe: onRemoveTask)
+        SwipeWrapper(
+            content: taskItem,
+            height: 82,
+            onLeftSwipe: onCompleteTask,
+            onRightSwipe: onRemoveTask
+        )
     }
 }
 

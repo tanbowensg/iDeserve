@@ -290,7 +290,6 @@
 				D010266A2524242000653A52 /* Info.plist */,
 				D01026672524242000653A52 /* Preview Content */,
 				D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */,
-				D007CFB425873512008CA76D /* constants.swift */,
 			);
 			path = iDeserve;
 			sourceTree = "<group>";
@@ -324,6 +323,7 @@
 		D010268F2524243B00653A52 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D007CFB425873512008CA76D /* constants.swift */,
 				D08988DD2546BDDC0032BA96 /* TaskState.swift */,
 				D03F21AD25270EC40055BF25 /* Record.swift */,
 				D0036DD4252C56CD00E4005B /* Color.swift */,

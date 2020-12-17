@@ -10,4 +10,6 @@ import SwiftUI
 
 let MAX_POS = 32767
 
-let GOAL_ROW_HEIGHT: CGFloat = 22
+let TASK_ROW_HEIGHT: CGFloat = 82
+
+let GOAL_ROW_HEIGHT: CGFloat = 32
