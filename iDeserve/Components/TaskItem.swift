@@ -10,6 +10,7 @@ import CoreData
 
 struct TaskItem: View {
     var task: TaskState
+    var disabled: Bool?
     var onCompleteTask: () -> Void
     var onRemoveTask: () -> Void
 

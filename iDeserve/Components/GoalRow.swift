@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct GoalRow: View {
+    @EnvironmentObject var gs: GlobalStore
     @ObservedObject var goal: Goal
     var forceCollapse: Bool?
     var isBeingDragged: Bool?
-    var onCompleteTask: (_ task: Task) -> Void
-    var onRemoveTask: (_ task: Task) -> Void
     
 //    仅表示组建内部的展开状态
     @State var isExpanded = true
@@ -47,20 +46,29 @@ struct GoalRow: View {
     }
     
     var taskList: some View {
-        List {
+        VStack {
             ForEach(tasks, id: \.id) { task in
                 NavigationLink(destination: EditTaskPage(originTask: task)) {
-                    TaskRow(task: TaskState(task), onLongPress: onCompleteTask)
+                    TaskItem(
+                        task: TaskState(task),
+                        onCompleteTask: {
+                            self.gs.taskStore.completeTask(task)
+                            
+                        },
+                        onRemoveTask: {
+                            self.gs.taskStore.removeTask(task)
+                        }
+                    )
                 }
             }
-            .onDelete(perform: { indexSet in
-                for index in indexSet {
-                    let task = tasks[index]
-                    onRemoveTask(task)
-                }
-            })
+//            .onDelete(perform: { indexSet in
+//                for index in indexSet {
+//                    let task = tasks[index]
+//                    onRemoveTask(task)
+//                }
+//            })
         }
-        .frame(height: CGFloat(tasks.count * 64))
+//        .frame(height: CGFloat(tasks.count) * TASK_ROW_HEIGHT)
     }
 
     var body: some View {
@@ -69,7 +77,8 @@ struct GoalRow: View {
             shouldExpand && tasks.count > 0 ? self.taskList : nil
         }
         .frame(minHeight: shouldExpand ? nil : GOAL_ROW_HEIGHT)
-        .background(Color.white.opacity(0))
+        .animation(.default)
+        .background(Color.white)
     }
 }
 //

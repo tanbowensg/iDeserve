@@ -47,19 +47,12 @@ struct TaskPage: View {
         NavigationView() {
             ZStack(alignment: .bottomTrailing) {
                 ZStack(alignment: .top) {
-                    highlightIndex != nil ? reorderDivider : nil
                     ScrollView {
                         ForEach (goals, id: \.id) { goal in
                             GoalRow(
                                 goal: goal,
                                 forceCollapse: forceCollapse,
-                                isBeingDragged: draggedGoal?.id == goal.id,
-                                onCompleteTask: { task in
-                                    gs.taskStore.completeTask(task)
-                                },
-                                onRemoveTask: { task in
-                                    gs.taskStore.removeTask(task)
-                                }
+                                isBeingDragged: draggedGoal?.id == goal.id
                             )
                             .overlay(draggedGoal?.id == goal.id ? Color.white.opacity(0.8) : Color.clear)
                             .onDrag {
@@ -84,6 +77,15 @@ struct TaskPage: View {
                     .onReceive(self.didSave) { _ in
                         self.refreshing.toggle()
                     }
+                    .onDrop(
+                        of: [UTType.text],
+                        delegate: DropOutsideDelegate(
+                            current: $draggedGoal,
+                            forceCollapse: $forceCollapse,
+                            highlightIndex: $highlightIndex
+                        )
+                    )
+                    highlightIndex != nil ? reorderDivider : nil
                 }
                 VStack {
                     NavigationLink(destination: EditGoalPage(initGoal: nil)) {
@@ -140,6 +142,7 @@ struct DragRelocateDelegate: DropDelegate {
     }
     
     func dropEntered(info: DropInfo) {
+        print("dropEntered")
         updateHighlight(info.location.y)
     }
     
@@ -149,9 +152,11 @@ struct DragRelocateDelegate: DropDelegate {
     }
     
     func dropExited(info: DropInfo) {
+        print("dropExited")
     }
 
     func performDrop(info: DropInfo) -> Bool {
+        print("performDrop")
         if item.id != current?.id && current != nil {
             let y = info.location.y
             var newPos = caculateNewPos(Int(y))
@@ -168,7 +173,18 @@ struct DragRelocateDelegate: DropDelegate {
         self.current = nil
         self.forceCollapse = false
         self.highlightIndex = nil
+        return true
+    }
+}
+struct DropOutsideDelegate: DropDelegate {
+    @Binding var current: Goal?
+    @Binding var forceCollapse: Bool
+    @Binding var highlightIndex: Int?
         
+    func performDrop(info: DropInfo) -> Bool {
+        current = nil
+        forceCollapse = false
+        highlightIndex = nil
         return true
     }
 }

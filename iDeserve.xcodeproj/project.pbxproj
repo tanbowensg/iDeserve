@@ -63,6 +63,7 @@
 		D08988B2254685A60032BA96 /* TaskForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988B1254685A60032BA96 /* TaskForm.swift */; };
 		D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */; };
 		D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
+		D09688DE258B303900E41751 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09688DD258B303800E41751 /* TaskRow.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
 		D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -175,6 +176,7 @@
 		D08988B1254685A60032BA96 /* TaskForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskForm.swift; sourceTree = "<group>"; };
 		D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTasksSheet.swift; sourceTree = "<group>"; };
 		D08988DD2546BDDC0032BA96 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
+		D09688DD258B303800E41751 /* TaskRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W6.otf"; sourceTree = "<group>"; };
 		D0EE547B255908C80091302D /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				D08988B6254685C70032BA96 /* TaskForm */,
 				D010269F2524308300653A52 /* TaskRow.swift */,
 				D0036DC7252B0B5900E4005B /* CreateButton.swift */,
+				D09688DD258B303800E41751 /* TaskRow.swift */,
 				D0036E09252C840D00E4005B /* Popup.swift */,
 				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
 				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
@@ -638,6 +641,7 @@
 				D08988B2254685A60032BA96 /* TaskForm.swift in Sources */,
 				D03B57C7253D471A00DC107F /* saveContext.swift in Sources */,
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
+				D09688DE258B303900E41751 /* TaskRow.swift in Sources */,
 				D07913BF257768E9007B9767 /* TabContainer.swift in Sources */,
 				D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */,
 				D007CFB525873512008CA76D /* constants.swift in Sources */,

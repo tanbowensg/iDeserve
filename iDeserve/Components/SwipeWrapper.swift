@@ -50,6 +50,10 @@ struct SwipeWrapper<Content: View>: View {
         content
             .animation(.default)
     }
+    
+    var background: some View {
+        return offsetX > 0 ? leftSlotBg : rightSlotBg
+    }
 
     var leftSlot: some View {
         Text("搞定")
@@ -99,7 +103,7 @@ struct SwipeWrapper<Content: View>: View {
             offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
             offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil
         }
-            .background(offsetX >= 0 ? leftSlotBg : rightSlotBg)
+            .background(offsetX == 0 ? nil : background)
             .gesture(gesture)
 //        这是为了方式在删除元素的时候出现背景色
             .animation(.default)
