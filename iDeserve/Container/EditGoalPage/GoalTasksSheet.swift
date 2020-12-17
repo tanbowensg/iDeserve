@@ -13,15 +13,14 @@ struct GoalTasksSheet: View {
 
     var backBtn: some View {
         Button(action: {
-//            self.saveTask()
             self.presentationMode.wrappedValue.dismiss()
         }) {
             HStack {
                 Image(systemName: "chevron.left")
                     .padding(.leading, 16.0)
-                    
                 Text("返回")
             }
+                .frame(height: 30)
         }
     }
 

@@ -51,13 +51,11 @@ struct TaskPage: View {
                         ForEach (goals, id: \.id) { goal in
                             GoalRow(
                                 goal: goal,
-                                forceCollapse: forceCollapse,
-                                isBeingDragged: draggedGoal?.id == goal.id
+                                forceCollapse: forceCollapse
                             )
                             .overlay(draggedGoal?.id == goal.id ? Color.white.opacity(0.8) : Color.clear)
                             .onDrag {
                                 self.draggedGoal = goal
-                                self.forceCollapse = true
                                 return NSItemProvider(object: goal.id!.uuidString as NSString)
                             }
                             .onDrop(
@@ -143,6 +141,7 @@ struct DragRelocateDelegate: DropDelegate {
     
     func dropEntered(info: DropInfo) {
         print("dropEntered")
+        forceCollapse = true
         updateHighlight(info.location.y)
     }
     
@@ -156,23 +155,25 @@ struct DragRelocateDelegate: DropDelegate {
     }
 
     func performDrop(info: DropInfo) -> Bool {
-        print("performDrop")
-        if item.id != current?.id && current != nil {
-            let y = info.location.y
-            var newPos = caculateNewPos(Int(y))
-            
-            if (current!.pos == Int16(newPos)) {
-                resetGoalPos()
-                newPos = caculateNewPos(Int(y))
+        withAnimation {
+            print("performDrop")
+            if item.id != current?.id && current != nil {
+                let y = info.location.y
+                var newPos = caculateNewPos(Int(y))
+                
+                if (current!.pos == Int16(newPos)) {
+                    resetGoalPos()
+                    newPos = caculateNewPos(Int(y))
+                }
+                
+                current!.pos = Int16(newPos)
+                GlobalStore.shared.coreDataContainer.saveContext()
             }
             
-            current!.pos = Int16(newPos)
-            GlobalStore.shared.coreDataContainer.saveContext()
+            self.current = nil
+            self.forceCollapse = false
+            self.highlightIndex = nil
         }
-        
-        self.current = nil
-        self.forceCollapse = false
-        self.highlightIndex = nil
         return true
     }
 }

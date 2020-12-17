@@ -11,15 +11,13 @@ struct GoalRow: View {
     @EnvironmentObject var gs: GlobalStore
     @ObservedObject var goal: Goal
     var forceCollapse: Bool?
-    var isBeingDragged: Bool?
     
 //    仅表示组建内部的展开状态
     @State var isExpanded = true
 
 //    这里主要是处理拖拽的情况。进入拖拽的时候会强制收起所有的goalrow。
-//    但如果当前goalrow正在被拖拽，那就免受强制收起影响
     var shouldExpand: Bool {
-        return isExpanded && (forceCollapse != true || isBeingDragged == true)
+        return isExpanded && forceCollapse != true
     }
     
     var tasks: [Task] {
@@ -56,19 +54,15 @@ struct GoalRow: View {
                             
                         },
                         onRemoveTask: {
-                            self.gs.taskStore.removeTask(task)
+                            withAnimation {
+                                self.gs.taskStore.removeTask(task)
+                            }
                         }
                     )
                 }
             }
-//            .onDelete(perform: { indexSet in
-//                for index in indexSet {
-//                    let task = tasks[index]
-//                    onRemoveTask(task)
-//                }
-//            })
         }
-//        .frame(height: CGFloat(tasks.count) * TASK_ROW_HEIGHT)
+        .frame(height: shouldExpand ? nil : 0)
     }
 
     var body: some View {
@@ -77,7 +71,6 @@ struct GoalRow: View {
             shouldExpand && tasks.count > 0 ? self.taskList : nil
         }
         .frame(minHeight: shouldExpand ? nil : GOAL_ROW_HEIGHT)
-        .animation(.default)
         .background(Color.white)
     }
 }

@@ -39,6 +39,7 @@ struct MyDayCreateTaskSheet: View {
                     .padding(.leading, 16.0)
                     
                 Text("返回")
+                    .frame(height: 30)
             }
         }
     }

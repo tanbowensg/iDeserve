@@ -15,7 +15,8 @@ struct SwipeWrapper<Content: View>: View {
 
     @State var offsetX = 0
 
-    let slotWidth: Int = 100
+    let slotWidth: Int = 300
+    let threshold: Int = 100
     
 //    左右的背景颜色
     let leftSlotBg = Color.hospitalGreen
@@ -31,7 +32,7 @@ struct SwipeWrapper<Content: View>: View {
     
 //    已经达到了出发操作的阈值
     var isReachThreshold: Bool {
-        return abs(offsetX) >= slotWidth
+        return abs(offsetX) >= threshold
     }
 
     var leftSlotOffset: CGFloat {
@@ -48,7 +49,6 @@ struct SwipeWrapper<Content: View>: View {
     
     var customContent: some View {
         content
-            .animation(.default)
     }
     
     var background: some View {
@@ -57,22 +57,24 @@ struct SwipeWrapper<Content: View>: View {
 
     var leftSlot: some View {
         Text("搞定")
-            .padding(.horizontal, 30.0)
+            .multilineTextAlignment(.trailing)
+            .padding(.leading, CGFloat(slotWidth) - 30.0 - 40)
+            .padding(.trailing, 30.0)
             .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
             .foregroundColor(.g0)
             .background(leftSlotBg)
             .font(.system(size: isReachThreshold ? 18 : 14))
-            .animation(.default)
     }
     
     var rightSlot: some View {
         Text("删除")
-            .padding(.horizontal, 30.0)
+            .multilineTextAlignment(.leading)
+            .padding(.trailing, CGFloat(slotWidth) - 30.0 - 40)
+            .padding(.leading, 30.0)
             .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
             .foregroundColor(.g0)
             .background(rightSlotBg)
             .font(.system(size: isReachThreshold ? 18 : 14))
-            .animation(.default)
     }
 
     var gesture: some Gesture {
@@ -87,9 +89,9 @@ struct SwipeWrapper<Content: View>: View {
                 }
             }
             .onEnded { value in
-                if self.offsetX > self.slotWidth {
+                if self.offsetX > self.threshold {
                     self.onLeftSwipe?()
-                } else if -self.offsetX > self.slotWidth {
+                } else if -self.offsetX > self.threshold {
                     self.onRightSwipe?()
                 }
                 self.offsetX = .zero
@@ -103,10 +105,7 @@ struct SwipeWrapper<Content: View>: View {
             offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
             offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil
         }
-            .background(offsetX == 0 ? nil : background)
             .gesture(gesture)
-//        这是为了方式在删除元素的时候出现背景色
-            .animation(.default)
     }
     
     func viberate () -> Void {

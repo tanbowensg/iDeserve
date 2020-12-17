@@ -153,6 +153,7 @@ struct EditGoalPage: View {
                     
                 Text("返回")
             }
+            .frame(height: 30)
         }
     }
 
