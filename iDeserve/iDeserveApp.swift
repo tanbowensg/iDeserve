@@ -12,12 +12,22 @@ import CoreData
 func resetTaskStatus () {
     let moc = GlobalStore.shared.moc
     let taskRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Task")
-    
+    let frequencyDayMap: [RepeatFrequency: Int] = [
+        .daily: 1,
+        .monthly: 30,
+        .weekly: 7,
+        .never: 99999999,
+    ]
     do {
         let fetchedTasks = try moc.fetch(taskRequest) as! [Task]
         fetchedTasks.forEach {task in
             if (task.done && task.completeTimes < task.repeatTimes) {
-                task.done = false
+                let dateDiff = Calendar.current.dateComponents([.day], from: task.lastCompleteTime!, to: Date())
+                print(dateDiff)
+                let frequency = RepeatFrequency(rawValue: Int(task.repeatFrequency))!
+                if dateDiff.day! >= frequencyDayMap[frequency]! {
+                    task.done = false
+                }
             }
         }
         try moc.save()

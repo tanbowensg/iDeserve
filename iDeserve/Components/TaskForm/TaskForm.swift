@@ -42,6 +42,7 @@ struct TaskForm: View {
                 }
                     .padding(.horizontal, 16.0)
                     .foregroundColor(.g80)
+                    .frame(height: 40)
             }
             Divider()
         }
@@ -76,6 +77,7 @@ struct TaskForm: View {
                 .font(.title)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16.0)
+                .frame(height: 40)
             Divider()
         }
     }
@@ -93,6 +95,7 @@ struct TaskForm: View {
                 }
                     .padding(.horizontal, 16.0)
                     .foregroundColor(.g80)
+                .frame(height: 40)
             }
             Divider()
         }
@@ -130,6 +133,7 @@ struct TaskForm: View {
                     .keyboardType(.numberPad)
             }
                 .padding(.horizontal, 16.0)
+                .frame(height: 40)
             Divider()
         }
     }
@@ -145,6 +149,7 @@ struct TaskForm: View {
                     .keyboardType(.numberPad)
             }
                 .padding(.horizontal, 16.0)
+                .frame(height: 40)
             Divider()
         }
     }
@@ -162,6 +167,7 @@ struct TaskForm: View {
                 }
                     .padding(.horizontal, 16.0)
                     .foregroundColor(.g80)
+                    .frame(height: 40)
             }
             Divider()
             taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
@@ -183,6 +189,7 @@ struct TaskForm: View {
             }
                 .padding(.horizontal, 16.0)
                 .foregroundColor(.g80)
+                .frame(height: 40)
             Divider()
         }
     }
@@ -200,6 +207,7 @@ struct TaskForm: View {
             }
                 .padding(.horizontal, 16.0)
                 .foregroundColor(.g80)
+                .frame(height: 40)
             Divider()
         }
     }

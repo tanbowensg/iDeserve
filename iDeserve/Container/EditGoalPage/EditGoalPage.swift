@@ -47,6 +47,7 @@ struct EditGoalPage: View {
                 .font(.title)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16.0)
+                .frame(height: 40)
             Divider()
         }
     }
@@ -62,6 +63,7 @@ struct EditGoalPage: View {
                     .keyboardType(.numberPad)
             }
                 .padding(.horizontal, 16.0)
+                .frame(height: 40)
             Divider()
         }
     }
@@ -79,6 +81,7 @@ struct EditGoalPage: View {
                 }
                     .padding(.horizontal, 16.0)
                     .foregroundColor(.g80)
+                    .frame(height: 40)
             }
             Divider()
         }
@@ -119,6 +122,7 @@ struct EditGoalPage: View {
                         Image(systemName: "plus")
                         Text("添加任务")
                     }
+                    .frame(height: 30)
                 }
                     .sheet(isPresented: $isShowTaskSheet, onDismiss: addTask, content: {
                         GoalTasksSheet(taskState: $taskCache)
