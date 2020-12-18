@@ -53,7 +53,7 @@ struct TaskPage: View {
                                 goal: goal,
                                 forceCollapse: forceCollapse
                             )
-                            .overlay(draggedGoal?.id == goal.id ? Color.white.opacity(0.8) : Color.clear)
+                            .buttonStyle(PlainButtonStyle())
                             .onDrag {
                                 self.draggedGoal = goal
                                 return NSItemProvider(object: goal.id!.uuidString as NSString)

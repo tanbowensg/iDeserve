@@ -85,8 +85,16 @@ final class TaskStore: ObservableObject {
         task.done = true
         task.lastCompleteTime = Date()
         task.completeTimes = task.completeTimes + 1
+
+//        如果是无间隔重复任务，就把状态变回未完成
+        if (task.completeTimes < task.repeatTimes
+            && task.repeatFrequency == RepeatFrequency.unlimited.rawValue
+        ) {
+            task.done = false
+        }
+
         let taskValue = task.timeCost * task.difficulty
-//        加分
+//      加分
         self.pointsStore.add(Int(taskValue))
 //      插入完成记录
         self.recordStore.createRecord(name: task.name!, kind: .task, value: Int(taskValue))

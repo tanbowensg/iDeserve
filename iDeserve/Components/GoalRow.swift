@@ -60,8 +60,10 @@ struct GoalRow: View {
                         }
                     )
                 }
+                .buttonStyle(PlainButtonStyle())
             }
         }
+        
         .frame(height: shouldExpand ? nil : 0)
     }
 
