@@ -83,6 +83,7 @@ struct MyDayPage: View {
                     .animation(.easeInOut)
             }
         }
+        .navigationBarHidden(true)
     }
 }
 

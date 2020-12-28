@@ -54,9 +54,16 @@ struct TabWapper: View {
                 Spacer()
                 Text(String(pointsStore.points))
             }
-            
-            TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
-                tabContent
+            NavigationView{
+//                TabView {
+//                    MyDayPage().tabItem { TabIcon(tabInfo: tabs[0]) }
+//                    TaskPage().tabItem { TabIcon(tabInfo: tabs[1]) }
+//                    RewardPage().tabItem { TabIcon(tabInfo: tabs[2]) }
+//                    RecordPage().tabItem { TabIcon(tabInfo: tabs[3]) }
+//                }
+                TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
+                    tabContent
+                }
             }
         }
     }

@@ -37,6 +37,7 @@ struct RecordPage: View {
             }
                 .navigationTitle("历史记录")
         }
+        .navigationBarHidden(true)
     }
 
     func deleteRecord (at offsets: IndexSet) {
