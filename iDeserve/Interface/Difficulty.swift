@@ -13,13 +13,17 @@ enum Difficulty: Int, CaseIterable {
     case hard = 4
 }
 
+let DIFFICULTY_EASY_TEXT = NSLocalizedString("容易", comment: "")
+let DIFFICULTY_MEDIUM_TEXT = NSLocalizedString("普通", comment: "")
+let DIFFICULTY_HARD_TEXT = NSLocalizedString("挑战", comment: "")
+
 func getDifficultyText (_ value: Difficulty) -> String {
     switch value {
     case Difficulty.easy:
-        return "容易"
+        return DIFFICULTY_EASY_TEXT
     case Difficulty.medium:
-        return "普通"
+        return DIFFICULTY_MEDIUM_TEXT
     case Difficulty.hard:
-        return "挑战"
+        return DIFFICULTY_HARD_TEXT
     }
 }

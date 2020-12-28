@@ -16,19 +16,26 @@ enum RepeatFrequency: Int, CaseIterable {
     case twoDays = 5
 }
 
+let FREQUENCY_NEVER_TEXT = NSLocalizedString("从不", comment: "")
+let FREQUENCY_DAILY_TEXT = NSLocalizedString("每天", comment: "")
+let FREQUENCY_WEEKLY_TEXT = NSLocalizedString("每周", comment: "")
+let FREQUENCY_MONTHLY_TEXT = NSLocalizedString("每月", comment: "")
+let FREQUENCY_UNLIMITED_TEXT = NSLocalizedString("无间隔重复", comment: "")
+let FREQUENCY_TWODAYS_TEXT = NSLocalizedString("每隔一天", comment: "")
+
 func getRepeatFrequencyText (_ value: RepeatFrequency) -> String {
     switch value {
     case RepeatFrequency.never:
-        return "从不"
+        return FREQUENCY_NEVER_TEXT
     case RepeatFrequency.daily:
-        return "每天"
+        return FREQUENCY_DAILY_TEXT
     case RepeatFrequency.weekly:
-        return "每周"
+        return FREQUENCY_WEEKLY_TEXT
     case RepeatFrequency.monthly:
-        return "每月"
+        return FREQUENCY_MONTHLY_TEXT
     case RepeatFrequency.unlimited:
-        return "无间隔重复"
+        return FREQUENCY_UNLIMITED_TEXT
     case RepeatFrequency.twoDays:
-        return "每隔一天"
+        return FREQUENCY_TWODAYS_TEXT
     }
 }

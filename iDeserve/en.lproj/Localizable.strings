@@ -5,6 +5,9 @@
 "从“我的一天”移除" = "Remove from MyDay";
 
 /* No comment provided by engineer. */
+"从不" = "Never";
+
+/* No comment provided by engineer. */
 "返回" = "Back";
 
 /* No comment provided by engineer. */
@@ -23,7 +26,22 @@
 "奖励商店" = "Rewards";
 
 /* No comment provided by engineer. */
+"今天的任务" = "Today Tasks";
+
+/* No comment provided by engineer. */
 "历史记录" = "Records";
+
+/* No comment provided by engineer. */
+"每隔一天" = "Two Days";
+
+/* No comment provided by engineer. */
+"每天" = "Daily";
+
+/* No comment provided by engineer. */
+"每月" = "Monthly";
+
+/* No comment provided by engineer. */
+"每周" = "Weekly";
 
 /* No comment provided by engineer. */
 "目标标题" = "Goal Title";
@@ -35,10 +53,16 @@
 "难度" = "Difficulty";
 
 /* No comment provided by engineer. */
+"普通" = "Normal";
+
+/* No comment provided by engineer. */
 "任务" = "Task";
 
 /* No comment provided by engineer. */
 "任务标题" = "Task Title";
+
+/* No comment provided by engineer. */
+"容易" = "Easy";
 
 /* No comment provided by engineer. */
 "删除" = "Remove";
@@ -56,13 +80,22 @@
 "添加任务" = "Create Task";
 
 /* No comment provided by engineer. */
+"挑战" = "Challenge";
+
+/* No comment provided by engineer. */
 "完成" = "Complete";
+
+/* No comment provided by engineer. */
+"完成的任务" = "Completed Tasks";
 
 /* No comment provided by engineer. */
 "未知" = "unknown";
 
 /* No comment provided by engineer. */
 "我的一天" = "My Day";
+
+/* No comment provided by engineer. */
+"无间隔重复" = "Immediate";
 
 /* No comment provided by engineer. */
 "下拉创建任务" = "Swipe down to create task";
