@@ -29,11 +29,13 @@
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
 		D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* TaskPage.swift */; };
-		D04BB01F252AC8330088912A /* TabWapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* TabWapper.swift */; };
+		D04BB01F252AC8330088912A /* AppWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* AppWrapper.swift */; };
 		D04BB024252AC93B0088912A /* RewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB023252AC93B0088912A /* RewardPage.swift */; };
 		D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A025318E7F008DE678 /* EditRewardPage.swift */; };
 		D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
+		D07242722599C8BB00DCB674 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D07242702599C8BB00DCB674 /* Localizable.strings */; };
+		D07242782599E1ED00DCB674 /* i18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242772599E1ED00DCB674 /* i18n.swift */; };
 		D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
 		D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
 		D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913372574F198007B9767 /* iDeserveWidget.swift */; };
@@ -152,11 +154,13 @@
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		D042F195252D98DC00B08F97 /* RewardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardGrid.swift; sourceTree = "<group>"; };
 		D04BB016252AC7FB0088912A /* TaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPage.swift; sourceTree = "<group>"; };
-		D04BB01E252AC8330088912A /* TabWapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabWapper.swift; sourceTree = "<group>"; };
+		D04BB01E252AC8330088912A /* AppWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWrapper.swift; sourceTree = "<group>"; };
 		D04BB023252AC93B0088912A /* RewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPage.swift; sourceTree = "<group>"; };
 		D06806A025318E7F008DE678 /* EditRewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRewardPage.swift; sourceTree = "<group>"; };
 		D06806A52531939D008DE678 /* RepeatFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequency.swift; sourceTree = "<group>"; };
 		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D07242712599C8BB00DCB674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D07242772599E1ED00DCB674 /* i18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i18n.swift; sourceTree = "<group>"; };
 		D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iDeserveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07913322574F198007B9767 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D07913342574F198007B9767 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -288,8 +292,10 @@
 				D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */,
 				D01026652524242000653A52 /* Assets.xcassets */,
 				D010266A2524242000653A52 /* Info.plist */,
+				D07242702599C8BB00DCB674 /* Localizable.strings */,
 				D01026672524242000653A52 /* Preview Content */,
 				D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */,
+				D07242772599E1ED00DCB674 /* i18n.swift */,
 			);
 			path = iDeserve;
 			sourceTree = "<group>";
@@ -367,7 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				D00CB0792588B83300460D06 /* MyDayPage */,
-				D0D23CC22577969100AAFE27 /* Tab */,
+				D0D23CC22577969100AAFE27 /* AppWrapper */,
 				D08988CE2546A9D60032BA96 /* EditGoalPage */,
 				D04BB016252AC7FB0088912A /* TaskPage.swift */,
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
@@ -424,14 +430,14 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
-		D0D23CC22577969100AAFE27 /* Tab */ = {
+		D0D23CC22577969100AAFE27 /* AppWrapper */ = {
 			isa = PBXGroup;
 			children = (
 				D07913BE257768E9007B9767 /* TabContainer.swift */,
 				D07913C825776963007B9767 /* TabIcon.swift */,
-				D04BB01E252AC8330088912A /* TabWapper.swift */,
+				D04BB01E252AC8330088912A /* AppWrapper.swift */,
 			);
-			path = Tab;
+			path = AppWrapper;
 			sourceTree = "<group>";
 		};
 		D0D23CD92578883200AAFE27 /* Fonts */ = {
@@ -563,6 +569,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				ja,
 			);
 			mainGroup = D01026552524241F00653A52;
 			packageReferences = (
@@ -585,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
+				D07242722599C8BB00DCB674 /* Localizable.strings in Resources */,
 				D01026692524242000653A52 /* Preview Assets.xcassets in Resources */,
 				D01026662524242000653A52 /* Assets.xcassets in Resources */,
 			);
@@ -622,6 +631,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08988AD254680BC0032BA96 /* GoalRow.swift in Sources */,
+				D07242782599E1ED00DCB674 /* i18n.swift in Sources */,
 				D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */,
 				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
@@ -664,7 +674,7 @@
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D0EE547C255908C80091302D /* GlobalStore.swift in Sources */,
 				D0F3B0312563D3E3008B6EBB /* demo.swift in Sources */,
-				D04BB01F252AC8330088912A /* TabWapper.swift in Sources */,
+				D04BB01F252AC8330088912A /* AppWrapper.swift in Sources */,
 				D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */,
 				D0036E0A252C840D00E4005B /* Popup.swift in Sources */,
 				D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */,
@@ -731,6 +741,17 @@
 			targetProxy = D079133F2574F198007B9767 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D07242702599C8BB00DCB674 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D07242712599C8BB00DCB674 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D01026812524242100653A52 /* Debug */ = {

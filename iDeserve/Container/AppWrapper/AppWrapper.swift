@@ -1,5 +1,5 @@
 //
-//  Nav.swift
+//  AppWrapper.swift
 //  iDeserve
 //
 //  Created by 谈博文 on 2020/10/5.
@@ -15,17 +15,17 @@ enum TabPages: String {
     case record = "record"
 }
 
-struct TabWapper: View {
+struct AppWrapper: View {
     @EnvironmentObject var pointsStore: PointsStore
     
     @State var currentTab = TabPages.myDay
     
     var tabs: [TabInfo] {
         return [
-            TabInfo(id: TabPages.myDay.rawValue, title: "我的一天", systemImage: "sun.max", isActive: currentTab == .myDay),
-            TabInfo(id: TabPages.task.rawValue, title: "目标任务", systemImage: "list.dash", isActive: currentTab == .task),
-            TabInfo(id: TabPages.reward.rawValue, title: "奖励商店", systemImage: "gift.fill", isActive: currentTab == .reward),
-            TabInfo(id: TabPages.record.rawValue, title: "历史记录", systemImage: "clock", isActive: currentTab == .record)
+            TabInfo(id: TabPages.myDay.rawValue, title: MYDAY_TEXT, systemImage: "sun.max", isActive: currentTab == .myDay),
+            TabInfo(id: TabPages.task.rawValue, title: REWARD_STORE_TEXT, systemImage: "list.dash", isActive: currentTab == .task),
+            TabInfo(id: TabPages.reward.rawValue, title: GOAL_LIST_TEXT, systemImage: "gift.fill", isActive: currentTab == .reward),
+            TabInfo(id: TabPages.record.rawValue, title: RECORD_LIST_TEXT, systemImage: "clock", isActive: currentTab == .record)
         ]
     }
     
@@ -69,10 +69,10 @@ struct TabWapper: View {
     }
 }
 
-struct Tab_Previews: PreviewProvider {
+struct AppWrapper_Previews: PreviewProvider {
     static var previews: some View {
         VStack() {
-            TabWapper()
+            AppWrapper()
                 .environmentObject(PointsStore.shared)
         }
     }
