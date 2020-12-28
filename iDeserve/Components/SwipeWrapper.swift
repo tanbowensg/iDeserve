@@ -82,7 +82,15 @@ struct SwipeWrapper<Content: View>: View {
             .onChanged { value in
 //                缓存 isReachThreshold 最近一次状态
                 let lastIsReachThreshold = isReachThreshold
-                self.offsetX = Int(value.translation.width)
+                var newOffsetX = Int(value.translation.width)
+//                若没传相应的回调，就相当于禁用
+                if onLeftSwipe == nil {
+                    newOffsetX = max(0, newOffsetX)
+                }
+                if onRightSwipe == nil {
+                    newOffsetX = min(0, newOffsetX)
+                }
+                self.offsetX = newOffsetX
 //                如果两次状态不一致，就震动
                 if isReachThreshold != lastIsReachThreshold {
                     viberate()

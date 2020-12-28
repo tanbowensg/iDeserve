@@ -11,8 +11,8 @@ import CoreData
 struct TaskItem: View {
     var task: TaskState
     var disabled: Bool?
-    var onCompleteTask: () -> Void
-    var onRemoveTask: () -> Void
+    var onCompleteTask: (() -> Void)?
+    var onRemoveTask: (() -> Void)?
 
     var dateText: String? {
         return dateToString(task.ddl)

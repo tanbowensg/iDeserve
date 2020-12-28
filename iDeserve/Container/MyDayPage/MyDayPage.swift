@@ -76,13 +76,7 @@ struct MyDayPage: View {
                     header("完成的任务")
                     ForEach (completedTasks, id: \.id) { task in
                         TaskItem(
-                            task: TaskState(task),
-                            onCompleteTask: {
-                                self.gs.taskStore.completeTask(task)
-                            },
-                            onRemoveTask: {
-                                self.gs.taskStore.removeTask(task)
-                            }
+                            task: TaskState(task)
                         )
                     }
                 }
