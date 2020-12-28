@@ -17,7 +17,7 @@ let ddlThreshold = 7 * 24 * 3600
 func filterMyDayTask (_ tasks: FetchedResults<Task>) -> [Task] {
     return tasks.filter({(task: Task) in
         return task.starred
-            || (task.repeatFrequency != RepeatFrequency.never.rawValue && !task.done)
+            || task.repeatFrequency != RepeatFrequency.never.rawValue
             || (task.ddl != nil && Int(task.ddl!.timeIntervalSinceNow) < ddlThreshold)
     })
 }
