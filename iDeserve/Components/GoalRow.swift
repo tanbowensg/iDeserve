@@ -11,6 +11,9 @@ struct GoalRow: View {
     @EnvironmentObject var gs: GlobalStore
     @ObservedObject var goal: Goal
     var forceCollapse: Bool?
+
+    @State private var refreshing = false
+    var didSave =  NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
     
 //    仅表示组建内部的展开状态
     @State var isExpanded = true
@@ -62,9 +65,13 @@ struct GoalRow: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
+            //无用，纯粹为了在任务更新时刷新目标，否则 TaskItem 的 task 不会更新
+            Text(self.refreshing ? "" : "")
         }
-        
-        .frame(height: shouldExpand ? nil : 0)
+            .frame(height: shouldExpand ? nil : 0)
+            .onReceive(self.didSave) { _ in
+                self.refreshing.toggle()
+            }
     }
 
     var body: some View {
