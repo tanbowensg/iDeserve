@@ -127,14 +127,12 @@ struct EditGoalPage: View {
                     .sheet(isPresented: $isShowTaskSheet, onDismiss: addTask, content: {
                         GoalTasksSheet(taskState: $taskCache)
                     })
-                List {
-                    ForEach (tasks, id: \.id) { task in
-                        Button(action: {
-                            taskCache = task
-                            isShowTaskSheet.toggle()
-                        }) {
-                            TaskRow(task: task)
-                        }
+                ForEach (tasks, id: \.id) { task in
+                    Button(action: {
+                        taskCache = task
+                        isShowTaskSheet.toggle()
+                    }) {
+                        TaskItem(task: task)
                     }
                 }
             }
