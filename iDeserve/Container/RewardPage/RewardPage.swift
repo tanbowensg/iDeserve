@@ -28,7 +28,7 @@ struct RewardPage: View {
     
     func genRewardGrid(reward: Reward) -> some View {
         return NavigationLink(destination: EditRewardPage(initReward: reward)) {
-            RewardGrid(reward: reward, onLongPress: gs.rewardStore.claimReward)
+            RewardGrid(reward: reward)
                 .foregroundColor(.g80)
         }
     }
