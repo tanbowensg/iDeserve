@@ -37,19 +37,22 @@ struct RewardGrid: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 12.0) {
+        VStack(alignment: .center, spacing: 11.0) {
             Text(reward.name ?? "未知")
                 .font(.hiraginoSansGb14)
                 .fontWeight(.black)
                 .foregroundColor(.white)
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-                .frame(height: 14.0)
-            HStack(alignment: .center){
+            HStack(alignment: .center, spacing: 2){
                 Text(String(reward.value))
                     .font(.avenirBlack12)
                     .fontWeight(.black)
                     .foregroundColor(.rewardColor)
                     .frame(height: 16.0)
+                Image("NutIcon")
+                    .resizable()
+                    .frame(width: 14.0, height: 14.0)
+                    .padding(2.0)
             }
             .frame(height: 16.0)
             .padding(.vertical, 5.0)
@@ -58,8 +61,7 @@ struct RewardGrid: View {
             .cornerRadius(100)
             .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
         }
-        .padding([.leading, .bottom, .trailing], 14)
-        .padding(.top, 36.0)
+        .padding(14)
         .frame(height: 100)
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(Color.rewardColor)

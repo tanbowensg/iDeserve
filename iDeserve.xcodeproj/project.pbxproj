@@ -37,6 +37,7 @@
 		D07242722599C8BB00DCB674 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D07242702599C8BB00DCB674 /* Localizable.strings */; };
 		D07242782599E1ED00DCB674 /* i18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242772599E1ED00DCB674 /* i18n.swift */; };
 		D07242EF259C62A100DCB674 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D07242EE259C62A100DCB674 /* SwiftUICharts */; };
+		D07242FE25A1CA4400DCB674 /* RewardPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242FD25A1CA4400DCB674 /* RewardPageHeader.swift */; };
 		D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
 		D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
 		D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913372574F198007B9767 /* iDeserveWidget.swift */; };
@@ -162,6 +163,7 @@
 		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D07242712599C8BB00DCB674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D07242772599E1ED00DCB674 /* i18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i18n.swift; sourceTree = "<group>"; };
+		D07242FD25A1CA4400DCB674 /* RewardPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPageHeader.swift; sourceTree = "<group>"; };
 		D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iDeserveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07913322574F198007B9767 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D07913342574F198007B9767 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -390,6 +392,7 @@
 			children = (
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
+				D07242FD25A1CA4400DCB674 /* RewardPageHeader.swift */,
 			);
 			path = RewardPage;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */,
 				D0036E0A252C840D00E4005B /* Popup.swift in Sources */,
 				D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */,
+				D07242FE25A1CA4400DCB674 /* RewardPageHeader.swift in Sources */,
 				D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */,
 				D01026622524241F00653A52 /* iDeserveApp.swift in Sources */,
 			);
