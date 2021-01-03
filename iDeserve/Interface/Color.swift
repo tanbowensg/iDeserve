@@ -57,4 +57,5 @@ extension Color {
     public static var hospitalGreen = Color(UIColor(named: "hospitalGreen")!)
     public static var veryLightPink = Color(UIColor(named: "veryLightPink")!)
     public static var myBlack = Color(UIColor(named: "black")!)
+    public static var rewardColor = Color(UIColor(named: "rewardColor")!)
 }

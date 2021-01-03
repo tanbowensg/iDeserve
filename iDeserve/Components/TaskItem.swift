@@ -54,7 +54,7 @@ struct TaskItem: View {
         VStack(alignment: .leading, spacing: 5) {
             task.goalName != "" ? taskGoal : nil
             Text(task.name)
-                .font(.hiraginoSansGb16Pt2)
+                .font(.hiraginoSansGb16)
                 .font(.system(size: 14))
                 .fontWeight(.bold)
                 .frame(height: 24.0)
@@ -96,7 +96,7 @@ struct TaskItem: View {
 
 struct TaskItem_Previews: PreviewProvider {
     static var previews: some View {
-        let context = NSPersistentContainer(name: "iDeserve").viewContext
+        let context = CoreDataContainer.shared.context
         let tasks = genMockTasks(context)
         ScrollView {
             VStack(spacing: 16.0) {

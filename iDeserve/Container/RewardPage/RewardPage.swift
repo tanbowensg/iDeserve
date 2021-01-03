@@ -15,16 +15,12 @@ struct RewardPage: View {
 
     static var rewardRequest: NSFetchRequest<Reward> {
         let request: NSFetchRequest<Reward> = Reward.fetchRequest()
-        request.sortDescriptors = []
+        request.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Reward.value, ascending: true)
+        ]
         return request
    }
 
-    private var sortedRewards: [Reward] {
-        rewards.sorted { (r1, r2) -> Bool in
-            return r1.value > r2.value
-        }
-    }
-    
     private var columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -38,15 +34,15 @@ struct RewardPage: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
+        print(rewards)
+        return ZStack(alignment: .bottomTrailing) {
             ScrollView {
-                sortedRewards.count > 0 ? genRewardGrid(reward: sortedRewards[0]) : nil
                 LazyVGrid(
                     columns: columns,
                     alignment: .center,
                     spacing: 16
                 ) {
-                    ForEach (sortedRewards) { reward in
+                    ForEach(rewards, id: \.id) { (reward: Reward) in
                         genRewardGrid(reward: reward)
                     }
                 }
@@ -58,7 +54,7 @@ struct RewardPage: View {
                 HStack {
                     Spacer()
                     NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                            CreateButton()
+                        CreateButton()
                     }
                 }
                     .padding(.trailing, 16)
@@ -68,9 +64,3 @@ struct RewardPage: View {
             .navigationBarHidden(true)
     }
 }
-//
-//struct RewardPage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RewardPage()
-//    }
-//}

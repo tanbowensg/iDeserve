@@ -9,26 +9,30 @@ import Foundation
 import SwiftUI
 
 extension UIFont {
-  class var hiraginoSansGb16Pt2: UIFont {
-    return UIFont(name: "HiraginoSansGB-W6", size: 16.0)!
-  }
-  class var avenir14Pt4: UIFont {
-    return UIFont(name: "Avenir-Black", size: 14.0)!
-  }
-  class var avenir14Pt3: UIFont {
-    return UIFont(name: "Avenir-Black", size: 14.0)!
-  }
-  class var hiraginoSansGb14Pt2: UIFont {
-    return UIFont(name: "Hiragino-Sans-GB-W6", size: 14.0)!
-  }
-  class var hiraginoSansGb9Pt2: UIFont {
-    return UIFont(name: "HiraginoSansGB-W6", size: 9.0)!
-  }
+    class var hiraginoSansGb16Pt2: UIFont {
+        return UIFont(name: "HiraginoSansGB-W6", size: 16.0)!
+    }
+    class var avenir14Pt4: UIFont {
+        return UIFont(name: "Avenir-Black", size: 14.0)!
+    }
+    class var avenirBlack12: UIFont {
+        return UIFont(name: "Avenir-Black", size: 12.0)!
+    }
+    class var avenir14Pt3: UIFont {
+        return UIFont(name: "Avenir-Black", size: 14.0)!
+    }
+    class var hiraginoSansGb14Pt2: UIFont {
+        return UIFont(name: "Hiragino-Sans-GB-W6", size: 14.0)!
+    }
+    class var hiraginoSansGb9Pt2: UIFont {
+        return UIFont(name: "HiraginoSansGB-W6", size: 9.0)!
+    }
 }
 
 extension Font {
-    public static var hiraginoSansGb14Pt2 = Font(UIFont(name: "HiraginoSansGB-W6", size: 14.0)!)
-    public static var hiraginoSansGb16Pt2 = Font(UIFont(name: "HiraginoSansGB-W6", size: 16.0)!)
+    public static var hiraginoSansGb14 = Font(UIFont(name: "HiraginoSansGB-W6", size: 14.0)!)
+    public static var hiraginoSansGb16 = Font(UIFont(name: "HiraginoSansGB-W6", size: 16.0)!)
+    public static var avenirBlack12 = Font(UIFont(name: "Avenir-Black", size: 12.0)!)
 }
 
 import SwiftUI
@@ -42,12 +46,12 @@ struct RefreshableScrollView<Content: View>: View {
     var threshold: CGFloat = 80
     @Binding var refreshing: Bool
     let content: Content
-
+    
     init(height: CGFloat = 80, refreshing: Binding<Bool>, @ViewBuilder content: () -> Content) {
         self.threshold = height
         self._refreshing = refreshing
         self.content = content()
-
+        
     }
     
     var body: some View {
@@ -87,7 +91,7 @@ struct RefreshableScrollView<Content: View>: View {
                 // Crossing the threshold on the way up, we add a space at the top of the scrollview
                 if self.previousScrollOffset > self.threshold && self.scrollOffset <= self.threshold {
                     self.frozen = true
-
+                    
                 }
             } else {
                 // remove the sapce at the top of the scroll view
@@ -129,7 +133,7 @@ struct RefreshableScrollView<Content: View>: View {
                         ActivityRep()
                         Spacer()
                     }.frame(height: height).fixedSize()
-                        .offset(y: -height + (self.loading && self.frozen ? height : 0.0))
+                    .offset(y: -height + (self.loading && self.frozen ? height : 0.0))
                 } else {
                     Image(systemName: "arrow.down") // If not loading, show the arrow
                         .resizable()
@@ -165,19 +169,19 @@ struct RefreshableKeyTypes {
         case movingView
         case fixedView
     }
-
+    
     struct PrefData: Equatable {
         let vType: ViewType
         let bounds: CGRect
     }
-
+    
     struct PrefKey: PreferenceKey {
         static var defaultValue: [PrefData] = []
-
+        
         static func reduce(value: inout [PrefData], nextValue: () -> [PrefData]) {
             value.append(contentsOf: nextValue())
         }
-
+        
         typealias Value = [PrefData]
     }
 }

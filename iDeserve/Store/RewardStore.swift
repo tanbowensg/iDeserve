@@ -49,6 +49,7 @@ final class RewardStore: ObservableObject {
         cover: Data?
     ) {
         let newReward = Reward(context: self.moc)
+        newReward.id = UUID()
 
         self.updateReward(
             targetReward: newReward,

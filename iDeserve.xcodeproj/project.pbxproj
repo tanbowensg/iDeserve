@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,6 +36,7 @@
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
 		D07242722599C8BB00DCB674 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D07242702599C8BB00DCB674 /* Localizable.strings */; };
 		D07242782599E1ED00DCB674 /* i18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242772599E1ED00DCB674 /* i18n.swift */; };
+		D07242EF259C62A100DCB674 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D07242EE259C62A100DCB674 /* SwiftUICharts */; };
 		D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
 		D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
 		D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913372574F198007B9767 /* iDeserveWidget.swift */; };
@@ -52,7 +53,7 @@
 		D079137A2574F65B007B9767 /* dateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E01252C6AEF00E4005B /* dateToString.swift */; };
 		D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0352563F836008B6EBB /* emptyFunc.swift */; };
 		D079137C2574F65B007B9767 /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
-		D079137D2574F65B007B9767 /* genMockTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockTasks.swift */; };
+		D079137D2574F65B007B9767 /* genMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockData.swift */; };
 		D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
 		D07913BF257768E9007B9767 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913BE257768E9007B9767 /* TabContainer.swift */; };
@@ -78,7 +79,7 @@
 		D0F02A36257912840082CCB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
 		D0F02A3B2579162D0082CCB1 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */; };
 		D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
-		D0F3B00325636C4B008B6EBB /* genMockTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockTasks.swift */; };
+		D0F3B00325636C4B008B6EBB /* genMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockData.swift */; };
 		D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
 		D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B01E2563D307008B6EBB /* Slot.swift */; };
 		D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0262563D336008B6EBB /* SlidableModifier.swift */; };
@@ -189,7 +190,7 @@
 		D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		D0F02A28257901BA0082CCB1 /* iDeserveWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDeserveWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
 		D0F3AFFD25636A36008B6EBB /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
-		D0F3B00225636C4B008B6EBB /* genMockTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genMockTasks.swift; sourceTree = "<group>"; };
+		D0F3B00225636C4B008B6EBB /* genMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genMockData.swift; sourceTree = "<group>"; };
 		D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeWrapper.swift; sourceTree = "<group>"; };
 		D0F3B01E2563D307008B6EBB /* Slot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
 		D0F3B0262563D336008B6EBB /* SlidableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidableModifier.swift; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07242EF259C62A100DCB674 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +239,7 @@
 			children = (
 				D0036E01252C6AEF00E4005B /* dateToString.swift */,
 				D03B57C6253D471A00DC107F /* saveContext.swift */,
-				D0F3B00225636C4B008B6EBB /* genMockTasks.swift */,
+				D0F3B00225636C4B008B6EBB /* genMockData.swift */,
 				D0F3B0352563F836008B6EBB /* emptyFunc.swift */,
 			);
 			path = Tool;
@@ -372,16 +374,24 @@
 		D04BB015252AC7EB0088912A /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				D07242F425A1B68D00DCB674 /* RewardPage */,
 				D00CB0792588B83300460D06 /* MyDayPage */,
 				D0D23CC22577969100AAFE27 /* AppWrapper */,
 				D08988CE2546A9D60032BA96 /* EditGoalPage */,
 				D04BB016252AC7FB0088912A /* TaskPage.swift */,
-				D04BB023252AC93B0088912A /* RewardPage.swift */,
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
-				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		D07242F425A1B68D00DCB674 /* RewardPage */ = {
+			isa = PBXGroup;
+			children = (
+				D04BB023252AC93B0088912A /* RewardPage.swift */,
+				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
+			);
+			path = RewardPage;
 			sourceTree = "<group>";
 		};
 		D07913312574F198007B9767 /* Frameworks */ = {
@@ -479,6 +489,7 @@
 			);
 			name = iDeserve;
 			packageProductDependencies = (
+				D07242EE259C62A100DCB674 /* SwiftUICharts */,
 			);
 			productName = iDeserve;
 			productReference = D010265E2524241F00653A52 /* iDeserve.app */;
@@ -572,6 +583,7 @@
 			);
 			mainGroup = D01026552524241F00653A52;
 			packageReferences = (
+				D07242ED259C62A100DCB674 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = D010265F2524241F00653A52 /* Products */;
 			projectDirPath = "";
@@ -668,7 +680,7 @@
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
 				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
-				D0F3B00325636C4B008B6EBB /* genMockTasks.swift in Sources */,
+				D0F3B00325636C4B008B6EBB /* genMockData.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D0EE547C255908C80091302D /* GlobalStore.swift in Sources */,
 				D0F3B0312563D3E3008B6EBB /* demo.swift in Sources */,
@@ -716,7 +728,7 @@
 				D07913692574F632007B9767 /* TaskState.swift in Sources */,
 				D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */,
 				D07913582574F55C007B9767 /* TaskItem.swift in Sources */,
-				D079137D2574F65B007B9767 /* genMockTasks.swift in Sources */,
+				D079137D2574F65B007B9767 /* genMockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1093,6 +1105,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D07242ED259C62A100DCB674 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D07242EE259C62A100DCB674 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D07242ED259C62A100DCB674 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */ = {

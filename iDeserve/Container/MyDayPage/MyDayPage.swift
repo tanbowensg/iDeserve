@@ -36,7 +36,7 @@ struct MyDayPage: View {
     
     func header(_ text: String) -> some View {
         Text(text)
-            .font(.hiraginoSansGb14Pt2)
+            .font(.hiraginoSansGb14)
             .fontWeight(.bold)
             .padding(.leading, 30.0)
             .foregroundColor(.myBlack)
@@ -89,7 +89,7 @@ struct MyDayPage: View {
 
 struct MyDayPage_Previews: PreviewProvider {
     static var previews: some View {
-        let context = NSPersistentContainer(name: "iDeserve").viewContext
+        let context = CoreDataContainer.shared.context
         let _ = genMockTasks(context)
         MyDayPage()
             .environment(\.managedObjectContext, context)
