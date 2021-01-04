@@ -62,7 +62,7 @@ final class RewardStore: ObservableObject {
         )
     }
     
-    func claimReward (_ reward: Reward) {
+    func redeemReward (_ reward: Reward) {
         reward.isSoldout = true
 //        扣钱
         self.pointsStore.minus(Int(reward.value))

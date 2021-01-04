@@ -9,25 +9,8 @@ import SwiftUI
 import CoreData
 
 struct RewardGrid: View {
+    @EnvironmentObject var gs: GlobalStore
     @ObservedObject var reward: Reward
-    //    var onLongPress: ((_ reward: Reward) -> Void)?
-    
-    //    @GestureState var isDetectingLongPress = false
-    //    @State var completedLongPress = false
-    
-    //    var longPress: some Gesture {
-    //        LongPressGesture(minimumDuration: 0.8)
-    //            .updating($isDetectingLongPress) { currentstate, gestureState,
-    //                    transaction in
-    //                gestureState = currentstate
-    //                transaction.animation = Animation.easeIn(duration: 0.8)
-    //            }
-    //            .onEnded { finished in
-    //                print("长按结束了")
-    //                self.completedLongPress = finished
-    //                self.onLongPress?(reward)
-    //            }
-    //    }
     
     var cover: some View {
         Image(uiImage: UIImage(data: reward.cover!)!)
@@ -36,13 +19,10 @@ struct RewardGrid: View {
             .cornerRadius(16)
     }
     
-    var body: some View {
-        VStack(alignment: .center, spacing: 11.0) {
-            Text(reward.name ?? "未知")
-                .font(.hiraginoSansGb14)
-                .fontWeight(.black)
-                .foregroundColor(.white)
-                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+    var redeemButton: some View {
+        Button(action: {
+            gs.rewardStore.redeemReward(reward)
+        }) {
             HStack(alignment: .center, spacing: 2){
                 Text(String(reward.value))
                     .font(.avenirBlack12)
@@ -60,6 +40,18 @@ struct RewardGrid: View {
             .background(Color.white)
             .cornerRadius(100)
             .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
+        }
+            .buttonStyle(HighPriorityButtonStyle())
+    }
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 11.0) {
+            Text(reward.name ?? "未知")
+                .font(.hiraginoSansGb14)
+                .fontWeight(.black)
+                .foregroundColor(.white)
+                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+            redeemButton
         }
         .padding(14)
         .frame(height: 100)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RewardPageHeader: View {
-    @EnvironmentObject var pointsStore: PointsStore
+    var points: Int
 
     var body: some View {
         ZStack {
@@ -22,7 +22,7 @@ struct RewardPageHeader: View {
                     .resizable()
                     .padding(6)
                     .frame(width: 36.0, height: 36.0)
-                Text(String(pointsStore.points))
+                Text(String(points))
                     .font(.avenirBlack36)
                     .fontWeight(.bold)
                     .foregroundColor(.rewardColor)
@@ -41,7 +41,6 @@ struct RewardPageHeader: View {
 
 struct RewardPageHeader_Previews: PreviewProvider {
     static var previews: some View {
-        RewardPageHeader()
-            .environmentObject(PointsStore.shared)
+        RewardPageHeader(points: 888)
     }
 }

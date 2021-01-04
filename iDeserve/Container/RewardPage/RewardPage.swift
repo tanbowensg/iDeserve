@@ -29,14 +29,13 @@ struct RewardPage: View {
     func genRewardGrid(reward: Reward) -> some View {
         return NavigationLink(destination: EditRewardPage(initReward: reward)) {
             RewardGrid(reward: reward)
-                .foregroundColor(.g80)
         }
     }
 
     var body: some View {
         return
             VStack(spacing: 0.0) {
-                RewardPageHeader()
+                RewardPageHeader(points: gs.pointsStore.points)
                 ZStack(alignment: .bottomTrailing) {
                     ScrollView {
                         LazyVGrid(
