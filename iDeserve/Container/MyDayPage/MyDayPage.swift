@@ -50,6 +50,40 @@ struct MyDayPage: View {
             shouldOpenSheet = true
         }
     }
+    
+    var taskList: some View {
+//      TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
+        VStack(alignment: .leading) {
+            ForEach (uncompletedTasks, id: \.id) { task in
+                TaskItem(
+                    task: TaskState(task),
+                    onCompleteTask: {
+                        self.gs.taskStore.completeTask(task)
+                    }
+                )
+            }
+            ForEach (completedTasks, id: \.id) { task in
+                TaskItem(
+                    task: TaskState(task)
+                )
+            }
+            Text("").frame(maxWidth: .infinity)
+            Spacer()
+        }
+            .animation(.easeInOut)
+    }
+    
+    var emptyState: some View {
+        VStack(alignment: .center) {
+            Spacer()
+            Text("今天没有要做的事情哦！\n你可以下拉界面创建任务，\n或者把想做的任务添加到我的一天里！")
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32.0)
+                .frame(maxWidth: .infinity)
+                .lineSpacing(/*@START_MENU_TOKEN@*/8.0/*@END_MENU_TOKEN@*/)
+            Spacer()
+        }
+    }
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -59,28 +93,11 @@ struct MyDayPage: View {
                     MyDayCreateTaskSheet()
                 })
             CustomScrollView(showsIndicators: true, onOffsetChange: onOffsetChange) {
-//               TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
-                VStack(alignment: .leading) {
-                    ForEach (uncompletedTasks, id: \.id) { task in
-                        TaskItem(
-                            task: TaskState(task),
-                            onCompleteTask: {
-                                self.gs.taskStore.completeTask(task)
-                            }
-//                            onRemoveTask: {
-//                                self.gs.taskStore.removeTask(task)
-//                            }
-                        )
-                    }
-                    ForEach (completedTasks, id: \.id) { task in
-                        TaskItem(
-                            task: TaskState(task)
-                        )
-                    }
-                    Text("").frame(maxWidth: .infinity)
-                    Spacer()
+                if myDayTasks.count == 0 {
+                    emptyState
+                } else {
+                    taskList
                 }
-                    .animation(.easeInOut)
             }
         }
         .navigationBarHidden(true)
