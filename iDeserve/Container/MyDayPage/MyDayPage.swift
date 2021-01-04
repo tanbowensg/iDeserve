@@ -58,7 +58,7 @@ struct MyDayPage: View {
                 .sheet(isPresented: $shouldOpenSheet, content: {
                     MyDayCreateTaskSheet()
                 })
-            CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
+            CustomScrollView(showsIndicators: true, onOffsetChange: onOffsetChange) {
 //               TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
                 VStack(alignment: .leading) {
                     ForEach (uncompletedTasks, id: \.id) { task in
@@ -66,10 +66,10 @@ struct MyDayPage: View {
                             task: TaskState(task),
                             onCompleteTask: {
                                 self.gs.taskStore.completeTask(task)
-                            },
-                            onRemoveTask: {
-                                self.gs.taskStore.removeTask(task)
                             }
+//                            onRemoveTask: {
+//                                self.gs.taskStore.removeTask(task)
+//                            }
                         )
                     }
                     ForEach (completedTasks, id: \.id) { task in
@@ -77,6 +77,8 @@ struct MyDayPage: View {
                             task: TaskState(task)
                         )
                     }
+                    Text("").frame(maxWidth: .infinity)
+                    Spacer()
                 }
                     .animation(.easeInOut)
             }

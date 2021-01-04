@@ -85,10 +85,10 @@ struct SwipeWrapper<Content: View>: View {
                 var newOffsetX = Int(value.translation.width)
 //                若没传相应的回调，就相当于禁用
                 if onLeftSwipe == nil {
-                    newOffsetX = max(0, newOffsetX)
+                    newOffsetX = min(0, newOffsetX)
                 }
                 if onRightSwipe == nil {
-                    newOffsetX = min(0, newOffsetX)
+                    newOffsetX = max(0, newOffsetX)
                 }
                 self.offsetX = newOffsetX
 //                如果两次状态不一致，就震动
