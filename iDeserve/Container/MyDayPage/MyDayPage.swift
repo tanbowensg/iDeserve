@@ -61,7 +61,6 @@ struct MyDayPage: View {
             CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
 //               TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
                 VStack(alignment: .leading) {
-                    header(TODAY_TASK_TEXT)
                     ForEach (uncompletedTasks, id: \.id) { task in
                         TaskItem(
                             task: TaskState(task),
@@ -73,7 +72,6 @@ struct MyDayPage: View {
                             }
                         )
                     }
-                    header(COMPLETED_TASK_TEXT)
                     ForEach (completedTasks, id: \.id) { task in
                         TaskItem(
                             task: TaskState(task)

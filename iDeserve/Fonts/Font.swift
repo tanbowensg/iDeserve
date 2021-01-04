@@ -32,6 +32,7 @@ extension UIFont {
 extension Font {
     public static var hiraginoSansGb14 = Font(UIFont(name: "HiraginoSansGB-W6", size: 14.0)!)
     public static var hiraginoSansGb16 = Font(UIFont(name: "HiraginoSansGB-W6", size: 16.0)!)
+    public static var hiraginoSansGb26 = Font(UIFont(name: "HiraginoSansGB-W6", size: 26.0)!)
     public static var avenirBlack12 = Font(UIFont(name: "Avenir-Black", size: 12.0)!)
     public static var avenirBlack36 = Font(UIFont(name: "Avenir-Black", size: 36.0)!)
 }

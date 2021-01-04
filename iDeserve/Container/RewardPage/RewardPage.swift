@@ -34,35 +34,32 @@ struct RewardPage: View {
 
     var body: some View {
         return
-            VStack(spacing: 0.0) {
-                RewardPageHeader(points: gs.pointsStore.points)
-                ZStack(alignment: .bottomTrailing) {
-                    ScrollView {
-                        LazyVGrid(
-                            columns: columns,
-                            alignment: .center,
-                            spacing: 16
-                        ) {
-                            ForEach(rewards, id: \.id) { (reward: Reward) in
-                                genRewardGrid(reward: reward)
-                            }
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    LazyVGrid(
+                        columns: columns,
+                        alignment: .center,
+                        spacing: 16
+                    ) {
+                        ForEach(rewards, id: \.id) { (reward: Reward) in
+                            genRewardGrid(reward: reward)
                         }
-                        .padding(16)
                     }
-                    
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                                CreateButton()
-                            }
-                        }
-                        .padding(.trailing, 16)
-                    }
-                    .padding(.bottom, 16)
+                    .padding(16)
                 }
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: EditRewardPage(initReward: nil)) {
+                            CreateButton()
+                        }
+                    }
+                    .padding(.trailing, 16)
+                }
+                .padding(.bottom, 16)
             }
-                .navigationBarHidden(true)
+            .navigationBarHidden(true)
     }
 }
