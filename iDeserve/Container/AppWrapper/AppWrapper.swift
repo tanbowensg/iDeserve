@@ -16,8 +16,6 @@ enum TabPages: String {
 }
 
 struct AppWrapper: View {
-    @EnvironmentObject var pointsStore: PointsStore
-    
     @State var currentTab = TabPages.myDay
     
     var tabs: [TabInfo] {
@@ -49,21 +47,15 @@ struct AppWrapper: View {
     }
 
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text(String(pointsStore.points))
-            }
-            NavigationView{
+        NavigationView{
 //                TabView {
 //                    MyDayPage().tabItem { TabIcon(tabInfo: tabs[0]) }
 //                    TaskPage().tabItem { TabIcon(tabInfo: tabs[1]) }
 //                    RewardPage().tabItem { TabIcon(tabInfo: tabs[2]) }
 //                    RecordPage().tabItem { TabIcon(tabInfo: tabs[3]) }
 //                }
-                TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
-                    tabContent
-                }
+            TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
+                tabContent
             }
         }
     }
@@ -73,7 +65,6 @@ struct AppWrapper_Previews: PreviewProvider {
     static var previews: some View {
         VStack() {
             AppWrapper()
-                .environmentObject(PointsStore.shared)
         }
     }
 }

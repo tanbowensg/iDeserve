@@ -34,33 +34,36 @@ struct RewardPage: View {
     }
 
     var body: some View {
-        print(rewards)
-        return ZStack(alignment: .bottomTrailing) {
-            ScrollView {
-                LazyVGrid(
-                    columns: columns,
-                    alignment: .center,
-                    spacing: 16
-                ) {
-                    ForEach(rewards, id: \.id) { (reward: Reward) in
-                        genRewardGrid(reward: reward)
+        return
+            VStack(spacing: 0.0) {
+                RewardPageHeader()
+                ZStack(alignment: .bottomTrailing) {
+                    ScrollView {
+                        LazyVGrid(
+                            columns: columns,
+                            alignment: .center,
+                            spacing: 16
+                        ) {
+                            ForEach(rewards, id: \.id) { (reward: Reward) in
+                                genRewardGrid(reward: reward)
+                            }
+                        }
+                        .padding(16)
                     }
-                }
-                .padding(16)
-            }
-            
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                        CreateButton()
+                    
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            NavigationLink(destination: EditRewardPage(initReward: nil)) {
+                                CreateButton()
+                            }
+                        }
+                        .padding(.trailing, 16)
                     }
+                    .padding(.bottom, 16)
                 }
-                    .padding(.trailing, 16)
             }
-                .padding(.bottom, 16)
-        }
-            .navigationBarHidden(true)
+                .navigationBarHidden(true)
     }
 }
