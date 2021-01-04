@@ -18,7 +18,6 @@ struct MyDayCreateTaskSheet: View {
         var taskState = TaskState(nil)
         taskState.starred = true
         _newTaskState = State(initialValue: taskState)
-//        print(newTaskState)
     }
     
     func saveTask () {
@@ -51,17 +50,3 @@ struct MyDayCreateTaskSheet: View {
         }
     }
 }
-
-//struct GoalTasksSheetPreviewWrapper: View {
-//    @State var taskState = TaskState(nil)
-//
-//    var body: some View {
-//        GoalTasksSheet(taskState: $taskState)
-//    }
-//}
-//
-//struct GoalTasksSheet_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GoalTasksSheetPreviewWrapper()
-//    }
-//}

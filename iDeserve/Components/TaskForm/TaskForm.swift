@@ -20,13 +20,19 @@ struct TaskForm: View {
     @State var isShowDatePicker = false
     @State var isShowDifficultyPicker = false
 
-    
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
         request.sortDescriptors = [
             NSSortDescriptor(keyPath: \Goal.pos, ascending: true)
         ]
         return request
+    }
+    
+    func onAppear () {
+        if taskState.goalId == nil && goals.count > 0 {
+            taskState.goalId = goals[0].id!
+            taskState.goalName = goals[0].name!
+        }
     }
 
     var taskGoal: some View {
@@ -297,6 +303,7 @@ struct TaskForm: View {
             Popup(isVisible: isShowDatePicker, content: datePicker)
             Popup(isVisible: isShowDifficultyPicker, content: difficultyPicker)
         }
+            .onAppear(perform: onAppear)
     }
 }
 
