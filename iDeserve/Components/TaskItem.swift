@@ -21,6 +21,10 @@ struct TaskItem: View {
     var foregroundColor: Color {
          task.done ? Color.gray : Color.normalText
     }
+//    剩余的重复次数
+    var remainTimes: Int {
+        return Int(task.repeatTimes)! - task.completeTimes
+    }
 
     var taskGoal: some View {
         Text(task.goalName)
@@ -35,17 +39,25 @@ struct TaskItem: View {
     }
     
     var ddlText: some View {
-        Text("\(dateText!)截止")
-            .font(.system(size: 10))
+        Text("到\(dateText!)截止")
+            .font(.hiraginoSansGb9)
             .fontWeight(.bold)
-            .foregroundColor(Color.warning)
+            .foregroundColor(.remainTextColor)
+            .frame(height: 16.0)
+    }
+    
+    var remainTimesText: some View {
+        Text("还要做 \(remainTimes) 次")
+            .foregroundColor(.remainTextColor)
+            .fontWeight(.bold)
+            .font(.hiraginoSansGb9)
             .frame(height: 16.0)
     }
 
     var taskInfo: some View {
         return HStack {
             task.starred ? Image(systemName: "sun.max") : nil
-            task.repeatFrequency != RepeatFrequency.never ? Image(systemName: "repeat") : nil
+            remainTimes > 0 ? remainTimesText : nil
             task.hasDdl ? ddlText : nil
         }
     }
@@ -54,8 +66,7 @@ struct TaskItem: View {
         VStack(alignment: .leading, spacing: 5) {
             task.goalName != "" ? taskGoal : nil
             Text(task.name)
-                .font(.hiraginoSansGb16)
-                .font(.system(size: 14))
+                .font(.hiraginoSansGb12)
                 .fontWeight(.bold)
                 .frame(height: 24.0)
             taskInfo
@@ -63,10 +74,16 @@ struct TaskItem: View {
     }
     
     var taskValue: some View {
-        Text("+\(String(task.value))")
-            .font(.system(size: 14))
-            .fontWeight(.black)
-            .foregroundColor(Color.goldColor)
+        HStack(alignment: .center, spacing: 3.0) {
+            Text("+\(String(task.value))")
+                .font(.system(size: 14))
+                .fontWeight(.black)
+                .foregroundColor(Color.goldColor)
+            Image("NutIcon")
+                .resizable()
+                .frame(width: 16.0, height: 16.0)
+                .padding(/*@START_MENU_TOKEN@*/.all, 2.0/*@END_MENU_TOKEN@*/)
+        }
     }
     
     var taskItem: some View {

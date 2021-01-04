@@ -22,6 +22,7 @@ struct TaskState: Hashable, Identifiable {
     var goalId: UUID?
     var timeCost: String = "1"
     var difficulty: Difficulty = .easy
+    var completeTimes: Int = 0
     
     var value: Int {
         let time = Int(timeCost) ?? 1
@@ -46,6 +47,7 @@ struct TaskState: Hashable, Identifiable {
             difficulty = Difficulty(rawValue: Int(existTask.difficulty)) ?? .easy
             goalName = existTask.parent?.name ?? ""
             goalId = existTask.parent?.id
+            completeTimes = Int(existTask.completeTimes)
             
             if let existDdl = existTask.ddl {
                 ddl = existDdl

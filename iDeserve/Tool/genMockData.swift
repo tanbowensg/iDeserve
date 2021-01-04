@@ -22,6 +22,7 @@ func genMockTasks (_ context: NSManagedObjectContext) -> [Task] {
     normalTask.difficulty = Int16(Difficulty.easy.rawValue)
     normalTask.timeCost = Int16(1)
     repeatTask.repeatFrequency = 1
+    repeatTask.repeatTimes = 20
 
     let ddlTask = Task.init(context: context)
     ddlTask.id = UUID()

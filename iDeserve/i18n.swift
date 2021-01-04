@@ -14,3 +14,4 @@ let RECORD_LIST_TEXT = NSLocalizedString("历史记录", comment: "")
 
 let TODAY_TASK_TEXT = NSLocalizedString("今天的任务", comment: "")
 let COMPLETED_TASK_TEXT = NSLocalizedString("完成的任务", comment: "")
+
