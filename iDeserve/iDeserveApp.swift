@@ -13,7 +13,6 @@ struct iDeserveApp: App {
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
-        
         WindowGroup {
             ZStack {
                     Color.bg

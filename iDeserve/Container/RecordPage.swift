@@ -17,10 +17,25 @@ struct RecordPage: View {
         request.sortDescriptors = []
         return request
    }
+    
+    init () {
+    }
 
     var body: some View {
-        NavigationView() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let from = formatter.date(from: "2020-12-01 16:15")!
+        let to = Date()
+        
+        let rawStats = reduceRecords(
+            records: records.map{return $0},
+            from: from,
+            to: to
+        )
+        let dayStats = fillDayStats(dayStats: rawStats)
+        return NavigationView() {
             VStack {
+                CalendarLayout(dayStats: dayStats)
                 List {
                     ForEach (records) { record in
                         VStack {

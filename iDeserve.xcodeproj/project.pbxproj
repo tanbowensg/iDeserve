@@ -39,6 +39,9 @@
 		D07242EF259C62A100DCB674 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D07242EE259C62A100DCB674 /* SwiftUICharts */; };
 		D07242FE25A1CA4400DCB674 /* AppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242FD25A1CA4400DCB674 /* AppHeader.swift */; };
 		D072430425A2CCF200DCB674 /* HighPriorityButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072430325A2CCF200DCB674 /* HighPriorityButtonStyle.swift */; };
+		D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072432B25A30B6400DCB674 /* CalendarGrid.swift */; };
+		D072433625A30EC800DCB674 /* CalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072433525A30EC800DCB674 /* CalendarLayout.swift */; };
+		D072434A25A431C000DCB674 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072434925A431C000DCB674 /* utils.swift */; };
 		D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
 		D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
 		D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913372574F198007B9767 /* iDeserveWidget.swift */; };
@@ -166,6 +169,9 @@
 		D07242772599E1ED00DCB674 /* i18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i18n.swift; sourceTree = "<group>"; };
 		D07242FD25A1CA4400DCB674 /* AppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeader.swift; sourceTree = "<group>"; };
 		D072430325A2CCF200DCB674 /* HighPriorityButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPriorityButtonStyle.swift; sourceTree = "<group>"; };
+		D072432B25A30B6400DCB674 /* CalendarGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGrid.swift; sourceTree = "<group>"; };
+		D072433525A30EC800DCB674 /* CalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayout.swift; sourceTree = "<group>"; };
+		D072434925A431C000DCB674 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iDeserveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07913322574F198007B9767 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D07913342574F198007B9767 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -349,6 +355,7 @@
 		D010269D2524306400653A52 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D072432A25A30B4400DCB674 /* Calendar */,
 				D0F3B01D2563D2F3008B6EBB /* SwipeCell */,
 				D0F3AFFD25636A36008B6EBB /* TaskItem.swift */,
 				D08988B6254685C70032BA96 /* TaskForm */,
@@ -397,6 +404,16 @@
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 			);
 			path = RewardPage;
+			sourceTree = "<group>";
+		};
+		D072432A25A30B4400DCB674 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				D072432B25A30B6400DCB674 /* CalendarGrid.swift */,
+				D072433525A30EC800DCB674 /* CalendarLayout.swift */,
+				D072434925A431C000DCB674 /* utils.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		D07913312574F198007B9767 /* Frameworks */ = {
@@ -661,6 +678,7 @@
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
 				D030B6B2257E0A8900967015 /* resetGoalPos.swift in Sources */,
+				D072434A25A431C000DCB674 /* utils.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
@@ -679,9 +697,11 @@
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
+				D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */,
 				D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */,
 				D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */,
 				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
+				D072433625A30EC800DCB674 /* CalendarLayout.swift in Sources */,
 				D07913C925776963007B9767 /* TabIcon.swift in Sources */,
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
 				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,
