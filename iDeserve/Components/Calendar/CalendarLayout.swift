@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CalendarLayout: View {
     var dayStats: [DayStat]
+    var onTapDate: ((_ date: Date) -> Void)?
+    
+    @State var highlightDate: Date? = nil
 
     var columns: [GridItem] {
         let array = Array(1...7)
@@ -36,7 +39,17 @@ struct CalendarLayout: View {
                 spacing: 0
             ) {
                 ForEach(dayStats, id: \.date) { ds in
-                    CalendarGrid(dayStat: ds, size: 40)
+                    CalendarGrid(
+                        dayStat: ds,
+                        size: 40,
+                        isHighlight: highlightDate == nil ? false : Calendar.current.isDate(ds.date, inSameDayAs: highlightDate!)
+                    )
+                        .onTapGesture {
+                            if let _onTapDate = onTapDate {
+                                highlightDate = ds.date
+                                _onTapDate(ds.date)
+                            }
+                        }
                 }
             }
             .frame(width: 280.0)
@@ -45,6 +58,8 @@ struct CalendarLayout: View {
 }
 
 struct CalendarLayout_Previews: PreviewProvider {
+    @State var chosenDate: Date?
+
     static var previews: some View {
         CalendarLayout(dayStats: [])
     }

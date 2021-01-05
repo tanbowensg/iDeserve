@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarGrid: View {
     var dayStat: DayStat
     var size: Int = 40
+    var isHighlight: Bool = false
     let OpacityBase: Double = 10
     
     var day: Int {
@@ -23,7 +24,7 @@ struct CalendarGrid: View {
                 Color.hospitalGreen
                     .opacity(Double(dayStat.income) / OpacityBase)
             )
-            .border(Color.g20, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+            .border(isHighlight ? Color.red : Color.g20, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
     }
 }
 

@@ -11,6 +11,8 @@ import CoreData
 struct RecordPage: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(fetchRequest: recordRequest) var records: FetchedResults<Record>
+    
+    @State var chosenDate: Date? = nil
 
     static var recordRequest: NSFetchRequest<Record> {
         let request: NSFetchRequest<Record> = Record.fetchRequest()
@@ -18,48 +20,48 @@ struct RecordPage: View {
         return request
    }
     
-    init () {
-    }
-
-    var body: some View {
+    var dayStats: [DayStat] {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let from = formatter.date(from: "2020-12-01 16:15")!
         let to = Date()
         
-        let rawStats = reduceRecords(
+        let reducedRecords = reduceRecords(
             records: records.map{return $0},
             from: from,
             to: to
         )
-        let dayStats = fillDayStats(dayStats: rawStats)
-        return NavigationView() {
-            VStack {
-                CalendarLayout(dayStats: dayStats)
-                List {
-                    ForEach (records) { record in
-                        VStack {
-                            HStack {
-                                Text(record.name ?? "未知")
-                                Spacer()
-                                Text(String(record.value))
-                            }
-                            Text(dateToString(record.date!))
-                        }
-                    }
-                        .onDelete(perform: deleteRecord)
+        return fillDayStats(dayStats: reducedRecords)
+    }
+    
+    var chosenDateRecords: [Record] {
+        if let _chosenDate = chosenDate {
+            return records.filter { Calendar.current.isDate($0.date!, inSameDayAs: _chosenDate) }
+        }
+
+        return []
+    }
+    
+    var recordList: some View {
+        return List {
+            ForEach (chosenDateRecords) { record in
+                HStack {
+                    Text(record.name ?? "未知")
+                    Spacer()
+                    Text(dateToString(record.date!))
+                    Spacer()
+                    Text(String(record.value))
                 }
             }
-                .navigationTitle("历史记录")
         }
-        .navigationBarHidden(true)
     }
 
-    func deleteRecord (at offsets: IndexSet) {
-        for index in offsets {
-            let record = records[index]
-            moc.delete(record)
+    var body: some View {
+        VStack {
+            CalendarLayout(dayStats: dayStats, onTapDate: { chosenDate = $0 })
+            recordList
         }
+        .navigationBarHidden(true)
     }
 }
 
