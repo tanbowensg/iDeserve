@@ -23,7 +23,7 @@ struct RecordPage: View {
     var dayStats: [DayStat] {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let from = formatter.date(from: "2020-12-01 16:15")!
+        let from = formatter.date(from: "2020-12-01 00:00")!
         let to = Date()
         
         let reducedRecords = reduceRecords(

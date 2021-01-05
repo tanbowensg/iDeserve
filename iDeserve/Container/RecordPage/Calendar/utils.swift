@@ -24,7 +24,7 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
     var results: [DayStat] = []
     var calendar = Calendar.current
     calendar.timeZone = TimeZone(identifier: "UTC")!
-
+    
     for i in 0..<sortedRecords.count {
         let r = sortedRecords[i]
 
@@ -40,20 +40,18 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
             case RecordKind.task.rawValue:
                 dayStatCache.income += Int(r.value)
             case RecordKind.reward.rawValue:
-                dayStatCache.income -= Int(r.value)
+                dayStatCache.outcome += Int(r.value)
             default: break
-        }
-        
-//        加上最后一条
-        if i == sortedRecords.count - 1 && sortedRecords.count > 1 {
-            results.append(dayStatCache)
         }
         
         lastDate = r.date!
     }
 //    去掉第一个1970年的
     results.remove(at: 0)
-    print("reduce过的")
+//        加上最后一条
+    if sortedRecords.count > 1 {
+        results.append(dayStatCache)
+    }
     print(results)
 
     return results
@@ -71,7 +69,9 @@ func fillDayStats(dayStats: [DayStat]) -> [DayStat] {
     let fromWeekDay = Calendar.current.dateComponents([Calendar.Component.weekday], from: from).weekday!
     let toWeekDay = Calendar.current.dateComponents([Calendar.Component.weekday], from: to).weekday!
     let start = Calendar.current.date(byAdding: .day, value: 1 - fromWeekDay, to: from)!
-    let end = Calendar.current.date(byAdding: .day, value: 7 - toWeekDay, to: to)!
+    var end = Calendar.current.date(byAdding: .day, value: 7 - toWeekDay, to: to)!
+//    设置到一天最后一分钟
+    end = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: end)!
 
     var tempDate = start
     while tempDate <= end {
@@ -84,8 +84,6 @@ func fillDayStats(dayStats: [DayStat]) -> [DayStat] {
         results.append(newDayStat)
         tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
     }
-    
-    print("fill过的")
-    print(results)
+
     return results
 }
