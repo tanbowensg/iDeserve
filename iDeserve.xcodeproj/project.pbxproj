@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,7 +36,6 @@
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
 		D07242722599C8BB00DCB674 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D07242702599C8BB00DCB674 /* Localizable.strings */; };
 		D07242782599E1ED00DCB674 /* i18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242772599E1ED00DCB674 /* i18n.swift */; };
-		D07242EF259C62A100DCB674 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D07242EE259C62A100DCB674 /* SwiftUICharts */; };
 		D07242FE25A1CA4400DCB674 /* AppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242FD25A1CA4400DCB674 /* AppHeader.swift */; };
 		D072430425A2CCF200DCB674 /* HighPriorityButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072430325A2CCF200DCB674 /* HighPriorityButtonStyle.swift */; };
 		D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072432B25A30B6400DCB674 /* CalendarGrid.swift */; };
@@ -214,7 +213,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D07242EF259C62A100DCB674 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +518,6 @@
 			);
 			name = iDeserve;
 			packageProductDependencies = (
-				D07242EE259C62A100DCB674 /* SwiftUICharts */,
 			);
 			productName = iDeserve;
 			productReference = D010265E2524241F00653A52 /* iDeserve.app */;
@@ -614,7 +611,6 @@
 			);
 			mainGroup = D01026552524241F00653A52;
 			packageReferences = (
-				D07242ED259C62A100DCB674 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = D010265F2524241F00653A52 /* Products */;
 			projectDirPath = "";
@@ -1141,25 +1137,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D07242ED259C62A100DCB674 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D07242EE259C62A100DCB674 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D07242ED259C62A100DCB674 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */ = {
