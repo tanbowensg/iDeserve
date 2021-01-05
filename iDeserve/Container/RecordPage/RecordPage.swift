@@ -53,7 +53,9 @@ struct RecordPage: View {
                     Text(String(record.value))
                 }
             }
+            .onDelete(perform: deleteRecord)
         }
+
     }
 
     var body: some View {
@@ -63,6 +65,13 @@ struct RecordPage: View {
             recordList
         }
         .navigationBarHidden(true)
+    }
+    
+    func deleteRecord (at offsets: IndexSet) {
+        for index in offsets {
+            let record = chosenDateRecords[index]
+            gs.moc.delete(record)
+        }
     }
 }
 

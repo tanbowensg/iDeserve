@@ -71,7 +71,7 @@ func fillDayStats(dayStats: [DayStat]) -> [DayStat] {
     let fromWeekDay = Calendar.current.dateComponents([Calendar.Component.weekday], from: from).weekday!
     let toWeekDay = Calendar.current.dateComponents([Calendar.Component.weekday], from: to).weekday!
     let start = Calendar.current.date(byAdding: .day, value: 1 - fromWeekDay, to: from)!
-    let end = Calendar.current.date(byAdding: .day, value: 1 - toWeekDay, to: to)!
+    let end = Calendar.current.date(byAdding: .day, value: 7 - toWeekDay, to: to)!
 
     var tempDate = start
     while tempDate <= end {
