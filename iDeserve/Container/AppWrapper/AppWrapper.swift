@@ -16,7 +16,6 @@ enum TabPages: String {
 }
 
 struct AppWrapper: View {
-    @EnvironmentObject var gs: GlobalStore
     @State var currentTab = TabPages.myDay
     
     var tabs: [TabInfo] {
@@ -27,15 +26,14 @@ struct AppWrapper: View {
             TabInfo(id: TabPages.record.rawValue, title: RECORD_LIST_TEXT, systemImage: "clock", isActive: currentTab == .record)
         ]
     }
-    
-    var currentTabName: String {
-        let tab = tabs.first{ $0.id == currentTab.rawValue }!
-        return tab.title
-    }
+
+//    var currentTabName: String {
+//        let tab = tabs.first{ $0.id == currentTab.rawValue }!
+//        return tab.title
+//    }
     
     var tabContent: some View {
         VStack(spacing: 0.0){
-            AppHeader(points: gs.pointsStore.points, title: currentTabName)
             Group {
                 switch currentTab {
                 case .myDay:

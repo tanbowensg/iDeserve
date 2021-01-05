@@ -355,13 +355,11 @@
 		D010269D2524306400653A52 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D072432A25A30B4400DCB674 /* Calendar */,
 				D0F3B01D2563D2F3008B6EBB /* SwipeCell */,
 				D0F3AFFD25636A36008B6EBB /* TaskItem.swift */,
 				D08988B6254685C70032BA96 /* TaskForm */,
 				D0036DC7252B0B5900E4005B /* CreateButton.swift */,
 				D0036E09252C840D00E4005B /* Popup.swift */,
-				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
 				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
 				D08988AC254680BC0032BA96 /* GoalRow.swift */,
 				D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */,
@@ -386,13 +384,13 @@
 		D04BB015252AC7EB0088912A /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				D072435725A45E7800DCB674 /* RecordPage */,
 				D07242F425A1B68D00DCB674 /* RewardPage */,
 				D00CB0792588B83300460D06 /* MyDayPage */,
 				D0D23CC22577969100AAFE27 /* AppWrapper */,
 				D08988CE2546A9D60032BA96 /* EditGoalPage */,
 				D04BB016252AC7FB0088912A /* TaskPage.swift */,
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
-				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -401,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
+				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 			);
 			path = RewardPage;
@@ -414,6 +413,15 @@
 				D072434925A431C000DCB674 /* utils.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		D072435725A45E7800DCB674 /* RecordPage */ = {
+			isa = PBXGroup;
+			children = (
+				D072432A25A30B4400DCB674 /* Calendar */,
+				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
+			);
+			path = RecordPage;
 			sourceTree = "<group>";
 		};
 		D07913312574F198007B9767 /* Frameworks */ = {

@@ -21,6 +21,7 @@ struct RewardGrid: View {
     
     var redeemButton: some View {
         Button(action: {
+            print(reward)
             gs.rewardStore.redeemReward(reward)
         }) {
             HStack(alignment: .center, spacing: 2){

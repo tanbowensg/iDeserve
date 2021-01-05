@@ -19,7 +19,7 @@ struct CalendarLayout: View {
     }
 
     var body: some View {
-        return ScrollView {
+        return VStack {
             LazyVGrid(
                 columns: columns,
                 alignment: .center,

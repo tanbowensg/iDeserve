@@ -44,54 +44,57 @@ struct TaskPage: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            ZStack(alignment: .top) {
-                ScrollView {
-                    ForEach (goals, id: \.id) { goal in
-                        GoalRow(
-                            goal: goal,
-                            forceCollapse: forceCollapse
-                        )
-                        .buttonStyle(PlainButtonStyle())
-                        .onDrag {
-                            self.draggedGoal = goal
-                            return NSItemProvider(object: goal.id!.uuidString as NSString)
-                        }
-                        .onDrop(
-                            of: [UTType.text],
-                            delegate: DragRelocateDelegate(
-                                item: goal,
-                                goals: goals,
-                                current: $draggedGoal,
-                                forceCollapse: $forceCollapse,
-                                highlightIndex: $highlightIndex
+        VStack(spacing: 0.0) {
+            AppHeader(points: gs.pointsStore.points, title: "目标任务")
+            ZStack(alignment: .bottomTrailing) {
+                ZStack(alignment: .top) {
+                    ScrollView {
+                        ForEach (goals, id: \.id) { goal in
+                            GoalRow(
+                                goal: goal,
+                                forceCollapse: forceCollapse
                             )
-                        )
+                            .buttonStyle(PlainButtonStyle())
+                            .onDrag {
+                                self.draggedGoal = goal
+                                return NSItemProvider(object: goal.id!.uuidString as NSString)
+                            }
+                            .onDrop(
+                                of: [UTType.text],
+                                delegate: DragRelocateDelegate(
+                                    item: goal,
+                                    goals: goals,
+                                    current: $draggedGoal,
+                                    forceCollapse: $forceCollapse,
+                                    highlightIndex: $highlightIndex
+                                )
+                            )
+                        }
+                        //                    无用，纯粹为了在任务更新时刷新目标列表
+                        Text(self.refreshing ? "" : "")
                     }
-                    //                    无用，纯粹为了在任务更新时刷新目标列表
-                    Text(self.refreshing ? "" : "")
-                }
-                .onReceive(self.didSave) { _ in
-                    self.refreshing.toggle()
-                }
-                .onDrop(
-                    of: [UTType.text],
-                    delegate: DropOutsideDelegate(
-                        current: $draggedGoal,
-                        forceCollapse: $forceCollapse,
-                        highlightIndex: $highlightIndex
+                    .onReceive(self.didSave) { _ in
+                        self.refreshing.toggle()
+                    }
+                    .onDrop(
+                        of: [UTType.text],
+                        delegate: DropOutsideDelegate(
+                            current: $draggedGoal,
+                            forceCollapse: $forceCollapse,
+                            highlightIndex: $highlightIndex
+                        )
                     )
-                )
-                highlightIndex != nil ? reorderDivider : nil
-            }
-            VStack {
-                NavigationLink(destination: EditGoalPage(initGoal: nil)) {
-                    CreateButton()
+                    highlightIndex != nil ? reorderDivider : nil
                 }
+                VStack {
+                    NavigationLink(destination: EditGoalPage(initGoal: nil)) {
+                        CreateButton()
+                    }
+                }
+                .padding([.trailing, .bottom], 16)
             }
-            .padding([.trailing, .bottom], 16)
         }
-        .navigationBarHidden(true)
+            .navigationBarHidden(true)
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct RecordPage: View {
-    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: recordRequest) var records: FetchedResults<Record>
     
     @State var chosenDate: Date? = nil
@@ -58,6 +58,7 @@ struct RecordPage: View {
 
     var body: some View {
         VStack {
+            AppHeader(points: gs.pointsStore.points, title: "历史记录")
             CalendarLayout(dayStats: dayStats, onTapDate: { chosenDate = $0 })
             recordList
         }

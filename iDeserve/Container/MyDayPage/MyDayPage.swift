@@ -86,17 +86,20 @@ struct MyDayPage: View {
     }
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Text("下拉创建任务")
-                .opacity(Double(offsetY / 100))
-                .sheet(isPresented: $shouldOpenSheet, content: {
-                    MyDayCreateTaskSheet()
-                })
-            CustomScrollView(showsIndicators: true, onOffsetChange: onOffsetChange) {
-                if myDayTasks.count == 0 {
-                    emptyState
-                } else {
-                    taskList
+        VStack(spacing: 0.0) {
+            AppHeader(points: gs.pointsStore.points, title: "我的一天")
+            ZStack(alignment: .top) {
+                Text("下拉创建任务")
+                    .opacity(Double(offsetY / 100))
+                    .sheet(isPresented: $shouldOpenSheet, content: {
+                        MyDayCreateTaskSheet()
+                    })
+                CustomScrollView(showsIndicators: true, onOffsetChange: onOffsetChange) {
+                    if myDayTasks.count == 0 {
+                        emptyState
+                    } else {
+                        taskList
+                    }
                 }
             }
         }
