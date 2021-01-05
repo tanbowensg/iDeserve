@@ -70,7 +70,6 @@ struct MyDayPage: View {
             Text("").frame(maxWidth: .infinity)
             Spacer()
         }
-            .animation(.easeInOut)
     }
     
     var emptyState: some View {
