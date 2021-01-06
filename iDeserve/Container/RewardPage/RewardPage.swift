@@ -14,7 +14,7 @@ struct RewardPage: View {
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
-    @State var isEditMode = true
+    @State var isEditMode = false
     @State var isTapped = false
     @State var dragging: Reward? = nil
 
@@ -36,34 +36,25 @@ struct RewardPage: View {
     }
     
     func genRewardGrid(reward: Reward) -> some View {
-        let grid: some View = RewardGrid(reward: reward, isEditMode: isEditMode)
-            .gesture(ExclusiveGesture(
-                TapGesture().onEnded { _ in
+        print(isEditMode)
+        return VStack {
+            NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
+                EmptyView()
+            }
+            RewardGrid(reward: reward, isEditMode: isEditMode)
+                .onTapGesture {
                     if isEditMode == true {
                         setIsEditMode(false)
                     } else {
                         isTapped.toggle()
                     }
-                },
-                LongPressGesture().onEnded {_ in
-                    setIsEditMode(true)
                 }
-            ))
-
-        return VStack {
-            NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
-                EmptyView()
-            }
-            if isEditMode {
-                grid
-                    .onDrag {
-                        self.dragging = reward
-                        return NSItemProvider(object: reward.id!.uuidString as NSString)
-                    }
-                    .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
-            } else {
-                grid
-            }
+                .onDrag() {
+                    setIsEditMode(true)
+                    self.dragging = reward
+                    return NSItemProvider(object: reward.id!.uuidString as NSString)
+                }
+                .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
         }
     }
     

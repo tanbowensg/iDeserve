@@ -32,7 +32,7 @@ struct HighPriorityButtonStyle: PrimitiveButtonStyle {
             return configuration.label
                 .scaleEffect(self.pressed ? 0.8 : 1.0)
                 .highPriorityGesture(gesture)
-                .animation(.linear(duration: 0.1))
+                .animation(.linear(duration: 0.1), value: self.pressed)
         }
     }
 }
