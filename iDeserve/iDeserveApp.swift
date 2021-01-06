@@ -29,6 +29,7 @@ struct iDeserveApp: App {
                 case .active:
                     resetRepeatTaskStatus()
                     resetGoalPos()
+                    resetRewardPos()
                 default:
                     print(phase)
             }

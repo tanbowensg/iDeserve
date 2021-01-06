@@ -20,7 +20,7 @@
 		D01026692524242000653A52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026682524242000653A52 /* Preview Assets.xcassets */; };
 		D01026742524242100653A52 /* iDeserveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026732524242100653A52 /* iDeserveTests.swift */; };
 		D010267F2524242100653A52 /* iDeserveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010267E2524242100653A52 /* iDeserveUITests.swift */; };
-		D030B6B2257E0A8900967015 /* resetGoalPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030B6B1257E0A8900967015 /* resetGoalPos.swift */; };
+		D030B6B2257E0A8900967015 /* resetPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030B6B1257E0A8900967015 /* resetPos.swift */; };
 		D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D03B57C7253D471A00DC107F /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
 		D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57CB253D8B4900DC107F /* RecordPage.swift */; };
@@ -69,6 +69,7 @@
 		D08988B2254685A60032BA96 /* TaskForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988B1254685A60032BA96 /* TaskForm.swift */; };
 		D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */; };
 		D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
+		D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2EC25A5D52200042124 /* draggableModifier.swift */; };
 		D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -150,7 +151,7 @@
 		D010267A2524242100653A52 /* iDeserveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDeserveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D010267E2524242100653A52 /* iDeserveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveUITests.swift; sourceTree = "<group>"; };
 		D01026802524242100653A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D030B6B1257E0A8900967015 /* resetGoalPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetGoalPos.swift; sourceTree = "<group>"; };
+		D030B6B1257E0A8900967015 /* resetPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetPos.swift; sourceTree = "<group>"; };
 		D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDeserve.xcdatamodel; sourceTree = "<group>"; };
 		D03B57C6253D471A00DC107F /* saveContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveContext.swift; sourceTree = "<group>"; };
 		D03B57CB253D8B4900DC107F /* RecordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPage.swift; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		D08988B1254685A60032BA96 /* TaskForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskForm.swift; sourceTree = "<group>"; };
 		D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTasksSheet.swift; sourceTree = "<group>"; };
 		D08988DD2546BDDC0032BA96 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
+		D08FB2EC25A5D52200042124 /* draggableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = draggableModifier.swift; sourceTree = "<group>"; };
 		D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetRepeatTaskStatus.swift; sourceTree = "<group>"; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W6.otf"; sourceTree = "<group>"; };
@@ -463,7 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */,
-				D030B6B1257E0A8900967015 /* resetGoalPos.swift */,
+				D030B6B1257E0A8900967015 /* resetPos.swift */,
+				D08FB2EC25A5D52200042124 /* draggableModifier.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -677,11 +680,12 @@
 				D0EE5490255A6D140091302D /* RewardStore.swift in Sources */,
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
 				D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */,
+				D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */,
 				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
 				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
-				D030B6B2257E0A8900967015 /* resetGoalPos.swift in Sources */,
+				D030B6B2257E0A8900967015 /* resetPos.swift in Sources */,
 				D072434A25A431C000DCB674 /* utils.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,

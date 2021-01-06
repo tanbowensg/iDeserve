@@ -23,6 +23,25 @@ func resetGoalPos () {
         }
         try moc.save()
     } catch {
-        print("重置目标的pos值")
+        print("重置目标的pos值失败")
+    }
+}
+
+// 重置奖励的pos值
+func resetRewardPos () {
+    let moc = GlobalStore.shared.moc
+    let rewardRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Reward")
+    rewardRequest.sortDescriptors = [
+        NSSortDescriptor(keyPath: \Goal.pos, ascending: true)
+    ]
+    
+    do {
+        let fetchedRewards = try moc.fetch(rewardRequest) as! [Reward]
+        fetchedRewards.indices.forEach {i in
+            fetchedRewards[i].pos = Int16((i + 1) * MAX_POS / fetchedRewards.count)
+        }
+        try moc.save()
+    } catch {
+        print("重置奖励的pos值失败")
     }
 }

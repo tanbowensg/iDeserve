@@ -7,19 +7,21 @@
 
 import SwiftUI
 import CoreData
+import UniformTypeIdentifiers
 
 struct RewardPage: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
-    @State var isEditMode = false
+    @State var isEditMode = true
     @State var isTapped = false
+    @State var dragging: Reward? = nil
 
     static var rewardRequest: NSFetchRequest<Reward> {
         let request: NSFetchRequest<Reward> = Reward.fetchRequest()
         request.sortDescriptors = [
-            NSSortDescriptor(keyPath: \Reward.value, ascending: true)
+            NSSortDescriptor(keyPath: \Reward.pos, ascending: true)
         ]
         return request
    }
@@ -29,24 +31,42 @@ struct RewardPage: View {
         GridItem(.flexible())
     ]
     
+    private var rewardsArray: [Reward] {
+        rewards.map{ return $0 }
+    }
+    
     func genRewardGrid(reward: Reward) -> some View {
+        let grid: some View = RewardGrid(reward: reward, isEditMode: isEditMode)
+            .gesture(ExclusiveGesture(
+                TapGesture().onEnded { _ in
+                    if isEditMode == true {
+                        setIsEditMode(false)
+                    } else {
+                        isTapped.toggle()
+                    }
+                },
+                LongPressGesture().onEnded {_ in
+                    setIsEditMode(true)
+                }
+            ))
+
         return VStack {
             NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
                 EmptyView()
             }
-            RewardGrid(reward: reward, isEditMode: isEditMode)
-                .gesture(ExclusiveGesture(
-                    TapGesture().onEnded { _ in
-                        if isEditMode == true {
-                            setIsEditMode(false)
-                        } else {
-                            isTapped.toggle()
-                        }
-                    },
-                    LongPressGesture().onEnded{_ in
-                        setIsEditMode(true)
+            if isEditMode {
+                grid
+                    .onDrag {
+                        self.dragging = reward
+                        return NSItemProvider(object: reward.id!.uuidString as NSString)
                     }
-                ))
+                    .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
+            } else {
+                grid
+            }
+        }
+    }
+    
     func setIsEditMode (_ value: Bool) {
         if value == true {
             withAnimation(Animation.easeInOut(duration: 0.15).repeatForever(autoreverses: true)) {
@@ -75,7 +95,7 @@ struct RewardPage: View {
                             }
                         }
                         .padding(16)
-                        .animation(.spring(), value: rewards.count)
+                        .animation(.spring(), value: rewardsArray)
                     }
                     
                     VStack {
@@ -95,5 +115,56 @@ struct RewardPage: View {
                 .onTapGesture {
                     setIsEditMode(false)
                 }
+    }
+}
+
+struct DragRewardRelocateDelegate: DropDelegate {
+    let item: Reward
+    var listData: [Reward]
+    @Binding var current: Reward?
+    
+    //    根据被拖动的y，计算出新的pos值
+    func caculateNewPos() -> Int {
+        let fromIndex = listData.firstIndex(of: current!)!
+        let toIndex = listData.firstIndex(of: item)!
+        var nextItemPos: Int
+
+        if fromIndex < toIndex {
+            if toIndex == listData.count - 1 {
+                nextItemPos = MAX_POS
+            } else {
+                nextItemPos = Int(listData[toIndex + 1].pos)
+            }
+        } else {
+            if toIndex == 0 {
+                nextItemPos = 0
+            } else {
+                nextItemPos = Int(listData[toIndex - 1].pos)
+            }
+        }
+
+        return Int((nextItemPos + Int(item.pos)) / 2)
+    }
+
+    func dropEntered(info: DropInfo) {
+        if item != current {
+            var newPos = caculateNewPos()
+            if (current!.pos == Int16(newPos)) {
+                resetRewardPos()
+                newPos = caculateNewPos()
+            }
+            print(newPos)
+            current!.pos = Int16(newPos)
+            GlobalStore.shared.coreDataContainer.saveContext()
+        }
+    }
+
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        return DropProposal(operation: .move)
+    }
+
+    func performDrop(info: DropInfo) -> Bool {
+        self.current = nil
+        return true
     }
 }
