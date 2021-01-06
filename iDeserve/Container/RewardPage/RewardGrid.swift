@@ -11,12 +11,30 @@ import CoreData
 struct RewardGrid: View {
     @EnvironmentObject var gs: GlobalStore
     @ObservedObject var reward: Reward
+
+    var isEditMode: Bool
     
     var cover: some View {
         Image(uiImage: UIImage(data: reward.cover!)!)
             .resizable()
             .aspectRatio(4/3, contentMode: .fit)
             .cornerRadius(16)
+    }
+    
+    var removeButton: some View {
+        Button(action: {
+            gs.moc.delete(reward)
+        }) {
+            Image(systemName: "multiply")
+                .resizable()
+                .padding(4.0)
+                .frame(width: 20.0, height: 20.0)
+        }
+        .background(Color.g10)
+        .foregroundColor(.myBlack)
+        .cornerRadius(10)
+        .offset(x: -5, y: -5)
+        .buttonStyle(HighPriorityButtonStyle())
     }
     
     var redeemButton: some View {
@@ -46,20 +64,23 @@ struct RewardGrid: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 11.0) {
-            Text(reward.name ?? "未知")
-                .font(.hiraginoSansGb14)
-                .fontWeight(.black)
-                .foregroundColor(.white)
-                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-            redeemButton
+        ZStack(alignment: Alignment.topLeading) {
+            VStack(alignment: .center, spacing: 11.0) {
+                Text(reward.name ?? "未知")
+                    .font(.hiraginoSansGb14)
+                    .fontWeight(.black)
+                    .foregroundColor(.white)
+                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                redeemButton
+            }
+            .padding(14)
+            .frame(height: 100)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .background(Color.rewardColor)
+            .cornerRadius(10)
+            .id(reward.id)
+            isEditMode ? removeButton : nil
         }
-        .padding(14)
-        .frame(height: 100)
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.rewardColor)
-        .cornerRadius(10)
-        .id(reward.id)
     }
 }
 
@@ -85,7 +106,7 @@ struct RewardGrid_Previews: PreviewProvider {
                     spacing: 16
                 ) {
                     ForEach(rewards, id: \.id) { (reward: Reward) in
-                        RewardGrid(reward: reward)
+                        RewardGrid(reward: reward, isEditMode: false)
                     }
                 }
                 .padding(16)

@@ -13,6 +13,9 @@ struct RewardPage: View {
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
+    @State var isEditMode = false
+    @State var isTapped = false
+
     static var rewardRequest: NSFetchRequest<Reward> {
         let request: NSFetchRequest<Reward> = Reward.fetchRequest()
         request.sortDescriptors = [
@@ -27,9 +30,26 @@ struct RewardPage: View {
     ]
     
     func genRewardGrid(reward: Reward) -> some View {
-        return NavigationLink(destination: EditRewardPage(initReward: reward)) {
-            RewardGrid(reward: reward)
-        }
+//        return NavigationLink(destination: EditRewardPage(initReward: reward)) {
+//            RewardGrid(reward: reward, onLongPress: { isEditMode.toggle() }, isEditMode: isEditMode)
+//        }
+        return
+            VStack {
+                NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
+                    EmptyView()
+                }
+                RewardGrid(reward: reward, isEditMode: isEditMode)
+                    .onTapGesture {
+                        if isEditMode == true {
+                            isEditMode = false
+                        } else {
+                            isTapped.toggle()
+                        }
+                    }
+                    .simultaneousGesture(LongPressGesture().onEnded{_ in
+                        isEditMode.toggle()
+                    })
+            }
     }
 
     var body: some View {
@@ -64,5 +84,8 @@ struct RewardPage: View {
                 }
             }
                 .navigationBarHidden(true)
+                .onTapGesture {
+                    isEditMode = false
+                }
     }
 }
