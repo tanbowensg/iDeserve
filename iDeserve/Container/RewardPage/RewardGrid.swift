@@ -13,6 +13,8 @@ struct RewardGrid: View {
     @ObservedObject var reward: Reward
 
     var isEditMode: Bool
+//    这个和 isEditMode 是一起变化的。但是为了让删除按钮的动画和整个卡片分离开来，所以弄了两个变量
+    @State var isShowButton = false
     
     var cover: some View {
         Image(uiImage: UIImage(data: reward.cover!)!)
@@ -24,8 +26,9 @@ struct RewardGrid: View {
     var removeButton: some View {
         Button(action: {
             gs.moc.delete(reward)
+            gs.coreDataContainer.saveContext()
         }) {
-            Image(systemName: "multiply")
+            Image(systemName: "minus.circle.fill")
                 .resizable()
                 .padding(4.0)
                 .frame(width: 20.0, height: 20.0)
@@ -34,7 +37,7 @@ struct RewardGrid: View {
         .foregroundColor(.myBlack)
         .cornerRadius(10)
         .offset(x: -5, y: -5)
-        .buttonStyle(HighPriorityButtonStyle())
+        .animation(.none, value: isShowButton)
     }
     
     var redeemButton: some View {
@@ -55,12 +58,13 @@ struct RewardGrid: View {
             }
             .frame(height: 16.0)
             .padding(.vertical, 5.0)
-            .padding(/*@START_MENU_TOKEN@*/.horizontal, 16.0/*@END_MENU_TOKEN@*/)
+            .padding(.horizontal, 16.0)
             .background(Color.white)
             .cornerRadius(100)
             .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
         }
             .buttonStyle(HighPriorityButtonStyle())
+            .disabled(isEditMode)
     }
     
     var body: some View {
@@ -79,8 +83,12 @@ struct RewardGrid: View {
             .background(Color.rewardColor)
             .cornerRadius(10)
             .id(reward.id)
-            isEditMode ? removeButton : nil
+            isShowButton ? removeButton : nil
         }
+        .rotationEffect(.degrees(isEditMode ? 2.5 : 0))
+        .onChange(of: isEditMode, perform: { value in
+            isShowButton = value
+        })
     }
 }
 

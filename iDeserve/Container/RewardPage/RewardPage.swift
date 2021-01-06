@@ -30,26 +30,33 @@ struct RewardPage: View {
     ]
     
     func genRewardGrid(reward: Reward) -> some View {
-//        return NavigationLink(destination: EditRewardPage(initReward: reward)) {
-//            RewardGrid(reward: reward, onLongPress: { isEditMode.toggle() }, isEditMode: isEditMode)
-//        }
-        return
-            VStack {
-                NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
-                    EmptyView()
-                }
-                RewardGrid(reward: reward, isEditMode: isEditMode)
-                    .onTapGesture {
+        return VStack {
+            NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
+                EmptyView()
+            }
+            RewardGrid(reward: reward, isEditMode: isEditMode)
+                .gesture(ExclusiveGesture(
+                    TapGesture().onEnded { _ in
                         if isEditMode == true {
-                            isEditMode = false
+                            setIsEditMode(false)
                         } else {
                             isTapped.toggle()
                         }
+                    },
+                    LongPressGesture().onEnded{_ in
+                        setIsEditMode(true)
                     }
-                    .simultaneousGesture(LongPressGesture().onEnded{_ in
-                        isEditMode.toggle()
-                    })
+                ))
+    func setIsEditMode (_ value: Bool) {
+        if value == true {
+            withAnimation(Animation.easeInOut(duration: 0.15).repeatForever(autoreverses: true)) {
+                isEditMode = true
             }
+        } else {
+            withAnimation(.default) {
+                isEditMode = false
+            }
+        }
     }
 
     var body: some View {
@@ -68,6 +75,7 @@ struct RewardPage: View {
                             }
                         }
                         .padding(16)
+                        .animation(.spring(), value: rewards.count)
                     }
                     
                     VStack {
@@ -85,7 +93,7 @@ struct RewardPage: View {
             }
                 .navigationBarHidden(true)
                 .onTapGesture {
-                    isEditMode = false
+                    setIsEditMode(false)
                 }
     }
 }
