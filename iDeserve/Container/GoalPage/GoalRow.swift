@@ -24,7 +24,7 @@ struct GoalRow: View {
     }
     
     var tasks: [Task] {
-        return self.goal.tasks?.allObjects as! [Task]
+        return (goal.tasks?.allObjects ?? []) as! [Task]
     }
     
     var value: Int {
