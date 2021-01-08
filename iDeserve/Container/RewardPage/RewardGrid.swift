@@ -37,7 +37,7 @@ struct RewardGrid: View {
             gs.moc.delete(reward)
             gs.coreDataContainer.saveContext()
         }) {
-            Image(systemName: "minus.circle.fill")
+            Image(systemName: "multiply")
                 .resizable()
                 .padding(4.0)
                 .frame(width: 20.0, height: 20.0)
@@ -45,7 +45,6 @@ struct RewardGrid: View {
         .background(Color.g10)
         .foregroundColor(.myBlack)
         .cornerRadius(10)
-        .offset(x: -5, y: -5)
         .animation(.none, value: isShowButton)
     }
     
@@ -73,7 +72,7 @@ struct RewardGrid: View {
             .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
         }
             .buttonStyle(HighPriorityButtonStyle())
-        .grayscale(disableRedeem ? 0.9 : 1)
+            .grayscale(disableRedeem ? 0.9 : 1)
             .disabled(disableRedeem)
     }
     
@@ -93,7 +92,13 @@ struct RewardGrid: View {
     }
     
     var mainCard: some View {
-        VStack(alignment: .center, spacing: 11.0) {
+        VStack(alignment: .center) {
+            HStack {
+                isShowButton ? removeButton : nil
+                Spacer()
+                reward.isSoldout && !reward.isRepeat ? soldoutLogo : nil
+            }
+                .frame(height: 20.0)
             Text(reward.name ?? "未知")
                 .font(.hiraginoSansGb14)
                 .fontWeight(.black)
@@ -101,7 +106,7 @@ struct RewardGrid: View {
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
             redeemButton
         }
-        .padding(14)
+        .padding([.leading, .bottom, .trailing], 14)
         .frame(height: 100)
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(Color.rewardColor)
@@ -110,14 +115,9 @@ struct RewardGrid: View {
     }
     
     var body: some View {
-        ZStack(alignment: Alignment.topLeading) {
+        VStack(alignment: .center) {
             link
             mainCard
-            HStack {
-                isShowButton ? removeButton : nil
-                Spacer()
-                reward.isSoldout && !reward.isRepeat ? soldoutLogo : nil
-            }
         }
         .rotationEffect(.degrees(isEditMode ? 2.5 : 0))
         .onChange(of: isEditMode, perform: { value in
