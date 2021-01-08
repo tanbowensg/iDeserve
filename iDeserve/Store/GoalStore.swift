@@ -68,8 +68,8 @@ final class GoalStore: ObservableObject {
         )
     }
     
-    func completeGoal (goal: Goal) {
-        let value = getImportanceValue(Importance(rawValue: Int(goal.importance))!)
+    func completeGoal (_ goal: Goal) {
+        let value = getImportanceValue(Importance(rawValue: Int(goal.importance)) ?? Importance.normal)
         pointsStore.add(value)
         goal.done = true
         
@@ -77,6 +77,16 @@ final class GoalStore: ObservableObject {
             try self.moc.save()
         } catch {
             fatalError("完成目标失败")
+        }
+    }
+    
+    func removeGoal (_ goal: Goal) {
+        moc.delete(goal)
+
+        do {
+            try self.moc.save()
+        } catch {
+            fatalError("删除目标失败")
         }
     }
 }

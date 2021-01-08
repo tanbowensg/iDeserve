@@ -56,12 +56,11 @@ struct GoalRow: View {
     var goalRow: some View {
         HStack {
             self.expandArrow
-            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
-                Text(goal.name ?? "")
-                Spacer()
-                goalValue
-            }
+            Text(goal.name ?? "")
+            Spacer()
+            goalValue
         }
+        .background(Color.white)
         .frame(height: GOAL_ROW_HEIGHT)
     }
     
@@ -82,7 +81,7 @@ struct GoalRow: View {
                         }
                     )
                 }
-                .buttonStyle(PlainButtonStyle())
+//                .buttonStyle(PlainButtonStyle())
             }
             //无用，纯粹为了在任务更新时刷新目标，否则 TaskItem 的 task 不会更新
             Text(self.refreshing ? "" : "")
@@ -95,10 +94,25 @@ struct GoalRow: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            self.goalRow
+            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+                SwipeWrapper(
+                    content: goalRow,
+                    height: Int(GOAL_ROW_HEIGHT),
+                    onLeftSwipe: onCompleteGoal,
+                    onRightSwipe: onRemoveGoal
+                )
+            }
             shouldExpand && tasks.count > 0 ? self.taskList : nil
         }
         .frame(minHeight: shouldExpand ? nil : GOAL_ROW_HEIGHT)
         .background(Color.white)
+    }
+    
+    func onCompleteGoal () {
+        gs.goalStore.completeGoal(goal)
+    }
+    
+    func onRemoveGoal () {
+        gs.goalStore.removeGoal(goal)
     }
 }

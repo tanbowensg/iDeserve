@@ -55,20 +55,20 @@ struct TaskPage: View {
                                 forceCollapse: forceCollapse
                             )
                             .buttonStyle(PlainButtonStyle())
-                            .onDrag {
-                                self.draggedGoal = goal
-                                return NSItemProvider(object: goal.id!.uuidString as NSString)
-                            }
-                            .onDrop(
-                                of: [UTType.text],
-                                delegate: DragRelocateDelegate(
-                                    item: goal,
-                                    goals: goals,
-                                    current: $draggedGoal,
-                                    forceCollapse: $forceCollapse,
-                                    highlightIndex: $highlightIndex
-                                )
-                            )
+//                            .onDrag {
+//                                self.draggedGoal = goal
+//                                return NSItemProvider(object: goal.id!.uuidString as NSString)
+//                            }
+//                            .onDrop(
+//                                of: [UTType.text],
+//                                delegate: DragRelocateDelegate(
+//                                    item: goal,
+//                                    goals: goals,
+//                                    current: $draggedGoal,
+//                                    forceCollapse: $forceCollapse,
+//                                    highlightIndex: $highlightIndex
+//                                )
+//                            )
                         }
                         //                    无用，纯粹为了在任务更新时刷新目标列表
                         Text(self.refreshing ? "" : "")
