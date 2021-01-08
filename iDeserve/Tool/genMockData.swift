@@ -46,7 +46,7 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     normalReward.id = UUID()
     normalReward.name = "一款桌游"
     normalReward.value = 30
-    normalReward.repeatFrequency = Int16(RepeatFrequency.never.rawValue)
+    normalReward.isRepeat = true
     normalReward.desc = "一款300元以内的桌游"
     normalReward.isSoldout = false
     
@@ -54,7 +54,7 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     longReward.id = UUID()
     longReward.name = "去九寨沟或者张家界旅游"
     longReward.value = 200
-    longReward.repeatFrequency = Int16(RepeatFrequency.never.rawValue)
+    normalReward.isRepeat = true
     longReward.desc = "七日游"
     longReward.isSoldout = false
 
@@ -62,7 +62,7 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     littleReward.id = UUID()
     littleReward.name = "一杯喜茶"
     littleReward.value = 3
-    littleReward.repeatFrequency = Int16(RepeatFrequency.never.rawValue)
+    normalReward.isRepeat = true
     littleReward.desc = "好喝的喜茶"
     littleReward.isSoldout = false
 
@@ -70,7 +70,7 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     normalReward.id = UUID()
     normalReward.name = "顶配 Mackbook pro"
     normalReward.value = 1000
-    normalReward.repeatFrequency = Int16(RepeatFrequency.never.rawValue)
+    normalReward.isRepeat = true
     normalReward.desc = "七日游"
     normalReward.isSoldout = false
 

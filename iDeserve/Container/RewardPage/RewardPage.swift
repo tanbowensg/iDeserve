@@ -15,7 +15,6 @@ struct RewardPage: View {
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
     @State var isEditMode = false
-    @State var isTapped = false
     @State var dragging: Reward? = nil
 
     static var rewardRequest: NSFetchRequest<Reward> {
@@ -36,26 +35,13 @@ struct RewardPage: View {
     }
     
     func genRewardGrid(reward: Reward) -> some View {
-        print(isEditMode)
-        return VStack {
-            NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
-                EmptyView()
+        return RewardGrid(reward: reward, isEditMode: isEditMode, onEditModeTap: { setIsEditMode(false) })
+            .onDrag() {
+                setIsEditMode(true)
+                self.dragging = reward
+                return NSItemProvider(object: reward.id!.uuidString as NSString)
             }
-            RewardGrid(reward: reward, isEditMode: isEditMode)
-                .onTapGesture {
-                    if isEditMode == true {
-                        setIsEditMode(false)
-                    } else {
-                        isTapped.toggle()
-                    }
-                }
-                .onDrag() {
-                    setIsEditMode(true)
-                    self.dragging = reward
-                    return NSItemProvider(object: reward.id!.uuidString as NSString)
-                }
-                .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
-        }
+            .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
     }
     
     func setIsEditMode (_ value: Bool) {

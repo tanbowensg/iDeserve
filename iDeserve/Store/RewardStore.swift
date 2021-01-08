@@ -19,17 +19,20 @@ final class RewardStore: ObservableObject {
         targetReward: Reward,
         name: String,
         value: Int,
-        repeatFrequency: RepeatFrequency,
+        isRepeat: Bool,
         desc: String,
-        isSoldout: Bool,
         cover: Data?
     ) {
         targetReward.name = name
         targetReward.value = Int16(value)
-        targetReward.repeatFrequency = Int16(repeatFrequency.rawValue)
+        targetReward.isRepeat = isRepeat
         targetReward.desc = desc
-        targetReward.isSoldout = isSoldout
         targetReward.cover = cover
+        
+//        如果奖励从一次性变成可重复，那就要重置isSoldout
+        if !targetReward.isRepeat && isRepeat {
+            targetReward.isSoldout = true
+        }
         
     
         do {
@@ -43,9 +46,8 @@ final class RewardStore: ObservableObject {
     func createReward (
         name: String,
         value: Int,
-        repeatFrequency: RepeatFrequency,
+        isRepeat: Bool,
         desc: String,
-        isSoldout: Bool,
         cover: Data?
     ) {
         let newReward = Reward(context: self.moc)
@@ -55,9 +57,8 @@ final class RewardStore: ObservableObject {
             targetReward: newReward,
             name: name,
             value: value,
-            repeatFrequency: repeatFrequency,
+            isRepeat: isRepeat,
             desc: desc,
-            isSoldout: isSoldout,
             cover: cover
         )
     }

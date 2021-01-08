@@ -15,11 +15,10 @@ struct EditRewardPage: View {
 
     @State var name: String = ""
     @State var value: String = "0"
-    @State var repeatFrequency: RepeatFrequency = RepeatFrequency.never
+    @State var isRepeat = true
     @State var desc = ""
     @State var cover: UIImage? = nil
-    
-    @State var isShowRepeatPicker = false
+
     @State var isShowImagePicker: Bool = false
 
     @State var image: Image? = nil
@@ -29,7 +28,7 @@ struct EditRewardPage: View {
         if let existReward = initReward {
             _name = State(initialValue: existReward.name ?? "")
             _value = State(initialValue: String(existReward.value))
-            _repeatFrequency = State(initialValue: RepeatFrequency(rawValue: Int(existReward.repeatFrequency)) ?? RepeatFrequency.never)
+            _isRepeat = State(initialValue: existReward.isRepeat)
             _desc = State(initialValue: existReward.desc ?? "")
             
             if let existCover = existReward.cover {
@@ -51,8 +50,11 @@ struct EditRewardPage: View {
     var rewardValue: some View {
         Group {
             HStack() {
-                Image(systemName: "dollarsign.circle")
-                Text("分值")
+                Image("NutIcon")
+                    .resizable()
+                    .padding(2.0)
+                    .frame(width: 16.0, height: 16.0)
+                Text("所需坚果数")
                 Spacer()
                 TextField("0", text: $value)
                     .multilineTextAlignment(.trailing)
@@ -65,39 +67,14 @@ struct EditRewardPage: View {
 
     var rewardRepeat: some View {
         Group {
-            Button(action: {
-                isShowRepeatPicker.toggle()
-            }) {
-                HStack() {
-                    Image(systemName: "repeat")
-                    Text("重复")
-                    Spacer()
-                    Text(getRepeatFrequencyText(repeatFrequency))
-                }
-                    .padding(.horizontal, 16.0)
-                    .foregroundColor(.g80)
-            }
+            Toggle(isOn: $isRepeat, label: {
+                Image(systemName: "repeat")
+                Text("可重复兑换")
+            })
+                .padding(.horizontal, 16.0)
+                .foregroundColor(.g80)
             Divider()
         }
-    }
-
-//    重复频率选择器
-    var repeatPicker: some View {
-        VStack(alignment: .trailing, spacing: 0) {
-            Button(action: {
-                isShowRepeatPicker.toggle()
-            }) {
-                Text("完成")
-            }
-                .padding(8)
-            Picker("重复频率", selection: $repeatFrequency) {
-                ForEach(RepeatFrequency.allCases, id: \.self) {repeatOption in
-                    Text(getRepeatFrequencyText(repeatOption)).tag(repeatOption)
-                }
-                .labelsHidden()
-            }
-        }
-            .background(Color.g10)
     }
 
     @ViewBuilder var coverImage: some View {
@@ -161,7 +138,6 @@ struct EditRewardPage: View {
                     alignment: .topLeading
                 )
                 .navigationBarHidden(true)
-            Popup(isVisible: isShowRepeatPicker, content: repeatPicker)
         }
     }
     
@@ -170,9 +146,9 @@ struct EditRewardPage: View {
             return
         }
         if initReward?.id != nil {
-            gs.rewardStore.updateReward(targetReward: initReward!, name: name, value: Int(value)!, repeatFrequency: repeatFrequency, desc: desc, isSoldout: false, cover: cover?.pngData())
+            gs.rewardStore.updateReward(targetReward: initReward!, name: name, value: Int(value)!, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
         } else {
-            gs.rewardStore.createReward(name: name, value: Int(value)!, repeatFrequency: repeatFrequency, desc: desc, isSoldout: false, cover: cover?.pngData())
+            gs.rewardStore.createReward(name: name, value: Int(value)!, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
         }
     }
 }
