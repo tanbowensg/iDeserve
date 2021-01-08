@@ -30,12 +30,12 @@ final class GoalStore: ObservableObject {
     func updateGoal (
         targetGoal: Goal,
         name: String,
-        difficulty: Difficulty,
+        importance: Importance,
         desc: String,
         tasks: [TaskState]
     ) {
         targetGoal.name = name
-        targetGoal.difficulty = Int16(difficulty.rawValue)
+        targetGoal.importance = Int16(importance.rawValue)
         targetGoal.desc = desc
         let goalTasks = tasks.map { taskState in
             return self.taskStore.updateOrCreate(taskState: taskState, goal: targetGoal)
@@ -51,7 +51,7 @@ final class GoalStore: ObservableObject {
 
     func createGoal (
         name: String,
-        difficulty: Difficulty,
+        importance: Importance,
         desc: String,
         tasks: [TaskState]
     ) {
@@ -61,7 +61,7 @@ final class GoalStore: ObservableObject {
         self.updateGoal(
             targetGoal: newGoal,
             name: name,
-            difficulty: difficulty,
+            importance: importance,
             desc: desc,
             tasks: tasks
         )

@@ -15,20 +15,20 @@ struct EditGoalPage: View {
     var initGoal: Goal?
 
     @State var name: String = ""
-    @State var difficulty: Difficulty = Difficulty.easy
+    @State var importance: Importance = Importance.normal
     @State var desc = ""
     @State var tasks: [TaskState] = []
 
     @State var taskCache: TaskState = TaskState(nil)
     
-    @State var isShowDifficultyPicker = false
+    @State var isShowImportancePicker = false
     @State var isShowTaskSheet = false
 
     init (initGoal: Goal?) {
         self.initGoal = initGoal
         if let existGoal = initGoal {
             _name = State(initialValue: existGoal.name ?? "")
-            _difficulty = State(initialValue: Difficulty(rawValue: Int(existGoal.difficulty)) ?? Difficulty.easy)
+            _importance = State(initialValue: Importance(rawValue: Int(existGoal.importance)) ?? Importance.normal)
             _desc = State(initialValue: existGoal.desc ?? "")
             if let existTasks = existGoal.tasks {
                 let tasksArray = existTasks.allObjects as! [Task]
@@ -68,16 +68,16 @@ struct EditGoalPage: View {
         }
     }
 
-    var goalDifficulty: some View {
+    var goalImportance: some View {
         Group {
             Button(action: {
-                isShowDifficultyPicker.toggle()
+                isShowImportancePicker.toggle()
             }) {
                 HStack() {
                     Image(systemName: "repeat")
-                    Text("难度")
+                    Text("重要性")
                     Spacer()
-                    Text(getDifficultyText(difficulty))
+                    Text(getImportanceText(importance))
                 }
                     .padding(.horizontal, 16.0)
                     .foregroundColor(.g80)
@@ -87,19 +87,19 @@ struct EditGoalPage: View {
         }
     }
     
-//    难度选择器
-    var difficultyPicker: some View {
+//    重要性选择器
+    var importancePicker: some View {
         VStack(alignment: .trailing, spacing: 0) {
             Button(action: {
-                isShowDifficultyPicker.toggle()
+                isShowImportancePicker.toggle()
 //                tempTask = Task()
             }) {
                 Text("完成")
             }
                 .padding(8)
-            Picker("难度", selection: $difficulty) {
-                ForEach(Difficulty.allCases, id: \.self) {difficultyOption in
-                    Text(getDifficultyText(difficultyOption)).tag(difficultyOption)
+            Picker("难度", selection: $importance) {
+                ForEach(Importance.allCases, id: \.self) {importanceOption in
+                    Text(getImportanceText(importanceOption)).tag(importanceOption)
                 }
                 .labelsHidden()
             }
@@ -161,7 +161,7 @@ struct EditGoalPage: View {
                 backBtn
                 goalTitle
                 goalValue
-                goalDifficulty
+                goalImportance
                 HStack() {
                     TextField("备注", text: $desc)
                         .padding(.horizontal, 16.0)
@@ -176,7 +176,7 @@ struct EditGoalPage: View {
                     alignment: .topLeading
                 )
                 .navigationBarHidden(true)
-            Popup(isVisible: isShowDifficultyPicker, content: difficultyPicker)
+            Popup(isVisible: isShowImportancePicker, content: importancePicker)
         }
     }
     
@@ -213,7 +213,7 @@ struct EditGoalPage: View {
             gs.goalStore.updateGoal(
                 targetGoal: initGoal!,
                 name: name,
-                difficulty: difficulty,
+                importance: importance,
                 desc: desc,
                 tasks: tasks
             )
@@ -221,7 +221,7 @@ struct EditGoalPage: View {
 //            id不存在就创建
             gs.goalStore.createGoal(
                 name: name,
-                difficulty: difficulty,
+                importance: importance,
                 desc: desc,
                 tasks: tasks
             )
