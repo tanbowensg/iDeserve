@@ -20,7 +20,9 @@ struct RewardGrid: View {
     @State var isShowButton = false
     
     var disableRedeem: Bool {
-        isEditMode || (reward.isSoldout && !reward.isRepeat)
+        return isEditMode
+            || (reward.isSoldout && !reward.isRepeat)
+            || gs.pointsStore.points <= reward.value
     }
     
     var cover: some View {
