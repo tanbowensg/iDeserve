@@ -10,6 +10,34 @@ import SwiftUI
 struct AppHeader: View {
     var points: Int
     var title: String
+    
+    var nuts: some View {
+        HStack(alignment: .center, spacing: 2){
+            Image("NutIcon")
+                .resizable()
+                .padding(6)
+                .frame(width: 36.0, height: 36.0)
+            Spacer()
+            AnimatedPoints(points: points)
+                .frame(height: 16.0)
+        }
+        .padding(.horizontal, 18.0)
+        .frame(height: 48.0)
+        .frame(maxWidth: 200.0)
+        .background(Color.white)
+        .cornerRadius(24)
+    }
+    
+    var settingsIcon: some View {
+        Image(systemName: "gear")
+            .resizable()
+            .frame(width: 20.0, height: 20.0)
+            .padding(.horizontal, 12.0)
+            .padding(.vertical, 4.0)
+            .background(Color("rewardColor"))
+            .foregroundColor(.white)
+            .cornerRadius(22)
+    }
 
     var body: some View {
         ZStack {
@@ -20,23 +48,11 @@ struct AppHeader: View {
                     .fontWeight(.black)
                     .lineLimit(1)
                 Spacer()
-                HStack(alignment: .center, spacing: 2){
-                    Image("NutIcon")
-                        .resizable()
-                        .padding(6)
-                        .frame(width: 36.0, height: 36.0)
-                    Spacer()
-                    Text(String(points))
-                        .font(.avenirBlack36)
-                        .fontWeight(.bold)
-                        .foregroundColor(.rewardColor)
-                        .frame(height: 16.0)
+                
+                HStack(alignment: .center, spacing: 4.0) {
+                    nuts
+                    settingsIcon
                 }
-                    .padding(.horizontal, 18.0)
-                    .frame(height: 48.0)
-                    .frame(maxWidth: 200.0)
-                    .background(Color.white)
-                    .cornerRadius(24)
             }
         }
         .padding(.horizontal, 16.0)

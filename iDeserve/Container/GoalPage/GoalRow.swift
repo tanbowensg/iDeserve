@@ -45,7 +45,7 @@ struct GoalRow: View {
             Text("+\(String(value))")
                 .font(.system(size: 14))
                 .fontWeight(.black)
-                .foregroundColor(Color.goldColor)
+                .foregroundColor(Color.rewardColor)
             Image("NutIcon")
                 .resizable()
                 .frame(width: 16.0, height: 16.0)
