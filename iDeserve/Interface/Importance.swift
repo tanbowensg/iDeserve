@@ -27,3 +27,14 @@ func getImportanceText (_ value: Importance) -> String {
         return IMPORTANCE_EPIC_TEXT
     }
 }
+
+func getImportanceValue (_ value: Importance) -> Int {
+    switch value {
+    case Importance.normal:
+        return 20
+    case Importance.important:
+        return 40
+    case Importance.epic:
+        return 100
+    }
+}

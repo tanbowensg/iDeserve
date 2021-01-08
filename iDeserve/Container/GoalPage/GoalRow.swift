@@ -27,6 +27,10 @@ struct GoalRow: View {
         return self.goal.tasks?.allObjects as! [Task]
     }
     
+    var value: Int {
+        getImportanceValue(Importance(rawValue: Int(goal.importance)) ?? Importance.normal)
+    }
+    
     var expandArrow: some View {
         return Button(action: {
             isExpanded.toggle()
@@ -35,12 +39,27 @@ struct GoalRow: View {
         }
     }
     
+    var goalValue: some View {
+        HStack(alignment: .center, spacing: 3.0) {
+            Text("+\(String(value))")
+                .font(.system(size: 14))
+                .fontWeight(.black)
+                .foregroundColor(Color.goldColor)
+            Image("NutIcon")
+                .resizable()
+                .frame(width: 16.0, height: 16.0)
+                .padding(/*@START_MENU_TOKEN@*/.all, 2.0/*@END_MENU_TOKEN@*/)
+        }
+        .padding(.trailing, 30.0)
+    }
+    
     var goalRow: some View {
         HStack {
             self.expandArrow
             NavigationLink(destination: EditGoalPage(initGoal: goal)) {
                 Text(goal.name ?? "")
                 Spacer()
+                goalValue
             }
         }
         .frame(height: GOAL_ROW_HEIGHT)
@@ -83,9 +102,3 @@ struct GoalRow: View {
         .background(Color.white)
     }
 }
-//
-//struct GoalRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GoalRow()
-//    }
-//}

@@ -58,7 +58,7 @@ struct EditGoalPage: View {
                 Image(systemName: "dollarsign.circle")
                 Text("分值")
                 Spacer()
-                Text("100")
+                Text(String(getImportanceValue(importance)))
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }

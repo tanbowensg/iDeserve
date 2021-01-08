@@ -13,6 +13,7 @@ final class GoalStore: ObservableObject {
     var moc = CoreDataContainer.shared.context
     static var shared = GoalStore()
     private var taskStore = TaskStore.shared
+    private var pointsStore = PointsStore.shared
 
 //    @Published var goals: [Goal] = []
 
@@ -65,5 +66,17 @@ final class GoalStore: ObservableObject {
             desc: desc,
             tasks: tasks
         )
+    }
+    
+    func completeGoal (goal: Goal) {
+        let value = getImportanceValue(Importance(rawValue: Int(goal.importance))!)
+        pointsStore.add(value)
+        goal.done = true
+        
+        do {
+            try self.moc.save()
+        } catch {
+            fatalError("完成目标失败")
+        }
     }
 }
