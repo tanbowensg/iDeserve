@@ -13,6 +13,7 @@ struct GoalRow: View {
     var forceCollapse: Bool?
 
     @State private var refreshing = false
+    @State private var showAlert = false
     var didSave =  NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
     
 //    仅表示组建内部的展开状态
@@ -98,7 +99,7 @@ struct GoalRow: View {
                 SwipeWrapper(
                     content: goalRow,
                     height: Int(GOAL_ROW_HEIGHT),
-                    onLeftSwipe: onCompleteGoal,
+                    onLeftSwipe: { showAlert = true },
                     onRightSwipe: onRemoveGoal
                 )
             }
@@ -106,6 +107,18 @@ struct GoalRow: View {
         }
         .frame(minHeight: shouldExpand ? nil : GOAL_ROW_HEIGHT)
         .background(Color.white)
+        .alert(isPresented: $showAlert, content: {
+            let confirmButton = Alert.Button.default(Text("完成")) {
+                onCompleteGoal()
+            }
+            let cancelButton = Alert.Button.cancel(Text("取消"))
+            return Alert(
+                title: Text("完成目标"),
+                message: Text("确定要完成\(goal.name!)吗？\n完成以后将开始结算完成目标的额外奖励。"),
+                primaryButton: confirmButton,
+                secondaryButton: cancelButton
+            )
+        })
     }
     
     func onCompleteGoal () {
