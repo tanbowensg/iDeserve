@@ -20,19 +20,17 @@ struct RecordPage: View {
         let request: NSFetchRequest<Record> = Record.fetchRequest()
         request.sortDescriptors = []
         return request
-   }
-    
+    }
+
     var dayStats: [DayStat] {
         let startDay = startDateOfMonth(year: currentYear, month: currentMonth)
         let lastDay = endDateOfMonth(year: currentYear, month: currentMonth)
         
-        let reducedRecords = reduceRecords(
+        return reduceRecords(
             records: records.map{return $0},
             from: startDay,
             to: lastDay
         )
-
-        return fillDayStats(dayStats: reducedRecords)
     }
     
     var chosenDateRecords: [Record] {
@@ -41,6 +39,10 @@ struct RecordPage: View {
         }
 
         return []
+    }
+    
+    var monthTitle: some View {
+        Text("\(String(currentYear))年\(currentMonth)月")
     }
     
     var recordList: some View {
@@ -62,12 +64,46 @@ struct RecordPage: View {
     var body: some View {
         VStack {
             AppHeader(points: gs.pointsStore.points, title: "历史记录")
-            CalendarLayout(dayStats: dayStats, onTapDate: { chosenDate = $0 })
+            monthTitle
+            CalendarLayout(dayStats: dayStats, currentMonth: currentMonth, onTapDate: { chosenDate = $0 })
+                .gesture(dragGesture)
             recordList
         }
         .navigationBarHidden(true)
     }
     
+    var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 10, coordinateSpace: .local)
+            .onEnded { value in
+                print(value.translation)
+                
+                if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
+//                    左滑
+                    addMonth()
+                }
+                else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
+//                    右滑
+                    minusMonth()
+                }
+            }
+    }
+    
+    func minusMonth () {
+        currentMonth -= 1
+        if currentMonth == 0 {
+            currentYear -= 1
+            currentMonth = 12
+        }
+    }
+    
+    func addMonth () {
+        currentMonth += 1
+        if currentMonth > 12 {
+            currentYear += 1
+            currentMonth = 1
+        }
+    }
+
     func deleteRecord (at offsets: IndexSet) {
         for index in offsets {
             let record = chosenDateRecords[index]

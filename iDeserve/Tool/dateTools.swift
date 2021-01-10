@@ -16,18 +16,23 @@ func dateToString (_ date: Date) -> String {
 }
 
 func endDateOfMonth(year: Int, month: Int) -> Date {
-    let componentDay = DateComponents(day: 1)
     let calendar = Calendar.current
-    let firstDayDate = calendar.nextDate(after: Date(), matching: componentDay, matchingPolicy: .previousTimePreservingSmallerComponents, direction: .backward)!
-
-    let firsDayNextMonth = calendar.date(byAdding: .month, value: 1, to: firstDayDate)!
-    let lastDayMonthDate = calendar.date(byAdding: .day, value: -1, to: firsDayNextMonth)!
-    return Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: lastDayMonthDate)!
+    
+    let nextYear = month == 12 ? year + 1 : year
+    let nextMonth = month == 12 ? 1 : month + 1
+    let components = DateComponents(year: nextYear, month: nextMonth, day: 1)
+    
+    let startDateOfNextMointh = calendar.date(from: components)!
+    let endDate = calendar.date(byAdding: .day, value: -1, to: startDateOfNextMointh)!
+    
+    return calendar.date(bySettingHour: 23, minute: 59, second: 59, of: endDate)!
 }
 
 func startDateOfMonth(year: Int, month: Int) -> Date {
-    let componentDay = DateComponents(day: 1)
     let calendar = Calendar.current
-    let startDay = calendar.nextDate(after: Date(), matching: componentDay, matchingPolicy: .previousTimePreservingSmallerComponents, direction: .backward)!
-    return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: startDay)!
+
+    let components = DateComponents(year: year, month: month, day: 1)
+    let startDate = calendar.date(from: components)!
+
+    return calendar.date(bySettingHour: 0, minute: 0, second: 0, of: startDate)!
 }

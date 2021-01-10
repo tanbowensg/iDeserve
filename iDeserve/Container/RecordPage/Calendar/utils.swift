@@ -13,7 +13,7 @@ struct DayStat {
     var outcome: Int
 }
 
-// 根据Records统计每天一共赚了多少，用了多少
+// 根据 Records 统计每天一共赚了多少，用了多少
 func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
     let sortedRecords = records.sorted(by: {(r1: Record, r2: Record) in
         return r1.date! < r2.date!
@@ -21,7 +21,7 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
 
     var lastDate = from
     var dayStatCache: DayStat = DayStat(date: Date(timeIntervalSince1970: 0), income: 0, outcome: 0)
-    var results: [DayStat] = []
+    var dayStats: [DayStat] = []
     var calendar = Calendar.current
     calendar.timeZone = TimeZone(identifier: "UTC")!
     
@@ -32,7 +32,7 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
             continue
         }
         if !calendar.isDate(r.date!, inSameDayAs: lastDate) {
-            results.append(dayStatCache)
+            dayStats.append(dayStatCache)
             dayStatCache = DayStat(date: r.date!, income: 0, outcome: 0)
         }
 
@@ -46,26 +46,24 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
         
         lastDate = r.date!
     }
+
 //    去掉第一个1970年的
-    results.remove(at: 0)
+    if (dayStats.count > 0) {
+        dayStats.remove(at: 0)
+    }
+
 //        加上最后一条
     if sortedRecords.count > 1 {
-        results.append(dayStatCache)
+        dayStats.append(dayStatCache)
     }
-    print(results)
 
-    return results
-}
 
-//给一段时间头尾补上日期，正好能凑满一周
-func fillDayStats(dayStats: [DayStat]) -> [DayStat] {
     var results: [DayStat] = []
     if dayStats.count == 0 {
-        return results
+        return []
     }
 
-    let from = dayStats[0].date
-    let to = dayStats[dayStats.count - 1].date
+    //给一段时间头尾补上日期，正好能凑满一周
     let fromWeekDay = Calendar.current.dateComponents([Calendar.Component.weekday], from: from).weekday!
     let toWeekDay = Calendar.current.dateComponents([Calendar.Component.weekday], from: to).weekday!
     let start = Calendar.current.date(byAdding: .day, value: 1 - fromWeekDay, to: from)!
@@ -87,3 +85,4 @@ func fillDayStats(dayStats: [DayStat]) -> [DayStat] {
 
     return results
 }
+
