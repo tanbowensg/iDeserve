@@ -13,6 +13,8 @@ struct RecordPage: View {
     @FetchRequest(fetchRequest: recordRequest) var records: FetchedResults<Record>
     
     @State var chosenDate: Date? = nil
+    @State var currentMonth: Int = Calendar.current.dateComponents([.month], from: Date()).month!
+    @State var currentYear: Int = Calendar.current.dateComponents([.year], from: Date()).year!
 
     static var recordRequest: NSFetchRequest<Record> {
         let request: NSFetchRequest<Record> = Record.fetchRequest()
@@ -21,16 +23,15 @@ struct RecordPage: View {
    }
     
     var dayStats: [DayStat] {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        let from = formatter.date(from: "2020-12-01 00:00")!
-        let to = Date()
+        let startDay = startDateOfMonth(year: currentYear, month: currentMonth)
+        let lastDay = endDateOfMonth(year: currentYear, month: currentMonth)
         
         let reducedRecords = reduceRecords(
             records: records.map{return $0},
-            from: from,
-            to: to
+            from: startDay,
+            to: lastDay
         )
+
         return fillDayStats(dayStats: reducedRecords)
     }
     

@@ -10,7 +10,6 @@
 		D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DC7252B0B5900E4005B /* CreateButton.swift */; };
 		D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */; };
 		D0036DD5252C56CD00E4005B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DD4252C56CD00E4005B /* Color.swift */; };
-		D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E01252C6AEF00E4005B /* dateToString.swift */; };
 		D0036E0A252C840D00E4005B /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E09252C840D00E4005B /* Popup.swift */; };
 		D007CFB525873512008CA76D /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
 		D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */; };
@@ -53,7 +52,6 @@
 		D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
 		D07913682574F632007B9767 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
 		D07913692574F632007B9767 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
-		D079137A2574F65B007B9767 /* dateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E01252C6AEF00E4005B /* dateToString.swift */; };
 		D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0352563F836008B6EBB /* emptyFunc.swift */; };
 		D079137C2574F65B007B9767 /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
 		D079137D2574F65B007B9767 /* genMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockData.swift */; };
@@ -68,6 +66,8 @@
 		D08988B2254685A60032BA96 /* TaskForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988B1254685A60032BA96 /* TaskForm.swift */; };
 		D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */; };
 		D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* TaskState.swift */; };
+		D08B91B725AABCF0007F2358 /* dateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B91B625AABCF0007F2358 /* dateTools.swift */; };
+		D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B91B625AABCF0007F2358 /* dateTools.swift */; };
 		D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2EC25A5D52200042124 /* draggableModifier.swift */; };
 		D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2FA25A82E1F00042124 /* Importance.swift */; };
 		D08FB31125A8388000042124 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
@@ -137,7 +137,6 @@
 		D0036DC7252B0B5900E4005B /* CreateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateButton.swift; sourceTree = "<group>"; };
 		D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPage.swift; sourceTree = "<group>"; };
 		D0036DD4252C56CD00E4005B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		D0036E01252C6AEF00E4005B /* dateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateToString.swift; sourceTree = "<group>"; };
 		D0036E09252C840D00E4005B /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		D007CFB425873512008CA76D /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayCreateTaskSheet.swift; sourceTree = "<group>"; };
@@ -191,6 +190,7 @@
 		D08988B1254685A60032BA96 /* TaskForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskForm.swift; sourceTree = "<group>"; };
 		D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTasksSheet.swift; sourceTree = "<group>"; };
 		D08988DD2546BDDC0032BA96 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
+		D08B91B625AABCF0007F2358 /* dateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateTools.swift; sourceTree = "<group>"; };
 		D08FB2EC25A5D52200042124 /* draggableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = draggableModifier.swift; sourceTree = "<group>"; };
 		D08FB2FA25A82E1F00042124 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
 		D08FB32025A87CE300042124 /* AnimatedPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPoints.swift; sourceTree = "<group>"; };
@@ -251,10 +251,10 @@
 		D0036E00252C6AE500E4005B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				D0036E01252C6AEF00E4005B /* dateToString.swift */,
 				D03B57C6253D471A00DC107F /* saveContext.swift */,
 				D0F3B00225636C4B008B6EBB /* genMockData.swift */,
 				D0F3B0352563F836008B6EBB /* emptyFunc.swift */,
+				D08B91B625AABCF0007F2358 /* dateTools.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -724,10 +724,10 @@
 				D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */,
 				D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */,
 				D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */,
-				D0036E02252C6AEF00E4005B /* dateToString.swift in Sources */,
 				D072433625A30EC800DCB674 /* CalendarLayout.swift in Sources */,
 				D07913C925776963007B9767 /* TabIcon.swift in Sources */,
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
+				D08B91B725AABCF0007F2358 /* dateTools.swift in Sources */,
 				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
 				D0F3B00325636C4B008B6EBB /* genMockData.swift in Sources */,
@@ -767,7 +767,6 @@
 			files = (
 				D0F02A3B2579162D0082CCB1 /* CoreDataContainer.swift in Sources */,
 				D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */,
-				D079137A2574F65B007B9767 /* dateToString.swift in Sources */,
 				D0D23CFB25788CD600AAFE27 /* Font.swift in Sources */,
 				D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */,
 				D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */,
@@ -775,6 +774,7 @@
 				D079133D2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */,
 				D079137C2574F65B007B9767 /* saveContext.swift in Sources */,
+				D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */,
 				D07913652574F632007B9767 /* Record.swift in Sources */,
 				D08FB31125A8388000042124 /* TaskItem.swift in Sources */,
 				D07913662574F632007B9767 /* Color.swift in Sources */,
