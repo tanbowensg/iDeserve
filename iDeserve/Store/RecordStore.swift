@@ -19,7 +19,7 @@ final class RecordStore {
         let newRecord = Record(context: self.moc)
         newRecord.id = UUID()
         newRecord.name = name
-        newRecord.kind = Int16(RecordKind.task.rawValue)
+        newRecord.kind = Int16(kind.rawValue)
         newRecord.value = Int16(value)
         newRecord.date = Date()
         do {

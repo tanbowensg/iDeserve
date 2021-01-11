@@ -45,24 +45,23 @@ struct RecordPage: View {
         Text("\(String(currentYear))年\(currentMonth)月")
     }
     
-    var recordList: some View {
-        return ScrollView {
-            VStack(spacing: 0.0) {
-                ForEach (chosenDateRecords) { record in
-                    HStack {
-                        Text(record.name ?? "未知")
-                        Spacer()
-                        Text(dateToString(record.date!))
-                        Spacer()
-                        Text(String(record.value))
-                    }
-                    .frame(height: 32)
-                }
-                .onDelete(perform: deleteRecord)
-            }
-//            .frame(maxWidth: .infinity)
-        }
-    }
+//    var recordList: some View {
+//        return ScrollView {
+//            VStack(spacing: 0.0) {
+//                ForEach (chosenDateRecords) { record in
+//                    HStack {
+//                        Text(record.name ?? "未知")
+//                        Spacer()
+//                        Text(dateToString(record.date!))
+//                        Spacer()
+//                        Text(String(record.value))
+//                    }
+//                    .frame(height: 32)
+//                }
+////                .onDelete(perform: deleteRecord)
+//            }
+//        }
+//    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -77,7 +76,7 @@ struct RecordPage: View {
                 )
                     .gesture(dragGesture)
                     .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
-                recordList
+                RecordList(records: chosenDateRecords)
             }
                 .animation(.easeInOut, value: currentMonth)
             .navigationBarHidden(true)

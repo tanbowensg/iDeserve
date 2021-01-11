@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ExDivider: View {
+    let color: Color = .g20
+    let width: CGFloat = 1
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Rectangle()
+            .fill(color)
+            .frame(height: width)
+            .edgesIgnoringSafeArea(.horizontal)
+            .frame(maxWidth: .infinity)
+            .padding(0)
     }
 }
 
