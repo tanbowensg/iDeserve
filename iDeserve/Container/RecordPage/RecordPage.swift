@@ -46,30 +46,42 @@ struct RecordPage: View {
     }
     
     var recordList: some View {
-        return List {
-            ForEach (chosenDateRecords) { record in
-                HStack {
-                    Text(record.name ?? "未知")
-                    Spacer()
-                    Text(dateToString(record.date!))
-                    Spacer()
-                    Text(String(record.value))
+        return ScrollView {
+            VStack(spacing: 0.0) {
+                ForEach (chosenDateRecords) { record in
+                    HStack {
+                        Text(record.name ?? "未知")
+                        Spacer()
+                        Text(dateToString(record.date!))
+                        Spacer()
+                        Text(String(record.value))
+                    }
+                    .frame(height: 32)
                 }
+                .onDelete(perform: deleteRecord)
             }
-            .onDelete(perform: deleteRecord)
+//            .frame(maxWidth: .infinity)
         }
-
     }
 
     var body: some View {
-        VStack {
-            AppHeader(points: gs.pointsStore.points, title: "历史记录")
-            monthTitle
-            CalendarLayout(dayStats: dayStats, currentMonth: currentMonth, onTapDate: { chosenDate = $0 })
-                .gesture(dragGesture)
-            recordList
+        GeometryReader { geometry in
+            VStack(spacing: 0.0) {
+                AppHeader(points: gs.pointsStore.points, title: "历史记录")
+                monthTitle
+                CalendarLayout(
+                    dayStats: dayStats,
+                    currentMonth: currentMonth,
+                    gridSize: Int(geometry.size.width / 7),
+                    onTapDate: { chosenDate = $0 }
+                )
+                    .gesture(dragGesture)
+                    .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
+                recordList
+            }
+                .animation(.easeInOut, value: currentMonth)
+            .navigationBarHidden(true)
         }
-        .navigationBarHidden(true)
     }
     
     var dragGesture: some Gesture {
@@ -80,10 +92,12 @@ struct RecordPage: View {
                 if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
 //                    左滑
                     addMonth()
+                    chosenDate = nil
                 }
                 else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
 //                    右滑
                     minusMonth()
+                    chosenDate = nil
                 }
             }
     }
