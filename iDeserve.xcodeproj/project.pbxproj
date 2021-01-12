@@ -21,6 +21,9 @@
 		D010267F2524242100653A52 /* iDeserveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010267E2524242100653A52 /* iDeserveUITests.swift */; };
 		D01CAD9B25AC92A2009F1115 /* ExDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01CAD9A25AC92A2009F1115 /* ExDivider.swift */; };
 		D030B6B2257E0A8900967015 /* resetPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030B6B1257E0A8900967015 /* resetPos.swift */; };
+		D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6F525AD443700F8152D /* CalendarSwiper.swift */; };
+		D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
+		D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
 		D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D03B57C7253D471A00DC107F /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
 		D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57CB253D8B4900DC107F /* RecordPage.swift */; };
@@ -156,6 +159,8 @@
 		D01026802524242100653A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D01CAD9A25AC92A2009F1115 /* ExDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExDivider.swift; sourceTree = "<group>"; };
 		D030B6B1257E0A8900967015 /* resetPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetPos.swift; sourceTree = "<group>"; };
+		D03AF6F525AD443700F8152D /* CalendarSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSwiper.swift; sourceTree = "<group>"; };
+		D03AF6FB25AD44B800F8152D /* viberate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viberate.swift; sourceTree = "<group>"; };
 		D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDeserve.xcdatamodel; sourceTree = "<group>"; };
 		D03B57C6253D471A00DC107F /* saveContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveContext.swift; sourceTree = "<group>"; };
 		D03B57CB253D8B4900DC107F /* RecordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPage.swift; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 				D0F3B00225636C4B008B6EBB /* genMockData.swift */,
 				D0F3B0352563F836008B6EBB /* emptyFunc.swift */,
 				D08B91B625AABCF0007F2358 /* dateTools.swift */,
+				D03AF6FB25AD44B800F8152D /* viberate.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				D072432B25A30B6400DCB674 /* CalendarGrid.swift */,
 				D072433525A30EC800DCB674 /* CalendarLayout.swift */,
 				D072434925A431C000DCB674 /* utils.swift */,
+				D03AF6F525AD443700F8152D /* CalendarSwiper.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -704,6 +711,7 @@
 				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
 				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
+				D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */,
 				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
 				D030B6B2257E0A8900967015 /* resetPos.swift in Sources */,
 				D072434A25A431C000DCB674 /* utils.swift in Sources */,
@@ -728,6 +736,7 @@
 				D04BB017252AC7FB0088912A /* TaskPage.swift in Sources */,
 				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
 				D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */,
+				D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */,
 				D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */,
 				D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */,
 				D08988DE2546BDDC0032BA96 /* TaskState.swift in Sources */,
@@ -776,6 +785,7 @@
 				D0F02A3B2579162D0082CCB1 /* CoreDataContainer.swift in Sources */,
 				D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */,
 				D0D23CFB25788CD600AAFE27 /* Font.swift in Sources */,
+				D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */,
 				D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */,
 				D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */,
 				D07913682574F632007B9767 /* Difficulty.swift in Sources */,

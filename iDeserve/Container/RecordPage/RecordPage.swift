@@ -33,6 +33,30 @@ struct RecordPage: View {
         )
     }
     
+    var prevMonthDayStats: [DayStat] {
+        let (prevYear, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
+        let startDay = startDateOfMonth(year: prevYear, month: prevMonth)
+        let lastDay = endDateOfMonth(year: prevYear, month: prevMonth)
+        
+        return reduceRecords(
+            records: records.map{return $0},
+            from: startDay,
+            to: lastDay
+        )
+    }
+    
+    var nextMonthDayStats: [DayStat] {
+        let (nextYear, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
+        let startDay = startDateOfMonth(year: nextYear, month: nextMonth)
+        let lastDay = endDateOfMonth(year: nextYear, month: nextMonth)
+        
+        return reduceRecords(
+            records: records.map{return $0},
+            from: startDay,
+            to: lastDay
+        )
+    }
+
     var chosenDateRecords: [Record] {
         if let _chosenDate = chosenDate {
             return records.filter { Calendar.current.isDate($0.date!, inSameDayAs: _chosenDate) }
@@ -44,76 +68,32 @@ struct RecordPage: View {
     var monthTitle: some View {
         Text("\(String(currentYear))年\(currentMonth)月")
     }
-    
-//    var recordList: some View {
-//        return ScrollView {
-//            VStack(spacing: 0.0) {
-//                ForEach (chosenDateRecords) { record in
-//                    HStack {
-//                        Text(record.name ?? "未知")
-//                        Spacer()
-//                        Text(dateToString(record.date!))
-//                        Spacer()
-//                        Text(String(record.value))
-//                    }
-//                    .frame(height: 32)
-//                }
-////                .onDelete(perform: deleteRecord)
-//            }
-//        }
-//    }
 
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0.0) {
                 AppHeader(points: gs.pointsStore.points, title: "历史记录")
                 monthTitle
-                CalendarLayout(
+                CalendarSwiper(
                     dayStats: dayStats,
+                    prevDayStats: prevMonthDayStats,
+                    nextDayStats: nextMonthDayStats,
+                    currentYear: currentYear,
                     currentMonth: currentMonth,
                     gridSize: Int(geometry.size.width / 7),
-                    onTapDate: { chosenDate = $0 }
+                    onTapDate: { chosenDate = $0 },
+                    onMonthChange: {
+                        currentYear = $0
+                        currentMonth = $1
+                    }
                 )
-                    .gesture(dragGesture)
                     .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
+                .border(Color.red)
                 RecordList(records: chosenDateRecords)
+                    .border(Color.blue)
             }
-                .animation(.easeInOut, value: currentMonth)
+//                .animation(.easeInOut, value: currentMonth)
             .navigationBarHidden(true)
-        }
-    }
-    
-    var dragGesture: some Gesture {
-        DragGesture(minimumDistance: 10, coordinateSpace: .local)
-            .onEnded { value in
-                print(value.translation)
-                
-                if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
-//                    左滑
-                    addMonth()
-                    chosenDate = nil
-                }
-                else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
-//                    右滑
-                    minusMonth()
-                    chosenDate = nil
-                }
-            }
-    }
-    
-    func minusMonth () {
-        currentMonth -= 1
-        if currentMonth == 0 {
-            currentYear -= 1
-            currentMonth = 12
-        }
-    }
-    
-    func addMonth () {
-        currentMonth += 1
-        if currentMonth > 12 {
-            currentYear += 1
-            currentMonth = 1
         }
     }
 

@@ -86,3 +86,14 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
     return results
 }
 
+func getPrevMonth(year: Int, month: Int) -> (Int, Int) {
+    let prevMonth = month == 1 ? 12 : month - 1
+    let prevYear = month == 1 ? year - 1 : year
+    return (prevYear, prevMonth)
+}
+
+func getNextMonth(year: Int, month: Int) -> (Int, Int) {
+    let nextMonth = month == 12 ? 1 : month + 1
+    let nextYear = month == 12 ? year + 1 : year
+    return (nextYear, nextMonth)
+}

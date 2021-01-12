@@ -21,7 +21,6 @@ struct CalendarLayout: View {
     }
 
     var body: some View {
-        print(gridSize)
         return
             VStack(spacing: 0.0) {
                 LazyVGrid(
@@ -55,11 +54,12 @@ struct CalendarLayout: View {
                                     _onTapDate(ds.date)
                                 }
                             }
-                            .animation(.none)
                     }
                     .background(Color.g10.animation(.none))
                 }
             }
+            .border(Color.yellow)
+            .animation(.none)
     }
     
     func getDateMonth (_ date: Date) -> Int {

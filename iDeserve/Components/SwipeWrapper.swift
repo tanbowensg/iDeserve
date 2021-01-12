@@ -115,11 +115,6 @@ struct SwipeWrapper<Content: View>: View {
         }
             .gesture(gesture)
     }
-    
-    func viberate () -> Void {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.warning)
-    }
 }
 
 struct SwipeWrapper_Previews: PreviewProvider {
