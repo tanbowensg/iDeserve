@@ -92,8 +92,8 @@ struct RecordPage: View {
                 RecordList(records: chosenDateRecords)
                     .border(Color.blue)
             }
-//                .animation(.easeInOut, value: currentMonth)
-            .navigationBarHidden(true)
+                .animation(.easeInOut, value: currentMonth)
+                .navigationBarHidden(true)
         }
     }
 
