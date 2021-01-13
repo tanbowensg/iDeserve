@@ -28,14 +28,8 @@ struct CalendarSwiper: View {
     var gesture: some Gesture {
         DragGesture(minimumDistance: 1)
             .onChanged { value in
-//                缓存 isReachThreshold 最近一次状态
-                let lastIsReachThreshold = isReachThreshold
                 let newOffsetX = Int(value.translation.width)
                 self.offsetX = newOffsetX
-//                如果两次状态不一致，就震动
-                if isReachThreshold != lastIsReachThreshold {
-                    viberate()
-                }
             }
             .onEnded { value in
                 if offsetX > threshold {

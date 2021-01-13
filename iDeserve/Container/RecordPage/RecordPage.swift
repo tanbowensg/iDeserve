@@ -94,6 +94,7 @@ struct RecordPage: View {
                     .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
                 Divider()
                 RecordList(records: chosenDateRecords)
+                    .animation(.none)
             }
                 .animation(.easeInOut, value: currentMonth)
                 .navigationBarHidden(true)

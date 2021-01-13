@@ -31,14 +31,15 @@ struct CalendarGrid: View {
             .fontWeight(.black)
             .frame(width: CGFloat(size - padding * 2), height: CGFloat(size - padding * 2))
             .background(dayStat.income > 0 ?
-                            Color.hospitalGreen
-                            .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(6):
-                            nil
+                Color.hospitalGreen
+                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(6):
+                nil
             )
             .roundBorder(isHighlight ? Color.red : Color.white, width: 2, cornerRadius: 6)
             .scaleEffect(isHighlight ? 1.1 : 1)
             .animation(.easeInOut(duration: 0.1), value: isHighlight)
             .padding(.all, CGFloat(padding))
+            .id(dayStat.date)
     }
 
     var body: some View {
