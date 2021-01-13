@@ -62,7 +62,7 @@ struct CalendarSwiper: View {
         let (_, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
         let (_, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
 //        套上scrollView可以实现y轴上overflow hidden的效果
-        return ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
+        return
             HStack(alignment: .top, spacing: 0.0) {
                 CalendarLayout(dayStats: prevDayStats, currentMonth: prevMonth, gridSize: gridSize, onTapDate: onTapDate)
                     .id(prevMonth)
@@ -71,17 +71,9 @@ struct CalendarSwiper: View {
                 CalendarLayout(dayStats: nextDayStats, currentMonth: nextMonth, gridSize: gridSize, onTapDate: onTapDate)
                     .id(nextMonth)
             }
-            .offset(x: CGFloat(offsetX))
+            .frame(width: CGFloat(gridSize * 7), height: 20 + CGFloat(gridSize * dayStats.count / 7), alignment: .top)
+            .offset(x: CGFloat(offsetX), y: 0)
             .gesture(gesture)
             .animation(.easeInOut(duration: 0.3), value: offsetX)
-        }
-        .frame(width: CGFloat(gridSize * 7))
-        .onAppear {
-            UIScrollView.appearance().bounces = false
-        }
-        .onDisappear {
-            UIScrollView.appearance().bounces = true
-        }
-        .shadow(color: .g10, radius: 10, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
     }
 }
