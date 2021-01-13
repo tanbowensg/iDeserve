@@ -58,7 +58,6 @@ struct CalendarLayout: View {
                     }
                 }
             }
-            .animation(.none)
     }
     
     func getDateMonth (_ date: Date) -> Int {

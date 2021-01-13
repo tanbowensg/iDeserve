@@ -18,7 +18,7 @@ struct CalendarSwiper: View {
     var onMonthChange: (_ nextYear: Int, _ nextMonth: Int) -> Void
     
     @State var offsetX = 0
-    let threshold: Int = 100
+    var threshold: Int = 140
 
 //    已经达到了出发操作的阈值
     var isReachThreshold: Bool {
@@ -26,7 +26,7 @@ struct CalendarSwiper: View {
     }
 
     var gesture: some Gesture {
-        DragGesture(minimumDistance: 3)
+        DragGesture(minimumDistance: 1)
             .onChanged { value in
 //                缓存 isReachThreshold 最近一次状态
                 let lastIsReachThreshold = isReachThreshold
@@ -38,18 +38,23 @@ struct CalendarSwiper: View {
                 }
             }
             .onEnded { value in
-                if self.offsetX > self.threshold {
-                    print("上个月")
-//                        offsetX = -gridSize * 7
+                if offsetX > threshold {
+                    offsetX = gridSize * 7
                     let (prevYear, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
-                    onMonthChange(prevYear, prevMonth)
-                } else if -self.offsetX > self.threshold {
-                    print("下个月")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        onMonthChange(prevYear, prevMonth)
+                        offsetX = .zero
+                    }
+                } else if -offsetX > threshold {
+                    offsetX = -gridSize * 7
                     let (nextYear, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
-                    onMonthChange(nextYear, nextMonth)
-//                    offsetX = gridSize * 7
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        onMonthChange(nextYear, nextMonth)
+                        offsetX = .zero
+                    }
+                } else {
+                    offsetX = .zero
                 }
-                self.offsetX = .zero
             }
     }
 
@@ -60,17 +65,19 @@ struct CalendarSwiper: View {
         return ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
             HStack(alignment: .top, spacing: 0.0) {
                 CalendarLayout(dayStats: prevDayStats, currentMonth: prevMonth, gridSize: gridSize, onTapDate: onTapDate)
+                    .id(prevMonth)
                 CalendarLayout(dayStats: dayStats, currentMonth: currentMonth, gridSize: gridSize, onTapDate: onTapDate)
+                    .id(currentMonth)
                 CalendarLayout(dayStats: nextDayStats, currentMonth: nextMonth, gridSize: gridSize, onTapDate: onTapDate)
+                    .id(nextMonth)
             }
-//            .frame(width: CGFloat(gridSize * 7))
             .offset(x: CGFloat(offsetX))
             .gesture(gesture)
-            .animation(.easeInOut, value: offsetX)
+            .animation(.easeInOut(duration: 0.3), value: offsetX)
         }
         .frame(width: CGFloat(gridSize * 7))
         .onAppear {
-               UIScrollView.appearance().bounces = false
+            UIScrollView.appearance().bounces = false
         }
         .onDisappear {
             UIScrollView.appearance().bounces = true
