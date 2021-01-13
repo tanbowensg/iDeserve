@@ -28,14 +28,15 @@ struct CalendarLayout: View {
                     alignment: .center,
                     spacing: 0
                 ) {
-                    Text("日").frame(height: 20)
-                    Text("一").frame(height: 20)
-                    Text("二").frame(height: 20)
-                    Text("三").frame(height: 20)
-                    Text("四").frame(height: 20)
-                    Text("五").frame(height: 20)
-                    Text("六").frame(height: 20)
+                    ForEach(["日", "一", "二", "三", "四", "五", "六"], id: \.self) {text in
+                        Text(text)
+                            .font(.hiraginoSansGb12)
+                            .fontWeight(.light)
+                            .padding(4)
+                            .frame(height: 20)
+                    }
                 }
+                Divider()
                 LazyVGrid(
                     columns: columns,
                     alignment: .center,
@@ -55,10 +56,8 @@ struct CalendarLayout: View {
                                 }
                             }
                     }
-                    .background(Color.g10.animation(.none))
                 }
             }
-            .border(Color.yellow)
             .animation(.none)
     }
     

@@ -24,6 +24,7 @@
 		D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6F525AD443700F8152D /* CalendarSwiper.swift */; };
 		D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
 		D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
+		D03AF71025AEBAF000F8152D /* roundBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF70F25AEBAF000F8152D /* roundBorder.swift */; };
 		D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D03B57C7253D471A00DC107F /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
 		D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57CB253D8B4900DC107F /* RecordPage.swift */; };
@@ -161,6 +162,7 @@
 		D030B6B1257E0A8900967015 /* resetPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetPos.swift; sourceTree = "<group>"; };
 		D03AF6F525AD443700F8152D /* CalendarSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSwiper.swift; sourceTree = "<group>"; };
 		D03AF6FB25AD44B800F8152D /* viberate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viberate.swift; sourceTree = "<group>"; };
+		D03AF70F25AEBAF000F8152D /* roundBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundBorder.swift; sourceTree = "<group>"; };
 		D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDeserve.xcdatamodel; sourceTree = "<group>"; };
 		D03B57C6253D471A00DC107F /* saveContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveContext.swift; sourceTree = "<group>"; };
 		D03B57CB253D8B4900DC107F /* RecordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPage.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 		D01026602524241F00653A52 /* iDeserve */ = {
 			isa = PBXGroup;
 			children = (
+				D03AF70E25AEBADD00F8152D /* Extensions */,
 				D09688E7258C5B0F00E41751 /* Tasks */,
 				D0D23CD92578883200AAFE27 /* Fonts */,
 				D0036E00252C6AE500E4005B /* Tool */,
@@ -395,6 +398,14 @@
 				D0EE548F255A6D140091302D /* RewardStore.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		D03AF70E25AEBADD00F8152D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D03AF70F25AEBAF000F8152D /* roundBorder.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D04BB015252AC7EB0088912A /* Container */ = {
@@ -729,6 +740,7 @@
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
 				D07913BF257768E9007B9767 /* TabContainer.swift in Sources */,
 				D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */,
+				D03AF71025AEBAF000F8152D /* roundBorder.swift in Sources */,
 				D007CFB525873512008CA76D /* constants.swift in Sources */,
 				D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,

@@ -34,14 +34,15 @@ struct RecordList: View {
         }
         return VStack(spacing: 0.0) {
             Divider()
-            HStack {
+            HStack(alignment: .center) {
                 Text("总计")
                 Spacer()
                 getNutIcon(sum)
             }
-            .background(Color.white)
+            .frame(height: 40.0)
+            .padding(.horizontal, 16.0)
         }
-        .padding(.horizontal, 16.0)
+        .background(Color.white)
     }
 
     var body: some View {
@@ -49,13 +50,14 @@ struct RecordList: View {
             ScrollView {
                 VStack(spacing: 0.0) {
                     ForEach (records) { record in
-                        HStack {
+                        HStack(alignment: .center) {
                             Text(record.name ?? "未知")
+                                .fontWeight(.light)
                             Spacer()
                             getNutIcon(Int(record.kind == RecordKind.task.rawValue ? record.value : -record.value))
                         }
-                        .frame(height: 32)
                         .padding(.horizontal, 16.0)
+                        .frame(height: 40.0)
                     }
                 }
                 .padding(.bottom, 32.0)

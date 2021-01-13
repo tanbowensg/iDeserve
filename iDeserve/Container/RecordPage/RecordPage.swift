@@ -67,6 +67,9 @@ struct RecordPage: View {
     
     var monthTitle: some View {
         Text("\(String(currentYear))年\(currentMonth)月")
+            .font(.hiraginoSansGb14)
+            .fontWeight(.black)
+            .padding(.vertical, 8)
     }
 
     var body: some View {
@@ -85,12 +88,12 @@ struct RecordPage: View {
                     onMonthChange: {
                         currentYear = $0
                         currentMonth = $1
+                        chosenDate = nil
                     }
                 )
                     .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
-                .border(Color.red)
+                Divider()
                 RecordList(records: chosenDateRecords)
-                    .border(Color.blue)
             }
                 .animation(.easeInOut, value: currentMonth)
                 .navigationBarHidden(true)
