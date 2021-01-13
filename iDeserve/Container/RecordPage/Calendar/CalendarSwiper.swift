@@ -19,6 +19,7 @@ struct CalendarSwiper: View {
     
     @State var offsetX = 0
     var threshold: Int = 140
+    let animationDuration = 0.3
 
 //    已经达到了出发操作的阈值
     var isReachThreshold: Bool {
@@ -35,14 +36,14 @@ struct CalendarSwiper: View {
                 if offsetX > threshold {
                     offsetX = gridSize * 7
                     let (prevYear, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
                         onMonthChange(prevYear, prevMonth)
                         offsetX = .zero
                     }
                 } else if -offsetX > threshold {
                     offsetX = -gridSize * 7
                     let (nextYear, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
                         onMonthChange(nextYear, nextMonth)
                         offsetX = .zero
                     }
@@ -59,15 +60,15 @@ struct CalendarSwiper: View {
         return
             HStack(alignment: .top, spacing: 0.0) {
                 CalendarLayout(dayStats: prevDayStats, currentMonth: prevMonth, gridSize: gridSize, onTapDate: onTapDate)
-                    .id(prevMonth)
+//                    .id(prevMonth)
                 CalendarLayout(dayStats: dayStats, currentMonth: currentMonth, gridSize: gridSize, onTapDate: onTapDate)
-                    .id(currentMonth)
+//                    .id(currentMonth)
                 CalendarLayout(dayStats: nextDayStats, currentMonth: nextMonth, gridSize: gridSize, onTapDate: onTapDate)
-                    .id(nextMonth)
+//                    .id(nextMonth)
             }
             .frame(width: CGFloat(gridSize * 7), height: 20 + CGFloat(gridSize * dayStats.count / 7), alignment: .top)
             .offset(x: CGFloat(offsetX), y: 0)
             .gesture(gesture)
-            .animation(.easeInOut(duration: 0.3), value: offsetX)
+            .animation(.easeInOut(duration: animationDuration), value: offsetX)
     }
 }
