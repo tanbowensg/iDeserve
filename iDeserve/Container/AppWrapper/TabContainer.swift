@@ -34,8 +34,8 @@ struct TabContainer<Content: View>: View {
                         }
                 }
             }
-                .frame(height: 48)
-                .padding(.horizontal, 38.0)
+            .frame(height: 48)
+            .padding(.horizontal, 38.0)
         }
     }
 }

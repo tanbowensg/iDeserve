@@ -64,6 +64,7 @@ struct SwipeWrapper<Content: View>: View {
             .foregroundColor(.g0)
             .background(leftSlotBg)
             .font(.system(size: isReachThreshold ? 18 : 14))
+            .animation(Animation.spring())
     }
     
     var rightSlot: some View {
@@ -75,6 +76,7 @@ struct SwipeWrapper<Content: View>: View {
             .foregroundColor(.g0)
             .background(rightSlotBg)
             .font(.system(size: isReachThreshold ? 18 : 14))
+            .animation(Animation.spring())
     }
 
     var gesture: some Gesture {
@@ -109,6 +111,7 @@ struct SwipeWrapper<Content: View>: View {
     var body: some View {
         ZStack(alignment: alignment) {
             customContent
+                .animation(Animation.spring())
                 .offset(x: contentOffset)
             offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
             offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil

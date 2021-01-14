@@ -21,15 +21,9 @@ struct GoalPage: View {
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     
     @State private var draggedGoal: Goal?
-    //    强制所有goalRow收起
-    @State private var forceCollapse = false
+    @State private var showAlert = false
     @State private var highlightIndex: Int? = 0
-    
-    //    为了在任务更新的时候重新渲染目标
-    //    https://stackoverflow.com/questions/58643094/how-to-update-fetchrequest-when-a-related-entity-changes-in-swiftui
-    @State private var refreshing = false
-    private var didSave =  NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
-    
+
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
         request.sortDescriptors = [
@@ -50,10 +44,31 @@ struct GoalPage: View {
                 ZStack(alignment: .top) {
                     ScrollView {
                         ForEach (goals, id: \.id) { goal in
-                            GoalRow(
-                                goal: goal,
-                                forceCollapse: forceCollapse
-                            )
+                            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+                                SwipeWrapper(
+                                    content: GoalItem(
+                                        name: goal.name!,
+                                        taskNum: goal.tasks!.count,
+                                        value: 188,
+                                        progress: 0.32
+                                    ),
+                                    height: Int(GOAL_ROW_HEIGHT),
+                                    onLeftSwipe: { showAlert = true },
+                                    onRightSwipe: { gs.goalStore.removeGoal(goal) }
+                                )
+                                .alert(isPresented: $showAlert, content: {
+                                    let confirmButton = Alert.Button.default(Text("完成")) {
+                                        gs.goalStore.completeGoal(goal)
+                                    }
+                                    let cancelButton = Alert.Button.cancel(Text("取消"))
+                                    return Alert(
+                                        title: Text("完成目标"),
+                                        message: Text("确定要完成\(goal.name!)吗？\n完成以后将开始结算完成目标的额外奖励。"),
+                                        primaryButton: confirmButton,
+                                        secondaryButton: cancelButton
+                                    )
+                                })
+                            }
                             .buttonStyle(PlainButtonStyle())
 //                            .onDrag {
 //                                self.draggedGoal = goal
@@ -65,25 +80,11 @@ struct GoalPage: View {
 //                                    item: goal,
 //                                    goals: goals,
 //                                    current: $draggedGoal,
-//                                    forceCollapse: $forceCollapse,
 //                                    highlightIndex: $highlightIndex
 //                                )
 //                            )
                         }
-                        //                    无用，纯粹为了在任务更新时刷新目标列表
-                        Text(self.refreshing ? "" : "")
                     }
-                    .onReceive(self.didSave) { _ in
-                        self.refreshing.toggle()
-                    }
-                    .onDrop(
-                        of: [UTType.text],
-                        delegate: DropOutsideDelegate(
-                            current: $draggedGoal,
-                            forceCollapse: $forceCollapse,
-                            highlightIndex: $highlightIndex
-                        )
-                    )
                     highlightIndex != nil ? reorderDivider : nil
                 }
                 VStack {
@@ -102,7 +103,6 @@ struct DragRelocateDelegate: DropDelegate {
     let item: Goal
     var goals: FetchedResults<Goal>
     @Binding var current: Goal?
-    @Binding var forceCollapse: Bool
     @Binding var highlightIndex: Int?
     
     var itemIndex: Int {
@@ -142,7 +142,6 @@ struct DragRelocateDelegate: DropDelegate {
     
     func dropEntered(info: DropInfo) {
         print("dropEntered")
-        forceCollapse = true
         updateHighlight(info.location.y)
     }
     
@@ -172,7 +171,6 @@ struct DragRelocateDelegate: DropDelegate {
             }
             
             self.current = nil
-            self.forceCollapse = false
             self.highlightIndex = nil
         }
         return true
@@ -180,12 +178,10 @@ struct DragRelocateDelegate: DropDelegate {
 }
 struct DropOutsideDelegate: DropDelegate {
     @Binding var current: Goal?
-    @Binding var forceCollapse: Bool
     @Binding var highlightIndex: Int?
         
     func performDrop(info: DropInfo) -> Bool {
         current = nil
-        forceCollapse = false
         highlightIndex = nil
         return true
     }

@@ -7,27 +7,6 @@
 
 import SwiftUI
 
-struct ProgressBar: View {
-    var value: Float
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle().frame(width: geometry.size.width , height: 4)
-                    .opacity(0.3)
-                    .foregroundColor(Color(UIColor.systemTeal))
-                
-                Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: 4)
-                    .foregroundColor(Color(UIColor.systemBlue))
-                    .animation(.linear)
-            }
-            .cornerRadius(2)
-            .padding(0)
-        }
-        .frame(height: 4.0)
-    }
-}
-
 struct GoalItem: View {
     var name: String
     var taskNum: Int
@@ -45,7 +24,7 @@ struct GoalItem: View {
                 .foregroundColor(Color.tagColor)
             VStack(alignment: .leading) {
                 Text(name)
-                    .font(.hiraginoSansGb16)
+                    .font(.hiraginoSansGb14)
                     .padding(.bottom, 2.0)
                 Text("\(taskNum) 个任务")
                     .font(.hiraginoSansGb12)
@@ -57,6 +36,7 @@ struct GoalItem: View {
             NutIcon(value: 119)
         }
         .padding(.horizontal, 20.0)
+        .padding(.vertical, 0)
         .frame(height: 70.0)
         .frame(maxWidth: .infinity)
         .foregroundColor(.g80)
