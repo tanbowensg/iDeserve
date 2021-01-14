@@ -29,14 +29,16 @@ struct AppHeader: View {
     }
     
     var settingsIcon: some View {
-        Image(systemName: "gear")
-            .resizable()
-            .frame(width: 20.0, height: 20.0)
-            .padding(.horizontal, 12.0)
-            .padding(.vertical, 4.0)
-            .background(Color("rewardColor"))
-            .foregroundColor(.white)
-            .cornerRadius(22)
+        NavigationLink(destination: SettingsPage()) {
+            Image(systemName: "gear")
+                .resizable()
+                .frame(width: 20.0, height: 20.0)
+                .padding(.horizontal, 12.0)
+                .padding(.vertical, 4.0)
+                .background(Color("rewardColor"))
+                .foregroundColor(.white)
+                .cornerRadius(22)
+        }
     }
 
     var body: some View {

@@ -20,7 +20,7 @@ struct MyDayPage: View {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         request.sortDescriptors = []
         return request
-   }
+    }
     
     var myDayTasks: [Task] {
         return filterMyDayTask(allTasks)

@@ -54,7 +54,7 @@ struct AppWrapper: View {
     }
 
     var body: some View {
-        NavigationView{
+        NavigationView {
 //                TabView {
 //                    MyDayPage().tabItem { TabIcon(tabInfo: tabs[0]) }
 //                    TaskPage().tabItem { TabIcon(tabInfo: tabs[1]) }
