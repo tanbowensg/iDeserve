@@ -14,7 +14,7 @@ import UniformTypeIdentifiers
 //    var isBefore: Bool
 //}
 
-struct TaskPage: View {
+struct GoalPage: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var gs: GlobalStore
     
@@ -195,7 +195,7 @@ struct TaskPage_Previews: PreviewProvider {
     let tasks = genMockTasks(CoreDataContainer.shared.context)
     
     static var previews: some View {
-        TaskPage()
+        GoalPage()
             .environment(\.managedObjectContext, CoreDataContainer.shared.context)
     }
 }

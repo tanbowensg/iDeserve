@@ -9,18 +9,7 @@ import SwiftUI
 
 struct RecordList: View {
     var records: [Record]
-    
-    func getNutIcon(_ value: Int) -> some View {
-        return HStack(alignment: .center, spacing: 3.0) {
-            Text("\(value >= 0 ? "+" : "")\(String(value))")
-                .foregroundColor(value >= 0 ? Color.rewardColor : Color.red)
-            Image("NutIcon")
-                .resizable()
-                .frame(width: 16.0, height: 16.0)
-                .padding(/*@START_MENU_TOKEN@*/.all, 2.0/*@END_MENU_TOKEN@*/)
-        }
-    }
-    
+
     var subtotal: some View {
         let sum = records.reduce(0) { (result, record) -> Int in
             switch RecordKind(rawValue: Int(record.kind)) {
@@ -37,7 +26,7 @@ struct RecordList: View {
             HStack(alignment: .center) {
                 Text("总计")
                 Spacer()
-                getNutIcon(sum)
+                NutIcon(value: sum)
             }
             .frame(height: 40.0)
             .padding(.horizontal, 16.0)
@@ -54,7 +43,7 @@ struct RecordList: View {
                             Text(record.name ?? "未知")
                                 .fontWeight(.light)
                             Spacer()
-                            getNutIcon(Int(record.kind == RecordKind.task.rawValue ? record.value : -record.value))
+                            NutIcon(value: Int(record.kind == RecordKind.task.rawValue ? record.value : -record.value))
                         }
                         .padding(.horizontal, 16.0)
                         .frame(height: 40.0)

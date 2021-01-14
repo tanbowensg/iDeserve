@@ -39,7 +39,7 @@ struct AppWrapper: View {
                 case .myDay:
                     MyDayPage()
                 case .task:
-                    TaskPage()
+                    GoalPage()
                 case .reward:
                     RewardPage()
                 case .record:
