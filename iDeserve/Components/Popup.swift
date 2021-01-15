@@ -15,13 +15,18 @@ struct Popup<Content: View>: View {
     var body: some View {
         if isVisible {
             ZStack(alignment: alignment) {
-                Color.g10.opacity(0.001)
+                Color.g60.opacity(0.5)
                     .onTapGesture {
                         withAnimation {
                             isVisible.toggle()
                         }
                     }
+                    .animation(.none)
+                
                 content
+                    .padding(.bottom, BOTTOM_SAFE_AREA_HEIGHT)
+                    .padding(.top, 20)
+                    .background(Color.white)
             }
             .transition(
                 AnyTransition.asymmetric(

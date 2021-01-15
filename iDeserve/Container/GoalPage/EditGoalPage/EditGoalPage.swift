@@ -66,28 +66,6 @@ struct EditGoalPage: View {
         }
     }
     
-//    重要性选择器
-    var importancePicker: some View {
-        VStack(alignment: .trailing, spacing: 0) {
-            Button(action: {
-                withAnimation{
-                    isShowImportancePicker.toggle()
-                }
-//                tempTask = Task()
-            }) {
-                Text("完成")
-            }
-                .padding(8)
-            Picker("难度", selection: $importance) {
-                ForEach(Importance.allCases, id: \.self) {importanceOption in
-                    Text(getImportanceText(importanceOption)).tag(importanceOption)
-                }
-                .labelsHidden()
-            }
-        }
-            .background(Color.g10)
-    }
-    
     var createTaskButton: some View {
         Button(action: {
             isShowTaskSheet.toggle()
@@ -173,7 +151,7 @@ struct EditGoalPage: View {
                     alignment: .topLeading
                 )
             }
-            Popup(isVisible: $isShowImportancePicker, content: importancePicker)
+            Popup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance))
         }
         .navigationBarHidden(true)
     }
