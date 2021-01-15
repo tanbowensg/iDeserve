@@ -15,6 +15,7 @@ struct AppHeader: View {
         HStack(alignment: .center, spacing: 2){
             Image("NutIcon")
                 .resizable()
+                .scaledToFit()
                 .padding(6)
                 .frame(width: 36.0, height: 36.0)
             Spacer()

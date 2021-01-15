@@ -81,6 +81,7 @@ struct TaskItem: View {
                 .foregroundColor(Color.rewardColor)
             Image("NutIcon")
                 .resizable()
+                .scaledToFit()
                 .frame(width: 16.0, height: 16.0)
                 .padding(/*@START_MENU_TOKEN@*/.all, 2.0/*@END_MENU_TOKEN@*/)
         }

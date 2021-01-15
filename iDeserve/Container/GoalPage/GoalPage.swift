@@ -43,47 +43,50 @@ struct GoalPage: View {
             ZStack(alignment: .bottomTrailing) {
                 ZStack(alignment: .top) {
                     ScrollView {
-                        ForEach (goals, id: \.id) { goal in
-                            NavigationLink(destination: EditGoalPage(initGoal: goal)) {
-                                SwipeWrapper(
-                                    content: GoalItem(
-                                        name: goal.name!,
-                                        taskNum: goal.tasks!.count,
-                                        value: 188,
-                                        progress: 0.32
-                                    ),
-                                    height: Int(GOAL_ROW_HEIGHT),
-                                    onLeftSwipe: { showAlert = true },
-                                    onRightSwipe: { gs.goalStore.removeGoal(goal) }
-                                )
-                                .alert(isPresented: $showAlert, content: {
-                                    let confirmButton = Alert.Button.default(Text("完成")) {
-                                        gs.goalStore.completeGoal(goal)
-                                    }
-                                    let cancelButton = Alert.Button.cancel(Text("取消"))
-                                    return Alert(
-                                        title: Text("完成目标"),
-                                        message: Text("确定要完成\(goal.name!)吗？\n完成以后将开始结算完成目标的额外奖励。"),
-                                        primaryButton: confirmButton,
-                                        secondaryButton: cancelButton
+                        VStack(spacing: 20.0) {
+                            ForEach (goals, id: \.id) { goal in
+                                NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+                                    SwipeWrapper(
+                                        content: GoalItem(
+                                            name: goal.name!,
+                                            taskNum: goal.tasks!.count,
+                                            value: 188,
+                                            progress: 0.32
+                                        ),
+                                        height: Int(GOAL_ROW_HEIGHT),
+                                        onLeftSwipe: { showAlert = true },
+                                        onRightSwipe: { gs.goalStore.removeGoal(goal) }
                                     )
-                                })
+                                    .alert(isPresented: $showAlert, content: {
+                                        let confirmButton = Alert.Button.default(Text("完成")) {
+                                            gs.goalStore.completeGoal(goal)
+                                        }
+                                        let cancelButton = Alert.Button.cancel(Text("取消"))
+                                        return Alert(
+                                            title: Text("完成目标"),
+                                            message: Text("确定要完成\(goal.name!)吗？\n完成以后将开始结算完成目标的额外奖励。"),
+                                            primaryButton: confirmButton,
+                                            secondaryButton: cancelButton
+                                        )
+                                    })
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                //                            .onDrag {
+                                //                                self.draggedGoal = goal
+                                //                                return NSItemProvider(object: goal.id!.uuidString as NSString)
+                                //                            }
+                                //                            .onDrop(
+                                //                                of: [UTType.text],
+                                //                                delegate: DragRelocateDelegate(
+                                //                                    item: goal,
+                                //                                    goals: goals,
+                                //                                    current: $draggedGoal,
+                                //                                    highlightIndex: $highlightIndex
+                                //                                )
+                                //                            )
                             }
-                            .buttonStyle(PlainButtonStyle())
-//                            .onDrag {
-//                                self.draggedGoal = goal
-//                                return NSItemProvider(object: goal.id!.uuidString as NSString)
-//                            }
-//                            .onDrop(
-//                                of: [UTType.text],
-//                                delegate: DragRelocateDelegate(
-//                                    item: goal,
-//                                    goals: goals,
-//                                    current: $draggedGoal,
-//                                    highlightIndex: $highlightIndex
-//                                )
-//                            )
                         }
+                        .padding(.vertical, 20.0)
                     }
                     highlightIndex != nil ? reorderDivider : nil
                 }

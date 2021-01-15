@@ -17,9 +17,11 @@ struct GoalItem: View {
         HStack(alignment: .center) {
             Image(systemName: "gamecontroller")
                 .resizable()
+//                .aspectRatio(1, contentMode: .fit)
                 .padding(10)
-                .background(Color.tagBg)
+                .scaledToFit()
                 .frame(width: 60.0, height: 60.0)
+                .background(Color.tagBg)
                 .cornerRadius(15)
                 .foregroundColor(Color.tagColor)
             VStack(alignment: .leading) {
@@ -33,11 +35,11 @@ struct GoalItem: View {
                 ProgressBar(value: progress)
             }
             Spacer()
-            NutIcon(value: 119)
+            NutIcon(value: value)
         }
         .padding(.horizontal, 20.0)
         .padding(.vertical, 0)
-        .frame(height: 70.0)
+        .frame(height: 60.0)
         .frame(maxWidth: .infinity)
         .foregroundColor(.g80)
     }

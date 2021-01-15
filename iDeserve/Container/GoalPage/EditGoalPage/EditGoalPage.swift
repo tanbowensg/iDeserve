@@ -46,44 +46,21 @@ struct EditGoalPage: View {
             TextField("目标标题", text: $name)
                 .font(.title)
                 .multilineTextAlignment(.leading)
-                .padding(.horizontal, 16.0)
-                .frame(height: 40)
-            Divider()
-        }
-    }
-
-    var goalValue: some View {
-        Group {
-            HStack() {
-                Image(systemName: "dollarsign.circle")
-                Text("分值")
-                Spacer()
-                Text(String(getImportanceValue(importance)))
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-            }
-                .padding(.horizontal, 16.0)
+                .padding(.horizontal, 20.0)
                 .frame(height: 40)
             Divider()
         }
     }
 
     var goalImportance: some View {
-        Group {
-            Button(action: {
-                isShowImportancePicker.toggle()
-            }) {
-                HStack() {
-                    Image(systemName: "repeat")
-                    Text("重要性")
-                    Spacer()
-                    Text(getImportanceText(importance))
-                }
-                    .padding(.horizontal, 16.0)
-                    .foregroundColor(.g80)
-                    .frame(height: 40)
-            }
-            Divider()
+        Button(action: {
+            isShowImportancePicker.toggle()
+        }) {
+            FormItem(
+                icon: Image(systemName: "lightbulb"),
+                name: "重要性",
+                valueView: Text(getImportanceText(importance))
+            )
         }
     }
     
@@ -107,26 +84,40 @@ struct EditGoalPage: View {
             .background(Color.g10)
     }
     
+    var createTaskButton: some View {
+        Button(action: {
+            isShowTaskSheet.toggle()
+            taskCache = TaskState(nil)
+        }) {
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30)
+        }
+            .sheet(isPresented: $isShowTaskSheet, onDismiss: addTask, content: {
+                GoalTasksSheet(taskState: $taskCache)
+            })
+    }
+    
 //    目标的任务
     var goalTasks: some View {
         Group {
-            VStack(alignment: .leading) {
-                Text("任务")
-                    .font(.headline)
-                    .padding(.horizontal, 16.0)
-                Button(action: {
-                    isShowTaskSheet.toggle()
-                    taskCache = TaskState(nil)
-                }) {
-                    HStack {
-                        Image(systemName: "plus")
-                        Text("添加任务")
-                    }
-                    .frame(height: 30)
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Text("任务").font(.hiraginoSansGb16)
+                    Spacer()
+                    createTaskButton
                 }
-                    .sheet(isPresented: $isShowTaskSheet, onDismiss: addTask, content: {
-                        GoalTasksSheet(taskState: $taskCache)
-                    })
+                    .padding(.horizontal, 20.0)
+                    .padding(.vertical, 16.0)
+                HStack(spacing: 0) {
+                    Text("共计 \(tasks.count) 个任务，全部完成可得")
+                        .foregroundColor(.g60)
+                    NutIcon(value: 100)
+                }
+                    .font(.hiraginoSansGb12)
+                    .padding(.horizontal, 20.0)
+//                    .padding(.vertical, 8.0)
                 ForEach (tasks, id: \.id) { task in
                     Button(action: {
                         taskCache = task
@@ -148,8 +139,8 @@ struct EditGoalPage: View {
             HStack {
                 Image(systemName: "chevron.left")
                     .padding(.leading, 16.0)
-                    
-                Text("返回")
+                Text("目标列表")
+                
             }
             .frame(height: 30)
         }
@@ -157,17 +148,20 @@ struct EditGoalPage: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            VStack(alignment: .leading) {
-                backBtn
-                goalTitle
-                goalValue
-                goalImportance
-                HStack() {
-                    TextField("备注", text: $desc)
-                        .padding(.horizontal, 16.0)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    backBtn
+                    goalTitle
+                    goalImportance
+                    HStack() {
+                        TextField("备注", text: $desc)
+                            .padding(.horizontal, 20.0)
+                            .padding(.vertical, 16.0)
+                            .font(.hiraginoSansGb14)
+                    }
+                    Divider()
+                    goalTasks
                 }
-                goalTasks
-            }
                 .frame(
                     minWidth: 0,
                     maxWidth: .infinity,
@@ -175,9 +169,10 @@ struct EditGoalPage: View {
                     maxHeight: .infinity,
                     alignment: .topLeading
                 )
-                .navigationBarHidden(true)
+            }
             Popup(isVisible: isShowImportancePicker, content: importancePicker)
         }
+        .navigationBarHidden(true)
     }
     
     func addTask () {

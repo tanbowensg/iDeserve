@@ -12,4 +12,4 @@ let MAX_POS = 32767
 
 let TASK_ROW_HEIGHT: CGFloat = 82
 
-let GOAL_ROW_HEIGHT: CGFloat = 70
+let GOAL_ROW_HEIGHT: CGFloat = 60

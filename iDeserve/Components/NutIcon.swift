@@ -18,6 +18,7 @@ struct NutIcon: View {
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             Image("NutIcon")
                 .resizable()
+                .scaledToFit()
                 .frame(width: 16.0, height: 16.0)
                 .padding(/*@START_MENU_TOKEN@*/.all, 2.0/*@END_MENU_TOKEN@*/)
         }
