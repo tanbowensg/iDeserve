@@ -13,6 +13,7 @@ struct TaskItem: View {
     var disabled: Bool?
     var onCompleteTask: (() -> Void)?
     var onRemoveTask: (() -> Void)?
+    var hideTag: Bool? = false
 
     var dateText: String? {
         return dateToString(task.ddl)
@@ -64,7 +65,7 @@ struct TaskItem: View {
 
     var leftPart: some View {
         VStack(alignment: .leading, spacing: 5) {
-            task.goalName != "" ? taskGoal : nil
+            (hideTag == true || task.goalName == "") ? nil : taskGoal
             Text(task.name)
                 .font(.hiraginoSansGb12)
                 .fontWeight(.bold)
@@ -83,7 +84,7 @@ struct TaskItem: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 16.0, height: 16.0)
-                .padding(/*@START_MENU_TOKEN@*/.all, 2.0/*@END_MENU_TOKEN@*/)
+                .padding(.all, 2.0)
         }
     }
     

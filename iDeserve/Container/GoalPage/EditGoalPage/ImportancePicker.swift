@@ -7,50 +7,35 @@
 
 import SwiftUI
 
-
-struct PickerBlock: View {
-    var title: String
-    var subtitle: String
-    var isHighlight: Bool
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 10.0) {
-                Text(title)
-                Text(subtitle).font(.avenirBlack12).foregroundColor(.g60)
-            }
-            .padding(.vertical, 16)
-            .padding(.horizontal, 16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .border(
-                isHighlight ? Color.rewardColor : Color.g60,
-                width: isHighlight ? 2 : 1
-            )
-            .background(Color.white)
-            .padding(.horizontal, 20)
-        }
-    }
-}
-
 struct ImportancePicker: View {
     @Binding var importance: Importance
+    @Binding var isShow: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             PickerBlock(title: "普通", subtitle: "普通的目标。", isHighlight: importance == Importance.normal)
                 .onTapGesture {
-                    importance = Importance.normal
+                    withAnimation {
+                        importance = Importance.normal
+                        isShow = false
+                    }
                 }
             
             PickerBlock(title: "重要", subtitle: "必须要完成。有额外奖励。", isHighlight: importance == Importance.important)
-            .onTapGesture {
-                importance = Importance.important
-            }
+                .onTapGesture {
+                    withAnimation {
+                        importance = Importance.important
+                        isShow = false
+                    }
+                }
             
             PickerBlock(title: "史诗", subtitle: "非完成不可，影响重大。有大量额外奖励。", isHighlight: importance == Importance.epic)
-            .onTapGesture {
-                importance = Importance.epic
-            }
+                .onTapGesture {
+                    withAnimation {
+                        importance = Importance.epic
+                        isShow = false
+                    }
+                }
         }
         .background(Color.white)
     }
@@ -58,9 +43,10 @@ struct ImportancePicker: View {
 
 struct ImportancePicker_Previews_Wrapper: View {
     @State var importance = Importance.normal
+    @State var isShow: Bool = false
 
     var body: some View {
-        ImportancePicker(importance: $importance)
+        ImportancePicker(importance: $importance, isShow: $isShow)
     }
 }
 

@@ -15,7 +15,7 @@ struct Popup<Content: View>: View {
     var body: some View {
         if isVisible {
             ZStack(alignment: alignment) {
-                Color.g60.opacity(0.5)
+                Color.g60.opacity(0.1)
                     .onTapGesture {
                         withAnimation {
                             isVisible.toggle()
@@ -27,6 +27,7 @@ struct Popup<Content: View>: View {
                     .padding(.bottom, BOTTOM_SAFE_AREA_HEIGHT)
                     .padding(.top, 20)
                     .background(Color.white)
+//                    .background(Color.white.shadow(color: Color.g60, radius: 5))
             }
             .transition(
                 AnyTransition.asymmetric(
@@ -34,6 +35,7 @@ struct Popup<Content: View>: View {
                     removal: .move(edge: .bottom)
                 ).animation(.spring())
             )
+            
             .edgesIgnoringSafeArea(.vertical)
         }
     }

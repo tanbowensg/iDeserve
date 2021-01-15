@@ -105,7 +105,7 @@ struct EditGoalPage: View {
                         taskCache = task
                         isShowTaskSheet.toggle()
                     }) {
-                        TaskItem(task: task)
+                        TaskItem(task: task, hideTag: true)
                     }
                 }
             }
@@ -151,7 +151,7 @@ struct EditGoalPage: View {
                     alignment: .topLeading
                 )
             }
-            Popup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance))
+            Popup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance, isShow: $isShowImportancePicker))
         }
         .navigationBarHidden(true)
     }

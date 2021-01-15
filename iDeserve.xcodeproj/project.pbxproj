@@ -23,6 +23,8 @@
 		D030B6B2257E0A8900967015 /* resetPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030B6B1257E0A8900967015 /* resetPos.swift */; };
 		D031ED9D25B13EDB00D64CF3 /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031ED9C25B13EDB00D64CF3 /* FormItem.swift */; };
 		D031EDCA25B16A2900D64CF3 /* ImportancePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDC925B16A2900D64CF3 /* ImportancePicker.swift */; };
+		D031EDDA25B195C100D64CF3 /* PickerBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDD925B195C100D64CF3 /* PickerBlock.swift */; };
+		D031EDE425B1964800D64CF3 /* DifficultyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDE325B1964800D64CF3 /* DifficultyPicker.swift */; };
 		D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6F525AD443700F8152D /* CalendarSwiper.swift */; };
 		D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
 		D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
@@ -172,6 +174,8 @@
 		D030B6B1257E0A8900967015 /* resetPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetPos.swift; sourceTree = "<group>"; };
 		D031ED9C25B13EDB00D64CF3 /* FormItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
 		D031EDC925B16A2900D64CF3 /* ImportancePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportancePicker.swift; sourceTree = "<group>"; };
+		D031EDD925B195C100D64CF3 /* PickerBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBlock.swift; sourceTree = "<group>"; };
+		D031EDE325B1964800D64CF3 /* DifficultyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPicker.swift; sourceTree = "<group>"; };
 		D03AF6F525AD443700F8152D /* CalendarSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSwiper.swift; sourceTree = "<group>"; };
 		D03AF6FB25AD44B800F8152D /* viberate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viberate.swift; sourceTree = "<group>"; };
 		D03AF70F25AEBAF000F8152D /* roundBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundBorder.swift; sourceTree = "<group>"; };
@@ -407,6 +411,7 @@
 				D07B6D3925B042E500087FC5 /* NutIcon.swift */,
 				D07B6D4725B06C5400087FC5 /* ProgressBar.swift */,
 				D031ED9C25B13EDB00D64CF3 /* FormItem.swift */,
+				D031EDD925B195C100D64CF3 /* PickerBlock.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				D08988B1254685A60032BA96 /* TaskForm.swift */,
+				D031EDE325B1964800D64CF3 /* DifficultyPicker.swift */,
 			);
 			path = TaskForm;
 			sourceTree = "<group>";
@@ -764,6 +770,7 @@
 				D0EE5490255A6D140091302D /* RewardStore.swift in Sources */,
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
 				D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */,
+				D031EDE425B1964800D64CF3 /* DifficultyPicker.swift in Sources */,
 				D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */,
 				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
 				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
@@ -788,6 +795,7 @@
 				D03AF74225B01E2B00F8152D /* Loader.swift in Sources */,
 				D03B57C7253D471A00DC107F /* saveContext.swift in Sources */,
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
+				D031EDDA25B195C100D64CF3 /* PickerBlock.swift in Sources */,
 				D07913BF257768E9007B9767 /* TabContainer.swift in Sources */,
 				D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */,
 				D031EDCA25B16A2900D64CF3 /* ImportancePicker.swift in Sources */,

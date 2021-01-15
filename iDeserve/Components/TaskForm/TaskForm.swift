@@ -91,7 +91,9 @@ struct TaskForm: View {
     var taskDifficulty: some View {
         Group {
             Button(action: {
-                isShowDifficultyPicker.toggle()
+                withAnimation {
+                    isShowDifficultyPicker.toggle()
+                }
             }) {
                 HStack() {
                     Image(systemName: "repeat")
@@ -106,27 +108,6 @@ struct TaskForm: View {
             Divider()
         }
     }
-    
-//    难度选择器
-    var difficultyPicker: some View {
-        VStack(alignment: .trailing, spacing: 0) {
-            Button(action: {
-                isShowDifficultyPicker.toggle()
-//                tempTask = Task()
-            }) {
-                Text("完成")
-            }
-                .padding(8)
-            Picker("难度", selection: $taskState.difficulty) {
-                ForEach(Difficulty.allCases, id: \.self) {difficultyOption in
-                    Text(getDifficultyText(difficultyOption)).tag(difficultyOption)
-                }
-                .labelsHidden()
-            }
-        }
-            .background(Color.g10)
-    }
- 
     
     var taskTimeCost: some View {
         Group {
@@ -301,7 +282,7 @@ struct TaskForm: View {
             Popup(isVisible: $isShowGoalPicker, content: goalPicker)
             Popup(isVisible: $isShowRepeatPicker, content: repeatPicker)
             Popup(isVisible: $isShowDatePicker, content: datePicker)
-            Popup(isVisible: $isShowDifficultyPicker, content: difficultyPicker)
+            Popup(isVisible: $isShowDifficultyPicker, content: DifficultyPicker(difficulty: $taskState.difficulty, isShow: $isShowDifficultyPicker))
         }
             .onAppear(perform: onAppear)
     }
