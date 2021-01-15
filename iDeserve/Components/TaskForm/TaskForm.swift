@@ -298,10 +298,10 @@ struct TaskForm: View {
                     maxHeight: .infinity,
                     alignment: .topLeading
                 )
-            Popup(isVisible: isShowGoalPicker, content: goalPicker)
-            Popup(isVisible: isShowRepeatPicker, content: repeatPicker)
-            Popup(isVisible: isShowDatePicker, content: datePicker)
-            Popup(isVisible: isShowDifficultyPicker, content: difficultyPicker)
+            Popup(isVisible: $isShowGoalPicker, content: goalPicker)
+            Popup(isVisible: $isShowRepeatPicker, content: repeatPicker)
+            Popup(isVisible: $isShowDatePicker, content: datePicker)
+            Popup(isVisible: $isShowDifficultyPicker, content: difficultyPicker)
         }
             .onAppear(perform: onAppear)
     }

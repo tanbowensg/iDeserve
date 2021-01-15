@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct Popup<Content: View>: View {
-    var isVisible: Bool
+    @Binding var isVisible: Bool
     var content: Content
     var alignment: Alignment = .bottom
 
     var body: some View {
         if isVisible {
             ZStack(alignment: alignment) {
-                Color.g80.opacity(0.1)
-                    .edgesIgnoringSafeArea(.vertical)
+                Color.g10.opacity(0.001)
+                    .onTapGesture {
+                        withAnimation {
+                            isVisible.toggle()
+                        }
+                    }
                 content
             }
+            .transition(
+                AnyTransition.asymmetric(
+                    insertion: .move(edge: .bottom),
+                    removal: .move(edge: .bottom)
+                ).animation(.spring())
+            )
+            .edgesIgnoringSafeArea(.vertical)
         }
-    }
-}
-
-struct Popup_Previews: PreviewProvider {
-    static var previews: some View {
-        Popup(isVisible: true, content: Text("Hello Popup!"))
     }
 }

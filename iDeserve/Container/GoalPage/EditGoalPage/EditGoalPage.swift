@@ -54,7 +54,9 @@ struct EditGoalPage: View {
 
     var goalImportance: some View {
         Button(action: {
-            isShowImportancePicker.toggle()
+            withAnimation {
+                isShowImportancePicker.toggle()
+            }
         }) {
             FormItem(
                 icon: Image(systemName: "lightbulb"),
@@ -68,7 +70,9 @@ struct EditGoalPage: View {
     var importancePicker: some View {
         VStack(alignment: .trailing, spacing: 0) {
             Button(action: {
-                isShowImportancePicker.toggle()
+                withAnimation{
+                    isShowImportancePicker.toggle()
+                }
 //                tempTask = Task()
             }) {
                 Text("完成")
@@ -153,13 +157,12 @@ struct EditGoalPage: View {
                     backBtn
                     goalTitle
                     goalImportance
-                    HStack() {
-                        TextField("备注", text: $desc)
-                            .padding(.horizontal, 20.0)
-                            .padding(.vertical, 16.0)
-                            .font(.hiraginoSansGb14)
-                    }
-                    Divider()
+//                    TODO：暂时取消备注这个设计，有点多余，还不好实现
+//                    TextEditor(text: $desc)
+//                        .padding(.horizontal, 20.0)
+//                        .padding(.vertical, 16.0)
+//                        .font(.hiraginoSansGb14)
+//                    Divider()
                     goalTasks
                 }
                 .frame(
@@ -170,7 +173,7 @@ struct EditGoalPage: View {
                     alignment: .topLeading
                 )
             }
-            Popup(isVisible: isShowImportancePicker, content: importancePicker)
+            Popup(isVisible: $isShowImportancePicker, content: importancePicker)
         }
         .navigationBarHidden(true)
     }
