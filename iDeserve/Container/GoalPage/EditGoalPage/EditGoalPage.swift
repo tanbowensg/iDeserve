@@ -83,7 +83,10 @@ struct EditGoalPage: View {
     
 //    目标的任务
     var goalTasks: some View {
-        Group {
+        let tasksNutsSum = tasks.reduce(0, {(result, task) in
+            return result + task.value
+        })
+        return Group {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Text("任务").font(.hiraginoSansGb16)
@@ -95,11 +98,11 @@ struct EditGoalPage: View {
                 HStack(spacing: 0) {
                     Text("共计 \(tasks.count) 个任务，全部完成可得")
                         .foregroundColor(.g60)
-                    NutIcon(value: 100)
+                    NutIcon(value: tasksNutsSum, hidePlus: true)
                 }
                     .font(.hiraginoSansGb12)
                     .padding(.horizontal, 20.0)
-//                    .padding(.vertical, 8.0)
+                    .padding(.bottom, 8.0)
                 ForEach (tasks, id: \.id) { task in
                     Button(action: {
                         taskCache = task
