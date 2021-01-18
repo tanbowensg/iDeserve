@@ -108,7 +108,16 @@ struct EditGoalPage: View {
                         taskCache = task
                         isShowTaskSheet.toggle()
                     }) {
-                        TaskItem(task: task, hideTag: true)
+                        TaskItem(
+                            task: task,
+                            onRemoveTask: {
+                                tasks.remove(at: tasks.firstIndex(of: task)!)
+                                if let originalTask = task.originTask {
+                                    gs.taskStore.removeTask(originalTask)
+                                }
+                            },
+                            hideTag: true
+                        )
                     }
                 }
             }
