@@ -56,25 +56,25 @@ struct MyDayPage: View {
 //      TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
         VStack(alignment: .leading) {
             ForEach (uncompletedTasks, id: \.id) { task in
-                TaskItem(
-                    task: TaskState(task),
-                    onCompleteTask: {
-                        self.gs.taskStore.completeTask(task)
-                    },
-                    onTap: {
-                        currentTask = task
-                        shouldOpenSheet = true
-                    }
-                )
+                Button(action: {
+                    currentTask = task
+                    shouldOpenSheet = true
+                }) {
+                    TaskItem(
+                        task: TaskState(task),
+                        onCompleteTask: {
+                            self.gs.taskStore.completeTask(task)
+                        }
+                    )
+                }
             }
             ForEach (completedTasks, id: \.id) { task in
-                TaskItem(
-                    task: TaskState(task),
-                    onTap: {
-                        currentTask = task
-                        shouldOpenSheet = true
-                    }
-                )
+                Button(action: {
+                    currentTask = task
+                    shouldOpenSheet = true
+                }) {
+                    TaskItem(task: TaskState(task))
+                }
             }
             Text("").frame(maxWidth: .infinity)
             Spacer()

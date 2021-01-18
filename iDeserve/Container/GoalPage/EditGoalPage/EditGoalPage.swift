@@ -121,7 +121,6 @@ struct EditGoalPage: View {
                     }
                 }
             }
-            Divider()
         }
     }
 
