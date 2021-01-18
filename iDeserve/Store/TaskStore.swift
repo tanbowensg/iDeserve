@@ -42,7 +42,7 @@ final class TaskStore: ObservableObject {
     ) -> Task {
         targetTask.name = taskState.name
         targetTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
-        targetTask.repeatTimes = Int16(taskState.repeatTimes) ?? 1
+        targetTask.repeatTimes = Int16(taskState.repeatTimes) ?? 0
         targetTask.ddl = taskState.hasDdl ? taskState.ddl : nil
         targetTask.desc = taskState.desc
         targetTask.done = taskState.done

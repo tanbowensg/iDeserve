@@ -26,19 +26,35 @@ struct FormItem<Content: View>: View {
                     .font(.hiraginoSansGb14)
             }
             .padding(.horizontal, 20)
-            .padding(.vertical, 16)
+            .padding(.vertical, 20)
+            .frame(height: 56.0)
             Divider()
         }
         .foregroundColor(.myBlack)
     }
 }
 
+struct FormItemPreviewWrapper: View {
+    @State var isOn = false
+
+    var body: some View {
+        VStack(spacing: 0.0) {
+            FormItem(
+                icon: Image(systemName: "gamecontroller"),
+                name: "分数",
+                valueView: Text("20")
+            )
+            FormItem(
+                icon: Image(systemName: "gamecontroller"),
+                name: "开关",
+                valueView: Toggle("", isOn: $isOn)
+            )
+        }
+    }
+}
+
 struct FormItem_Previews: PreviewProvider {
     static var previews: some View {
-        FormItem(
-            icon: Image(systemName: "gamecontroller"),
-            name: "分数",
-            valueView: Text("20")
-        )
+        FormItemPreviewWrapper()
     }
 }

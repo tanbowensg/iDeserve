@@ -36,21 +36,10 @@ struct TaskForm: View {
     }
 
     var taskGoal: some View {
-        Group {
-            Button(action: {
-                isShowGoalPicker.toggle()
-            }) {
-                HStack() {
-                    Image(systemName: "repeat")
-                    Text("所属目标")
-                    Spacer()
-                    Text(taskState.goalName)
-                }
-                    .padding(.horizontal, 16.0)
-                    .foregroundColor(.g80)
-                    .frame(height: 40)
-            }
-            Divider()
+        Button(action: {
+            isShowGoalPicker.toggle()
+        }) {
+            FormItem(icon: Image(systemName: "largecircle.fill.circle"), name: "所属目标", valueView: Text(taskState.goalName))
         }
     }
     
@@ -60,7 +49,7 @@ struct TaskForm: View {
             Button(action: {
                 isShowGoalPicker.toggle()
             }) {
-                Text("完成")
+                Text("确认")
             }
                 .padding(8)
             Picker("所属目标", selection: $taskState.goalId) {
@@ -76,126 +65,78 @@ struct TaskForm: View {
         }
             .background(Color.g10)
     }
- 
+
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $taskState.name)
-                .font(.title)
+                .font(.hiraginoSansGb16)
                 .multilineTextAlignment(.leading)
-                .padding(.horizontal, 16.0)
-                .frame(height: 40)
+                .padding(.horizontal, 20)
+                .frame(height: 60)
             Divider()
         }
     }
 
     var taskDifficulty: some View {
-        Group {
-            Button(action: {
-                withAnimation {
-                    isShowDifficultyPicker.toggle()
-                }
-            }) {
-                HStack() {
-                    Image(systemName: "repeat")
-                    Text("难度")
-                    Spacer()
-                    Text(getDifficultyText(taskState.difficulty))
-                }
-                    .padding(.horizontal, 16.0)
-                    .foregroundColor(.g80)
-                .frame(height: 40)
+        Button(action: {
+            withAnimation {
+                isShowDifficultyPicker.toggle()
             }
-            Divider()
+        }) {
+            FormItem(icon: Image(systemName: "speedometer"), name: "难度", valueView: Text(getDifficultyText(taskState.difficulty)))
         }
     }
     
     var taskTimeCost: some View {
-        Group {
-            HStack() {
-                Image(systemName: "time")
-                Text("耗时（单位半个小时）")
-                Spacer()
-                TextField("1", text: $taskState.timeCost)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-            }
-                .padding(.horizontal, 16.0)
-                .frame(height: 40)
-            Divider()
+        FormItem(
+            icon: Image(systemName: "timer"),
+            name: "估时（小时）",
+            valueView: TextField("1", text: $taskState.timeCost)
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.numberPad)
+        )
+    }
+
+    var taskMyDay: some View {
+        FormItem(
+            icon: Image(systemName: "sun.max"),
+            name: "在“我的一天”中显示",
+            valueView: Toggle("", isOn:$taskState.starred)
+        )
+    }
+
+    var taskRepeat: some View {
+        Button(action: {
+            isShowRepeatPicker.toggle()
+        }) {
+            FormItem(
+                icon: Image(systemName: "repeat"),
+                name: "重复频率",
+                valueView: Text(getRepeatFrequencyText(taskState.repeatFrequency))
+            )
         }
     }
 
     var repeatTimes: some View {
-        Group {
-            HStack() {
-                Image(systemName: "repeat")
-                Text("重复次数")
-                Spacer()
-                TextField("0", text: $taskState.repeatTimes)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-            }
-                .padding(.horizontal, 16.0)
-                .frame(height: 40)
-            Divider()
-        }
-    }
-
-    var taskRepeat: some View {
-        Group {
-            Button(action: {
-                isShowRepeatPicker.toggle()
-            }) {
-                HStack() {
-                    Image(systemName: "repeat")
-                    Text("重复频率")
-                    Spacer()
-                    Text(getRepeatFrequencyText(taskState.repeatFrequency))
-                }
-                    .padding(.horizontal, 16.0)
-                    .foregroundColor(.g80)
-                    .frame(height: 40)
-            }
-            Divider()
-            taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
-        }
+        FormItem(
+            icon: Image(systemName: "repeat"),
+            name: "重复次数",
+            valueView: TextField("1", text: $taskState.repeatTimes)
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.numberPad)
+        )
     }
 
     var taskDdl: some View {
-        Group {
-            HStack() {
-                Button(action: {
-                    taskState.hasDdl = true
-                    isShowDatePicker.toggle()
-                }) {
-                    Image(systemName: "calendar")
-                    taskState.hasDdl ? Text("\(dateToString(taskState.ddl)) 截止") : Text("添加截止日期")
-                    Spacer()
-                }
-                taskState.hasDdl ? cancelDdlBtn : nil
-            }
-                .padding(.horizontal, 16.0)
-                .foregroundColor(.g80)
-                .frame(height: 40)
-            Divider()
-        }
-    }
-
-    var taskMyDay: some View {
-        Group {
-            HStack() {
-                Button(action: {
-                    taskState.starred.toggle()
-                }) {
-                    Image(systemName: "sun.max")
-                    taskState.starred ? Text("从“我的一天”移除") : Text("添加到“我的一天”")
-                    Spacer()
-                }
-            }
-                .padding(.horizontal, 16.0)
-                .foregroundColor(.g80)
-                .frame(height: 40)
-            Divider()
+        Button(action: {
+            taskState.hasDdl = true
+            isShowDatePicker.toggle()
+        }) {
+            FormItem(
+                icon: Image(systemName: "calendar"),
+                name: taskState.hasDdl ? "\(dateToString(taskState.ddl)) 截止" : "添加截止日期",
+                valueView: EmptyView()
+            )
         }
     }
 
@@ -210,6 +151,7 @@ struct TaskForm: View {
                 .foregroundColor(.g50)
                 .padding(8.0)
                 .frame(width: 24.0, height: 24.0)
+                .background(Color.g10.cornerRadius(12))
         }
     }
     
@@ -219,7 +161,7 @@ struct TaskForm: View {
             Button(action: {
                 isShowRepeatPicker.toggle()
             }) {
-                Text("完成")
+                Text("确认")
             }
                 .padding(8)
             Picker("重复频率", selection: $taskState.repeatFrequency) {
@@ -238,7 +180,7 @@ struct TaskForm: View {
             Button(action: {
                 isShowDatePicker.toggle()
             }) {
-                Text("完成")
+                Text("确认")
             }
                 .padding(8)
             DatePicker(
@@ -254,23 +196,15 @@ struct TaskForm: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0.0) {
                 taskTitle
                 showGoal ? taskGoal : nil
                 taskDifficulty
                 taskTimeCost
                 taskMyDay
                 taskRepeat
+                taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
                 taskDdl
-                Text("子任务")
-                    .font(.headline)
-                    .padding(.horizontal, 16.0)
-                Divider()
-                HStack() {
-                    TextField("备注", text: $taskState.desc)
-                        .padding(.horizontal, 16.0)
-                }
-//                Spacer()
             }
                 .frame(
                     minWidth: 0,
@@ -279,9 +213,9 @@ struct TaskForm: View {
                     maxHeight: .infinity,
                     alignment: .topLeading
                 )
-            Popup(isVisible: $isShowGoalPicker, content: goalPicker)
-            Popup(isVisible: $isShowRepeatPicker, content: repeatPicker)
-            Popup(isVisible: $isShowDatePicker, content: datePicker)
+            Popup(isVisible: $isShowGoalPicker, content: goalPicker, background: Color.g10)
+            Popup(isVisible: $isShowRepeatPicker, content: repeatPicker, background: Color.g10)
+            Popup(isVisible: $isShowDatePicker, content: datePicker, background: Color.g10)
             Popup(isVisible: $isShowDifficultyPicker, content: DifficultyPicker(difficulty: $taskState.difficulty, isShow: $isShowDifficultyPicker))
         }
             .onAppear(perform: onAppear)

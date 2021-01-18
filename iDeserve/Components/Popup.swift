@@ -11,6 +11,7 @@ struct Popup<Content: View>: View {
     @Binding var isVisible: Bool
     var content: Content
     var alignment: Alignment = .bottom
+    var background: Color = .white
 
     var body: some View {
         if isVisible {
@@ -26,7 +27,7 @@ struct Popup<Content: View>: View {
                 content
                     .padding(.bottom, BOTTOM_SAFE_AREA_HEIGHT)
                     .padding(.top, 20)
-                    .background(Color.white)
+                    .background(background)
 //                    .background(Color.white.shadow(color: Color.g60, radius: 5))
             }
             .transition(
@@ -35,7 +36,6 @@ struct Popup<Content: View>: View {
                     removal: .move(edge: .bottom)
                 ).animation(.spring())
             )
-            
             .edgesIgnoringSafeArea(.vertical)
         }
     }

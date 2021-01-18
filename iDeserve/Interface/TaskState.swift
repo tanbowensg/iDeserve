@@ -12,7 +12,7 @@ struct TaskState: Hashable, Identifiable {
     var id = UUID()
     var name: String = ""
     var repeatFrequency: RepeatFrequency = .never
-    var repeatTimes: String = "0"
+    var repeatTimes: String = ""
     var hasDdl: Bool = false
     var ddl: Date = Date()
     var desc: String = ""
@@ -20,7 +20,7 @@ struct TaskState: Hashable, Identifiable {
     var starred: Bool = false
     var goalName: String = ""
     var goalId: UUID?
-    var timeCost: String = "1"
+    var timeCost: String = ""
     var difficulty: Difficulty = .easy
     var completeTimes: Int = 0
     
