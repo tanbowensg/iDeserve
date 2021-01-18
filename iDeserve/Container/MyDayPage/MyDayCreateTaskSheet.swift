@@ -13,10 +13,13 @@ struct MyDayCreateTaskSheet: View {
 
     @State var newTaskState: TaskState
     
-    init() {
+    init(task: Task?) {
+        print("init")
 //        从我的一天创建的任务默认添加到我的一天
-        var taskState = TaskState(nil)
-        taskState.starred = true
+        var taskState = TaskState(task ?? nil)
+        if task == nil {
+            taskState.starred = true
+        }
         _newTaskState = State(initialValue: taskState)
     }
     
@@ -24,8 +27,12 @@ struct MyDayCreateTaskSheet: View {
         if newTaskState.name == "" {
             return
         }
-
-        let _ = gs.taskStore.createTask(taskState: newTaskState)
+        
+        if let originTask = newTaskState.originTask {
+            let _ = gs.taskStore.updateTask(targetTask: originTask, taskState: newTaskState)
+        } else {
+            let _ = gs.taskStore.createTask(taskState: newTaskState)
+        }
     }
 
     var backBtn: some View {
@@ -46,7 +53,7 @@ struct MyDayCreateTaskSheet: View {
     var body: some View {
         VStack(alignment: .leading) {
             backBtn
-            TaskForm(taskState: $newTaskState, showGoal: true)
+            TaskForm(taskState: $newTaskState, showGoal: true).id(newTaskState.id)
         }
     }
 }

@@ -12,6 +12,7 @@ struct MyDayPage: View {
     @EnvironmentObject var gs: GlobalStore
     @State var offsetY: Double = 0
     @State var shouldOpenSheet = false
+    @State var currentTask: Task?
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
     
     let scrollThreshold = 100
@@ -45,9 +46,9 @@ struct MyDayPage: View {
     
     func onOffsetChange (_ offset: CGFloat) -> Void {
         offsetY = Double(offset)
-        print(offsetY)
         if (offsetY >= Double(scrollThreshold)) {
             shouldOpenSheet = true
+            currentTask = nil
         }
     }
     
@@ -59,12 +60,20 @@ struct MyDayPage: View {
                     task: TaskState(task),
                     onCompleteTask: {
                         self.gs.taskStore.completeTask(task)
+                    },
+                    onTap: {
+                        currentTask = task
+                        shouldOpenSheet = true
                     }
                 )
             }
             ForEach (completedTasks, id: \.id) { task in
                 TaskItem(
-                    task: TaskState(task)
+                    task: TaskState(task),
+                    onTap: {
+                        currentTask = task
+                        shouldOpenSheet = true
+                    }
                 )
             }
             Text("").frame(maxWidth: .infinity)
@@ -90,9 +99,6 @@ struct MyDayPage: View {
             ZStack(alignment: .top) {
                 Text("下拉创建任务")
                     .opacity(Double(offsetY / 100))
-                    .sheet(isPresented: $shouldOpenSheet, content: {
-                        MyDayCreateTaskSheet()
-                    })
                 CustomScrollView(showsIndicators: true, onOffsetChange: onOffsetChange) {
                     if myDayTasks.count == 0 {
                         emptyState
@@ -102,6 +108,9 @@ struct MyDayPage: View {
                 }
             }
         }
+        .sheet(isPresented: $shouldOpenSheet, content: {
+            MyDayCreateTaskSheet(task: currentTask)
+        })
         .navigationBarHidden(true)
     }
 }

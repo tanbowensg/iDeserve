@@ -13,6 +13,7 @@ struct TaskItem: View {
     var disabled: Bool?
     var onCompleteTask: (() -> Void)?
     var onRemoveTask: (() -> Void)?
+    var onTap: (() -> Void)?
     var hideTag: Bool? = false
 
     var dateText: String? {
@@ -105,6 +106,11 @@ struct TaskItem: View {
                 Color.g0
                     .shadow(color: .shadow, radius: 6, x: 0, y: 3)
             )
+            .onTapGesture {
+                if onTap != nil {
+                    onTap!()
+                }
+            }
     }
 
     var body: some View {
