@@ -14,7 +14,7 @@ struct EditRewardPage: View {
     var initReward: Reward?
 
     @State var name: String = ""
-    @State var value: String = "0"
+    @State var value: String = ""
     @State var isRepeat = true
     @State var desc = ""
     @State var cover: UIImage? = nil
@@ -40,66 +40,55 @@ struct EditRewardPage: View {
     var rewardTitle: some View {
         Group {
             TextField("奖励标题", text: $name)
-                .font(.title)
+                .font(.hiraginoSansGb16)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16.0)
+                .frame(height: 56)
             Divider()
         }
     }
 
     var rewardValue: some View {
-        Group {
-            HStack() {
-                Image("NutIcon")
-                    .resizable()
-                    .padding(2.0)
-                    .frame(width: 16.0, height: 16.0)
-                Text("所需坚果数")
-                Spacer()
-                TextField("0", text: $value)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-            }
-                .padding(.horizontal, 16.0)
-            Divider()
-        }
+        FormItem(
+            icon: Image("NutIcon"),
+            name: "所需坚果数",
+            valueView: TextField("10", text: $value)
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.numberPad)
+        )
     }
 
     var rewardRepeat: some View {
-        Group {
-            Toggle(isOn: $isRepeat, label: {
-                Image(systemName: "repeat")
-                Text("可重复兑换")
-            })
-                .padding(.horizontal, 16.0)
-                .foregroundColor(.g80)
-            Divider()
-        }
+        FormItem(
+            icon: Image(systemName: "repeat"),
+            name: "可重复兑换",
+            valueView: Toggle("", isOn: $isRepeat)
+        )
     }
 
-    @ViewBuilder var coverImage: some View {
-        if let existCover = cover {
-            Image(uiImage: existCover)
-                .resizable()
-                .aspectRatio(4/3, contentMode: .fit)
-        }
-        Group {
-            Button(action: {
-                self.isShowImagePicker.toggle()
-            }) {
-                Image(systemName: "photo")
-                Text("选择封面图片")
-                Spacer()
-            }
-            .sheet(isPresented: $isShowImagePicker) {
-                SUImagePickerView(sourceType:.photoLibrary, image: self.$cover, isPresented: self.$isShowImagePicker)
-            }
-            .padding(.horizontal, 16.0)
-            .foregroundColor(.g80)
-            
-            Divider()
-        }
-    }
+//    @ViewBuilder var coverImage: some View {
+//        if let existCover = cover {
+//            Image(uiImage: existCover)
+//                .resizable()
+//                .aspectRatio(4/3, contentMode: .fit)
+//        }
+//        Group {
+//            Button(action: {
+//                self.isShowImagePicker.toggle()
+//            }) {
+//                Image(systemName: "photo")
+//                Text("选择封面图片")
+//                Spacer()
+//            }
+//            .sheet(isPresented: $isShowImagePicker) {
+//                SUImagePickerView(sourceType:.photoLibrary, image: self.$cover, isPresented: self.$isShowImagePicker)
+//            }
+//            .padding(.horizontal, 16.0)
+//            .foregroundColor(.g80)
+//
+//            Divider()
+//        }
+//    }
 
     var backBtn: some View {
         Button(action: {
@@ -120,14 +109,10 @@ struct EditRewardPage: View {
         ZStack(alignment: .bottom) {
             VStack(alignment: .leading) {
                 backBtn
-                coverImage
+//                coverImage
                 rewardTitle
                 rewardValue
                 rewardRepeat
-                HStack() {
-                    TextField("备注", text: $desc)
-                        .padding(.horizontal, 16.0)
-                }
                 Spacer()
             }
                 .frame(
@@ -148,7 +133,7 @@ struct EditRewardPage: View {
         if initReward?.id != nil {
             gs.rewardStore.updateReward(targetReward: initReward!, name: name, value: Int(value)!, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
         } else {
-            gs.rewardStore.createReward(name: name, value: Int(value)!, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
+            gs.rewardStore.createReward(name: name, value: Int(value) ?? 10, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
         }
     }
 }
