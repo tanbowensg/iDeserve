@@ -24,7 +24,10 @@ struct TaskItem: View {
     }
 //    剩余的重复次数
     var remainTimes: Int {
-        return Int(task.repeatTimes) ?? 0 - task.completeTimes
+        if let repeatTimes = Int(task.repeatTimes) {
+            return repeatTimes - task.completeTimes
+        }
+        return 0
     }
 
     var taskGoal: some View {
@@ -48,7 +51,8 @@ struct TaskItem: View {
     }
     
     var remainTimesText: some View {
-        Text("还要做 \(remainTimes) 次")
+        print(remainTimes)
+        return Text("还要做 \(remainTimes) 次")
             .foregroundColor(.remainTextColor)
             .fontWeight(.bold)
             .font(.hiraginoSansGb9)
