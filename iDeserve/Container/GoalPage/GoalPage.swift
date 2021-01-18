@@ -21,7 +21,8 @@ struct GoalPage: View {
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     
     @State private var draggedGoal: Goal?
-    @State private var showAlert = false
+    @State private var showCompleteConfirmAlert = false
+    @State private var showDeleteConfirmAlert = false
     @State private var highlightIndex: Int? = 0
 
     static var goalRequest: NSFetchRequest<Goal> {
@@ -37,6 +38,32 @@ struct GoalPage: View {
             .offset(y: highlightIndex != nil ? CGFloat(highlightIndex! * Int(GOAL_ROW_HEIGHT)) : 0)
     }
     
+    func completeConfirmAlert(_ goal: Goal) -> Alert {
+        let confirmButton = Alert.Button.default(Text("完成")) {
+            gs.goalStore.completeGoal(goal)
+        }
+        let cancelButton = Alert.Button.cancel(Text("取消"))
+        return Alert(
+            title: Text("完成目标"),
+            message: Text("确定要完成\(goal.name!)吗？\n完成以后将开始结算完成目标的额外奖励。"),
+            primaryButton: confirmButton,
+            secondaryButton: cancelButton
+        )
+    }
+
+    func deleteConfirmAlert(_ goal: Goal) -> Alert {
+        let confirmButton = Alert.Button.default(Text("删除")) {
+            gs.goalStore.removeGoal(goal)
+        }
+        let cancelButton = Alert.Button.cancel(Text("取消"))
+        return Alert(
+            title: Text("删除目标"),
+            message: Text("确定要删除目标\(goal.name!)吗？\n删除后无法恢复。"),
+            primaryButton: confirmButton,
+            secondaryButton: cancelButton
+        )
+    }
+
     var body: some View {
         VStack(spacing: 0.0) {
             AppHeader(points: gs.pointsStore.points, title: "目标任务")
@@ -54,21 +81,11 @@ struct GoalPage: View {
                                             progress: 0.32
                                         ),
                                         height: Int(GOAL_ROW_HEIGHT),
-                                        onLeftSwipe: { showAlert = true },
-                                        onRightSwipe: { gs.goalStore.removeGoal(goal) }
+                                        onLeftSwipe: { showCompleteConfirmAlert = true },
+                                        onRightSwipe: { showDeleteConfirmAlert = true }
                                     )
-                                    .alert(isPresented: $showAlert, content: {
-                                        let confirmButton = Alert.Button.default(Text("完成")) {
-                                            gs.goalStore.completeGoal(goal)
-                                        }
-                                        let cancelButton = Alert.Button.cancel(Text("取消"))
-                                        return Alert(
-                                            title: Text("完成目标"),
-                                            message: Text("确定要完成\(goal.name!)吗？\n完成以后将开始结算完成目标的额外奖励。"),
-                                            primaryButton: confirmButton,
-                                            secondaryButton: cancelButton
-                                        )
-                                    })
+                                    .alert(isPresented: $showCompleteConfirmAlert, content: { completeConfirmAlert(goal) })
+                                    .alert(isPresented: $showDeleteConfirmAlert, content: { deleteConfirmAlert(goal) })
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 //                            .onDrag {
