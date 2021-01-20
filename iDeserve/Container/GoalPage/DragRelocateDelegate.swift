@@ -11,6 +11,7 @@ import SwiftUI
 struct DragRelocateDelegate: DropDelegate {
     let item: Goal
     var goals: FetchedResults<Goal>
+    var padding: CGFloat
     @Binding var current: Goal?
     @Binding var highlightIndex: Int?
     
@@ -50,22 +51,19 @@ struct DragRelocateDelegate: DropDelegate {
     }
     
     func dropEntered(info: DropInfo) {
-        print("dropEntered")
-        updateHighlight(info.location.y)
+        updateHighlight(info.location.y - padding)
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        updateHighlight(info.location.y)
+        updateHighlight(info.location.y - padding)
         return DropProposal(operation: .move)
     }
     
     func dropExited(info: DropInfo) {
-        print("dropExited")
     }
 
     func performDrop(info: DropInfo) -> Bool {
         withAnimation {
-            print("performDrop")
             if item.id != current?.id && current != nil {
                 let y = info.location.y
                 var newPos = caculateNewPos(Int(y))

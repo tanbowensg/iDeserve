@@ -92,6 +92,7 @@ struct GoalPage: View {
             delegate: DragRelocateDelegate(
                 item: goal,
                 goals: goals,
+                padding: padding,
                 current: $draggedGoal,
                 highlightIndex: $highlightIndex
             )
