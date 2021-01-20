@@ -9,10 +9,10 @@ import SwiftUI
 import CoreData
 import UniformTypeIdentifiers
 
-//struct IHighlightGoal {
-//    var id: UUID?
-//    var isBefore: Bool
-//}
+enum AlertType: Int, CaseIterable {
+    case complete = 0
+    case delete = 1
+}
 
 struct GoalPage: View {
     @Environment(\.managedObjectContext) var moc
@@ -21,9 +21,9 @@ struct GoalPage: View {
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     
     @State private var draggedGoal: Goal?
-    @State private var showCompleteConfirmAlert = false
-    @State private var showDeleteConfirmAlert = false
     @State private var highlightIndex: Int? = nil
+    @State private var isShowAlert = false
+    @State private var showAlertType = AlertType.complete
     
     let padding: CGFloat = 8
 
@@ -67,7 +67,7 @@ struct GoalPage: View {
     }
     
     func goalItem(_ goal: Goal) -> some View {
-        NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+        return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
             SwipeWrapper(
                 content: GoalItemView(
                     name: goal.name!,
@@ -76,27 +76,39 @@ struct GoalPage: View {
                     progress: 0.32
                 ),
                 height: Int(GOAL_ROW_HEIGHT),
-                onLeftSwipe: { showCompleteConfirmAlert = true },
-                onRightSwipe: { showDeleteConfirmAlert = true }
+                onLeftSwipe: {
+                    isShowAlert.toggle()
+                    showAlertType = AlertType.delete
+                },
+                onRightSwipe: {
+                    isShowAlert.toggle()
+                    showAlertType = AlertType.complete
+                }
             )
-            .alert(isPresented: $showCompleteConfirmAlert, content: { completeConfirmAlert(goal) })
-            .alert(isPresented: $showDeleteConfirmAlert, content: { deleteConfirmAlert(goal) })
-        }
-        .buttonStyle(PlainButtonStyle())
-        .onDrag {
-            self.draggedGoal = goal
-            return NSItemProvider(object: goal.id!.uuidString as NSString)
-        }
-        .onDrop(
-            of: [UTType.text],
-            delegate: DragRelocateDelegate(
-                item: goal,
-                goals: goals,
-                padding: padding,
-                current: $draggedGoal,
-                highlightIndex: $highlightIndex
+            .alert(isPresented: $isShowAlert, content: {
+                switch showAlertType {
+                    case .complete:
+                        return completeConfirmAlert(goal)
+                    case .delete:
+                        return deleteConfirmAlert(goal)
+                }
+            })
+            .buttonStyle(PlainButtonStyle())
+            .onDrag {
+                self.draggedGoal = goal
+                return NSItemProvider(object: goal.id!.uuidString as NSString)
+            }
+            .onDrop(
+                of: [UTType.text],
+                delegate: DragRelocateDelegate(
+                    item: goal,
+                    goals: goals,
+                    padding: padding,
+                    current: $draggedGoal,
+                    highlightIndex: $highlightIndex
+                )
             )
-        )
+        }
     }
 
     var body: some View {
