@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsPage: View {
+    @EnvironmentObject var gs: GlobalStore
+
     var body: some View {
 //        VStack {
 //            Text("设置")
@@ -21,6 +23,16 @@ struct SettingsPage: View {
                 }
                 HStack {
                     Text("外观")
+                }
+                Button(action: {
+                    gs.pointsStore.add(gs.pointsStore.points * 9)
+                }) {
+                    Text("现有坚果变十倍")
+                }
+                Button(action: {
+                    gs.pointsStore.add(-gs.pointsStore.points)
+                }) {
+                    Text("现有坚果清零")
                 }
             }
 //        }
