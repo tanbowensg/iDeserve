@@ -8,9 +8,9 @@
 import Foundation
 
 enum Difficulty: Int, CaseIterable {
-    case easy = 1
-    case medium = 2
-    case hard = 4
+    case easy = 10
+    case medium = 20
+    case hard = 40
 }
 
 let DIFFICULTY_EASY_TEXT = NSLocalizedString("容易", comment: "")
