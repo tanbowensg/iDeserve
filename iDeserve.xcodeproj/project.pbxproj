@@ -26,6 +26,7 @@
 		D031EDDA25B195C100D64CF3 /* PickerBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDD925B195C100D64CF3 /* PickerBlock.swift */; };
 		D031EDE425B1964800D64CF3 /* DifficultyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDE325B1964800D64CF3 /* DifficultyPicker.swift */; };
 		D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE1625B7CDEE00D64CF3 /* Goal.swift */; };
+		D031EE2125B7DCB500D64CF3 /* DragRelocateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE2025B7DCB500D64CF3 /* DragRelocateDelegate.swift */; };
 		D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6F525AD443700F8152D /* CalendarSwiper.swift */; };
 		D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
 		D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
@@ -74,7 +75,7 @@
 		D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
 		D07913BF257768E9007B9767 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913BE257768E9007B9767 /* TabContainer.swift */; };
 		D07913C925776963007B9767 /* TabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913C825776963007B9767 /* TabIcon.swift */; };
-		D07B6D3425B037E200087FC5 /* GoalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3325B037E200087FC5 /* GoalItem.swift */; };
+		D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3325B037E200087FC5 /* GoalItemView.swift */; };
 		D07B6D3A25B042E500087FC5 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
 		D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D4725B06C5400087FC5 /* ProgressBar.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
@@ -177,6 +178,7 @@
 		D031EDD925B195C100D64CF3 /* PickerBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBlock.swift; sourceTree = "<group>"; };
 		D031EDE325B1964800D64CF3 /* DifficultyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPicker.swift; sourceTree = "<group>"; };
 		D031EE1625B7CDEE00D64CF3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		D031EE2025B7DCB500D64CF3 /* DragRelocateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRelocateDelegate.swift; sourceTree = "<group>"; };
 		D03AF6F525AD443700F8152D /* CalendarSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSwiper.swift; sourceTree = "<group>"; };
 		D03AF6FB25AD44B800F8152D /* viberate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viberate.swift; sourceTree = "<group>"; };
 		D03AF70F25AEBAF000F8152D /* roundBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundBorder.swift; sourceTree = "<group>"; };
@@ -215,7 +217,7 @@
 		D079139D257748F2007B9767 /* iDeserveRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDeserveRelease.entitlements; sourceTree = "<group>"; };
 		D07913BE257768E9007B9767 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
 		D07913C825776963007B9767 /* TabIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIcon.swift; sourceTree = "<group>"; };
-		D07B6D3325B037E200087FC5 /* GoalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalItem.swift; sourceTree = "<group>"; };
+		D07B6D3325B037E200087FC5 /* GoalItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalItemView.swift; sourceTree = "<group>"; };
 		D07B6D3925B042E500087FC5 /* NutIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutIcon.swift; sourceTree = "<group>"; };
 		D07B6D4725B06C5400087FC5 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
@@ -546,7 +548,8 @@
 			children = (
 				D08988CE2546A9D60032BA96 /* EditGoalPage */,
 				D04BB016252AC7FB0088912A /* GoalPage.swift */,
-				D07B6D3325B037E200087FC5 /* GoalItem.swift */,
+				D07B6D3325B037E200087FC5 /* GoalItemView.swift */,
+				D031EE2025B7DCB500D64CF3 /* DragRelocateDelegate.swift */,
 			);
 			path = GoalPage;
 			sourceTree = "<group>";
@@ -761,6 +764,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D07242782599E1ED00DCB674 /* i18n.swift in Sources */,
+				D031EE2125B7DCB500D64CF3 /* DragRelocateDelegate.swift in Sources */,
 				D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */,
 				D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */,
 				D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */,
@@ -801,7 +805,7 @@
 				D03AF71025AEBAF000F8152D /* roundBorder.swift in Sources */,
 				D007CFB525873512008CA76D /* constants.swift in Sources */,
 				D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */,
-				D07B6D3425B037E200087FC5 /* GoalItem.swift in Sources */,
+				D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */,
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,

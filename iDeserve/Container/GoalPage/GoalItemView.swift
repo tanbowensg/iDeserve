@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoalItem: View {
+struct GoalItemView: View {
     var name: String
     var taskNum: Int
     var value: Int
@@ -38,15 +38,16 @@ struct GoalItem: View {
             NutIcon(value: value)
         }
         .padding(.horizontal, 20.0)
-        .padding(.vertical, 0)
-        .frame(height: 60.0)
+        .padding(.vertical, 8)
+        .frame(height: GOAL_ROW_HEIGHT)
         .frame(maxWidth: .infinity)
         .foregroundColor(.g80)
+        .background(Color.white)
     }
 }
 
 struct GoalItem_Previews: PreviewProvider {
     static var previews: some View {
-        GoalItem(name: "通关赛博朋克2077", taskNum: 3, value: 188, progress: 0.32)
+        GoalItemView(name: "通关赛博朋克2077", taskNum: 3, value: 188, progress: 0.32)
     }
 }

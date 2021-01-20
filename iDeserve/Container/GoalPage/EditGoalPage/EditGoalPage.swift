@@ -84,7 +84,7 @@ struct EditGoalPage: View {
 //    目标的任务
     var goalTasks: some View {
         let tasksNutsSum = tasks.reduce(0, {(result, task) in
-            return result + task.value
+            return result + task.totalValue
         })
         return Group {
             VStack(alignment: .leading, spacing: 0) {

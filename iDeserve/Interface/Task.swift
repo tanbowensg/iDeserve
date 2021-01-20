@@ -35,6 +35,10 @@ struct TaskState: Hashable, Identifiable {
         return time * difficulty.rawValue
     }
 
+    var totalValue: Int {
+        return value * (Int(repeatTimes) ?? 1)
+    }
+
     init (_ originTask: Task?) {
         if let existTask = originTask {
             self.originTask = existTask
