@@ -106,6 +106,8 @@ struct MyDayPage: View {
                         taskList
                     }
                 }
+//                用来修复第一次点开sheet没有内容的bug
+                currentTask == nil ? Text("") : nil
             }
         }
         .sheet(isPresented: $shouldOpenSheet, content: {
