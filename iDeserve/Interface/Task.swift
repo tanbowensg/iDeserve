@@ -7,6 +7,12 @@
 
 import Foundation
 
+extension Task {
+    var value: Int16 {
+        return self.timeCost * self.difficulty
+    }
+}
+
 struct TaskState: Hashable, Identifiable {
     var originTask: Task?
     var id = UUID()

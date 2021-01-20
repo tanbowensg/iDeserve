@@ -77,7 +77,7 @@ struct GoalPage: View {
                                         content: GoalItem(
                                             name: goal.name!,
                                             taskNum: goal.tasks!.count,
-                                            value: 188,
+                                            value: goal.value,
                                             progress: 0.32
                                         ),
                                         height: Int(GOAL_ROW_HEIGHT),
