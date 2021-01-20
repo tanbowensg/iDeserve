@@ -15,7 +15,6 @@ struct HelpPage: View {
         VStack {
             MyWebView(url: URL(string: faqDocumentUrl), reload: $shouldRefresh)
         }
-        .navigationBarHidden(true)
     }
 }
 
