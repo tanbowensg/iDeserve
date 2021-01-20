@@ -47,9 +47,12 @@ final class TaskStore: ObservableObject {
         targetTask.desc = taskState.desc
         targetTask.done = taskState.done
         targetTask.starred = taskState.starred
-        targetTask.starred = taskState.starred
         targetTask.difficulty = Int16(taskState.difficulty.rawValue)
         targetTask.timeCost = Int16(taskState.timeCost) ?? 1
+        
+        if targetTask.parent?.id != taskState.goalId && taskState.goalId != nil {
+            updateTaskGoal(task: targetTask, goalId: taskState.goalId!)
+        }
     
         do {
             try self.moc.save()
@@ -64,19 +67,8 @@ final class TaskStore: ObservableObject {
         let newTask = Task(context: self.moc)
         newTask.id = UUID()
         
-        if taskState.goalId != nil {
-    //        首先根据uuid从coredata中看看有没有这个目标，把目标添加上去
-            let goalRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
-            goalRequest.predicate = NSPredicate(format: "%K == %@", "id", taskState.goalId! as CVarArg)
-
-            do {
-                let fetchedGoals = try moc.fetch(goalRequest) as! [Goal]
-                if fetchedGoals.count > 0 {
-                    newTask.parent = fetchedGoals[0]
-                }
-            } catch {
-                print("保存任务的时候没有从coredata中找到对应的目标")
-            }
+        if let goalId = taskState.goalId {
+            updateTaskGoal(task: newTask, goalId: goalId)
         }
         return self.updateTask(targetTask: newTask, taskState: taskState)
     }
@@ -109,5 +101,19 @@ final class TaskStore: ObservableObject {
     
     func removeTask(_ task: Task) {
         self.moc.delete(task)
+    }
+    
+    func updateTaskGoal(task: Task, goalId: UUID) -> Void {
+        let goalRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
+        goalRequest.predicate = NSPredicate(format: "%K == %@", "id", goalId as CVarArg)
+
+        do {
+            let fetchedGoals = try moc.fetch(goalRequest) as! [Goal]
+            if fetchedGoals.count > 0 {
+                task.parent = fetchedGoals[0]
+            }
+        } catch {
+            print("保存任务的时候没有从coredata中找到对应的目标")
+        }
     }
 }
