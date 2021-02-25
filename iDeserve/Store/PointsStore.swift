@@ -18,7 +18,6 @@ final class PointsStore: ObservableObject {
         let defaults = UserDefaults.standard
         let _points = defaults.integer(forKey: forKey)
         self.points = _points
-        
     }
     
     func saveUserDefaults () {

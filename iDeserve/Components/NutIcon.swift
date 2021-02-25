@@ -16,12 +16,12 @@ struct NutIcon: View {
             Text("\(value >= 0 && !hidePlus ? "+" : "")\(String(value))")
                 .foregroundColor(value >= 0 ? Color.rewardColor : Color.red)
                 .font(.avenirBlack14)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .fontWeight(.bold)
             Image("NutIcon")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 16.0, height: 16.0)
-                .padding(/*@START_MENU_TOKEN@*/.all, 2.0/*@END_MENU_TOKEN@*/)
+                .padding(.all, 2.0)
         }
     }
 }

@@ -13,6 +13,7 @@ struct MyDayPage: View {
     @State var offsetY: Double = 0
     @State var shouldOpenSheet = false
     @State var currentTask: Task?
+    @State var showBonusToast = false
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
     
     let scrollThreshold = 100
@@ -64,6 +65,7 @@ struct MyDayPage: View {
                         task: TaskState(task),
                         onCompleteTask: {
                             self.gs.taskStore.completeTask(task)
+                            showBonusToast.toggle()
                         }
                     )
                 }
@@ -109,6 +111,12 @@ struct MyDayPage: View {
 //                用来修复第一次点开sheet没有内容的bug
                 currentTask == nil ? Text("") : nil
             }
+            .popup(isPresented: $showBonusToast, type: .toast, position: .top, autohideIn: 3, closeOnTap: true, closeOnTapOutside: true, view: {
+                Text("在DDL前完成了任务，额外奖励3个坚果！")
+                    .padding(16)
+                    .background(Color.g10.cornerRadius(15))
+                    .padding(20)
+            })
         }
         .sheet(isPresented: $shouldOpenSheet, content: {
             MyDayCreateTaskSheet(task: currentTask)

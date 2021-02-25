@@ -23,6 +23,7 @@ struct GoalPage: View {
     @State private var draggedGoal: Goal?
     @State private var highlightIndex: Int? = nil
     @State private var isShowAlert = false
+    @State private var isShowCompleteGoalView = false
     @State private var showAlertType = AlertType.complete
     
     let padding: CGFloat = 8
@@ -77,12 +78,13 @@ struct GoalPage: View {
                 ),
                 height: Int(GOAL_ROW_HEIGHT),
                 onLeftSwipe: {
-                    isShowAlert.toggle()
-                    showAlertType = AlertType.delete
+//                    isShowAlert.toggle()
+//                    showAlertType = AlertType.complete
+                    isShowCompleteGoalView = true
                 },
                 onRightSwipe: {
                     isShowAlert.toggle()
-                    showAlertType = AlertType.complete
+                    showAlertType = AlertType.delete
                 }
             )
             .alert(isPresented: $isShowAlert, content: {
@@ -112,9 +114,9 @@ struct GoalPage: View {
     }
 
     var body: some View {
-        VStack(spacing: 0.0) {
-            AppHeader(points: gs.pointsStore.points, title: "目标任务")
-            ZStack(alignment: .bottomTrailing) {
+        ZStack(alignment: .bottomTrailing) {
+            VStack(spacing: 0.0) {
+                AppHeader(points: gs.pointsStore.points, title: "目标任务")
                 ZStack(alignment: .top) {
                     ScrollView {
                         VStack(spacing: 0.0) {
@@ -133,15 +135,16 @@ struct GoalPage: View {
                     )
                     highlightIndex != nil ? reorderDivider : nil
                 }
-                VStack {
-                    NavigationLink(destination: EditGoalPage(initGoal: nil)) {
-                        CreateButton()
-                    }
-                }
-                .padding([.trailing, .bottom], 16)
             }
+            VStack {
+                NavigationLink(destination: EditGoalPage(initGoal: nil)) {
+                    CreateButton()
+                }
+            }
+                .padding([.trailing, .bottom], 16)
+            Popup(isVisible: $isShowCompleteGoalView, content: CompleteGoalView(), alignment: .center)
         }
-            .navigationBarHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

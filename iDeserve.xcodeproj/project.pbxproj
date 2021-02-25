@@ -25,6 +25,7 @@
 		D031EDCA25B16A2900D64CF3 /* ImportancePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDC925B16A2900D64CF3 /* ImportancePicker.swift */; };
 		D031EDDA25B195C100D64CF3 /* PickerBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDD925B195C100D64CF3 /* PickerBlock.swift */; };
 		D031EDE425B1964800D64CF3 /* DifficultyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDE325B1964800D64CF3 /* DifficultyPicker.swift */; };
+		D031EDF525B5719300D64CF3 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EDF425B5719200D64CF3 /* PopupView.swift */; };
 		D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE1625B7CDEE00D64CF3 /* Goal.swift */; };
 		D031EE2125B7DCB500D64CF3 /* DragRelocateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE2025B7DCB500D64CF3 /* DragRelocateDelegate.swift */; };
 		D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6F525AD443700F8152D /* CalendarSwiper.swift */; };
@@ -104,6 +105,7 @@
 		D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */; };
 		D0F02A36257912840082CCB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
 		D0F02A3B2579162D0082CCB1 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */; };
+		D0F2DC8C25E77A4B00A75E12 /* CompleteGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2DC8B25E77A4B00A75E12 /* CompleteGoalView.swift */; };
 		D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
 		D0F3B00325636C4B008B6EBB /* genMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockData.swift */; };
 		D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
@@ -128,13 +130,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D010265D2524241F00653A52;
 			remoteInfo = iDeserve;
-		};
-		D079133F2574F198007B9767 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D01026562524241F00653A52 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D079132F2574F198007B9767;
-			remoteInfo = iDeserveWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -177,6 +172,7 @@
 		D031EDC925B16A2900D64CF3 /* ImportancePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportancePicker.swift; sourceTree = "<group>"; };
 		D031EDD925B195C100D64CF3 /* PickerBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBlock.swift; sourceTree = "<group>"; };
 		D031EDE325B1964800D64CF3 /* DifficultyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPicker.swift; sourceTree = "<group>"; };
+		D031EDF425B5719200D64CF3 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		D031EE1625B7CDEE00D64CF3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		D031EE2025B7DCB500D64CF3 /* DragRelocateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRelocateDelegate.swift; sourceTree = "<group>"; };
 		D03AF6F525AD443700F8152D /* CalendarSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSwiper.swift; sourceTree = "<group>"; };
@@ -241,6 +237,7 @@
 		D0EE548F255A6D140091302D /* RewardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardStore.swift; sourceTree = "<group>"; };
 		D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		D0F02A28257901BA0082CCB1 /* iDeserveWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDeserveWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
+		D0F2DC8B25E77A4B00A75E12 /* CompleteGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteGoalView.swift; sourceTree = "<group>"; };
 		D0F3AFFD25636A36008B6EBB /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		D0F3B00225636C4B008B6EBB /* genMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genMockData.swift; sourceTree = "<group>"; };
 		D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeWrapper.swift; sourceTree = "<group>"; };
@@ -400,6 +397,7 @@
 		D010269D2524306400653A52 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D0F2DC9125E77CD200A75E12 /* CompleteGoalView */,
 				D03AF73025B0112B00F8152D /* WebView */,
 				D0F3B01D2563D2F3008B6EBB /* SwipeCell */,
 				D08988B6254685C70032BA96 /* TaskForm */,
@@ -436,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				D03AF70F25AEBAF000F8152D /* roundBorder.swift */,
+				D031EDF425B5719200D64CF3 /* PopupView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -584,6 +583,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		D0F2DC9125E77CD200A75E12 /* CompleteGoalView */ = {
+			isa = PBXGroup;
+			children = (
+				D0F2DC8B25E77A4B00A75E12 /* CompleteGoalView.swift */,
+			);
+			path = CompleteGoalView;
+			sourceTree = "<group>";
+		};
 		D0F3B01D2563D2F3008B6EBB /* SwipeCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,7 +617,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D07913402574F198007B9767 /* PBXTargetDependency */,
 			);
 			name = iDeserve;
 			packageProductDependencies = (
@@ -777,6 +783,7 @@
 				D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */,
 				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
 				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
+				D0F2DC8C25E77A4B00A75E12 /* CompleteGoalView.swift in Sources */,
 				D03AF74825B0283500F8152D /* MyWebview.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
 				D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */,
@@ -810,6 +817,7 @@
 				D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */,
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
 				D04BB017252AC7FB0088912A /* GoalPage.swift in Sources */,
+				D031EDF525B5719300D64CF3 /* PopupView.swift in Sources */,
 				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
 				D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */,
 				D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */,
@@ -894,11 +902,6 @@
 			isa = PBXTargetDependency;
 			target = D010265D2524241F00653A52 /* iDeserve */;
 			targetProxy = D010267B2524242100653A52 /* PBXContainerItemProxy */;
-		};
-		D07913402574F198007B9767 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D079132F2574F198007B9767 /* iDeserveWidgetExtension */;
-			targetProxy = D079133F2574F198007B9767 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
