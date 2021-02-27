@@ -81,8 +81,10 @@ struct GoalPage: View {
                 onLeftSwipe: {
 //                    isShowAlert.toggle()
 //                    showAlertType = AlertType.complete
-                    completingGoal = goal
-                    isShowCompleteGoalView = true
+                    withAnimation {
+                        isShowCompleteGoalView = true
+                        completingGoal = goal
+                    }
                 },
                 onRightSwipe: {
                     isShowAlert.toggle()
@@ -144,7 +146,14 @@ struct GoalPage: View {
                 }
             }
                 .padding([.trailing, .bottom], 16)
-            Popup(isVisible: $isShowCompleteGoalView, content: CompleteGoalView(goalReward: completingGoal?.goalReward), alignment: .center)
+            Popup(
+                isVisible: $isShowCompleteGoalView,
+                content: CompleteGoalView(
+                    goalReward: completingGoal?.goalReward,
+                    onClose: { withAnimation { isShowCompleteGoalView = false } }
+                ),
+                alignment: .center
+            )
         }
         .navigationBarHidden(true)
     }

@@ -9,42 +9,52 @@ import SwiftUI
 
 struct CompleteGoalView: View {
     var goalReward: GoalReward?
+    var onClose: () -> Void
     
+//    展示数据
+    @State var isShowResult = false
+
     var mainView: some View {
         VStack(spacing: 6.0) {
             Image(systemName: "checkmark.seal")
                 .resizable()
                 .foregroundColor(.hospitalGreen)
                 .frame(width: 200.0, height: 200.0)
-            VStack(spacing: 6.0) {
-                HStack {
-                    Text("完成目标奖励").font(.avenirBlack14)
-                    Spacer()
-                    NutIcon(value: goalReward!.basicReward, hidePlus: true)
+            if isShowResult {
+                VStack(spacing: 6.0) {
+                    HStack {
+                        Text("完成目标奖励").font(.avenirBlack14)
+                        Spacer()
+                        NutIcon(value: goalReward!.basicReward, hidePlus: true)
+                    }
+                    HStack {
+                        Text("在截至前完成任务").font(.avenirBlack14)
+                        Spacer()
+                        NutIcon(value: goalReward!.beforeDdlReward, hidePlus: true)
+                    }
+                    HStack {
+                        Text("完成全部重复次数").font(.avenirBlack14)
+                        Spacer()
+                        NutIcon(value: goalReward!.allRpeatReward, hidePlus: true)
+                    }
+                    VStack(spacing: 6.0) {
+                        Divider()
+                        HStack {
+                            Text("总计").font(.avenirBlack14)
+                            Spacer()
+                            NutIcon(value: goalReward!.totalReward, hidePlus: true)
+                        }
+                    }
                 }
-                HStack {
-                    Text("在截至前完成任务").font(.avenirBlack14)
-                    Spacer()
-                    NutIcon(value: goalReward!.beforeDdlReward, hidePlus: true)
-                }
-                HStack {
-                    Text("完成全部重复次数").font(.avenirBlack14)
-                    Spacer()
-                    NutIcon(value: goalReward!.allRpeatReward, hidePlus: true)
-                }
-                Divider()
-                HStack {
-                    Text("总计").font(.avenirBlack14)
-                    Spacer()
-                    NutIcon(value: goalReward!.totalReward, hidePlus: true)
-                }
+                .padding([.top, .leading, .trailing], 16)
             }
-            .padding([.top, .leading, .trailing], 16)
             
             Divider().padding(.bottom, 10.0)
 
             Button(action: {
-                
+                withAnimation {
+                    onClose()
+                }
             }) {
                 Text("好！")
                     .font(.avenirBlack14)
@@ -57,6 +67,13 @@ struct CompleteGoalView: View {
         .padding(.vertical, 16)
         .frame(width: 300.0)
         .background(Color.white.cornerRadius(16))
+        .onAppear(perform: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                withAnimation(Animation.easeIn(duration: 0.3)) {
+                    isShowResult = true
+                }
+            }
+        })
     }
 
     var body: some View {
@@ -66,6 +83,6 @@ struct CompleteGoalView: View {
 
 struct CompleteGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteGoalView(goalReward: GoalReward(importance: Importance.epic, basicRewardBase: 500, allRpeatRewardBase: 100, beforeDdlRewardBase: 200))
+        CompleteGoalView(goalReward: GoalReward(importance: Importance.epic, basicRewardBase: 500, allRpeatRewardBase: 100, beforeDdlRewardBase: 200), onClose: emptyFunc)
     }
 }
