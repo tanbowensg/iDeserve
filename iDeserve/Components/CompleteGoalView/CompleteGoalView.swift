@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CompleteGoalView: View {
-    var body: some View {
+    var goalReward: GoalReward?
+    
+    var mainView: some View {
         VStack(spacing: 6.0) {
             Image(systemName: "checkmark.seal")
                 .resizable()
@@ -18,23 +20,23 @@ struct CompleteGoalView: View {
                 HStack {
                     Text("完成目标奖励").font(.avenirBlack14)
                     Spacer()
-                    NutIcon(value: 100, hidePlus: true)
+                    NutIcon(value: goalReward!.basicReward, hidePlus: true)
                 }
                 HStack {
                     Text("在截至前完成任务").font(.avenirBlack14)
                     Spacer()
-                    NutIcon(value: 100, hidePlus: true)
+                    NutIcon(value: goalReward!.beforeDdlReward, hidePlus: true)
                 }
                 HStack {
                     Text("完成全部重复次数").font(.avenirBlack14)
                     Spacer()
-                    NutIcon(value: 100, hidePlus: true)
+                    NutIcon(value: goalReward!.allRpeatReward, hidePlus: true)
                 }
                 Divider()
                 HStack {
                     Text("总计").font(.avenirBlack14)
                     Spacer()
-                    NutIcon(value: 300, hidePlus: true)
+                    NutIcon(value: goalReward!.totalReward, hidePlus: true)
                 }
             }
             .padding([.top, .leading, .trailing], 16)
@@ -56,10 +58,14 @@ struct CompleteGoalView: View {
         .frame(width: 300.0)
         .background(Color.white.cornerRadius(16))
     }
+
+    var body: some View {
+        goalReward != nil ? mainView : nil
+    }
 }
 
 struct CompleteGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteGoalView()
+        CompleteGoalView(goalReward: GoalReward(importance: Importance.epic, basicRewardBase: 500, allRpeatRewardBase: 100, beforeDdlRewardBase: 200))
     }
 }

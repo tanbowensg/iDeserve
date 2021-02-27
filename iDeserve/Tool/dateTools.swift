@@ -36,3 +36,10 @@ func startDateOfMonth(year: Int, month: Int) -> Date {
 
     return calendar.date(bySettingHour: 0, minute: 0, second: 0, of: startDate)!
 }
+
+extension Date {
+    func isBeforeThan(_ date: Date) -> Bool {
+        print(self.timeIntervalSince(date))
+        return self.timeIntervalSince(date) < 0
+    }
+}

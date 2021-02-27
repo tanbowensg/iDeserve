@@ -25,6 +25,7 @@ struct GoalPage: View {
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
     @State private var showAlertType = AlertType.complete
+    @State private var completingGoal: Goal?
     
     let padding: CGFloat = 8
 
@@ -74,12 +75,13 @@ struct GoalPage: View {
                     name: goal.name!,
                     taskNum: goal.tasks!.count,
                     value: goal.value,
-                    progress: 0.32
+                    progress: Float(goal.gotValue) / Float(goal.totalValue)
                 ),
                 height: Int(GOAL_ROW_HEIGHT),
                 onLeftSwipe: {
 //                    isShowAlert.toggle()
 //                    showAlertType = AlertType.complete
+                    completingGoal = goal
                     isShowCompleteGoalView = true
                 },
                 onRightSwipe: {
@@ -142,7 +144,7 @@ struct GoalPage: View {
                 }
             }
                 .padding([.trailing, .bottom], 16)
-            Popup(isVisible: $isShowCompleteGoalView, content: CompleteGoalView(), alignment: .center)
+            Popup(isVisible: $isShowCompleteGoalView, content: CompleteGoalView(goalReward: completingGoal?.goalReward), alignment: .center)
         }
         .navigationBarHidden(true)
     }

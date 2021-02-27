@@ -51,8 +51,8 @@ struct TaskItem: View {
     }
     
     var remainTimesText: some View {
-        print(remainTimes)
-        return Text("还要做 \(remainTimes) 次")
+        let text = remainTimes > 0 ? "还要做 \(remainTimes) 次" : "\(task.repeatTimes) 次全部完成了"
+        return Text(text)
             .foregroundColor(.remainTextColor)
             .fontWeight(.bold)
             .font(.hiraginoSansGb9)
@@ -62,7 +62,7 @@ struct TaskItem: View {
     var taskInfo: some View {
         return HStack {
             task.starred ? Image(systemName: "sun.max") : nil
-            remainTimes > 0 ? remainTimesText : nil
+            task.repeatFrequency != RepeatFrequency.never ? remainTimesText : nil
             task.hasDdl ? ddlText : nil
         }
     }

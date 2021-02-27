@@ -10,6 +10,9 @@ import SwiftUI
 
 let MAX_POS = 32767
 
+var AllRpeatRewardRatio = 0.1
+var BeforeDdlRewardRatio = 0.1
+
 let BOTTOM_SAFE_AREA_HEIGHT: CGFloat = 34
 
 let TASK_ROW_HEIGHT: CGFloat = 82

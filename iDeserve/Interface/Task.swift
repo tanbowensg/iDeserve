@@ -11,6 +11,10 @@ extension Task {
     var value: Int16 {
         return self.timeCost * self.difficulty
     }
+    
+    var ts: TaskState {
+        TaskState(self)
+    }
 }
 
 struct TaskState: Hashable, Identifiable {
@@ -18,7 +22,7 @@ struct TaskState: Hashable, Identifiable {
     var id = UUID()
     var name: String = ""
     var repeatFrequency: RepeatFrequency = .never
-    var repeatTimes: String = ""
+    var repeatTimes: String = "1"
     var hasDdl: Bool = false
     var ddl: Date = Date()
     var desc: String = ""
@@ -37,6 +41,10 @@ struct TaskState: Hashable, Identifiable {
 
     var totalValue: Int {
         return value * (Int(repeatTimes) ?? 1)
+    }
+    
+    var gotValue: Int {
+        return value * Int(completeTimes)
     }
 
     init (_ originTask: Task?) {
