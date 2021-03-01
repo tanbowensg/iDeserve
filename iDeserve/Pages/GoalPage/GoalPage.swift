@@ -25,6 +25,7 @@ struct GoalPage: View {
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
     @State private var completingGoal: Goal?
+    @State private var deletingGoal: Goal?
     
     let padding: CGFloat = 8
 
@@ -48,19 +49,6 @@ struct GoalPage: View {
         Divider()
             .offset(y: highlightIndex != nil ? CGFloat(highlightIndex! * Int(GOAL_ROW_HEIGHT)) + padding : -666)
     }
-
-    func deleteConfirmAlert(_ goal: Goal) -> Alert {
-        let confirmButton = Alert.Button.default(Text("删除")) {
-            gs.goalStore.removeGoal(goal)
-        }
-        let cancelButton = Alert.Button.cancel(Text("取消"))
-        return Alert(
-            title: Text("删除目标"),
-            message: Text("确定要删除目标\(goal.name!)吗？\n删除后无法恢复。"),
-            primaryButton: confirmButton,
-            secondaryButton: cancelButton
-        )
-    }
     
     func undoneGoalItem(_ goal: Goal) -> some View {
         return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
@@ -81,10 +69,11 @@ struct GoalPage: View {
                     }
                 },
                 onRightSwipe: {
+                    deletingGoal = goal
                     isShowAlert.toggle()
                 }
             )
-            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert(goal) })
+            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
             .buttonStyle(PlainButtonStyle())
             .onDrag {
                 self.draggedGoal = goal
@@ -116,10 +105,11 @@ struct GoalPage: View {
                 ),
                 height: Int(GOAL_ROW_HEIGHT),
                 onRightSwipe: {
+                    deletingGoal = goal
                     isShowAlert.toggle()
                 }
             )
-            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert(goal) })
+            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
             .buttonStyle(PlainButtonStyle())
         }
         
@@ -133,8 +123,8 @@ struct GoalPage: View {
                         undoneGoalItem(goal)
                     }
                 }
-                doneGoals.count < 0 ? nil : Text("实现的目标").fontWeight(.medium).padding(.leading, 20.0)
-                doneGoals.count < 0 ? nil : VStack(spacing: 0.0) {
+                doneGoals.count <= 0 ? nil : Text("实现的目标").fontWeight(.medium).padding(.leading, 20.0)
+                doneGoals.count <= 0 ? nil : VStack(spacing: 0.0) {
                     ForEach (doneGoals, id: \.id) { goal in
                         doneGoalItem(goal)
                     }
@@ -148,6 +138,19 @@ struct GoalPage: View {
                 current: $draggedGoal,
                 highlightIndex: $highlightIndex
             )
+        )
+    }
+
+    var deleteConfirmAlert: Alert {
+        let confirmButton = Alert.Button.default(Text("删除")) {
+            gs.goalStore.removeGoal(deletingGoal!)
+        }
+        let cancelButton = Alert.Button.cancel(Text("取消"))
+        return Alert(
+            title: Text("删除目标"),
+            message: Text("确定要删除目标\(deletingGoal!.name!)吗？\n删除后无法恢复。"),
+            primaryButton: confirmButton,
+            secondaryButton: cancelButton
         )
     }
 
