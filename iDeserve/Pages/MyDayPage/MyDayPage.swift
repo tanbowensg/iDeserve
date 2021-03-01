@@ -29,7 +29,12 @@ struct MyDayPage: View {
     }
     
     var completedTasks: [Task] {
-        myDayTasks.filter{ return $0.done }
+//        必须是今天完成的任务才算
+        myDayTasks.filter {
+            return $0.done
+                && $0.lastCompleteTime != nil
+                && Calendar.current.isDate(Date(), inSameDayAs:$0.lastCompleteTime!)
+        }
     }
     
     var uncompletedTasks: [Task] {
@@ -53,9 +58,26 @@ struct MyDayPage: View {
         }
     }
     
+    var completedTasksView: some View {
+        VStack(alignment: .leading, spacing: 12.0) {
+            Text("今天完成的任务")
+                .font(.avenirBlack14)
+                .fontWeight(.medium)
+                .padding(.leading, 32.0)
+            ForEach (completedTasks, id: \.id) { task in
+                Button(action: {
+                    currentTask = task
+                    shouldOpenSheet = true
+                }) {
+                    TaskItem(task: TaskState(task))
+                }
+            }
+        }
+    }
+    
     var taskList: some View {
 //      TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 12.0) {
             ForEach (uncompletedTasks, id: \.id) { task in
                 Button(action: {
                     currentTask = task
@@ -70,14 +92,7 @@ struct MyDayPage: View {
                     )
                 }
             }
-            ForEach (completedTasks, id: \.id) { task in
-                Button(action: {
-                    currentTask = task
-                    shouldOpenSheet = true
-                }) {
-                    TaskItem(task: TaskState(task))
-                }
-            }
+            completedTasks.count > 0 ? completedTasksView : nil
             Text("").frame(maxWidth: .infinity)
             Spacer()
         }

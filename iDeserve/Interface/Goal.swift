@@ -55,7 +55,7 @@ extension Goal {
         })
 
         let beforeDdlRewardBase = _tasks.reduce(0, { (sum: Int, task: Task)  in
-            if task.ddl != nil && task.lastCompleteTime != nil && task.lastCompleteTime!.isBeforeThan(task.ddl!) {
+            if task.ddl != nil && task.lastCompleteTime != nil && task.lastCompleteTime! < task.ddl! {
                 print("task.ts.totalValue\(task.ts.totalValue)")
                 return sum + task.ts.totalValue
             }
