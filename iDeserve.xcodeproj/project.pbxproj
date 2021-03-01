@@ -335,14 +335,14 @@
 		D01026602524241F00653A52 /* iDeserve */ = {
 			isa = PBXGroup;
 			children = (
+				D04BB015252AC7EB0088912A /* Pages */,
+				D010269D2524306400653A52 /* Components */,
+				D010268F2524243B00653A52 /* Interface */,
+				D01026A7252430CE00653A52 /* Store */,
+				D0036E00252C6AE500E4005B /* Tool */,
 				D03AF70E25AEBADD00F8152D /* Extensions */,
 				D09688E7258C5B0F00E41751 /* Tasks */,
 				D0D23CD92578883200AAFE27 /* Fonts */,
-				D0036E00252C6AE500E4005B /* Tool */,
-				D04BB015252AC7EB0088912A /* Container */,
-				D01026A7252430CE00653A52 /* Store */,
-				D010269D2524306400653A52 /* Components */,
-				D010268F2524243B00653A52 /* Interface */,
 				D01026612524241F00653A52 /* iDeserveApp.swift */,
 				D079139D257748F2007B9767 /* iDeserveRelease.entitlements */,
 				D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */,
@@ -463,18 +463,18 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
-		D04BB015252AC7EB0088912A /* Container */ = {
+		D04BB015252AC7EB0088912A /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				D03AF72525AFEC6E00F8152D /* SettingsPage */,
-				D08FB30025A82FE500042124 /* GoalPage */,
-				D072435725A45E7800DCB674 /* RecordPage */,
-				D07242F425A1B68D00DCB674 /* RewardPage */,
 				D00CB0792588B83300460D06 /* MyDayPage */,
+				D08FB30025A82FE500042124 /* GoalPage */,
+				D07242F425A1B68D00DCB674 /* RewardPage */,
+				D072435725A45E7800DCB674 /* RecordPage */,
+				D03AF72525AFEC6E00F8152D /* SettingsPage */,
 				D0D23CC22577969100AAFE27 /* AppWrapper */,
 				D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */,
 			);
-			path = Container;
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		D07242F425A1B68D00DCB674 /* RewardPage */ = {
