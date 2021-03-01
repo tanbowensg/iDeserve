@@ -13,19 +13,21 @@ struct GoalItemView: View {
     var taskNum: Int
     var value: Int
     var progress: Float
+    var isDone: Bool
 
     var body: some View {
         HStack(alignment: .center) {
             GoalIcon(goalType: type)
             VStack(alignment: .leading) {
                 Text(name)
+                    .strikethrough(isDone)
                     .font(.hiraginoSansGb14)
                     .padding(.bottom, 2.0)
                 Text("\(taskNum) 个任务")
                     .font(.hiraginoSansGb12)
                     .foregroundColor(.g60)
                     .padding(.bottom, 4.0)
-                ProgressBar(value: progress)
+                isDone ? nil : ProgressBar(value: progress)
             }
             Spacer()
             NutIcon(value: value)
@@ -41,6 +43,6 @@ struct GoalItemView: View {
 
 struct GoalItem_Previews: PreviewProvider {
     static var previews: some View {
-        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, taskNum: 3, value: 188, progress: 0.32)
+        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, taskNum: 3, value: 188, progress: 0.32, isDone: false)
     }
 }

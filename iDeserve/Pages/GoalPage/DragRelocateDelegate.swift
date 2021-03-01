@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DragRelocateDelegate: DropDelegate {
     let item: Goal
-    var goals: FetchedResults<Goal>
+    var goals: [Goal]
     var padding: CGFloat
     @Binding var current: Goal?
     @Binding var highlightIndex: Int?

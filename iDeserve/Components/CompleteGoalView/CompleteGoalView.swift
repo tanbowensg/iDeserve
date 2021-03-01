@@ -56,7 +56,7 @@ struct CompleteGoalView: View {
                     onClose()
                 }
             }) {
-                Text("好！")
+                Text("完成！")
                     .font(.avenirBlack14)
                     .foregroundColor(.white)
                     .frame(width: 100.0, height: 40.0)

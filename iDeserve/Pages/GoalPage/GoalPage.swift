@@ -24,7 +24,6 @@ struct GoalPage: View {
     @State private var highlightIndex: Int? = nil
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
-    @State private var showAlertType = AlertType.complete
     @State private var completingGoal: Goal?
     
     let padding: CGFloat = 8
@@ -37,22 +36,17 @@ struct GoalPage: View {
         return request
     }
     
+    var doneGoals: [Goal] {
+        goals.filter{ $0.done }
+    }
+
+    var undoneGoals: [Goal] {
+        goals.filter{ !$0.done }
+    }
+    
     var reorderDivider: some View {
         Divider()
             .offset(y: highlightIndex != nil ? CGFloat(highlightIndex! * Int(GOAL_ROW_HEIGHT)) + padding : -666)
-    }
-    
-    func completeConfirmAlert(_ goal: Goal) -> Alert {
-        let confirmButton = Alert.Button.default(Text("完成")) {
-            gs.goalStore.completeGoal(goal)
-        }
-        let cancelButton = Alert.Button.cancel(Text("取消"))
-        return Alert(
-            title: Text("完成目标"),
-            message: Text("确定要完成\(goal.name!)吗？\n完成以后将开始结算完成目标的额外奖励。"),
-            primaryButton: confirmButton,
-            secondaryButton: cancelButton
-        )
     }
 
     func deleteConfirmAlert(_ goal: Goal) -> Alert {
@@ -68,7 +62,7 @@ struct GoalPage: View {
         )
     }
     
-    func goalItem(_ goal: Goal) -> some View {
+    func undoneGoalItem(_ goal: Goal) -> some View {
         return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
             SwipeWrapper(
                 content: GoalItemView(
@@ -76,12 +70,11 @@ struct GoalPage: View {
                     type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
                     taskNum: goal.tasks!.count,
                     value: goal.value,
-                    progress: Float(goal.gotValue) / Float(goal.totalValue)
+                    progress: Float(goal.gotValue) / Float(goal.totalValue),
+                    isDone: goal.done
                 ),
                 height: Int(GOAL_ROW_HEIGHT),
                 onLeftSwipe: {
-//                    isShowAlert.toggle()
-//                    showAlertType = AlertType.complete
                     withAnimation {
                         isShowCompleteGoalView = true
                         completingGoal = goal
@@ -89,17 +82,9 @@ struct GoalPage: View {
                 },
                 onRightSwipe: {
                     isShowAlert.toggle()
-                    showAlertType = AlertType.delete
                 }
             )
-            .alert(isPresented: $isShowAlert, content: {
-                switch showAlertType {
-                    case .complete:
-                        return completeConfirmAlert(goal)
-                    case .delete:
-                        return deleteConfirmAlert(goal)
-                }
-            })
+            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert(goal) })
             .buttonStyle(PlainButtonStyle())
             .onDrag {
                 self.draggedGoal = goal
@@ -109,7 +94,7 @@ struct GoalPage: View {
                 of: [UTType.text],
                 delegate: DragRelocateDelegate(
                     item: goal,
-                    goals: goals,
+                    goals: undoneGoals,
                     padding: padding,
                     current: $draggedGoal,
                     highlightIndex: $highlightIndex
@@ -117,27 +102,61 @@ struct GoalPage: View {
             )
         }
     }
+    
+    func doneGoalItem(_ goal: Goal) -> some View {
+        return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+            SwipeWrapper(
+                content: GoalItemView(
+                    name: goal.name!,
+                    type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
+                    taskNum: goal.tasks!.count,
+                    value: goal.value,
+                    progress: Float(goal.gotValue) / Float(goal.totalValue),
+                    isDone: goal.done
+                ),
+                height: Int(GOAL_ROW_HEIGHT),
+                onRightSwipe: {
+                    isShowAlert.toggle()
+                }
+            )
+            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert(goal) })
+            .buttonStyle(PlainButtonStyle())
+        }
+        
+    }
+    
+    var goalListView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10.0) {
+                VStack(spacing: 0.0) {
+                    ForEach (undoneGoals, id: \.id) { goal in
+                        undoneGoalItem(goal)
+                    }
+                }
+                doneGoals.count < 0 ? nil : Text("实现的目标").fontWeight(.medium).padding(.leading, 20.0)
+                doneGoals.count < 0 ? nil : VStack(spacing: 0.0) {
+                    ForEach (doneGoals, id: \.id) { goal in
+                        doneGoalItem(goal)
+                    }
+                }
+                .padding(.vertical, padding)
+            }
+        }
+        .onDrop(
+            of: [UTType.text],
+            delegate: DropOutsideDelegate(
+                current: $draggedGoal,
+                highlightIndex: $highlightIndex
+            )
+        )
+    }
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             VStack(spacing: 0.0) {
                 AppHeader(points: gs.pointsStore.points, title: "目标任务")
                 ZStack(alignment: .top) {
-                    ScrollView {
-                        VStack(spacing: 0.0) {
-                            ForEach (goals, id: \.id) { goal in
-                                goalItem(goal)
-                            }
-                        }
-                        .padding(.vertical, padding)
-                    }
-                    .onDrop(
-                        of: [UTType.text],
-                        delegate: DropOutsideDelegate(
-                            current: $draggedGoal,
-                            highlightIndex: $highlightIndex
-                        )
-                    )
+                    goalListView
                     highlightIndex != nil ? reorderDivider : nil
                 }
             }
@@ -146,12 +165,18 @@ struct GoalPage: View {
                     CreateButton()
                 }
             }
-                .padding([.trailing, .bottom], 16)
             Popup(
                 isVisible: $isShowCompleteGoalView,
                 content: CompleteGoalView(
                     goalReward: completingGoal?.goalReward,
-                    onClose: { withAnimation { isShowCompleteGoalView = false } }
+                    onClose: {
+                        if let _goal = completingGoal {
+                            withAnimation {
+                                gs.goalStore.completeGoal(_goal)
+                                isShowCompleteGoalView = false
+                            }
+                        }
+                    }
                 ),
                 alignment: .center
             )
