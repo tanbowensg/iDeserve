@@ -12,7 +12,7 @@ struct CalendarGrid: View {
     var size: Int = 40
     var isHighlight: Bool = false
     var isCurrentMonth: Bool = true
-    let OpacityBase: Double = 10
+    let OpacityBase: Double = 160
     let padding = 6
     
     var day: Int {
