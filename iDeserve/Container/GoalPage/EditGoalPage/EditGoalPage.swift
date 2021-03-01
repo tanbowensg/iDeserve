@@ -15,6 +15,7 @@ struct EditGoalPage: View {
     var initGoal: Goal?
 
     @State var name: String = ""
+    @State var type: GoalType = GoalType.hobby
     @State var importance: Importance = Importance.normal
     @State var desc = ""
     @State var tasks: [TaskState] = []
@@ -22,6 +23,7 @@ struct EditGoalPage: View {
     @State var taskCache: TaskState = TaskState(nil)
     
     @State var isShowImportancePicker = false
+    @State var isShowTypePicker = false
     @State var isShowTaskSheet = false
 
     init (initGoal: Goal?) {
@@ -49,6 +51,20 @@ struct EditGoalPage: View {
                 .padding(.horizontal, 20.0)
                 .frame(height: 40)
             Divider()
+        }
+    }
+
+    var goalType: some View {
+        Button(action: {
+            withAnimation {
+                isShowTypePicker.toggle()
+            }
+        }) {
+            FormItem(
+                icon: Image(systemName: "square.grid.2x2"),
+                name: "类别",
+                valueView: GoalIcon(goalType: type, size: 40)
+            )
         }
     }
 
@@ -145,6 +161,7 @@ struct EditGoalPage: View {
                 VStack(alignment: .leading, spacing: 0) {
                     backBtn
                     goalTitle
+                    goalType
                     goalImportance
 //                    TODO：暂时取消备注这个设计，有点多余，还不好实现
 //                    TextEditor(text: $desc)
@@ -163,6 +180,7 @@ struct EditGoalPage: View {
                 )
             }
             Popup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance, isShow: $isShowImportancePicker))
+            Popup(isVisible: $isShowTypePicker, content: GoalTypePicker(selectedType: $type))
         }
         .navigationBarHidden(true)
     }
@@ -200,6 +218,7 @@ struct EditGoalPage: View {
             gs.goalStore.updateGoal(
                 targetGoal: initGoal!,
                 name: name,
+                type: type,
                 importance: importance,
                 desc: desc,
                 tasks: tasks
@@ -208,6 +227,7 @@ struct EditGoalPage: View {
 //            id不存在就创建
             gs.goalStore.createGoal(
                 name: name,
+                type: type,
                 importance: importance,
                 desc: desc,
                 tasks: tasks

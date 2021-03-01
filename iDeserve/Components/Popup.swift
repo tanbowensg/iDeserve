@@ -27,7 +27,7 @@ struct Popup<Content: View>: View {
                 content
                     .padding(.bottom, alignment == .bottom ? BOTTOM_SAFE_AREA_HEIGHT : 0)
 //                    .padding(.top, 20)
-//                    .background(background)
+                    .background(background)
 //                    .background(Color.white.shadow(color: Color.g60, radius: 5))
             }
             .transition(

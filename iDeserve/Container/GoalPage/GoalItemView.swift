@@ -9,21 +9,14 @@ import SwiftUI
 
 struct GoalItemView: View {
     var name: String
+    var type: GoalType
     var taskNum: Int
     var value: Int
     var progress: Float
 
     var body: some View {
         HStack(alignment: .center) {
-            Image(systemName: "gamecontroller")
-                .resizable()
-//                .aspectRatio(1, contentMode: .fit)
-                .padding(10)
-                .scaledToFit()
-                .frame(width: 60.0, height: 60.0)
-                .background(Color.tagBg)
-                .cornerRadius(15)
-                .foregroundColor(Color.tagColor)
+            GoalIcon(goalType: type)
             VStack(alignment: .leading) {
                 Text(name)
                     .font(.hiraginoSansGb14)
@@ -48,6 +41,6 @@ struct GoalItemView: View {
 
 struct GoalItem_Previews: PreviewProvider {
     static var previews: some View {
-        GoalItemView(name: "通关赛博朋克2077", taskNum: 3, value: 188, progress: 0.32)
+        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, taskNum: 3, value: 188, progress: 0.32)
     }
 }

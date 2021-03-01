@@ -7,6 +7,7 @@
         <attribute name="importance" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="pos" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" attributeType="String" defaultValueString="flag"/>
         <relationship name="tasks" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="parent" inverseEntity="Task"/>
     </entity>
     <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
@@ -42,7 +43,7 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="tasks" inverseEntity="Goal"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="148"/>
+        <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="163"/>
         <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
         <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="163"/>
         <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="238"/>

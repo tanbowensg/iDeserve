@@ -7,6 +7,13 @@
 
 import Foundation
 
+enum GoalType: String, CaseIterable {
+    case study = "book"
+    case exercise = "flame"
+    case job = "briefcase"
+    case health = "heart"
+    case hobby = "flag"
+}
 
 struct GoalReward {
     var importance: Importance

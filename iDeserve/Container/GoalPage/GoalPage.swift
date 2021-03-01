@@ -73,6 +73,7 @@ struct GoalPage: View {
             SwipeWrapper(
                 content: GoalItemView(
                     name: goal.name!,
+                    type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
                     taskNum: goal.tasks!.count,
                     value: goal.value,
                     progress: Float(goal.gotValue) / Float(goal.totalValue)
