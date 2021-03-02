@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Sliders
 import CoreData
 
 struct TaskForm: View {
@@ -14,7 +15,7 @@ struct TaskForm: View {
 
     @Binding var taskState: TaskState
     var showGoal: Bool = false
-    
+    @State private var speed = 5
     @State var isShowGoalPicker = false
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
@@ -91,9 +92,7 @@ struct TaskForm: View {
         FormItem(
             icon: Image(systemName: "timer"),
             name: "估时（小时）",
-            valueView: TextField("1", text: $taskState.timeCost)
-                .multilineTextAlignment(.trailing)
-                .keyboardType(.numberPad)
+            valueView: MySlider(value: $taskState.timeCost, range: 1...10).frame(width: 150)
         )
     }
 
@@ -121,9 +120,7 @@ struct TaskForm: View {
         FormItem(
             icon: Image(systemName: "repeat"),
             name: "重复次数",
-            valueView: TextField("1", text: $taskState.repeatTimes)
-                .multilineTextAlignment(.trailing)
-                .keyboardType(.numberPad)
+            valueView: MySlider(value: $taskState.repeatTimes, range: 1...50).frame(width: 150)
         )
     }
 

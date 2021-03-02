@@ -24,10 +24,7 @@ struct TaskItem: View {
     }
 //    剩余的重复次数
     var remainTimes: Int {
-        if let repeatTimes = Int(task.repeatTimes) {
-            return repeatTimes - task.completeTimes
-        }
-        return 0
+        return task.repeatTimes - task.completeTimes
     }
 
     var taskGoal: some View {

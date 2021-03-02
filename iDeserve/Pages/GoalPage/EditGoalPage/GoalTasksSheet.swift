@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoalTasksSheet: View {
     @Binding var taskState: TaskState
+    var onSave: () -> Void
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var backBtn: some View {
@@ -17,16 +18,30 @@ struct GoalTasksSheet: View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
-                    .padding(.leading, 16.0)
                 Text("返回")
+                    .frame(height: 30)
             }
+        }
+    }
+    
+    var saveBtn: some View {
+        Button(action: {
+            self.onSave()
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Text("保存")
                 .frame(height: 30)
         }
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            backBtn
+        VStack(alignment: .leading, spacing: 0.0) {
+            HStack {
+                backBtn
+                Spacer()
+                saveBtn
+            }
+            .padding(.horizontal, 16.0)
             TaskForm(taskState: $taskState)
         }
     }
@@ -36,7 +51,7 @@ struct GoalTasksSheetPreviewWrapper: View {
     @State var taskState = TaskState(nil)
 
     var body: some View {
-        GoalTasksSheet(taskState: $taskState)
+        GoalTasksSheet(taskState: $taskState, onSave: emptyFunc)
     }
 }
 

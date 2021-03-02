@@ -37,22 +37,34 @@ struct MyDayCreateTaskSheet: View {
 
     var backBtn: some View {
         Button(action: {
-            self.saveTask()
             self.presentationMode.wrappedValue.dismiss()
         }) {
             HStack {
                 Image(systemName: "chevron.left")
-                    .padding(.leading, 16.0)
-                    
                 Text("返回")
                     .frame(height: 30)
             }
         }
     }
+    
+    var saveBtn: some View {
+        Button(action: {
+            self.saveTask()
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Text("保存")
+                .frame(height: 30)
+        }
+    }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            backBtn
+        VStack(alignment: .leading, spacing: 0.0) {
+            HStack {
+                backBtn
+                Spacer()
+                saveBtn
+            }
+            .padding(.horizontal, 16.0)
             TaskForm(taskState: $newTaskState, showGoal: true).id(newTaskState.id)
         }
     }

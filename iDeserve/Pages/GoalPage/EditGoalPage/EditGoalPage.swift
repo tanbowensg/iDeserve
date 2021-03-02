@@ -92,8 +92,8 @@ struct EditGoalPage: View {
                 .scaledToFit()
                 .frame(width: 30, height: 30)
         }
-            .sheet(isPresented: $isShowTaskSheet, onDismiss: addTask, content: {
-                GoalTasksSheet(taskState: $taskCache)
+            .sheet(isPresented: $isShowTaskSheet, onDismiss: { taskCache = TaskState(nil) }, content: {
+                GoalTasksSheet(taskState: $taskCache, onSave: addTask)
             })
     }
     
@@ -234,7 +234,7 @@ struct EditGoalPage: View {
         if name == "" {
             return
         }
-        print(tasks)
+
         if initGoal?.id != nil {
 //            id存在就更新
             gs.goalStore.updateGoal(
