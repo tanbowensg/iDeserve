@@ -24,6 +24,14 @@ struct RewardPage: View {
         ]
         return request
    }
+    
+    private var soldoutRewards: [Reward] {
+        rewards.filter{ $0.isSoldout }
+    }
+    
+    private var availableRewards: [Reward] {
+        rewards.filter{ !$0.isSoldout }
+    }
 
     private var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -33,15 +41,18 @@ struct RewardPage: View {
     private var rewardsArray: [Reward] {
         rewards.map{ return $0 }
     }
-    
+
     func genRewardGrid(reward: Reward) -> some View {
-        return RewardGrid(reward: reward, isEditMode: isEditMode, onEditModeTap: { setIsEditMode(false) })
-            .onDrag() {
-                setIsEditMode(true)
-                self.dragging = reward
-                return NSItemProvider(object: reward.id!.uuidString as NSString)
+        RewardGrid(reward: reward, isEditMode: isEditMode, onEditModeTap: { setIsEditMode(false) })
+            .if(reward.isSoldout) {content in
+                content.onDrag() {
+                    setIsEditMode(true)
+                    self.dragging = reward
+                    return NSItemProvider(object: reward.id!.uuidString as NSString)
+                }
+                .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
             }
-            .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
+            
     }
     
     func setIsEditMode (_ value: Bool) {
@@ -55,6 +66,27 @@ struct RewardPage: View {
             }
         }
     }
+    
+    func rewardGridLayout (rewards: [Reward]) -> some View {
+        LazyVGrid(
+            columns: columns,
+            alignment: .center,
+            spacing: 16
+        ) {
+            ForEach(rewards, id: \.id) { (reward: Reward) in
+                genRewardGrid(reward: reward)
+            }
+        }
+        .padding(16)
+        .animation(.spring(), value: rewardsArray)
+    }
+
+    private var soldoutRewardsView: some View {
+        VStack(alignment: .leading, spacing: 8.0) {
+            Text("已兑换的奖励").font(.hiraginoSansGb14).fontWeight(.medium)
+            rewardGridLayout(rewards: soldoutRewards)
+        }.padding(.top, 8)
+    }
 
     var body: some View {
         return
@@ -62,17 +94,8 @@ struct RewardPage: View {
                 AppHeader(points: gs.pointsStore.points, title: "奖励商店")
                 ZStack(alignment: .bottomTrailing) {
                     ScrollView {
-                        LazyVGrid(
-                            columns: columns,
-                            alignment: .center,
-                            spacing: 16
-                        ) {
-                            ForEach(rewards, id: \.id) { (reward: Reward) in
-                                genRewardGrid(reward: reward)
-                            }
-                        }
-                        .padding(16)
-                        .animation(.spring(), value: rewardsArray)
+                        rewardGridLayout(rewards: availableRewards)
+                        soldoutRewards.count > 0 ? soldoutRewardsView : nil
                     }
                     
                     VStack {
