@@ -120,12 +120,19 @@ struct EditGoalPage: View {
                     .padding(.horizontal, 20.0)
                     .padding(.bottom, 8.0)
                 ForEach (tasks, id: \.id) { task in
+                    let disabledComplete = initGoal == nil || task.done
                     Button(action: {
                         taskCache = task
                         isShowTaskSheet.toggle()
                     }) {
                         TaskItem(
                             task: task,
+                            onCompleteTask: disabledComplete ? nil : {
+                                if let originalTask = task.originTask {
+                                    gs.taskStore.completeTask(originalTask)
+                                    refreshTask()
+                                }
+                            },
                             onRemoveTask: {
                                 tasks.remove(at: tasks.firstIndex(of: task)!)
                                 if let originalTask = task.originTask {
@@ -202,10 +209,25 @@ struct EditGoalPage: View {
             print("创建新任务")
             tasks.append(taskCache)
         }
+        
+        if initGoal != nil {
+            saveGoal()
+            refreshTask()
+        }
     }
 
-    func saveTask () {
-        print(taskCache)
+//    根据目标数据，刷新task
+    func refreshTask () {
+        if let existGoal = initGoal {
+            if let existTasks = existGoal.tasks {
+                let tasksArray = existTasks.allObjects as! [Task]
+                let taskStates = tasksArray
+                    .map {task in
+                        return TaskState(task)
+                    }
+                tasks = taskStates
+            }
+        }
     }
     
     func saveGoal () {
