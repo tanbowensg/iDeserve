@@ -115,9 +115,14 @@ struct RewardGrid: View {
     }
     
     var body: some View {
-        VStack(alignment: .center) {
-            link
-            mainCard
+        ZStack(alignment: .bottomLeading) {
+            VStack(alignment: .center) {
+                link
+                mainCard
+            }
+            Image(systemName: RewardIconMap[RewardType(rawValue: reward.type ?? "") ?? RewardType.entertainment]!)
+                .foregroundColor(.white)
+                .padding(10.0)
         }
         .rotationEffect(.degrees(isEditMode ? 2.5 : 0))
         .onChange(of: isEditMode, perform: { value in

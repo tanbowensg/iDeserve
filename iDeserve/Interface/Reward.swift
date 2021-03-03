@@ -16,10 +16,18 @@ enum RewardType: String, CaseIterable {
     case travel = "travel"
 }
 
-let RewardTypeColorMap: [RewardType: Color] = [
+let RewardColorMap: [RewardType: Color] = [
     .entertainment: Color.orange,
     .food: Color.yellow,
     .travel: Color.blue,
     .rest: Color.green,
     .shopping: Color.red,
+]
+
+let RewardIconMap: [RewardType: String] = [
+    .entertainment: "gamecontroller",
+    .food: "hare",
+    .travel: "airplane",
+    .rest: "bed.double",
+    .shopping: "bag",
 ]

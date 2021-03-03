@@ -15,11 +15,12 @@ struct RewardTypePicker: View {
             Spacer()
             GridStack(rows: 2, columns: 3) { (i, j) in
                 let type = RewardType.allCases[i * 2 + j]
-                let color: Color = RewardTypeColorMap[type] ?? Color.red
+                let color: Color = RewardColorMap[type] ?? Color.red
                 VStack(spacing: 8.0) {
-                    Text("")
+                    Image(systemName: RewardIconMap[type] ?? "bag")
                         .frame(width: 100, height: 100, alignment: .center)
                         .background(color)
+                        .foregroundColor(Color.white)
                         .cornerRadius(50)
                         .roundBorder(selectedType == type ? Color.rewardColor : Color.white, width: 2, cornerRadius: 50)
                     Text(RewardTypeText[type] ?? "")
