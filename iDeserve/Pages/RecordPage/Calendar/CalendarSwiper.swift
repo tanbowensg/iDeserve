@@ -60,11 +60,11 @@ struct CalendarSwiper: View {
         return
             HStack(alignment: .top, spacing: 0.0) {
                 CalendarLayout(dayStats: prevDayStats, currentMonth: prevMonth, gridSize: gridSize, onTapDate: onTapDate)
-//                    .id(prevMonth)
+                    .id(prevMonth)
                 CalendarLayout(dayStats: dayStats, currentMonth: currentMonth, gridSize: gridSize, onTapDate: onTapDate)
-//                    .id(currentMonth)
+                    .id(currentMonth)
                 CalendarLayout(dayStats: nextDayStats, currentMonth: nextMonth, gridSize: gridSize, onTapDate: onTapDate)
-//                    .id(nextMonth)
+                    .id(nextMonth)
             }
             .frame(width: CGFloat(gridSize * 7), height: 20 + CGFloat(gridSize * dayStats.count / 7), alignment: .top)
             .offset(x: CGFloat(offsetX), y: 0)
