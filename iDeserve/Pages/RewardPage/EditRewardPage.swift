@@ -14,12 +14,14 @@ struct EditRewardPage: View {
     var initReward: Reward?
 
     @State var name: String = ""
+    @State var type: RewardType = RewardType.entertainment
     @State var value: String = ""
     @State var isRepeat = true
     @State var desc = ""
     @State var cover: UIImage? = nil
 
     @State var isShowImagePicker: Bool = false
+    @State var isShowTypePicker = false
 
     @State var image: Image? = nil
 
@@ -27,6 +29,7 @@ struct EditRewardPage: View {
         self.initReward = initReward
         if let existReward = initReward {
             _name = State(initialValue: existReward.name ?? "")
+            _type = State(initialValue: RewardType.init(rawValue:existReward.type ?? "food") ?? RewardType.entertainment)
             _value = State(initialValue: String(existReward.value))
             _isRepeat = State(initialValue: existReward.isRepeat)
             _desc = State(initialValue: existReward.desc ?? "")
@@ -45,6 +48,16 @@ struct EditRewardPage: View {
                 .padding(.horizontal, 16.0)
                 .frame(height: 56)
             Divider()
+        }
+    }
+
+    var rewardType: some View {
+        Button(action: { isShowTypePicker.toggle() }) {
+            FormItem(
+                icon: Image(systemName: "square.grid.2x2"),
+                name: "类别",
+                valueView: Text(RewardTypeText[type] ?? "未知类别")
+            )
         }
     }
 
@@ -111,6 +124,7 @@ struct EditRewardPage: View {
                 backBtn
 //                coverImage
                 rewardTitle
+                rewardType
                 rewardValue
                 rewardRepeat
                 Spacer()
@@ -123,6 +137,7 @@ struct EditRewardPage: View {
                     alignment: .topLeading
                 )
                 .navigationBarHidden(true)
+            Popup(isVisible: $isShowTypePicker, content: RewardTypePicker(selectedType: $type))
         }
     }
     
@@ -131,9 +146,9 @@ struct EditRewardPage: View {
             return
         }
         if initReward?.id != nil {
-            gs.rewardStore.updateReward(targetReward: initReward!, name: name, value: Int(value)!, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
+            gs.rewardStore.updateReward(targetReward: initReward!, name: name, type: type, value: Int(value)!, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
         } else {
-            gs.rewardStore.createReward(name: name, value: Int(value) ?? 10, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
+            gs.rewardStore.createReward(name: name, type: type, value: Int(value) ?? 10, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
         }
     }
 }

@@ -18,12 +18,14 @@ final class RewardStore: ObservableObject {
     func updateReward (
         targetReward: Reward,
         name: String,
+        type: RewardType,
         value: Int,
         isRepeat: Bool,
         desc: String,
         cover: Data?
     ) {
         targetReward.name = name
+        targetReward.type = type.rawValue
         targetReward.value = Int16(value)
         targetReward.isRepeat = isRepeat
         targetReward.desc = desc
@@ -45,6 +47,7 @@ final class RewardStore: ObservableObject {
 
     func createReward (
         name: String,
+        type: RewardType,
         value: Int,
         isRepeat: Bool,
         desc: String,
@@ -56,6 +59,7 @@ final class RewardStore: ObservableObject {
         self.updateReward(
             targetReward: newReward,
             name: name,
+            type: type,
             value: value,
             isRepeat: isRepeat,
             desc: desc,

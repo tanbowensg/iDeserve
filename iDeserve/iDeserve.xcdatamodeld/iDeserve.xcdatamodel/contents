@@ -25,6 +25,7 @@
         <attribute name="isSoldout" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="pos" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
@@ -45,7 +46,7 @@
     <elements>
         <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="163"/>
         <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
-        <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="163"/>
+        <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="178"/>
         <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="238"/>
     </elements>
 </model>

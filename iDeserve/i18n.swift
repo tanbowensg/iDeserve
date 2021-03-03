@@ -22,3 +22,11 @@ let GoalTypeText: [GoalType: String] = [
     .job: NSLocalizedString("工作", comment: ""),
     .study: NSLocalizedString("学习", comment: ""),
 ]
+
+let RewardTypeText: [RewardType: String] = [
+    .entertainment: NSLocalizedString("娱乐", comment: ""),
+    .food: NSLocalizedString("吃喝", comment: ""),
+    .travel: NSLocalizedString("旅游", comment: ""),
+    .rest: NSLocalizedString("休息", comment: ""),
+    .shopping: NSLocalizedString("购物", comment: ""),
+]
