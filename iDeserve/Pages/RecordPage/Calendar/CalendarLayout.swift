@@ -21,43 +21,43 @@ struct CalendarLayout: View {
     }
 
     var body: some View {
-        return
-            VStack(spacing: 0.0) {
-                LazyVGrid(
-                    columns: columns,
-                    alignment: .center,
-                    spacing: 0
-                ) {
-                    ForEach(["日", "一", "二", "三", "四", "五", "六"], id: \.self) {text in
-                        Text(text)
-                            .font(.hiraginoSansGb12)
-                            .fontWeight(.light)
-                            .padding(4)
-                            .frame(height: 20)
-                    }
-                }
-                Divider()
-                LazyVGrid(
-                    columns: columns,
-                    alignment: .center,
-                    spacing: 0
-                ) {
-                    ForEach(dayStats, id: \.date) { ds in
-                        CalendarGrid(
-                            dayStat: ds,
-                            size: Int(gridSize),
-                            isHighlight: highlightDate == nil ? false : Calendar.current.isDate(ds.date, inSameDayAs: highlightDate!),
-                            isCurrentMonth: getDateMonth(ds.date) == currentMonth
-                        )
-                            .onTapGesture {
-                                if let _onTapDate = onTapDate {
-                                    highlightDate = ds.date
-                                    _onTapDate(ds.date)
-                                }
-                            }
-                    }
+        VStack(spacing: 0.0) {
+            LazyVGrid(
+                columns: columns,
+                alignment: .center,
+                spacing: 0
+            ) {
+                ForEach(["日", "一", "二", "三", "四", "五", "六"], id: \.self) {text in
+                    Text(text)
+                        .font(.hiraginoSansGb12)
+                        .fontWeight(.light)
+                        .padding(4)
+                        .frame(height: 20)
                 }
             }
+            Divider()
+            LazyVGrid(
+                columns: columns,
+                alignment: .center,
+                spacing: 0
+            ) {
+                ForEach(dayStats, id: \.date) { ds in
+                    CalendarGrid(
+                        dayStat: ds,
+                        size: Int(gridSize),
+                        isHighlight: highlightDate == nil ? false : Calendar.current.isDate(ds.date, inSameDayAs: highlightDate!),
+                        isCurrentMonth: getDateMonth(ds.date) == currentMonth
+                    )
+                        .onTapGesture {
+                            if let _onTapDate = onTapDate {
+                                highlightDate = ds.date
+                                _onTapDate(ds.date)
+                            }
+                        }
+                }
+            }
+        }
+        .transition(AnyTransition.scale(scale: 1))
     }
     
     func getDateMonth (_ date: Date) -> Int {
