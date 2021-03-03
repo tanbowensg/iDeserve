@@ -25,30 +25,41 @@ struct CalendarSwiper: View {
     var isReachThreshold: Bool {
         return abs(offsetX) >= threshold
     }
+    
+    func setOffsetX(_ value: Int) -> Void {
+        withAnimation(.easeInOut(duration: animationDuration)) {
+            offsetX = value
+        }
+    }
 
     var gesture: some Gesture {
+//        这里有些地方需要动画，有些不需要，注意区别
         DragGesture(minimumDistance: 1)
             .onChanged { value in
-                let newOffsetX = Int(value.translation.width)
-                self.offsetX = newOffsetX
+                setOffsetX(Int(value.translation.width))
             }
             .onEnded { value in
                 if offsetX > threshold {
-                    offsetX = gridSize * 7
+                    setOffsetX(gridSize * 7)
                     let (prevYear, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
                     DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
-                        onMonthChange(prevYear, prevMonth)
-                        offsetX = .zero
+//                      此处是swipe动画结束后重置月份，这里应该在幕后完成，不要有动画
+                        withAnimation(.none) {
+                            onMonthChange(prevYear, prevMonth)
+                            offsetX = .zero
+                        }
                     }
                 } else if -offsetX > threshold {
-                    offsetX = -gridSize * 7
+                    setOffsetX(-gridSize * 7)
                     let (nextYear, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
                     DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
-                        onMonthChange(nextYear, nextMonth)
-                        offsetX = .zero
+                        withAnimation(.none) {
+                            onMonthChange(nextYear, nextMonth)
+                            offsetX = .zero
+                        }
                     }
                 } else {
-                    offsetX = .zero
+                    setOffsetX(.zero)
                 }
             }
     }
@@ -69,6 +80,5 @@ struct CalendarSwiper: View {
             .frame(width: CGFloat(gridSize * 7), height: 20 + CGFloat(gridSize * dayStats.count / 7), alignment: .top)
             .offset(x: CGFloat(offsetX), y: 0)
             .gesture(gesture)
-            .animation(.easeInOut(duration: animationDuration), value: offsetX)
     }
 }
