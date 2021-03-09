@@ -89,33 +89,30 @@ struct RewardPage: View {
     }
 
     var body: some View {
-//        包裹navigationView是为了解决崩溃的问题。https://stackoverflow.com/questions/58304009/how-to-debug-precondition-failure-in-xcode
-        NavigationView {
-            VStack(spacing: 0.0) {
-                AppHeader(points: gs.pointsStore.points, title: "奖励商店")
-                ZStack(alignment: .bottomTrailing) {
-                    ScrollView {
-                        rewardGridLayout(rewards: availableRewards)
-                        soldoutRewards.count > 0 ? soldoutRewardsView : nil
-                    }
-                    
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                                CreateButton()
-                            }
-                        }
-                        .padding(.trailing, 16)
-                    }
-                    .padding(.bottom, 16)
+        VStack(spacing: 0.0) {
+            AppHeader(points: gs.pointsStore.points, title: "奖励商店")
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    rewardGridLayout(rewards: availableRewards)
+                    soldoutRewards.count > 0 ? soldoutRewardsView : nil
                 }
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: EditRewardPage(initReward: nil)) {
+                            CreateButton()
+                        }
+                    }
+                    .padding(.trailing, 16)
+                }
+                .padding(.bottom, 16)
             }
-            .navigationBarHidden(true)
-            .onTapGesture {
-                setIsEditMode(false)
-            }
+        }
+        .navigationBarHidden(true)
+        .onTapGesture {
+            setIsEditMode(false)
         }
     }
 }
