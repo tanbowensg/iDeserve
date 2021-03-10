@@ -24,6 +24,7 @@ struct GoalPage: View {
     @State private var highlightIndex: Int? = nil
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
+    @State private var isShowHelp = false
     @State private var completingGoal: Goal?
     @State private var deletingGoal: Goal?
     
@@ -155,7 +156,7 @@ struct GoalPage: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
+        ZStack(alignment: .center) {
             VStack(spacing: 0.0) {
                 AppHeader(points: gs.pointsStore.points, title: "目标任务")
                 ZStack(alignment: .top) {
@@ -163,26 +164,29 @@ struct GoalPage: View {
                     highlightIndex != nil ? reorderDivider : nil
                 }
             }
-            VStack {
-                NavigationLink(destination: EditGoalPage(initGoal: nil)) {
-                    CreateButton()
-                }
+            NavigationLink(destination: EditGoalPage(initGoal: nil)) {
+                CreateButton()
             }
-            Popup(
-                isVisible: $isShowCompleteGoalView,
-                content: CompleteGoalView(
-                    goalReward: completingGoal?.goalReward,
-                    onClose: {
-                        if let _goal = completingGoal {
-                            withAnimation {
-                                gs.goalStore.completeGoal(_goal)
-                                isShowCompleteGoalView = false
+            
+            ZStack(alignment: .center) {
+                Popup(
+                    isVisible: $isShowCompleteGoalView,
+                    content: CompleteGoalView(
+                        goalReward: completingGoal?.goalReward,
+                        onClose: {
+                            if let _goal = completingGoal {
+                                withAnimation {
+                                    gs.goalStore.completeGoal(_goal)
+                                    isShowCompleteGoalView = false
+                                }
                             }
-                        }
-                    }
-                ),
-                alignment: .center
-            )
+                        },
+                        openHelp: { isShowHelp.toggle() }
+                    ),
+                    alignment: .center
+                )
+                Popup(isVisible: $isShowHelp, content: HelpText(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC))
+            }
         }
         .navigationBarHidden(true)
     }

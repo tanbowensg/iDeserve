@@ -51,6 +51,9 @@
 		D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */; };
 		D03C5D14255CE88400778EEE /* MyDayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C5D13255CE88400778EEE /* MyDayPage.swift */; };
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
+		D041FF7425F8A15700F565C1 /* HelpText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041FF7325F8A15700F565C1 /* HelpText.swift */; };
+		D041FF7A25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */ = {isa = PBXBuildFile; fileRef = D041FF7925F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf */; };
+		D041FF7B25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */ = {isa = PBXBuildFile; fileRef = D041FF7925F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf */; };
 		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
 		D04BB017252AC7FB0088912A /* GoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* GoalPage.swift */; };
 		D04BB01F252AC8330088912A /* AppWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* AppWrapper.swift */; };
@@ -204,6 +207,8 @@
 		D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
 		D03C5D13255CE88400778EEE /* MyDayPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayPage.swift; sourceTree = "<group>"; };
 		D03F21AD25270EC40055BF25 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		D041FF7325F8A15700F565C1 /* HelpText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpText.swift; sourceTree = "<group>"; };
+		D041FF7925F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W3.otf"; sourceTree = "<group>"; };
 		D042F195252D98DC00B08F97 /* RewardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardGrid.swift; sourceTree = "<group>"; };
 		D04BB016252AC7FB0088912A /* GoalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPage.swift; sourceTree = "<group>"; };
 		D04BB01E252AC8330088912A /* AppWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWrapper.swift; sourceTree = "<group>"; };
@@ -433,6 +438,7 @@
 				D0119B4125ECE52F00F5E0F6 /* GoalIcon.swift */,
 				D0119B5C25EE367200F5E0F6 /* MySlider.swift */,
 				D0119B7825EF2D6C00F5E0F6 /* GridStack.swift */,
+				D041FF7325F8A15700F565C1 /* HelpText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D23CD3257882A700AAFE27 /* Font.swift */,
+				D041FF7925F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf */,
 				D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */,
 			);
 			path = Fonts;
@@ -758,6 +765,7 @@
 			files = (
 				D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
 				D07242722599C8BB00DCB674 /* Localizable.strings in Resources */,
+				D041FF7A25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */,
 				D01026692524242000653A52 /* Preview Assets.xcassets in Resources */,
 				D01026662524242000653A52 /* Assets.xcassets in Resources */,
 			);
@@ -783,6 +791,7 @@
 			files = (
 				D079133B2574F198007B9767 /* Assets.xcassets in Resources */,
 				D0F02A36257912840082CCB1 /* Assets.xcassets in Resources */,
+				D041FF7B25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */,
 				D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -865,6 +874,7 @@
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
 				D0F3B00325636C4B008B6EBB /* genMockData.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
+				D041FF7425F8A15700F565C1 /* HelpText.swift in Sources */,
 				D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */,
 				D0EE547C255908C80091302D /* GlobalStore.swift in Sources */,
 				D0F3B0312563D3E3008B6EBB /* demo.swift in Sources */,

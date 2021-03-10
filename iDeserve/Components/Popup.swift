@@ -11,32 +11,29 @@ struct Popup<Content: View>: View {
     @Binding var isVisible: Bool
     var content: Content
     var alignment: Alignment = .bottom
-    var background: Color = .white
+    var background: Color? = .white
 
     var body: some View {
-        if isVisible {
-            ZStack(alignment: alignment) {
-                Color.black.opacity(0.1)
-                    .onTapGesture {
-                        withAnimation {
-                            isVisible.toggle()
-                        }
-                    }
-                    .animation(.none)
-                
-                content
-                    .padding(.bottom, alignment == .bottom ? BOTTOM_SAFE_AREA_HEIGHT : 0)
+        ZStack(alignment: alignment) {
+            if isVisible {
+            Color.black.opacity(0.3)
+                .onTapGesture {
+                    isVisible.toggle()
+                }
+                .edgesIgnoringSafeArea(.vertical)
+
+            content
+                .padding(.bottom, alignment == .bottom ? BOTTOM_SAFE_AREA_HEIGHT : 0)
 //                    .padding(.top, 20)
-                    .background(background)
+                .background(background)
 //                    .background(Color.white.shadow(color: Color.g60, radius: 5))
-            }
-            .transition(
-                AnyTransition.asymmetric(
-                    insertion: .move(edge: .bottom),
-                    removal: .move(edge: .bottom)
-                ).animation(.spring())
-            )
-            .edgesIgnoringSafeArea(.vertical)
+        }
+//            .transition(
+//                AnyTransition.asymmetric(
+//                    insertion: .move(edge: .bottom),
+//                    removal: .move(edge: .bottom)
+//                ).animation(.spring())
+//            )
         }
     }
 }

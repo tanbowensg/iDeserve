@@ -22,6 +22,7 @@ struct EditRewardPage: View {
 
     @State var isShowImagePicker: Bool = false
     @State var isShowTypePicker = false
+    @State var isShowHelp = false
 
     @State var image: Image? = nil
 
@@ -67,7 +68,8 @@ struct EditRewardPage: View {
             name: "所需坚果数",
             valueView: TextField("10", text: $value)
                 .multilineTextAlignment(.trailing)
-                .keyboardType(.numberPad)
+                .keyboardType(.numberPad),
+            onClickHelp: { isShowHelp.toggle() }
         )
     }
 
@@ -138,6 +140,7 @@ struct EditRewardPage: View {
                 )
                 .navigationBarHidden(true)
             Popup(isVisible: $isShowTypePicker, content: RewardTypePicker(selectedType: $type))
+            Popup(isVisible: $isShowHelp, content: HelpText(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC), alignment: .center, background: nil)
         }
     }
     

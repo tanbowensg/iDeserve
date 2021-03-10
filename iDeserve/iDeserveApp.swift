@@ -15,12 +15,12 @@ struct iDeserveApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                    Color.bg
-                        .ignoresSafeArea()
+                Color.bg
+                    .ignoresSafeArea()
                 AppWrapper()
-                        .environment(\.managedObjectContext, GlobalStore.shared.moc)
-                        .environmentObject(GlobalStore.shared)
-                        .environmentObject(PointsStore.shared)
+                    .environment(\.managedObjectContext, GlobalStore.shared.moc)
+                    .environmentObject(GlobalStore.shared)
+                    .environmentObject(PointsStore.shared)
             }
             .font(.hiraginoSansGb14)
         }

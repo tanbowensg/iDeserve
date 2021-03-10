@@ -11,6 +11,7 @@ struct FormItem<Content: View>: View {
     var icon: Image
     var name: String
     var valueView: Content
+    var onClickHelp: (() -> Void)?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,6 +22,15 @@ struct FormItem<Content: View>: View {
                     .frame(width: 16, height: 16)
                 Text(name)
                     .font(.hiraginoSansGb14)
+                
+                onClickHelp == nil ? nil : Image(systemName: "questionmark.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 16, height: 16)
+                    .onTapGesture {
+                        onClickHelp!()
+                    }
+                
                 Spacer()
                 valueView
                     .font(.hiraginoSansGb14)

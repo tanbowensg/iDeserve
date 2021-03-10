@@ -32,6 +32,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Hiragino-Sans-GB-W6.otf</string>
+		<string>Hiragino-Sans-GB-W3.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

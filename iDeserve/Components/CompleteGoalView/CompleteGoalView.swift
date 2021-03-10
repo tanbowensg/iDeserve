@@ -10,12 +10,24 @@ import SwiftUI
 struct CompleteGoalView: View {
     var goalReward: GoalReward?
     var onClose: () -> Void
+    var openHelp: () -> Void
     
 //    展示数据
     @State var isShowResult = false
 
     var mainView: some View {
         VStack(spacing: 6.0) {
+            HStack {
+                Spacer()
+                Image(systemName: "questionmark.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(.trailing, 16)
+                    .onTapGesture {
+                        openHelp()
+                    }
+            }
             Image(systemName: "checkmark.seal")
                 .resizable()
                 .foregroundColor(.hospitalGreen)
@@ -83,6 +95,6 @@ struct CompleteGoalView: View {
 
 struct CompleteGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteGoalView(goalReward: GoalReward(importance: Importance.epic, basicRewardBase: 500, allRpeatRewardBase: 100, beforeDdlRewardBase: 200), onClose: emptyFunc)
+        CompleteGoalView(goalReward: GoalReward(importance: Importance.epic, basicRewardBase: 500, allRpeatRewardBase: 100, beforeDdlRewardBase: 200), onClose: emptyFunc, openHelp: emptyFunc)
     }
 }
