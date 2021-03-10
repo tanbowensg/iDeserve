@@ -186,8 +186,8 @@ struct EditGoalPage: View {
                     alignment: .topLeading
                 )
             }
-            Popup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance, isShow: $isShowImportancePicker))
-            Popup(isVisible: $isShowTypePicker, content: GoalTypePicker(selectedType: $type))
+            MyPopup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance, isShow: $isShowImportancePicker))
+            MyPopup(isVisible: $isShowTypePicker, content: GoalTypePicker(selectedType: $type))
         }
         .navigationBarHidden(true)
     }

@@ -139,8 +139,8 @@ struct EditRewardPage: View {
                     alignment: .topLeading
                 )
                 .navigationBarHidden(true)
-            Popup(isVisible: $isShowTypePicker, content: RewardTypePicker(selectedType: $type))
-            Popup(isVisible: $isShowHelp, content: HelpText(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC), alignment: .center, background: nil)
+            MyPopup(isVisible: $isShowTypePicker, content: RewardTypePicker(selectedType: $type))
+            MyPopup(isVisible: $isShowHelp, content: HelpText(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC), alignment: .center, background: nil)
         }
     }
     

@@ -156,7 +156,7 @@ struct GoalPage: View {
     }
 
     var body: some View {
-        ZStack(alignment: .center) {
+        ZStack(alignment: .bottomTrailing) {
             VStack(spacing: 0.0) {
                 AppHeader(points: gs.pointsStore.points, title: "目标任务")
                 ZStack(alignment: .top) {
@@ -167,28 +167,28 @@ struct GoalPage: View {
             NavigationLink(destination: EditGoalPage(initGoal: nil)) {
                 CreateButton()
             }
-            
-            ZStack(alignment: .center) {
-                Popup(
-                    isVisible: $isShowCompleteGoalView,
-                    content: CompleteGoalView(
-                        goalReward: completingGoal?.goalReward,
-                        onClose: {
-                            if let _goal = completingGoal {
-                                withAnimation {
-                                    gs.goalStore.completeGoal(_goal)
-                                    isShowCompleteGoalView = false
-                                }
-                            }
-                        },
-                        openHelp: { isShowHelp.toggle() }
-                    ),
-                    alignment: .center
-                )
-                Popup(isVisible: $isShowHelp, content: HelpText(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC))
+            if isShowCompleteGoalView || isShowHelp {
+                Rectangle().fill(Color.black.opacity(0.4)).animation(.none)
             }
         }
         .navigationBarHidden(true)
+        .popup(isPresented: $isShowCompleteGoalView, type: .default, closeOnTap: false, closeOnTapOutside: true) {
+            CompleteGoalView(
+                goalReward: completingGoal?.goalReward,
+                onClose: {
+                    if let _goal = completingGoal {
+                        withAnimation {
+                            gs.goalStore.completeGoal(_goal)
+                            isShowCompleteGoalView = false
+                        }
+                    }
+                },
+                openHelp: { isShowHelp.toggle() }
+            )
+        }
+        .popup(isPresented: $isShowHelp, type: .default, closeOnTap: false, closeOnTapOutside: true) {
+            HelpText(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
+        }
     }
 }
 

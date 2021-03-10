@@ -5,21 +5,22 @@
 //  Created by Alisa Mylnikova on 23/04/2020.
 //  Copyright © 2020 Exyte. All rights reserved.
 //
-
 import SwiftUI
 
 extension View {
+
     public func popup<PopupContent: View>(
         isPresented: Binding<Bool>,
-        type: PopupView<PopupContent>.PopupType = .`default`,
-        position: PopupView<PopupContent>.Position = .bottom,
+        type: Popup<PopupContent>.PopupType = .`default`,
+        position: Popup<PopupContent>.Position = .bottom,
         animation: Animation = Animation.easeOut(duration: 0.3),
         autohideIn: Double? = nil,
         closeOnTap: Bool = true,
         closeOnTapOutside: Bool = false,
+        dismissCallback: @escaping () -> () = {},
         view: @escaping () -> PopupContent) -> some View {
         self.modifier(
-            PopupView(
+            Popup(
                 isPresented: isPresented,
                 type: type,
                 position: position,
@@ -27,6 +28,7 @@ extension View {
                 autohideIn: autohideIn,
                 closeOnTap: closeOnTap,
                 closeOnTapOutside: closeOnTapOutside,
+                dismissCallback: dismissCallback,
                 view: view)
         )
     }
@@ -59,7 +61,28 @@ extension View {
 
 }
 
-public struct PopupView<PopupContent>: ViewModifier where PopupContent: View {
+public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
+
+    init(isPresented: Binding<Bool>,
+         type: PopupType,
+         position: Position,
+         animation: Animation,
+         autohideIn: Double?,
+         closeOnTap: Bool,
+         closeOnTapOutside: Bool,
+         dismissCallback: @escaping () -> (),
+         view: @escaping () -> PopupContent) {
+        self._isPresented = isPresented
+        self.type = type
+        self.position = position
+        self.animation = animation
+        self.autohideIn = autohideIn
+        self.closeOnTap = closeOnTap
+        self.closeOnTapOutside = closeOnTapOutside
+        self.dismissCallback = dismissCallback
+        self.view = view
+        self.isPresentedRef = ClassReference(self.$isPresented)
+    }
 
     public enum PopupType {
 
@@ -84,7 +107,6 @@ public struct PopupView<PopupContent>: ViewModifier where PopupContent: View {
     }
 
     // MARK: - Public Properties
-
     /// Tells if the sheet should be presented or not
     @Binding var isPresented: Bool
 
@@ -102,12 +124,18 @@ public struct PopupView<PopupContent>: ViewModifier where PopupContent: View {
     /// Should close on tap outside - default is `true`
     var closeOnTapOutside: Bool
 
+    /// is called on any close action
+    var dismissCallback: () -> ()
+
     var view: () -> PopupContent
 
     /// holder for autohiding dispatch work (to be able to cancel it when needed)
     var dispatchWorkHolder = DispatchWorkHolder()
 
     // MARK: - Private Properties
+
+    /// Class reference for capturing a weak reference later in dispatch work holder.
+    private var isPresentedRef: ClassReference<Binding<Bool>>?
 
     /// The rect of the hosting controller
     @State private var presenterContentRect: CGRect = .zero
@@ -168,23 +196,14 @@ public struct PopupView<PopupContent>: ViewModifier where PopupContent: View {
     private var screenHeight: CGFloat {
         screenSize.height
     }
-    
-//    private var mask: some View {
-//        Color.g60.opacity(0.1)
-//            .onTapGesture {
-//                self.dispatchWorkHolder.work?.cancel()
-//                self.isPresented = false
-//            }
-//            .animation(.none)
-//    }
 
     // MARK: - Content Builders
-
     public func body(content: Content) -> some View {
         content
             .addTapIfNotTV(if: closeOnTapOutside) {
                 self.dispatchWorkHolder.work?.cancel()
                 self.isPresented = false
+                self.dismissCallback()
             }
             .background(
                 GeometryReader { proxy -> AnyView in
@@ -206,8 +225,12 @@ public struct PopupView<PopupContent>: ViewModifier where PopupContent: View {
         // if needed, dispatch autohide and cancel previous one
         if let autohideIn = autohideIn {
             dispatchWorkHolder.work?.cancel()
-            dispatchWorkHolder.work = DispatchWorkItem(block: {
-                self.isPresented = false
+
+            // Weak reference to avoid the work item capturing the struct,
+            // which would create a retain cycle with the work holder itself.
+            dispatchWorkHolder.work = DispatchWorkItem(block: { [weak isPresentedRef] in
+                isPresentedRef?.value.wrappedValue = false
+                dismissCallback()
             })
             if isPresented, let work = dispatchWorkHolder.work {
                 DispatchQueue.main.asyncAfter(deadline: .now() + autohideIn, execute: work)
@@ -215,35 +238,45 @@ public struct PopupView<PopupContent>: ViewModifier where PopupContent: View {
         }
 
         return ZStack {
-//            closeOnTapOutside && isPresented ? mask : nil
-            VStack {
+            Group {
                 VStack {
-                    self.view()
-                        .addTapIfNotTV(if: closeOnTap) {
-                            self.dispatchWorkHolder.work?.cancel()
-                            self.isPresented = false
-                        }
-                        .background(
-                            GeometryReader { proxy -> AnyView in
-                                let rect = proxy.frame(in: .global)
-                                // This avoids an infinite layout loop
-                                if rect.integral != self.sheetContentRect.integral {
-                                    DispatchQueue.main.async {
-                                        self.sheetContentRect = rect
-                                    }
-                                }
-                                return AnyView(EmptyView())
+                    VStack {
+                        self.view()
+                            .addTapIfNotTV(if: closeOnTap) {
+                                self.dispatchWorkHolder.work?.cancel()
+                                self.isPresented = false
+                                self.dismissCallback()
                             }
-                        )
+                            .background(
+                                GeometryReader { proxy -> AnyView in
+                                    let rect = proxy.frame(in: .global)
+                                    // This avoids an infinite layout loop
+                                    if rect.integral != self.sheetContentRect.integral {
+                                        DispatchQueue.main.async {
+                                            self.sheetContentRect = rect
+                                        }
+                                    }
+                                    return AnyView(EmptyView())
+                                }
+                            )
+                    }
                 }
+                .frame(width: screenSize.width)
+                .offset(x: 0, y: currentOffset)
+                .animation(animation)
             }
-            .frame(width: screenSize.width)
-            .offset(x: 0, y: currentOffset)
-            .animation(animation)
         }
     }
 }
 
 class DispatchWorkHolder {
     var work: DispatchWorkItem?
+}
+
+private final class ClassReference<T> {
+  var value: T
+
+  init(_ value: T) {
+    self.value = value
+  }
 }
