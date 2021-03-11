@@ -171,7 +171,7 @@ struct TaskForm: View {
             .background(Color.g10)
     }
     
-//    日期选择器
+//    日期选择
     var datePicker: some View {
         VStack(alignment: .trailing, spacing: 0) {
             Button(action: {
@@ -190,6 +190,12 @@ struct TaskForm: View {
         }
             .background(Color.g10)
     }
+    
+//    备注
+    var taskDesc: some View {
+        TextArea(placeholder: "备注", text: $taskState.desc)
+        .padding(16)
+    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -202,6 +208,7 @@ struct TaskForm: View {
                 taskRepeat
                 taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
                 taskDdl
+                taskDesc
             }
                 .frame(
                     minWidth: 0,
