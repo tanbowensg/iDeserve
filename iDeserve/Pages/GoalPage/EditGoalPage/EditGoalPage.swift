@@ -35,6 +35,7 @@ struct EditGoalPage: View {
             if let existTasks = existGoal.tasks {
                 let tasksArray = existTasks.allObjects as! [Task]
                 let taskStates = tasksArray
+                    .sorted{ $0.createdTime ?? Date() < $1.createdTime ?? Date() }
                     .map {task in
                         return TaskState(task)
                     }

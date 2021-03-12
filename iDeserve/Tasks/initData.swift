@@ -32,12 +32,14 @@ func genTaskState(
 }
 
 func initGoal () -> Void {
+    let defaults = UserDefaults.standard
     let moc = GlobalStore.shared.moc
     let goalRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
 
     do {
+        let hasInited = defaults.bool(forKey: HAS_INITED)
         let goals = try moc.fetch(goalRequest) as! [Goal]
-        if goals.count == 0 {
+        if goals.count > 0 || hasInited {
             return
         }
     } catch {
@@ -61,4 +63,6 @@ func initGoal () -> Void {
         desc: "",
         tasks: tasks
     )
+    
+    defaults.setValue(true, forKey: HAS_INITED)
 }

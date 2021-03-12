@@ -66,6 +66,7 @@ final class TaskStore: ObservableObject {
     func createTask (taskState: TaskState) -> Task {
         let newTask = Task(context: self.moc)
         newTask.id = UUID()
+        newTask.createdTime = Date()
         
         if let goalId = taskState.goalId {
             updateTaskGoal(task: newTask, goalId: goalId)

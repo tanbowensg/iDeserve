@@ -31,6 +31,7 @@
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="completeTimes" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="createdTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="ddl" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" attributeType="String" defaultValueString="一些任务描述"/>
         <attribute name="difficulty" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
@@ -48,6 +49,6 @@
         <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="163"/>
         <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
         <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="193"/>
-        <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="238"/>
+        <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="253"/>
     </elements>
 </model>
