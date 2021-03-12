@@ -10,6 +10,7 @@ import CoreData
 
 struct RecordPage: View {
     @EnvironmentObject var gs: GlobalStore
+    @AppStorage(UNLOCK_CALENDAR) var unlockCalendar = false
     @FetchRequest(fetchRequest: recordRequest) var records: FetchedResults<Record>
     
     @State var chosenDate: Date? = nil
@@ -71,30 +72,39 @@ struct RecordPage: View {
             .fontWeight(.black)
             .padding(.vertical, 8)
     }
+    
+    var recordsView: some View {
+        Group {
+            monthTitle
+            CalendarSwiper(
+                dayStats: dayStats,
+                prevDayStats: prevMonthDayStats,
+                nextDayStats: nextMonthDayStats,
+                currentYear: currentYear,
+                currentMonth: currentMonth,
+//                gridSize: Int(geometry.size.width / 7),
+                gridSize: 36,
+                onTapDate: { chosenDate = $0 },
+                onMonthChange: {
+                    currentYear = $0
+                    currentMonth = $1
+                    chosenDate = nil
+                }
+            )
+//                .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
+            .frame(height: 20 + 36 * CGFloat((dayStats.count / 7)))
+            Divider()
+            RecordList(records: chosenDateRecords)
+                .animation(.none)
+        }
+    }
 
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0.0) {
                 AppHeader(points: gs.pointsStore.points, title: "历史记录")
-                monthTitle
-                CalendarSwiper(
-                    dayStats: dayStats,
-                    prevDayStats: prevMonthDayStats,
-                    nextDayStats: nextMonthDayStats,
-                    currentYear: currentYear,
-                    currentMonth: currentMonth,
-                    gridSize: Int(geometry.size.width / 7),
-                    onTapDate: { chosenDate = $0 },
-                    onMonthChange: {
-                        currentYear = $0
-                        currentMonth = $1
-                        chosenDate = nil
-                    }
-                )
-                    .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
-                Divider()
-                RecordList(records: chosenDateRecords)
-                    .animation(.none)
+                unlockCalendar ? recordsView : nil
+                !unlockCalendar ? Text("还没有解锁") : nil
             }
                 .animation(.easeInOut, value: currentMonth)
                 .navigationBarHidden(true)

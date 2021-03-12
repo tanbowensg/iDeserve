@@ -76,6 +76,12 @@ final class RewardStore: ObservableObject {
 
         do {
             try self.moc.save()
+            
+//            解锁日历
+            if reward.isUnlockCalendar {
+                let defaults = UserDefaults.standard
+                defaults.setValue(true, forKey: UNLOCK_CALENDAR)
+            }
         } catch {
             print("兑换奖励失败")
         }

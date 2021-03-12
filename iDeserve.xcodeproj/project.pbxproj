@@ -100,6 +100,7 @@
 		D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B91B625AABCF0007F2358 /* dateTools.swift */; };
 		D08EE9A025F9EA300020FBC2 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE99F25F9EA300020FBC2 /* TextArea.swift */; };
 		D08EE9AA25F9F3450020FBC2 /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */; };
+		D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE9B325FB35DD0020FBC2 /* initData.swift */; };
 		D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2EC25A5D52200042124 /* draggableModifier.swift */; };
 		D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2FA25A82E1F00042124 /* Importance.swift */; };
 		D08FB31125A8388000042124 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
@@ -247,6 +248,7 @@
 		D08B91B625AABCF0007F2358 /* dateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateTools.swift; sourceTree = "<group>"; };
 		D08EE99F25F9EA300020FBC2 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
+		D08EE9B325FB35DD0020FBC2 /* initData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initData.swift; sourceTree = "<group>"; };
 		D08FB2EC25A5D52200042124 /* draggableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = draggableModifier.swift; sourceTree = "<group>"; };
 		D08FB2FA25A82E1F00042124 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
 		D08FB32025A87CE300042124 /* AnimatedPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPoints.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				D08B91B625AABCF0007F2358 /* dateTools.swift */,
 				D03AF6FB25AD44B800F8152D /* viberate.swift */,
 				D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */,
+				D08EE9B325FB35DD0020FBC2 /* initData.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */,
 				D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
+				D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
 				D03AF73C25B01DEE00F8152D /* HelpPage.swift in Sources */,
