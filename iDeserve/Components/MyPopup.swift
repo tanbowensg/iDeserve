@@ -20,11 +20,9 @@ struct MyPopup<Content: View>: View {
                 .onTapGesture {
                     isVisible.toggle()
                 }
-                .edgesIgnoringSafeArea(.vertical)
 
             content
                 .padding(.bottom, alignment == .bottom ? BOTTOM_SAFE_AREA_HEIGHT : 0)
-//                    .padding(.top, 20)
                 .background(background)
 //                    .background(Color.white.shadow(color: Color.g60, radius: 5))
         }
@@ -35,5 +33,6 @@ struct MyPopup<Content: View>: View {
 //                ).animation(.spring())
 //            )
         }
+        .edgesIgnoringSafeArea(.vertical)
     }
 }

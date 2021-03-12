@@ -13,13 +13,14 @@ struct TextArea: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            TextEditor(text: $text).padding(0)
+            TextEditor(text: $text)
+                .font(.hiraginoSansGb14w3)
             if text == "" {
                 Text(placeholder).foregroundColor(.g60)
+                    .font(.hiraginoSansGb14w3)
                     .padding(.vertical, 7)
                     .padding(.horizontal,5)
             }
         }
-        .frame(width: 200, height: 300, alignment: .center)
     }
 }

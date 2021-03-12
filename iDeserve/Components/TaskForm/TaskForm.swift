@@ -39,6 +39,7 @@ struct TaskForm: View {
     var taskGoal: some View {
         Button(action: {
             isShowGoalPicker.toggle()
+            dismissKeyboard()
         }) {
             FormItem(icon: Image(systemName: "largecircle.fill.circle"), name: "所属目标", valueView: Text(taskState.goalName))
         }
@@ -49,6 +50,7 @@ struct TaskForm: View {
         return VStack(alignment: .trailing, spacing: 0) {
             Button(action: {
                 isShowGoalPicker.toggle()
+                dismissKeyboard()
             }) {
                 Text("确认")
             }
@@ -82,6 +84,7 @@ struct TaskForm: View {
         Button(action: {
             withAnimation {
                 isShowDifficultyPicker.toggle()
+                dismissKeyboard()
             }
         }) {
             FormItem(icon: Image(systemName: "speedometer"), name: "难度", valueView: Text(getDifficultyText(taskState.difficulty)))
@@ -107,6 +110,7 @@ struct TaskForm: View {
     var taskRepeat: some View {
         Button(action: {
             isShowRepeatPicker.toggle()
+            dismissKeyboard()
         }) {
             FormItem(
                 icon: Image(systemName: "repeat"),
@@ -128,11 +132,20 @@ struct TaskForm: View {
         Button(action: {
             taskState.hasDdl = true
             isShowDatePicker.toggle()
+            dismissKeyboard()
         }) {
             FormItem(
                 icon: Image(systemName: "calendar"),
                 name: taskState.hasDdl ? "\(dateToString(taskState.ddl)) 截止" : "添加截止日期",
-                valueView: EmptyView()
+                valueView: !taskState.hasDdl ? nil : Button(action: {
+                    taskState.hasDdl = false
+                    taskState.ddl = Date()
+                }, label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 16, height: 16, alignment: .center)
+                })
             )
         }
     }
@@ -157,6 +170,7 @@ struct TaskForm: View {
         VStack(alignment: .trailing, spacing: 0) {
             Button(action: {
                 isShowRepeatPicker.toggle()
+                dismissKeyboard()
             }) {
                 Text("确认")
             }
@@ -194,22 +208,24 @@ struct TaskForm: View {
 //    备注
     var taskDesc: some View {
         TextArea(placeholder: "备注", text: $taskState.desc)
-        .padding(16)
+            .padding(16)
+            .frame(height: 300)
     }
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 0.0) {
-                taskTitle
-                showGoal ? taskGoal : nil
-                taskDifficulty
-                taskTimeCost
-                taskMyDay
-                taskRepeat
-                taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
-                taskDdl
-                taskDesc
-            }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0.0) {
+                    taskTitle
+                    showGoal ? taskGoal : nil
+                    taskDifficulty
+                    taskTimeCost
+                    taskMyDay
+                    taskRepeat
+                    taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
+                    taskDdl
+                    taskDesc
+                }
                 .frame(
                     minWidth: 0,
                     maxWidth: .infinity,
@@ -217,6 +233,10 @@ struct TaskForm: View {
                     maxHeight: .infinity,
                     alignment: .topLeading
                 )
+            }
+            .onTapGesture {
+                dismissKeyboard()
+            }
             MyPopup(isVisible: $isShowGoalPicker, content: goalPicker, background: Color.g10)
             MyPopup(isVisible: $isShowRepeatPicker, content: repeatPicker, background: Color.g10)
             MyPopup(isVisible: $isShowDatePicker, content: datePicker, background: Color.g10)

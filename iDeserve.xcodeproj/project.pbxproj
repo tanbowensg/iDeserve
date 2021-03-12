@@ -99,6 +99,7 @@
 		D08B91B725AABCF0007F2358 /* dateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B91B625AABCF0007F2358 /* dateTools.swift */; };
 		D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B91B625AABCF0007F2358 /* dateTools.swift */; };
 		D08EE9A025F9EA300020FBC2 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE99F25F9EA300020FBC2 /* TextArea.swift */; };
+		D08EE9AA25F9F3450020FBC2 /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */; };
 		D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2EC25A5D52200042124 /* draggableModifier.swift */; };
 		D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2FA25A82E1F00042124 /* Importance.swift */; };
 		D08FB31125A8388000042124 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
@@ -245,6 +246,7 @@
 		D08988DD2546BDDC0032BA96 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D08B91B625AABCF0007F2358 /* dateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateTools.swift; sourceTree = "<group>"; };
 		D08EE99F25F9EA300020FBC2 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
+		D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
 		D08FB2EC25A5D52200042124 /* draggableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = draggableModifier.swift; sourceTree = "<group>"; };
 		D08FB2FA25A82E1F00042124 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
 		D08FB32025A87CE300042124 /* AnimatedPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPoints.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				D0F3B0352563F836008B6EBB /* emptyFunc.swift */,
 				D08B91B625AABCF0007F2358 /* dateTools.swift */,
 				D03AF6FB25AD44B800F8152D /* viberate.swift */,
+				D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -404,16 +407,16 @@
 		D010268F2524243B00653A52 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				D007CFB425873512008CA76D /* constants.swift */,
-				D08988DD2546BDDC0032BA96 /* Task.swift */,
-				D03F21AD25270EC40055BF25 /* Record.swift */,
 				D0036DD4252C56CD00E4005B /* Color.swift */,
-				D06806A52531939D008DE678 /* RepeatFrequency.swift */,
+				D007CFB425873512008CA76D /* constants.swift */,
 				D08988A7254672390032BA96 /* Difficulty.swift */,
+				D031EE1625B7CDEE00D64CF3 /* Goal.swift */,
 				D072430325A2CCF200DCB674 /* HighPriorityButtonStyle.swift */,
 				D08FB2FA25A82E1F00042124 /* Importance.swift */,
-				D031EE1625B7CDEE00D64CF3 /* Goal.swift */,
+				D03F21AD25270EC40055BF25 /* Record.swift */,
+				D06806A52531939D008DE678 /* RepeatFrequency.swift */,
 				D0119B6C25EF2C7600F5E0F6 /* Reward.swift */,
+				D08988DD2546BDDC0032BA96 /* Task.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -437,11 +440,11 @@
 				D07B6D4725B06C5400087FC5 /* ProgressBar.swift */,
 				D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */,
 				D0F3AFFD25636A36008B6EBB /* TaskItem.swift */,
+				D08EE99F25F9EA300020FBC2 /* TextArea.swift */,
 				D0F2DC9125E77CD200A75E12 /* CompleteGoalView */,
 				D0F3B01D2563D2F3008B6EBB /* SwipeCell */,
 				D08988B6254685C70032BA96 /* TaskForm */,
 				D03AF73025B0112B00F8152D /* WebView */,
-				D08EE99F25F9EA300020FBC2 /* TextArea.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				D031EDCA25B16A2900D64CF3 /* ImportancePicker.swift in Sources */,
 				D03AF71025AEBAF000F8152D /* roundBorder.swift in Sources */,
 				D007CFB525873512008CA76D /* constants.swift in Sources */,
+				D08EE9AA25F9F3450020FBC2 /* dismissKeyboard.swift in Sources */,
 				D0119B4225ECE52F00F5E0F6 /* GoalIcon.swift in Sources */,
 				D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */,
 				D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */,

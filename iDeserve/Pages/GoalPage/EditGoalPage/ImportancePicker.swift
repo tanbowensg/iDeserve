@@ -37,6 +37,7 @@ struct ImportancePicker: View {
                     }
                 }
         }
+        .padding(.top, 20)
         .background(Color.white)
     }
 }
