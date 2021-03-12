@@ -11,6 +11,10 @@ import CoreData
 @main
 struct iDeserveApp: App {
     @Environment(\.scenePhase) private var scenePhase
+    
+    init () {
+        initGoal()
+    }
 
     var body: some Scene {
         WindowGroup {

@@ -318,7 +318,6 @@
 				D08B91B625AABCF0007F2358 /* dateTools.swift */,
 				D03AF6FB25AD44B800F8152D /* viberate.swift */,
 				D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */,
-				D08EE9B325FB35DD0020FBC2 /* initData.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -594,6 +593,7 @@
 		D09688E7258C5B0F00E41751 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				D08EE9B325FB35DD0020FBC2 /* initData.swift */,
 				D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */,
 				D030B6B1257E0A8900967015 /* resetPos.swift */,
 				D08FB2EC25A5D52200042124 /* draggableModifier.swift */,
