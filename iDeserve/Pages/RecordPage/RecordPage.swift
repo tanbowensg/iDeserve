@@ -73,7 +73,7 @@ struct RecordPage: View {
             .padding(.vertical, 8)
     }
     
-    var recordsView: some View {
+    func recordsView(gridSize: Int) -> some View {
         Group {
             monthTitle
             CalendarSwiper(
@@ -82,8 +82,7 @@ struct RecordPage: View {
                 nextDayStats: nextMonthDayStats,
                 currentYear: currentYear,
                 currentMonth: currentMonth,
-//                gridSize: Int(geometry.size.width / 7),
-                gridSize: 36,
+                gridSize: gridSize,
                 onTapDate: { chosenDate = $0 },
                 onMonthChange: {
                     currentYear = $0
@@ -91,8 +90,7 @@ struct RecordPage: View {
                     chosenDate = nil
                 }
             )
-//                .frame(height: 20 + CGFloat(Int(geometry.size.width / 7)) * CGFloat((dayStats.count / 7)))
-            .frame(height: 20 + 36 * CGFloat((dayStats.count / 7)))
+                .frame(height: 20 + CGFloat(gridSize) * CGFloat((dayStats.count / 7)))
             Divider()
             RecordList(records: chosenDateRecords)
                 .animation(.none)
@@ -103,7 +101,7 @@ struct RecordPage: View {
         GeometryReader { geometry in
             VStack(spacing: 0.0) {
                 AppHeader(points: gs.pointsStore.points, title: "历史记录")
-                unlockCalendar ? recordsView : nil
+                unlockCalendar ? recordsView(gridSize: (Int(geometry.size.width) / 7)) : nil
                 !unlockCalendar ? Text("还没有解锁") : nil
             }
                 .animation(.easeInOut, value: currentMonth)
