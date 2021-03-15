@@ -21,12 +21,13 @@ struct RewardPage: View {
         let request: NSFetchRequest<Reward> = Reward.fetchRequest()
         request.sortDescriptors = [
             NSSortDescriptor(keyPath: \Reward.pos, ascending: true)
-        ]
+        ] 
         return request
    }
     
     private var soldoutRewards: [Reward] {
-        rewards.filter{ $0.isSoldout }
+        print(rewards)
+        return rewards.filter{ $0.isSoldout }
     }
     
     private var availableRewards: [Reward] {

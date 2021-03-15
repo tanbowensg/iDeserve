@@ -53,3 +53,6 @@ let INIT_TASK_6_TITLE = NSLocalizedString("添加一个奖励", comment: "")
 let INIT_TASK_6_DESC = NSLocalizedString("奖励机制是坚果计划的特色。通过完成任务和目标，你可以获得坚果。通过消耗坚果，你可以兑换你设置的奖励。\n\n初次使用的你，可能不知道该为奖励设置多少价格。我们已经为你预设了一些常见的奖励作为参考。\n\n记住，奖励的价值完全因人而异。因为奖励的价格，体现的是每个人兑换这个奖励的心理负担大小，因此奖励是非常个性化的。\n\n现在就去创建一个奖励吧。", comment: "")
 let INIT_TASK_7_TITLE = NSLocalizedString("达成目标", comment: "")
 let INIT_TASK_7_DESC = NSLocalizedString("目标是松鼠计划的核心。目标下还有为了实现目标而要完成的任务。完成目标时，可以得到额外的坚果奖励！\n\n一个目标应该有一个明确的达成条件，以便于你判断目标是否达成了。\n\n点击目标列表页面右下角的“+”按钮，就可以创建目标了！", comment: "")
+
+let INIT_REWARD_1_TITLE = NSLocalizedString("解锁松鼠日历", comment: "初始奖项：解锁松鼠日历")
+

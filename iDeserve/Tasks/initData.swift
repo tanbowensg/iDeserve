@@ -31,15 +31,49 @@ func genTaskState(
     return ts
 }
 
-func initGoal () -> Void {
+func initData () -> Void {
     let defaults = UserDefaults.standard
+    let hasInited = defaults.bool(forKey: HAS_INITED)
+    
+    if hasInited {
+        return
+    }
+    initReward()
+    initGoal()
+    defaults.setValue(true, forKey: HAS_INITED)
+}
+
+func initReward () -> Void {
+    let moc = GlobalStore.shared.moc
+    let rewardRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Reward")
+
+    do {
+        let rewards = try moc.fetch(rewardRequest) as! [Reward]
+        if rewards.count > 0 {
+            return
+        }
+    } catch {
+        print("创建初始奖励的时候出错")
+    }
+    print("创建了奖励")
+    GlobalStore.shared.rewardStore.createReward(
+        name: INIT_REWARD_1_TITLE,
+        type: .system,
+        value: 110,
+        isRepeat: false,
+        desc: "",
+        cover: nil,
+        isUnlockCalendar: true
+    )
+}
+
+func initGoal () -> Void {
     let moc = GlobalStore.shared.moc
     let goalRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
 
     do {
-        let hasInited = defaults.bool(forKey: HAS_INITED)
         let goals = try moc.fetch(goalRequest) as! [Goal]
-        if goals.count > 0 || hasInited {
+        if goals.count > 0 {
             return
         }
     } catch {
@@ -64,5 +98,4 @@ func initGoal () -> Void {
         tasks: tasks
     )
     
-    defaults.setValue(true, forKey: HAS_INITED)
 }

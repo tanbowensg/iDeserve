@@ -13,7 +13,7 @@ struct iDeserveApp: App {
     @Environment(\.scenePhase) private var scenePhase
     
     init () {
-        initGoal()
+        initData()
     }
 
     var body: some Scene {

@@ -51,10 +51,12 @@ final class RewardStore: ObservableObject {
         value: Int,
         isRepeat: Bool,
         desc: String,
-        cover: Data?
+        cover: Data?,
+        isUnlockCalendar: Bool = false
     ) {
         let newReward = Reward(context: self.moc)
         newReward.id = UUID()
+        newReward.isUnlockCalendar = isUnlockCalendar
 
         self.updateReward(
             targetReward: newReward,
