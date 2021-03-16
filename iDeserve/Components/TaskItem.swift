@@ -22,10 +22,6 @@ struct TaskItem: View {
     var foregroundColor: Color {
          task.done ? Color.gray : Color.normalText
     }
-//    剩余的重复次数
-    var remainTimes: Int {
-        return task.repeatTimes - task.completeTimes
-    }
 
     var taskGoal: some View {
         Text(task.goalName)
@@ -48,18 +44,27 @@ struct TaskItem: View {
     }
     
     var remainTimesText: some View {
-        let text = remainTimes > 0 ? "还要做 \(remainTimes) 次" : "\(task.repeatTimes) 次全部完成了"
-        return Text(text)
+        return Text("\(task.completeTimes)/\(task.repeatTimes)次")
+            .foregroundColor(.remainTextColor)
+            .fontWeight(.bold)
+            .font(.hiraginoSansGb9)
+            .frame(height: 16.0)
+    }
+    
+    var nextRefreshTime: some View {
+        return Text("下次刷新: \(dateToString(task.nextRefreshTime!))")
             .foregroundColor(.remainTextColor)
             .fontWeight(.bold)
             .font(.hiraginoSansGb9)
             .frame(height: 16.0)
     }
 
+
     var taskInfo: some View {
         return HStack {
             task.starred ? Image(systemName: "sun.max") : nil
             task.repeatFrequency != RepeatFrequency.never ? remainTimesText : nil
+            task.nextRefreshTime != nil ? nextRefreshTime : nil
             task.hasDdl ? ddlText : nil
         }
     }

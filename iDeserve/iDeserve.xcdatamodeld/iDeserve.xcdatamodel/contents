@@ -39,6 +39,7 @@
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastCompleteTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
+        <attribute name="nextRefreshTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="repeatFrequency" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="repeatTimes" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="starred" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -49,6 +50,6 @@
         <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="163"/>
         <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
         <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="193"/>
-        <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="253"/>
+        <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="268"/>
     </elements>
 </model>

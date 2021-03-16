@@ -42,13 +42,13 @@ final class TaskStore: ObservableObject {
     ) -> Task {
         targetTask.name = taskState.name
         targetTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
-        targetTask.repeatTimes = Int16(taskState.repeatTimes) ?? 0
+        targetTask.repeatTimes = Int16(taskState.repeatTimes)
         targetTask.ddl = taskState.hasDdl ? taskState.ddl : nil
         targetTask.desc = taskState.desc
         targetTask.done = taskState.done
         targetTask.starred = taskState.starred
         targetTask.difficulty = Int16(taskState.difficulty.rawValue)
-        targetTask.timeCost = Int16(taskState.timeCost) ?? 1
+        targetTask.timeCost = Int16(taskState.timeCost)
         
         if targetTask.parent?.id != taskState.goalId && taskState.goalId != nil {
             updateTaskGoal(task: targetTask, goalId: taskState.goalId!)
@@ -78,12 +78,14 @@ final class TaskStore: ObservableObject {
         task.done = true
         task.lastCompleteTime = Date()
         task.completeTimes = task.completeTimes + 1
+        task.nextRefreshTime = getNextRefreshTime(task)
 
 //        如果是无间隔重复任务，就把状态变回未完成
         if (task.completeTimes < task.repeatTimes
             && task.repeatFrequency == RepeatFrequency.unlimited.rawValue
         ) {
             task.done = false
+            task.nextRefreshTime = nil
         }
 
         let taskValue = task.timeCost * task.difficulty
