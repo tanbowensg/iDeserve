@@ -9,12 +9,31 @@ import SwiftUI
 
 struct SettingsPage: View {
     @EnvironmentObject var gs: GlobalStore
+    @State var isShowTimePicker = false
+    @AppStorage(START_TIME_OF_DAY) var startTimeOfDay: Int = 0
+
+    var timePicker: some View {
+        VStack(alignment: .trailing){
+            Button(action: {
+                isShowTimePicker = false
+            }) {
+                Text("确认")
+            }
+            .padding(16.0)
+            Picker("一天的开始时间", selection: $startTimeOfDay) {
+                ForEach(0...23, id: \.self) {i in
+                    Text("\(i):00").tag(i)
+                }
+                .labelsHidden()
+            }
+            .onChange (of: startTimeOfDay) { selectedGoalId in
+                startTimeOfDay = startTimeOfDay
+            }
+        }
+    }
 
     var body: some View {
-//        VStack {
-//            Text("设置")
-//                .font(.hiraginoSansGb16)
-//            Divider()
+        ZStack(alignment: .bottom) {
             List {
                 NavigationLink(destination: HelpPage()) {
                     HStack {
@@ -40,8 +59,18 @@ struct SettingsPage: View {
                 }) {
                     Text("直接解锁松鼠日历")
                 }
+                Button(action: {
+                    isShowTimePicker.toggle()
+                }) {
+                    HStack {
+                        Text("一天的起始时间")
+                        Spacer()
+                        Text("\(startTimeOfDay):00")
+                    }
+                }
             }
-//        }
+            MyPopup(isVisible: $isShowTimePicker, content: timePicker)
+        }
         .navigationTitle("设置")
     }
 }

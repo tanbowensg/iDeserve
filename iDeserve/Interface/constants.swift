@@ -22,3 +22,4 @@ let GOAL_ROW_HEIGHT: CGFloat = 76
 //userdefaults的key
 let UNLOCK_CALENDAR: String = "unlockCalendar"
 let HAS_INITED: String = "hasInited"
+let START_TIME_OF_DAY: String = "startTimeOfDay"
