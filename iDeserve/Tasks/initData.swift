@@ -44,18 +44,6 @@ func initData () -> Void {
 }
 
 func initReward () -> Void {
-    let moc = GlobalStore.shared.moc
-    let rewardRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Reward")
-
-    do {
-        let rewards = try moc.fetch(rewardRequest) as! [Reward]
-        if rewards.count > 0 {
-            return
-        }
-    } catch {
-        print("创建初始奖励的时候出错")
-    }
-    print("创建了奖励")
     GlobalStore.shared.rewardStore.createReward(
         name: INIT_REWARD_1_TITLE,
         type: .system,
@@ -68,18 +56,6 @@ func initReward () -> Void {
 }
 
 func initGoal () -> Void {
-    let moc = GlobalStore.shared.moc
-    let goalRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
-
-    do {
-        let goals = try moc.fetch(goalRequest) as! [Goal]
-        if goals.count > 0 {
-            return
-        }
-    } catch {
-        print("创建初始目标的时候出错")
-    }
-
     let tasks = [
         genTaskState(name: INIT_TASK_1_TITLE, desc: INIT_TASK_1_DESC, starred: true),
         genTaskState(name: INIT_TASK_2_TITLE, desc: INIT_TASK_2_DESC, starred: true),
@@ -97,5 +73,4 @@ func initGoal () -> Void {
         desc: "",
         tasks: tasks
     )
-    
 }
