@@ -73,8 +73,9 @@ final class GoalStore: ObservableObject {
     }
     
     func completeGoal (_ goal: Goal) {
-        let value = getImportanceValue(Importance(rawValue: Int(goal.importance)) ?? Importance.normal)
-        pointsStore.add(value)
+//        TODO: 暂时还没加目标的固定奖励
+//        let value = getImportanceValue(Importance(rawValue: Int(goal.importance)) ?? Importance.normal)
+        pointsStore.add(goal.goalReward.totalReward)
         goal.done = true
         
         do {
