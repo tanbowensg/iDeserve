@@ -15,10 +15,6 @@ struct TaskItem: View {
     var onRemoveTask: (() -> Void)?
     var hideTag: Bool? = false
 
-    var dateText: String? {
-        return dateToString(task.ddl)
-    }
-
     var foregroundColor: Color {
          task.done ? Color.gray : Color.normalText
     }
@@ -36,7 +32,7 @@ struct TaskItem: View {
     }
     
     var ddlText: some View {
-        Text("到\(dateText!)截止")
+        Text("到\(dateToString(task.ddl))截止")
             .font(.hiraginoSansGb9)
             .fontWeight(.bold)
             .foregroundColor(.remainTextColor)
@@ -52,7 +48,7 @@ struct TaskItem: View {
     }
     
     var nextRefreshTime: some View {
-        return Text("下次刷新: \(dateToString(task.nextRefreshTime!))")
+        return Text("下次刷新: \(dateToString(task.nextRefreshTime!, dateFormat: "M.dd H:mm"))")
             .foregroundColor(.remainTextColor)
             .fontWeight(.bold)
             .font(.hiraginoSansGb9)

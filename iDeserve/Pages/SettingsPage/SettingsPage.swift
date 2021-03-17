@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SettingsPage: View {
     @EnvironmentObject var gs: GlobalStore
     @State var isShowTimePicker = false
     @AppStorage(START_TIME_OF_DAY) var startTimeOfDay: Int = 0
+    @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
+
+    static var taskRequest: NSFetchRequest<Task> {
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        request.sortDescriptors = []
+        return request
+    }
 
     var timePicker: some View {
         VStack(alignment: .trailing){
@@ -66,6 +74,21 @@ struct SettingsPage: View {
                         Text("一天的起始时间")
                         Spacer()
                         Text("\(startTimeOfDay):00")
+                    }
+                }
+                Button(action: {
+                    allTasks.forEach {task in
+                        if task.done
+                            && task.repeatFrequency != RepeatFrequency.never.rawValue
+                            && task.completeTimes < task.repeatTimes
+                        {
+                            task.nextRefreshTime = getNextRefreshTime(task)
+                        }
+                    }
+                    gs.coreDataContainer.saveContext()
+                }) {
+                    HStack {
+                        Text("重新计算任务的刷新时间")
                     }
                 }
             }
