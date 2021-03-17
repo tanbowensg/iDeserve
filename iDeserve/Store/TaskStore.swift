@@ -43,7 +43,7 @@ final class TaskStore: ObservableObject {
         targetTask.name = taskState.name
         targetTask.repeatFrequency = Int16(taskState.repeatFrequency.rawValue)
         targetTask.repeatTimes = Int16(taskState.repeatTimes)
-        targetTask.ddl = taskState.hasDdl ? taskState.ddl : nil
+        targetTask.ddl = taskState.hasDdl ? Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: taskState.ddl) : nil
         targetTask.desc = taskState.desc
         targetTask.done = taskState.done
         targetTask.starred = taskState.starred

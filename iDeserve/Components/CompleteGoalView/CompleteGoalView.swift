@@ -40,7 +40,7 @@ struct CompleteGoalView: View {
                         NutIcon(value: goalReward!.basicReward, hidePlus: true)
                     }
                     HStack {
-                        Text("在截至前完成任务").font(.avenirBlack14)
+                        Text("在截止前完成任务").font(.avenirBlack14)
                         Spacer()
                         NutIcon(value: goalReward!.beforeDdlReward, hidePlus: true)
                     }
