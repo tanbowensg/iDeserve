@@ -94,7 +94,7 @@ struct RewardGrid: View {
     var mainCard: some View {
         VStack(alignment: .center) {
             HStack {
-                isShowButton ? removeButton : nil
+                isShowButton && !reward.isUnlockCalendar ? removeButton : nil
                 Spacer()
                 reward.isSoldout && !reward.isRepeat ? soldoutLogo : nil
             }
