@@ -14,6 +14,18 @@ struct TaskItem: View {
     var onCompleteTask: (() -> Void)?
     var onRemoveTask: (() -> Void)?
     var hideTag: Bool? = false
+    
+    var height: Int {
+//        TODO: 这里的magicnumber都是写死的，等视觉确定了，再改
+        var base = 58
+        if task.repeatFrequency != RepeatFrequency.never || task.hasDdl || task.starred {
+            base += 16
+        }
+        if hideTag != true {
+            base += 24
+        }
+        return base
+    }
 
     var foregroundColor: Color {
          task.done ? Color.gray : Color.normalText
@@ -108,7 +120,7 @@ struct TaskItem: View {
     var body: some View {
         SwipeWrapper(
             content: taskItem,
-            height: 82,
+            height: height,
             onLeftSwipe: onCompleteTask,
             onRightSwipe: onRemoveTask
         )

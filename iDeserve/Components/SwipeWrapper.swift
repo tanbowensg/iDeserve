@@ -56,26 +56,30 @@ struct SwipeWrapper<Content: View>: View {
     }
 
     var leftSlot: some View {
-        Text("搞定")
+        Image(systemName: "checkmark")
+            .resizable()
+            .frame(width: 20, height: 20)
+            .scaleEffect(isReachThreshold ? 1.5 : 1)
             .multilineTextAlignment(.trailing)
             .padding(.leading, CGFloat(slotWidth) - 30.0 - 40)
             .padding(.trailing, 30.0)
             .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
             .foregroundColor(.g0)
             .background(leftSlotBg)
-            .font(.system(size: isReachThreshold ? 18 : 14))
             .animation(Animation.spring())
     }
     
     var rightSlot: some View {
-        Text("删除")
+        Image(systemName: "trash")
+            .resizable()
+            .frame(width: 20, height: 20)
+            .scaleEffect(isReachThreshold ? 1.5 : 1)
             .multilineTextAlignment(.leading)
             .padding(.trailing, CGFloat(slotWidth) - 30.0 - 40)
             .padding(.leading, 30.0)
             .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
             .foregroundColor(.g0)
             .background(rightSlotBg)
-            .font(.system(size: isReachThreshold ? 18 : 14))
             .animation(Animation.spring())
     }
 
