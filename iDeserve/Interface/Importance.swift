@@ -31,10 +31,10 @@ func getImportanceText (_ value: Importance) -> String {
 func getImportanceValue (_ value: Importance) -> Int {
     switch value {
     case Importance.normal:
-        return 200
+        return 100
     case Importance.important:
-        return 400
+        return 200
     case Importance.epic:
-        return 1000
+        return 400
     }
 }

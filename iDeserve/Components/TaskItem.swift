@@ -90,7 +90,7 @@ struct TaskItem: View {
     
     var taskValue: some View {
         HStack(alignment: .center, spacing: 3.0) {
-            Text("+\(String(task.value))")
+            Text(String(task.value))
                 .font(.system(size: 14))
                 .fontWeight(.black)
                 .foregroundColor(Color.rewardColor)

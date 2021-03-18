@@ -30,7 +30,7 @@ struct GoalItemView: View {
                 isDone ? nil : ProgressBar(value: progress)
             }
             Spacer()
-            NutIcon(value: value)
+            NutIcon(value: value, hidePlus: true)
         }
         .padding(.horizontal, 20.0)
         .padding(.vertical, 8)

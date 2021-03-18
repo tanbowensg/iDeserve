@@ -26,6 +26,10 @@ struct GoalReward {
         Importance.important: 0.2,
         Importance.epic: 0.4
     ]
+    
+    var fixedReward: Int {
+        getImportanceValue(importance)
+    }
 
     var basicReward: Int {
         Int(ceil(Float(basicRewardBase) * RewardRatioMap[importance]!))
@@ -37,7 +41,7 @@ struct GoalReward {
         Int(ceil(Double(beforeDdlRewardBase) * BeforeDdlRewardRatio))
     }
     var totalReward: Int {
-        basicReward + allRpeatReward + beforeDdlReward
+        fixedReward + basicReward + allRpeatReward + beforeDdlReward
     }
 }
 
