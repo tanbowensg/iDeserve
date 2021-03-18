@@ -58,6 +58,7 @@ struct EditGoalPage: View {
     var goalType: some View {
         Button(action: {
             withAnimation {
+                dismissKeyboard()
                 isShowTypePicker.toggle()
             }
         }) {
@@ -72,6 +73,7 @@ struct EditGoalPage: View {
     var goalImportance: some View {
         Button(action: {
             withAnimation {
+                dismissKeyboard()
                 isShowImportancePicker.toggle()
             }
         }) {
@@ -85,6 +87,7 @@ struct EditGoalPage: View {
     
     var createTaskButton: some View {
         Button(action: {
+            dismissKeyboard()
             isShowTaskSheet.toggle()
             taskCache = TaskState(nil)
         }) {
@@ -123,6 +126,7 @@ struct EditGoalPage: View {
                 ForEach (tasks, id: \.id) { task in
                     let disabledComplete = initGoal == nil || task.done
                     Button(action: {
+                        dismissKeyboard()
                         taskCache = task
                         isShowTaskSheet.toggle()
                     }) {
@@ -150,6 +154,7 @@ struct EditGoalPage: View {
 
     var backBtn: some View {
         Button(action: {
+            dismissKeyboard()
             self.saveGoal()
             self.presentationMode.wrappedValue.dismiss()
         }) {
@@ -189,6 +194,9 @@ struct EditGoalPage: View {
             }
             MyPopup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance, isShow: $isShowImportancePicker))
             MyPopup(isVisible: $isShowTypePicker, content: GoalTypePicker(selectedType: $type))
+        }
+        .onTapGesture {
+            dismissKeyboard()
         }
         .navigationBarHidden(true)
     }
