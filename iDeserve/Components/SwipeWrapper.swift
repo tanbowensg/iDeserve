@@ -115,8 +115,8 @@ struct SwipeWrapper<Content: View>: View {
     var body: some View {
         ZStack(alignment: alignment) {
             customContent
-                .animation(Animation.spring())
                 .offset(x: contentOffset)
+                .animation(Animation.spring(), value: contentOffset)
             offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
             offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil
         }
