@@ -39,6 +39,8 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
         switch Int(r.kind) {
             case RecordKind.task.rawValue:
                 dayStatCache.income += Int(r.value)
+            case RecordKind.goal.rawValue:
+                dayStatCache.income += Int(r.value)
             case RecordKind.reward.rawValue:
                 dayStatCache.outcome += Int(r.value)
             default: break

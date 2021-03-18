@@ -17,6 +17,8 @@ struct RecordList: View {
                 return result - Int(record.value)
             case .task:
                 return result + Int(record.value)
+            case .goal:
+                return result + Int(record.value)
             default:
                 return result
             }
@@ -43,7 +45,7 @@ struct RecordList: View {
                             Text(record.name ?? "未知")
                                 .fontWeight(.light)
                             Spacer()
-                            NutIcon(value: Int(record.kind == RecordKind.task.rawValue ? record.value : -record.value))
+                            NutIcon(value: Int(record.kind == RecordKind.reward.rawValue ? -record.value : record.value))
                         }
                         .padding(.horizontal, 16.0)
                         .frame(height: 40.0)

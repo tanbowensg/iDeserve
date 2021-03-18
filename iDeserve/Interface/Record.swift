@@ -10,6 +10,7 @@
 enum RecordKind: Int, CaseIterable {
     case task = 1
     case reward = 2
+    case goal = 3
 }
 //
 //struct Record: Hashable, Identifiable {
