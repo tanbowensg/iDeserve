@@ -41,14 +41,7 @@ struct RecordList: View {
             ScrollView {
                 VStack(spacing: 0.0) {
                     ForEach (records) { record in
-                        HStack(alignment: .center) {
-                            Text(record.name ?? "未知")
-                                .fontWeight(.light)
-                            Spacer()
-                            NutIcon(value: Int(record.kind == RecordKind.reward.rawValue ? -record.value : record.value))
-                        }
-                        .padding(.horizontal, 16.0)
-                        .frame(height: 40.0)
+                        RecordItem(record: record)
                     }
                 }
                 .padding(.bottom, 32.0)
@@ -58,6 +51,38 @@ struct RecordList: View {
         .font(.hiraginoSansGb14)
     }
 }
+
+struct RecordItem: View {
+    var record: Record
+    
+    var icon: some View {
+        let kind = RecordKind(rawValue: Int(record.kind))
+        
+        switch kind {
+            case .goal:
+                return Image(systemName: "list.dash")
+            case .task:
+                return Image(systemName: "checkmark")
+            case .reward:
+                return Image(systemName: "gift.fill")
+            default:
+                return Image(systemName: "list.dash")
+        }
+    }
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 6.0) {
+            icon
+            Text(record.name!)
+                .font(.hiraginoSansGb14w3)
+            Spacer()
+            NutIcon(value: Int(record.kind == RecordKind.reward.rawValue ? -record.value : record.value))
+        }
+        .padding(.horizontal, 16.0)
+        .frame(height: 40.0)
+    }
+}
+
 //
 //struct RecordList_Previews: PreviewProvider {
 //    static var previews: some View {
