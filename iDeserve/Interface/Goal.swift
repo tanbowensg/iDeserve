@@ -13,6 +13,7 @@ enum GoalType: String, CaseIterable {
     case job = "briefcase"
     case health = "heart"
     case hobby = "flag"
+    case person = "person"
 }
 
 struct GoalReward {

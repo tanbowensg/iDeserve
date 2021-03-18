@@ -21,6 +21,7 @@ let GoalTypeText: [GoalType: String] = [
     .hobby: NSLocalizedString("兴趣", comment: ""),
     .job: NSLocalizedString("工作", comment: ""),
     .study: NSLocalizedString("学习", comment: ""),
+    .person: NSLocalizedString("社交", comment: ""),
 ]
 
 let RewardTypeText: [RewardType: String] = [

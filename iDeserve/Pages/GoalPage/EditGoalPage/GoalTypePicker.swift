@@ -14,7 +14,7 @@ struct GoalTypePicker: View {
         HStack {
             Spacer()
             GridStack(rows: 2, columns: 3) { (i, j) in
-                let type = GoalType.allCases[i * 2 + j]
+                let type = GoalType.allCases[i * 3 + j]
                 VStack(spacing: 8.0) {
                     GoalIcon(goalType: type, size: 100)
                         .roundBorder(selectedType == type ? Color.rewardColor : Color.white, width: 2, cornerRadius: 25)
