@@ -8,6 +8,12 @@
 import Foundation
 import SwiftUI
 
+extension Reward {
+    var isAvailable: Bool {
+        return self.isRepeat || !self.isSoldout
+    }
+}
+
 enum RewardType: String, CaseIterable {
     case food = "gluttony"
     case rest = "sloth"

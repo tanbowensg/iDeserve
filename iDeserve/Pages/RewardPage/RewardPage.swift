@@ -26,12 +26,11 @@ struct RewardPage: View {
    }
     
     private var soldoutRewards: [Reward] {
-        print(rewards)
-        return rewards.filter{ $0.isSoldout }
+        return rewards.filter{ !$0.isAvailable }
     }
     
     private var availableRewards: [Reward] {
-        rewards.filter{ !$0.isSoldout }
+        rewards.filter{ $0.isAvailable }
     }
 
     private var columns: [GridItem] = [
@@ -45,7 +44,7 @@ struct RewardPage: View {
 
     func genRewardGrid(reward: Reward) -> some View {
         RewardGrid(reward: reward, isEditMode: isEditMode, onEditModeTap: { setIsEditMode(false) })
-            .if(reward.isSoldout) {content in
+            .if(reward.isAvailable) {content in
                 content.onDrag() {
                     setIsEditMode(true)
                     self.dragging = reward

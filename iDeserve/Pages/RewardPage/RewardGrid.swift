@@ -21,7 +21,7 @@ struct RewardGrid: View {
     
     var disableRedeem: Bool {
         return isEditMode
-            || (reward.isSoldout && !reward.isRepeat)
+            || !reward.isAvailable
             || gs.pointsStore.points < reward.value
     }
     
