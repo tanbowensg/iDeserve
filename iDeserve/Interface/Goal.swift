@@ -17,6 +17,7 @@ enum GoalType: String, CaseIterable {
 }
 
 struct GoalReward {
+    var name: String
     var importance: Importance
     var basicRewardBase: Int
     var allRpeatRewardBase: Int
@@ -67,6 +68,7 @@ extension Goal {
         })
         
         return GoalReward(
+            name: self.name!,
             importance: Importance(rawValue: Int(self.importance)) ?? Importance.normal,
             basicRewardBase: self.gotValue,
             allRpeatRewardBase: allRpeatRewardBase,

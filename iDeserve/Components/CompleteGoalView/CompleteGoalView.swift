@@ -32,6 +32,10 @@ struct CompleteGoalView: View {
                 .resizable()
                 .foregroundColor(.hospitalGreen)
                 .frame(width: 200.0, height: 200.0)
+
+            Text(goalReward?.name ?? "")
+                .font(.hiraginoSansGb16)
+
             if isShowResult {
                 VStack(spacing: 6.0) {
                     HStack {
@@ -100,6 +104,6 @@ struct CompleteGoalView: View {
 
 struct CompleteGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteGoalView(goalReward: GoalReward(importance: Importance.epic, basicRewardBase: 500, allRpeatRewardBase: 100, beforeDdlRewardBase: 200), onClose: emptyFunc, openHelp: emptyFunc)
+        CompleteGoalView(goalReward: GoalReward(name: "做3个引体向上", importance: Importance.epic, basicRewardBase: 500, allRpeatRewardBase: 100, beforeDdlRewardBase: 200), onClose: emptyFunc, openHelp: emptyFunc)
     }
 }
