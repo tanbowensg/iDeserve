@@ -67,7 +67,7 @@ struct RewardGrid: View {
             .padding(.vertical, 5.0)
             .padding(.horizontal, 16.0)
             .background(Color.white)
-            .cornerRadius(100)
+            .cornerRadius(13)
             .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
             .grayscale(disableRedeem ? 0.9 : 1)
         })
