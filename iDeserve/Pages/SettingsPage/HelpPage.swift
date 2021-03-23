@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HelpPage: View {
     @State private var shouldRefresh = false
-    let faqDocumentUrl = "https://thoughts.teambition.com/share/5fd6e41b93dd7a0046a33105#5fd6d28012d5ba0001efb65f"
+    let faqDocumentUrl = "https://thoughts.teambition.com/share/605844ad2aee180046db20bd"
 
     var body: some View {
         VStack {
