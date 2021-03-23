@@ -71,19 +71,16 @@ struct CompleteGoalView: View {
             }
             
             Divider().padding(.bottom, 10.0)
-
-            Button(action: {
-                withAnimation {
-                    onClose()
-                }
-            }) {
+            
+            Firework(onTap: { onClose() }, content: {
                 Text("完成！")
                     .font(.avenirBlack14)
                     .foregroundColor(.white)
                     .frame(width: 100.0, height: 40.0)
                     .background(Color.rewardColor)
                     .cornerRadius(20)
-            }
+            })
+            .frame(width: 100.0, height: 40.0)
         }
         .padding(.vertical, 16)
         .frame(width: 300.0)

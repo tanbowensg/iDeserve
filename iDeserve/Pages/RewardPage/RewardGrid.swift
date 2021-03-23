@@ -49,10 +49,9 @@ struct RewardGrid: View {
     }
     
     var redeemButton: some View {
-        Button(action: {
-            print(reward)
+        Firework(size: 52, disabled: disableRedeem, onTap: {
             gs.rewardStore.redeemReward(reward)
-        }) {
+        }, content: {
             HStack(alignment: .center, spacing: 2){
                 Text(String(reward.value))
                     .font(.avenirBlack12)
@@ -70,10 +69,9 @@ struct RewardGrid: View {
             .background(Color.white)
             .cornerRadius(100)
             .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
-        }
-            .buttonStyle(HighPriorityButtonStyle())
             .grayscale(disableRedeem ? 0.9 : 1)
-            .disabled(disableRedeem)
+        })
+        .frame(height: 26.0)
     }
     
     var soldoutLogo: some View {
