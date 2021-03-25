@@ -13,17 +13,15 @@ struct MySlider: View {
     var range: ClosedRange<Int>
 
     var body: some View {
-        VStack(spacing: 2.0) {
-            ValueSlider(value: $value, in: range, step: 1)
-                .valueSliderStyle(
-                    HorizontalValueSliderStyle(
-                        track: Color.hospitalGreen.frame(height: 4).cornerRadius(2),
-                        thumbSize: CGSize(width: 10, height: 10),
-                        thumbInteractiveSize: CGSize(width: 10, height: 10)
-                    )
+        ValueSlider(value: $value, in: range, step: 1)
+            .valueSliderStyle(
+                HorizontalValueSliderStyle(
+                    track: Color.hospitalGreen.frame(height: 5).cornerRadius(3),
+                    thumb: Circle().foregroundColor(.hospitalGreen),
+                    thumbSize: CGSize(width: 20, height: 20),
+                    thumbInteractiveSize: CGSize(width: 20, height: 20)
                 )
-            Text(String(value)).font(.avenirBlack12)
-        }
+            )
     }
 }
 

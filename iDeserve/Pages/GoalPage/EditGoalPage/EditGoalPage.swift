@@ -64,7 +64,7 @@ struct EditGoalPage: View {
         }) {
             FormItem(
                 name: "类别",
-                valueView: GoalIcon(goalType: type, size: 40)
+                rightContent: GoalIcon(goalType: type, size: 40)
             )
         }
     }
@@ -78,7 +78,7 @@ struct EditGoalPage: View {
         }) {
             FormItem(
                 name: "重要性",
-                valueView: Text(getImportanceText(importance))
+                rightContent: Text(getImportanceText(importance))
             )
         }
     }

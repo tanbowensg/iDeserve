@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExDivider: View {
-    let color: Color = .g20
+    let color: Color = .placeholder
     let width: CGFloat = 1
     var body: some View {
         Rectangle()

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FormItem<Content: View>: View {
     var name: String
-    var valueView: Content
+    var rightContent: Content
     var onClickHelp: (() -> Void)?
 
     var body: some View {
@@ -28,13 +28,11 @@ struct FormItem<Content: View>: View {
                     }
                 
                 Spacer()
-                valueView
+                rightContent
                     .font(.subheadCustom)
                     .foregroundColor(.body)
             }
-            .padding(.horizontal, 25)
             .padding(.vertical, 20)
-            Divider()
         }
         .foregroundColor(.myBlack)
     }
@@ -47,11 +45,11 @@ struct FormItemPreviewWrapper: View {
         VStack(spacing: 0.0) {
             FormItem(
                 name: "分数",
-                valueView: Text("Easy")
+                rightContent: Text("Easy")
             )
             FormItem(
                 name: "开关",
-                valueView: Toggle("", isOn: $isOn)
+                rightContent: Toggle("", isOn: $isOn)
             )
         }
     }

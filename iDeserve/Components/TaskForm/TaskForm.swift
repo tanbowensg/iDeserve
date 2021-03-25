@@ -37,11 +37,14 @@ struct TaskForm: View {
     }
 
     var taskGoal: some View {
-        Button(action: {
-            isShowGoalPicker.toggle()
-            dismissKeyboard()
-        }) {
-            FormItem(name: "所属目标", valueView: Text(taskState.goalName))
+        Group {
+            Button(action: {
+                isShowGoalPicker.toggle()
+                dismissKeyboard()
+            }) {
+                FormItem(name: "所属目标", rightContent: Text(taskState.goalName))
+            }
+            ExDivider()
         }
     }
     
@@ -74,54 +77,70 @@ struct TaskForm: View {
             TextField("任务标题", text: $taskState.name)
                 .font(.title)
                 .multilineTextAlignment(.leading)
-                .padding(.horizontal, 20)
                 .frame(height: 60)
-            Divider()
+            ExDivider()
         }
     }
 
     var taskDifficulty: some View {
-        Button(action: {
-            withAnimation {
-                isShowDifficultyPicker.toggle()
-                dismissKeyboard()
+        Group {
+            Button(action: {
+                withAnimation {
+                    isShowDifficultyPicker.toggle()
+                    dismissKeyboard()
+                }
+            }) {
+                FormItem(name: "难度", rightContent: Text(getDifficultyText(taskState.difficulty)))
             }
-        }) {
-            FormItem(name: "难度", valueView: Text(getDifficultyText(taskState.difficulty)))
+            ExDivider()
         }
     }
     
     var taskTimeCost: some View {
-        FormItem(
-            name: "估时（小时）",
-            valueView: MySlider(value: $taskState.timeCost, range: 1...10).frame(width: 150)
-        )
+        Group {
+            FormItem(name: "预计耗时", rightContent: Text("\(taskState.timeCost)小时"))
+            MySlider(value: $taskState.timeCost, range: 1...10)
+                .padding(.bottom, 20.0)
+            ExDivider()
+        }
     }
 
     var taskMyDay: some View {
-        FormItem(
-            name: "在“我的一天”中显示",
-            valueView: Toggle("", isOn:$taskState.starred)
-        )
+        Group {
+            FormItem(
+                name: "在“我的一天”中显示",
+                rightContent: Toggle("", isOn:$taskState.starred)
+            )
+            ExDivider()
+        }
     }
 
     var taskRepeat: some View {
-        Button(action: {
-            isShowRepeatPicker.toggle()
-            dismissKeyboard()
-        }) {
-            FormItem(
-                name: "重复频率",
-                valueView: Text(getRepeatFrequencyText(taskState.repeatFrequency))
-            )
+        Group {
+            Button(action: {
+                isShowRepeatPicker.toggle()
+                dismissKeyboard()
+            }) {
+                FormItem(
+                    name: "重复频率",
+                    rightContent: Text(getRepeatFrequencyText(taskState.repeatFrequency))
+                )
+            }
+            ExDivider()
         }
     }
 
     var repeatTimes: some View {
-        FormItem(
-            name: "重复次数",
-            valueView: MySlider(value: $taskState.repeatTimes, range: 1...50).frame(width: 150)
-        )
+        Group {
+            FormItem(name: "重复次数", rightContent: Text("\(taskState.repeatTimes)次"))
+            MySlider(value: $taskState.repeatTimes, range: 1...50)
+                .padding(.bottom, 20.0)
+            ExDivider()
+        }
+//        FormItem(
+//            name: "重复次数",
+//            rightContent: MySlider(value: $taskState.repeatTimes, range: 1...50).frame(width: 150)
+//        )
     }
 
     var taskDdl: some View {
@@ -132,7 +151,7 @@ struct TaskForm: View {
         }) {
             FormItem(
                 name: taskState.hasDdl ? "\(dateToString(taskState.ddl)) 截止" : "添加截止日期",
-                valueView: !taskState.hasDdl ? nil : Button(action: {
+                rightContent: !taskState.hasDdl ? nil : Button(action: {
                     taskState.hasDdl = false
                     taskState.ddl = Date()
                 }, label: {
@@ -222,6 +241,7 @@ struct TaskForm: View {
                     taskDdl
                     taskDesc
                 }
+                .padding(.horizontal, 25)
                 .frame(
                     minWidth: 0,
                     maxWidth: .infinity,
