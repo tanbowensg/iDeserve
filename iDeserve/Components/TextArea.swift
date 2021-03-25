@@ -15,16 +15,16 @@ struct TextArea: View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             TextEditor(text: $text)
-                .font(.footnoteCustom)
+                .font(.footnote)
+                .lineSpacing(7)
             if text == "" {
                 Text(placeholder)
-                    .font(.bodyCustom)
+                    .font(.footnote)
                     .padding(.vertical, 7)
                     .padding(.horizontal,5)
             }
         }
-        .padding(.vertical, 20)
-        .padding(.horizontal, 15)
+        .padding(20)
         .background(Color.descBg)
         .foregroundColor(.rewardColor)
         .frame(minHeight: 109)

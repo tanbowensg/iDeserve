@@ -32,6 +32,18 @@ let RewardTypeText: [RewardType: String] = [
     .shopping: NSLocalizedString("购物", comment: ""),
 ]
 
+let DifficultyText: [Difficulty: String] = [
+    .easy: NSLocalizedString("轻松", comment: ""),
+    .medium: NSLocalizedString("普通", comment: ""),
+    .hard: NSLocalizedString("挑战", comment: "")
+]
+
+let DifficultyDescText: [Difficulty: String] = [
+    .easy: NSLocalizedString("不费吹灰之力就能完成。不过，奖励也低。", comment: ""),
+    .medium: NSLocalizedString("跟平时学习工作差不多的难度，还能接受。", comment: ""),
+    .hard: NSLocalizedString("必须全力以赴才能完成。但奖励也很丰厚。", comment: "")
+]
+
 let GOAL_RESULT_DESC_TITLE = NSLocalizedString("目标结算说明", comment: "目标结算说明弹窗的标题")
 let GOAL_RESULT_DESC = NSLocalizedString("目标结算奖励由一下几个部分构成：\n目标完成奖励：根据目标重要性，额外获得部分奖励\n完成了全部的重复次数：额外获得1.1倍奖励\n在截止日期前完成目标：额外获得1.1倍奖励", comment: "目标结算说明弹窗的内容")
 

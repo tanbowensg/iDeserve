@@ -19,7 +19,6 @@ struct TaskForm: View {
     @State var isShowGoalPicker = false
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
-    @State var isShowDifficultyPicker = false
 
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
@@ -83,15 +82,10 @@ struct TaskForm: View {
     }
 
     var taskDifficulty: some View {
-        Group {
-            Button(action: {
-                withAnimation {
-                    isShowDifficultyPicker.toggle()
-                    dismissKeyboard()
-                }
-            }) {
-                FormItem(name: "难度", rightContent: Text(getDifficultyText(taskState.difficulty)))
-            }
+        VStack(spacing: 0.0) {
+            FormItem(name: "难度", rightContent: Text(""))
+            DifficultyPicker(difficulty: $taskState.difficulty)
+                .padding(.bottom, 20.0)
             ExDivider()
         }
     }
@@ -250,7 +244,6 @@ struct TaskForm: View {
             MyPopup(isVisible: $isShowGoalPicker, content: goalPicker, background: Color.g10)
             MyPopup(isVisible: $isShowRepeatPicker, content: repeatPicker, background: Color.g10)
             MyPopup(isVisible: $isShowDatePicker, content: datePicker, background: Color.g10)
-            MyPopup(isVisible: $isShowDifficultyPicker, content: DifficultyPicker(difficulty: $taskState.difficulty, isShow: $isShowDifficultyPicker))
         }
             .onAppear(perform: onAppear)
     }
