@@ -61,9 +61,6 @@ func reduceRecords (records: [Record], from: Date, to: Date) -> [DayStat] {
 
 
     var results: [DayStat] = []
-    if dayStats.count == 0 {
-        return []
-    }
 
     //给一段时间头尾补上日期，正好能凑满一周
     let fromWeekDay = Calendar.current.dateComponents([Calendar.Component.weekday], from: from).weekday!
