@@ -61,6 +61,7 @@ extension Color {
     public static var remainTextColor = Color(UIColor(named: "remainTextColor")!)
     
     
+    public static var descBg = Color.init("descBg")
     public static var placeholder = Color.init("placeholder")
     public static var subtitle = Color.init("subtitle")
     public static var body = Color.init("body")

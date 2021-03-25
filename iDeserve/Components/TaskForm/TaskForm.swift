@@ -137,10 +137,6 @@ struct TaskForm: View {
                 .padding(.bottom, 20.0)
             ExDivider()
         }
-//        FormItem(
-//            name: "重复次数",
-//            rightContent: MySlider(value: $taskState.repeatTimes, range: 1...50).frame(width: 150)
-//        )
     }
 
     var taskDdl: some View {
@@ -222,9 +218,7 @@ struct TaskForm: View {
 //    备注
     var taskDesc: some View {
         TextArea(placeholder: "备注", text: $taskState.desc)
-            .font(.bodyCustom)
-            .padding(16)
-            .frame(height: 300)
+            .padding(.top, 10.0)
     }
 
     var body: some View {
