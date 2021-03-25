@@ -52,7 +52,7 @@ struct FormItemPreviewWrapper: View {
             FormItem(
                 icon: Image(systemName: "gamecontroller"),
                 name: "分数",
-                valueView: Text("20")
+                valueView: Text("Easy")
             )
             FormItem(
                 icon: Image(systemName: "gamecontroller"),

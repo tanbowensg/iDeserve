@@ -72,7 +72,7 @@ struct TaskForm: View {
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $taskState.name)
-                .font(.headlineCustom)
+                .font(.title)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 20)
                 .frame(height: 60)
@@ -208,6 +208,7 @@ struct TaskForm: View {
 //    备注
     var taskDesc: some View {
         TextArea(placeholder: "备注", text: $taskState.desc)
+            .font(.bodyCustom)
             .padding(16)
             .frame(height: 300)
     }
@@ -250,7 +251,8 @@ struct TaskFormPreviewWrapper: View {
     @State var taskState = TaskState(nil)
 
     var body: some View {
-        TaskForm(taskState: $taskState)
+        taskState.name = "赚一百万"
+        return TaskForm(taskState: $taskState)
     }
 }
 
