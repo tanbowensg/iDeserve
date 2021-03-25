@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FormItem<Content: View>: View {
-    var icon: Image
     var name: String
     var valueView: Content
     var onClickHelp: (() -> Void)?
@@ -16,12 +15,9 @@ struct FormItem<Content: View>: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                icon
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
                 Text(name)
                     .font(.subheadCustom)
+                    .foregroundColor(.subtitle)
                 
                 onClickHelp == nil ? nil : Image(systemName: "questionmark.circle")
                     .resizable()
@@ -34,10 +30,10 @@ struct FormItem<Content: View>: View {
                 Spacer()
                 valueView
                     .font(.subheadCustom)
+                    .foregroundColor(.body)
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 25)
             .padding(.vertical, 20)
-            .frame(height: 56.0)
             Divider()
         }
         .foregroundColor(.myBlack)
@@ -50,12 +46,10 @@ struct FormItemPreviewWrapper: View {
     var body: some View {
         VStack(spacing: 0.0) {
             FormItem(
-                icon: Image(systemName: "gamecontroller"),
                 name: "分数",
                 valueView: Text("Easy")
             )
             FormItem(
-                icon: Image(systemName: "gamecontroller"),
                 name: "开关",
                 valueView: Toggle("", isOn: $isOn)
             )

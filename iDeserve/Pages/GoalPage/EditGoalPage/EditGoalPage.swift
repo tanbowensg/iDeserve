@@ -63,7 +63,6 @@ struct EditGoalPage: View {
             }
         }) {
             FormItem(
-                icon: Image(systemName: "square.grid.2x2"),
                 name: "类别",
                 valueView: GoalIcon(goalType: type, size: 40)
             )
@@ -78,7 +77,6 @@ struct EditGoalPage: View {
             }
         }) {
             FormItem(
-                icon: Image(systemName: "lightbulb"),
                 name: "重要性",
                 valueView: Text(getImportanceText(importance))
             )

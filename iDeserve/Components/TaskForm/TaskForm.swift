@@ -41,7 +41,7 @@ struct TaskForm: View {
             isShowGoalPicker.toggle()
             dismissKeyboard()
         }) {
-            FormItem(icon: Image(systemName: "largecircle.fill.circle"), name: "所属目标", valueView: Text(taskState.goalName))
+            FormItem(name: "所属目标", valueView: Text(taskState.goalName))
         }
     }
     
@@ -87,13 +87,12 @@ struct TaskForm: View {
                 dismissKeyboard()
             }
         }) {
-            FormItem(icon: Image(systemName: "speedometer"), name: "难度", valueView: Text(getDifficultyText(taskState.difficulty)))
+            FormItem(name: "难度", valueView: Text(getDifficultyText(taskState.difficulty)))
         }
     }
     
     var taskTimeCost: some View {
         FormItem(
-            icon: Image(systemName: "timer"),
             name: "估时（小时）",
             valueView: MySlider(value: $taskState.timeCost, range: 1...10).frame(width: 150)
         )
@@ -101,7 +100,6 @@ struct TaskForm: View {
 
     var taskMyDay: some View {
         FormItem(
-            icon: Image(systemName: "sun.max"),
             name: "在“我的一天”中显示",
             valueView: Toggle("", isOn:$taskState.starred)
         )
@@ -113,7 +111,6 @@ struct TaskForm: View {
             dismissKeyboard()
         }) {
             FormItem(
-                icon: Image(systemName: "repeat"),
                 name: "重复频率",
                 valueView: Text(getRepeatFrequencyText(taskState.repeatFrequency))
             )
@@ -122,7 +119,6 @@ struct TaskForm: View {
 
     var repeatTimes: some View {
         FormItem(
-            icon: Image(systemName: "repeat"),
             name: "重复次数",
             valueView: MySlider(value: $taskState.repeatTimes, range: 1...50).frame(width: 150)
         )
@@ -135,7 +131,6 @@ struct TaskForm: View {
             dismissKeyboard()
         }) {
             FormItem(
-                icon: Image(systemName: "calendar"),
                 name: taskState.hasDdl ? "\(dateToString(taskState.ddl)) 截止" : "添加截止日期",
                 valueView: !taskState.hasDdl ? nil : Button(action: {
                     taskState.hasDdl = false

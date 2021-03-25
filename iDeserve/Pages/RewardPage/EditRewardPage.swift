@@ -55,7 +55,6 @@ struct EditRewardPage: View {
     var rewardType: some View {
         Button(action: { isShowTypePicker.toggle() }) {
             FormItem(
-                icon: Image(systemName: "square.grid.2x2"),
                 name: "类别",
                 valueView: Text(RewardTypeText[type] ?? "未知类别")
             )
@@ -64,7 +63,6 @@ struct EditRewardPage: View {
 
     var rewardValue: some View {
         FormItem(
-            icon: Image("NutIcon"),
             name: "所需坚果数",
             valueView: TextField("10", text: $value)
                 .multilineTextAlignment(.trailing)
@@ -75,7 +73,6 @@ struct EditRewardPage: View {
 
     var rewardRepeat: some View {
         FormItem(
-            icon: Image(systemName: "repeat"),
             name: "可重复兑换",
             valueView: Toggle("", isOn: $isRepeat)
         )

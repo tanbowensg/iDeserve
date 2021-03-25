@@ -59,4 +59,10 @@ extension Color {
     public static var myBlack = Color(UIColor(named: "black")!)
     public static var rewardColor = Color(UIColor(named: "rewardColor")!)
     public static var remainTextColor = Color(UIColor(named: "remainTextColor")!)
+    
+    
+    public static var placeholder = Color.init("placeholder")
+    public static var subtitle = Color.init("subtitle")
+    public static var body = Color.init("body")
+    public static var caption = Color.init("caption")
 }
