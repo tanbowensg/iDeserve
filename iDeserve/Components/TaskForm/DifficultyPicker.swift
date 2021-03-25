@@ -15,9 +15,11 @@ struct DifficultyPicker: View {
 
         return Button(action: { difficulty = d }) {
             Text(DifficultyText[d]!)
-                .font(.subheadCustom)
+                .font(.footnoteCustom)
                 .foregroundColor(isCurrent ? Color.white : Color.body)
-                .frame(width: 100.0, height: 32.0)
+                .frame(height: 12)
+                .padding(.vertical, 10)
+                .frame(width: 100.0, height: 32)
                 .background(isCurrent ? Color.hospitalGreen : Color.white)
                 .cornerRadius(16)
         }

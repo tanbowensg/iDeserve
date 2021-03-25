@@ -16,7 +16,6 @@ struct TaskForm: View {
     @Binding var taskState: TaskState
     var showGoal: Bool = false
     @State private var speed = 5
-    @State var isShowGoalPicker = false
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
 
@@ -35,48 +34,42 @@ struct TaskForm: View {
         }
     }
 
-    var taskGoal: some View {
-        Group {
-            Button(action: {
-                isShowGoalPicker.toggle()
-                dismissKeyboard()
-            }) {
-                FormItem(name: "所属目标", rightContent: Text(taskState.goalName))
-            }
-            ExDivider()
-        }
-    }
-    
-//    目标选择器
-    var goalPicker: some View {
-        return VStack(alignment: .trailing, spacing: 0) {
-            Button(action: {
-                isShowGoalPicker.toggle()
-                dismissKeyboard()
-            }) {
-                Text("确认")
-            }
-                .padding(8)
-            Picker("所属目标", selection: $taskState.goalId) {
-                ForEach(goals, id: \.id) {goalOption in
-                    Text(goalOption.name!).tag(goalOption)
-                }
-                .labelsHidden()
-            }
-            .onChange (of: taskState.goalId) { selectedGoalId in
-                let targetGoal = goals.first{ $0.id == selectedGoalId }
-                taskState.goalName = targetGoal!.name!
-             }
-        }
-            .background(Color.g10)
-    }
-
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $taskState.name)
-                .font(.title)
+                .font(.titleCustom)
                 .multilineTextAlignment(.leading)
-                .frame(height: 60)
+                .padding(.vertical, 20)
+            ExDivider()
+        }
+    }
+
+    var taskGoal: some View {
+        let goalMenu = Menu {
+            ForEach(goals, id: \.id) {goalOption in
+                Button(action: {
+                    let targetGoal = goals.first{ $0.id == goalOption.id }
+                    taskState.goalName = targetGoal!.name!
+                }) {
+                    Text(goalOption.name!)
+                }
+            }
+        } label: {
+            HStack(spacing: 20.0) {
+                Text(taskState.goalName)
+                Image(systemName: "chevron.down")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 16.0)
+            }
+            .padding(10)
+            .frame(minWidth: 100)
+            .frame(height: 32)
+            .background(Color.white.cornerRadius(10).shadow(color: .shadow2, radius: 2, x: 0, y: 1))
+        }
+        
+        return Group {
+            FormItem(name: "所属目标", rightContent: goalMenu)
             ExDivider()
         }
     }
@@ -103,7 +96,7 @@ struct TaskForm: View {
         Group {
             FormItem(
                 name: "在“我的一天”中显示",
-                rightContent: Toggle("", isOn:$taskState.starred)
+                rightContent: Toggle("", isOn:$taskState.starred).toggleStyle(SwitchToggleStyle(tint: .hospitalGreen))
             )
             ExDivider()
         }
@@ -241,7 +234,6 @@ struct TaskForm: View {
             .onTapGesture {
                 dismissKeyboard()
             }
-            MyPopup(isVisible: $isShowGoalPicker, content: goalPicker, background: Color.g10)
             MyPopup(isVisible: $isShowRepeatPicker, content: repeatPicker, background: Color.g10)
             MyPopup(isVisible: $isShowDatePicker, content: datePicker, background: Color.g10)
         }
@@ -254,7 +246,7 @@ struct TaskFormPreviewWrapper: View {
 
     var body: some View {
         taskState.name = "赚一百万"
-        return TaskForm(taskState: $taskState)
+        return TaskForm(taskState: $taskState, showGoal: true)
     }
 }
 
