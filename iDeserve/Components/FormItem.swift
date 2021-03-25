@@ -21,7 +21,7 @@ struct FormItem<Content: View>: View {
                     .scaledToFit()
                     .frame(width: 16, height: 16)
                 Text(name)
-                    .font(.hiraginoSansGb14)
+                    .font(.subheadCustom)
                 
                 onClickHelp == nil ? nil : Image(systemName: "questionmark.circle")
                     .resizable()
@@ -33,7 +33,7 @@ struct FormItem<Content: View>: View {
                 
                 Spacer()
                 valueView
-                    .font(.hiraginoSansGb14)
+                    .font(.subheadCustom)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 20)

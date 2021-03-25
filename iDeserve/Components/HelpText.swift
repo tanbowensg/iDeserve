@@ -13,8 +13,8 @@ struct HelpText: View {
     
     var body: some View {
         VStack(spacing: 10.0) {
-            Text(title).font(.hiraginoSansGb16).multilineTextAlignment(.center)
-            Text(text).font(.hiraginoSansGb14w3).multilineTextAlignment(.leading).lineSpacing(8)
+            Text(title).font(.headlineCustom).multilineTextAlignment(.center)
+            Text(text).font(.bodyCustom).multilineTextAlignment(.leading).lineSpacing(8)
         }
         .frame(width: 240.0)
         .padding(25.0)

@@ -21,10 +21,10 @@ struct GoalItemView: View {
             VStack(alignment: .leading) {
                 Text(name)
                     .strikethrough(isDone)
-                    .font(.hiraginoSansGb14)
+                    .font(.subheadCustom)
                     .padding(.bottom, 2.0)
                 Text("\(taskNum) 个任务")
-                    .font(.hiraginoSansGb12)
+                    .font(.footnoteCustom)
                     .foregroundColor(.g60)
                     .padding(.bottom, 4.0)
                 isDone ? nil : ProgressBar(value: progress)

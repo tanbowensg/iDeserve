@@ -68,7 +68,7 @@ struct RecordPage: View {
     
     var monthTitle: some View {
         Text("\(String(currentYear))年\(currentMonth)月")
-            .font(.hiraginoSansGb14)
+            .font(.subheadCustom)
             .fontWeight(.black)
             .padding(.vertical, 8)
     }

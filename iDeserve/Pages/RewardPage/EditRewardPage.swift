@@ -44,7 +44,7 @@ struct EditRewardPage: View {
     var rewardTitle: some View {
         Group {
             TextField("奖励标题", text: $name)
-                .font(.hiraginoSansGb16)
+                .font(.headlineCustom)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16.0)
                 .frame(height: 56)

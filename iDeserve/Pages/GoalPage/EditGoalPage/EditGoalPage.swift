@@ -109,7 +109,7 @@ struct EditGoalPage: View {
         return Group {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    Text("任务").font(.hiraginoSansGb16)
+                    Text("任务").font(.headlineCustom)
                     Spacer()
                     createTaskButton
                 }
@@ -120,7 +120,7 @@ struct EditGoalPage: View {
                         .foregroundColor(.g60)
                     NutIcon(value: tasksNutsSum, hidePlus: true)
                 }
-                    .font(.hiraginoSansGb12)
+                    .font(.footnoteCustom)
                     .padding(.horizontal, 20.0)
                     .padding(.bottom, 8.0)
                 ForEach (tasks, id: \.id) { task in

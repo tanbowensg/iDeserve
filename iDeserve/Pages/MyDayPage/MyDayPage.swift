@@ -43,7 +43,7 @@ struct MyDayPage: View {
     
     func header(_ text: String) -> some View {
         Text(text)
-            .font(.hiraginoSansGb14)
+            .font(.subheadCustom)
             .fontWeight(.bold)
             .padding(.leading, 30.0)
             .foregroundColor(.myBlack)

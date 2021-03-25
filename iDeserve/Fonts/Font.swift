@@ -30,14 +30,14 @@ extension UIFont {
 }
 
 extension Font {
-    public static var hiraginoSansGb9 = Font(UIFont(name: "HiraginoSansGB-W6", size: 9.0)!)
-    public static var hiraginoSansGb12 = Font(UIFont(name: "HiraginoSansGB-W6", size: 12.0)!)
-    public static var hiraginoSansGb14 = Font(UIFont(name: "HiraginoSansGB-W6", size: 14.0)!)
-    public static var hiraginoSansGb16 = Font(UIFont(name: "HiraginoSansGB-W6", size: 16.0)!)
-    public static var hiraginoSansGb26 = Font(UIFont(name: "HiraginoSansGB-W6", size: 26.0)!)
-    public static var hiraginoSansGb14w3 = Font(UIFont(name: "HiraginoSansGB-W3", size: 14.0)!)
-    public static var avenirBlack12 = Font(UIFont(name: "Avenir-Black", size: 12.0)!)
-    public static var avenirBlack14 = Font(UIFont(name: "Avenir-Black", size: 14.0)!)
+    public static var captionCustom = Font.custom("HiraginoSansGB-W6", size: 11)
+    public static var footnoteCustom = Font.custom("HiraginoSansGB-W6", size: 13)
+    public static var subheadCustom = Font.custom("HiraginoSansGB-W6", size: 15)
+    public static var bodyCustom = Font.custom("HiraginoSansGB-W3", size: 17)
+    public static var headlineCustom = Font.custom("HiraginoSansGB-W6", size: 17)
+    public static var titleCustom = Font.custom("HiraginoSansGB-W6", size: 28)
+    public static var avenirBlack12 = Font(UIFont(name: "Avenir-Black", size: 13.0)!)
+    public static var avenirBlack14 = Font(UIFont(name: "Avenir-Black", size: 15.0)!)
     public static var avenirBlack36 = Font(UIFont(name: "Avenir-Black", size: 36.0)!)
 }
 

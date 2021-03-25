@@ -45,7 +45,7 @@ struct TaskItem: View {
     
     var ddlText: some View {
         Text("到\(dateToString(task.ddl))截止")
-            .font(.hiraginoSansGb9)
+            .font(.captionCustom)
             .fontWeight(.bold)
             .foregroundColor(.remainTextColor)
             .frame(height: 16.0)
@@ -55,7 +55,7 @@ struct TaskItem: View {
         return Text("\(task.completeTimes)/\(task.repeatTimes)次")
             .foregroundColor(.remainTextColor)
             .fontWeight(.bold)
-            .font(.hiraginoSansGb9)
+            .font(.captionCustom)
             .frame(height: 16.0)
     }
     
@@ -63,7 +63,7 @@ struct TaskItem: View {
         return Text("下次刷新: \(dateToString(task.nextRefreshTime!, dateFormat: "M.dd H:mm"))")
             .foregroundColor(.remainTextColor)
             .fontWeight(.bold)
-            .font(.hiraginoSansGb9)
+            .font(.captionCustom)
             .frame(height: 16.0)
     }
 
@@ -81,7 +81,7 @@ struct TaskItem: View {
         VStack(alignment: .leading, spacing: 5) {
             (hideTag == true || task.goalName == "") ? nil : taskGoal
             Text(task.name)
-                .font(.hiraginoSansGb12)
+                .font(.footnoteCustom)
                 .fontWeight(.bold)
                 .frame(height: 24.0)
             taskInfo

@@ -76,7 +76,7 @@ struct RewardGrid: View {
     
     var soldoutLogo: some View {
         Text("Sold Out")
-            .font(.hiraginoSansGb14)
+            .font(.subheadCustom)
             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             .padding(4)
             .foregroundColor(.red)
@@ -98,7 +98,7 @@ struct RewardGrid: View {
             }
                 .frame(height: 20.0)
             Text(reward.name ?? "未知")
-                .font(.hiraginoSansGb14)
+                .font(.subheadCustom)
                 .fontWeight(.black)
                 .foregroundColor(.white)
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)

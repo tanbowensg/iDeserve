@@ -72,7 +72,7 @@ struct TaskForm: View {
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $taskState.name)
-                .font(.hiraginoSansGb16)
+                .font(.headlineCustom)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 20)
                 .frame(height: 60)

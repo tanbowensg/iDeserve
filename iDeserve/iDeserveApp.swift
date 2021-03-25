@@ -26,7 +26,7 @@ struct iDeserveApp: App {
                     .environmentObject(GlobalStore.shared)
                     .environmentObject(PointsStore.shared)
             }
-            .font(.hiraginoSansGb14)
+            .font(.subheadCustom)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {

@@ -48,7 +48,7 @@ struct RecordList: View {
             }
             records.count > 0 ? subtotal : nil
         }
-        .font(.hiraginoSansGb14)
+        .font(.subheadCustom)
     }
 }
 
@@ -74,7 +74,7 @@ struct RecordItem: View {
         HStack(alignment: .center, spacing: 6.0) {
             icon
             Text(record.name!)
-                .font(.hiraginoSansGb14w3)
+                .font(.bodyCustom)
             Spacer()
             NutIcon(value: Int(record.kind == RecordKind.reward.rawValue ? -record.value : record.value))
         }

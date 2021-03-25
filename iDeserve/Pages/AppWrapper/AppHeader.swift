@@ -47,7 +47,7 @@ struct AppHeader: View {
             HStack {
                 Text(title)
                     .foregroundColor(.white)
-                    .font(.hiraginoSansGb26)
+                    .font(.titleCustom)
                     .fontWeight(.black)
                     .lineLimit(1)
                 Spacer()

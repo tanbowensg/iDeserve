@@ -83,7 +83,7 @@ struct RewardPage: View {
 
     private var soldoutRewardsView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
-            Text("已兑换的奖励").font(.hiraginoSansGb14).fontWeight(.medium)
+            Text("已兑换的奖励").font(.subheadCustom).fontWeight(.medium)
             rewardGridLayout(rewards: soldoutRewards)
         }.padding(.top, 8)
     }

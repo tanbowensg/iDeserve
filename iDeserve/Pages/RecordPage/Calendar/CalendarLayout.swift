@@ -29,7 +29,7 @@ struct CalendarLayout: View {
             ) {
                 ForEach(["日", "一", "二", "三", "四", "五", "六"], id: \.self) {text in
                     Text(text)
-                        .font(.hiraginoSansGb12)
+                        .font(.footnoteCustom)
                         .fontWeight(.light)
                         .padding(4)
                         .frame(height: 20)

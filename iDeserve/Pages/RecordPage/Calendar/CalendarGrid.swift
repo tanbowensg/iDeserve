@@ -27,7 +27,7 @@ struct CalendarGrid: View {
     
     var grid: some View {
         Text(isCurrentMonth ? String(day) : "")
-            .font(.hiraginoSansGb14)
+            .font(.subheadCustom)
             .fontWeight(.black)
             .frame(width: CGFloat(size - padding * 2), height: CGFloat(size - padding * 2))
             .background(dayStat.income > 0 ?
