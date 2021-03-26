@@ -24,6 +24,7 @@ struct MySlider: View {
                     thumbInteractiveSize: CGSize(width: 20, height: 20)
                 )
             )
+            .frame(height: 20)
     }
 }
 
