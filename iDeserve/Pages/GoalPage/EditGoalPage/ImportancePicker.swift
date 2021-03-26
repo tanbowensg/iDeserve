@@ -9,45 +9,42 @@ import SwiftUI
 
 struct ImportancePicker: View {
     @Binding var importance: Importance
-    @Binding var isShow: Bool
+    
+    func button(_ i: Importance) -> some View {
+        let isCurrent = importance == i
+
+        return Button(action: { importance = i }) {
+            Text(ImportanceText[i]!)
+                .font(.footnoteCustom)
+                .foregroundColor(isCurrent ? Color.white : Color.body)
+                .frame(height: 12)
+                .padding(.vertical, 10)
+                .frame(width: 100.0, height: 32)
+                .background(isCurrent ? Color.hospitalGreen : Color.white)
+                .cornerRadius(16)
+        }
+    }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            PickerBlock(title: "普通", subtitle: "普通的目标。", isHighlight: importance == Importance.normal)
-                .onTapGesture {
-                    withAnimation {
-                        importance = Importance.normal
-                        isShow = false
-                    }
+        VStack(alignment: .leading, spacing: 20.0) {
+            HStack {
+                ForEach(Importance.allCases, id: \.self) { i in
+                    button(i)
+                    Spacer()
                 }
-            
-            PickerBlock(title: "重要", subtitle: "必须要完成。有额外奖励。", isHighlight: importance == Importance.important)
-                .onTapGesture {
-                    withAnimation {
-                        importance = Importance.important
-                        isShow = false
-                    }
-                }
-            
-            PickerBlock(title: "史诗", subtitle: "非完成不可，影响重大。有大量额外奖励。", isHighlight: importance == Importance.epic)
-                .onTapGesture {
-                    withAnimation {
-                        importance = Importance.epic
-                        isShow = false
-                    }
-                }
+            }
+            Text(ImportanceDescText[importance]!)
+                .foregroundColor(.caption)
+                .font(.caption)
         }
-        .padding(.top, 20)
-        .background(Color.white)
     }
 }
 
 struct ImportancePicker_Previews_Wrapper: View {
     @State var importance = Importance.normal
-    @State var isShow: Bool = false
 
     var body: some View {
-        ImportancePicker(importance: $importance, isShow: $isShow)
+        ImportancePicker(importance: $importance)
     }
 }
 

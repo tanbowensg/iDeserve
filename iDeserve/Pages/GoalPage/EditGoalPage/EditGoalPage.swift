@@ -22,7 +22,6 @@ struct EditGoalPage: View {
 
     @State var taskCache: TaskState = TaskState(nil)
     
-    @State var isShowImportancePicker = false
     @State var isShowTypePicker = false
     @State var isShowTaskSheet = false
 
@@ -84,30 +83,28 @@ struct EditGoalPage: View {
     }
 
     var goalType: some View {
-        Button(action: {
-            withAnimation {
-                dismissKeyboard()
-                isShowTypePicker.toggle()
+        VStack(spacing: 0.0) {
+            Button(action: {
+                withAnimation {
+                    dismissKeyboard()
+                    isShowTypePicker.toggle()
+                }
+            }) {
+                FormItem(
+                    name: "类别",
+                    rightContent: GoalIcon(goalType: type, size: 40)
+                )
             }
-        }) {
-            FormItem(
-                name: "类别",
-                rightContent: GoalIcon(goalType: type, size: 40)
-            )
+            ExDivider()
         }
     }
 
     var goalImportance: some View {
-        Button(action: {
-            withAnimation {
-                dismissKeyboard()
-                isShowImportancePicker.toggle()
-            }
-        }) {
-            FormItem(
-                name: "重要性",
-                rightContent: Text(getImportanceText(importance))
-            )
+        VStack(spacing: 0.0) {
+            FormItem(name: "重要性", rightContent: Text(""))
+            ImportancePicker(importance: $importance)
+                .padding(.bottom, 20.0)
+            ExDivider()
         }
     }
     
@@ -190,7 +187,6 @@ struct EditGoalPage: View {
                     .padding(.horizontal, 25)
                 }
             }
-            MyPopup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance, isShow: $isShowImportancePicker))
             MyPopup(isVisible: $isShowTypePicker, content: GoalTypePicker(selectedType: $type))
         }
         .onTapGesture {

@@ -39,7 +39,7 @@ struct CompleteGoalView: View {
             if isShowResult {
                 VStack(spacing: 6.0) {
                     HStack {
-                        Text("\(getImportanceText(goalReward!.importance))目标固定奖励").font(.avenirBlack14)
+                        Text("\(ImportanceText[goalReward!.importance]!)目标固定奖励").font(.avenirBlack14)
                         Spacer()
                         NutIcon(value: goalReward!.fixedReward, hidePlus: true)
                     }

@@ -44,6 +44,18 @@ let DifficultyDescText: [Difficulty: String] = [
     .hard: NSLocalizedString("必须全力以赴才能完成。但奖励也很丰厚。", comment: "")
 ]
 
+let ImportanceText: [Importance: String] = [
+    .normal: NSLocalizedString("轻松", comment: ""),
+    .important: NSLocalizedString("普通", comment: ""),
+    .epic: NSLocalizedString("挑战", comment: "")
+]
+
+let ImportanceDescText: [Importance: String] = [
+    .normal: NSLocalizedString("普通的目标。", comment: ""),
+    .important: NSLocalizedString("必须要完成。有额外奖励。", comment: ""),
+    .epic: NSLocalizedString("非完成不可，影响重大。有大量额外奖励。", comment: "")
+]
+
 let GOAL_RESULT_DESC_TITLE = NSLocalizedString("目标结算说明", comment: "目标结算说明弹窗的标题")
 let GOAL_RESULT_DESC = NSLocalizedString("目标结算奖励由一下几个部分构成：\n目标完成奖励：根据目标重要性，额外获得部分奖励\n完成了全部的重复次数：额外获得1.1倍奖励\n在截止日期前完成目标：额外获得1.1倍奖励", comment: "目标结算说明弹窗的内容")
 
