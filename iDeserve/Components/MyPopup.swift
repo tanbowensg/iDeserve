@@ -16,7 +16,7 @@ struct MyPopup<Content: View>: View {
     var body: some View {
         ZStack(alignment: alignment) {
             if isVisible {
-            Color.black.opacity(0.3)
+            Color.popupMask
                 .onTapGesture {
                     isVisible.toggle()
                 }

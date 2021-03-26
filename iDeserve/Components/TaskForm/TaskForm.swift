@@ -155,22 +155,27 @@ struct TaskForm: View {
     }
 
     var taskDdl: some View {
-        Button(action: {
+        let cancelBtn =  Button(action: {
+            taskState.hasDdl = false
+            taskState.ddl = Date()
+        }, label: {
+            Image(systemName: "xmark.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16, height: 16, alignment: .center)
+        })
+        
+        return Button(action: {
             taskState.hasDdl = true
             isShowDatePicker.toggle()
             dismissKeyboard()
         }) {
             FormItem(
-                name: taskState.hasDdl ? "\(dateToString(taskState.ddl)) 截止" : "添加截止日期",
-                rightContent: !taskState.hasDdl ? nil : Button(action: {
-                    taskState.hasDdl = false
-                    taskState.ddl = Date()
-                }, label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 16, height: 16, alignment: .center)
-                })
+                name: "截止日期",
+                rightContent: HStack {
+                    taskState.hasDdl ? Text("\(dateToString(taskState.ddl)) ") : Text("无")
+                    taskState.hasDdl ? cancelBtn : nil
+                }
             )
         }
     }
@@ -207,27 +212,30 @@ struct TaskForm: View {
                 .labelsHidden()
             }
         }
-            .background(Color.g10)
+        .background(Color.white.cornerRadius(20))
     }
     
 //    日期选择
     var datePicker: some View {
-        VStack(alignment: .trailing, spacing: 0) {
+        VStack(alignment: .trailing, spacing: 10) {
             Button(action: {
                 isShowDatePicker.toggle()
             }) {
                 Text("确认")
+                    .font(.subheadCustom)
+                    .foregroundColor(.hospitalGreen)
             }
-                .padding(8)
             DatePicker(
                 "日期选择",
                 selection: $taskState.ddl,
                 displayedComponents: .date
             )
+                .accentColor(.hospitalGreen)
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .labelsHidden()
         }
-            .background(Color.g10)
+        .padding([.top, .leading, .trailing], 20)
+        .background(Color.white.cornerRadius(20))
     }
     
 //    备注
@@ -258,10 +266,12 @@ struct TaskForm: View {
             .onTapGesture {
                 dismissKeyboard()
             }
-            MyPopup(isVisible: $isShowRepeatPicker, content: repeatPicker, background: Color.g10)
-            MyPopup(isVisible: $isShowDatePicker, content: datePicker, background: Color.g10)
+            isShowDatePicker ? Color.popupMask : nil
+//            MyPopup(isVisible: $isShowRepeatPicker, content: repeatPicker, background: Color.g10)
+//            MyPopup(isVisible: $isShowDatePicker, content: datePicker, background: Color.g10)
         }
-            .onAppear(perform: onAppear)
+        .popup(isPresented: $isShowDatePicker, type: .floater(verticalPadding: 0), position: .bottom, animation: .easeOut(duration: 0.3), closeOnTap: false, closeOnTapOutside: true, view: { datePicker })
+        .onAppear(perform: onAppear)
     }
 }
 

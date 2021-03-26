@@ -26,6 +26,7 @@ struct iDeserveApp: App {
                     .environmentObject(GlobalStore.shared)
                     .environmentObject(PointsStore.shared)
             }
+            .accentColor(.hospitalGreen)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {
