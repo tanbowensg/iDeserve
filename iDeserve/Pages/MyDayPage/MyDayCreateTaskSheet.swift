@@ -39,11 +39,8 @@ struct MyDayCreateTaskSheet: View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
-            HStack {
-                Image(systemName: "chevron.left")
-                Text("返回")
-                    .frame(height: 30)
-            }
+            Image(systemName: "xmark")
+                .foregroundColor(.subtitle)
         }
     }
     
@@ -53,7 +50,8 @@ struct MyDayCreateTaskSheet: View {
             self.presentationMode.wrappedValue.dismiss()
         }) {
             Text("保存")
-                .frame(height: 30)
+                .font(.subheadCustom)
+                .foregroundColor(.hospitalGreen)
         }
     }
 
@@ -62,9 +60,13 @@ struct MyDayCreateTaskSheet: View {
             HStack {
                 backBtn
                 Spacer()
+                Text("创建任务").font(.headlineCustom).foregroundColor(.body)
+                Spacer()
                 saveBtn
             }
-            .padding(.horizontal, 16.0)
+            .padding(.vertical, 30.0)
+            .padding(.horizontal, 25.0)
+            ExDivider()
             TaskForm(taskState: $newTaskState, showGoal: true).id(newTaskState.id)
         }
     }

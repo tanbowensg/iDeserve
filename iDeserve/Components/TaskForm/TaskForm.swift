@@ -57,16 +57,16 @@ struct TaskForm: View {
         } label: {
             HStack(spacing: 20.0) {
                 Text(taskState.goalName)
+                    .font(.footnoteCustom)
                 Image(systemName: "chevron.down")
-                    .resizable()
-                    .scaledToFit()
                     .frame(width: 16.0)
             }
             .padding(10)
             .frame(minWidth: 100)
             .frame(height: 32)
-            .background(Color.white.cornerRadius(10).shadow(color: .shadow2, radius: 2, x: 0, y: 1))
+            .background(Color.white.cornerRadius(10).shadow(color: .shadow2, radius: 2, x: 0, y: 2))
         }
+        .animation(.none)
         
         return Group {
             FormItem(name: "所属目标", rightContent: goalMenu)

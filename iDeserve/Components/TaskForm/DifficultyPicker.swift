@@ -35,7 +35,7 @@ struct DifficultyPicker: View {
             }
             Text(DifficultyDescText[difficulty]!)
                 .foregroundColor(.caption)
-                .font(.footnoteCustom)
+                .font(.caption)
         }
     }
 }
