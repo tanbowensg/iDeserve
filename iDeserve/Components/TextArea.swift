@@ -17,10 +17,20 @@ struct TextArea: View {
             TextEditor(text: $text)
                 .font(.footnote)
                 .lineSpacing(7)
+                .zIndex(1)
+            Text(text)
+                .opacity(0)
+                .font(.footnote)
+                .lineSpacing(7)
+                .padding(.vertical, 8)
+                .padding(.horizontal,5)
+                .fixedSize(horizontal: false, vertical: true)
+                .zIndex(-1)
+                .disabled(true)
             if text == "" {
                 Text(placeholder)
                     .font(.footnote)
-                    .padding(.vertical, 7)
+                    .padding(.vertical, 8)
                     .padding(.horizontal,5)
             }
         }
@@ -36,7 +46,7 @@ struct TextArea: View {
 }
 
 struct TextAreaPreviewWrapper: View {
-    @State var text = ""
+    @State var text = "sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf"
 
     var body: some View {
         return TextArea(placeholder: "备注", text: $text)
