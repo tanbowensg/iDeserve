@@ -35,15 +35,15 @@ struct GoalTasksSheet: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0.0) {
-            HStack {
-                backBtn
-                Spacer()
-                saveBtn
+        TaskForm(
+            taskState: $taskState,
+            showGoal: false,
+            onTapClose: { self.presentationMode.wrappedValue.dismiss() },
+            onTapSave: {
+                onSave()
+                self.presentationMode.wrappedValue.dismiss()
             }
-            .padding(.horizontal, 16.0)
-            TaskForm(taskState: $taskState)
-        }
+        )
     }
 }
 

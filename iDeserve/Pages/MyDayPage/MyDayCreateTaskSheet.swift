@@ -14,7 +14,6 @@ struct MyDayCreateTaskSheet: View {
     @State var newTaskState: TaskState
     
     init(task: Task?) {
-        print("init")
 //        从我的一天创建的任务默认添加到我的一天
         var taskState = TaskState(task ?? nil)
         if task == nil {
@@ -35,39 +34,15 @@ struct MyDayCreateTaskSheet: View {
         }
     }
 
-    var backBtn: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            Image(systemName: "xmark")
-                .foregroundColor(.subtitle)
-        }
-    }
-    
-    var saveBtn: some View {
-        Button(action: {
-            self.saveTask()
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            Text("保存")
-                .font(.subheadCustom)
-                .foregroundColor(.hospitalGreen)
-        }
-    }
-
     var body: some View {
-        VStack(alignment: .leading, spacing: 0.0) {
-            HStack {
-                backBtn
-                Spacer()
-                Text("创建任务").font(.headlineCustom).foregroundColor(.body)
-                Spacer()
-                saveBtn
+        TaskForm(
+            taskState: $newTaskState,
+            showGoal: true,
+            onTapClose: { self.presentationMode.wrappedValue.dismiss() },
+            onTapSave: {
+                saveTask()
+                self.presentationMode.wrappedValue.dismiss()
             }
-            .padding(.vertical, 30.0)
-            .padding(.horizontal, 25.0)
-            ExDivider()
-            TaskForm(taskState: $newTaskState, showGoal: true).id(newTaskState.id)
-        }
+        ).id(newTaskState.id)
     }
 }

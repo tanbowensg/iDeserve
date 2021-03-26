@@ -15,13 +15,6 @@ struct EditTaskPage: View {
     var originTask: Task?
     var goal: Goal?
     @State var taskState: TaskState
-
-//    @State var name: String = ""
-//    @State var value: String = "0"
-//    @State var repeatFrequency: RepeatFrequency = RepeatFrequency.never
-//    @State var hasDdl: Bool = false
-//    @State var ddl: Date = Date()
-//    @State var desc = ""
     
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
@@ -47,11 +40,15 @@ struct EditTaskPage: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            backBtn
-            TaskForm(taskState: $taskState)
-                .navigationBarHidden(true)
-        }
+        TaskForm(
+            taskState: $taskState,
+            showGoal: false,
+            onTapClose: { self.presentationMode.wrappedValue.dismiss() },
+            onTapSave: {
+                saveTask()
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        )
     }
     
     func saveTask () {

@@ -15,6 +15,8 @@ struct TaskForm: View {
 
     @Binding var taskState: TaskState
     var showGoal: Bool = false
+    var onTapClose: () -> Void
+    var onTapSave: () -> Void
     @State private var speed = 5
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
@@ -27,10 +29,36 @@ struct TaskForm: View {
         return request
     }
     
+    var isEdit: Bool {
+        taskState.originTask != nil
+    }
+    
     func onAppear () {
         if taskState.goalId == nil && goals.count > 0 {
             taskState.goalId = goals[0].id!
             taskState.goalName = goals[0].name!
+        }
+    }
+    
+    var header: some View {
+        Group {
+            HStack {
+                Button(action: { onTapClose() }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.subtitle)
+                }
+                Spacer()
+                Text(isEdit ? "编辑任务" : "创建任务").font(.headlineCustom).foregroundColor(.body)
+                Spacer()
+                Button(action: { onTapSave() }) {
+                    Text("保存")
+                        .font(.subheadCustom)
+                        .foregroundColor(.hospitalGreen)
+                }
+            }
+            .padding(.vertical, 30.0)
+            .padding(.horizontal, 25.0)
+            ExDivider()
         }
     }
 
@@ -210,26 +238,29 @@ struct TaskForm: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0.0) {
-                    taskTitle
-                    showGoal ? taskGoal : nil
-                    taskDifficulty
-                    taskTimeCost
-                    taskMyDay
-                    taskRepeat
-                    taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
-                    taskDdl
-                    taskDesc
+            VStack(spacing: 0.0) {
+                header
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0.0) {
+                        taskTitle
+                        showGoal ? taskGoal : nil
+                        taskDifficulty
+                        taskTimeCost
+                        taskMyDay
+                        taskRepeat
+                        taskState.repeatFrequency != RepeatFrequency.never ? repeatTimes : nil
+                        taskDdl
+                        taskDesc
+                    }
+                    .padding(.horizontal, 25)
+                    .frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        minHeight: 0,
+                        maxHeight: .infinity,
+                        alignment: .topLeading
+                    )
                 }
-                .padding(.horizontal, 25)
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: .infinity,
-                    alignment: .topLeading
-                )
             }
             .onTapGesture {
                 dismissKeyboard()
@@ -246,7 +277,7 @@ struct TaskFormPreviewWrapper: View {
 
     var body: some View {
         taskState.name = "赚一百万"
-        return TaskForm(taskState: $taskState, showGoal: true)
+        return TaskForm(taskState: $taskState, showGoal: true, onTapClose: emptyFunc, onTapSave: emptyFunc)
     }
 }
 
