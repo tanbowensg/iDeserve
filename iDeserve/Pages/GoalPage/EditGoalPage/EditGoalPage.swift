@@ -43,15 +43,43 @@ struct EditGoalPage: View {
             }
         }
     }
+    
+    var header: some View {
+        Group {
+            HStack {
+                Button(action: {
+                    dismissKeyboard()
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.subtitle)
+                }
+                Spacer()
+                Text(initGoal == nil ? "创建目标" : "编辑目标").font(.headlineCustom).foregroundColor(.body)
+                Spacer()
+                Button(action: {
+                    dismissKeyboard()
+                    self.saveGoal()
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("保存")
+                        .font(.subheadCustom)
+                        .foregroundColor(.hospitalGreen)
+                }
+            }
+            .padding(.vertical, 30.0)
+            .padding(.horizontal, 25.0)
+            ExDivider()
+        }
+    }
 
     var goalTitle: some View {
         Group {
             TextField("目标标题", text: $name)
-                .font(.title)
+                .font(.titleCustom)
                 .multilineTextAlignment(.leading)
-                .padding(.horizontal, 20.0)
-                .frame(height: 40)
-            Divider()
+                .padding(.vertical, 20)
+            ExDivider()
         }
     }
 
@@ -111,7 +139,6 @@ struct EditGoalPage: View {
                     Spacer()
                     createTaskButton
                 }
-                    .padding(.horizontal, 20.0)
                     .padding(.vertical, 16.0)
                 HStack(spacing: 0) {
                     Text("共计 \(tasks.count) 个任务，全部完成可得")
@@ -119,7 +146,6 @@ struct EditGoalPage: View {
                     NutIcon(value: tasksNutsSum, hidePlus: true)
                 }
                     .font(.footnoteCustom)
-                    .padding(.horizontal, 20.0)
                     .padding(.bottom, 8.0)
                 ForEach (tasks, id: \.id) { task in
                     let disabledComplete = initGoal == nil || task.done
@@ -150,45 +176,19 @@ struct EditGoalPage: View {
         }
     }
 
-    var backBtn: some View {
-        Button(action: {
-            dismissKeyboard()
-            self.saveGoal()
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack {
-                Image(systemName: "chevron.left")
-                    .padding(.leading, 16.0)
-                Text("目标列表")
-                
-            }
-            .frame(height: 30)
-        }
-    }
-
     var body: some View {
         ZStack(alignment: .bottom) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    backBtn
-                    goalTitle
-                    goalType
-                    goalImportance
-//                    TODO：暂时取消备注这个设计，有点多余，还不好实现
-//                    TextEditor(text: $desc)
-//                        .padding(.horizontal, 20.0)
-//                        .padding(.vertical, 16.0)
-//                        .font(.hiraginoSansGb14)
-//                    Divider()
-                    goalTasks
+            VStack(spacing: 0.0) {
+                header
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        goalTitle
+                        goalType
+                        goalImportance
+                        goalTasks
+                    }
+                    .padding(.horizontal, 25)
                 }
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: .infinity,
-                    alignment: .topLeading
-                )
             }
             MyPopup(isVisible: $isShowImportancePicker, content: ImportancePicker(importance: $importance, isShow: $isShowImportancePicker))
             MyPopup(isVisible: $isShowTypePicker, content: GoalTypePicker(selectedType: $type))
