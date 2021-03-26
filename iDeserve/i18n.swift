@@ -15,6 +15,22 @@ let RECORD_LIST_TEXT = NSLocalizedString("历史记录", comment: "")
 let TODAY_TASK_TEXT = NSLocalizedString("今天的任务", comment: "")
 let COMPLETED_TASK_TEXT = NSLocalizedString("完成的任务", comment: "")
 
+let FREQUENCY_NEVER_TEXT = NSLocalizedString("从不", comment: "")
+let FREQUENCY_DAILY_TEXT = NSLocalizedString("每天", comment: "")
+let FREQUENCY_WEEKLY_TEXT = NSLocalizedString("每周", comment: "")
+let FREQUENCY_MONTHLY_TEXT = NSLocalizedString("每月", comment: "")
+let FREQUENCY_UNLIMITED_TEXT = NSLocalizedString("无间隔重复", comment: "")
+let FREQUENCY_TWODAYS_TEXT = NSLocalizedString("每隔一天", comment: "")
+
+let RepeatFrequencyText: [RepeatFrequency: String] = [
+    .never: NSLocalizedString("从不", comment: ""),
+    .daily: NSLocalizedString("每天", comment: ""),
+    .weekly: NSLocalizedString("每周", comment: ""),
+    .monthly: NSLocalizedString("每月", comment: ""),
+    .unlimited: NSLocalizedString("无间隔重复", comment: ""),
+    .twoDays: NSLocalizedString("每隔一天", comment: ""),
+]
+
 let GoalTypeText: [GoalType: String] = [
     .exercise: NSLocalizedString("锻炼", comment: ""),
     .health: NSLocalizedString("健康", comment: ""),

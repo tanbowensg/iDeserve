@@ -79,7 +79,7 @@ struct TaskForm: View {
                     let targetGoal = goals.first{ $0.id == goalOption.id }
                     taskState.goalName = targetGoal!.name!
                 }) {
-                    Text(goalOption.name!)
+                    Text(goalOption.name!).font(.bodyCustom)
                 }
             }
         } label: {
@@ -93,8 +93,7 @@ struct TaskForm: View {
             .frame(minWidth: 100)
             .frame(height: 32)
             .background(Color.white.cornerRadius(10).shadow(color: .shadow2, radius: 2, x: 0, y: 2))
-        }
-        .animation(.none)
+        }.animation(.none)
         
         return Group {
             FormItem(name: "所属目标", rightContent: goalMenu)
@@ -131,16 +130,29 @@ struct TaskForm: View {
     }
 
     var taskRepeat: some View {
-        Group {
-            Button(action: {
-                isShowRepeatPicker.toggle()
-                dismissKeyboard()
-            }) {
-                FormItem(
-                    name: "重复频率",
-                    rightContent: Text(getRepeatFrequencyText(taskState.repeatFrequency))
-                )
+        let repeatMenu = Menu {
+            ForEach(RepeatFrequency.allCases, id: \.self) {frequency in
+                Button(action: {
+                    taskState.repeatFrequency = frequency
+                }) {
+                    Text(RepeatFrequencyText[frequency]!).font(.bodyCustom)
+                }
             }
+        } label: {
+            HStack(spacing: 20.0) {
+                Text(RepeatFrequencyText[taskState.repeatFrequency]!)
+                    .font(.footnoteCustom)
+                Image(systemName: "chevron.down")
+                    .frame(width: 16.0)
+            }
+            .padding(10)
+            .frame(minWidth: 100)
+            .frame(height: 32)
+            .background(Color.white.cornerRadius(10).shadow(color: .shadow2, radius: 2, x: 0, y: 2))
+        }.animation(.none)
+        
+        return Group {
+            FormItem(name: "重复频率", rightContent: repeatMenu)
             ExDivider()
         }
     }
@@ -195,26 +207,6 @@ struct TaskForm: View {
         }
     }
     
-//    重复频率选择器
-    var repeatPicker: some View {
-        VStack(alignment: .trailing, spacing: 0) {
-            Button(action: {
-                isShowRepeatPicker.toggle()
-                dismissKeyboard()
-            }) {
-                Text("确认")
-            }
-                .padding(8)
-            Picker("重复频率", selection: $taskState.repeatFrequency) {
-                ForEach(RepeatFrequency.allCases, id: \.self) {repeatOption in
-                    Text(getRepeatFrequencyText(repeatOption)).tag(repeatOption)
-                }
-                .labelsHidden()
-            }
-        }
-        .background(Color.white.cornerRadius(20))
-    }
-    
 //    日期选择
     var datePicker: some View {
         VStack(alignment: .trailing, spacing: 10) {
@@ -263,6 +255,7 @@ struct TaskForm: View {
                     .padding(.horizontal, 25)
                 }
             }
+            .animation(.easeOut)
             .onTapGesture {
                 dismissKeyboard()
             }
