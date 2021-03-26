@@ -23,6 +23,7 @@ struct FormItem<Content: View>: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
+                    .foregroundColor(.subtitle)
                     .onTapGesture {
                         onClickHelp!()
                     }

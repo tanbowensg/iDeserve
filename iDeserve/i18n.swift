@@ -46,6 +46,7 @@ let RewardTypeText: [RewardType: String] = [
     .travel: NSLocalizedString("旅游", comment: ""),
     .rest: NSLocalizedString("休息", comment: ""),
     .shopping: NSLocalizedString("购物", comment: ""),
+    .system: NSLocalizedString("系统", comment: ""),
 ]
 
 let DifficultyText: [Difficulty: String] = [

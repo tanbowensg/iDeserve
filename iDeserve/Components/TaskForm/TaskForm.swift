@@ -48,7 +48,7 @@ struct TaskForm: View {
                         .foregroundColor(.subtitle)
                 }
                 Spacer()
-                Text(isEdit ? "编辑任务" : "创建任务").font(.headlineCustom).foregroundColor(.body)
+                Text(isEdit ? "修改任务" : "添加新任务").font(.headlineCustom).foregroundColor(.body)
                 Spacer()
                 Button(action: { onTapSave() }) {
                     Text("保存")
@@ -260,8 +260,6 @@ struct TaskForm: View {
                 dismissKeyboard()
             }
             isShowDatePicker ? Color.popupMask : nil
-//            MyPopup(isVisible: $isShowRepeatPicker, content: repeatPicker, background: Color.g10)
-//            MyPopup(isVisible: $isShowDatePicker, content: datePicker, background: Color.g10)
         }
         .popup(isPresented: $isShowDatePicker, type: .floater(verticalPadding: 0), position: .bottom, animation: .easeOut(duration: 0.3), closeOnTap: false, closeOnTapOutside: true, view: { datePicker })
         .onAppear(perform: onAppear)

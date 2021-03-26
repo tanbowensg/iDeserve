@@ -54,7 +54,7 @@ struct EditGoalPage: View {
                         .foregroundColor(.subtitle)
                 }
                 Spacer()
-                Text(initGoal == nil ? "创建目标" : "编辑目标").font(.headlineCustom).foregroundColor(.body)
+                Text(initGoal == nil ? "创建新目标" : "修改目标").font(.headlineCustom).foregroundColor(.body)
                 Spacer()
                 Button(action: {
                     dismissKeyboard()

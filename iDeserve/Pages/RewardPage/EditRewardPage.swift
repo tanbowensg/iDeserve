@@ -40,41 +40,76 @@ struct EditRewardPage: View {
             }
         }
     }
+    
+    var header: some View {
+        Group {
+            HStack {
+                Button(action: {
+                    self.saveReward()
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.subtitle)
+                }
+                Spacer()
+                Text(initReward == nil ? "上架新奖励" : "修改奖励").font(.headlineCustom).foregroundColor(.body)
+                Spacer()
+                Button(action: {
+                        self.saveReward()
+                        self.presentationMode.wrappedValue.dismiss()
+                    
+                }) {
+                    Text("保存")
+                        .font(.subheadCustom)
+                        .foregroundColor(.hospitalGreen)
+                }
+            }
+            .padding(.vertical, 30.0)
+            .padding(.horizontal, 25.0)
+            ExDivider()
+        }
+    }
 
     var rewardTitle: some View {
         Group {
             TextField("奖励标题", text: $name)
-                .font(.headlineCustom)
+                .font(.titleCustom)
                 .multilineTextAlignment(.leading)
-                .padding(.horizontal, 16.0)
-                .frame(height: 56)
-            Divider()
+                .padding(.vertical, 20)
+            ExDivider()
         }
     }
 
     var rewardType: some View {
-        Button(action: { isShowTypePicker.toggle() }) {
-            FormItem(
-                name: "类别",
-                rightContent: Text(RewardTypeText[type] ?? "未知类别")
-            )
+        Group {
+            Button(action: { isShowTypePicker.toggle() }) {
+                FormItem(
+                    name: "类别",
+                    rightContent: Text(RewardTypeText[type] ?? "未知类别")
+                )
+            }
+            .disabled( type == .system )
+            ExDivider()
         }
     }
 
     var rewardValue: some View {
-        FormItem(
-            name: "所需坚果数",
-            rightContent: TextField("10", text: $value)
-                .multilineTextAlignment(.trailing)
-                .keyboardType(.numberPad),
-            onClickHelp: { isShowHelp.toggle() }
-        )
+        Group {
+            FormItem(
+                name: "所需坚果数",
+                rightContent: TextField("10", text: $value)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad),
+                onClickHelp: { isShowHelp.toggle() }
+            )
+            ExDivider()
+        }
     }
 
     var rewardRepeat: some View {
         FormItem(
             name: "可重复兑换",
-            rightContent: Toggle("", isOn: $isRepeat)
+            rightContent: Toggle("", isOn: $isRepeat).toggleStyle(SwitchToggleStyle(tint: .hospitalGreen))
         )
     }
 
@@ -102,43 +137,25 @@ struct EditRewardPage: View {
 //        }
 //    }
 
-    var backBtn: some View {
-        Button(action: {
-            self.saveReward()
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack {
-                Image(systemName: "chevron.left")
-                    .padding(.leading, 16.0)
-                    
-                Text("返回")
-                    .frame(height: 30)
-            }
-        }
-    }
-
     var body: some View {
         ZStack(alignment: .bottom) {
-            VStack(alignment: .leading) {
-                backBtn
-//                coverImage
-                rewardTitle
-                rewardType
-                rewardValue
-                rewardRepeat
-                Spacer()
-            }
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: .infinity,
-                    alignment: .topLeading
-                )
+            VStack(spacing: 0.0) {
+                header
+                VStack(alignment: .leading, spacing: 0.0) {
+                    //                coverImage
+                    rewardTitle
+                    rewardType
+                    rewardValue
+                    rewardRepeat
+                    Spacer()
+                }
+                .padding(.horizontal, 25.0)
                 .navigationBarHidden(true)
+            }
             MyPopup(isVisible: $isShowTypePicker, content: RewardTypePicker(selectedType: $type))
-            MyPopup(isVisible: $isShowHelp, content: HelpText(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC), alignment: .center, background: nil)
+//            MyPopup(isVisible: $isShowHelp, content: HelpText(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC), alignment: .center, background: nil)
         }
+        .popup(isPresented: $isShowHelp, type: .default, animation: .easeOut(duration: 0.3), closeOnTap: true, closeOnTapOutside: true, view: { HelpText(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC) })
     }
     
     func saveReward () {
