@@ -23,3 +23,4 @@ let GOAL_ROW_HEIGHT: CGFloat = 76
 let UNLOCK_CALENDAR: String = "unlockCalendar"
 let HAS_INITED: String = "hasInited"
 let START_TIME_OF_DAY: String = "startTimeOfDay"
+let PRO_IDENTIFIER = "com.iDeserve.pro"

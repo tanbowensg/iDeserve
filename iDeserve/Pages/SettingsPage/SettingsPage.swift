@@ -11,6 +11,7 @@ import CoreData
 struct SettingsPage: View {
     @EnvironmentObject var gs: GlobalStore
     @State var isShowTimePicker = false
+    @AppStorage(PRO_IDENTIFIER) var isProMonth = false
     @AppStorage(START_TIME_OF_DAY) var startTimeOfDay: Int = 0
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
 
@@ -43,6 +44,18 @@ struct SettingsPage: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             List {
+                HStack {
+                    Text("Pro版本")
+                    Spacer()
+                    !isProMonth ? Button(action: {
+                        gs.iapHelper.buyProduct(productIdentifier: PRO_IDENTIFIER) { (success) in
+                            print("购买成功\(success)")
+                        }
+                    }) {
+                        Text("购买")
+                    } : nil
+                    isProMonth ? Text("已购买") : nil
+                }
                 NavigationLink(destination: HelpPage()) {
                     HStack {
                         Text("帮助")
@@ -95,6 +108,12 @@ struct SettingsPage: View {
             MyPopup(isVisible: $isShowTimePicker, content: timePicker)
         }
         .navigationTitle("设置")
+        .onAppear {
+            GlobalStore.shared.iapHelper.requestProducts { (success, products) in
+                print(success)
+                print(products)
+            }
+        }
     }
 }
 

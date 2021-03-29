@@ -18,4 +18,5 @@ final class GlobalStore: ObservableObject {
     var taskStore = TaskStore.shared
     var recordStore = RecordStore.shared
     var rewardStore = RewardStore.shared
+    var iapHelper = IAPHelper(productIds: [PRO_IDENTIFIER])
 }

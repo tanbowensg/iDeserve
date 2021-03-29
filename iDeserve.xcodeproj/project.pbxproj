@@ -107,6 +107,7 @@
 		D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB32025A87CE300042124 /* AnimatedPoints.swift */; };
 		D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */; };
 		D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */; };
+		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
 		D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -254,6 +255,8 @@
 		D08FB32025A87CE300042124 /* AnimatedPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPoints.swift; sourceTree = "<group>"; };
 		D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetRepeatTaskStatus.swift; sourceTree = "<group>"; };
 		D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordList.swift; sourceTree = "<group>"; };
+		D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = iDeserve.storekit; sourceTree = "<group>"; };
+		D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W6.otf"; sourceTree = "<group>"; };
 		D0EE547B255908C80091302D /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
@@ -376,6 +379,7 @@
 				D01026672524242000653A52 /* Preview Content */,
 				D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */,
 				D07242772599E1ED00DCB674 /* i18n.swift */,
+				D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */,
 			);
 			path = iDeserve;
 			sourceTree = "<group>";
@@ -459,6 +463,7 @@
 				D0EE5485255944680091302D /* TaskStore.swift */,
 				D0EE548A255A61F80091302D /* RecordStore.swift */,
 				D0EE548F255A6D140091302D /* RewardStore.swift */,
+				D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -870,6 +875,7 @@
 				D0119B5D25EE367200F5E0F6 /* MySlider.swift in Sources */,
 				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
 				D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */,
+				D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */,
 				D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */,
 				D03AF73225B0113700F8152D /* WebView.swift in Sources */,
 				D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */,
