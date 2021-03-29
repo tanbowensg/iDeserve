@@ -20,11 +20,13 @@ struct GoalPage: View {
     
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     
+    @AppStorage(PRO_IDENTIFIER) var isPro = false
     @State private var draggedGoal: Goal?
     @State private var highlightIndex: Int? = nil
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
     @State private var isShowHelp = false
+    @State private var isShowPurchase = false
     @State private var completingGoal: Goal?
     @State private var deletingGoal: Goal?
     
@@ -44,6 +46,10 @@ struct GoalPage: View {
 
     var undoneGoals: [Goal] {
         goals.filter{ !$0.done }
+    }
+    
+    var canCreateGoal: Bool {
+        isPro || goals.count < MAX_GOAL
     }
     
     var reorderDivider: some View {
@@ -164,9 +170,12 @@ struct GoalPage: View {
                     highlightIndex != nil ? reorderDivider : nil
                 }
             }
-            NavigationLink(destination: EditGoalPage(initGoal: nil)) {
+            canCreateGoal ? NavigationLink(destination: EditGoalPage(initGoal: nil)) {
                 CreateButton()
-            }
+            } : nil
+            !canCreateGoal ? Button(action: { isShowPurchase.toggle() }) {
+                CreateButton()
+            } : nil
             if isShowCompleteGoalView || isShowHelp {
                 Rectangle().fill(Color.black.opacity(0.4)).animation(.none)
             }
@@ -188,6 +197,9 @@ struct GoalPage: View {
         }
         .popup(isPresented: $isShowHelp, type: .default, closeOnTap: false, closeOnTapOutside: true) {
             HelpText(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
+        }
+        .popup(isPresented: $isShowPurchase, type: .default, closeOnTap: false, closeOnTapOutside: true) {
+            Text("请购买PRO")
         }
     }
 }

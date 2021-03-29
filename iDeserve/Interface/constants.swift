@@ -19,6 +19,8 @@ let TASK_ROW_HEIGHT: CGFloat = 82
 
 let GOAL_ROW_HEIGHT: CGFloat = 76
 
+let MAX_GOAL = 3
+
 //userdefaults的key
 let UNLOCK_CALENDAR: String = "unlockCalendar"
 let HAS_INITED: String = "hasInited"
