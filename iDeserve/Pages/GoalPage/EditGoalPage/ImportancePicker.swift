@@ -22,6 +22,7 @@ struct ImportancePicker: View {
                 .frame(width: 100.0, height: 32)
                 .background(isCurrent ? Color.hospitalGreen : Color.white)
                 .cornerRadius(16)
+                .animation(.none)
         }
     }
     

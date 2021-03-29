@@ -25,6 +25,9 @@ struct MySlider: View {
                 )
             )
             .frame(height: 20)
+            .onChange(of: value, perform: { _ in
+                viberate()
+            })
     }
 }
 
