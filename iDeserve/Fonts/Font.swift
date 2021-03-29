@@ -41,7 +41,7 @@ extension Font {
     public static var subheadCustom = Font.system(size: 15, weight: .black)
     public static var bodyCustom = Font.system(size: 17)
     public static var headlineCustom = Font.system(size: 17, weight: .black)
-    public static var titleCustom = Font.system(size: 28, weight: .black)
+    public static var titleCustom = Font.system(size: 20, weight: .black)
     public static var avenirBlack12 = Font(UIFont(name: "Avenir-Black", size: 13.0)!)
     public static var avenirBlack14 = Font(UIFont(name: "Avenir-Black", size: 15.0)!)
     public static var avenirBlack36 = Font(UIFont(name: "Avenir-Black", size: 36.0)!)

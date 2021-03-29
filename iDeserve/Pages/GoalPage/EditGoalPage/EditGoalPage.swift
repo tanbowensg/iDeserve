@@ -50,7 +50,7 @@ struct EditGoalPage: View {
                     dismissKeyboard()
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    Image(systemName: "xmark")
+                    Image(systemName: initGoal == nil ? "chevron.left" : "xmark")
                         .foregroundColor(.subtitle)
                 }
                 Spacer()
@@ -66,37 +66,27 @@ struct EditGoalPage: View {
                         .foregroundColor(.hospitalGreen)
                 }
             }
-            .padding(.vertical, 30.0)
+            .padding(.vertical, 20.0)
             .padding(.horizontal, 25.0)
             ExDivider()
         }
     }
 
-    var goalTitle: some View {
-        Group {
-            TextField("目标标题", text: $name)
-                .font(.titleCustom)
-                .multilineTextAlignment(.leading)
-                .padding(.vertical, 20)
-            ExDivider()
+    var goalType: some View {
+        Button(action: {
+            withAnimation {
+                dismissKeyboard()
+                isShowTypePicker.toggle()
+            }
+        }) {
+            GoalIcon(goalType: type, size: 100)
         }
     }
-
-    var goalType: some View {
-        VStack(spacing: 0.0) {
-            Button(action: {
-                withAnimation {
-                    dismissKeyboard()
-                    isShowTypePicker.toggle()
-                }
-            }) {
-                FormItem(
-                    name: "类别",
-                    rightContent: GoalIcon(goalType: type, size: 40)
-                )
-            }
-            ExDivider()
-        }
+    
+    var goalTitle: some View {
+        TextField("目标标题", text: $name)
+            .font(.titleCustom)
+            .multilineTextAlignment(.center)
     }
 
     var goalImportance: some View {
@@ -130,20 +120,18 @@ struct EditGoalPage: View {
             return result + task.totalValue
         })
         return Group {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Text("任务").font(.headlineCustom)
                     Spacer()
                     createTaskButton
                 }
-                    .padding(.vertical, 16.0)
                 HStack(spacing: 0) {
                     Text("共计 \(tasks.count) 个任务，全部完成可得")
                         .foregroundColor(.g60)
                     NutIcon(value: tasksNutsSum, hidePlus: true)
                 }
                     .font(.footnoteCustom)
-                    .padding(.bottom, 8.0)
                 ForEach (tasks, id: \.id) { task in
                     let disabledComplete = initGoal == nil || task.done
                     Button(action: {
@@ -179,16 +167,30 @@ struct EditGoalPage: View {
                 header
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        goalTitle
-                        goalType
+                        VStack(alignment: .center, spacing: 20) {
+                            goalType
+                                .padding(.top, 20)
+                            goalTitle
+                                .padding(.bottom, 10)
+                        }
                         goalImportance
+                            .padding(.bottom, 10)
                         goalTasks
                     }
                     .padding(.horizontal, 25)
                 }
             }
-            MyPopup(isVisible: $isShowTypePicker, content: GoalTypePicker(selectedType: $type))
+            isShowTypePicker ? Color.popupMask : nil
         }
+        .popup(
+            isPresented: $isShowTypePicker,
+            type: .floater(verticalPadding: 0),
+            position: .bottom,
+            animation: .easeOut(duration: 0.3),
+            closeOnTap: false,
+            closeOnTapOutside: false,
+            view: { GoalTypePicker(selectedType: $type, isShow: $isShowTypePicker) }
+        )
         .onTapGesture {
             dismissKeyboard()
         }

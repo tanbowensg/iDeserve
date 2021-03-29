@@ -92,7 +92,7 @@ struct TaskForm: View {
             .padding(10)
             .frame(minWidth: 100)
             .frame(height: 32)
-            .background(Color.white.cornerRadius(10).shadow(color: .shadow2, radius: 2, x: 0, y: 2))
+            .background(Color.white.cornerRadius(10).shadow(color: .darkShadow, radius: 2, x: 0, y: 2))
         }.animation(.none)
         
         return Group {
@@ -148,7 +148,7 @@ struct TaskForm: View {
             .padding(10)
             .frame(minWidth: 100)
             .frame(height: 32)
-            .background(Color.white.cornerRadius(10).shadow(color: .shadow2, radius: 2, x: 0, y: 2))
+            .background(Color.white.cornerRadius(10).shadow(color: .darkShadow, radius: 2, x: 0, y: 2))
         }.animation(.none)
         
         return Group {

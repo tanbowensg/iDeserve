@@ -12,20 +12,18 @@ struct GoalIcon: View {
     var size: CGFloat = 60
     
     var body: some View {
-        Image(systemName: goalType.rawValue)
+        Image(goalType.rawValue)
             .resizable()
 //                .aspectRatio(1, contentMode: .fit)
             .padding(10)
             .scaledToFit()
             .frame(width: size, height: size)
-            .background(Color.tagBg)
-            .cornerRadius(size / 4)
-            .foregroundColor(Color.tagColor)
+            .background(Color.white.cornerRadius(size / 5).shadow(color: .darkShadow, radius: size / 5, x: 0, y: 0))
     }
 }
 
 struct GoalIcon_Previews: PreviewProvider {
     static var previews: some View {
-        GoalIcon(goalType: .health)
+        GoalIcon(goalType: .job)
     }
 }

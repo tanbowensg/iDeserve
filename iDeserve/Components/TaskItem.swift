@@ -113,7 +113,7 @@ struct TaskItem: View {
             .foregroundColor(self.foregroundColor)
             .background(
                 Color.g0
-                    .shadow(color: .shadow, radius: 6, x: 0, y: 3)
+                    .shadow(color: .lightShadow, radius: 6, x: 0, y: 3)
             )
     }
 

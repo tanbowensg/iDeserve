@@ -8,12 +8,13 @@
 import Foundation
 
 enum GoalType: String, CaseIterable {
-    case study = "book"
-    case exercise = "flame"
-    case job = "briefcase"
-    case health = "heart"
-    case hobby = "flag"
-    case person = "person"
+    case study = "study"
+    case exercise = "exercise"
+    case job = "job"
+    case hobby = "hobby"
+    case social = "social"
+//    无用，只是为了在展示的时候占位用
+    case none = "noneGoalType"
 }
 
 struct GoalReward {

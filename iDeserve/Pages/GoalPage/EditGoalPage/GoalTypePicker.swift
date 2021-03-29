@@ -9,25 +9,42 @@ import SwiftUI
 
 struct GoalTypePicker: View {
     @Binding var selectedType: GoalType
-
+    @Binding var isShow: Bool
+    
     var body: some View {
-        HStack {
-            Spacer()
-            GridStack(rows: 2, columns: 3) { (i, j) in
-                let type = GoalType.allCases[i * 3 + j]
-                VStack(spacing: 8.0) {
-                    GoalIcon(goalType: type, size: 100)
-                        .roundBorder(selectedType == type ? Color.rewardColor : Color.white, width: 2, cornerRadius: 25)
-                    Text(GoalTypeText[type] ?? "")
-                }
+        VStack(alignment: .leading, spacing: 30.0) {
+            Image(systemName: "xmark")
+                .foregroundColor(.subtitle)
+                .frame(width: 9.0, height: 9.0)
+                .padding(.leading, 25)
                 .onTapGesture {
-                    selectedType = type
+                    isShow.toggle()
                 }
+            HStack {
+                Spacer()
+                GridStack(rows: 2, columns: 3) { (i, j) in
+                    let index = i * 3 + j
+                    let type = index <= GoalType.allCases.count - 1 ? GoalType.allCases[index] : GoalType.none
+                    //  none类型的目标不展示，仅仅是占位
+                    type == GoalType.none ? nil :
+                        Button(action: {
+                            selectedType = type
+                            isShow.toggle()
+                        }) {
+                            VStack(spacing: 8.0) {
+                                GoalIcon(goalType: type, size: 100)
+                                Text(GoalTypeText[type] ?? "")
+                                    .foregroundColor(.subtitle)
+                                    .font(.subheadCustom)
+                            }
+                        }
+                }
+                Spacer()
             }
-            Spacer()
         }
-        .frame(height: 260.0)
         .padding(.top, 20.0)
+//        TODO: 这里iphone8不要34
+        .padding(.bottom, 58 + 34)
         .background(Color.white)
     }
 }
