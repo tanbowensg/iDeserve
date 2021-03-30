@@ -68,4 +68,5 @@ extension Color {
     public static var subtitle = Color.init("subtitle")
     public static var body = Color.init("body")
     public static var caption = Color.init("caption")
+    public static var black333 = Color.init("black333")
 }

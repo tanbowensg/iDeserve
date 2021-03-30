@@ -43,6 +43,10 @@ struct EditGoalPage: View {
         }
     }
     
+    var isCreate: Bool {
+        initGoal == nil
+    }
+    
     var header: some View {
         Group {
             HStack {
@@ -50,11 +54,11 @@ struct EditGoalPage: View {
                     dismissKeyboard()
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    Image(systemName: initGoal == nil ? "chevron.left" : "xmark")
+                    Image(systemName: isCreate ? "chevron.left" : "xmark")
                         .foregroundColor(.subtitle)
                 }
                 Spacer()
-                Text(initGoal == nil ? "创建新目标" : "修改目标").font(.headlineCustom).foregroundColor(.body)
+                Text(isCreate ? "创建新目标" : "修改目标").font(.headlineCustom).foregroundColor(.body)
                 Spacer()
                 Button(action: {
                     dismissKeyboard()
@@ -104,14 +108,54 @@ struct EditGoalPage: View {
             isShowTaskSheet.toggle()
             taskCache = TaskState(nil)
         }) {
-            Image(systemName: "plus.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 30, height: 30)
+            HStack {
+                Spacer()
+                Text("添加新的任务")
+                    .foregroundColor(.white)
+                    .font(.subheadCustom)
+                    .frame(height: 16.0)
+                    .padding(.vertical, 12.0)
+                    .padding(.horizontal, 40.0)
+                    .background(Color.hospitalGreen.cornerRadius(25))
+                Spacer()
+            }
         }
             .sheet(isPresented: $isShowTaskSheet, onDismiss: { taskCache = TaskState(nil) }, content: {
                 GoalTasksSheet(taskState: $taskCache, onSave: addTask)
             })
+    }
+    
+    func taskItem(_ task: TaskState) -> some View {
+        let disabledComplete = isCreate || task.done
+
+        func removeTask () {
+            withAnimation() {
+                tasks.remove(at: tasks.firstIndex(of: task)!)
+            }
+            if let originalTask = task.originTask {
+                gs.taskStore.removeTask(originalTask)
+            }
+        }
+
+        return Group {
+//            编辑目标时，用常规的任务item
+            !isCreate ? TaskItem(
+                task: task,
+                onCompleteTask: disabledComplete ? nil : {
+                    if let originalTask = task.originTask {
+                        gs.taskStore.completeTask(originalTask)
+                        refreshTask()
+                    }
+                },
+                onRemoveTask: removeTask,
+                hideTag: true
+            ) : nil
+//            创建目标时，用简化的任务item
+            isCreate ? SimpleTaskItem(
+                task: task,
+                onRemoveTask: removeTask
+            ) : nil
+        }
     }
     
 //    目标的任务
@@ -121,42 +165,25 @@ struct EditGoalPage: View {
         })
         return Group {
             VStack(alignment: .leading, spacing: 20) {
-                HStack {
-                    Text("任务").font(.headlineCustom)
-                    Spacer()
-                    createTaskButton
-                }
+                Text("任务")
+                    .font(.subheadCustom)
+                    .foregroundColor(.subtitle)
                 HStack(spacing: 0) {
                     Text("共计 \(tasks.count) 个任务，全部完成可得")
-                        .foregroundColor(.g60)
                     NutIcon(value: tasksNutsSum, hidePlus: true)
                 }
-                    .font(.footnoteCustom)
-                ForEach (tasks, id: \.id) { task in
-                    let disabledComplete = initGoal == nil || task.done
-                    Button(action: {
-                        dismissKeyboard()
-                        taskCache = task
-                        isShowTaskSheet.toggle()
-                    }) {
-                        TaskItem(
-                            task: task,
-                            onCompleteTask: disabledComplete ? nil : {
-                                if let originalTask = task.originTask {
-                                    gs.taskStore.completeTask(originalTask)
-                                    refreshTask()
-                                }
-                            },
-                            onRemoveTask: {
-                                tasks.remove(at: tasks.firstIndex(of: task)!)
-                                if let originalTask = task.originTask {
-                                    gs.taskStore.removeTask(originalTask)
-                                }
-                            },
-                            hideTag: true
-                        )
+                    .foregroundColor(.caption)
+                    .font(.caption)
+                VStack(spacing: 0.0) {
+                    ForEach (tasks, id: \.id) { task in
+                        taskItem(task)
                     }
+                    createTaskButton
+                        .padding(.vertical, 20)
                 }
+                .padding(.vertical, 20)
+                .padding(.horizontal, 25)
+                .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
             }
         }
     }
@@ -174,7 +201,7 @@ struct EditGoalPage: View {
                                 .padding(.bottom, 10)
                         }
                         goalImportance
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 20)
                         goalTasks
                     }
                     .padding(.horizontal, 25)

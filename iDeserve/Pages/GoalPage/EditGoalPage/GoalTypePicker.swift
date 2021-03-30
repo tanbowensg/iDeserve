@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct GoalTypePicker: View {
     @Binding var selectedType: GoalType
@@ -43,8 +44,7 @@ struct GoalTypePicker: View {
             }
         }
         .padding(.top, 20.0)
-//        TODO: 这里iphone8不要34
-        .padding(.bottom, 58 + 34)
+        .padding(.bottom, 58 + (UIApplication.shared.windows.first?.safeAreaInsets.top)!)
         .background(Color.white)
     }
 }
