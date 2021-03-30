@@ -36,7 +36,7 @@ struct ImportancePicker: View {
             }
             Text(ImportanceDescText[importance]!)
                 .foregroundColor(.caption)
-                .font(.caption)
+                .font(.captionCustom)
         }
     }
 }

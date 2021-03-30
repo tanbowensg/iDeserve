@@ -55,7 +55,6 @@ struct RewardGrid: View {
             HStack(alignment: .center, spacing: 2){
                 Text(String(reward.value))
                     .font(.avenirBlack12)
-                    .fontWeight(.black)
                     .foregroundColor(.rewardColor)
                     .frame(height: 16.0)
                 Image("NutIcon")
@@ -99,7 +98,6 @@ struct RewardGrid: View {
                 .frame(height: 20.0)
             Text(reward.name ?? "未知")
                 .font(.subheadCustom)
-                .fontWeight(.black)
                 .foregroundColor(.white)
                 .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
             redeemButton

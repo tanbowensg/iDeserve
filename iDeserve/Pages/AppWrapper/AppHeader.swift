@@ -48,7 +48,6 @@ struct AppHeader: View {
                 Text(title)
                     .foregroundColor(.white)
                     .font(.titleCustom)
-                    .fontWeight(.black)
                     .lineLimit(1)
                 Spacer()
                 
