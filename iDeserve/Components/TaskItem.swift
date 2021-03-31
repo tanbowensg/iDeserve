@@ -92,7 +92,7 @@ struct TaskItem: View {
         HStack(alignment: .center, spacing: 3.0) {
             Text(String(task.value))
                 .font(.system(size: 14))
-                .fontWeight(.black)
+                .fontWeight(.bold)
                 .foregroundColor(Color.rewardColor)
             Image("NutIcon")
                 .resizable()

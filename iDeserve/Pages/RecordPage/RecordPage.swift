@@ -70,20 +70,23 @@ struct RecordPage: View {
         HStack(spacing: 20.0) {
             Text("\(String(currentYear))年\(currentMonth)月")
                 .font(.footnoteCustom)
+                .fontWeight(.bold)
             Spacer()
             Button(action: {
                 let (prevYear, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
                 onMonthChange(prevYear, prevMonth)
             }) {
                 Image(systemName: "chevron.left")
-                    .font(.captionCustom)
+                    .font(Font.captionCustom.weight(.bold))
+                    .padding(4)
             }
             Button(action: {
                 let (nextYear, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
                 onMonthChange(nextYear, nextMonth)
             }) {
                 Image(systemName: "chevron.right")
-                    .font(.captionCustom)
+                    .font(Font.captionCustom.weight(.bold))
+                    .padding(4)
             }
         }
         .foregroundColor(.body)

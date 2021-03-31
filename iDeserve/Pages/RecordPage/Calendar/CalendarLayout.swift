@@ -29,7 +29,7 @@ struct CalendarLayout: View {
                 ForEach(["日", "一", "二", "三", "四", "五", "六"], id: \.self) {text in
                     Text(text)
                         .foregroundColor(Color.subtitle)
-                        .font(.footnoteSmCustom)
+                        .font(.footnoteCustom)
                         .fontWeight(.bold)
                         .frame(width: CalendarGridSize, height: CalendarGridSize)
                 }

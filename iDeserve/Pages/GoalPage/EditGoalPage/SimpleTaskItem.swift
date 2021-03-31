@@ -22,7 +22,7 @@ struct SimpleTaskItem: View {
                 Button(action: { onRemoveTask() }) {
                     Image(systemName: "xmark")
                         .resizable()
-                        .font(Font.subheadCustom.weight(.black))
+                        .font(Font.subheadCustom.weight(.bold))
                         .foregroundColor(.subtitle)
                         .frame(width: 6, height: 6)
                         .padding(5)

@@ -35,8 +35,7 @@ struct CalendarGrid: View {
     
     var grid: some View {
         Text(isCurrentMonth ? String(day) : "")
-            .fontWeight(.medium)
-            .font(.footnoteSmCustom)
+            .font(.footnoteCustom)
             .foregroundColor(foregroundColor)
             .frame(width: CalendarGridSize, height: CalendarGridSize)
             .background(dayStat.income > 0 ?
@@ -45,7 +44,7 @@ struct CalendarGrid: View {
                 nil
             )
             .applyIf(isHighlight, apply: { content in
-                content.roundBorder(isHighlight ? Color.darkBrandGreen : Color.white, width: 1, cornerRadius: CalendarGridSize/4)
+                content.roundBorder(isHighlight ? Color.darkBrandGreen : Color.white, width: 2, cornerRadius: CalendarGridSize/4)
             })
             .animation(.easeInOut(duration: 0.1), value: isHighlight)
             .id(dayStat.date)

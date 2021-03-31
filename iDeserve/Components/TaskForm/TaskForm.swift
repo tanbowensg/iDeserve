@@ -200,7 +200,7 @@ struct TaskForm: View {
         }) {
             Image(systemName: "xmark")
                 .resizable()
-                .font(Font.subheadCustom.weight(.black))
+                .font(Font.subheadCustom.weight(.bold))
                 .foregroundColor(.subtitle)
                 .padding(8.0)
                 .frame(width: 24.0, height: 24.0)
