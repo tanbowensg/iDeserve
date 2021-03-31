@@ -61,7 +61,7 @@ struct EditRewardPage: View {
                 }) {
                     Text("保存")
                         .font(.subheadCustom)
-                        .foregroundColor(.hospitalGreen)
+                        .foregroundColor(.brandGreen)
                 }
             }
             .padding(.vertical, 30.0)
@@ -109,7 +109,7 @@ struct EditRewardPage: View {
     var rewardRepeat: some View {
         FormItem(
             name: "可重复兑换",
-            rightContent: Toggle("", isOn: $isRepeat).toggleStyle(SwitchToggleStyle(tint: .hospitalGreen))
+            rightContent: Toggle("", isOn: $isRepeat).toggleStyle(SwitchToggleStyle(tint: .brandGreen))
         )
     }
 

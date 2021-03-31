@@ -53,7 +53,7 @@ struct TaskForm: View {
                 Button(action: { onTapSave() }) {
                     Text("保存")
                         .font(.subheadCustom)
-                        .foregroundColor(.hospitalGreen)
+                        .foregroundColor(.brandGreen)
                 }
             }
             .padding(.vertical, 30.0)
@@ -123,7 +123,7 @@ struct TaskForm: View {
         Group {
             FormItem(
                 name: "在“我的一天”中显示",
-                rightContent: Toggle("", isOn:$taskState.starred).toggleStyle(SwitchToggleStyle(tint: .hospitalGreen))
+                rightContent: Toggle("", isOn:$taskState.starred).toggleStyle(SwitchToggleStyle(tint: .brandGreen))
             )
             ExDivider()
         }
@@ -216,14 +216,14 @@ struct TaskForm: View {
             }) {
                 Text("确认")
                     .font(.subheadCustom)
-                    .foregroundColor(.hospitalGreen)
+                    .foregroundColor(.brandGreen)
             }
             DatePicker(
                 "日期选择",
                 selection: $taskState.ddl,
                 displayedComponents: .date
             )
-                .accentColor(.hospitalGreen)
+                .accentColor(.brandGreen)
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .labelsHidden()
         }

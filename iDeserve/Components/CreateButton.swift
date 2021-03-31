@@ -13,7 +13,7 @@ struct CreateButton: View {
             .foregroundColor(Color.white)
             .frame(width: 40, height: 40, alignment: .center)
             .font(.system(size: 16))
-            .background(Color.hospitalGreen)
+            .background(Color.brandGreen)
             .cornerRadius(32)
     }
 }

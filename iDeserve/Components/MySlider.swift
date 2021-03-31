@@ -16,10 +16,10 @@ struct MySlider: View {
         ValueSlider(value: $value, in: range, step: 1)
             .valueSliderStyle(
                 HorizontalValueSliderStyle(
-                    track: HorizontalTrack(view: Capsule().foregroundColor(Color.hospitalGreen))
+                    track: HorizontalTrack(view: Capsule().foregroundColor(Color.brandGreen))
                         .background(Capsule().foregroundColor(.placeholder))
                         .frame(height: 5),
-                    thumb: Circle().foregroundColor(.hospitalGreen),
+                    thumb: Circle().foregroundColor(.brandGreen),
                     thumbSize: CGSize(width: 20, height: 20),
                     thumbInteractiveSize: CGSize(width: 20, height: 20)
                 )

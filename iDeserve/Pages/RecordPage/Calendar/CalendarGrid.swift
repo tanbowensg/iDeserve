@@ -29,7 +29,7 @@ struct CalendarGrid: View {
         if dayStat.income == 0  {
             return Color.body
         } else if Double(dayStat.income) / OpacityBase < 0.6 {
-            return Color.hospitalGreen
+            return Color.brandGreen
         } else {
             return Color.white
         }
@@ -43,13 +43,15 @@ struct CalendarGrid: View {
 //            .frame(width: CGFloat(size - padding * 2), height: CGFloat(size - padding * 2))
             .frame(width: 24, height: 24)
             .background(dayStat.income > 0 ?
-                Color.hospitalGreen
+                Color.brandGreen
                 .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(7):
                 nil
             )
+            .applyIf(isHighlight, apply: { content in
+                content.roundBorder(isHighlight ? Color.darkBrandGreen : Color.white, width: 1, cornerRadius: 6)
+            })
             .frame(width: CGFloat(size), height: CGFloat(size))
-//            .roundBorder(isHighlight ? Color.red : Color.white, width: 2, cornerRadius: 6)
-            .scaleEffect(isHighlight ? 1.1 : 1)
+//            .scaleEffect(isHighlight ? 1.1 : 1)
             .animation(.easeInOut(duration: 0.1), value: isHighlight)
 //            .padding(.all, CGFloat(padding))
             .id(dayStat.date)

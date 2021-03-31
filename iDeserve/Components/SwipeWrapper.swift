@@ -19,7 +19,7 @@ struct SwipeWrapper<Content: View>: View {
     let threshold: Int = 100
     
 //    左右的背景颜色
-    let leftSlotBg = Color.hospitalGreen
+    let leftSlotBg = Color.brandGreen
     let rightSlotBg = Color.red
     
     var alignment: Alignment {

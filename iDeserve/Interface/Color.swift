@@ -55,7 +55,8 @@ extension Color {
     public static var completeColor = Color(hex: "a6c2a7")
     
     
-    public static var hospitalGreen = Color(UIColor(named: "hospitalGreen")!)
+    public static var brandGreen = Color(UIColor(named: "brandGreen")!)
+    public static var darkBrandGreen = Color(UIColor(named: "darkBrandGreen")!)
     public static var headerGreen = Color(UIColor(named: "headerGreen")!)
     public static var veryLightPink = Color(UIColor(named: "veryLightPink")!)
     public static var myBlack = Color(UIColor(named: "black")!)

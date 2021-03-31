@@ -20,7 +20,7 @@ struct DifficultyPicker: View {
                 .frame(height: 12)
                 .padding(.vertical, 10)
                 .frame(width: 100.0, height: 32)
-                .background(isCurrent ? Color.hospitalGreen : Color.white)
+                .background(isCurrent ? Color.brandGreen : Color.white)
                 .cornerRadius(16)
                 .animation(.none)
         }

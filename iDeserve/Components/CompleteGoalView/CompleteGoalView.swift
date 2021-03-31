@@ -30,7 +30,7 @@ struct CompleteGoalView: View {
             }
             Image(systemName: "checkmark.seal")
                 .resizable()
-                .foregroundColor(.hospitalGreen)
+                .foregroundColor(.brandGreen)
                 .frame(width: 200.0, height: 200.0)
 
             Text(goalReward?.name ?? "")

@@ -67,7 +67,7 @@ struct EditGoalPage: View {
                 }) {
                     Text("保存")
                         .font(.subheadCustom)
-                        .foregroundColor(.hospitalGreen)
+                        .foregroundColor(.brandGreen)
                 }
             }
             .padding(.vertical, 20.0)
@@ -116,7 +116,7 @@ struct EditGoalPage: View {
                     .frame(height: 16.0)
                     .padding(.vertical, 12.0)
                     .padding(.horizontal, 40.0)
-                    .background(Color.hospitalGreen.cornerRadius(25))
+                    .background(Color.brandGreen.cornerRadius(25))
                 Spacer()
             }
         }
