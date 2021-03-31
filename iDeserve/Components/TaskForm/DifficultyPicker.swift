@@ -16,6 +16,7 @@ struct DifficultyPicker: View {
         return Button(action: { difficulty = d }) {
             Text(DifficultyText[d]!)
                 .font(.footnoteCustom)
+                .fontWeight(.bold)
                 .foregroundColor(isCurrent ? Color.white : Color.body)
                 .frame(height: 12)
                 .padding(.vertical, 10)

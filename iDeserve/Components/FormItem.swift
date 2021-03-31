@@ -17,6 +17,7 @@ struct FormItem<Content: View>: View {
             HStack {
                 Text(name)
                     .font(.subheadCustom)
+                    .fontWeight(.bold)
                     .foregroundColor(.subtitle)
                 
                 onClickHelp == nil ? nil : Image(systemName: "questionmark.circle")
@@ -30,7 +31,7 @@ struct FormItem<Content: View>: View {
                 
                 Spacer()
                 rightContent
-                    .font(.subheadCustom)
+                    .font(Font.subheadCustom.weight(.bold))
                     .foregroundColor(.body)
             }
             .padding(.vertical, 20)

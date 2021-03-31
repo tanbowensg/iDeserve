@@ -50,9 +50,13 @@ struct EditRewardPage: View {
                 }) {
                     Image(systemName: "xmark")
                         .foregroundColor(.subtitle)
+                        .font(Font.headlineCustom.weight(.bold))
                 }
                 Spacer()
-                Text(initReward == nil ? "上架新奖励" : "修改奖励").font(.headlineCustom).foregroundColor(.body)
+                Text(initReward == nil ? "上架新奖励" : "修改奖励")
+                    .font(.headlineCustom)
+                    .fontWeight(.bold)
+                    .foregroundColor(.body)
                 Spacer()
                 Button(action: {
                         self.saveReward()
@@ -61,6 +65,7 @@ struct EditRewardPage: View {
                 }) {
                     Text("保存")
                         .font(.subheadCustom)
+                        .fontWeight(.bold)
                         .foregroundColor(.brandGreen)
                 }
             }
@@ -73,7 +78,7 @@ struct EditRewardPage: View {
     var rewardTitle: some View {
         Group {
             TextField("奖励标题", text: $name)
-                .font(.titleCustom)
+                .font(Font.titleCustom.weight(.bold))
                 .multilineTextAlignment(.leading)
                 .padding(.vertical, 20)
             ExDivider()

@@ -49,7 +49,8 @@ struct GoalPage: View {
     }
     
     var canCreateGoal: Bool {
-        isPro || goals.count < MAX_GOAL
+//        isPro || goals.count < MAX_GOAL
+        true
     }
     
     var reorderDivider: some View {

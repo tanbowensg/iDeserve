@@ -56,9 +56,13 @@ struct EditGoalPage: View {
                 }) {
                     Image(systemName: isCreate ? "chevron.left" : "xmark")
                         .foregroundColor(.subtitle)
+                        .font(Font.headlineCustom.weight(.bold))
                 }
                 Spacer()
-                Text(isCreate ? "创建新目标" : "修改目标").font(.headlineCustom).foregroundColor(.body)
+                Text(isCreate ? "创建新目标" : "修改目标")
+                    .font(.headlineCustom)
+                    .foregroundColor(.body)
+                    .fontWeight(.bold)
                 Spacer()
                 Button(action: {
                     dismissKeyboard()
@@ -68,6 +72,7 @@ struct EditGoalPage: View {
                     Text("保存")
                         .font(.subheadCustom)
                         .foregroundColor(.brandGreen)
+                        .fontWeight(.bold)
                 }
             }
             .padding(.vertical, 20.0)
@@ -89,7 +94,7 @@ struct EditGoalPage: View {
     
     var goalTitle: some View {
         TextField("目标标题", text: $name)
-            .font(.titleCustom)
+            .font(Font.titleCustom.weight(.bold))
             .multilineTextAlignment(.center)
     }
 
@@ -113,6 +118,7 @@ struct EditGoalPage: View {
                 Text("添加新的任务")
                     .foregroundColor(.white)
                     .font(.subheadCustom)
+                    .fontWeight(.bold)
                     .frame(height: 16.0)
                     .padding(.vertical, 12.0)
                     .padding(.horizontal, 40.0)
@@ -167,6 +173,7 @@ struct EditGoalPage: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text("任务")
                     .font(.subheadCustom)
+                    .fontWeight(.bold)
                     .foregroundColor(.subtitle)
                 HStack(spacing: 0) {
                     Text("共计 \(tasks.count) 个任务，全部完成可得")

@@ -45,15 +45,20 @@ struct TaskForm: View {
             HStack {
                 Button(action: { onTapClose() }) {
                     Image(systemName: "xmark")
+                        .font(Font.headlineCustom.weight(.bold))
                         .foregroundColor(.subtitle)
                 }
                 Spacer()
-                Text(isEdit ? "修改任务" : "添加新任务").font(.headlineCustom).foregroundColor(.body)
+                Text(isEdit ? "修改任务" : "添加新任务")
+                    .font(.headlineCustom)
+                    .foregroundColor(.body)
+                    .fontWeight(.bold)
                 Spacer()
                 Button(action: { onTapSave() }) {
                     Text("保存")
                         .font(.subheadCustom)
                         .foregroundColor(.brandGreen)
+                        .fontWeight(.bold)
                 }
             }
             .padding(.vertical, 30.0)
@@ -65,7 +70,7 @@ struct TaskForm: View {
     var taskTitle: some View {
         Group {
             TextField("任务标题", text: $taskState.name)
-                .font(.titleCustom)
+                .font(Font.titleCustom.weight(.bold))
                 .multilineTextAlignment(.leading)
                 .padding(.vertical, 20)
             ExDivider()
@@ -86,6 +91,7 @@ struct TaskForm: View {
             HStack(spacing: 20.0) {
                 Text(taskState.goalName)
                     .font(.footnoteCustom)
+                    .fontWeight(.bold)
                 Image(systemName: "chevron.down")
                     .frame(width: 16.0)
             }
@@ -142,6 +148,7 @@ struct TaskForm: View {
             HStack(spacing: 20.0) {
                 Text(RepeatFrequencyText[taskState.repeatFrequency]!)
                     .font(.footnoteCustom)
+                    .fontWeight(.bold)
                 Image(systemName: "chevron.down")
                     .frame(width: 16.0)
             }

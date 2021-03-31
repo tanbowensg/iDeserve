@@ -17,6 +17,7 @@ struct ImportancePicker: View {
             Text(ImportanceText[i]!)
                 .font(.footnoteCustom)
                 .foregroundColor(isCurrent ? Color.white : Color.body)
+                .fontWeight(.bold)
                 .frame(height: 12)
                 .padding(.vertical, 10)
                 .frame(width: 100.0, height: 32)
