@@ -67,9 +67,26 @@ struct RecordPage: View {
     }
     
     var monthTitle: some View {
-        Text("\(String(currentYear))年\(currentMonth)月")
-            .font(.footnoteCustom)
-            .foregroundColor(.body)
+        HStack(spacing: 20.0) {
+            Text("\(String(currentYear))年\(currentMonth)月")
+                .font(.footnoteCustom)
+            Spacer()
+            Button(action: {
+                let (prevYear, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
+                onMonthChange(prevYear, prevMonth)
+            }) {
+                Image(systemName: "chevron.left")
+                    .font(.captionCustom)
+            }
+            Button(action: {
+                let (nextYear, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
+                onMonthChange(nextYear, nextMonth)
+            }) {
+                Image(systemName: "chevron.right")
+                    .font(.captionCustom)
+            }
+        }
+        .foregroundColor(.body)
     }
     
     func recordsView() -> some View {
@@ -83,13 +100,10 @@ struct RecordPage: View {
                     currentYear: currentYear,
                     currentMonth: currentMonth,
                     onTapDate: { chosenDate = $0 },
-                    onMonthChange: {
-                        currentYear = $0
-                        currentMonth = $1
-                        chosenDate = nil
-                    }
+                    onMonthChange: onMonthChange
                 )
             }
+            .frame(width: CalendarWidth)
             .padding(20)
             .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
     
@@ -107,6 +121,12 @@ struct RecordPage: View {
         }
             .animation(.easeInOut, value: currentMonth)
             .navigationBarHidden(true)
+    }
+    
+    func onMonthChange(_ nextYear: Int, _ nextMonth: Int) -> Void {
+        currentYear = nextYear
+        currentMonth = nextMonth
+        chosenDate = nil
     }
 
     func deleteRecord (at offsets: IndexSet) {
