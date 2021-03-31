@@ -25,19 +25,33 @@ struct CalendarGrid: View {
             .disabled(true)
     }
     
+    var foregroundColor: Color {
+        if dayStat.income == 0  {
+            return Color.body
+        } else if Double(dayStat.income) / OpacityBase < 0.6 {
+            return Color.hospitalGreen
+        } else {
+            return Color.white
+        }
+    }
+    
     var grid: some View {
         Text(isCurrentMonth ? String(day) : "")
-            .font(.subheadCustom)
-            .frame(width: CGFloat(size - padding * 2), height: CGFloat(size - padding * 2))
+            .fontWeight(.medium)
+            .font(.footnoteSmCustom)
+            .foregroundColor(foregroundColor)
+//            .frame(width: CGFloat(size - padding * 2), height: CGFloat(size - padding * 2))
+            .frame(width: 24, height: 24)
             .background(dayStat.income > 0 ?
                 Color.hospitalGreen
-                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(6):
+                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(7):
                 nil
             )
-            .roundBorder(isHighlight ? Color.red : Color.white, width: 2, cornerRadius: 6)
+            .frame(width: CGFloat(size), height: CGFloat(size))
+//            .roundBorder(isHighlight ? Color.red : Color.white, width: 2, cornerRadius: 6)
             .scaleEffect(isHighlight ? 1.1 : 1)
             .animation(.easeInOut(duration: 0.1), value: isHighlight)
-            .padding(.all, CGFloat(padding))
+//            .padding(.all, CGFloat(padding))
             .id(dayStat.date)
     }
 

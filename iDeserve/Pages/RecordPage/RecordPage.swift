@@ -68,28 +68,32 @@ struct RecordPage: View {
     
     var monthTitle: some View {
         Text("\(String(currentYear))年\(currentMonth)月")
-            .font(.subheadCustom)
-            .padding(.vertical, 8)
+            .font(.footnoteCustom)
+            .foregroundColor(.body)
     }
     
-    func recordsView(gridSize: Int) -> some View {
-        Group {
-            monthTitle
-            CalendarSwiper(
-                dayStats: dayStats,
-                prevDayStats: prevMonthDayStats,
-                nextDayStats: nextMonthDayStats,
-                currentYear: currentYear,
-                currentMonth: currentMonth,
-                gridSize: gridSize,
-                onTapDate: { chosenDate = $0 },
-                onMonthChange: {
-                    currentYear = $0
-                    currentMonth = $1
-                    chosenDate = nil
-                }
-            )
-                .frame(height: 20 + CGFloat(gridSize) * CGFloat((dayStats.count / 7)))
+    func recordsView(width: CGFloat) -> some View {
+        VStack(alignment: .center, spacing: 0.0) {
+            VStack(alignment: .leading, spacing: 10) {
+                monthTitle
+                CalendarSwiper(
+                    dayStats: dayStats,
+                    prevDayStats: prevMonthDayStats,
+                    nextDayStats: nextMonthDayStats,
+                    currentYear: currentYear,
+                    currentMonth: currentMonth,
+                    gridSize: Int(width / 7),
+                    onTapDate: { chosenDate = $0 },
+                    onMonthChange: {
+                        currentYear = $0
+                        currentMonth = $1
+                        chosenDate = nil
+                    }
+                )
+            }
+            .padding(20)
+            .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
+    
             Divider()
             RecordList(records: chosenDateRecords)
                 .animation(.none)
@@ -100,7 +104,7 @@ struct RecordPage: View {
         GeometryReader { geometry in
             VStack(spacing: 0.0) {
                 AppHeader(points: gs.pointsStore.points, title: "历史记录")
-                unlockCalendar ? recordsView(gridSize: (Int(geometry.size.width) / 7)) : nil
+                unlockCalendar ? recordsView(width: geometry.size.width - 90) : nil
                 !unlockCalendar ? Text("还没有解锁") : nil
             }
                 .animation(.easeInOut, value: currentMonth)

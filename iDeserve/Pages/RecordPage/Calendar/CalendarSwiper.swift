@@ -77,8 +77,10 @@ struct CalendarSwiper: View {
                 CalendarLayout(dayStats: nextDayStats, currentMonth: nextMonth, gridSize: gridSize, onTapDate: onTapDate)
                     .id(nextMonth)
             }
-            .frame(width: CGFloat(gridSize * 7), height: 20 + CGFloat(gridSize * dayStats.count / 7), alignment: .top)
+//            高度要加上日历的很多padding
+            .frame(width: CGFloat(gridSize * 7), height: 40 + CGFloat(gridSize * dayStats.count / 7), alignment: .top)
             .offset(x: CGFloat(offsetX), y: 0)
             .gesture(gesture)
+            .clipped()
     }
 }

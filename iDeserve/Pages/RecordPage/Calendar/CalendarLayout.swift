@@ -29,13 +29,13 @@ struct CalendarLayout: View {
             ) {
                 ForEach(["日", "一", "二", "三", "四", "五", "六"], id: \.self) {text in
                     Text(text)
-                        .font(.footnoteCustom)
-                        .fontWeight(.light)
-                        .padding(4)
-                        .frame(height: 20)
+                        .foregroundColor(Color.subtitle)
+                        .font(.footnoteSmCustom)
+                        .fontWeight(.bold)
+                        .frame(width: CGFloat(gridSize), height: CGFloat(gridSize))
                 }
             }
-            Divider()
+
             LazyVGrid(
                 columns: columns,
                 alignment: .center,
@@ -57,6 +57,7 @@ struct CalendarLayout: View {
                 }
             }
         }
+        .background(Color.white)
         .transition(AnyTransition.scale(scale: 1))
     }
     

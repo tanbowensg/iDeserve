@@ -37,6 +37,7 @@ extension Font {
 //    public static var headlineCustom = Font.custom("HiraginoSansGB-W6", size: 17)
 //    public static var titleCustom = Font.custom("HiraginoSansGB-W6", size: 28)
     public static var captionCustom = Font.system(size: 11, weight: .black)
+    public static var footnoteSmCustom = Font.system(size: 12, weight: .black)
     public static var footnoteCustom = Font.system(size: 13, weight: .black)
     public static var subheadCustom = Font.system(size: 15, weight: .black)
     public static var bodyCustom = Font.system(size: 17)
