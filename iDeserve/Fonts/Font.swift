@@ -9,24 +9,24 @@ import Foundation
 import SwiftUI
 
 extension UIFont {
-    class var hiraginoSansGb16Pt2: UIFont {
-        return UIFont(name: "HiraginoSansGB-W6", size: 16.0)!
-    }
-    class var avenir14Pt4: UIFont {
-        return UIFont(name: "Avenir-Black", size: 14.0)!
-    }
-    class var avenirBlack12: UIFont {
-        return UIFont(name: "Avenir-Black", size: 12.0)!
-    }
-    class var avenir14Pt3: UIFont {
-        return UIFont(name: "Avenir-Black", size: 14.0)!
-    }
-    class var hiraginoSansGb14Pt2: UIFont {
-        return UIFont(name: "Hiragino-Sans-GB-W6", size: 14.0)!
-    }
-    class var hiraginoSansGb9Pt2: UIFont {
-        return UIFont(name: "HiraginoSansGB-W6", size: 9.0)!
-    }
+//    class var hiraginoSansGb16Pt2: UIFont {
+//        return UIFont(name: "HiraginoSansGB-W6", size: 16.0)!
+//    }
+//    class var avenir14Pt4: UIFont {
+//        return UIFont(name: "Avenir-Black", size: 14.0)!
+//    }
+//    class var avenirBlack12: UIFont {
+//        return UIFont(name: "Avenir-Black", size: 12.0)!
+//    }
+//    class var avenir14Pt3: UIFont {
+//        return UIFont(name: "Avenir-Black", size: 14.0)!
+//    }
+//    class var hiraginoSansGb14Pt2: UIFont {
+//        return UIFont(name: "Hiragino-Sans-GB-W6", size: 14.0)!
+//    }
+//    class var hiraginoSansGb9Pt2: UIFont {
+//        return UIFont(name: "HiraginoSansGB-W6", size: 9.0)!
+//    }
 }
 
 extension Font {
@@ -43,9 +43,9 @@ extension Font {
     public static var bodyCustom = Font.system(size: 17)
     public static var headlineCustom = Font.system(size: 17, weight: .black)
     public static var titleCustom = Font.system(size: 20, weight: .black)
-    public static var avenirBlack12 = Font(UIFont(name: "Avenir-Black", size: 13.0)!)
-    public static var avenirBlack14 = Font(UIFont(name: "Avenir-Black", size: 15.0)!)
-    public static var avenirBlack36 = Font(UIFont(name: "Avenir-Black", size: 36.0)!)
+//    public static var avenirBlack12 = Font(UIFont(name: "Avenir-Black", size: 13.0)!)
+//    public static var avenirBlack14 = Font(UIFont(name: "Avenir-Black", size: 15.0)!)
+//    public static var avenirBlack36 = Font(UIFont(name: "Avenir-Black", size: 36.0)!)
 }
 
 import SwiftUI

@@ -39,29 +39,29 @@ struct CompleteGoalView: View {
             if isShowResult {
                 VStack(spacing: 6.0) {
                     HStack {
-                        Text("\(ImportanceText[goalReward!.importance]!)目标固定奖励").font(.avenirBlack14)
+                        Text("\(ImportanceText[goalReward!.importance]!)目标固定奖励").font(.footnoteCustom)
                         Spacer()
                         NutIcon(value: goalReward!.fixedReward, hidePlus: true)
                     }
                     HStack {
-                        Text("完成目标加成奖励").font(.avenirBlack14)
+                        Text("完成目标加成奖励").font(.footnoteCustom)
                         Spacer()
                         NutIcon(value: goalReward!.basicReward, hidePlus: true)
                     }
                     HStack {
-                        Text("在截止前完成任务").font(.avenirBlack14)
+                        Text("在截止前完成任务").font(.footnoteCustom)
                         Spacer()
                         NutIcon(value: goalReward!.beforeDdlReward, hidePlus: true)
                     }
                     HStack {
-                        Text("完成全部重复次数").font(.avenirBlack14)
+                        Text("完成全部重复次数").font(.footnoteCustom)
                         Spacer()
                         NutIcon(value: goalReward!.allRpeatReward, hidePlus: true)
                     }
                     VStack(spacing: 6.0) {
                         Divider()
                         HStack {
-                            Text("总计").font(.avenirBlack14)
+                            Text("总计").font(.footnoteCustom)
                             Spacer()
                             NutIcon(value: goalReward!.totalReward, hidePlus: true)
                         }
@@ -74,7 +74,7 @@ struct CompleteGoalView: View {
             
             Firework(onTap: { onClose() }, content: {
                 Text("完成！")
-                    .font(.avenirBlack14)
+                    .font(.footnoteCustom)
                     .foregroundColor(.white)
                     .frame(width: 100.0, height: 40.0)
                     .background(Color.rewardColor)

@@ -61,8 +61,7 @@ struct MyDayPage: View {
     var completedTasksView: some View {
         VStack(alignment: .leading, spacing: 12.0) {
             Text("今天完成的任务")
-                .font(.avenirBlack14)
-                .fontWeight(.medium)
+                .font(.subheadCustom)
                 .padding(.leading, 32.0)
             ForEach (completedTasks, id: \.id) { task in
                 Button(action: {

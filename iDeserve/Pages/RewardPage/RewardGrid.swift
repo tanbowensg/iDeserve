@@ -54,7 +54,7 @@ struct RewardGrid: View {
         }, content: {
             HStack(alignment: .center, spacing: 2){
                 Text(String(reward.value))
-                    .font(.avenirBlack12)
+                    .font(.footnoteCustom)
                     .foregroundColor(.rewardColor)
                     .frame(height: 16.0)
                 Image("NutIcon")

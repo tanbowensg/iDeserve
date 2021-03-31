@@ -15,7 +15,7 @@ struct NutIcon: View {
         HStack(alignment: .center, spacing: 3.0) {
             Text("\(value >= 0 && !hidePlus ? "+" : "")\(String(value))")
                 .foregroundColor(value >= 0 ? Color.rewardColor : Color.red)
-                .font(.avenirBlack14)
+                .font(.subheadCustom)
                 .fontWeight(.bold)
             Image("NutIcon")
                 .resizable()
