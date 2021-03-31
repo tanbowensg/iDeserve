@@ -13,12 +13,11 @@ struct CalendarSwiper: View {
     var nextDayStats: [DayStat]
     var currentYear: Int
     var currentMonth: Int
-    var gridSize: Int
     var onTapDate: ((_ date: Date) -> Void)?
     var onMonthChange: (_ nextYear: Int, _ nextMonth: Int) -> Void
     
-    @State var offsetX = 0
-    var threshold: Int = 140
+    @State var offsetX: CGFloat = 0
+    var threshold: CGFloat = 140
     let animationDuration = 0.3
 
 //    已经达到了出发操作的阈值
@@ -26,7 +25,7 @@ struct CalendarSwiper: View {
         return abs(offsetX) >= threshold
     }
     
-    func setOffsetX(_ value: Int) -> Void {
+    func setOffsetX(_ value: CGFloat) -> Void {
         withAnimation(.easeInOut(duration: animationDuration)) {
             offsetX = value
         }
@@ -36,11 +35,11 @@ struct CalendarSwiper: View {
 //        这里有些地方需要动画，有些不需要，注意区别
         DragGesture(minimumDistance: 1)
             .onChanged { value in
-                setOffsetX(Int(value.translation.width))
+                setOffsetX(value.translation.width)
             }
             .onEnded { value in
                 if offsetX > threshold {
-                    setOffsetX(gridSize * 7)
+                    setOffsetX(CalendarWidth + CalendarGridHorizontalSpacing)
                     let (prevYear, prevMonth) = getPrevMonth(year: currentYear, month: currentMonth)
                     DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
 //                      此处是swipe动画结束后重置月份，这里应该在幕后完成，不要有动画
@@ -50,7 +49,7 @@ struct CalendarSwiper: View {
                         }
                     }
                 } else if -offsetX > threshold {
-                    setOffsetX(-gridSize * 7)
+                    setOffsetX(-CalendarWidth - CalendarGridHorizontalSpacing)
                     let (nextYear, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
                     DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
                         withAnimation(.none) {
@@ -69,17 +68,16 @@ struct CalendarSwiper: View {
         let (_, nextMonth) = getNextMonth(year: currentYear, month: currentMonth)
 //        套上scrollView可以实现y轴上overflow hidden的效果
         return
-            HStack(alignment: .top, spacing: 0.0) {
-                CalendarLayout(dayStats: prevDayStats, currentMonth: prevMonth, gridSize: gridSize, onTapDate: onTapDate)
+            HStack(alignment: .top, spacing: CalendarGridHorizontalSpacing) {
+                CalendarLayout(dayStats: prevDayStats, currentMonth: prevMonth, onTapDate: onTapDate)
                     .id(prevMonth)
-                CalendarLayout(dayStats: dayStats, currentMonth: currentMonth, gridSize: gridSize, onTapDate: onTapDate)
+                CalendarLayout(dayStats: dayStats, currentMonth: currentMonth, onTapDate: onTapDate)
                     .id(currentMonth)
-                CalendarLayout(dayStats: nextDayStats, currentMonth: nextMonth, gridSize: gridSize, onTapDate: onTapDate)
+                CalendarLayout(dayStats: nextDayStats, currentMonth: nextMonth, onTapDate: onTapDate)
                     .id(nextMonth)
             }
-//            高度要加上日历的很多padding
-            .frame(width: CGFloat(gridSize * 7), height: 40 + CGFloat(gridSize * dayStats.count / 7), alignment: .top)
-            .offset(x: CGFloat(offsetX), y: 0)
+            .frame(width: CalendarWidth, height: getCalendarHeight(dayStats.count), alignment: .top)
+            .offset(x: offsetX, y: 0)
             .gesture(gesture)
             .clipped()
     }

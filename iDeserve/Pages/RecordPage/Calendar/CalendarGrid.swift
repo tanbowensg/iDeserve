@@ -9,11 +9,9 @@ import SwiftUI
 
 struct CalendarGrid: View {
     var dayStat: DayStat
-    var size: Int = 40
     var isHighlight: Bool = false
     var isCurrentMonth: Bool = true
     let OpacityBase: Double = 160
-    let padding = 6
     
     var day: Int {
         Calendar.current.dateComponents([Calendar.Component.day], from: dayStat.date).day!
@@ -21,7 +19,7 @@ struct CalendarGrid: View {
     
     var placeHolder: some View {
         Text("")
-            .frame(width: CGFloat(size), height: CGFloat(size))
+            .frame(width: CalendarGridSize, height: CalendarGridSize)
             .disabled(true)
     }
     
@@ -40,20 +38,16 @@ struct CalendarGrid: View {
             .fontWeight(.medium)
             .font(.footnoteSmCustom)
             .foregroundColor(foregroundColor)
-//            .frame(width: CGFloat(size - padding * 2), height: CGFloat(size - padding * 2))
-            .frame(width: 24, height: 24)
+            .frame(width: CalendarGridSize, height: CalendarGridSize)
             .background(dayStat.income > 0 ?
                 Color.brandGreen
-                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(7):
+                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(6):
                 nil
             )
             .applyIf(isHighlight, apply: { content in
-                content.roundBorder(isHighlight ? Color.darkBrandGreen : Color.white, width: 1, cornerRadius: 6)
+                content.roundBorder(isHighlight ? Color.darkBrandGreen : Color.white, width: 1, cornerRadius: CalendarGridSize/4)
             })
-            .frame(width: CGFloat(size), height: CGFloat(size))
-//            .scaleEffect(isHighlight ? 1.1 : 1)
             .animation(.easeInOut(duration: 0.1), value: isHighlight)
-//            .padding(.all, CGFloat(padding))
             .id(dayStat.date)
     }
 

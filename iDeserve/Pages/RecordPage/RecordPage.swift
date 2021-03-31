@@ -72,8 +72,8 @@ struct RecordPage: View {
             .foregroundColor(.body)
     }
     
-    func recordsView(width: CGFloat) -> some View {
-        VStack(alignment: .center, spacing: 0.0) {
+    func recordsView() -> some View {
+        VStack(alignment: .center, spacing: 20.0) {
             VStack(alignment: .leading, spacing: 10) {
                 monthTitle
                 CalendarSwiper(
@@ -82,7 +82,6 @@ struct RecordPage: View {
                     nextDayStats: nextMonthDayStats,
                     currentYear: currentYear,
                     currentMonth: currentMonth,
-                    gridSize: Int(width / 7),
                     onTapDate: { chosenDate = $0 },
                     onMonthChange: {
                         currentYear = $0
@@ -94,22 +93,20 @@ struct RecordPage: View {
             .padding(20)
             .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
     
-            Divider()
+            ExDivider()
             RecordList(records: chosenDateRecords)
                 .animation(.none)
         }
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 0.0) {
-                AppHeader(points: gs.pointsStore.points, title: "历史记录")
-                unlockCalendar ? recordsView(width: geometry.size.width - 90) : nil
-                !unlockCalendar ? Text("还没有解锁") : nil
-            }
-                .animation(.easeInOut, value: currentMonth)
-                .navigationBarHidden(true)
+        VStack(spacing: 25.0) {
+            AppHeader(points: gs.pointsStore.points, title: "历史记录")
+            unlockCalendar ? recordsView() : nil
+            !unlockCalendar ? Text("还没有解锁") : nil
         }
+            .animation(.easeInOut, value: currentMonth)
+            .navigationBarHidden(true)
     }
 
     func deleteRecord (at offsets: IndexSet) {

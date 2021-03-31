@@ -6,6 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
+
+let CalendarGridSize: CGFloat = 24
+let CalendarGridVerticalSpacing: CGFloat = 10
+let CalendarGridHorizontalSpacing: CGFloat = 20
+
+let CalendarWidth: CGFloat = CalendarGridSize * 7 + CalendarGridHorizontalSpacing * 6
+
+func getCalendarHeight(_ days: Int) -> CGFloat {
+    CGFloat((Int(CalendarGridSize) * Int(days / 7 + 1)) + Int(CalendarGridVerticalSpacing) * Int(days / 7))
+}
 
 struct DayStat {
     var date: Date

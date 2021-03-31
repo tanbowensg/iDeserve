@@ -10,41 +10,39 @@ import SwiftUI
 struct CalendarLayout: View {
     var dayStats: [DayStat]
     var currentMonth: Int
-    var gridSize: Int
     var onTapDate: ((_ date: Date) -> Void)?
     
     @State var highlightDate: Date? = nil
 
     var columns: [GridItem] {
         let array = Array(1...7)
-        return array.map { _ in GridItem(.fixed(CGFloat(gridSize)), spacing: 0) }
+        return array.map { _ in GridItem(.fixed(CalendarGridSize), spacing: CalendarGridHorizontalSpacing) }
     }
 
     var body: some View {
-        VStack(spacing: 0.0) {
+        VStack(spacing: CalendarGridVerticalSpacing) {
             LazyVGrid(
                 columns: columns,
                 alignment: .center,
-                spacing: 0
+                spacing: CalendarGridVerticalSpacing
             ) {
                 ForEach(["日", "一", "二", "三", "四", "五", "六"], id: \.self) {text in
                     Text(text)
                         .foregroundColor(Color.subtitle)
                         .font(.footnoteSmCustom)
                         .fontWeight(.bold)
-                        .frame(width: CGFloat(gridSize), height: CGFloat(gridSize))
+                        .frame(width: CalendarGridSize, height: CalendarGridSize)
                 }
             }
 
             LazyVGrid(
                 columns: columns,
                 alignment: .center,
-                spacing: 0
+                spacing: CalendarGridVerticalSpacing
             ) {
                 ForEach(dayStats, id: \.date) { ds in
                     CalendarGrid(
                         dayStat: ds,
-                        size: Int(gridSize),
                         isHighlight: highlightDate == nil ? false : Calendar.current.isDate(ds.date, inSameDayAs: highlightDate!),
                         isCurrentMonth: getDateMonth(ds.date) == currentMonth
                     )
@@ -70,6 +68,7 @@ struct CalendarLayout_Previews: PreviewProvider {
     @State var chosenDate: Date?
 
     static var previews: some View {
-        CalendarLayout(dayStats: [DayStat(date: Date(), income: 0, outcome: 0)], currentMonth: 1, gridSize: 55)
+        CalendarLayout(dayStats: [DayStat(date: Date(), income: 0, outcome: 0)], currentMonth: 1)
+        
     }
 }
