@@ -26,12 +26,11 @@ struct RecordList: View {
         return VStack(spacing: 0.0) {
             Divider()
             HStack(alignment: .center) {
-                Text("总计")
+                Text("总计").font(.subheadCustom)
                 Spacer()
                 NutIcon(value: sum)
             }
             .frame(height: 40.0)
-            .padding(.horizontal, 16.0)
         }
         .background(Color.white)
     }
@@ -39,12 +38,12 @@ struct RecordList: View {
     var body: some View {
         return ZStack(alignment: .bottom) {
             ScrollView {
-                VStack(spacing: 0.0) {
+                VStack(spacing: 10.0) {
                     ForEach (records) { record in
                         RecordItem(record: record)
                     }
                 }
-                .padding(.bottom, 32.0)
+                .padding(.bottom, 38.0)
             }
             records.count > 0 ? subtotal : nil
         }
@@ -71,15 +70,14 @@ struct RecordItem: View {
     }
 
     var body: some View {
-        HStack(alignment: .center, spacing: 6.0) {
+        HStack(alignment: .center, spacing: 10.0) {
             icon
-            Text(record.name!)
-                .font(.bodyCustom)
+            Text(record.name!).font(.subheadCustom)
             Spacer()
             NutIcon(value: Int(record.kind == RecordKind.reward.rawValue ? -record.value : record.value))
         }
-        .padding(.horizontal, 16.0)
-        .frame(height: 40.0)
+        .font(.subheadCustom)
+        .frame(height: 28)
     }
 }
 

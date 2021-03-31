@@ -107,13 +107,14 @@ struct RecordPage: View {
                 )
             }
             .frame(width: CalendarWidth)
-            .padding(20)
+            .padding(25)
             .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
     
             ExDivider()
             RecordList(records: chosenDateRecords)
                 .animation(.none)
         }
+        .padding(.horizontal, 25)
     }
 
     var body: some View {

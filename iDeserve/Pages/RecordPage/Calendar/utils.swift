@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-let CalendarGridSize: CGFloat = 30
-let CalendarGridVerticalSpacing: CGFloat = 14
-let CalendarGridHorizontalSpacing: CGFloat = 14
+let CalendarGridSize: CGFloat = 28
+let CalendarGridVerticalSpacing: CGFloat = 10
+let CalendarGridHorizontalSpacing: CGFloat = 15
 
 let CalendarWidth: CGFloat = CalendarGridSize * 7 + CalendarGridHorizontalSpacing * 6
 

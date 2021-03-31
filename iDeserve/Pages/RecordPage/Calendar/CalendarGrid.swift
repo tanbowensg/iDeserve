@@ -40,11 +40,11 @@ struct CalendarGrid: View {
             .frame(width: CalendarGridSize, height: CalendarGridSize)
             .background(dayStat.income > 0 ?
                 Color.brandGreen
-                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(6):
+                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(CalendarGridSize / 4):
                 nil
             )
             .applyIf(isHighlight, apply: { content in
-                content.roundBorder(isHighlight ? Color.darkBrandGreen : Color.white, width: 2, cornerRadius: CalendarGridSize/4)
+                content.roundBorder(isHighlight ? Color.darkBrandGreen : Color.white, width: 2, cornerRadius: CalendarGridSize / 4)
             })
             .animation(.easeInOut(duration: 0.1), value: isHighlight)
             .id(dayStat.date)
