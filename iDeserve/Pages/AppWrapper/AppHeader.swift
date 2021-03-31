@@ -60,7 +60,7 @@ struct AppHeader: View {
         .padding(.horizontal, 16.0)
         .frame(height: 120.0)
         .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.headerGreen)
+        .background(Color.darkBrandGreen)
     }
 }
 

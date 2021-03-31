@@ -57,7 +57,6 @@ extension Color {
     
     public static var brandGreen = Color(UIColor(named: "brandGreen")!)
     public static var darkBrandGreen = Color(UIColor(named: "darkBrandGreen")!)
-    public static var headerGreen = Color(UIColor(named: "headerGreen")!)
     public static var veryLightPink = Color(UIColor(named: "veryLightPink")!)
     public static var myBlack = Color(UIColor(named: "black")!)
     public static var rewardColor = Color(UIColor(named: "rewardColor")!)
