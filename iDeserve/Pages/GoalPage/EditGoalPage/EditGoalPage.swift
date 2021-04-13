@@ -142,9 +142,12 @@ struct EditGoalPage: View {
                 gs.taskStore.removeTask(originalTask)
             }
         }
-
-        return Group {
-//            编辑目标时，用常规的任务item
+        
+        return Button(action:  {
+            taskCache = task
+            isShowTaskSheet = true
+        }) {
+            //            编辑目标时，用常规的任务item
             !isCreate ? TaskItem(
                 task: task,
                 onCompleteTask: disabledComplete ? nil : {
@@ -156,7 +159,7 @@ struct EditGoalPage: View {
                 onRemoveTask: removeTask,
                 hideTag: true
             ) : nil
-//            创建目标时，用简化的任务item
+            //            创建目标时，用简化的任务item
             isCreate ? SimpleTaskItem(
                 task: task,
                 onRemoveTask: removeTask

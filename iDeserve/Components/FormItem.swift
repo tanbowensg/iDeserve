@@ -18,7 +18,7 @@ struct FormItem<Content: View>: View {
                 Text(name)
                     .font(.subheadCustom)
                     .fontWeight(.bold)
-                    .foregroundColor(.subtitle)
+                    .foregroundColor(.black333)
                 
                 onClickHelp == nil ? nil : Image(systemName: "questionmark.circle")
                     .resizable()
