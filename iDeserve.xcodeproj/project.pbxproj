@@ -108,6 +108,8 @@
 		D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB32025A87CE300042124 /* AnimatedPoints.swift */; };
 		D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */; };
 		D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */; };
+		D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = D0B113EC262584AB00C93A59 /* SwiftUIPager */; };
+		D0B113F4262584E600C93A59 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B113F3262584E600C93A59 /* LandingPage.swift */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -257,6 +259,7 @@
 		D08FB32025A87CE300042124 /* AnimatedPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPoints.swift; sourceTree = "<group>"; };
 		D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetRepeatTaskStatus.swift; sourceTree = "<group>"; };
 		D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordList.swift; sourceTree = "<group>"; };
+		D0B113F3262584E600C93A59 /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = iDeserve.storekit; sourceTree = "<group>"; };
 		D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -284,6 +287,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */,
 				D0119B5725EE340F00F5E0F6 /* Sliders in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +506,7 @@
 		D04BB015252AC7EB0088912A /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				D0B113F2262584DA00C93A59 /* LandingPage */,
 				D00CB0792588B83300460D06 /* MyDayPage */,
 				D08FB30025A82FE500042124 /* GoalPage */,
 				D07242F425A1B68D00DCB674 /* RewardPage */,
@@ -608,6 +613,14 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
+		D0B113F2262584DA00C93A59 /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				D0B113F3262584E600C93A59 /* LandingPage.swift */,
+			);
+			path = LandingPage;
+			sourceTree = "<group>";
+		};
 		D0D23CC22577969100AAFE27 /* AppWrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +681,7 @@
 			name = iDeserve;
 			packageProductDependencies = (
 				D0119B5625EE340F00F5E0F6 /* Sliders */,
+				D0B113EC262584AB00C93A59 /* SwiftUIPager */,
 			);
 			productName = iDeserve;
 			productReference = D010265E2524241F00653A52 /* iDeserve.app */;
@@ -762,6 +776,7 @@
 			mainGroup = D01026552524241F00653A52;
 			packageReferences = (
 				D0119B5525EE340F00F5E0F6 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+				D0B113EB262584AB00C93A59 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 			);
 			productRefGroup = D010265F2524241F00653A52 /* Products */;
 			projectDirPath = "";
@@ -822,6 +837,7 @@
 			files = (
 				D07242782599E1ED00DCB674 /* i18n.swift in Sources */,
 				D087580F2612CC750071BA39 /* SimpleTaskItem.swift in Sources */,
+				D0B113F4262584E600C93A59 /* LandingPage.swift in Sources */,
 				D031EE2125B7DCB500D64CF3 /* DragRelocateDelegate.swift in Sources */,
 				D0119B4825ECE74C00F5E0F6 /* GoalTypePicker.swift in Sources */,
 				D0F3B0162563BBFB008B6EBB /* SwipeWrapper.swift in Sources */,
@@ -1332,6 +1348,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		D0B113EB262584AB00C93A59 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1339,6 +1363,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D0119B5525EE340F00F5E0F6 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
 			productName = Sliders;
+		};
+		D0B113EC262584AB00C93A59 /* SwiftUIPager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0B113EB262584AB00C93A59 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			productName = SwiftUIPager;
 		};
 /* End XCSwiftPackageProductDependency section */
 

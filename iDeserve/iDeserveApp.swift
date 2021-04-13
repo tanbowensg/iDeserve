@@ -10,24 +10,33 @@ import CoreData
 
 @main
 struct iDeserveApp: App {
+    @AppStorage(HAS_LANDED) var hasLanded = false
     @Environment(\.scenePhase) private var scenePhase
     
     init () {
         initData()
     }
+    
+    var mainApp: some View {
+        ZStack {
+            Color.bg
+                .ignoresSafeArea()
+            AppWrapper()
+                .environment(\.managedObjectContext, GlobalStore.shared.moc)
+                .environmentObject(GlobalStore.shared)
+                .environmentObject(PointsStore.shared)
+        }
+        .accentColor(.brandGreen)
+        .foregroundColor(.black333)
+        
+    }
 
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                Color.bg
-                    .ignoresSafeArea()
-                AppWrapper()
-                    .environment(\.managedObjectContext, GlobalStore.shared.moc)
-                    .environmentObject(GlobalStore.shared)
-                    .environmentObject(PointsStore.shared)
+            Group {
+                hasLanded ? mainApp : nil
+                !hasLanded ? LandingPage(): nil
             }
-            .accentColor(.brandGreen)
-            .foregroundColor(.black333)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {

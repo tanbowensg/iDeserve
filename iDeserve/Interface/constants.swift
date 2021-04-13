@@ -25,4 +25,7 @@ let MAX_GOAL = 3
 let UNLOCK_CALENDAR: String = "unlockCalendar"
 let HAS_INITED: String = "hasInited"
 let START_TIME_OF_DAY: String = "startTimeOfDay"
+let HAS_LANDED = "hasLanded"
+
+//内购项目的identiier
 let PRO_IDENTIFIER = "com.iDeserve.pro"
