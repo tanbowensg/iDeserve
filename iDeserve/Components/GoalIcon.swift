@@ -14,11 +14,10 @@ struct GoalIcon: View {
     var body: some View {
         Image(goalType.rawValue)
             .resizable()
-//                .aspectRatio(1, contentMode: .fit)
-            .padding(10)
             .scaledToFit()
             .frame(width: size, height: size)
-            .background(Color.white.cornerRadius(size / 5).shadow(color: .darkShadow, radius: size / 5, x: 0, y: 0))
+            .cornerRadius(size / 5)
+            .shadow(color: .darkShadow, radius: size / 5, x: 0, y: 0)
     }
 }
 
