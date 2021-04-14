@@ -132,13 +132,6 @@ struct RecordPage: View {
         currentMonth = nextMonth
         chosenDate = nil
     }
-
-    func deleteRecord (at offsets: IndexSet) {
-        for index in offsets {
-            let record = chosenDateRecords[index]
-            gs.moc.delete(record)
-        }
-    }
 }
 
 struct RecordPage_Previews: PreviewProvider {

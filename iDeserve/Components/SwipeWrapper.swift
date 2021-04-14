@@ -13,15 +13,24 @@ struct SwipeWrapper<Content: View>: View {
     var onLeftSwipe: (() -> Void)?
     var onRightSwipe: (() -> Void)?
 
-    @State var offsetX = 0
+    @State var offsetX: CGFloat = 0
 
-    let slotWidth: Int = 300
-    let threshold: Int = 100
-    
 //    左右的背景颜色
     let leftSlotBg = Color.brandGreen
     let rightSlotBg = Color.red
-    
+
+    var iconSize: CGFloat {
+        CGFloat(height / 3)
+    }
+
+    var slotWidth: CGFloat {
+        CGFloat(300)
+    }
+
+    var threshold: CGFloat {
+        CGFloat(80)
+    }
+
     var alignment: Alignment {
         if (offsetX <= 0) {
             return .trailing
@@ -36,17 +45,13 @@ struct SwipeWrapper<Content: View>: View {
     }
 
     var leftSlotOffset: CGFloat {
-        return CGFloat(-self.slotWidth + Int(offsetX))
+        return -self.slotWidth + offsetX
     }
     
     var rightSlotOffset: CGFloat {
-        return CGFloat(self.slotWidth + Int(offsetX))
+        return self.slotWidth + offsetX
     }
 
-    var contentOffset: CGFloat {
-        return CGFloat(offsetX)
-    }
-    
     var customContent: some View {
         content
     }
@@ -58,12 +63,12 @@ struct SwipeWrapper<Content: View>: View {
     var leftSlot: some View {
         Image(systemName: "checkmark")
             .resizable()
-            .frame(width: 20, height: 20)
+            .frame(width: iconSize, height: iconSize)
             .scaleEffect(isReachThreshold ? 1.5 : 1)
             .multilineTextAlignment(.trailing)
-            .padding(.leading, CGFloat(slotWidth) - 30.0 - 40)
-            .padding(.trailing, 30.0)
-            .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
+            .padding(.leading, slotWidth - threshold / 3 - iconSize)
+            .padding(.trailing, threshold / 3)
+            .frame(width: slotWidth, height: CGFloat(height))
             .foregroundColor(.g0)
             .background(leftSlotBg)
             .animation(Animation.spring())
@@ -72,12 +77,12 @@ struct SwipeWrapper<Content: View>: View {
     var rightSlot: some View {
         Image(systemName: "trash")
             .resizable()
-            .frame(width: 20, height: 20)
+            .frame(width: iconSize, height: iconSize)
             .scaleEffect(isReachThreshold ? 1.5 : 1)
             .multilineTextAlignment(.leading)
-            .padding(.trailing, CGFloat(slotWidth) - 30.0 - 40)
-            .padding(.leading, 30.0)
-            .frame(width: CGFloat(self.slotWidth), height: CGFloat(self.height))
+            .padding(.trailing, slotWidth - threshold / 3 - iconSize)
+            .padding(.leading, threshold / 3)
+            .frame(width: slotWidth, height: CGFloat(height))
             .foregroundColor(.g0)
             .background(rightSlotBg)
             .animation(Animation.spring())
@@ -96,7 +101,7 @@ struct SwipeWrapper<Content: View>: View {
                 if onRightSwipe == nil {
                     newOffsetX = max(0, newOffsetX)
                 }
-                self.offsetX = newOffsetX
+                self.offsetX = CGFloat(newOffsetX)
 //                如果两次状态不一致，就震动
                 if isReachThreshold != lastIsReachThreshold {
                     viberate()
@@ -115,8 +120,8 @@ struct SwipeWrapper<Content: View>: View {
     var body: some View {
         ZStack(alignment: alignment) {
             customContent
-                .offset(x: contentOffset)
-                .animation(Animation.spring(), value: contentOffset)
+                .offset(x: offsetX)
+                .animation(Animation.spring(), value: offsetX)
             offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
             offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil
         }
