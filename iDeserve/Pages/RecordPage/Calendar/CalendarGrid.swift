@@ -39,8 +39,7 @@ struct CalendarGrid: View {
             .foregroundColor(foregroundColor)
             .frame(width: CalendarGridSize, height: CalendarGridSize)
             .background(dayStat.income > 0 ?
-                Color.brandGreen
-                .opacity(Double(dayStat.income) / OpacityBase).cornerRadius(CalendarGridSize / 4):
+                Color.brandGreen.opacity(max(0.2, Double(dayStat.income) / OpacityBase)).cornerRadius(CalendarGridSize / 4):
                 nil
             )
             .applyIf(isHighlight, apply: { content in
