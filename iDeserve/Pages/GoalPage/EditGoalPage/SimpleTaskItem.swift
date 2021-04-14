@@ -15,7 +15,7 @@ struct SimpleTaskItem: View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
                 Text(task.name)
-                    .font(.subheadline)
+                    .font(.subheadCustom)
                     .foregroundColor(.black333)
                 Spacer()
                 NutIcon(value: task.value, hidePlus: true)

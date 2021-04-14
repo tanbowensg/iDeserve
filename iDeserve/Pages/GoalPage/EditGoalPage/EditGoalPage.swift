@@ -172,29 +172,27 @@ struct EditGoalPage: View {
         let tasksNutsSum = tasks.reduce(0, {(result, task) in
             return result + task.totalValue
         })
-        return Group {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("任务")
-                    .font(.subheadCustom)
-                    .fontWeight(.bold)
-                    .foregroundColor(.subtitle)
-                HStack(spacing: 0) {
-                    Text("共计 \(tasks.count) 个任务，全部完成可得")
-                    NutIcon(value: tasksNutsSum, hidePlus: true)
-                }
-                    .foregroundColor(.caption)
-                    .font(.caption)
-                VStack(spacing: 0.0) {
-                    ForEach (tasks, id: \.id) { task in
-                        taskItem(task)
-                    }
-                    createTaskButton
-                        .padding(.vertical, 20)
-                }
-                .padding(.vertical, 20)
-                .padding(.horizontal, 25)
-                .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
+        return VStack(alignment: .leading, spacing: 20) {
+            Text("任务")
+                .font(.subheadCustom)
+                .fontWeight(.bold)
+                .foregroundColor(.body)
+            HStack(spacing: 0) {
+                Text("共计 \(tasks.count) 个任务，全部完成可得")
+                NutIcon(value: tasksNutsSum, hidePlus: true)
             }
+                .foregroundColor(.caption)
+                .font(.caption)
+            VStack(spacing: 0.0) {
+                ForEach (tasks, id: \.id) { task in
+                    taskItem(task)
+                }
+                createTaskButton
+                    .padding(.vertical, 20)
+            }
+            .padding(.vertical, 20)
+            .padding(.horizontal, 25)
+            .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
         }
     }
 
