@@ -124,7 +124,7 @@ struct GoalPage: View {
     }
     
     var goalListView: some View {
-        ScrollView {
+        CustomScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 10.0) {
                 VStack(spacing: 0.0) {
                     ForEach (undoneGoals, id: \.id) { goal in

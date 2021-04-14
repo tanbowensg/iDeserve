@@ -16,6 +16,7 @@ private struct ScrollOffsetPreferenceKey: PreferenceKey {
 }
 
 struct CustomScrollView<Content: View>: View {
+    @EnvironmentObject var gs: GlobalStore
     let showsIndicators: Bool
     let onOffsetChange: (CGFloat) -> Void
     let content: Content
@@ -37,7 +38,10 @@ struct CustomScrollView<Content: View>: View {
                     key: ScrollOffsetPreferenceKey.self,
                     value: geometry.frame(in: .named("scrollView")).minY
                 )
-                .onPreferenceChange(ScrollOffsetPreferenceKey.self, perform: onOffsetChange)
+                .onPreferenceChange(ScrollOffsetPreferenceKey.self, perform: {v in
+                    NotificationCenter.default.post(name: NSNotification.onScroll, object: nil)
+                    onOffsetChange(v)
+                })
             }.frame(width: 0, height: 0)
             content
         }

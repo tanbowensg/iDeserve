@@ -12,25 +12,25 @@ struct SwipeWrapper<Content: View>: View {
     var height: Int
     var onLeftSwipe: (() -> Void)?
     var onRightSwipe: (() -> Void)?
-
+    
     @State var offsetX: CGFloat = 0
-
-//    左右的背景颜色
+    
+    //    左右的背景颜色
     let leftSlotBg = Color.brandGreen
     let rightSlotBg = Color.red
-
+    
     var iconSize: CGFloat {
         CGFloat(height / 3)
     }
-
+    
     var slotWidth: CGFloat {
         CGFloat(300)
     }
-
+    
     var threshold: CGFloat {
         CGFloat(80)
     }
-
+    
     var alignment: Alignment {
         if (offsetX <= 0) {
             return .trailing
@@ -39,11 +39,11 @@ struct SwipeWrapper<Content: View>: View {
         }
     }
     
-//    已经达到了出发操作的阈值
+    //    已经达到了出发操作的阈值
     var isReachThreshold: Bool {
         return abs(offsetX) >= threshold
     }
-
+    
     var leftSlotOffset: CGFloat {
         return -self.slotWidth + offsetX
     }
@@ -51,7 +51,7 @@ struct SwipeWrapper<Content: View>: View {
     var rightSlotOffset: CGFloat {
         return self.slotWidth + offsetX
     }
-
+    
     var customContent: some View {
         content
     }
@@ -59,7 +59,7 @@ struct SwipeWrapper<Content: View>: View {
     var background: some View {
         return offsetX > 0 ? leftSlotBg : rightSlotBg
     }
-
+    
     var leftSlot: some View {
         Image(systemName: "checkmark")
             .resizable()
@@ -87,14 +87,14 @@ struct SwipeWrapper<Content: View>: View {
             .background(rightSlotBg)
             .animation(Animation.spring())
     }
-
+    
     var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-//                缓存 isReachThreshold 最近一次状态
+                //                缓存 isReachThreshold 最近一次状态
                 let lastIsReachThreshold = isReachThreshold
                 var newOffsetX = Int(value.translation.width)
-//                若没传相应的回调，就相当于禁用
+                //                若没传相应的回调，就相当于禁用
                 if onLeftSwipe == nil {
                     newOffsetX = min(0, newOffsetX)
                 }
@@ -102,7 +102,7 @@ struct SwipeWrapper<Content: View>: View {
                     newOffsetX = max(0, newOffsetX)
                 }
                 self.offsetX = CGFloat(newOffsetX)
-//                如果两次状态不一致，就震动
+                //                如果两次状态不一致，就震动
                 if isReachThreshold != lastIsReachThreshold {
                     viberate()
                 }
@@ -116,7 +116,7 @@ struct SwipeWrapper<Content: View>: View {
                 self.offsetX = .zero
             }
     }
-
+    
     var body: some View {
         ZStack(alignment: alignment) {
             customContent
@@ -125,20 +125,26 @@ struct SwipeWrapper<Content: View>: View {
             offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
             offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil
         }
-            .gesture(gesture)
+        .gesture(gesture)
+        
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.onScroll)){ _ in
+            //            这里是为了避免scrollView滚动的时候，ondrag的onended不触发，结果卡在那里
+            print("滚动了")
+            offsetX = 0
+        }
     }
 }
 
-struct SwipeWrapper_Previews: PreviewProvider {
-    static var previews: some View {
-        let content =
-            HStack {
-                Text("Hello, World!")
-                Spacer()
-            }
-                .frame(height: 100)
-                .background(Color.yellow)
-
-        SwipeWrapper(content: content, height: 100)
-    }
-}
+//struct SwipeWrapper_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let content =
+//            HStack {
+//                Text("Hello, World!")
+//                Spacer()
+//            }
+//                .frame(height: 100)
+//                .background(Color.yellow)
+//
+//        SwipeWrapper(content: content, height: 100)
+//    }
+//}

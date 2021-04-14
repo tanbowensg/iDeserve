@@ -84,7 +84,6 @@
 		D079137C2574F65B007B9767 /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
 		D079137D2574F65B007B9767 /* genMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockData.swift */; };
 		D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
-		D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
 		D07913BF257768E9007B9767 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913BE257768E9007B9767 /* TabContainer.swift */; };
 		D07913C925776963007B9767 /* TabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913C825776963007B9767 /* TabIcon.swift */; };
 		D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3325B037E200087FC5 /* GoalItemView.swift */; };
@@ -104,12 +103,15 @@
 		D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE9B325FB35DD0020FBC2 /* initData.swift */; };
 		D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2EC25A5D52200042124 /* draggableModifier.swift */; };
 		D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2FA25A82E1F00042124 /* Importance.swift */; };
-		D08FB31125A8388000042124 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
 		D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB32025A87CE300042124 /* AnimatedPoints.swift */; };
 		D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */; };
 		D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */; };
 		D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = D0B113EC262584AB00C93A59 /* SwiftUIPager */; };
 		D0B113F4262584E600C93A59 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B113F3262584E600C93A59 /* LandingPage.swift */; };
+		D0B114022626FBC100C93A59 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114012626FBC100C93A59 /* Events.swift */; };
+		D0B1140F262704BA00C93A59 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
+		D0B11414262704BE00C93A59 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
+		D0B11419262704CF00C93A59 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114012626FBC100C93A59 /* Events.swift */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -260,6 +262,7 @@
 		D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetRepeatTaskStatus.swift; sourceTree = "<group>"; };
 		D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordList.swift; sourceTree = "<group>"; };
 		D0B113F3262584E600C93A59 /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
+		D0B114012626FBC100C93A59 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = iDeserve.storekit; sourceTree = "<group>"; };
 		D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -429,6 +432,7 @@
 				D06806A52531939D008DE678 /* RepeatFrequency.swift */,
 				D0119B6C25EF2C7600F5E0F6 /* Reward.swift */,
 				D08988DD2546BDDC0032BA96 /* Task.swift */,
+				D0B114012626FBC100C93A59 /* Events.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -862,6 +866,7 @@
 				D072434A25A431C000DCB674 /* utils.swift in Sources */,
 				D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */,
 				D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */,
+				D0B114022626FBC100C93A59 /* Events.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
@@ -956,16 +961,17 @@
 				D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */,
 				D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */,
 				D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */,
+				D0B11419262704CF00C93A59 /* Events.swift in Sources */,
 				D07913682574F632007B9767 /* Difficulty.swift in Sources */,
 				D079133D2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */,
 				D079137C2574F65B007B9767 /* saveContext.swift in Sources */,
 				D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */,
+				D0B1140F262704BA00C93A59 /* TaskItem.swift in Sources */,
 				D07913652574F632007B9767 /* Record.swift in Sources */,
-				D08FB31125A8388000042124 /* TaskItem.swift in Sources */,
 				D07913662574F632007B9767 /* Color.swift in Sources */,
 				D07913692574F632007B9767 /* Task.swift in Sources */,
-				D079138F2574F6B5007B9767 /* SwipeWrapper.swift in Sources */,
+				D0B11414262704BE00C93A59 /* SwipeWrapper.swift in Sources */,
 				D079137D2574F65B007B9767 /* genMockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

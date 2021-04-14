@@ -41,7 +41,7 @@ struct RecordList: View {
 
     var body: some View {
         return ZStack(alignment: .bottom) {
-            ScrollView {
+            CustomScrollView(showsIndicators: false) {
                 VStack(spacing: 0) {
                     ForEach (records) { record in
                         SwipeWrapper(
