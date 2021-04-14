@@ -81,8 +81,6 @@ struct GoalPage: View {
                     isShowAlert.toggle()
                 }
             )
-            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
-            .buttonStyle(PlainButtonStyle())
             .onDrag {
                 self.draggedGoal = goal
                 return NSItemProvider(object: goal.id!.uuidString as NSString)
@@ -98,6 +96,8 @@ struct GoalPage: View {
                 )
             )
         }
+        .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
+        .buttonStyle(PlainButtonStyle())
     }
     
     func doneGoalItem(_ goal: Goal) -> some View {
@@ -117,10 +117,9 @@ struct GoalPage: View {
                     isShowAlert.toggle()
                 }
             )
-            .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
-            .buttonStyle(PlainButtonStyle())
         }
-        
+        .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
+        .buttonStyle(PlainButtonStyle())
     }
     
     var goalListView: some View {
