@@ -18,6 +18,8 @@ struct RewardGrid: View {
 //    这个和 isEditMode 是一起变化的。但是为了让删除按钮的动画和整个卡片分离开来，所以弄了两个变量
     @State var isTapped = false
     @State var isShowButton = false
+
+    @State var isShowRedeemAlert = false
     
     var disableRedeem: Bool {
         return isEditMode
@@ -48,10 +50,21 @@ struct RewardGrid: View {
         .animation(.none, value: isShowButton)
     }
     
-    var redeemButton: some View {
-        Firework(size: 52, disabled: disableRedeem, onTap: {
+    var redeemAlert: Alert {
+        let confirmButton = Alert.Button.default(Text("确定")) {
             gs.rewardStore.redeemReward(reward)
-        }, content: {
+        }
+        let cancelButton = Alert.Button.cancel(Text("取消"))
+        return Alert(
+            title: Text("兑换奖励"),
+            message: Text("确定要兑换\(reward.name!)吗？"),
+            primaryButton: confirmButton,
+            secondaryButton: cancelButton
+        )
+    }
+    
+    var redeemButton: some View {
+        Button(action: { isShowRedeemAlert.toggle() }) {
             HStack(alignment: .center, spacing: 2){
                 Text(String(reward.value))
                     .font(.footnoteCustom)
@@ -69,8 +82,9 @@ struct RewardGrid: View {
             .cornerRadius(13)
             .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
             .grayscale(disableRedeem ? 0.9 : 1)
-        })
-        .frame(height: 26.0)
+            .frame(height: 26.0)
+        }
+        .alert(isPresented: $isShowRedeemAlert, content: { redeemAlert })
     }
     
     var soldoutLogo: some View {
