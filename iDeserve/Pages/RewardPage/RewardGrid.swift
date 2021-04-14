@@ -127,7 +127,7 @@ struct RewardGrid: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             VStack(alignment: .center) {
-                link
+                reward.type != RewardType.system.rawValue ? link : nil // 系统奖励不可以更改，所以不能进入详情
                 mainCard
             }
             Image(systemName: RewardIconMap[RewardType(rawValue: reward.type ?? "") ?? RewardType.entertainment]!)
