@@ -112,6 +112,8 @@
 		D0B1140F262704BA00C93A59 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
 		D0B11414262704BE00C93A59 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
 		D0B11419262704CF00C93A59 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114012626FBC100C93A59 /* Events.swift */; };
+		D0B114292628236500C93A59 /* PayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114282628236500C93A59 /* PayPage.swift */; };
+		D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -263,6 +265,7 @@
 		D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordList.swift; sourceTree = "<group>"; };
 		D0B113F3262584E600C93A59 /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		D0B114012626FBC100C93A59 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		D0B114282628236500C93A59 /* PayPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPage.swift; sourceTree = "<group>"; };
 		D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = iDeserve.storekit; sourceTree = "<group>"; };
 		D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -493,6 +496,7 @@
 			children = (
 				D03AF72625AFECAD00F8152D /* SettingsPage.swift */,
 				D03AF73B25B01DEE00F8152D /* HelpPage.swift */,
+				D0B114282628236500C93A59 /* PayPage.swift */,
 			);
 			path = SettingsPage;
 			sourceTree = "<group>";
@@ -800,6 +804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
+				D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */,
 				D07242722599C8BB00DCB674 /* Localizable.strings in Resources */,
 				D041FF7A25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */,
 				D01026692524242000653A52 /* Preview Assets.xcassets in Resources */,
@@ -892,6 +897,7 @@
 				D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */,
 				D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
+				D0B114292628236500C93A59 /* PayPage.swift in Sources */,
 				D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */,
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
 				D0119B7325EF2D3A00F5E0F6 /* RewardTypePicker.swift in Sources */,

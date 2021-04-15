@@ -198,8 +198,10 @@ struct GoalPage: View {
         .popup(isPresented: $isShowHelp, type: .default, closeOnTap: false, closeOnTapOutside: true) {
             HelpText(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
         }
-        .popup(isPresented: $isShowPurchase, type: .default, closeOnTap: false, closeOnTapOutside: true) {
-            Text("请购买PRO")
+        .popup(isPresented: $isShowPurchase, type: .default, closeOnTap: true, closeOnTapOutside: true) {
+            NavigationLink(destination: PayPage()) {
+                Text("点击购买PRO版本")
+            }
         }
     }
 }

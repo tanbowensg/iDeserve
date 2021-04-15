@@ -99,9 +99,8 @@ extension IAPHelper {
                 return completionHandler(false)
             }
             
-            print("Buying \(productIdentifier)...")
-            
             let results = products.filter { product -> Bool in
+                print(product)
                 if product.productIdentifier == productIdentifier {
                     return true
                 }

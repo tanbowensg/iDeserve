@@ -28,4 +28,4 @@ let START_TIME_OF_DAY: String = "startTimeOfDay"
 let HAS_LANDED = "hasLanded"
 
 //内购项目的identiier
-let PRO_IDENTIFIER = "com.iDeserve.pro"
+let PRO_IDENTIFIER = "com.iDeserve.pro.forever"

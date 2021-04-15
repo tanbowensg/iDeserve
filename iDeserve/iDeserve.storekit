@@ -1,47 +1,31 @@
 {
   "products" : [
-
+    {
+      "displayPrice" : "6",
+      "familyShareable" : false,
+      "internalID" : "497EA68C",
+      "localizations" : [
+        {
+          "description" : "Pro",
+          "displayName" : "Pro",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "这是高级版",
+          "displayName" : "Pro版本",
+          "locale" : "zh_CN"
+        }
+      ],
+      "productID" : "com.iDeserve.pro.forever",
+      "referenceName" : "Pro",
+      "type" : "NonConsumable"
+    }
   ],
   "settings" : {
 
   },
   "subscriptionGroups" : [
-    {
-      "id" : "6885B421",
-      "localizations" : [
 
-      ],
-      "name" : "Pro",
-      "subscriptions" : [
-        {
-          "adHocOffers" : [
-
-          ],
-          "displayPrice" : "0.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "128D4F63",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "Subscribe for 1 Month",
-              "displayName" : "1 Month",
-              "locale" : "en_US"
-            },
-            {
-              "description" : "订阅 1 个月",
-              "displayName" : "1 个月",
-              "locale" : "zh_CN"
-            }
-          ],
-          "productID" : "com.iDeserve.month",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "proMonth",
-          "subscriptionGroupID" : "6885B421",
-          "type" : "RecurringSubscription"
-        }
-      ]
-    }
   ],
   "version" : {
     "major" : 1,
