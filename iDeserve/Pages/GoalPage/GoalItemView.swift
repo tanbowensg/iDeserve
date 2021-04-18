@@ -66,8 +66,8 @@ struct GoalItemView: View {
                 isDone ? nil : ProgressBar(value: progress)
             }
         }
-        .padding(.horizontal, 20.0)
         .padding(.vertical, 8)
+        .padding(.horizontal, 20.0)
         .frame(height: GOAL_ROW_HEIGHT)
         .background(Color.white)
         .onTapGesture { isTapped.toggle() }
@@ -75,13 +75,12 @@ struct GoalItemView: View {
             LongPressGesture(minimumDuration: 2)
                 .updating($isDetectingLongPress) { currentState, gestureState, transaction in
                     print("长安了")
-//                    gestureState = currentState
-//                    transaction.animation = Animation.easeIn(duration: 2.0)
+                    //                    gestureState = currentState
+                    //                    transaction.animation = Animation.easeIn(duration: 2.0)
                 }
-                                .onEnded { finished in
-                                    print("长安结束")
-            //                        self.completedLongPress = finished
-                                }
+                .onEnded { finished in
+                    print("长安结束")
+                }
         )
     }
     

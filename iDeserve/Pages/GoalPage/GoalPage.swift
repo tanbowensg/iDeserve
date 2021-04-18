@@ -36,7 +36,7 @@ struct GoalPage: View {
     
     @GestureState var isDetectingLongPress = false
 
-    let padding: CGFloat = 8
+    let padding: CGFloat = GOAL_ROW_PADDING
 
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
@@ -60,13 +60,15 @@ struct GoalPage: View {
     }
     
     var reorderDivider: some View {
-        Divider()
-            .offset(y: highlightIndex != nil ? CGFloat(highlightIndex! * Int(GOAL_ROW_HEIGHT)) + padding : -666)
+//        算法是index*（每一个目标高度+padding），然后减掉整个列表的上padding
+        let offset = CGFloat(highlightIndex!) * (GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2)
+
+        return Divider()
+            .offset(y: highlightIndex != nil ? offset - GOAL_ROW_PADDING : -666)
     }
     
     func undoneGoalItem(_ goal: Goal) -> some View {
         return
-//            VStack {
             GoalItemView(
                 goal: goal,
                 name: goal.name!,
@@ -89,11 +91,7 @@ struct GoalPage: View {
                     isShowAlert.toggle()
                 }
             )
-//        }
-//        .onLongPressGesture {
-//            print("长安了")
-//        }
-        .applyIf(isDetectingLongPress, apply: { content in
+        .applyIf(false, apply: { content in
             content
                 .onDrag {
                     print("拖拽了")
@@ -105,7 +103,6 @@ struct GoalPage: View {
                     delegate: DragRelocateDelegate(
                         item: goal,
                         goals: undoneGoals,
-                        padding: padding,
                         current: $draggedGoal,
                         highlightIndex: $highlightIndex
                     )
@@ -144,15 +141,15 @@ struct GoalPage: View {
                         undoneGoalItem(goal)
                     }
                 }
-                doneGoals.count <= 0 ? nil : Text("实现的目标").fontWeight(.medium).padding(.leading, 20.0)
-                doneGoals.count <= 0 ? nil : VStack(spacing: 0.0) {
+                doneGoals.count <= 0 ? nil : Text("实现的目标").fontWeight(.medium).padding(.horizontal, 20.0)
+                doneGoals.count <= 0 ? nil : VStack(spacing: 40.0) {
                     ForEach (doneGoals, id: \.id) { goal in
                         doneGoalItem(goal)
                     }
                 }
-                .padding(.vertical, padding)
             }
         }
+        .padding(.vertical, 20.0)
         .onDrop(
             of: [UTType.text],
             delegate: DropOutsideDelegate(

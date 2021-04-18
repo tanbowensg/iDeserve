@@ -11,17 +11,19 @@ import SwiftUI
 struct DragRelocateDelegate: DropDelegate {
     let item: Goal
     var goals: [Goal]
-    var padding: CGFloat
     @Binding var current: Goal?
     @Binding var highlightIndex: Int?
+
+//    总高度要计算目标+padding
+    let rowHeight = GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2
     
     var itemIndex: Int {
         return Int(goals.firstIndex(of: item)!)
     }
 
     func updateHighlight(_ y: CGFloat) {
-        let remainder = y.truncatingRemainder(dividingBy: GOAL_ROW_HEIGHT)
-        if CGFloat(remainder) < GOAL_ROW_HEIGHT / 2 {
+        let remainder = y.truncatingRemainder(dividingBy: rowHeight)
+        if CGFloat(remainder) < rowHeight / 2 {
             highlightIndex = itemIndex
         } else {
             highlightIndex = itemIndex + 1
@@ -30,9 +32,9 @@ struct DragRelocateDelegate: DropDelegate {
     
     //    根据被拖动的y，计算出新的pos值
     func caculateNewPos(_ y: Int) -> Int {
-        let remainder = y % Int(GOAL_ROW_HEIGHT)
+        let remainder = y % Int(rowHeight)
         var anotherItem: Int
-        if CGFloat(remainder) < GOAL_ROW_HEIGHT / 2 {
+        if CGFloat(remainder) < rowHeight / 2 {
             //            拖拽到上面
             if itemIndex == 0 {
                 anotherItem = 0
@@ -51,11 +53,11 @@ struct DragRelocateDelegate: DropDelegate {
     }
     
     func dropEntered(info: DropInfo) {
-        updateHighlight(info.location.y - padding)
+        updateHighlight(info.location.y - GOAL_ROW_PADDING)
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        updateHighlight(info.location.y - padding)
+        updateHighlight(info.location.y - GOAL_ROW_PADDING)
         return DropProposal(operation: .move)
     }
     
