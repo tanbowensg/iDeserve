@@ -60,17 +60,14 @@ struct GoalPage: View {
     
     func undoneGoalItem(_ goal: Goal) -> some View {
         return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
-            SwipeWrapper(
-                content: GoalItemView(
-                    name: goal.name!,
-                    type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
-                    importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
-                    taskNum: goal.tasks!.count,
-                    value: goal.value,
-                    progress: Float(goal.gotValue) / Float(goal.totalValue),
-                    isDone: goal.done
-                ),
-                height: Int(GOAL_ROW_HEIGHT),
+            GoalItemView(
+                name: goal.name!,
+                type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
+                importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
+                taskNum: goal.tasks!.count,
+                value: goal.value,
+                progress: Float(goal.gotValue) / Float(goal.totalValue),
+                isDone: goal.done,
                 onLeftSwipe: {
                     withAnimation {
                         isShowCompleteGoalView = true
@@ -103,17 +100,14 @@ struct GoalPage: View {
     
     func doneGoalItem(_ goal: Goal) -> some View {
         return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
-            SwipeWrapper(
-                content: GoalItemView(
-                    name: goal.name!,
-                    type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
-                    importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
-                    taskNum: goal.tasks!.count,
-                    value: goal.value,
-                    progress: Float(goal.gotValue) / Float(goal.totalValue),
-                    isDone: goal.done
-                ),
-                height: Int(GOAL_ROW_HEIGHT),
+            GoalItemView(
+                name: goal.name!,
+                type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
+                importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
+                taskNum: goal.tasks!.count,
+                value: goal.value,
+                progress: Float(goal.gotValue) / Float(goal.totalValue),
+                isDone: goal.done,
                 onRightSwipe: {
                     deletingGoal = goal
                     isShowAlert.toggle()
@@ -127,7 +121,7 @@ struct GoalPage: View {
     var goalListView: some View {
         CustomScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 10.0) {
-                VStack(spacing: 0.0) {
+                VStack(spacing: 40.0) {
                     ForEach (undoneGoals, id: \.id) { goal in
                         undoneGoalItem(goal)
                     }

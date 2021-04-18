@@ -15,11 +15,13 @@ struct GoalItemView: View {
     var value: Int
     var progress: Float
     var isDone: Bool
+    var onLeftSwipe: (() -> Void)?
+    var onRightSwipe: (() -> Void)?
     
     var goalName: some View {
         Text(name)
             .strikethrough(isDone)
-            .font(.subheadCustom)
+            .font(.titleCustom)
             .foregroundColor(Color.init(type.rawValue))
     }
 
@@ -35,14 +37,14 @@ struct GoalItemView: View {
     
     var taskNumText: some View {
         Text("\(taskNum) 个任务")
-            .font(.footnoteCustom)
+            .font(.captionCustom)
             .foregroundColor(.caption)
     }
-
-    var body: some View {
+    
+    var mainView: some View {
         HStack(alignment: .center, spacing: 30.0) {
             GoalIcon(goalType: type)
-            VStack(alignment: .leading, spacing: 20.0) {
+            VStack(alignment: .leading, spacing: 14) {
                 HStack {
                     VStack(alignment: .leading, spacing: 8.0) {
                         goalName
@@ -61,9 +63,16 @@ struct GoalItemView: View {
         .padding(.horizontal, 20.0)
         .padding(.vertical, 8)
         .frame(height: GOAL_ROW_HEIGHT)
-        .frame(maxWidth: .infinity)
-        .foregroundColor(.g80)
         .background(Color.white)
+    }
+
+    var body: some View {
+        SwipeWrapper(
+            content: mainView,
+            height: Int(GOAL_ROW_HEIGHT),
+            onLeftSwipe: onLeftSwipe,
+            onRightSwipe: onRightSwipe
+        )
     }
 }
 
