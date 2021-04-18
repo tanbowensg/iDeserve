@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GoalItemView: View {
+    var goal: Goal
     var name: String
     var type: GoalType
     var importance: Importance
@@ -15,9 +16,14 @@ struct GoalItemView: View {
     var value: Int
     var progress: Float
     var isDone: Bool
+    var tasks: [TaskState]?
+    var isShowTasks = false
     var onLeftSwipe: (() -> Void)?
     var onRightSwipe: (() -> Void)?
     
+    @State var isTapped = false
+    @GestureState var isDetectingLongPress = false
+
     var goalName: some View {
         Text(name)
             .strikethrough(isDone)
@@ -64,20 +70,48 @@ struct GoalItemView: View {
         .padding(.vertical, 8)
         .frame(height: GOAL_ROW_HEIGHT)
         .background(Color.white)
+        .onTapGesture { isTapped.toggle() }
+        .gesture(
+            LongPressGesture(minimumDuration: 2)
+                .updating($isDetectingLongPress) { currentState, gestureState, transaction in
+                    print("长安了")
+//                    gestureState = currentState
+//                    transaction.animation = Animation.easeIn(duration: 2.0)
+                }
+                                .onEnded { finished in
+                                    print("长安结束")
+            //                        self.completedLongPress = finished
+                                }
+        )
+    }
+    
+    var tasksList: some View {
+        VStack {
+            ForEach(tasks!) { t in
+                TaskItem(task: t)
+            }
+        }
     }
 
     var body: some View {
-        SwipeWrapper(
-            content: mainView,
-            height: Int(GOAL_ROW_HEIGHT),
-            onLeftSwipe: onLeftSwipe,
-            onRightSwipe: onRightSwipe
-        )
+        VStack {
+            NavigationLink(destination: EditGoalPage(initGoal: goal), isActive: $isTapped) {
+                EmptyView()
+            }
+            SwipeWrapper(
+                content: mainView,
+                height: Int(GOAL_ROW_HEIGHT),
+                onLeftSwipe: onLeftSwipe,
+                onRightSwipe: onRightSwipe
+            )
+            tasks == nil || !isShowTasks ? nil : tasksList
+        }
+        .background(Color.white)
     }
 }
 
-struct GoalItem_Previews: PreviewProvider {
-    static var previews: some View {
-        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, importance: .epic, taskNum: 3, value: 188, progress: 0.32, isDone: false)
-    }
-}
+//struct GoalItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, importance: .epic, taskNum: 3, value: 188, progress: 0.32, isDone: false)
+//    }
+//}

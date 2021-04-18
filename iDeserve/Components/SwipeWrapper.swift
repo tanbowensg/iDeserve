@@ -129,7 +129,6 @@ struct SwipeWrapper<Content: View>: View {
         
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.onScroll)){ _ in
             //            这里是为了避免scrollView滚动的时候，ondrag的onended不触发，结果卡在那里
-            print("滚动了")
             offsetX = 0
         }
     }

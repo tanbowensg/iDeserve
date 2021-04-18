@@ -23,6 +23,7 @@ struct GoalPage: View {
     @AppStorage(PRO_IDENTIFIER) var isPro = false
     @State private var draggedGoal: Goal?
     @State private var highlightIndex: Int? = nil
+    @State private var isShowTasks = true
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
     @State private var isShowHelp = false
@@ -30,6 +31,11 @@ struct GoalPage: View {
     @State private var completingGoal: Goal?
     @State private var deletingGoal: Goal?
     
+//    用来跳转页面的
+    @State private var currentTag: Goal? = nil
+    
+    @GestureState var isDetectingLongPress = false
+
     let padding: CGFloat = 8
 
     static var goalRequest: NSFetchRequest<Goal> {
@@ -59,8 +65,10 @@ struct GoalPage: View {
     }
     
     func undoneGoalItem(_ goal: Goal) -> some View {
-        return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
+        return
+//            VStack {
             GoalItemView(
+                goal: goal,
                 name: goal.name!,
                 type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
                 importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
@@ -68,6 +76,8 @@ struct GoalPage: View {
                 value: goal.value,
                 progress: Float(goal.gotValue) / Float(goal.totalValue),
                 isDone: goal.done,
+                tasks: (goal.tasks!.allObjects as! [Task]).map{ $0.ts },
+                isShowTasks: !isDetectingLongPress,
                 onLeftSwipe: {
                     withAnimation {
                         isShowCompleteGoalView = true
@@ -79,21 +89,28 @@ struct GoalPage: View {
                     isShowAlert.toggle()
                 }
             )
-            .onDrag {
-                self.draggedGoal = goal
-                return NSItemProvider(object: goal.id!.uuidString as NSString)
-            }
-            .onDrop(
-                of: [UTType.text],
-                delegate: DragRelocateDelegate(
-                    item: goal,
-                    goals: undoneGoals,
-                    padding: padding,
-                    current: $draggedGoal,
-                    highlightIndex: $highlightIndex
+//        }
+//        .onLongPressGesture {
+//            print("长安了")
+//        }
+        .applyIf(isDetectingLongPress, apply: { content in
+            content
+                .onDrag {
+                    print("拖拽了")
+                    self.draggedGoal = goal
+                    return NSItemProvider(object: goal.id!.uuidString as NSString)
+                }
+                .onDrop(
+                    of: [UTType.text],
+                    delegate: DragRelocateDelegate(
+                        item: goal,
+                        goals: undoneGoals,
+                        padding: padding,
+                        current: $draggedGoal,
+                        highlightIndex: $highlightIndex
+                    )
                 )
-            )
-        }
+        })
         .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
         .buttonStyle(PlainButtonStyle())
     }
@@ -101,6 +118,7 @@ struct GoalPage: View {
     func doneGoalItem(_ goal: Goal) -> some View {
         return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
             GoalItemView(
+                goal: goal,
                 name: goal.name!,
                 type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
                 importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
