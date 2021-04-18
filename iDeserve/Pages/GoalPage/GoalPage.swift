@@ -23,7 +23,7 @@ struct GoalPage: View {
     @AppStorage(PRO_IDENTIFIER) var isPro = false
     @State private var draggedGoal: Goal?
     @State private var highlightIndex: Int? = nil
-    @State private var isShowTasks = true
+    @State private var isEditMode = false
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
     @State private var isShowHelp = false
@@ -68,30 +68,31 @@ struct GoalPage: View {
     }
     
     func undoneGoalItem(_ goal: Goal) -> some View {
-        return
-            GoalItemView(
-                goal: goal,
-                name: goal.name!,
-                type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
-                importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
-                taskNum: goal.tasks!.count,
-                value: goal.value,
-                progress: Float(goal.gotValue) / Float(goal.totalValue),
-                isDone: goal.done,
-                tasks: (goal.tasks!.allObjects as! [Task]).map{ $0.ts },
-                isShowTasks: !isDetectingLongPress,
-                onLeftSwipe: {
-                    withAnimation {
-                        isShowCompleteGoalView = true
-                        completingGoal = goal
-                    }
-                },
-                onRightSwipe: {
-                    deletingGoal = goal
-                    isShowAlert.toggle()
+        return GoalItemView(
+            goal: goal,
+            name: goal.name!,
+            type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
+            importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
+            taskNum: goal.tasks!.count,
+            progress: Float(goal.gotValue) / Float(goal.totalValue),
+            isDone: goal.done,
+            tasks: (goal.tasks!.allObjects as! [Task]).map{ $0.ts },
+            hideTasks: isEditMode,
+            onLeftSwipe: {
+                withAnimation {
+                    isShowCompleteGoalView = true
+                    completingGoal = goal
                 }
-            )
-        .applyIf(false, apply: { content in
+            },
+            onRightSwipe: {
+                deletingGoal = goal
+                isShowAlert.toggle()
+            },
+            onLongPress: {
+                isEditMode.toggle()
+            }
+        )
+        .applyIf(isEditMode, apply: { content in
             content
                 .onDrag {
                     print("拖拽了")
@@ -113,22 +114,19 @@ struct GoalPage: View {
     }
     
     func doneGoalItem(_ goal: Goal) -> some View {
-        return NavigationLink(destination: EditGoalPage(initGoal: goal)) {
-            GoalItemView(
-                goal: goal,
-                name: goal.name!,
-                type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
-                importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
-                taskNum: goal.tasks!.count,
-                value: goal.value,
-                progress: Float(goal.gotValue) / Float(goal.totalValue),
-                isDone: goal.done,
-                onRightSwipe: {
-                    deletingGoal = goal
-                    isShowAlert.toggle()
-                }
-            )
-        }
+        return GoalItemView(
+            goal: goal,
+            name: goal.name!,
+            type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
+            importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
+            taskNum: goal.tasks!.count,
+            progress: Float(goal.gotValue) / Float(goal.totalValue),
+            isDone: goal.done,
+            onRightSwipe: {
+                deletingGoal = goal
+                isShowAlert.toggle()
+            }
+        )
         .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
         .buttonStyle(PlainButtonStyle())
     }

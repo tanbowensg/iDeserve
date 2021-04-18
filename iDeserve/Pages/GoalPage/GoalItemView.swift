@@ -13,16 +13,22 @@ struct GoalItemView: View {
     var type: GoalType
     var importance: Importance
     var taskNum: Int
-    var value: Int
     var progress: Float
     var isDone: Bool
     var tasks: [TaskState]?
-    var isShowTasks = false
+    var hideTasks: Bool?
     var onLeftSwipe: (() -> Void)?
     var onRightSwipe: (() -> Void)?
+    var onLongPress: (() -> Void)?
     
+//    用来进入目标详情的
     @State var isTapped = false
+    @State var localHideTask = false
     @GestureState var isDetectingLongPress = false
+    
+    var shouldShowTask: Bool {
+        hideTasks != true && localHideTask
+    }
 
     var goalName: some View {
         Text(name)
@@ -47,6 +53,18 @@ struct GoalItemView: View {
             .foregroundColor(.caption)
     }
     
+    var collapseButton: some View {
+        Image(systemName: "chevron.right")
+            .rotationEffect(.degrees(shouldShowTask ? 90 : 0))
+            .padding(8)
+            .font(Font.captionCustom.weight(.bold))
+            .onTapGesture {
+                withAnimation {
+                    localHideTask.toggle()
+                }
+            }
+    }
+    
     var mainView: some View {
         HStack(alignment: .center, spacing: 30.0) {
             GoalIcon(goalType: type)
@@ -61,7 +79,7 @@ struct GoalItemView: View {
                         }
                     }
                     Spacer()
-                    NutIcon(value: value, hidePlus: true)
+                    collapseButton
                 }
                 isDone ? nil : ProgressBar(value: progress)
             }
@@ -75,12 +93,13 @@ struct GoalItemView: View {
             LongPressGesture(minimumDuration: 2)
                 .updating($isDetectingLongPress) { currentState, gestureState, transaction in
                     print("长安了")
-                    //                    gestureState = currentState
-                    //                    transaction.animation = Animation.easeIn(duration: 2.0)
+                    onLongPress?()
+                    gestureState = currentState
+                    transaction.animation = Animation.easeIn(duration: 2.0)
                 }
-                .onEnded { finished in
-                    print("长安结束")
-                }
+//                .onEnded { finished in
+//                    print("长安结束")
+//                }
         )
     }
     
@@ -103,7 +122,7 @@ struct GoalItemView: View {
                 onLeftSwipe: onLeftSwipe,
                 onRightSwipe: onRightSwipe
             )
-            tasks == nil || !isShowTasks ? nil : tasksList
+            tasks != nil && shouldShowTask ? tasksList : nil
         }
         .background(Color.white)
     }
