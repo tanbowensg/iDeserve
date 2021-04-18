@@ -56,7 +56,7 @@ struct GoalItemView: View {
     var collapseButton: some View {
         Image(systemName: "chevron.right")
             .rotationEffect(.degrees(shouldShowTask ? 90 : 0))
-            .padding(8)
+            .padding(20)
             .font(Font.captionCustom.weight(.bold))
             .onTapGesture {
                 withAnimation {
@@ -89,18 +89,19 @@ struct GoalItemView: View {
         .frame(height: GOAL_ROW_HEIGHT)
         .background(Color.white)
         .onTapGesture { isTapped.toggle() }
-        .gesture(
-            LongPressGesture(minimumDuration: 2)
-                .updating($isDetectingLongPress) { currentState, gestureState, transaction in
-                    print("长安了")
-                    onLongPress?()
-                    gestureState = currentState
-                    transaction.animation = Animation.easeIn(duration: 2.0)
-                }
-//                .onEnded { finished in
-//                    print("长安结束")
+//        .gesture(
+//            LongPressGesture(minimumDuration: 2)
+//                .updating($isDetectingLongPress) { currentState, gestureState, transaction in
+//                    withAnimation {
+//                        onLongPress?()
+//                    }
+////                    gestureState = currentState
+////                    transaction.animation = Animation.easeIn(duration: 2.0)
 //                }
-        )
+////                .onEnded { finished in
+////                    print("长安结束")
+////                }
+//        )
     }
     
     var tasksList: some View {

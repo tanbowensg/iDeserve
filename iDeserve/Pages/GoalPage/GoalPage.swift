@@ -77,7 +77,7 @@ struct GoalPage: View {
             progress: Float(goal.gotValue) / Float(goal.totalValue),
             isDone: goal.done,
             tasks: (goal.tasks!.allObjects as! [Task]).map{ $0.ts },
-            hideTasks: isEditMode,
+            hideTasks: draggedGoal != nil,
             onLeftSwipe: {
                 withAnimation {
                     isShowCompleteGoalView = true
@@ -89,26 +89,27 @@ struct GoalPage: View {
                 isShowAlert.toggle()
             },
             onLongPress: {
+                print("长安了")
                 isEditMode.toggle()
             }
         )
-        .applyIf(isEditMode, apply: { content in
-            content
-                .onDrag {
-                    print("拖拽了")
-                    self.draggedGoal = goal
-                    return NSItemProvider(object: goal.id!.uuidString as NSString)
-                }
-                .onDrop(
-                    of: [UTType.text],
-                    delegate: DragRelocateDelegate(
-                        item: goal,
-                        goals: undoneGoals,
-                        current: $draggedGoal,
-                        highlightIndex: $highlightIndex
-                    )
-                )
-        })
+//        .applyIf(isEditMode, apply: { content in
+//            content
+        .onDrag {
+            print("拖拽了")
+            self.draggedGoal = goal
+            return NSItemProvider(object: goal.id!.uuidString as NSString)
+        }
+        .onDrop(
+            of: [UTType.text],
+            delegate: DragRelocateDelegate(
+                item: goal,
+                goals: undoneGoals,
+                current: $draggedGoal,
+                highlightIndex: $highlightIndex
+            )
+        )
+//        })
         .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
         .buttonStyle(PlainButtonStyle())
     }
