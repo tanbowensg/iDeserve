@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Importance: Int, CaseIterable {
     case normal = 1
@@ -13,9 +14,11 @@ enum Importance: Int, CaseIterable {
     case epic = 3
 }
 
-let IMPORTANCE_NORMAL_TEXT = NSLocalizedString("普通", comment: "")
-let IMPORTANCE_IMPORTANT_TEXT = NSLocalizedString("重要", comment: "")
-let IMPORTANCE_EPIC_TEXT = NSLocalizedString("史诗", comment: "")
+let ImportanceColor: [Importance: Color] = [
+    .normal: Color.darkBrandGreen,
+    .important: Color.rewardColor,
+    .epic: Color.init("epicRed")
+]
 
 func getImportanceValue (_ value: Importance) -> Int {
     switch value {

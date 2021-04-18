@@ -61,9 +61,9 @@ let DifficultyDescText: [Difficulty: String] = [
 ]
 
 let ImportanceText: [Importance: String] = [
-    .normal: NSLocalizedString("轻松", comment: ""),
-    .important: NSLocalizedString("普通", comment: ""),
-    .epic: NSLocalizedString("挑战", comment: "")
+    .normal: NSLocalizedString("普通", comment: ""),
+    .important: NSLocalizedString("重要", comment: ""),
+    .epic: NSLocalizedString("史诗", comment: "")
 ]
 
 let ImportanceDescText: [Importance: String] = [

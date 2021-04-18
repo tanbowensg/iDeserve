@@ -15,10 +15,10 @@ struct ProgressBar: View {
             ZStack(alignment: .leading) {
                 Rectangle().frame(width: geometry.size.width , height: 4)
                     .opacity(0.3)
-                    .foregroundColor(Color(UIColor.systemTeal))
+                    .foregroundColor(Color.brandGreen)
                 
                 Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: 4)
-                    .foregroundColor(Color(UIColor.systemBlue))
+                    .foregroundColor(Color.brandGreen)
                     .animation(.linear, value: value)
             }
             .cornerRadius(2)

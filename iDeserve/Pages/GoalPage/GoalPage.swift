@@ -64,6 +64,7 @@ struct GoalPage: View {
                 content: GoalItemView(
                     name: goal.name!,
                     type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
+                    importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
                     taskNum: goal.tasks!.count,
                     value: goal.value,
                     progress: Float(goal.gotValue) / Float(goal.totalValue),
@@ -106,6 +107,7 @@ struct GoalPage: View {
                 content: GoalItemView(
                     name: goal.name!,
                     type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
+                    importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
                     taskNum: goal.tasks!.count,
                     value: goal.value,
                     progress: Float(goal.gotValue) / Float(goal.totalValue),

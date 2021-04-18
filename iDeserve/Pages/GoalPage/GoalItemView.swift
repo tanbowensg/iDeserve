@@ -10,27 +10,53 @@ import SwiftUI
 struct GoalItemView: View {
     var name: String
     var type: GoalType
+    var importance: Importance
     var taskNum: Int
     var value: Int
     var progress: Float
     var isDone: Bool
+    
+    var goalName: some View {
+        Text(name)
+            .strikethrough(isDone)
+            .font(.subheadCustom)
+            .foregroundColor(Color.init(type.rawValue))
+    }
+
+    var importanceTag: some View {
+        Text(ImportanceText[importance]!)
+            .font(.captionCustom)
+            .fontWeight(.bold)
+            .foregroundColor(ImportanceColor[importance]!)
+            .padding(.vertical, 5)
+            .padding(.horizontal, 9)
+            .background(ImportanceColor[importance]!.opacity(0.3).cornerRadius(6))
+    }
+    
+    var taskNumText: some View {
+        Text("\(taskNum) 个任务")
+            .font(.footnoteCustom)
+            .foregroundColor(.caption)
+    }
 
     var body: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .center, spacing: 30.0) {
             GoalIcon(goalType: type)
-            VStack(alignment: .leading) {
-                Text(name)
-                    .strikethrough(isDone)
-                    .font(.subheadCustom)
-                    .padding(.bottom, 2.0)
-                Text("\(taskNum) 个任务")
-                    .font(.footnoteCustom)
-                    .foregroundColor(.g60)
-                    .padding(.bottom, 4.0)
+            VStack(alignment: .leading, spacing: 20.0) {
+                HStack {
+                    VStack(alignment: .leading, spacing: 8.0) {
+                        goalName
+                        
+                        HStack(spacing: 12.0) {
+                            importanceTag
+                            taskNumText
+                        }
+                    }
+                    Spacer()
+                    NutIcon(value: value, hidePlus: true)
+                }
                 isDone ? nil : ProgressBar(value: progress)
             }
-            Spacer()
-            NutIcon(value: value, hidePlus: true)
         }
         .padding(.horizontal, 20.0)
         .padding(.vertical, 8)
@@ -43,6 +69,6 @@ struct GoalItemView: View {
 
 struct GoalItem_Previews: PreviewProvider {
     static var previews: some View {
-        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, taskNum: 3, value: 188, progress: 0.32, isDone: false)
+        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, importance: .epic, taskNum: 3, value: 188, progress: 0.32, isDone: false)
     }
 }
