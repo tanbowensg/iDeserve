@@ -52,12 +52,12 @@ struct DragRelocateDelegate: DropDelegate {
         return Int((anotherItem + Int(item.pos)) / 2)
     }
     
-    func dropEntered(info: DropInfo) {
-        updateHighlight(info.location.y - GOAL_ROW_PADDING)
-    }
+//    func dropEntered(info: DropInfo) {
+//        updateHighlight(info.location.y - GOAL_ROW_PADDING)
+//    }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        updateHighlight(info.location.y - GOAL_ROW_PADDING)
+        updateHighlight(info.location.y)
         return DropProposal(operation: .move)
     }
     

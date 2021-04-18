@@ -9,30 +9,37 @@ import SwiftUI
 
 struct GoalItemView: View {
     var goal: Goal
-    var name: String
-    var type: GoalType
-    var importance: Importance
-    var taskNum: Int
-    var progress: Float
-    var isDone: Bool
-    var tasks: [TaskState]?
     var hideTasks: Bool?
     var onLeftSwipe: (() -> Void)?
     var onRightSwipe: (() -> Void)?
-    var onLongPress: (() -> Void)?
     
 //    用来进入目标详情的
     @State var isTapped = false
     @State var localHideTask = false
-    @GestureState var isDetectingLongPress = false
     
     var shouldShowTask: Bool {
         hideTasks != true && localHideTask
     }
+    
+    var type: GoalType {
+        GoalType(rawValue: goal.type!) ?? .hobby
+    }
+    
+    var importance: Importance {
+        Importance(rawValue: Int(goal.importance)) ?? .normal
+    }
+    
+    var tasks: [TaskState] {
+        (goal.tasks!.allObjects as! [Task]).map{ $0.ts }
+    }
+    
+    var progress: Float {
+        Float(goal.gotValue) / Float(goal.totalValue)
+    }
 
     var goalName: some View {
-        Text(name)
-            .strikethrough(isDone)
+        Text(goal.name!)
+            .strikethrough(goal.done)
             .font(.titleCustom)
             .foregroundColor(Color.init(type.rawValue))
     }
@@ -48,7 +55,7 @@ struct GoalItemView: View {
     }
     
     var taskNumText: some View {
-        Text("\(taskNum) 个任务")
+        Text("\(tasks.count) 个任务")
             .font(.captionCustom)
             .foregroundColor(.caption)
     }
@@ -81,32 +88,19 @@ struct GoalItemView: View {
                     Spacer()
                     collapseButton
                 }
-                isDone ? nil : ProgressBar(value: progress)
+                goal.done ? nil : ProgressBar(value: progress)
             }
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20.0)
         .frame(height: GOAL_ROW_HEIGHT)
+        .padding(.vertical, GOAL_ROW_PADDING)
+        .padding(.horizontal, 20.0)
         .background(Color.white)
         .onTapGesture { isTapped.toggle() }
-//        .gesture(
-//            LongPressGesture(minimumDuration: 2)
-//                .updating($isDetectingLongPress) { currentState, gestureState, transaction in
-//                    withAnimation {
-//                        onLongPress?()
-//                    }
-////                    gestureState = currentState
-////                    transaction.animation = Animation.easeIn(duration: 2.0)
-//                }
-////                .onEnded { finished in
-////                    print("长安结束")
-////                }
-//        )
     }
     
     var tasksList: some View {
         VStack {
-            ForEach(tasks!) { t in
+            ForEach(tasks) { t in
                 TaskItem(task: t)
             }
         }
@@ -123,14 +117,8 @@ struct GoalItemView: View {
                 onLeftSwipe: onLeftSwipe,
                 onRightSwipe: onRightSwipe
             )
-            tasks != nil && shouldShowTask ? tasksList : nil
+            tasks.count > 0 && shouldShowTask ? tasksList : nil
         }
         .background(Color.white)
     }
 }
-
-//struct GoalItem_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GoalItemView(name: "练出六块腹肌", type: GoalType.exercise, importance: .epic, taskNum: 3, value: 188, progress: 0.32, isDone: false)
-//    }
-//}

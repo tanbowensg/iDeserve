@@ -23,18 +23,12 @@ struct GoalPage: View {
     @AppStorage(PRO_IDENTIFIER) var isPro = false
     @State private var draggedGoal: Goal?
     @State private var highlightIndex: Int? = nil
-    @State private var isEditMode = false
     @State private var isShowAlert = false
     @State private var isShowCompleteGoalView = false
     @State private var isShowHelp = false
     @State private var isShowPurchase = false
     @State private var completingGoal: Goal?
     @State private var deletingGoal: Goal?
-    
-//    用来跳转页面的
-    @State private var currentTag: Goal? = nil
-    
-    @GestureState var isDetectingLongPress = false
 
     let padding: CGFloat = GOAL_ROW_PADDING
 
@@ -60,23 +54,16 @@ struct GoalPage: View {
     }
     
     var reorderDivider: some View {
-//        算法是index*（每一个目标高度+padding），然后减掉整个列表的上padding
+//        算法是index*（每一个目标高度+padding）
         let offset = CGFloat(highlightIndex!) * (GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2)
 
-        return Divider()
-            .offset(y: highlightIndex != nil ? offset - GOAL_ROW_PADDING : -666)
+        return ExDivider()
+            .offset(y: highlightIndex != nil ? offset : -666)
     }
     
     func undoneGoalItem(_ goal: Goal) -> some View {
         return GoalItemView(
             goal: goal,
-            name: goal.name!,
-            type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
-            importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
-            taskNum: goal.tasks!.count,
-            progress: Float(goal.gotValue) / Float(goal.totalValue),
-            isDone: goal.done,
-            tasks: (goal.tasks!.allObjects as! [Task]).map{ $0.ts },
             hideTasks: draggedGoal != nil,
             onLeftSwipe: {
                 withAnimation {
@@ -87,16 +74,9 @@ struct GoalPage: View {
             onRightSwipe: {
                 deletingGoal = goal
                 isShowAlert.toggle()
-            },
-            onLongPress: {
-                print("长安了")
-                isEditMode.toggle()
             }
         )
-//        .applyIf(isEditMode, apply: { content in
-//            content
         .onDrag {
-            print("拖拽了")
             self.draggedGoal = goal
             return NSItemProvider(object: goal.id!.uuidString as NSString)
         }
@@ -109,7 +89,6 @@ struct GoalPage: View {
                 highlightIndex: $highlightIndex
             )
         )
-//        })
         .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
         .buttonStyle(PlainButtonStyle())
     }
@@ -117,12 +96,6 @@ struct GoalPage: View {
     func doneGoalItem(_ goal: Goal) -> some View {
         return GoalItemView(
             goal: goal,
-            name: goal.name!,
-            type: GoalType(rawValue: goal.type ?? "flag") ?? GoalType.hobby,
-            importance: Importance(rawValue: Int(goal.importance)) ?? Importance.normal,
-            taskNum: goal.tasks!.count,
-            progress: Float(goal.gotValue) / Float(goal.totalValue),
-            isDone: goal.done,
             onRightSwipe: {
                 deletingGoal = goal
                 isShowAlert.toggle()
@@ -135,20 +108,19 @@ struct GoalPage: View {
     var goalListView: some View {
         CustomScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 10.0) {
-                VStack(spacing: 40.0) {
+                VStack(spacing: 0.0) {
                     ForEach (undoneGoals, id: \.id) { goal in
                         undoneGoalItem(goal)
                     }
                 }
                 doneGoals.count <= 0 ? nil : Text("实现的目标").fontWeight(.medium).padding(.horizontal, 20.0)
-                doneGoals.count <= 0 ? nil : VStack(spacing: 40.0) {
+                doneGoals.count <= 0 ? nil : VStack(spacing: 0.0) {
                     ForEach (doneGoals, id: \.id) { goal in
                         doneGoalItem(goal)
                     }
                 }
             }
         }
-        .padding(.vertical, 20.0)
         .onDrop(
             of: [UTType.text],
             delegate: DropOutsideDelegate(
