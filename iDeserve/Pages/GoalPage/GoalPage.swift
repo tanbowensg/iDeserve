@@ -91,6 +91,10 @@ struct GoalPage: View {
                 highlightIndex: $highlightIndex
             )
         )
+        
+        .onChange(of: highlightIndex, perform: { _ in
+            viberate()
+        })
         .alert(isPresented: $isShowAlert, content: { deleteConfirmAlert })
         .buttonStyle(PlainButtonStyle())
     }
