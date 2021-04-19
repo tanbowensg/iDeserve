@@ -147,8 +147,7 @@ struct EditGoalPage: View {
             taskCache = task
             isShowTaskSheet = true
         }) {
-            //            编辑目标时，用常规的任务item
-            !isCreate ? TaskItem(
+            TaskItem(
                 task: task,
                 onCompleteTask: disabledComplete ? nil : {
                     if let originalTask = task.originTask {
@@ -158,12 +157,7 @@ struct EditGoalPage: View {
                 },
                 onRemoveTask: removeTask,
                 hideTag: true
-            ) : nil
-            //            创建目标时，用简化的任务item
-            isCreate ? SimpleTaskItem(
-                task: task,
-                onRemoveTask: removeTask
-            ) : nil
+            )
         }
     }
     

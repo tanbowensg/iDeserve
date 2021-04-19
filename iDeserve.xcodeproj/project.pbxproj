@@ -89,7 +89,6 @@
 		D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3325B037E200087FC5 /* GoalItemView.swift */; };
 		D07B6D3A25B042E500087FC5 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
 		D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D4725B06C5400087FC5 /* ProgressBar.swift */; };
-		D087580F2612CC750071BA39 /* SimpleTaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087580E2612CC750071BA39 /* SimpleTaskItem.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
 		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
@@ -249,7 +248,6 @@
 		D07B6D3325B037E200087FC5 /* GoalItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalItemView.swift; sourceTree = "<group>"; };
 		D07B6D3925B042E500087FC5 /* NutIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutIcon.swift; sourceTree = "<group>"; };
 		D07B6D4725B06C5400087FC5 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		D087580E2612CC750071BA39 /* SimpleTaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTaskItem.swift; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
 		D08988A2254671E60032BA96 /* EditGoalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalPage.swift; sourceTree = "<group>"; };
 		D08988A7254672390032BA96 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
@@ -596,7 +594,6 @@
 				D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */,
 				D031EDC925B16A2900D64CF3 /* ImportancePicker.swift */,
 				D0119B4725ECE74C00F5E0F6 /* GoalTypePicker.swift */,
-				D087580E2612CC750071BA39 /* SimpleTaskItem.swift */,
 			);
 			path = EditGoalPage;
 			sourceTree = "<group>";
@@ -847,7 +844,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D07242782599E1ED00DCB674 /* i18n.swift in Sources */,
-				D087580F2612CC750071BA39 /* SimpleTaskItem.swift in Sources */,
 				D0B113F4262584E600C93A59 /* LandingPage.swift in Sources */,
 				D031EE2125B7DCB500D64CF3 /* DragRelocateDelegate.swift in Sources */,
 				D0119B4825ECE74C00F5E0F6 /* GoalTypePicker.swift in Sources */,
