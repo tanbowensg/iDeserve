@@ -86,7 +86,6 @@ struct MyDayPage: View {
                             task: TaskState(task),
                             onCompleteTask: {
                                 self.gs.taskStore.completeTask(task)
-                                showBonusToast.toggle()
                             }
                         )
                     }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-func dateToString (_ date: Date, dateFormat: String? = nil) -> String {
+func dateToString (_ date: Date, dateFormat: String? = nil, dateStyle: DateFormatter.Style = .medium) -> String {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .medium
+    dateFormatter.dateStyle = dateStyle
     dateFormatter.timeStyle = .none
     dateFormatter.dateFormat = dateFormat
     dateFormatter.locale = Locale(identifier: "zh_CN")

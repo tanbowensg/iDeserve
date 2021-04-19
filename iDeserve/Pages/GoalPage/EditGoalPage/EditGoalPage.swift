@@ -172,27 +172,34 @@ struct EditGoalPage: View {
         let tasksNutsSum = tasks.reduce(0, {(result, task) in
             return result + task.totalValue
         })
-        return VStack(alignment: .leading, spacing: 20) {
+        return VStack(alignment: .leading, spacing: 0) {
             Text("任务")
                 .font(.subheadCustom)
                 .fontWeight(.bold)
                 .foregroundColor(.body)
+                .padding(.horizontal, 25)
             HStack(spacing: 0) {
                 Text("共计 \(tasks.count) 个任务，全部完成可得")
                 NutIcon(value: tasksNutsSum, hidePlus: true)
             }
                 .foregroundColor(.caption)
-                .font(.caption)
+                .font(.captionCustom)
+                .padding(.top, 20)
+                .padding(.horizontal, 25)
             VStack(spacing: 0.0) {
                 ForEach (tasks, id: \.id) { task in
-                    taskItem(task)
+                    VStack(spacing: 0.0) {
+                        taskItem(task)
+                        ExDivider()
+                            .padding(.horizontal, 25)
+                    }
                 }
                 createTaskButton
                     .padding(.vertical, 20)
             }
-            .padding(.vertical, 20)
-            .padding(.horizontal, 25)
-            .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
+//            .padding(.vertical, 20)
+//            .padding(.horizontal, 25)
+//            .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
         }
     }
 
@@ -208,11 +215,12 @@ struct EditGoalPage: View {
                             goalTitle
                                 .padding(.bottom, 10)
                         }
+                            .padding(.horizontal, 25)
                         goalImportance
                             .padding(.bottom, 20)
+                            .padding(.horizontal, 25)
                         goalTasks
                     }
-                    .padding(.horizontal, 25)
                 }
             }
             isShowTypePicker ? Color.popupMask : nil

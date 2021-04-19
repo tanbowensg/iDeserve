@@ -18,6 +18,12 @@ struct TaskItem: View {
     var foregroundColor: Color {
          task.done ? Color.gray : Color.normalText
     }
+    
+    var shouldShowTaskInfo: Bool {
+        (hideTag != true && task.goalName != "") ||
+        task.repeatFrequency != RepeatFrequency.never ||
+        task.hasDdl
+    }
 
     var taskGoal: some View {
         Text(task.goalName)
@@ -26,6 +32,7 @@ struct TaskItem: View {
             .padding(.vertical, 3)
             .foregroundColor(.body)
             .background(Color.placeholder.cornerRadius(7))
+            .layoutPriority(0.5)
     }
 
     var remainTimesText: some View {
@@ -39,6 +46,7 @@ struct TaskItem: View {
         .padding(.vertical, 3)
         .foregroundColor(.body)
         .background(Color.placeholder.cornerRadius(7))
+        .layoutPriority(1)
     }
     
     var ddlText: some View {
@@ -52,6 +60,7 @@ struct TaskItem: View {
         .padding(.vertical, 3)
         .foregroundColor(.body)
         .background(Color.placeholder.cornerRadius(7))
+        .layoutPriority(1)
     }
 
 //    var nextRefreshTime: some View {
@@ -65,12 +74,13 @@ struct TaskItem: View {
 
     var taskInfo: some View {
         return HStack(spacing: 8.0) {
-            (hideTag == true || task.goalName == "") ? nil : taskGoal
+            (hideTag != true && task.goalName != "") ? taskGoal : nil
 //            task.starred ? Image(systemName: "sun.max") : nil
             task.repeatFrequency != RepeatFrequency.never ? remainTimesText : nil
 //            task.nextRefreshTime != nil ? nextRefreshTime : nil
             task.hasDdl ? ddlText : nil
         }
+        .lineLimit(1)
     }
 
     var leftPart: some View {
@@ -79,20 +89,22 @@ struct TaskItem: View {
                 .font(.subheadCustom)
                 .fontWeight(.bold)
                 .foregroundColor(.black333)
-            taskInfo
+            shouldShowTaskInfo ? taskInfo : nil
         }
     }
     
     var taskItem: some View {
-        HStack {
+        HStack(alignment: .center) {
             leftPart
             Spacer()
             NutIcon(value: task.value, hidePlus: true)
         }
             .padding(.horizontal, 25)
             .padding(.vertical, 20)
+            .frame(height: TASK_ROW_HEIGHT)
             .foregroundColor(self.foregroundColor)
             .background(Color.white)
+            
     }
 
     var body: some View {
