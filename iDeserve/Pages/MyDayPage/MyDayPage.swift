@@ -13,7 +13,6 @@ struct MyDayPage: View {
     @State var offsetY: Double = 0
     @State var shouldOpenSheet = false
     @State var currentTask: Task?
-    @State var showBonusToast = false
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
     
     let scrollThreshold = 100
@@ -62,7 +61,7 @@ struct MyDayPage: View {
         VStack(alignment: .leading, spacing: 12.0) {
             Text("今天完成的任务")
                 .font(.subheadCustom)
-                .padding(.leading, 32.0)
+                .padding(.leading, 25)
             ForEach (completedTasks, id: \.id) { task in
                 Button(action: {
                     currentTask = task
@@ -76,19 +75,22 @@ struct MyDayPage: View {
     
     var taskList: some View {
 //      TODO：这里不能使用 lazyVstack，否则在模拟器里滚动会闪烁，原因不明
-        VStack(alignment: .leading, spacing: 12.0) {
+        VStack(alignment: .leading, spacing: 0) {
             ForEach (uncompletedTasks, id: \.id) { task in
-                Button(action: {
-                    currentTask = task
-                    shouldOpenSheet = true
-                }) {
-                    TaskItem(
-                        task: TaskState(task),
-                        onCompleteTask: {
-                            self.gs.taskStore.completeTask(task)
-                            showBonusToast.toggle()
-                        }
-                    )
+                VStack(spacing: 0.0) {
+                    Button(action: {
+                        currentTask = task
+                        shouldOpenSheet = true
+                    }) {
+                        TaskItem(
+                            task: TaskState(task),
+                            onCompleteTask: {
+                                self.gs.taskStore.completeTask(task)
+                                showBonusToast.toggle()
+                            }
+                        )
+                    }
+                    ExDivider()
                 }
             }
             completedTasks.count > 0 ? completedTasksView : nil
@@ -102,7 +104,7 @@ struct MyDayPage: View {
             Spacer()
             Text("今天没有要做的事情哦！\n你可以下拉界面创建任务，\n或者把想做的任务添加到我的一天里！")
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 32.0)
+                .padding(.horizontal, 25)
                 .frame(maxWidth: .infinity)
                 .lineSpacing(/*@START_MENU_TOKEN@*/8.0/*@END_MENU_TOKEN@*/)
             Spacer()
@@ -125,12 +127,6 @@ struct MyDayPage: View {
 //                用来修复第一次点开sheet没有内容的bug
                 currentTask == nil ? Text("") : nil
             }
-            .popup(isPresented: $showBonusToast, type: .toast, position: .top, autohideIn: 3, closeOnTap: true, closeOnTapOutside: true, view: {
-                Text("在DDL前完成了任务，额外奖励3个坚果！")
-                    .padding(16)
-                    .background(Color.g10.cornerRadius(15))
-                    .padding(20)
-            })
         }
         .sheet(isPresented: $shouldOpenSheet, content: {
             MyDayCreateTaskSheet(task: currentTask)

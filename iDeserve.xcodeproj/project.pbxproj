@@ -114,6 +114,8 @@
 		D0B11419262704CF00C93A59 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114012626FBC100C93A59 /* Events.swift */; };
 		D0B114292628236500C93A59 /* PayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114282628236500C93A59 /* PayPage.swift */; };
 		D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */; };
+		D0B11467262D9BCD00C93A59 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
+		D0B1146C262D9D3000C93A59 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -977,8 +979,10 @@
 				D07913652574F632007B9767 /* Record.swift in Sources */,
 				D07913662574F632007B9767 /* Color.swift in Sources */,
 				D07913692574F632007B9767 /* Task.swift in Sources */,
+				D0B1146C262D9D3000C93A59 /* NutIcon.swift in Sources */,
 				D0B11414262704BE00C93A59 /* SwipeWrapper.swift in Sources */,
 				D079137D2574F65B007B9767 /* genMockData.swift in Sources */,
+				D0B11467262D9BCD00C93A59 /* constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

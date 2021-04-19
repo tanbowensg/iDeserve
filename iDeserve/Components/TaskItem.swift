@@ -14,18 +14,6 @@ struct TaskItem: View {
     var onCompleteTask: (() -> Void)?
     var onRemoveTask: (() -> Void)?
     var hideTag: Bool? = false
-    
-    var height: Int {
-//        TODO: 这里的magicnumber都是写死的，等视觉确定了，再改
-        var base = 58
-        if task.repeatFrequency != RepeatFrequency.never || task.hasDdl || task.starred {
-            base += 16
-        }
-        if hideTag != true {
-            base += 24
-        }
-        return base
-    }
 
     var foregroundColor: Color {
          task.done ? Color.gray : Color.normalText
@@ -33,72 +21,65 @@ struct TaskItem: View {
 
     var taskGoal: some View {
         Text(task.goalName)
-            .font(.system(size: 10))
-            .fontWeight(.bold)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 4)
-            .foregroundColor(Color.tagColor)
-            .background(Color.tagBg)
-            .frame(height: 18.0)
-            .cornerRadius(9)
+            .font(.captionCustom)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 3)
+            .foregroundColor(.body)
+            .background(Color.placeholder.cornerRadius(7))
+    }
+
+    var remainTimesText: some View {
+        HStack(alignment: .center, spacing: 8.0) {
+            Image(systemName: "repeat")
+                .font(.captionCustom)
+            Text("\(task.completeTimes)/\(task.repeatTimes)")
+                .font(.captionCustom)
+        }
+        .padding(.horizontal, 8)
+        .padding(.vertical, 3)
+        .foregroundColor(.body)
+        .background(Color.placeholder.cornerRadius(7))
     }
     
     var ddlText: some View {
-        Text("到\(dateToString(task.ddl))截止")
-            .font(.captionCustom)
-            .fontWeight(.bold)
-            .foregroundColor(.remainTextColor)
-            .frame(height: 16.0)
+        HStack(alignment: .center, spacing: 8.0) {
+            Image(systemName: "calendar")
+                .font(.captionCustom)
+            Text(dateToString(task.ddl))
+                .font(.captionCustom)
+        }
+        .padding(.horizontal, 8)
+        .padding(.vertical, 3)
+        .foregroundColor(.body)
+        .background(Color.placeholder.cornerRadius(7))
     }
-    
-    var remainTimesText: some View {
-        return Text("\(task.completeTimes)/\(task.repeatTimes)次")
-            .foregroundColor(.remainTextColor)
-            .fontWeight(.bold)
-            .font(.captionCustom)
-            .frame(height: 16.0)
-    }
-    
-    var nextRefreshTime: some View {
-        return Text("下次刷新: \(dateToString(task.nextRefreshTime!, dateFormat: "M.dd H:mm"))")
-            .foregroundColor(.remainTextColor)
-            .fontWeight(.bold)
-            .font(.captionCustom)
-            .frame(height: 16.0)
-    }
+
+//    var nextRefreshTime: some View {
+//        return Text("下次刷新: \(dateToString(task.nextRefreshTime!, dateFormat: "M.dd H:mm"))")
+//            .foregroundColor(.remainTextColor)
+//            .fontWeight(.bold)
+//            .font(.captionCustom)
+//            .frame(height: 16.0)
+//    }
 
 
     var taskInfo: some View {
-        return HStack {
-            task.starred ? Image(systemName: "sun.max") : nil
+        return HStack(spacing: 8.0) {
+            (hideTag == true || task.goalName == "") ? nil : taskGoal
+//            task.starred ? Image(systemName: "sun.max") : nil
             task.repeatFrequency != RepeatFrequency.never ? remainTimesText : nil
-            task.nextRefreshTime != nil ? nextRefreshTime : nil
+//            task.nextRefreshTime != nil ? nextRefreshTime : nil
             task.hasDdl ? ddlText : nil
         }
     }
 
     var leftPart: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            (hideTag == true || task.goalName == "") ? nil : taskGoal
+        VStack(alignment: .leading, spacing: 10) {
             Text(task.name)
-                .font(.footnoteCustom)
+                .font(.subheadCustom)
                 .fontWeight(.bold)
-                .frame(height: 24.0)
+                .foregroundColor(.black333)
             taskInfo
-        }
-    }
-    
-    var taskValue: some View {
-        HStack(alignment: .center, spacing: 3.0) {
-            Text(String(task.value))
-                .font(.system(size: 14))
-                .fontWeight(.bold)
-                .foregroundColor(Color.rewardColor)
-            Image("NutIcon")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 16.0, height: 16.0)
-                .padding(.all, 2.0)
         }
     }
     
@@ -106,21 +87,18 @@ struct TaskItem: View {
         HStack {
             leftPart
             Spacer()
-            taskValue
+            NutIcon(value: task.value, hidePlus: true)
         }
-            .padding(.horizontal, 30.0)
-            .padding(.vertical, 15.0)
+            .padding(.horizontal, 25)
+            .padding(.vertical, 20)
             .foregroundColor(self.foregroundColor)
-            .background(
-                Color.g0
-                    .shadow(color: .lightShadow, radius: 6, x: 0, y: 3)
-            )
+            .background(Color.white)
     }
 
     var body: some View {
         SwipeWrapper(
             content: taskItem,
-            height: height,
+            height: Int(TASK_ROW_HEIGHT),
             onLeftSwipe: onCompleteTask,
             onRightSwipe: onRemoveTask
         )
