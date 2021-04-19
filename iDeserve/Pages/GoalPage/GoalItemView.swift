@@ -64,7 +64,7 @@ struct GoalItemView: View {
         Image(systemName: "chevron.right")
             .rotationEffect(.degrees(shouldShowTask ? 90 : 0))
             .padding(20)
-            .font(Font.captionCustom.weight(.bold))
+            .font(Font.bodyCustom.weight(.bold))
             .onTapGesture {
                 withAnimation {
                     localHideTask.toggle()

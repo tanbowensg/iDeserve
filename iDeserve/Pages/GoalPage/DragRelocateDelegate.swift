@@ -79,8 +79,14 @@ struct DragRelocateDelegate: DropDelegate {
                 GlobalStore.shared.coreDataContainer.saveContext()
             }
             
-            self.current = nil
             self.highlightIndex = nil
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation {
+//                    做一点优化，等目标重新排序动画结束后，才清空拖拽状态，否则顺序变化和任务展开一起执行看起来很乱
+                    self.current = nil
+                }
+            }
         }
         return true
     }

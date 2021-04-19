@@ -77,7 +77,9 @@ struct GoalPage: View {
             }
         )
         .onDrag {
-            self.draggedGoal = goal
+            withAnimation {
+                self.draggedGoal = goal
+            }
             return NSItemProvider(object: goal.id!.uuidString as NSString)
         }
         .onDrop(
