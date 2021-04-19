@@ -15,11 +15,11 @@ struct GoalItemView: View {
     
 //    用来进入目标详情的
     @State var isTapped = false
-    @State var localHideTask = false
+//    @State var localHideTask = false
     
-    var shouldShowTask: Bool {
-        hideTasks != true && localHideTask
-    }
+//    var shouldShowTask: Bool {
+//        hideTasks != true && localHideTask
+//    }
     
     var type: GoalType {
         GoalType(rawValue: goal.type!) ?? .hobby
@@ -60,17 +60,17 @@ struct GoalItemView: View {
             .foregroundColor(.caption)
     }
     
-    var collapseButton: some View {
-        Image(systemName: "chevron.right")
-            .rotationEffect(.degrees(shouldShowTask ? 90 : 0))
-            .padding(20)
-            .font(Font.bodyCustom.weight(.bold))
-            .onTapGesture {
-                withAnimation {
-                    localHideTask.toggle()
-                }
-            }
-    }
+//    var collapseButton: some View {
+//        Image(systemName: "chevron.right")
+//            .rotationEffect(.degrees(shouldShowTask ? 90 : 0))
+//            .padding(20)
+//            .font(Font.bodyCustom.weight(.bold))
+//            .onTapGesture {
+//                withAnimation {
+//                    localHideTask.toggle()
+//                }
+//            }
+//    }
     
     var mainView: some View {
         HStack(alignment: .center, spacing: 30.0) {
@@ -86,7 +86,6 @@ struct GoalItemView: View {
                         }
                     }
                     Spacer()
-                    collapseButton
                 }
                 goal.done ? nil : ProgressBar(value: progress)
             }
@@ -98,13 +97,13 @@ struct GoalItemView: View {
         .onTapGesture { isTapped.toggle() }
     }
     
-    var tasksList: some View {
-        VStack {
-            ForEach(tasks) { t in
-                TaskItem(task: t)
-            }
-        }
-    }
+//    var tasksList: some View {
+//        VStack {
+//            ForEach(tasks) { t in
+//                TaskItem(task: t)
+//            }
+//        }
+//    }
 
     var body: some View {
         VStack {
@@ -117,7 +116,7 @@ struct GoalItemView: View {
                 onLeftSwipe: onLeftSwipe,
                 onRightSwipe: onRightSwipe
             )
-            tasks.count > 0 && shouldShowTask ? tasksList : nil
+//            tasks.count > 0 && shouldShowTask ? tasksList : nil
         }
         .background(Color.white)
     }
