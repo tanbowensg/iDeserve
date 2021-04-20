@@ -89,7 +89,7 @@ struct RecordPage: View {
                     .padding(4)
             }
         }
-        .foregroundColor(.body)
+        .foregroundColor(.b3)
     }
     
     func recordsView() -> some View {

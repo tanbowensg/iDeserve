@@ -27,7 +27,7 @@ struct iDeserveApp: App {
                 .environmentObject(PointsStore.shared)
         }
         .accentColor(.brandGreen)
-        .foregroundColor(.black333)
+        .foregroundColor(.b4)
         
     }
 

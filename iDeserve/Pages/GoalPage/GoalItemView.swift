@@ -40,7 +40,7 @@ struct GoalItemView: View {
     var goalName: some View {
         Text(goal.name!)
             .font(.titleCustom)
-            .foregroundColor(Color.init(type.rawValue))
+            .foregroundColor(goal.color)
     }
 
     var importanceTag: some View {
@@ -56,7 +56,7 @@ struct GoalItemView: View {
     var taskNumText: some View {
         Text("\(tasks.count) 个任务")
             .font(.captionCustom)
-            .foregroundColor(.caption)
+            .foregroundColor(.b1)
     }
     
 //    var collapseButton: some View {

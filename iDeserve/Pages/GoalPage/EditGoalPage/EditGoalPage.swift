@@ -55,13 +55,13 @@ struct EditGoalPage: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: isCreate ? "chevron.left" : "xmark")
-                        .foregroundColor(.subtitle)
+                        .foregroundColor(.b2)
                         .font(Font.headlineCustom.weight(.bold))
                 }
                 Spacer()
                 Text(isCreate ? "创建新目标" : "修改目标")
                     .font(.headlineCustom)
-                    .foregroundColor(.body)
+                    .foregroundColor(.b3)
                     .fontWeight(.bold)
                 Spacer()
                 Button(action: {
@@ -170,13 +170,13 @@ struct EditGoalPage: View {
             Text("任务")
                 .font(.subheadCustom)
                 .fontWeight(.bold)
-                .foregroundColor(.body)
+                .foregroundColor(.b3)
                 .padding(.horizontal, 25)
             HStack(spacing: 0) {
                 Text("共计 \(tasks.count) 个任务，全部完成可得")
                 NutIcon(value: tasksNutsSum, hidePlus: true)
             }
-                .foregroundColor(.caption)
+                .foregroundColor(.b1)
                 .font(.captionCustom)
                 .padding(.top, 20)
                 .padding(.horizontal, 25)

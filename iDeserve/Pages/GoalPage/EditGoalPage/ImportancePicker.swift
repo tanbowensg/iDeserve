@@ -16,12 +16,12 @@ struct ImportancePicker: View {
         return Button(action: { importance = i }) {
             Text(ImportanceText[i]!)
                 .font(.footnoteCustom)
-                .foregroundColor(isCurrent ? Color.white : Color.body)
+                .foregroundColor(isCurrent ? Color.white : Color.b3)
                 .fontWeight(.bold)
                 .frame(height: 12)
                 .padding(.vertical, 10)
                 .frame(width: 100.0, height: 32)
-                .background(isCurrent ? Color.brandGreen : Color.white)
+                .background(isCurrent ? ImportanceColor[i] : Color.white)
                 .cornerRadius(16)
                 .animation(.none)
         }
@@ -36,7 +36,7 @@ struct ImportancePicker: View {
                 }
             }
             Text(ImportanceDescText[importance]!)
-                .foregroundColor(.caption)
+                .foregroundColor(.b1)
                 .font(.captionCustom)
         }
     }

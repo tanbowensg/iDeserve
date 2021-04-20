@@ -36,7 +36,7 @@ struct AppHeader: View {
                 .frame(width: 20.0, height: 20.0)
                 .padding(.horizontal, 12.0)
                 .padding(.vertical, 4.0)
-                .background(Color("rewardColor"))
+                .background(Color("rewardGold"))
                 .foregroundColor(.white)
                 .cornerRadius(22)
         }

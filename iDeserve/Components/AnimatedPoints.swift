@@ -22,7 +22,7 @@ struct AnimatedPoints: View {
             .font(.titleCustom)
             .fontWeight(.bold)
             .foregroundColor(.white)
-            .colorMultiply(animationTrigger ? .yellow : .rewardColor)
+            .colorMultiply(animationTrigger ? .yellow : .rewardGold)
             .scaleEffect(animationTrigger ? 1.1 : 1)
             .onChange(of: points, perform: { value in
                 let animationDuraing = 0.5

@@ -25,7 +25,7 @@ struct TabIcon: View {
                 .font(.system(size: 10))
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
         }
-            .foregroundColor(tabInfo.isActive ? Color.myBlack : Color.veryLightPink)
+            .foregroundColor(tabInfo.isActive ? Color.b2 : Color.g2)
             .frame(maxWidth: .infinity)
     }
 }

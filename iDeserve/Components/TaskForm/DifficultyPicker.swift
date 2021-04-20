@@ -17,7 +17,7 @@ struct DifficultyPicker: View {
             Text(DifficultyText[d]!)
                 .font(.footnoteCustom)
                 .fontWeight(.bold)
-                .foregroundColor(isCurrent ? Color.white : Color.body)
+                .foregroundColor(isCurrent ? DifficultyColor[d] : Color.b3)
                 .frame(height: 12)
                 .padding(.vertical, 10)
                 .frame(width: 100.0, height: 32)
@@ -36,7 +36,7 @@ struct DifficultyPicker: View {
                 }
             }
             Text(DifficultyDescText[difficulty]!)
-                .foregroundColor(.caption)
+                .foregroundColor(.b1)
                 .font(.caption)
         }
     }

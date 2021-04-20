@@ -15,9 +15,9 @@ enum Importance: Int, CaseIterable {
 }
 
 let ImportanceColor: [Importance: Color] = [
-    .normal: Color.darkBrandGreen,
-    .important: Color.rewardColor,
-    .epic: Color.init("epicRed")
+    .normal: Color.customGreen,
+    .important: Color.customBlue,
+    .epic: Color.customRed
 ]
 
 func getImportanceValue (_ value: Importance) -> Int {

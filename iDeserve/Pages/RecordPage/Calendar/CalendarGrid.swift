@@ -25,7 +25,7 @@ struct CalendarGrid: View {
     
     var foregroundColor: Color {
         if dayStat.income == 0  {
-            return Color.body
+            return Color.b3
         } else if Double(dayStat.income) / OpacityBase < 0.6 {
             return Color.brandGreen
         } else {

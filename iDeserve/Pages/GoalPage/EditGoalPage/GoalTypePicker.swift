@@ -15,7 +15,7 @@ struct GoalTypePicker: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 30.0) {
             Image(systemName: "xmark")
-                .foregroundColor(.subtitle)
+                .foregroundColor(.b2)
                 .frame(width: 9.0, height: 9.0)
                 .padding(.leading, 25)
                 .onTapGesture {
@@ -35,7 +35,7 @@ struct GoalTypePicker: View {
                             VStack(spacing: 8.0) {
                                 GoalIcon(goalType: type, size: 100)
                                 Text(GoalTypeText[type] ?? "")
-                                    .foregroundColor(.subtitle)
+                                    .foregroundColor(.b2)
                                     .font(.subheadCustom)
                             }
                         }

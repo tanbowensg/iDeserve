@@ -77,7 +77,7 @@ struct CompleteGoalView: View {
                     .font(.footnoteCustom)
                     .foregroundColor(.white)
                     .frame(width: 100.0, height: 40.0)
-                    .background(Color.rewardColor)
+                    .background(Color.rewardGold)
                     .cornerRadius(20)
             })
             .frame(width: 100.0, height: 40.0)

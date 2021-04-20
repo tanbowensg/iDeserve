@@ -36,7 +36,7 @@ struct TextArea: View {
         }
         .padding(20)
         .background(Color.descBg)
-        .foregroundColor(.rewardColor)
+        .foregroundColor(.rewardGold)
         .frame(minHeight: 109)
         .cornerRadius(20)
         .onAppear {

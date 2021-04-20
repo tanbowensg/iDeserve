@@ -45,7 +45,7 @@ struct MyDayPage: View {
             .font(.subheadCustom)
             .fontWeight(.bold)
             .padding(.leading, 30.0)
-            .foregroundColor(.myBlack)
+            .foregroundColor(.b2)
             .padding(.vertical, 20.0)
     }
     

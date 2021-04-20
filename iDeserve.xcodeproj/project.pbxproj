@@ -115,6 +115,8 @@
 		D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */; };
 		D0B11467262D9BCD00C93A59 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
 		D0B1146C262D9D3000C93A59 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
+		D0B1147D262EFFF200C93A59 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2FA25A82E1F00042124 /* Importance.swift */; };
+		D0B11482262F013400C93A59 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE1625B7CDEE00D64CF3 /* Goal.swift */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
@@ -965,9 +967,11 @@
 				D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */,
 				D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */,
 				D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */,
+				D0B11482262F013400C93A59 /* Goal.swift in Sources */,
 				D0B11419262704CF00C93A59 /* Events.swift in Sources */,
 				D07913682574F632007B9767 /* Difficulty.swift in Sources */,
 				D079133D2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
+				D0B1147D262EFFF200C93A59 /* Importance.swift in Sources */,
 				D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */,
 				D079137C2574F65B007B9767 /* saveContext.swift in Sources */,
 				D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */,

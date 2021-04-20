@@ -46,12 +46,12 @@ struct TaskForm: View {
                 Button(action: { onTapClose() }) {
                     Image(systemName: "xmark")
                         .font(Font.headlineCustom.weight(.bold))
-                        .foregroundColor(.subtitle)
+                        .foregroundColor(.b2)
                 }
                 Spacer()
                 Text(isEdit ? "修改任务" : "添加新任务")
                     .font(.headlineCustom)
-                    .foregroundColor(.body)
+                    .foregroundColor(.b3)
                     .fontWeight(.bold)
                 Spacer()
                 Button(action: { onTapSave() }) {
@@ -208,10 +208,10 @@ struct TaskForm: View {
             Image(systemName: "xmark")
                 .resizable()
                 .font(Font.subheadCustom.weight(.bold))
-                .foregroundColor(.subtitle)
+                .foregroundColor(.b2)
                 .padding(8.0)
                 .frame(width: 24.0, height: 24.0)
-                .background(Color.placeholder.cornerRadius(12))
+                .background(Color.g1.cornerRadius(12))
         }
     }
     

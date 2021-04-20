@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum GoalType: String, CaseIterable {
     case study = "study"
@@ -49,6 +50,10 @@ struct GoalReward {
 }
 
 extension Goal {
+    var color: Color {
+        ImportanceColor[Importance(rawValue: Int(self.importance))!]!
+    }
+    
     var _tasks: Set<Task> {
         tasks as! Set<Task>
     }

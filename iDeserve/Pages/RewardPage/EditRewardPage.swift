@@ -49,14 +49,14 @@ struct EditRewardPage: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "xmark")
-                        .foregroundColor(.subtitle)
+                        .foregroundColor(.b2)
                         .font(Font.headlineCustom.weight(.bold))
                 }
                 Spacer()
                 Text(initReward == nil ? "上架新奖励" : "修改奖励")
                     .font(.headlineCustom)
                     .fontWeight(.bold)
-                    .foregroundColor(.body)
+                    .foregroundColor(.b3)
                 Spacer()
                 Button(action: {
                         self.saveReward()

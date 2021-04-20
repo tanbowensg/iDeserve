@@ -30,8 +30,8 @@ struct TaskItem: View {
             .font(.captionCustom)
             .padding(.horizontal, 8)
             .padding(.vertical, 3)
-            .foregroundColor(.body)
-            .background(Color.placeholder.cornerRadius(7))
+            .foregroundColor(task.goalColor ?? .b3)
+            .background(Color.g1.cornerRadius(7))
             .layoutPriority(0.5)
     }
 
@@ -44,8 +44,8 @@ struct TaskItem: View {
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 3)
-        .foregroundColor(.body)
-        .background(Color.placeholder.cornerRadius(7))
+        .foregroundColor(.b3)
+        .background(Color.g1.cornerRadius(7))
         .layoutPriority(1)
     }
     
@@ -58,14 +58,14 @@ struct TaskItem: View {
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 3)
-        .foregroundColor(.body)
-        .background(Color.placeholder.cornerRadius(7))
+        .foregroundColor(.b3)
+        .background(Color.g1.cornerRadius(7))
         .layoutPriority(1)
     }
 
 //    var nextRefreshTime: some View {
 //        return Text("下次刷新: \(dateToString(task.nextRefreshTime!, dateFormat: "M.dd H:mm"))")
-//            .foregroundColor(.remainTextColor)
+//            .foregroundColor(.caption)
 //            .fontWeight(.bold)
 //            .font(.captionCustom)
 //            .frame(height: 16.0)
@@ -88,7 +88,7 @@ struct TaskItem: View {
             Text(task.name)
                 .font(.subheadCustom)
                 .fontWeight(.bold)
-                .foregroundColor(.black333)
+                .foregroundColor(.b4)
             shouldShowTaskInfo ? taskInfo : nil
         }
     }

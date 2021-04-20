@@ -53,20 +53,19 @@ extension Color {
     public static var lightShadow = Color(red: 0, green: 0, blue: 0, opacity: 0.05)
     public static var darkShadow = Color(red: 0, green: 0, blue: 0, opacity: 0.1)
     public static var completeColor = Color(hex: "a6c2a7")
-    
-    
+
     public static var brandGreen = Color(UIColor(named: "brandGreen")!)
     public static var darkBrandGreen = Color(UIColor(named: "darkBrandGreen")!)
-    public static var veryLightPink = Color(UIColor(named: "veryLightPink")!)
-    public static var myBlack = Color(UIColor(named: "black")!)
-    public static var rewardColor = Color(UIColor(named: "rewardColor")!)
-    public static var remainTextColor = Color(UIColor(named: "remainTextColor")!)
-    
-    
+    public static var rewardGold = Color(UIColor(named: "rewardGold")!)
+
     public static var descBg = Color.init("descBg")
-    public static var placeholder = Color.init("placeholder")
-    public static var subtitle = Color.init("subtitle")
-    public static var body = Color.init("body")
-    public static var caption = Color.init("caption")
-    public static var black333 = Color.init("black333")
+    public static var g1 = Color.init("g1")
+    public static var g2 = Color.init("g2")
+    public static var b1 = Color.init("b1")
+    public static var b2 = Color.init("b2")
+    public static var b3 = Color.init("b3")
+    public static var b4 = Color.init("b4")
+    public static var customRed = Color.init("customRed")
+    public static var customBlue = Color.init("customBlue")
+    public static var customGreen = Color.init("customGreen")
 }

@@ -23,7 +23,7 @@ enum RewardType: String, CaseIterable {
     case system = "system"
 }
 
-let RewardColorMap: [RewardType: Color] = [
+let rewardGoldMap: [RewardType: Color] = [
     .entertainment: Color.orange,
     .food: Color.yellow,
     .travel: Color.blue,

@@ -45,7 +45,7 @@ struct RewardGrid: View {
                 .frame(width: 20.0, height: 20.0)
         }
         .background(Color.g10)
-        .foregroundColor(.myBlack)
+        .foregroundColor(.b2)
         .cornerRadius(10)
         .animation(.none, value: isShowButton)
     }
@@ -68,7 +68,7 @@ struct RewardGrid: View {
             HStack(alignment: .center, spacing: 2){
                 Text(String(reward.value))
                     .font(.footnoteCustom)
-                    .foregroundColor(.rewardColor)
+                    .foregroundColor(.rewardGold)
                     .frame(height: 16.0)
                 Image("NutIcon")
                     .resizable()
@@ -119,7 +119,7 @@ struct RewardGrid: View {
         .padding([.leading, .bottom, .trailing], 14)
         .frame(height: 100)
         .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.rewardColor)
+        .background(Color.rewardGold)
         .cornerRadius(10)
         .id(reward.id)
     }

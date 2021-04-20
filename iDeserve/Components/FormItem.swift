@@ -18,13 +18,13 @@ struct FormItem<Content: View>: View {
                 Text(name)
                     .font(.subheadCustom)
                     .fontWeight(.bold)
-                    .foregroundColor(.black333)
+                    .foregroundColor(.b4)
                 
                 onClickHelp == nil ? nil : Image(systemName: "questionmark.circle")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
-                    .foregroundColor(.subtitle)
+                    .foregroundColor(.b2)
                     .onTapGesture {
                         onClickHelp!()
                     }
@@ -32,11 +32,11 @@ struct FormItem<Content: View>: View {
                 Spacer()
                 rightContent
                     .font(Font.subheadCustom.weight(.bold))
-                    .foregroundColor(.body)
+                    .foregroundColor(.b3)
             }
             .padding(.vertical, 20)
         }
-        .foregroundColor(.myBlack)
+        .foregroundColor(.b2)
     }
 }
 

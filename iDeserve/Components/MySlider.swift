@@ -17,7 +17,7 @@ struct MySlider: View {
             .valueSliderStyle(
                 HorizontalValueSliderStyle(
                     track: HorizontalTrack(view: Capsule().foregroundColor(Color.brandGreen))
-                        .background(Capsule().foregroundColor(.placeholder))
+                        .background(Capsule().foregroundColor(.g1))
                         .frame(height: 5),
                     thumb: Circle().foregroundColor(.brandGreen),
                     thumbSize: CGSize(width: 20, height: 20),

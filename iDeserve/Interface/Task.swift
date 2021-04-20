@@ -5,6 +5,7 @@
 //  Created by 谈博文 on 2020/10/26.
 //
 
+import SwiftUI
 import Foundation
 
 extension Task {
@@ -29,6 +30,7 @@ struct TaskState: Hashable, Identifiable {
     var done: Bool = false
     var starred: Bool = false
     var goalName: String = ""
+    var goalColor: Color?
     var goalId: UUID?
     var timeCost: Int = 1
     var difficulty: Difficulty = .easy
@@ -67,6 +69,7 @@ struct TaskState: Hashable, Identifiable {
             goalId = existTask.parent?.id
             completeTimes = Int(existTask.completeTimes)
             nextRefreshTime = existTask.nextRefreshTime
+            goalColor = existTask.parent?.color
             
             if let existDdl = existTask.ddl {
                 ddl = existDdl
