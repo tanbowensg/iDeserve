@@ -44,63 +44,66 @@ struct SettingsPage: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             List {
-                NavigationLink(destination: PayPage()) {
-                    HStack {
-                        Text("Pro版本")
-                        Spacer()
-                        isPro ? Text("已购买") : Text("未购买")
-                    }
-                }
-                    
-                NavigationLink(destination: HelpPage()) {
-                    HStack {
-                        Text("帮助")
-                    }
-                }
-                HStack {
-                    Text("外观")
-                }
-                Button(action: {
-                    gs.pointsStore.add(gs.pointsStore.points * 9)
-                }) {
-                    Text("现有坚果变十倍")
-                }
-                Button(action: {
-                    gs.pointsStore.add(-gs.pointsStore.points)
-                }) {
-                    Text("现有坚果清零")
-                }
-                Button(action: {
-                    let defaults = UserDefaults.standard
-                    defaults.setValue(true, forKey: UNLOCK_CALENDAR)
-                }) {
-                    Text("直接解锁松鼠日历")
-                }
-                Button(action: {
-                    isShowTimePicker.toggle()
-                }) {
-                    HStack {
-                        Text("一天的起始时间")
-                        Spacer()
-                        Text("\(startTimeOfDay):00")
-                    }
-                }
-                Button(action: {
-                    allTasks.forEach {task in
-                        if task.done
-                            && task.repeatFrequency != RepeatFrequency.never.rawValue
-                            && task.completeTimes < task.repeatTimes
-                        {
-                            task.nextRefreshTime = getNextRefreshTime(task)
+                Section(header: Text("App 基本信息")) {
+                    NavigationLink(destination: PayPage()) {
+                        HStack {
+                            Text("Pro版本")
+                            Spacer()
+                            isPro ? Text("已购买") : Text("未购买")
                         }
                     }
-                    gs.coreDataContainer.saveContext()
-                }) {
-                    HStack {
-                        Text("重新计算任务的刷新时间")
+                    
+                    NavigationLink(destination: HelpPage()) {
+                        HStack {
+                            Text("帮助")
+                        }
+                    }
+                }
+                
+                Section(header: Text("调试用按钮")) {
+                    Button(action: {
+                        gs.pointsStore.add(gs.pointsStore.points * 9)
+                    }) {
+                        Text("现有坚果变十倍")
+                    }
+                    Button(action: {
+                        gs.pointsStore.add(-gs.pointsStore.points)
+                    }) {
+                        Text("现有坚果清零")
+                    }
+                    Button(action: {
+                        let defaults = UserDefaults.standard
+                        defaults.setValue(true, forKey: UNLOCK_CALENDAR)
+                    }) {
+                        Text("直接解锁松鼠日历")
+                    }
+                    Button(action: {
+                        isShowTimePicker.toggle()
+                    }) {
+                        HStack {
+                            Text("一天的起始时间")
+                            Spacer()
+                            Text("\(startTimeOfDay):00")
+                        }
+                    }
+                    Button(action: {
+                        allTasks.forEach {task in
+                            if task.done
+                                && task.repeatFrequency != RepeatFrequency.never.rawValue
+                                && task.completeTimes < task.repeatTimes
+                            {
+                                task.nextRefreshTime = getNextRefreshTime(task)
+                            }
+                        }
+                        gs.coreDataContainer.saveContext()
+                    }) {
+                        HStack {
+                            Text("重新计算任务的刷新时间")
+                        }
                     }
                 }
             }
+            .listStyle(GroupedListStyle())
             MyPopup(isVisible: $isShowTimePicker, content: timePicker)
         }
         .navigationTitle("设置")
