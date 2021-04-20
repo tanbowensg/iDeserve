@@ -128,7 +128,7 @@ struct TaskForm: View {
     var taskMyDay: some View {
         Group {
             FormItem(
-                name: "在“我的一天”中显示",
+                name: "在“今日任务”中显示",
                 rightContent: Toggle("", isOn:$taskState.starred).toggleStyle(SwitchToggleStyle(tint: .brandGreen))
             )
             ExDivider()

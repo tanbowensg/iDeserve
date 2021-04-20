@@ -66,6 +66,6 @@ struct AppHeader: View {
 
 struct AppHeader_Previews: PreviewProvider {
     static var previews: some View {
-        AppHeader(points: 888, title: "我的一天")
+        AppHeader(points: 888, title: "今日任务")
     }
 }

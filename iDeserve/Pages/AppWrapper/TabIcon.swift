@@ -32,8 +32,8 @@ struct TabIcon: View {
 
 struct TabIcon_Previews: PreviewProvider {
     static var previews: some View {
-        let tabInfo1 = TabInfo(id: "我的一天", title: "sun.max", systemImage: "myDay", isActive: false)
-        let tabInfo2 = TabInfo(id: "我的一天", title: "sun.max", systemImage: "myDay", isActive: true)
+        let tabInfo1 = TabInfo(id: "今日任务", title: "sun.max", systemImage: "myDay", isActive: false)
+        let tabInfo2 = TabInfo(id: "今日任务", title: "sun.max", systemImage: "myDay", isActive: true)
         Group {
             TabIcon(tabInfo: tabInfo1)
             TabIcon(tabInfo: tabInfo2)

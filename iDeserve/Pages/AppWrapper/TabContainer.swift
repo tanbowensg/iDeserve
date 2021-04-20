@@ -43,10 +43,10 @@ struct TabContainer<Content: View>: View {
 struct TabContainer_Previews: PreviewProvider {
     static var previews: some View {
         let infos = [
-            TabInfo(id: "1", title: "我的一天", systemImage: "sun.max", isActive: false),
-            TabInfo(id: "2", title: "我的一天", systemImage: "sun.max", isActive: false),
-            TabInfo(id: "3", title: "我的一天", systemImage: "sun.max", isActive: true),
-            TabInfo(id: "4", title: "我的一天", systemImage: "sun.max", isActive: false)
+            TabInfo(id: "1", title: "今日任务", systemImage: "sun.max", isActive: false),
+            TabInfo(id: "2", title: "今日任务", systemImage: "sun.max", isActive: false),
+            TabInfo(id: "3", title: "今日任务", systemImage: "sun.max", isActive: true),
+            TabInfo(id: "4", title: "今日任务", systemImage: "sun.max", isActive: false)
         ]
         TabContainer(tabInfos: infos, onTabChange: { print($0) }) {
             Text("hello")

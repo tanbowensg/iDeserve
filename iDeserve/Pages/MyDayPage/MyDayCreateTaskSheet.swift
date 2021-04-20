@@ -14,7 +14,7 @@ struct MyDayCreateTaskSheet: View {
     @State var newTaskState: TaskState
     
     init(task: Task?) {
-//        从我的一天创建的任务默认添加到我的一天
+//        从今日任务创建的任务默认添加到今日任务
         var taskState = TaskState(task ?? nil)
         if task == nil {
             taskState.starred = true

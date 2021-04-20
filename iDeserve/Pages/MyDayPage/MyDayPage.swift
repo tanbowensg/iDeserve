@@ -106,7 +106,7 @@ struct MyDayPage: View {
     var emptyState: some View {
         VStack(alignment: .center) {
             Spacer()
-            Text("今天没有要做的事情哦！\n你可以下拉界面创建任务，\n或者把想做的任务添加到我的一天里！")
+            Text("今天没有要做的事情哦！\n你可以下拉界面创建任务，\n或者把想做的任务添加到今日任务里！")
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 25)
                 .frame(maxWidth: .infinity)
@@ -117,7 +117,7 @@ struct MyDayPage: View {
 
     var body: some View {
         VStack(spacing: 0.0) {
-            AppHeader(points: gs.pointsStore.points, title: "我的一天")
+            AppHeader(points: gs.pointsStore.points, title: "今日任务")
             ZStack(alignment: .top) {
                 Text("下拉创建任务")
                     .opacity(Double(offsetY / 100))

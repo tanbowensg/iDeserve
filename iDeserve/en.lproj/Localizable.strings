@@ -2,7 +2,7 @@
 "备注" = "Description";
 
 /* No comment provided by engineer. */
-"从“我的一天”移除" = "Remove from MyDay";
+"从“今日任务”移除" = "Remove from MyDay";
 
 /* No comment provided by engineer. */
 "从不" = "Never";
@@ -71,7 +71,7 @@
 "所属目标" = "Goal";
 
 /* No comment provided by engineer. */
-"添加到“我的一天”" = "Add to MyDay";
+"添加到“今日任务”" = "Add to MyDay";
 
 /* No comment provided by engineer. */
 "添加截止日期" = "Add Deadline";
@@ -92,7 +92,7 @@
 "未知" = "unknown";
 
 /* No comment provided by engineer. */
-"我的一天" = "My Day";
+"今日任务" = "My Day";
 
 /* No comment provided by engineer. */
 "无间隔重复" = "Immediate";
