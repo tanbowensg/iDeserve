@@ -217,7 +217,7 @@ struct EditGoalPage: View {
                     }
                 }
             }
-            isShowTypePicker ? Color.popupMask : nil
+            isShowTypePicker ? Color.popupMask.ignoresSafeArea() : nil
         }
         .popup(
             isPresented: $isShowTypePicker,
