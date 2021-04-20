@@ -159,7 +159,7 @@ struct EditRewardPage: View {
             }
             MyPopup(isVisible: $isShowTypePicker, content: RewardTypePicker(selectedType: $type))
         }
-        .popup(isPresented: $isShowHelp, type: .default, animation: .easeOut(duration: 0.3), closeOnTap: true, closeOnTapOutside: true, view: { HelpText(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC) })
+        .popup(isPresented: $isShowHelp, type: .default, animation: .easeOut(duration: 0.3), closeOnTap: true, closeOnTapOutside: true, view: { HelpTextModal(title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC) })
     }
     
     func saveReward () {

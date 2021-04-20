@@ -184,7 +184,7 @@ struct GoalPage: View {
             )
         }
         .popup(isPresented: $isShowHelp, type: .default, closeOnTap: false, closeOnTapOutside: true) {
-            HelpText(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
+            HelpTextModal(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
         }
         .popup(isPresented: $isShowPurchase, type: .default, closeOnTap: true, closeOnTapOutside: true) {
             NavigationLink(destination: PayPage()) {
