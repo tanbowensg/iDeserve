@@ -58,7 +58,7 @@ struct MyDayPage: View {
     }
     
     var completedTasksView: some View {
-        VStack(alignment: .leading, spacing: 12.0) {
+        VStack(alignment: .leading, spacing: 0) {
             Text("今天完成的任务")
                 .font(.subheadCustom)
                 .fontWeight(.bold)
@@ -75,6 +75,7 @@ struct MyDayPage: View {
                 }
             }
         }
+        .padding(.top, 12)
     }
     
     var taskList: some View {
@@ -95,7 +96,6 @@ struct MyDayPage: View {
                     }
                     ExDivider()
                 }
-                .padding(.bottom, 12)
             }
             completedTasks.count > 0 ? completedTasksView : nil
             Text("").frame(maxWidth: .infinity)
