@@ -61,13 +61,17 @@ struct MyDayPage: View {
         VStack(alignment: .leading, spacing: 12.0) {
             Text("今天完成的任务")
                 .font(.subheadCustom)
+                .fontWeight(.bold)
                 .padding(.leading, 25)
             ForEach (completedTasks, id: \.id) { task in
-                Button(action: {
-                    currentTask = task
-                    shouldOpenSheet = true
-                }) {
-                    TaskItem(task: TaskState(task))
+                VStack(spacing: 0.0) {
+                    Button(action: {
+                        currentTask = task
+                        shouldOpenSheet = true
+                    }) {
+                        TaskItem(task: TaskState(task))
+                    }
+                    ExDivider()
                 }
             }
         }
@@ -91,6 +95,7 @@ struct MyDayPage: View {
                     }
                     ExDivider()
                 }
+                .padding(.bottom, 12)
             }
             completedTasks.count > 0 ? completedTasksView : nil
             Text("").frame(maxWidth: .infinity)
