@@ -104,6 +104,7 @@ struct TaskItem: View {
             .frame(height: TASK_ROW_HEIGHT)
             .foregroundColor(self.foregroundColor)
             .background(Color.white)
+            .saturation(task.done ? 0 : 1)
             
     }
 

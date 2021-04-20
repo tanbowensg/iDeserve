@@ -39,7 +39,6 @@ struct GoalItemView: View {
 
     var goalName: some View {
         Text(goal.name!)
-            .strikethrough(goal.done)
             .font(.titleCustom)
             .foregroundColor(Color.init(type.rawValue))
     }
@@ -94,6 +93,7 @@ struct GoalItemView: View {
         .padding(.vertical, GOAL_ROW_PADDING)
         .padding(.horizontal, 20.0)
         .background(Color.white)
+        .saturation(goal.done ? 0 : 1)
         .onTapGesture { isTapped.toggle() }
     }
     
