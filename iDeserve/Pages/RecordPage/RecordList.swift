@@ -81,17 +81,23 @@ struct RecordItem: View {
     
     var icon: some View {
         let kind = RecordKind(rawValue: Int(record.kind))
+        var imageName: String
         
         switch kind {
             case .goal:
-                return Image(systemName: "list.dash")
+                imageName = "goalList"
             case .task:
-                return Image(systemName: "checkmark")
+                imageName = "check"
             case .reward:
-                return Image(systemName: "gift.fill")
+                imageName = "rewardStore"
             default:
-                return Image(systemName: "list.dash")
+                imageName = "check"
         }
+        
+        return Image(imageName)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 20, height: 20, alignment: .center)
     }
 
     var body: some View {
