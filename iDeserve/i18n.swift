@@ -33,6 +33,10 @@ let RepeatFrequencyText: [RepeatFrequency: String] = [
 
 let GoalTypeText: [GoalType: String] = [
     .exercise: NSLocalizedString("锻炼", comment: ""),
+    .exam: NSLocalizedString("考试", comment: ""),
+    .money: NSLocalizedString("理财", comment: ""),
+    .habit: NSLocalizedString("习惯", comment: ""),
+    .writing: NSLocalizedString("创作", comment: ""),
     .hobby: NSLocalizedString("兴趣", comment: ""),
     .job: NSLocalizedString("工作", comment: ""),
     .study: NSLocalizedString("学习", comment: ""),

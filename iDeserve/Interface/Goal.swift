@@ -10,12 +10,14 @@ import SwiftUI
 
 enum GoalType: String, CaseIterable {
     case study = "study"
+    case exam = "exam"
     case exercise = "exercise"
     case job = "job"
+    case money = "money"
     case hobby = "hobby"
     case social = "social"
-//    无用，只是为了在展示的时候占位用
-    case none = "noneGoalType"
+    case habit = "habit"
+    case writing = "writing"
 }
 
 struct GoalReward {
