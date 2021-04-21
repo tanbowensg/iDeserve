@@ -15,28 +15,14 @@ extension Reward {
 }
 
 enum RewardType: String, CaseIterable {
-    case food = "gluttony"
-    case rest = "sloth"
-    case shopping = "greed"
+    case food = "food"
+    case rest = "rest"
+    case shopping = "shopping"
     case entertainment = "entertainment"
     case travel = "travel"
+    case game = "game"
+    case drink = "drink"
+    case digital = "digital"
+    case movie = "movie"
     case system = "system"
 }
-
-let rewardGoldMap: [RewardType: Color] = [
-    .entertainment: Color.orange,
-    .food: Color.yellow,
-    .travel: Color.blue,
-    .rest: Color.green,
-    .shopping: Color.red,
-    .system: Color.g60
-]
-
-let RewardIconMap: [RewardType: String] = [
-    .entertainment: "gamecontroller",
-    .food: "hare",
-    .travel: "airplane",
-    .rest: "bed.double",
-    .shopping: "bag",
-    .system: "gear"
-]

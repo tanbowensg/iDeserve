@@ -45,7 +45,11 @@ let GoalTypeText: [GoalType: String] = [
 
 let RewardTypeText: [RewardType: String] = [
     .entertainment: NSLocalizedString("娱乐", comment: ""),
-    .food: NSLocalizedString("吃喝", comment: ""),
+    .game: NSLocalizedString("游戏", comment: ""),
+    .drink: NSLocalizedString("饮料", comment: ""),
+    .digital: NSLocalizedString("数码", comment: ""),
+    .movie: NSLocalizedString("电影", comment: ""),
+    .food: NSLocalizedString("美食", comment: ""),
     .travel: NSLocalizedString("旅游", comment: ""),
     .rest: NSLocalizedString("休息", comment: ""),
     .shopping: NSLocalizedString("购物", comment: ""),

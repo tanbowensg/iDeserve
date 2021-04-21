@@ -49,21 +49,6 @@ struct GoalTypePicker: View {
                         .frame(width: 80)
                     }
                 }
-//                GridStack(rows: 3, columns: 3) { (i, j) in
-//                    let index = i * 3 + j
-//                    let type = index <= GoalType.allCases.count - 1 ? GoalType.allCases[index] : GoalType.study
-//                        Button(action: {
-//                            selectedType = type
-//                            isShow.toggle()
-//                        }) {
-//                            VStack(spacing: 8.0) {
-//                                GoalIcon(goalType: type, size: 80)
-//                                Text(GoalTypeText[type] ?? "")
-//                                    .foregroundColor(.b2)
-//                                    .font(.subheadCustom)
-//                            }
-//                        }
-//                }
                 Spacer()
             }
         }
