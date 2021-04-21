@@ -15,14 +15,14 @@ struct GoalIcon: View {
         Image(goalType.rawValue)
             .resizable()
             .scaledToFit()
-            .frame(width: size, height: size)
             .cornerRadius(size / 5)
+            .frame(width: size, height: size)
             .shadow(color: .darkShadow, radius: size / 5, x: 0, y: 0)
     }
 }
 
 struct GoalIcon_Previews: PreviewProvider {
     static var previews: some View {
-        GoalIcon(goalType: .job)
+        GoalIcon(goalType: .study)
     }
 }

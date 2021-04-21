@@ -28,9 +28,8 @@ struct CompleteGoalView: View {
                         openHelp()
                     }
             }
-            Image(systemName: "checkmark.seal")
+            Image("prize")
                 .resizable()
-                .foregroundColor(.brandGreen)
                 .frame(width: 200.0, height: 200.0)
 
             Text(goalReward?.name ?? "")

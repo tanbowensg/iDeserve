@@ -20,10 +20,10 @@ struct AppWrapper: View {
     
     var tabs: [TabInfo] {
         return [
-            TabInfo(id: TabPages.myDay.rawValue, title: MYDAY_TEXT, systemImage: "sun.max", isActive: currentTab == .myDay),
-            TabInfo(id: TabPages.task.rawValue, title: GOAL_LIST_TEXT, systemImage: "list.dash", isActive: currentTab == .task),
-            TabInfo(id: TabPages.reward.rawValue, title: REWARD_STORE_TEXT, systemImage: "gift.fill", isActive: currentTab == .reward),
-            TabInfo(id: TabPages.record.rawValue, title: RECORD_LIST_TEXT, systemImage: "clock", isActive: currentTab == .record)
+            TabInfo(id: TabPages.myDay.rawValue, title: MYDAY_TEXT, imageName: "myDay", isActive: currentTab == .myDay),
+            TabInfo(id: TabPages.task.rawValue, title: GOAL_LIST_TEXT, imageName: "goalList", isActive: currentTab == .task),
+            TabInfo(id: TabPages.reward.rawValue, title: REWARD_STORE_TEXT, imageName: "rewardStore", isActive: currentTab == .reward),
+            TabInfo(id: TabPages.record.rawValue, title: RECORD_LIST_TEXT, imageName: "records", isActive: currentTab == .record)
         ]
     }
 
