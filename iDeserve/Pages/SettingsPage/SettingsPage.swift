@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import StoreKit
 
 struct SettingsPage: View {
     @EnvironmentObject var gs: GlobalStore
@@ -57,6 +58,16 @@ struct SettingsPage: View {
                         HStack {
                             Text("帮助")
                         }
+                    }
+                    Button (action: {
+//                        UIApplication.shared.open(URL(string: "https://apps.apple.com/us/app/id1550900596?action=write-review")!)
+                        SKStoreReviewController.requestReview()
+                    }) {
+                        Text("好评鼓励")
+                    }
+                    Button (action: {
+                    }) {
+                        Text("联系我们")
                     }
                 }
                 
