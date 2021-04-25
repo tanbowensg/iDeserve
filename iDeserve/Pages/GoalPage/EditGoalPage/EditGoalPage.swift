@@ -201,7 +201,7 @@ struct EditGoalPage: View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0.0) {
                 header
-                ScrollView {
+                CustomScrollView {
                     VStack(alignment: .leading, spacing: 0) {
                         VStack(alignment: .center, spacing: 20) {
                             goalType

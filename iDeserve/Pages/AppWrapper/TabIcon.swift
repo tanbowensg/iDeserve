@@ -26,7 +26,7 @@ struct TabIcon: View {
                 .scaleEffect(tabInfo.isActive ? 2 : 1, anchor: .bottom)
                 .shadow(color: .g2, radius: tabInfo.isActive ? 3 : 0, x: 0, y: 0)
             Text(tabInfo.title)
-                .font(.system(size: 10))
+                .font(.captionCustom)
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
         }
             .saturation(tabInfo.isActive ? 1 : 0)
