@@ -58,6 +58,7 @@ extension Color {
     public static var darkBrandGreen = Color(UIColor(named: "darkBrandGreen")!)
     public static var rewardGold = Color(UIColor(named: "rewardGold")!)
 
+    public static var headerBg = Color.init("headerBg")
     public static var nutBg = Color.init("nutBg")
     public static var descBg = Color.init("descBg")
     public static var g1 = Color.init("g1")
@@ -69,4 +70,5 @@ extension Color {
     public static var customRed = Color.init("customRed")
     public static var customBlue = Color.init("customBlue")
     public static var customGreen = Color.init("customGreen")
+    public static var customBrown = Color.init("customBrown")
 }

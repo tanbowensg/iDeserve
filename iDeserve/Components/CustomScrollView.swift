@@ -42,8 +42,10 @@ struct CustomScrollView<Content: View>: View {
                     NotificationCenter.default.post(name: NSNotification.onScroll, object: nil)
                     onOffsetChange(v)
                 })
-            }.frame(width: 0, height: 0)
+            }
+            .frame(width: 0, height: 0)
             content
+                .padding(.top, -8)
         }
         .coordinateSpace(name: "scrollView")
     }

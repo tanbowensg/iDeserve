@@ -103,7 +103,7 @@ struct TaskItem: View {
             .padding(.vertical, 20)
             .frame(height: TASK_ROW_HEIGHT)
             .foregroundColor(self.foregroundColor)
-            .background(Color.white)
+            .background(Color.white.opacity(0.001))
             .saturation(task.done ? 0 : 1)
             
     }

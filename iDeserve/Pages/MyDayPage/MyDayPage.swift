@@ -114,23 +114,30 @@ struct MyDayPage: View {
             Spacer()
         }
     }
-
+    
     var body: some View {
         VStack(spacing: 0.0) {
-//            AppHeader(points: gs.pointsStore.points, title: "今日任务")
             ZStack(alignment: .top) {
-                Text("下拉创建任务")
-                    .opacity(Double(offsetY / 100))
-                CustomScrollView(showsIndicators: true, onOffsetChange: onOffsetChange) {
-                    if myDayTasks.count == 0 {
-                        emptyState
-                    } else {
-                        taskList
+                Color.headerBg
+                    .mask(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]), startPoint: .bottom, endPoint: .init(x: 0.5, y: 0.5)))
+                    .frame(height: 360)
+                    .padding(.top, -300)
+                    .zIndex(1
+                    )
+                CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
+                    VStack(spacing: -60) {
+                        MyDayPageHeader()
+                        if myDayTasks.count == 0 {
+                            emptyState
+                        } else {
+                            taskList
+                        }
                     }
                 }
-//                用来修复第一次点开sheet没有内容的bug
-                currentTask == nil ? Text("") : nil
+                .ignoresSafeArea()
             }
+            //                用来修复第一次点开sheet没有内容的bug
+            currentTask == nil ? Text("") : nil
         }
         .sheet(isPresented: $shouldOpenSheet, content: {
             MyDayCreateTaskSheet(task: currentTask)
