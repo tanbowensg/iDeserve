@@ -51,6 +51,7 @@ struct MyDayPage: View {
     
     func onOffsetChange (_ offset: CGFloat) -> Void {
         offsetY = Double(offset)
+        print(offsetY)
         if (offsetY >= Double(scrollThreshold)) {
             shouldOpenSheet = true
             currentTask = nil
@@ -118,23 +119,27 @@ struct MyDayPage: View {
     var body: some View {
         VStack(spacing: 0.0) {
             ZStack(alignment: .top) {
-                Color.headerBg
-                    .mask(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]), startPoint: .bottom, endPoint: .init(x: 0.5, y: 0.5)))
-                    .frame(height: 360)
-                    .padding(.top, -300)
-                    .zIndex(1
-                    )
+//                Color.headerBg
+//                    .mask(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]), startPoint: .bottom, endPoint: .init(x: 0.5, y: 0.5)))
+//                    .frame(height: 360)
+//                    .padding(.top, -300)
+//                    .zIndex(1
+//                    )
                 CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
-                    VStack(spacing: -60) {
-                        MyDayPageHeader()
+                    VStack {
                         if myDayTasks.count == 0 {
                             emptyState
                         } else {
                             taskList
                         }
                     }
+                    .padding(.top, 300)
                 }
-                .ignoresSafeArea()
+                MyDayPageHeader()
+                    .offset(y: CGFloat(max(-300, offsetY)))
+                    .scaleEffect(1 + abs(CGFloat(offsetY)) / 300, anchor: .bottom)
+                    .animation(.none)
+                    .ignoresSafeArea()
             }
             //                用来修复第一次点开sheet没有内容的bug
             currentTask == nil ? Text("") : nil
