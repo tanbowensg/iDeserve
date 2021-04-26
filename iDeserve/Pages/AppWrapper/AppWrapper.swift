@@ -16,6 +16,7 @@ enum TabPages: String {
 }
 
 struct AppWrapper: View {
+    @EnvironmentObject var gs: GlobalStore
     @State var currentTab = TabPages.myDay
     
     var tabs: [TabInfo] {
@@ -61,8 +62,12 @@ struct AppWrapper: View {
 //                    RewardPage().tabItem { TabIcon(tabInfo: tabs[2]) }
 //                    RecordPage().tabItem { TabIcon(tabInfo: tabs[3]) }
 //                }
-            TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
-                tabContent
+            ZStack(alignment: .topTrailing) {
+                TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
+                    tabContent
+                }
+                NutsAndSettings(points: gs.pointsStore.points)
+                    .padding(.trailing, 33)
             }
         }
     }

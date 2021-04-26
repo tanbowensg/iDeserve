@@ -19,7 +19,7 @@ struct AnimatedPoints: View {
 
     var body: some View {
         return Text(String(realPoints))
-            .font(.titleCustom)
+            .font(.captionCustom)
             .fontWeight(.bold)
             .foregroundColor(.white)
             .colorMultiply(animationTrigger ? .yellow : .rewardGold)

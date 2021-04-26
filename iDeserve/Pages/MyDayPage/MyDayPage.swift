@@ -117,7 +117,7 @@ struct MyDayPage: View {
 
     var body: some View {
         VStack(spacing: 0.0) {
-            AppHeader(points: gs.pointsStore.points, title: "今日任务")
+//            AppHeader(points: gs.pointsStore.points, title: "今日任务")
             ZStack(alignment: .top) {
                 Text("下拉创建任务")
                     .opacity(Double(offsetY / 100))

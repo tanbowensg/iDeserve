@@ -28,6 +28,7 @@ struct TabIcon: View {
             Text(tabInfo.title)
                 .font(.captionCustom)
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .foregroundColor(tabInfo.isActive ? Color.init(hex: "eea849") : .b1)
         }
             .saturation(tabInfo.isActive ? 1 : 0)
             .frame(maxWidth: .infinity)

@@ -31,14 +31,13 @@ struct AppHeader: View {
     
     var settingsIcon: some View {
         NavigationLink(destination: SettingsPage()) {
-            Image(systemName: "gear")
+            Image("gear")
                 .resizable()
                 .frame(width: 20.0, height: 20.0)
-                .padding(.horizontal, 12.0)
-                .padding(.vertical, 4.0)
-                .background(Color("rewardGold"))
-                .foregroundColor(.white)
-                .cornerRadius(22)
+//                .padding(.horizontal, 12.0)
+//                .padding(.vertical, 4.0)
+//                .foregroundColor(.white)
+//                .cornerRadius(22)
         }
     }
 
