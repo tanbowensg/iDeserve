@@ -90,6 +90,7 @@
 		D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D4725B06C5400087FC5 /* ProgressBar.swift */; };
 		D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088864F26365D5D005624D1 /* NutsAndSettings.swift */; };
 		D088865A2636660A005624D1 /* MyDayPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886592636660A005624D1 /* MyDayPageHeader.swift */; };
+		D088866826385322005624D1 /* RecordPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088866726385322005624D1 /* RecordPageHeader.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
 		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
@@ -252,6 +253,7 @@
 		D07B6D4725B06C5400087FC5 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D088864F26365D5D005624D1 /* NutsAndSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutsAndSettings.swift; sourceTree = "<group>"; };
 		D08886592636660A005624D1 /* MyDayPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayPageHeader.swift; sourceTree = "<group>"; };
+		D088866726385322005624D1 /* RecordPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPageHeader.swift; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
 		D08988A2254671E60032BA96 /* EditGoalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalPage.swift; sourceTree = "<group>"; };
 		D08988A7254672390032BA96 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				D072432A25A30B4400DCB674 /* Calendar */,
 				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
 				D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */,
+				D088866726385322005624D1 /* RecordPageHeader.swift */,
 			);
 			path = RecordPage;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */,
 				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
 				D030B6B2257E0A8900967015 /* resetPos.swift in Sources */,
+				D088866826385322005624D1 /* RecordPageHeader.swift in Sources */,
 				D072434A25A431C000DCB674 /* utils.swift in Sources */,
 				D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */,
 				D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */,

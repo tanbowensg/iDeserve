@@ -110,6 +110,6 @@ struct RecordItem: View {
         .font(.subheadCustom)
         .frame(height: 28)
         .padding(.vertical, 5)
-        .background(Color.white)
+        .background(Color.transparent)
     }
 }

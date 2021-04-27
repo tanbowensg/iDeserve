@@ -133,8 +133,8 @@ struct MyDayPage: View {
                             taskList
                         }
                     }
-                    .padding(.top, HEADER_HEIGHT - TASK_ROW_PADDING - safeAreaHeight)
                 }
+                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
                 MyDayPageHeader()
 //                    .offset(y: CGFloat(max(-300, offsetY)))
 //                    .scaleEffect(1 + abs(CGFloat(offsetY)) / 300, anchor: .bottom)

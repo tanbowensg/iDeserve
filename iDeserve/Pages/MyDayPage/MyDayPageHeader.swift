@@ -9,10 +9,10 @@ import SwiftUI
 
 struct MyDayPageHeader: View {
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        ZStack(alignment: .topLeading) {
             Image("headerCover")
                 .resizable()
-                .frame(height: HEADER_HEIGHT)
+                .frame(height: HEADER_HEIGHT + TASK_ROW_PADDING)
             Image("headerLeaf")
                 .resizable()
                 .frame(height: HEADER_HEIGHT)
@@ -20,15 +20,16 @@ struct MyDayPageHeader: View {
                 .resizable()
                 .frame(width: 123.0, height: 121.0)
                 .padding(.leading, 178)
-                .padding(.bottom, 32)
+                .padding(.top, 55)
             Text("每日任务")
                 .font(.titleCustom)
                 .fontWeight(.bold)
-                .foregroundColor(.customBrown)
-                .padding(.bottom, 46)
+                .foregroundColor(.b4)
+                .padding(.top, 130)
                 .padding(.leading, 25)
         }
         .ignoresSafeArea()
+//        这里的高度要考虑到任务item的上padding
         .frame(width: UIScreen.main.bounds.size.width, height: HEADER_HEIGHT)
     }
 }

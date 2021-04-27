@@ -17,6 +17,8 @@ struct RecordPage: View {
     @State var currentMonth: Int = Calendar.current.dateComponents([.month], from: Date()).month!
     @State var currentYear: Int = Calendar.current.dateComponents([.year], from: Date()).year!
 
+    let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
+
     static var recordRequest: NSFetchRequest<Record> {
         let request: NSFetchRequest<Record> = Record.fetchRequest()
         request.sortDescriptors = []
@@ -118,13 +120,22 @@ struct RecordPage: View {
     }
 
     var body: some View {
-        VStack(spacing: 25.0) {
-            AppHeader(points: gs.pointsStore.points, title: "历史记录")
-            unlockCalendar ? recordsView() : nil
-            !unlockCalendar ? Text("还没有解锁") : nil
-        }
+        ZStack(alignment: .top) {
+            RecordPageHeader()
+            Image("bear")
+                .scaleEffect(0.9)
+                .padding(.top, 30)
+                .padding(.trailing, 150)
+                .rotationEffect(.init(degrees: 30))
+            VStack(spacing: 25.0) {
+                unlockCalendar ? recordsView() : nil
+                !unlockCalendar ? Text("还没有解锁") : nil
+            }
+            .padding(.top, HEADER_HEIGHT - safeAreaHeight)
             .animation(.easeInOut, value: currentMonth)
             .navigationBarHidden(true)
+        }
+        .frame(width: UIScreen.main.bounds.size.width)
     }
     
     func onMonthChange(_ nextYear: Int, _ nextMonth: Int) -> Void {

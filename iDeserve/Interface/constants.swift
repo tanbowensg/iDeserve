@@ -21,7 +21,7 @@ let TASK_ROW_PADDING: CGFloat = 20
 let GOAL_ROW_HEIGHT: CGFloat = 70
 let GOAL_ROW_PADDING: CGFloat = 20
 
-let HEADER_HEIGHT: CGFloat = 200
+let HEADER_HEIGHT: CGFloat = 180
 
 let MAX_GOAL = 3
 
