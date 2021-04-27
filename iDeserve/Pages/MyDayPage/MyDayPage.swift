@@ -15,6 +15,8 @@ struct MyDayPage: View {
     @State var currentTask: Task?
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
     
+    let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
+    
     let scrollThreshold = 100
 
     static var taskRequest: NSFetchRequest<Task> {
@@ -72,7 +74,7 @@ struct MyDayPage: View {
                     }) {
                         TaskItem(task: TaskState(task))
                     }
-                    ExDivider()
+                    ExDivider().padding(.horizontal, 25)
                 }
             }
         }
@@ -95,7 +97,7 @@ struct MyDayPage: View {
                             }
                         )
                     }
-                    ExDivider()
+                    ExDivider().padding(.horizontal, 25)
                 }
             }
             completedTasks.count > 0 ? completedTasksView : nil
@@ -119,12 +121,10 @@ struct MyDayPage: View {
     var body: some View {
         VStack(spacing: 0.0) {
             ZStack(alignment: .top) {
-//                Color.headerBg
-//                    .mask(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]), startPoint: .bottom, endPoint: .init(x: 0.5, y: 0.5)))
-//                    .frame(height: 360)
-//                    .padding(.top, -300)
-//                    .zIndex(1
-//                    )
+                Image("headerBg")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.size.width)
+                    .ignoresSafeArea()
                 CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
                     VStack {
                         if myDayTasks.count == 0 {
@@ -133,13 +133,12 @@ struct MyDayPage: View {
                             taskList
                         }
                     }
-                    .padding(.top, 300)
+                    .padding(.top, HEADER_HEIGHT - TASK_ROW_PADDING - safeAreaHeight)
                 }
                 MyDayPageHeader()
-                    .offset(y: CGFloat(max(-300, offsetY)))
-                    .scaleEffect(1 + abs(CGFloat(offsetY)) / 300, anchor: .bottom)
+//                    .offset(y: CGFloat(max(-300, offsetY)))
+//                    .scaleEffect(1 + abs(CGFloat(offsetY)) / 300, anchor: .bottom)
                     .animation(.none)
-                    .ignoresSafeArea()
             }
             //                用来修复第一次点开sheet没有内容的bug
             currentTask == nil ? Text("") : nil

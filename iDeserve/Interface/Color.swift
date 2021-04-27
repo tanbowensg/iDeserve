@@ -44,7 +44,6 @@ extension Color {
     public static var g60 = Color(hex: "8C8C8C")
     public static var g70 = Color(hex: "595959")
     public static var g80 = Color(hex: "262626")
-    public static var bg = Color(hex: "F7F6F1")
     public static var normalText = Color(hex: "363636")
     public static var tagColor = Color(hex: "6d859b")
     public static var tagBg = Color(hex: "dceeff")
@@ -58,7 +57,7 @@ extension Color {
     public static var darkBrandGreen = Color(UIColor(named: "darkBrandGreen")!)
     public static var rewardGold = Color(UIColor(named: "rewardGold")!)
 
-    public static var headerBg = Color.init("headerBg")
+    public static var appBg = Color.init("appBg")
     public static var nutBg = Color.init("nutBg")
     public static var descBg = Color.init("descBg")
     public static var g1 = Color.init("g1")

@@ -67,7 +67,8 @@ struct AppWrapper: View {
                     tabContent
                 }
                 NutsAndSettings(points: gs.pointsStore.points)
-                    .padding(.trailing, 33)
+                    .padding(.top, 10)
+                    .padding(.horizontal, 25)
             }
         }
     }

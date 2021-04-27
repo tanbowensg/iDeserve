@@ -16,9 +16,12 @@ var BeforeDdlRewardRatio = 0.1
 let BOTTOM_SAFE_AREA_HEIGHT: CGFloat = 34
 
 let TASK_ROW_HEIGHT: CGFloat = 85
+let TASK_ROW_PADDING: CGFloat = 20
 
 let GOAL_ROW_HEIGHT: CGFloat = 70
 let GOAL_ROW_PADDING: CGFloat = 20
+
+let HEADER_HEIGHT: CGFloat = 200
 
 let MAX_GOAL = 3
 

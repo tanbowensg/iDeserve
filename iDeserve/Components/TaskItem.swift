@@ -130,7 +130,6 @@ struct TaskItem_Previews: PreviewProvider {
             }
         }
             .padding(.top, 20.0)
-            .background(Color.bg)
             .environment(\.managedObjectContext, context)
     }
 }

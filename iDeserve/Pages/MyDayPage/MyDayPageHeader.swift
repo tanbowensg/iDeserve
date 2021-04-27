@@ -10,17 +10,26 @@ import SwiftUI
 struct MyDayPageHeader: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Color.headerBg
-                .mask(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]), startPoint: .bottom, endPoint: .init(x: 0.5, y: 0.5)))
-                .ignoresSafeArea()
+            Image("headerCover")
+                .resizable()
+                .frame(height: HEADER_HEIGHT)
+            Image("headerLeaf")
+                .resizable()
+                .frame(height: HEADER_HEIGHT)
+            Image("squirrel")
+                .resizable()
+                .frame(width: 123.0, height: 121.0)
+                .padding(.leading, 178)
+                .padding(.bottom, 32)
             Text("每日任务")
                 .font(.titleCustom)
                 .fontWeight(.bold)
                 .foregroundColor(.customBrown)
-                .padding(.bottom, 108)
+                .padding(.bottom, 46)
                 .padding(.leading, 25)
         }
-        .frame(height: 360)
+        .ignoresSafeArea()
+        .frame(width: UIScreen.main.bounds.size.width, height: HEADER_HEIGHT)
     }
 }
 

@@ -17,6 +17,7 @@ struct NutsAndSettings: View {
                 .scaledToFit()
                 .frame(width: 30.0, height: 30.0)
                 .zIndex(1)
+                .offset(y: -2)
             AnimatedPoints(points: points)
                 .padding(.trailing, 12)
                 .frame(width: 70.0, height: 24.0, alignment: .trailing)
@@ -34,8 +35,9 @@ struct NutsAndSettings: View {
     }
 
     var body: some View {
-        HStack(alignment: .center, spacing: 24.0) {
+        HStack(alignment: .center) {
             nuts
+            Spacer()
             settingsIcon
         }
     }

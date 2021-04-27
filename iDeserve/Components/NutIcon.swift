@@ -21,6 +21,7 @@ struct NutIcon: View {
                 .scaledToFit()
                 .frame(width: 16.0, height: 16.0)
                 .padding(.all, 2.0)
+                .offset(y: -1)
         }
     }
 }

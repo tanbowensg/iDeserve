@@ -19,7 +19,7 @@ struct iDeserveApp: App {
     
     var mainApp: some View {
         ZStack {
-            Color.bg
+            Color.appBg
                 .ignoresSafeArea()
             AppWrapper()
                 .environment(\.managedObjectContext, GlobalStore.shared.moc)
@@ -28,7 +28,6 @@ struct iDeserveApp: App {
         }
         .accentColor(.brandGreen)
         .foregroundColor(.b4)
-        
     }
 
     var body: some Scene {
