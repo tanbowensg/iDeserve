@@ -32,6 +32,8 @@ struct GoalPage: View {
 
     let padding: CGFloat = GOAL_ROW_PADDING
 
+    let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
+
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
         request.sortDescriptors = [
@@ -151,12 +153,19 @@ struct GoalPage: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            VStack(spacing: 0.0) {
-                AppHeader(points: gs.pointsStore.points, title: "目标任务")
-                ZStack(alignment: .top) {
-                    goalListView
-                    highlightIndex != nil ? reorderDivider : nil
+            ZStack(alignment: .top) {
+                Image("headerBg")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.size.width)
+                    .ignoresSafeArea()
+                VStack(spacing: 0.0) {
+                    ZStack(alignment: .top) {
+                        goalListView
+                        highlightIndex != nil ? reorderDivider : nil
+                    }
                 }
+                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                GoalPageHeader()
             }
             canCreateGoal ? NavigationLink(destination: EditGoalPage(initGoal: nil)) {
                 CreateButton()

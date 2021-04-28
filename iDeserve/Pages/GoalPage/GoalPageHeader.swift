@@ -1,13 +1,13 @@
 //
-//  MyDayPageHeader.swift
+//  GoalPageHeader.swift
 //  iDeserve
 //
-//  Created by 谈博文 on 2021/4/26.
+//  Created by 谈博文 on 2021/4/28.
 //
 
 import SwiftUI
 
-struct MyDayPageHeader: View {
+struct GoalPageHeader: View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             Image("headerCover")
@@ -16,12 +16,12 @@ struct MyDayPageHeader: View {
             Image("headerLeaf")
                 .resizable()
                 .frame(height: HEADER_HEIGHT)
-            Image("squirrel")
+            Image("fox")
                 .resizable()
                 .frame(width: 123.0, height: 121.0)
                 .padding(.leading, 178)
                 .padding(.top, 55)
-            Text("每日任务")
+            Text("目标列表")
                 .font(.titleCustom)
                 .fontWeight(.bold)
                 .foregroundColor(.b4)
@@ -33,8 +33,8 @@ struct MyDayPageHeader: View {
     }
 }
 
-struct MyDayPageHeader_Previews: PreviewProvider {
+struct GoalPageHeader_Previews: PreviewProvider {
     static var previews: some View {
-        MyDayPageHeader()
+        GoalPageHeader()
     }
 }

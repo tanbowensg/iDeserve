@@ -92,7 +92,7 @@ struct GoalItemView: View {
         .frame(height: GOAL_ROW_HEIGHT)
         .padding(.vertical, GOAL_ROW_PADDING)
         .padding(.horizontal, 20.0)
-        .background(Color.white)
+        .background(Color.transparent)
         .saturation(goal.done ? 0 : 1)
         .onTapGesture { isTapped.toggle() }
     }
@@ -118,6 +118,6 @@ struct GoalItemView: View {
             )
 //            tasks.count > 0 && shouldShowTask ? tasksList : nil
         }
-        .background(Color.white)
+        .background(Color.transparent)
     }
 }

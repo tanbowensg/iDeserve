@@ -91,6 +91,7 @@
 		D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088864F26365D5D005624D1 /* NutsAndSettings.swift */; };
 		D088865A2636660A005624D1 /* MyDayPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886592636660A005624D1 /* MyDayPageHeader.swift */; };
 		D088866826385322005624D1 /* RecordPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088866726385322005624D1 /* RecordPageHeader.swift */; };
+		D08886852639B4C0005624D1 /* GoalPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886842639B4C0005624D1 /* GoalPageHeader.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
 		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
@@ -254,6 +255,7 @@
 		D088864F26365D5D005624D1 /* NutsAndSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutsAndSettings.swift; sourceTree = "<group>"; };
 		D08886592636660A005624D1 /* MyDayPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayPageHeader.swift; sourceTree = "<group>"; };
 		D088866726385322005624D1 /* RecordPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPageHeader.swift; sourceTree = "<group>"; };
+		D08886842639B4C0005624D1 /* GoalPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPageHeader.swift; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
 		D08988A2254671E60032BA96 /* EditGoalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalPage.swift; sourceTree = "<group>"; };
 		D08988A7254672390032BA96 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 			children = (
 				D08988CE2546A9D60032BA96 /* EditGoalPage */,
 				D04BB016252AC7FB0088912A /* GoalPage.swift */,
+				D08886842639B4C0005624D1 /* GoalPageHeader.swift */,
 				D07B6D3325B037E200087FC5 /* GoalItemView.swift */,
 				D031EE2025B7DCB500D64CF3 /* DragRelocateDelegate.swift */,
 			);
@@ -907,6 +910,7 @@
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D0B114292628236500C93A59 /* PayPage.swift in Sources */,
 				D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */,
+				D08886852639B4C0005624D1 /* GoalPageHeader.swift in Sources */,
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
 				D0119B7325EF2D3A00F5E0F6 /* RewardTypePicker.swift in Sources */,
 				D04BB017252AC7FB0088912A /* GoalPage.swift in Sources */,
