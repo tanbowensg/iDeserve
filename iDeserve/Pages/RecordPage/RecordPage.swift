@@ -123,7 +123,9 @@ struct RecordPage: View {
         ZStack(alignment: .top) {
             RecordPageHeader()
             Image("bear")
-                .scaleEffect(0.9)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 293.0, height: 380.0)
                 .padding(.top, 30)
                 .padding(.trailing, 150)
                 .rotationEffect(.init(degrees: 30))
