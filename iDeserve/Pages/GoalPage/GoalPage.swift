@@ -164,14 +164,14 @@ struct GoalPage: View {
                         highlightIndex != nil ? reorderDivider : nil
                     }
                 }
-                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                .padding(.top, HEADER_HEIGHT - safeAreaHeight + GOAL_ROW_HEIGHT / 2)
                 GoalPageHeader()
             }
             canCreateGoal ? NavigationLink(destination: EditGoalPage(initGoal: nil)) {
-                CreateButton()
+                CreateButton().padding(25)
             } : nil
             !canCreateGoal ? Button(action: { isShowPurchase.toggle() }) {
-                CreateButton()
+                CreateButton().padding(25)
             } : nil
             if isShowCompleteGoalView || isShowHelp {
                 Rectangle().fill(Color.black.opacity(0.4)).animation(.none)
