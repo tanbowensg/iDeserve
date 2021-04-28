@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NutsAndSettings: View {
-    var points: Int
+    @AppStorage(POINTS) var points = 0
     
     var nuts: some View {
         HStack(alignment: .center, spacing: -15) {
@@ -45,6 +45,6 @@ struct NutsAndSettings: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        NutsAndSettings(points: 50000)
+        NutsAndSettings()
     }
 }

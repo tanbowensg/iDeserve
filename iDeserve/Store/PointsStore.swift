@@ -9,20 +9,18 @@ import Foundation
 
 final class PointsStore: ObservableObject {
     static var shared = PointsStore()
-    
-    private let forKey = "points"
 
     @Published var points: Int = 0
     
     init () {
         let defaults = UserDefaults.standard
-        let _points = defaults.integer(forKey: forKey)
+        let _points = defaults.integer(forKey: POINTS)
         self.points = _points
     }
     
     func saveUserDefaults () {
         let defaults = UserDefaults.standard
-        defaults.set(self.points, forKey: forKey)
+        defaults.set(self.points, forKey: POINTS)
     }
 
     func minus (

@@ -66,7 +66,7 @@ struct AppWrapper: View {
                 TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
                     tabContent
                 }
-                NutsAndSettings(points: gs.pointsStore.points)
+                NutsAndSettings()
                     .padding(.top, 10)
                     .padding(.horizontal, 25)
             }
