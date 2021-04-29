@@ -25,18 +25,19 @@ struct RewardFilter: View {
                 }
             }
         } label: {
-            HStack(spacing: 4.0) {
+            HStack(spacing: 10.0) {
                 Text(RewardFilterText[filterType]!)
                 Image(systemName: "arrow.up.arrow.down")
             }
-            .font(.footnoteCustom)
-            .foregroundColor(.b2)
+                .font(Font.footnoteCustom.weight(.bold))
+                .padding(.vertical, 10)
+                .padding(.horizontal, 18)
+                .background(
+                    Color.white
+                        .cornerRadius(10)
+                        .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
+                )
+                .foregroundColor(.b3)
         }
     }
 }
-//
-//struct RewardFilter_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RewardFilter()
-//    }
-//}

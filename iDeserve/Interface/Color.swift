@@ -47,7 +47,6 @@ extension Color {
     public static var normalText = Color(hex: "363636")
     public static var tagColor = Color(hex: "6d859b")
     public static var tagBg = Color(hex: "dceeff")
-    public static var warning = Color(hex: "e9614d")
     public static var popupMask = Color(red: 0, green: 0, blue: 0, opacity: 0.3)
     public static var lightShadow = Color(red: 0, green: 0, blue: 0, opacity: 0.05)
     public static var darkShadow = Color(red: 0, green: 0, blue: 0, opacity: 0.1)
@@ -58,6 +57,7 @@ extension Color {
     public static var rewardGold = Color(UIColor(named: "rewardGold")!)
 
     public static var transparent = Color(red: 0, green: 0, blue: 0, opacity: 0.001)
+    public static var warningRed = Color.init("warningRed")
     public static var appBg = Color.init("appBg")
     public static var nutBg = Color.init("nutBg")
     public static var descBg = Color.init("descBg")

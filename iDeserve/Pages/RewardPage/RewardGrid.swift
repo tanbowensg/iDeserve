@@ -11,29 +11,34 @@ import CoreData
 struct RewardGrid: View {
     @EnvironmentObject var gs: GlobalStore
     @ObservedObject var reward: Reward
-    
-    var isEditMode: Bool
-//    在编辑模式下tap奖励
-    var onEditModeTap: () -> Void
+
 //    这个和 isEditMode 是一起变化的。但是为了让删除按钮的动画和整个卡片分离开来，所以弄了两个变量
     @State var isTapped = false
-    @State var isShowButton = false
 
     @State var isShowRedeemAlert = false
     
     var disableRedeem: Bool {
-        return isEditMode
-            || !reward.isAvailable
-            || gs.pointsStore.points < reward.value
+        return !reward.isAvailable || gs.pointsStore.points < reward.value
     }
+//    
+//    var cover: some View {
+//        Image(uiImage: UIImage(data: reward.cover!)!)
+//            .resizable()
+//            .aspectRatio(4/3, contentMode: .fit)
+//            .cornerRadius(16)
+//    }
     
-    var cover: some View {
-        Image(uiImage: UIImage(data: reward.cover!)!)
-            .resizable()
-            .aspectRatio(4/3, contentMode: .fit)
-            .cornerRadius(16)
+    var soldoutLogo: some View {
+        Text("SOLD OUT")
+            .font(.titleCustom)
+            .fontWeight(.black)
+            .foregroundColor(.warningRed)
+            .frame(width: 120, height: 38)
+            .roundBorder(Color.warningRed, width: 4, cornerRadius: 5)
+            .rotationEffect(.degrees(-15))
+            .padding(.bottom, 60)
     }
-    
+//    
     var removeButton: some View {
         Button(action: {
             gs.moc.delete(reward)
@@ -41,13 +46,13 @@ struct RewardGrid: View {
         }) {
             Image(systemName: "multiply")
                 .resizable()
-                .padding(4.0)
-                .frame(width: 20.0, height: 20.0)
+                .scaledToFit()
+                .frame(width: 8, height: 8)
+                .padding(4)
+                .foregroundColor(.b2)
+                .background(Color.white.cornerRadius(10))
         }
-        .background(Color.g10)
-        .foregroundColor(.b2)
-        .cornerRadius(10)
-        .animation(.none, value: isShowButton)
+        .padding(10)
     }
     
     var redeemAlert: Alert {
@@ -65,38 +70,27 @@ struct RewardGrid: View {
     
     var redeemButton: some View {
         Button(action: { isShowRedeemAlert.toggle() }) {
-            HStack(alignment: .center, spacing: 2){
-                Text(String(reward.value))
-                    .font(.footnoteCustom)
-                    .foregroundColor(.rewardGold)
-                    .frame(height: 16.0)
-                Image("NutIcon")
-                    .resizable()
-                    .frame(width: 14.0, height: 14.0)
-                    .padding(2.0)
-            }
-            .frame(height: 16.0)
-            .padding(.vertical, 5.0)
+            NutIcon(value: Int(reward.value), hidePlus: true)
+//            HStack(alignment: .center, spacing: 4){
+//                Image("NutIcon")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 16, height: 16.0)
+//                Text(String(reward.value))
+//                    .font(.footnoteCustom)
+//                    .foregroundColor(.rewardGold)
+//            }
+            .frame(height: 24)
             .padding(.horizontal, 16.0)
             .background(Color.white)
-            .cornerRadius(13)
-            .shadow(color: Color.init(hex: "f2f2f2"), radius: 0, x: 3, y: 3)
-            .grayscale(disableRedeem ? 0.9 : 1)
-            .frame(height: 26.0)
+            .cornerRadius(12)
+            .shadow(color: Color.darkShadow, radius: 5, x: 2, y: 2)
+            .saturation(disableRedeem ? 0 : 1)
         }
         .alert(isPresented: $isShowRedeemAlert, content: { redeemAlert })
         .disabled(disableRedeem)
     }
-    
-    var soldoutLogo: some View {
-        Text("Sold Out")
-            .font(.subheadCustom)
-            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-            .padding(4)
-            .foregroundColor(.red)
-            .border(Color.red, width: 2)
-    }
-    
+
     var link: some View {
         NavigationLink(destination:  EditRewardPage(initReward: reward), isActive: $isTapped) {
             EmptyView()
@@ -104,50 +98,38 @@ struct RewardGrid: View {
     }
     
     var mainCard: some View {
-        VStack(alignment: .center) {
-            HStack {
-                isShowButton && !reward.isUnlockCalendar ? removeButton : nil
-                Spacer()
-                reward.isSoldout && !reward.isRepeat ? soldoutLogo : nil
-            }
-                .frame(height: 20.0)
-            Text(reward.name ?? "未知")
-                .font(.subheadCustom)
-                .foregroundColor(.white)
-                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-            redeemButton
-        }
-        .padding([.leading, .bottom, .trailing], 14)
-        .frame(height: 100)
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.rewardGold)
-        .cornerRadius(10)
-        .id(reward.id)
-    }
-    
-    var body: some View {
-        ZStack(alignment: .bottomLeading) {
-            VStack(alignment: .center) {
-                reward.type != RewardType.system.rawValue ? link : nil // 系统奖励不可以更改，所以不能进入详情
-                mainCard
-            }
+        VStack(alignment: .center, spacing: 10) {
             Image(reward.type ?? "")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 20)
-                .foregroundColor(.white)
-                .padding(10.0)
+                .frame(height: 38)
+            Text(reward.name ?? "未知")
+                .font(.footnoteCustom)
+                .foregroundColor(.b4)
+                .lineLimit(2)
+                .frame(height: 34, alignment: .center)
+                .padding(.horizontal, 10)
+            redeemButton
         }
-        .rotationEffect(.degrees(isEditMode ? 2.5 : 0))
-        .onChange(of: isEditMode, perform: { value in
-            isShowButton = value
-        })
-        .onTapGesture {
-            if isEditMode == true {
-                onEditModeTap()
-            } else {
-                isTapped.toggle()
+        .padding(.vertical, 20)
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .background(Image("rewardBg").resizable().scaledToFit().frame(width: 170, height: 170))
+        .cornerRadius(16)
+    }
+    
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            reward.type != RewardType.system.rawValue ? link : nil // 系统奖励不可以更改，所以不能进入详情
+            ZStack(alignment: .center) {
+                mainCard
+                    .saturation(reward.isSoldout ? 0 : 1)
+                reward.isSoldout ? soldoutLogo : nil
             }
+            !reward.isUnlockCalendar || reward.isSoldout ? removeButton : nil
+        }
+        .id(reward.id)
+        .onTapGesture {
+            isTapped.toggle()
         }
     }
 }
@@ -171,13 +153,13 @@ struct RewardGrid_Previews: PreviewProvider {
                         GridItem(.flexible())
                     ],
                     alignment: .center,
-                    spacing: 16
+                    spacing: 20
                 ) {
                     ForEach(rewards, id: \.id) { (reward: Reward) in
-                        RewardGrid(reward: reward, isEditMode: false, onEditModeTap: emptyFunc)
+                        RewardGrid(reward: reward)
                     }
                 }
-                .padding(16)
+                .padding(20)
             }
         }
     }

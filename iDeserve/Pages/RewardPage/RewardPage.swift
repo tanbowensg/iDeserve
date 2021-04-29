@@ -15,9 +15,7 @@ struct RewardPage: View {
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
-    @State var isEditMode = false
     @State var filterType: RewardFilterType = RewardFilterType.createAsc
-    @State var dragging: Reward? = nil
 
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
 
@@ -44,145 +42,81 @@ struct RewardPage: View {
                 return  _rewards.sorted{ $0.value < $1.value }
             case .valueDesc:
                 return  _rewards.sorted{ $0.value > $1.value }
-            default:
-                return _rewards
         }
     }
 
     private var columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20)
     ]
     
     private var rewardsArray: [Reward] {
         rewards.map{ return $0 }
-    }
-
-    func genRewardGrid(reward: Reward) -> some View {
-        RewardGrid(reward: reward, isEditMode: isEditMode, onEditModeTap: { setIsEditMode(false) })
-            .if(reward.isAvailable) {content in
-                content.onDrag() {
-                    setIsEditMode(true)
-                    self.dragging = reward
-                    return NSItemProvider(object: reward.id!.uuidString as NSString)
-                }
-                .onDrop(of: [UTType.text], delegate: DragRewardRelocateDelegate(item: reward, listData: rewardsArray, current: $dragging))
-            }
-            
-    }
-    
-    func setIsEditMode (_ value: Bool) {
-        if value == true {
-            withAnimation(Animation.easeInOut(duration: 0.15).repeatForever(autoreverses: true)) {
-                isEditMode = true
-            }
-        } else {
-            withAnimation(.default) {
-                isEditMode = false
-            }
-        }
     }
     
     func rewardGridLayout (rewards: [Reward]) -> some View {
         LazyVGrid(
             columns: columns,
             alignment: .center,
-            spacing: 25
+            spacing: 20
         ) {
             ForEach(rewards, id: \.id) { (reward: Reward) in
-                genRewardGrid(reward: reward)
+                RewardGrid(reward: reward)
             }
         }
-        .animation(.spring(), value: rewardsArray)
+            .padding(.horizontal, 25)
+            .animation(.spring())
     }
 
     var soldoutRewardsView: some View {
-        VStack(alignment: .leading, spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 20.0) {
             Text("已兑换的奖励").font(.subheadCustom).fontWeight(.medium)
             rewardGridLayout(rewards: soldoutRewards)
         }
     }
+    
+    var toolBar: some View {
+        HStack {
+            NavigationLink(destination: EditRewardPage(initReward: nil)) {
+                HStack(spacing: 10.0) {
+                    Image(systemName: "plus")
+                    Text("添加奖励")
+                }
+                    .font(Font.footnoteCustom.weight(.bold))
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 18)
+                    .background(
+                        Color.white
+                            .cornerRadius(16)
+                            .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
+                    )
+                    .foregroundColor(.b3)
+            }
+            Spacer()
+            RewardFilter(filterType: $filterType)
+        }
+        .padding(.horizontal, 25)
+    }
 
     var body: some View {
         VStack(spacing: 0.0) {
-            ZStack(alignment: .bottomTrailing) {
-                ZStack(alignment: .top) {
-                    Image("headerBg")
-                        .resizable()
-                        .frame(width: UIScreen.main.bounds.size.width)
-                        .ignoresSafeArea()
-                    CustomScrollView {
-                        VStack(alignment: .trailing, spacing: 16) {
-                            RewardFilter(filterType: $filterType)
-                            rewardGridLayout(rewards: availableRewards)
-                            soldoutRewards.count > 0 ? soldoutRewardsView : nil
-                        }
-                        
+            ZStack(alignment: .top) {
+                Image("headerBg")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.size.width)
+                    .ignoresSafeArea()
+                CustomScrollView(showsIndicators: false) {
+                    VStack(alignment: .trailing, spacing: 20) {
+                        toolBar
+                        rewardGridLayout(rewards: availableRewards)
+                        soldoutRewards.count > 0 ? soldoutRewardsView : nil
                     }
-                        .padding(.horizontal, 25)
-                        .padding(.top, HEADER_HEIGHT - safeAreaHeight + 30)
-                    AppHeader(title: "奖励商店", image: "rabbit")
+                    .padding(.top, 30)
                 }
-
-                NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                    CreateButton().padding(25)
-                }
+                    .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                AppHeader(title: "奖励商店", image: "rabbit")
             }
         }
         .navigationBarHidden(true)
-        .onTapGesture {
-            setIsEditMode(false)
-        }
-    }
-}
-
-struct DragRewardRelocateDelegate: DropDelegate {
-    let item: Reward
-    var listData: [Reward]
-    @Binding var current: Reward?
-    
-    //    根据被拖动的y，计算出新的pos值
-    func caculateNewPos() -> Int {
-        let fromIndex = listData.firstIndex(of: current!)!
-        let toIndex = listData.firstIndex(of: item)!
-        var nextItemPos: Int
-
-        if fromIndex < toIndex {
-            if toIndex == listData.count - 1 {
-                nextItemPos = MAX_POS
-            } else {
-                nextItemPos = Int(listData[toIndex + 1].pos)
-            }
-        } else {
-            if toIndex == 0 {
-                nextItemPos = 0
-            } else {
-                nextItemPos = Int(listData[toIndex - 1].pos)
-            }
-        }
-
-        return Int((nextItemPos + Int(item.pos)) / 2)
-    }
-
-    func dropEntered(info: DropInfo) {
-        if item != current {
-            var newPos = caculateNewPos()
-            if (current!.pos == Int16(newPos)) {
-                resetRewardPos()
-                newPos = caculateNewPos()
-            }
-            print(newPos)
-            current!.pos = Int16(newPos)
-            GlobalStore.shared.coreDataContainer.saveContext()
-        }
-    }
-
-    func dropUpdated(info: DropInfo) -> DropProposal? {
-        return DropProposal(operation: .move)
-    }
-
-    func performDrop(info: DropInfo) -> Bool {
-        self.current = nil
-        return true
     }
 }
