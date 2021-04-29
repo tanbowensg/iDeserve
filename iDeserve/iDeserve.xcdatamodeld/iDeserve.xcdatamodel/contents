@@ -19,6 +19,7 @@
     </entity>
     <entity name="Reward" representedClassName="Reward" syncable="YES" codeGenerationType="class">
         <attribute name="cover" optional="YES" attributeType="Binary"/>
+        <attribute name="createdTime" attributeType="Date" defaultDateTimeInterval="641372100" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isRepeat" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -49,7 +50,7 @@
     <elements>
         <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="163"/>
         <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
-        <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="193"/>
+        <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="208"/>
         <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="268"/>
     </elements>
 </model>

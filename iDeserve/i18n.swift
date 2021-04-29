@@ -22,6 +22,13 @@ let FREQUENCY_MONTHLY_TEXT = NSLocalizedString("每月", comment: "")
 let FREQUENCY_UNLIMITED_TEXT = NSLocalizedString("无间隔重复", comment: "")
 let FREQUENCY_TWODAYS_TEXT = NSLocalizedString("每隔一天", comment: "")
 
+let RewardFilterText: [RewardFilterType: String] = [
+    .createDesc: NSLocalizedString("创建时间从旧到新", comment: ""),
+    .createAsc: NSLocalizedString("创建时间从新到旧", comment: ""),
+    .valueAsc: NSLocalizedString("价格从低到高", comment: ""),
+    .valueDesc: NSLocalizedString("价格从高到低", comment: "")
+]
+
 let RepeatFrequencyText: [RepeatFrequency: String] = [
     .never: NSLocalizedString("从不", comment: ""),
     .daily: NSLocalizedString("每天", comment: ""),

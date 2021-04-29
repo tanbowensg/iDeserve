@@ -32,10 +32,11 @@ struct iDeserveApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Group {
-                hasLanded ? mainApp : nil
-                !hasLanded ? LandingPage(): nil
-            }
+            mainApp
+//            Group {
+//                hasLanded ? mainApp : nil
+//                !hasLanded ? LandingPage(): nil
+//            }
         }
         .onChange(of: scenePhase) { phase in
             switch phase {

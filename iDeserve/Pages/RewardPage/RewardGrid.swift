@@ -130,7 +130,7 @@ struct RewardGrid: View {
                 reward.type != RewardType.system.rawValue ? link : nil // 系统奖励不可以更改，所以不能进入详情
                 mainCard
             }
-            Image(reward.type!)
+            Image(reward.type ?? "")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20)

@@ -9,12 +9,14 @@ import SwiftUI
 import CoreData
 import UniformTypeIdentifiers
 
+
 struct RewardPage: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
     @State var isEditMode = false
+    @State var filterType: RewardFilterType = RewardFilterType.createAsc
     @State var dragging: Reward? = nil
 
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
@@ -32,7 +34,19 @@ struct RewardPage: View {
     }
     
     private var availableRewards: [Reward] {
-        rewards.filter{ $0.isAvailable }
+        let _rewards = rewards.filter{ $0.isAvailable }
+        switch filterType {
+            case .createAsc:
+                return  _rewards.sorted{ $0.createdTime! > $1.createdTime! }
+            case .createDesc:
+                return  _rewards.sorted{ $0.createdTime! < $1.createdTime! }
+            case .valueAsc:
+                return  _rewards.sorted{ $0.value < $1.value }
+            case .valueDesc:
+                return  _rewards.sorted{ $0.value > $1.value }
+            default:
+                return _rewards
+        }
     }
 
     private var columns: [GridItem] = [
@@ -73,21 +87,20 @@ struct RewardPage: View {
         LazyVGrid(
             columns: columns,
             alignment: .center,
-            spacing: 16
+            spacing: 25
         ) {
             ForEach(rewards, id: \.id) { (reward: Reward) in
                 genRewardGrid(reward: reward)
             }
         }
-        .padding(16)
         .animation(.spring(), value: rewardsArray)
     }
 
-    private var soldoutRewardsView: some View {
+    var soldoutRewardsView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Text("已兑换的奖励").font(.subheadCustom).fontWeight(.medium)
             rewardGridLayout(rewards: soldoutRewards)
-        }.padding(.top, 8)
+        }
     }
 
     var body: some View {
@@ -99,15 +112,20 @@ struct RewardPage: View {
                         .frame(width: UIScreen.main.bounds.size.width)
                         .ignoresSafeArea()
                     CustomScrollView {
-                        rewardGridLayout(rewards: availableRewards)
-                        soldoutRewards.count > 0 ? soldoutRewardsView : nil
+                        VStack(alignment: .trailing, spacing: 16) {
+                            RewardFilter(filterType: $filterType)
+                            rewardGridLayout(rewards: availableRewards)
+                            soldoutRewards.count > 0 ? soldoutRewardsView : nil
+                        }
+                        
                     }
-                        .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                        .padding(.horizontal, 25)
+                        .padding(.top, HEADER_HEIGHT - safeAreaHeight + 30)
                     AppHeader(title: "奖励商店", image: "rabbit")
                 }
 
                 NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                    CreateButton().padding(16)
+                    CreateButton().padding(25)
                 }
             }
         }

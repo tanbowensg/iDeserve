@@ -56,6 +56,7 @@ final class RewardStore: ObservableObject {
     ) {
         let newReward = Reward(context: self.moc)
         newReward.id = UUID()
+        newReward.createdTime = Date()
         newReward.isUnlockCalendar = isUnlockCalendar
 
         self.updateReward(
