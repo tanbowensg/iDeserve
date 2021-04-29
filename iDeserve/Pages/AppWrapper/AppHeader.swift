@@ -8,59 +8,36 @@
 import SwiftUI
 
 struct AppHeader: View {
-    var points: Int
     var title: String
-    
-    var nuts: some View {
-        HStack(alignment: .center, spacing: 2){
-            Image("NutIcon")
-                .resizable()
-                .scaledToFit()
-                .padding(6)
-                .frame(width: 36.0, height: 36.0)
-            Spacer()
-            AnimatedPoints(points: points)
-                .frame(height: 16.0)
-        }
-        .padding(.horizontal, 18.0)
-        .frame(height: 48.0)
-        .frame(maxWidth: 200.0)
-        .background(Color.white)
-        .cornerRadius(24)
-    }
-    
-    var settingsIcon: some View {
-        NavigationLink(destination: SettingsPage()) {
-            Image("gear")
-                .resizable()
-                .frame(width: 20.0, height: 20.0)
-        }
-    }
+    var image: String
 
     var body: some View {
-        ZStack {
-            HStack {
-                Text(title)
-                    .foregroundColor(.white)
-                    .font(.titleCustom)
-                    .lineLimit(1)
-                Spacer()
-                
-                HStack(alignment: .center, spacing: 4.0) {
-                    nuts
-                    settingsIcon
-                }
-            }
+        ZStack(alignment: .topLeading) {
+            Image("headerCover")
+                .resizable()
+                .frame(height: HEADER_HEIGHT + TASK_ROW_PADDING)
+            Image("headerLeaf")
+                .resizable()
+                .frame(height: HEADER_HEIGHT)
+            Image(image)
+                .resizable()
+                .frame(width: 123.0, height: 121.0)
+                .padding(.leading, 178)
+                .padding(.top, 55)
+            Text(title)
+                .font(.titleCustom)
+                .fontWeight(.bold)
+                .foregroundColor(.b4)
+                .padding(.top, 130)
+                .padding(.leading, 25)
         }
-        .padding(.horizontal, 16.0)
-        .frame(height: 120.0)
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.darkBrandGreen)
+        .ignoresSafeArea()
+        .frame(width: UIScreen.main.bounds.size.width, height: HEADER_HEIGHT)
     }
 }
 
 struct AppHeader_Previews: PreviewProvider {
     static var previews: some View {
-        AppHeader(points: 888, title: "今日任务")
+        AppHeader(title: "今日任务", image: "fox")
     }
 }

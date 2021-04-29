@@ -13,6 +13,9 @@ struct DragRelocateDelegate: DropDelegate {
     var goals: [Goal]
     @Binding var current: Goal?
     @Binding var highlightIndex: Int?
+    
+//    第一个目标顶距离srollview顶部的padding
+    let topPadding = GOAL_ROW_HEIGHT / 2
 
 //    总高度要计算目标+padding
     let rowHeight = GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2
@@ -57,7 +60,7 @@ struct DragRelocateDelegate: DropDelegate {
 //    }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        updateHighlight(info.location.y)
+        updateHighlight(info.location.y - topPadding)
         return DropProposal(operation: .move)
     }
     
@@ -68,11 +71,11 @@ struct DragRelocateDelegate: DropDelegate {
         withAnimation {
             if item.id != current?.id && current != nil {
                 let y = info.location.y
-                var newPos = caculateNewPos(Int(y))
+                var newPos = caculateNewPos(Int(y - topPadding))
                 
                 if (current!.pos == Int16(newPos)) {
                     resetGoalPos()
-                    newPos = caculateNewPos(Int(y))
+                    newPos = caculateNewPos(Int(y - topPadding))
                 }
                 
                 current!.pos = Int16(newPos)

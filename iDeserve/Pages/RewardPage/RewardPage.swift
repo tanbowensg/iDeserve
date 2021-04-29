@@ -17,6 +17,8 @@ struct RewardPage: View {
     @State var isEditMode = false
     @State var dragging: Reward? = nil
 
+    let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
+
     static var rewardRequest: NSFetchRequest<Reward> {
         let request: NSFetchRequest<Reward> = Reward.fetchRequest()
         request.sortDescriptors = [
@@ -90,24 +92,23 @@ struct RewardPage: View {
 
     var body: some View {
         VStack(spacing: 0.0) {
-            AppHeader(points: gs.pointsStore.points, title: "奖励商店")
             ZStack(alignment: .bottomTrailing) {
-                ScrollView {
-                    rewardGridLayout(rewards: availableRewards)
-                    soldoutRewards.count > 0 ? soldoutRewardsView : nil
-                }
-                
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                            CreateButton()
-                        }
+                ZStack(alignment: .top) {
+                    Image("headerBg")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.size.width)
+                        .ignoresSafeArea()
+                    CustomScrollView {
+                        rewardGridLayout(rewards: availableRewards)
+                        soldoutRewards.count > 0 ? soldoutRewardsView : nil
                     }
-                    .padding(.trailing, 16)
+                        .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                    AppHeader(title: "奖励商店", image: "rabbit")
                 }
-                .padding(.bottom, 16)
+
+                NavigationLink(destination: EditRewardPage(initReward: nil)) {
+                    CreateButton().padding(16)
+                }
             }
         }
         .navigationBarHidden(true)

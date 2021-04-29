@@ -135,10 +135,7 @@ struct MyDayPage: View {
                     }
                 }
                 .padding(.top, HEADER_HEIGHT - safeAreaHeight)
-                MyDayPageHeader()
-//                    .offset(y: CGFloat(max(-300, offsetY)))
-//                    .scaleEffect(1 + abs(CGFloat(offsetY)) / 300, anchor: .bottom)
-                    .animation(.none)
+                AppHeader(title: "今日任务", image: "squirrel")
             }
             //                用来修复第一次点开sheet没有内容的bug
             currentTask == nil ? Text("") : nil

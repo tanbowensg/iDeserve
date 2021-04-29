@@ -57,7 +57,7 @@ struct GoalPage: View {
     
     var reorderDivider: some View {
 //        算法是index*（每一个目标高度+padding）
-        let offset = CGFloat(highlightIndex!) * (GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2)
+        let offset = CGFloat(highlightIndex!) * (GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2) + GOAL_ROW_HEIGHT / 2
 
         return ExDivider()
             .offset(y: highlightIndex != nil ? offset : -666)
@@ -128,6 +128,7 @@ struct GoalPage: View {
                     }
                 }
             }
+            .padding(.top, GOAL_ROW_HEIGHT / 2)
         }
         .onDrop(
             of: [UTType.text],
@@ -158,14 +159,12 @@ struct GoalPage: View {
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width)
                     .ignoresSafeArea()
-                VStack(spacing: 0.0) {
-                    ZStack(alignment: .top) {
-                        goalListView
-                        highlightIndex != nil ? reorderDivider : nil
-                    }
+                ZStack(alignment: .top) {
+                    goalListView
+                    highlightIndex != nil ? reorderDivider : nil
                 }
-                .padding(.top, HEADER_HEIGHT - safeAreaHeight + GOAL_ROW_HEIGHT / 2)
-                GoalPageHeader()
+                    .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                AppHeader(title: "目标列表", image: "fox")
             }
             canCreateGoal ? NavigationLink(destination: EditGoalPage(initGoal: nil)) {
                 CreateButton().padding(25)
