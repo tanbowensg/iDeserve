@@ -17,11 +17,11 @@ struct DifficultyPicker: View {
             Text(DifficultyText[d]!)
                 .font(.footnoteCustom)
                 .fontWeight(.bold)
-                .foregroundColor(isCurrent ? DifficultyColor[d] : Color.b3)
+                .foregroundColor(isCurrent ? Color.white : Color.b3)
                 .frame(height: 12)
                 .padding(.vertical, 10)
                 .frame(width: 100.0, height: 32)
-                .background(isCurrent ? Color.brandGreen : Color.white)
+                .background(isCurrent ? DifficultyColor[d] : Color.white)
                 .cornerRadius(16)
                 .animation(.none)
         }

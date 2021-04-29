@@ -85,6 +85,7 @@ struct RewardGrid: View {
             .frame(height: 26.0)
         }
         .alert(isPresented: $isShowRedeemAlert, content: { redeemAlert })
+        .disabled(disableRedeem)
     }
     
     var soldoutLogo: some View {
