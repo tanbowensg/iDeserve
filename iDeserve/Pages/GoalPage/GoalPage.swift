@@ -172,9 +172,7 @@ struct GoalPage: View {
             !canCreateGoal ? Button(action: { isShowPurchase.toggle() }) {
                 CreateButton().padding(25)
             } : nil
-            if isShowCompleteGoalView || isShowHelp {
-                Rectangle().fill(Color.black.opacity(0.4)).animation(.none)
-            }
+            isShowCompleteGoalView || isShowHelp ? Color.popupMask.ignoresSafeArea() : nil
         }
         .navigationBarHidden(true)
         .popup(isPresented: $isShowCompleteGoalView, type: .default, closeOnTap: false, closeOnTapOutside: true) {

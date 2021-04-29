@@ -10,6 +10,8 @@ import SwiftUI
 struct AppHeader: View {
     var title: String
     var image: String
+    
+    let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -30,6 +32,9 @@ struct AppHeader: View {
                 .foregroundColor(.b4)
                 .padding(.top, 130)
                 .padding(.leading, 25)
+            NutsAndSettings()
+                .padding(.top, 10 + safeAreaHeight)
+                .padding(.horizontal, 25)
         }
         .ignoresSafeArea()
         .frame(width: UIScreen.main.bounds.size.width, height: HEADER_HEIGHT)

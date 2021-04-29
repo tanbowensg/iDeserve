@@ -62,14 +62,9 @@ struct AppWrapper: View {
 //                    RewardPage().tabItem { TabIcon(tabInfo: tabs[2]) }
 //                    RecordPage().tabItem { TabIcon(tabInfo: tabs[3]) }
 //                }
-            ZStack(alignment: .topTrailing) {
                 TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
                     tabContent
                 }
-                NutsAndSettings()
-                    .padding(.top, 10)
-                    .padding(.horizontal, 25)
-            }
         }
     }
 }
