@@ -35,7 +35,7 @@ struct NutsAndSettings: View {
                 .padding(4)
                 .background(
                     Color.white
-                        .cornerRadius(16)
+                        .cornerRadius(10)
                         .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
                 )
         }
