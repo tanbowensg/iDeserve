@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>蜂蜂目标</string>
+	<string>坚果计划</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -46,9 +46,9 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
-		<string>hospitalGreen</string>
+		<string>appBg</string>
 		<key>UIImageName</key>
-		<string>AppIcon</string>
+		<string>squirrel</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<false/>
 	</dict>
