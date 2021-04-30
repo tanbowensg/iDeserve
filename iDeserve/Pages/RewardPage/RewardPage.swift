@@ -70,7 +70,11 @@ struct RewardPage: View {
 
     var soldoutRewardsView: some View {
         VStack(alignment: .leading, spacing: 20.0) {
-            Text("已兑换的奖励").font(.subheadCustom).fontWeight(.medium)
+            Text("已兑换的奖励")
+                .font(.subheadCustom)
+                .fontWeight(.bold)
+                .foregroundColor(.b3)
+                .padding(.horizontal, 25)
             rewardGridLayout(rewards: soldoutRewards)
         }
     }
