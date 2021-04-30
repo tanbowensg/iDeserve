@@ -31,8 +31,8 @@ struct TaskItem: View {
             .padding(.horizontal, 8)
             .padding(.vertical, 3)
             .foregroundColor(task.goalColor ?? .b3)
-            .background(Color.g1.cornerRadius(7))
             .layoutPriority(0.5)
+            .roundBorder(task.goalColor ?? .b3, width: 1, cornerRadius: 7)
     }
 
     var remainTimesText: some View {

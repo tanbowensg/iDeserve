@@ -92,6 +92,7 @@
 		D088866826385322005624D1 /* RecordPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088866726385322005624D1 /* RecordPageHeader.swift */; };
 		D088869F263A82A8005624D1 /* RewardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088869E263A82A8005624D1 /* RewardFilter.swift */; };
 		D08886A5263B1363005624D1 /* RewardPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886A4263B1363005624D1 /* RewardPageHeader.swift */; };
+		D08886B2263C0271005624D1 /* roundBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF70F25AEBAF000F8152D /* roundBorder.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
 		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
@@ -989,6 +990,7 @@
 				D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */,
 				D0B1140F262704BA00C93A59 /* TaskItem.swift in Sources */,
 				D07913652574F632007B9767 /* Record.swift in Sources */,
+				D08886B2263C0271005624D1 /* roundBorder.swift in Sources */,
 				D07913662574F632007B9767 /* Color.swift in Sources */,
 				D07913692574F632007B9767 /* Task.swift in Sources */,
 				D0B1146C262D9D3000C93A59 /* NutIcon.swift in Sources */,

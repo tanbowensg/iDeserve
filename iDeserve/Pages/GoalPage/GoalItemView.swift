@@ -86,7 +86,7 @@ struct GoalItemView: View {
                     }
                     Spacer()
                 }
-                goal.done ? nil : ProgressBar(value: progress)
+                goal.done ? nil : ProgressBar(value: progress, color: goal.color)
             }
         }
         .frame(height: GOAL_ROW_HEIGHT)
