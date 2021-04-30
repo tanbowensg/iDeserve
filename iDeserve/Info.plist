@@ -48,7 +48,7 @@
 		<key>UIColorName</key>
 		<string>appBg</string>
 		<key>UIImageName</key>
-		<string>squirrel</string>
+		<string>launchScreen</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<false/>
 	</dict>
