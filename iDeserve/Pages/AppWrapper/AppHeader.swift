@@ -17,9 +17,12 @@ struct AppHeader: View {
         ZStack(alignment: .topLeading) {
             Image("headerCover")
                 .resizable()
-                .frame(height: HEADER_HEIGHT + TASK_ROW_PADDING)
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.size.width)
             Image("headerLeaf")
                 .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.main.bounds.size.width)
             Image(image)
                 .resizable()
                 .frame(width: 123.0, height: 121.0)
@@ -36,7 +39,7 @@ struct AppHeader: View {
                 .padding(.horizontal, 25)
         }
         .ignoresSafeArea()
-        .frame(width: UIScreen.main.bounds.size.width, height: HEADER_HEIGHT)
+        .frame(width: UIScreen.main.bounds.size.width)
     }
 }
 

@@ -113,8 +113,7 @@ struct RewardGrid: View {
         }
         .padding(.vertical, 20)
         .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Image("rewardBg").resizable().scaledToFit().frame(width: 170, height: 170))
-        .cornerRadius(16)
+        .background(Image("rewardBg").resizable().scaledToFit().frame(width: 170, height: 170).cornerRadius(16))
     }
     
     var body: some View {

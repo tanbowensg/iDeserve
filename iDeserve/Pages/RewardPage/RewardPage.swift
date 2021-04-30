@@ -58,7 +58,7 @@ struct RewardPage: View {
         LazyVGrid(
             columns: columns,
             alignment: .center,
-            spacing: 20
+            spacing: 25
         ) {
             ForEach(rewards, id: \.id) { (reward: Reward) in
                 RewardGrid(reward: reward)

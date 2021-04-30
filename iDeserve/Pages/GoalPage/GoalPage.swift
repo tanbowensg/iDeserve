@@ -128,7 +128,6 @@ struct GoalPage: View {
                     }
                 }
             }
-            .padding(.top, GOAL_ROW_HEIGHT / 2)
         }
         .onDrop(
             of: [UTType.text],
@@ -159,12 +158,13 @@ struct GoalPage: View {
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width)
                     .ignoresSafeArea()
-                ZStack(alignment: .top) {
-                    goalListView
-                    highlightIndex != nil ? reorderDivider : nil
+                VStack(spacing: 0.0) {
+                    AppHeader(title: "目标列表", image: "fox")
+                    ZStack(alignment: .top) {
+                        goalListView
+                        highlightIndex != nil ? reorderDivider : nil
+                    }
                 }
-                    .padding(.top, HEADER_HEIGHT - safeAreaHeight)
-                AppHeader(title: "目标列表", image: "fox")
             }
             canCreateGoal ? NavigationLink(destination: EditGoalPage(initGoal: nil)) {
                 CreateButton().padding(25)
@@ -174,6 +174,7 @@ struct GoalPage: View {
             } : nil
             isShowCompleteGoalView || isShowHelp ? Color.popupMask.ignoresSafeArea() : nil
         }
+        .ignoresSafeArea()
         .navigationBarHidden(true)
         .popup(isPresented: $isShowCompleteGoalView, type: .default, closeOnTap: false, closeOnTapOutside: true) {
             CompleteGoalView(

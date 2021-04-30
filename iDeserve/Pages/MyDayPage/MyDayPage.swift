@@ -125,21 +125,23 @@ struct MyDayPage: View {
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width)
                     .ignoresSafeArea()
-                CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
-                    VStack {
-                        if myDayTasks.count == 0 {
-                            emptyState
-                        } else {
-                            taskList
+                VStack(spacing: 0.0){
+                    AppHeader(title: "今日任务", image: "squirrel")
+                    CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
+                        VStack {
+                            if myDayTasks.count == 0 {
+                                emptyState
+                            } else {
+                                taskList
+                            }
                         }
                     }
                 }
-                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
-                AppHeader(title: "今日任务", image: "squirrel")
             }
             //                用来修复第一次点开sheet没有内容的bug
             currentTask == nil ? Text("") : nil
         }
+        .ignoresSafeArea()
         .sheet(isPresented: $shouldOpenSheet, content: {
             MyDayCreateTaskSheet(task: currentTask)
         })
