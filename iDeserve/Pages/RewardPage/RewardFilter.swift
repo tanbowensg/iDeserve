@@ -34,7 +34,7 @@ struct RewardFilter: View {
                 .padding(.horizontal, 18)
                 .background(
                     Color.white
-                        .cornerRadius(16)
+                        .cornerRadius(20)
                         .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
                 )
                 .foregroundColor(.b3)

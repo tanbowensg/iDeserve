@@ -15,7 +15,7 @@ struct EditGoalPage: View {
     var initGoal: Goal?
 
     @State var name: String = ""
-    @State var type: GoalType = GoalType.hobby
+    @State var type: GoalType = GoalType.study
     @State var importance: Importance = Importance.normal
     @State var desc = ""
     @State var tasks: [TaskState] = []
@@ -71,7 +71,7 @@ struct EditGoalPage: View {
                 }) {
                     Text("保存")
                         .font(.subheadCustom)
-                        .foregroundColor(.brandGreen)
+                        .foregroundColor(ImportanceColor[importance]!)
                         .fontWeight(.bold)
                 }
             }
@@ -88,12 +88,18 @@ struct EditGoalPage: View {
                 isShowTypePicker.toggle()
             }
         }) {
-            GoalIcon(goalType: type, size: 100)
+            GoalIcon(goalType: type, size: 85)
+                .frame(width: 100, height: 100, alignment: .center)
+                .background(
+                    Color.white
+                        .cornerRadius(12)
+                        .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
+                )
         }
     }
     
     var goalTitle: some View {
-        TextField("目标标题", text: $name)
+        TextField("在此输入目标标题", text: $name)
             .font(Font.titleCustom.weight(.bold))
             .multilineTextAlignment(.center)
     }
@@ -122,7 +128,7 @@ struct EditGoalPage: View {
                     .frame(height: 16.0)
                     .padding(.vertical, 12.0)
                     .padding(.horizontal, 40.0)
-                    .background(Color.brandGreen.cornerRadius(25))
+                    .background(ImportanceColor[importance]!.cornerRadius(25))
                 Spacer()
             }
         }

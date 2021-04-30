@@ -87,7 +87,7 @@ struct RewardPage: View {
                     .padding(.horizontal, 18)
                     .background(
                         Color.white
-                            .cornerRadius(16)
+                            .cornerRadius(20)
                             .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
                     )
                     .foregroundColor(.b3)
@@ -106,7 +106,7 @@ struct RewardPage: View {
                     .frame(width: UIScreen.main.bounds.size.width)
                     .ignoresSafeArea()
                 CustomScrollView(showsIndicators: false) {
-                    VStack(alignment: .trailing, spacing: 20) {
+                    VStack(alignment: .trailing, spacing: 25) {
                         toolBar
                         rewardGridLayout(rewards: availableRewards)
                         soldoutRewards.count > 0 ? soldoutRewardsView : nil

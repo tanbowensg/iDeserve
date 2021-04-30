@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalIcon: View {
     var goalType: GoalType
-    var size: CGFloat = 70
+    var size: CGFloat = 60
     
     var body: some View {
         Image(goalType.rawValue)

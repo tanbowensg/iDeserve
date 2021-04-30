@@ -30,13 +30,17 @@ struct RecordList: View {
         return VStack(spacing: 0.0) {
             Divider()
             HStack(alignment: .center) {
-                Text("总计").font(.subheadCustom)
+                Text("总计")
+                    .font(.subheadCustom)
+                    .fontWeight(.bold)
+                    .foregroundColor(.b3)
                 Spacer()
                 NutIcon(value: sum)
             }
-            .frame(height: 40.0)
+            .padding(.horizontal, 25)
+            .padding(.vertical, 20)
         }
-        .background(Color.white)
+        .background(Color.transparent)
     }
 
     var body: some View {
@@ -110,6 +114,7 @@ struct RecordItem: View {
         .font(.subheadCustom)
         .frame(height: 28)
         .padding(.vertical, 5)
+        .padding(.horizontal, 25)
         .background(Color.transparent)
     }
 }

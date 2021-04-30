@@ -39,17 +39,16 @@ struct GoalItemView: View {
 
     var goalName: some View {
         Text(goal.name!)
-            .font(.titleCustom)
+            .font(.bodyCustom)
             .foregroundColor(goal.color)
     }
 
     var importanceTag: some View {
         Text(ImportanceText[importance]!)
             .font(.captionCustom)
-            .fontWeight(.bold)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 3)
             .foregroundColor(ImportanceColor[importance]!)
-            .padding(.vertical, 5)
-            .padding(.horizontal, 9)
             .background(ImportanceColor[importance]!.opacity(0.3).cornerRadius(6))
     }
     

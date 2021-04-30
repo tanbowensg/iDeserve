@@ -54,6 +54,7 @@ struct MyDayPage: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("今天完成的任务")
                 .font(.subheadCustom)
+                .foregroundColor(.b3)
                 .fontWeight(.bold)
                 .padding(.leading, 25)
             ForEach (completedTasks, id: \.id) { task in

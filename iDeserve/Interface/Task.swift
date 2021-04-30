@@ -28,7 +28,7 @@ struct TaskState: Hashable, Identifiable {
     var ddl: Date = Date()
     var desc: String = ""
     var done: Bool = false
-    var starred: Bool = false
+    var starred: Bool = true
     var goalName: String = ""
     var goalColor: Color?
     var goalId: UUID?

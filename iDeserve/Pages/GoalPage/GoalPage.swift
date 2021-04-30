@@ -121,7 +121,7 @@ struct GoalPage: View {
                         undoneGoalItem(goal)
                     }
                 }
-                doneGoals.count <= 0 ? nil : Text("实现的目标").fontWeight(.medium).padding(.horizontal, 20.0)
+                doneGoals.count <= 0 ? nil : Text("实现的目标").font(.subheadCustom).foregroundColor(.b3).fontWeight(.medium).padding(.horizontal, 20.0)
                 doneGoals.count <= 0 ? nil : VStack(spacing: 0.0) {
                     ForEach (doneGoals, id: \.id) { goal in
                         doneGoalItem(goal)
