@@ -114,7 +114,7 @@ struct RewardPage: View {
                     .padding(.top, 30)
                 }
                     .padding(.top, HEADER_HEIGHT - safeAreaHeight)
-                AppHeader(title: "奖励商店", image: "rabbit")
+                RewardPageHeader()
             }
         }
         .navigationBarHidden(true)

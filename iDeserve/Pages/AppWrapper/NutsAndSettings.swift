@@ -30,7 +30,14 @@ struct NutsAndSettings: View {
         NavigationLink(destination: SettingsPage()) {
             Image("gear")
                 .resizable()
-                .frame(width: 20.0, height: 20.0)
+                .scaledToFit()
+                .frame(width: 24, height: 24)
+                .padding(4)
+                .background(
+                    Color.white
+                        .cornerRadius(16)
+                        .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
+                )
         }
     }
 

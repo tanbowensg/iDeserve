@@ -20,7 +20,6 @@ struct AppHeader: View {
                 .frame(height: HEADER_HEIGHT + TASK_ROW_PADDING)
             Image("headerLeaf")
                 .resizable()
-                .frame(height: HEADER_HEIGHT)
             Image(image)
                 .resizable()
                 .frame(width: 123.0, height: 121.0)
