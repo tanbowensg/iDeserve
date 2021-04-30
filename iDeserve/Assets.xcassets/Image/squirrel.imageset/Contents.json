@@ -5,11 +5,11 @@
       "scale" : "1x"
     },
     {
-      "filename" : "Squirrel.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Squirrel.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

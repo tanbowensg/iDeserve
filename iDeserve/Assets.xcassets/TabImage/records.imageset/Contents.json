@@ -5,11 +5,11 @@
       "scale" : "1x"
     },
     {
-      "filename" : "history.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "history_l@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

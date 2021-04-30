@@ -34,7 +34,7 @@ struct RewardPageHeader: View {
                 .padding(.horizontal, 25)
         }
         .ignoresSafeArea()
-        .frame(width: UIScreen.main.bounds.size.width, height: HEADER_HEIGHT)
+        .frame(width: UIScreen.main.bounds.size.width)
     }
 }
 

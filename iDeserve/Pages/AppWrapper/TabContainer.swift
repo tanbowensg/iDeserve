@@ -26,7 +26,7 @@ struct TabContainer<Content: View>: View {
         VStack {
             content
             Spacer()
-            HStack(alignment: .center, spacing: 20.0) {
+            HStack(alignment: .top, spacing: 20.0) {
                 ForEach(tabInfos) {tab in
                     TabIcon(tabInfo: tab)
                         .onTapGesture {
@@ -34,8 +34,9 @@ struct TabContainer<Content: View>: View {
                         }
                 }
             }
-            .frame(height: 48)
-            .padding(.horizontal, 38.0)
+//                .padding(.top, 11)
+                .padding(.horizontal, 38.0)
+                .frame(height: 58)
         }
         .background(Color.appBg.ignoresSafeArea())
     }

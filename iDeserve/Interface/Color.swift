@@ -71,4 +71,5 @@ extension Color {
     public static var customBlue = Color.init("customBlue")
     public static var customGreen = Color.init("customGreen")
     public static var customBrown = Color.init("customBrown")
+    public static var customOrange = Color.init("customOrange")
 }
