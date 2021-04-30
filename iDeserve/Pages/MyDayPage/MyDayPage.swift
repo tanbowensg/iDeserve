@@ -11,7 +11,6 @@ import CoreData
 struct MyDayPage: View {
     @EnvironmentObject var gs: GlobalStore
     @State var offsetY: Double = 0
-    @State var shouldOpenSheet = false
     @State var currentTask: Task?
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
     
@@ -51,15 +50,6 @@ struct MyDayPage: View {
             .padding(.vertical, 20.0)
     }
     
-    func onOffsetChange (_ offset: CGFloat) -> Void {
-        offsetY = Double(offset)
-        print(offsetY)
-        if (offsetY >= Double(scrollThreshold)) {
-            shouldOpenSheet = true
-            currentTask = nil
-        }
-    }
-    
     var completedTasksView: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("今天完成的任务")
@@ -70,7 +60,6 @@ struct MyDayPage: View {
                 VStack(spacing: 0.0) {
                     Button(action: {
                         currentTask = task
-                        shouldOpenSheet = true
                     }) {
                         TaskItem(task: TaskState(task))
                     }
@@ -88,7 +77,6 @@ struct MyDayPage: View {
                 VStack(spacing: 0.0) {
                     Button(action: {
                         currentTask = task
-                        shouldOpenSheet = true
                     }) {
                         TaskItem(
                             task: TaskState(task),
@@ -119,32 +107,25 @@ struct MyDayPage: View {
     }
     
     var body: some View {
-        VStack(spacing: 0.0) {
-            ZStack(alignment: .top) {
-                Image("headerBg")
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.size.width)
-                    .ignoresSafeArea()
-                VStack(spacing: 0.0){
-                    AppHeader(title: "今日任务", image: "squirrel")
-                    CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
-                        VStack {
-                            if myDayTasks.count == 0 {
-                                emptyState
-                            } else {
-                                taskList
-                            }
+        ZStack(alignment: .top) {
+            Image("headerBg")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.size.width)
+                .ignoresSafeArea()
+            VStack(spacing: 0.0){
+                AppHeader(title: "今日任务", image: "squirrel")
+                CustomScrollView(showsIndicators: false) {
+                    VStack {
+                        if myDayTasks.count == 0 {
+                            emptyState
+                        } else {
+                            taskList
                         }
                     }
                 }
             }
-            //                用来修复第一次点开sheet没有内容的bug
-            currentTask == nil ? Text("") : nil
         }
         .ignoresSafeArea()
-        .sheet(isPresented: $shouldOpenSheet, content: {
-            MyDayCreateTaskSheet(task: currentTask)
-        })
         .navigationBarHidden(true)
     }
 }

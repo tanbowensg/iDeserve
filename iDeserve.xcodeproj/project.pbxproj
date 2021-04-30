@@ -12,7 +12,6 @@
 		D0036DD5252C56CD00E4005B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DD4252C56CD00E4005B /* Color.swift */; };
 		D0036E0A252C840D00E4005B /* MyPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E09252C840D00E4005B /* MyPopup.swift */; };
 		D007CFB525873512008CA76D /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
-		D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */; };
 		D00CB089258A2FF900460D06 /* filterMyDayTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */; };
 		D01026622524241F00653A52 /* iDeserveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026612524241F00653A52 /* iDeserveApp.swift */; };
 		D01026662524242000653A52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
@@ -182,7 +181,6 @@
 		D0036DD4252C56CD00E4005B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D0036E09252C840D00E4005B /* MyPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPopup.swift; sourceTree = "<group>"; };
 		D007CFB425873512008CA76D /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayCreateTaskSheet.swift; sourceTree = "<group>"; };
 		D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterMyDayTasks.swift; sourceTree = "<group>"; };
 		D010265E2524241F00653A52 /* iDeserve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDeserve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01026612524241F00653A52 /* iDeserveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveApp.swift; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 			isa = PBXGroup;
 			children = (
 				D03C5D13255CE88400778EEE /* MyDayPage.swift */,
-				D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */,
 				D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */,
 			);
 			path = MyDayPage;
@@ -923,7 +920,6 @@
 				D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */,
 				D03AF73225B0113700F8152D /* WebView.swift in Sources */,
 				D08FB2FB25A82E1F00042124 /* Importance.swift in Sources */,
-				D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */,
 				D08988DE2546BDDC0032BA96 /* Task.swift in Sources */,
 				D072433625A30EC800DCB674 /* CalendarLayout.swift in Sources */,
 				D0119B6D25EF2C7600F5E0F6 /* Reward.swift in Sources */,
