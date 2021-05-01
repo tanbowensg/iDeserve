@@ -50,16 +50,7 @@ struct MyDayPage: View {
             .foregroundColor(.b2)
             .padding(.vertical, 20.0)
     }
-    
-    func onOffsetChange (_ offset: CGFloat) -> Void {
-        offsetY = Double(offset)
-        print(offsetY)
-        if (offsetY >= Double(scrollThreshold)) {
-            shouldOpenSheet = true
-            currentTask = nil
-        }
-    }
-    
+
     var completedTasksView: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("今天完成的任务")
@@ -128,7 +119,7 @@ struct MyDayPage: View {
                     .ignoresSafeArea()
                 VStack(spacing: 0.0){
                     AppHeader(title: "今日任务", image: "squirrel")
-                    CustomScrollView(showsIndicators: false, onOffsetChange: onOffsetChange) {
+                    CustomScrollView(showsIndicators: false) {
                         VStack {
                             if myDayTasks.count == 0 {
                                 emptyState
