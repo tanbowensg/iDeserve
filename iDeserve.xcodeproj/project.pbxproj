@@ -1288,7 +1288,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.6.4;
+				MARKETING_VERSION = 0.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1312,7 +1312,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.6.4;
+				MARKETING_VERSION = 0.6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
