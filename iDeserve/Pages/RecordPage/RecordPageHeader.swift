@@ -24,9 +24,6 @@ struct RecordPageHeader: View {
                 .foregroundColor(.b4)
                 .padding(.top, 140)
                 .padding(.trailing, 25)
-            NutsAndSettings()
-                .padding(.top, 10 + safeAreaHeight)
-                .padding(.horizontal, 25)
         }
         .ignoresSafeArea()
         .frame(width: UIScreen.main.bounds.size.width, height: HEADER_HEIGHT + 100)

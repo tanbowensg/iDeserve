@@ -11,7 +11,7 @@ struct NutsAndSettings: View {
     @AppStorage(POINTS) var points = 0
     
     var nuts: some View {
-        HStack(alignment: .center, spacing: -18) {
+        HStack(alignment: .center, spacing: -30) {
             Image("NutIcon")
                 .resizable()
                 .scaledToFit()

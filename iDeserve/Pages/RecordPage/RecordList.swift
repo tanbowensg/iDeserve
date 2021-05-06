@@ -42,37 +42,36 @@ struct RecordList: View {
         }
         .background(Color.transparent)
     }
+    
+    var deleteAlert: Alert {
+        Alert(
+            title: Text("删除记录"),
+            message: Text("删除记录以后，坚果数量可以恢复，但是目标、任务和奖励的状态不会改变。确定要删除这条记录吗？"),
+            primaryButton: Alert.Button.default(Text("删除")) {
+                gs.recordStore.deleteRecord(deletingRecord!)
+                deletingRecord = nil
+            },
+            secondaryButton: Alert.Button.cancel(Text("取消"))
+        )
+    }
 
     var body: some View {
-        return ZStack(alignment: .bottom) {
+        VStack(alignment: .leading, spacing: 0.0) {
             CustomScrollView(showsIndicators: false) {
-                VStack(spacing: 0) {
-                    ForEach (records) { record in
-                        SwipeWrapper(
-                            content: RecordItem(record: record),
-                            height: 38,
-                            onRightSwipe: {
-                                isShowAlert.toggle()
-                                deletingRecord = record
-                            }
-                        )
-                        .alert(
-                            isPresented: $isShowAlert,
-                            content: {
-                                Alert(
-                                    title: Text("删除记录"),
-                                    message: Text("删除记录以后，坚果数量可以恢复，但是目标、任务和奖励的状态不会改变。确定要删除这条记录吗？"),
-                                    primaryButton: Alert.Button.default(Text("删除")) {
-                                        gs.recordStore.deleteRecord(deletingRecord!)
-                                        deletingRecord = nil
-                                    },
-                                    secondaryButton: Alert.Button.cancel(Text("取消"))
-                                )
-                            }
-                        )
-                    }
+                ForEach (records) { record in
+                    SwipeWrapper(
+                        content: RecordItem(record: record),
+                        height: 38,
+                        onRightSwipe: {
+                            isShowAlert.toggle()
+                            deletingRecord = record
+                        }
+                    )
+                    .alert(
+                        isPresented: $isShowAlert,
+                        content: { deleteAlert }
+                    )
                 }
-                .padding(.bottom, 38.0)
             }
             records.count > 0 ? subtotal : nil
         }

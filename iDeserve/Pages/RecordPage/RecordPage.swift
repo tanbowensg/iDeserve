@@ -95,7 +95,7 @@ struct RecordPage: View {
     }
     
     func recordsView() -> some View {
-        VStack(alignment: .center, spacing: 20.0) {
+        VStack(alignment: .center, spacing: 0) {
             VStack(alignment: .leading, spacing: 10) {
                 monthTitle
                 CalendarSwiper(
@@ -111,6 +111,7 @@ struct RecordPage: View {
             .frame(width: CalendarWidth)
             .padding(25)
             .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
+            .padding(.bottom, 25)
     
             ExDivider()
             RecordList(records: chosenDateRecords)
@@ -121,6 +122,11 @@ struct RecordPage: View {
 
     var body: some View {
         ZStack(alignment: .top) {
+            NutsAndSettings()
+                .padding(.top, 10)
+                .padding(.horizontal, 25)
+                .frame(width: UIScreen.main.bounds.size.width)
+                .zIndex(100)
             RecordPageHeader()
             Image("bear")
                 .resizable()
