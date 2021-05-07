@@ -121,10 +121,10 @@ struct RewardGrid: View {
             reward.type != RewardType.system.rawValue ? link : nil // 系统奖励不可以更改，所以不能进入详情
             ZStack(alignment: .center) {
                 mainCard
-                    .saturation(reward.isSoldout ? 0 : 1)
-                reward.isSoldout ? soldoutLogo : nil
+                    .saturation(reward.isAvailable ? 1 : 0)
+                !reward.isAvailable ? soldoutLogo : nil
             }
-            !reward.isUnlockCalendar || reward.isSoldout ? removeButton : nil
+            !reward.isUnlockCalendar || !reward.isAvailable ? removeButton : nil
         }
         .id(reward.id)
         .onTapGesture {
