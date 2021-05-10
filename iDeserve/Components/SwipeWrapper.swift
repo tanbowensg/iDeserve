@@ -14,6 +14,8 @@ struct SwipeWrapper<Content: View>: View {
     var onRightSwipe: (() -> Void)?
 
     @State var offsetX: CGFloat = 0
+    @State var isShowLeft: Bool = false
+    @State var isShowRight: Bool = false
     
     //    左右的背景颜色
     let leftSlotBg = Color.brandGreen
@@ -73,6 +75,7 @@ struct SwipeWrapper<Content: View>: View {
             .onTapGesture {
                 onLeftSwipe?()
                 offsetX = 0
+                isShowLeft = false
             }
     }
     
@@ -89,6 +92,7 @@ struct SwipeWrapper<Content: View>: View {
             .onTapGesture {
                 onRightSwipe?()
                 offsetX = 0
+                isShowLeft = false
             }
     }
     
@@ -97,10 +101,10 @@ struct SwipeWrapper<Content: View>: View {
             .onChanged { value in
                 var newOffsetX = Int(value.translation.width)
                 //                若没传相应的回调，就相当于禁用
-                if onLeftSwipe == nil {
+                if onLeftSwipe == nil || isShowRight {
                     newOffsetX = min(0, newOffsetX)
                 }
-                if onRightSwipe == nil {
+                if onRightSwipe == nil || isShowLeft{
                     newOffsetX = max(0, newOffsetX)
                 }
                 self.offsetX = min(slotWidth, max(-slotWidth, CGFloat(newOffsetX)))
@@ -108,10 +112,14 @@ struct SwipeWrapper<Content: View>: View {
             .onEnded { value in
                 if self.offsetX > self.threshold {
                     offsetX = slotWidth
+                    isShowLeft = true
                 } else if -self.offsetX > self.threshold {
                     offsetX = -slotWidth
+                    isShowRight = true
                 } else {
                     self.offsetX = .zero
+                    isShowLeft = false
+                    isShowRight = false
                 }
             }
     }
