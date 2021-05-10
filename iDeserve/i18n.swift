@@ -95,6 +95,8 @@ let REWARD_VALUE_DESC = NSLocalizedString("不同奖励的价值因人而异，�
 
 // 初始化数据里的文案J
 let INIT_GOAL_TITLE = NSLocalizedString("上手坚果计划", comment: "")
+let INIT_TASK_0_TITLE = NSLocalizedString("学会完成任务", comment: "")
+let INIT_TASK_0_DESC = NSLocalizedString("在任务上右滑可以完成任务。", comment: "")
 let INIT_TASK_1_TITLE = NSLocalizedString("创建一个目标", comment: "")
 let INIT_TASK_1_DESC = NSLocalizedString("点击目标列表页面右下角的“+”按钮，就可以创建目标了！\n目标是坚果计划的核心。", comment: "")
 let INIT_TASK_2_TITLE = NSLocalizedString("了解任务", comment: "")

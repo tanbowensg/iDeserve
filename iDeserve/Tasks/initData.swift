@@ -79,7 +79,7 @@ func initReward () -> Void {
     GlobalStore.shared.rewardStore.createReward(
         name: INIT_REWARD_1_TITLE,
         type: .system,
-        value: 120,
+        value: 240,
         isRepeat: false,
         desc: "",
         cover: nil,
@@ -89,6 +89,7 @@ func initReward () -> Void {
 
 func initGoal () -> Void {
     let tasks = [
+        genTaskState(name: INIT_TASK_0_TITLE, desc: INIT_TASK_0_DESC, starred: true),
         genTaskState(name: INIT_TASK_1_TITLE, desc: INIT_TASK_1_DESC, starred: true),
         genTaskState(name: INIT_TASK_2_TITLE, desc: INIT_TASK_2_DESC, starred: true),
         genTaskState(name: INIT_TASK_3_TITLE, desc: INIT_TASK_3_DESC, hasDdl: true),
