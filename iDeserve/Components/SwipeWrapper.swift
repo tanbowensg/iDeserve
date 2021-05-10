@@ -12,7 +12,7 @@ struct SwipeWrapper<Content: View>: View {
     var height: Int
     var onLeftSwipe: (() -> Void)?
     var onRightSwipe: (() -> Void)?
-    
+
     @State var offsetX: CGFloat = 0
     
     //    左右的背景颜色
@@ -24,11 +24,11 @@ struct SwipeWrapper<Content: View>: View {
     }
     
     var slotWidth: CGFloat {
-        CGFloat(300)
+        CGFloat(height)
     }
     
     var threshold: CGFloat {
-        CGFloat(80)
+        CGFloat(slotWidth / 3)
     }
     
     var alignment: Alignment {
@@ -64,35 +64,37 @@ struct SwipeWrapper<Content: View>: View {
         Image(systemName: "checkmark")
             .resizable()
             .frame(width: iconSize, height: iconSize)
-            .scaleEffect(isReachThreshold ? 1.5 : 1)
             .multilineTextAlignment(.trailing)
-            .padding(.leading, slotWidth - threshold / 3 - iconSize)
             .padding(.trailing, threshold / 3)
             .frame(width: slotWidth, height: CGFloat(height))
             .foregroundColor(.g0)
             .background(leftSlotBg)
-            .animation(Animation.spring())
+            .animation(Animation.default)
+            .onTapGesture {
+                onLeftSwipe?()
+                offsetX = 0
+            }
     }
     
     var rightSlot: some View {
         Image(systemName: "trash")
             .resizable()
             .frame(width: iconSize, height: iconSize)
-            .scaleEffect(isReachThreshold ? 1.5 : 1)
             .multilineTextAlignment(.leading)
-            .padding(.trailing, slotWidth - threshold / 3 - iconSize)
             .padding(.leading, threshold / 3)
             .frame(width: slotWidth, height: CGFloat(height))
             .foregroundColor(.g0)
             .background(rightSlotBg)
-            .animation(Animation.spring())
+            .animation(Animation.default)
+            .onTapGesture {
+                onRightSwipe?()
+                offsetX = 0
+            }
     }
     
     var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                //                缓存 isReachThreshold 最近一次状态
-                let lastIsReachThreshold = isReachThreshold
                 var newOffsetX = Int(value.translation.width)
                 //                若没传相应的回调，就相当于禁用
                 if onLeftSwipe == nil {
@@ -101,19 +103,16 @@ struct SwipeWrapper<Content: View>: View {
                 if onRightSwipe == nil {
                     newOffsetX = max(0, newOffsetX)
                 }
-                self.offsetX = CGFloat(newOffsetX)
-                //                如果两次状态不一致，就震动
-                if isReachThreshold != lastIsReachThreshold {
-                    viberate()
-                }
+                self.offsetX = min(slotWidth, max(-slotWidth, CGFloat(newOffsetX)))
             }
             .onEnded { value in
                 if self.offsetX > self.threshold {
-                    self.onLeftSwipe?()
+                    offsetX = slotWidth
                 } else if -self.offsetX > self.threshold {
-                    self.onRightSwipe?()
+                    offsetX = -slotWidth
+                } else {
+                    self.offsetX = .zero
                 }
-                self.offsetX = .zero
             }
     }
     
@@ -121,7 +120,7 @@ struct SwipeWrapper<Content: View>: View {
         ZStack(alignment: alignment) {
             customContent
                 .offset(x: offsetX)
-                .animation(Animation.spring(), value: offsetX)
+                .animation(Animation.default, value: offsetX)
             offsetX > 0 ? leftSlot.offset(x: leftSlotOffset) : nil
             offsetX < 0 ? rightSlot.offset(x: rightSlotOffset) : nil
         }
