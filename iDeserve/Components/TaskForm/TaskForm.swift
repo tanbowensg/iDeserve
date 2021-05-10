@@ -33,6 +33,10 @@ struct TaskForm: View {
         taskState.originTask != nil
     }
     
+    var taskColor: Color {
+        DifficultyColor[taskState.difficulty]!
+    }
+    
     func onAppear () {
         if taskState.goalId == nil && goals.count > 0 {
             taskState.goalId = goals[0].id!
@@ -57,7 +61,7 @@ struct TaskForm: View {
                 Button(action: { onTapSave() }) {
                     Text("保存")
                         .font(.subheadCustom)
-                        .foregroundColor(.brandGreen)
+                        .foregroundColor(taskColor)
                         .fontWeight(.bold)
                 }
             }
@@ -110,7 +114,7 @@ struct TaskForm: View {
     var taskValue: some View {
         let rightContent = HStack(spacing: 0.0) {
             Text(String(taskState.difficulty.rawValue))
-                .foregroundColor(DifficultyColor[taskState.difficulty]!)
+                .foregroundColor(taskColor)
             Text(" * \(taskState.timeCost) = ")
             Text(String(taskState.difficulty.rawValue * taskState.timeCost))
                 .foregroundColor(Color.rewardGold)
@@ -143,7 +147,7 @@ struct TaskForm: View {
     var taskTimeCost: some View {
         Group {
             FormItem(name: "预计耗时", rightContent: Text("\(taskState.timeCost)小时"))
-            MySlider(value: $taskState.timeCost, range: 1...10)
+            MySlider(value: $taskState.timeCost, range: 1...10, color: taskColor)
                 .padding(.bottom, 20.0)
             ExDivider()
         }
@@ -153,7 +157,7 @@ struct TaskForm: View {
         Group {
             FormItem(
                 name: "在“今日任务”中显示",
-                rightContent: Toggle("", isOn:$taskState.starred).toggleStyle(SwitchToggleStyle(tint: .brandGreen))
+                rightContent: Toggle("", isOn:$taskState.starred).toggleStyle(SwitchToggleStyle(tint: taskColor))
             )
             ExDivider()
         }
@@ -191,7 +195,7 @@ struct TaskForm: View {
     var repeatTimes: some View {
         Group {
             FormItem(name: "重复次数", rightContent: Text("\(taskState.repeatTimes)次"))
-            MySlider(value: $taskState.repeatTimes, range: 1...50)
+            MySlider(value: $taskState.repeatTimes, range: 1...50, color: taskColor)
                 .padding(.bottom, 20.0)
             ExDivider()
         }
@@ -247,14 +251,14 @@ struct TaskForm: View {
             }) {
                 Text("确认")
                     .font(.subheadCustom)
-                    .foregroundColor(.brandGreen)
+                    .foregroundColor(taskColor)
             }
             DatePicker(
                 "日期选择",
                 selection: $taskState.ddl,
                 displayedComponents: .date
             )
-                .accentColor(.brandGreen)
+                .accentColor(taskColor)
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .labelsHidden()
         }

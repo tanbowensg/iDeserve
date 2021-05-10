@@ -11,15 +11,16 @@ import Sliders
 struct MySlider: View {
     @Binding var value: Int
     var range: ClosedRange<Int>
+    var color: Color = Color.brandGreen
 
     var body: some View {
         ValueSlider(value: $value, in: range, step: 1)
             .valueSliderStyle(
                 HorizontalValueSliderStyle(
-                    track: HorizontalTrack(view: Capsule().foregroundColor(Color.brandGreen))
+                    track: HorizontalTrack(view: Capsule().foregroundColor(color))
                         .background(Capsule().foregroundColor(.g1))
                         .frame(height: 5),
-                    thumb: Circle().foregroundColor(.brandGreen),
+                    thumb: Circle().foregroundColor(color),
                     thumbSize: CGSize(width: 20, height: 20),
                     thumbInteractiveSize: CGSize(width: 20, height: 20)
                 )
