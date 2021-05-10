@@ -106,6 +106,30 @@ struct TaskForm: View {
             ExDivider()
         }
     }
+    
+    var taskValue: some View {
+        let rightContent = HStack(spacing: 0.0) {
+            Text(String(taskState.difficulty.rawValue))
+                .foregroundColor(DifficultyColor[taskState.difficulty]!)
+            Text(" * \(taskState.timeCost) = ")
+            Text(String(taskState.difficulty.rawValue * taskState.timeCost))
+                .foregroundColor(Color.rewardGold)
+            Image("NutIcon")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16.0, height: 16.0)
+                .padding(.all, 2.0)
+                .offset(y: -1)
+        }
+
+        return Group {
+            FormItem(
+                name: "奖励坚果数量",
+                rightContent: rightContent
+            )
+            ExDivider()
+        }
+    }
 
     var taskDifficulty: some View {
         VStack(spacing: 0.0) {
@@ -252,6 +276,7 @@ struct TaskForm: View {
                     VStack(alignment: .leading, spacing: 0.0) {
                         taskTitle
                         showGoal ? taskGoal : nil
+                        taskValue
                         taskDifficulty
                         taskTimeCost
                         taskMyDay
