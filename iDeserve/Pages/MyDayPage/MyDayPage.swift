@@ -101,7 +101,7 @@ struct MyDayPage: View {
     var emptyState: some View {
         VStack(alignment: .center) {
             Spacer()
-            Text("今天没有要做的事情哦！\n你可以下拉界面创建任务，\n或者把想做的任务添加到今日任务里！")
+            Text("今天没有要做的事情！\n去奖励商店里好好犒赏自己吧！")
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 25)
                 .frame(maxWidth: .infinity)
