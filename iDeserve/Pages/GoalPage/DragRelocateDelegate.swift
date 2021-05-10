@@ -15,7 +15,7 @@ struct DragRelocateDelegate: DropDelegate {
     @Binding var highlightIndex: Int?
     
 //    第一个目标顶距离srollview顶部的padding
-    let topPadding = GOAL_ROW_HEIGHT / 2
+    let topPadding: CGFloat = 0
 
 //    总高度要计算目标+padding
     let rowHeight = GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2

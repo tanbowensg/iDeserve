@@ -57,7 +57,7 @@ struct GoalPage: View {
     
     var reorderDivider: some View {
 //        算法是index*（每一个目标高度+padding）
-        let offset = CGFloat(highlightIndex!) * (GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2) + GOAL_ROW_HEIGHT / 2
+        let offset = CGFloat(highlightIndex!) * (GOAL_ROW_HEIGHT + GOAL_ROW_PADDING * 2)
 
         return ExDivider()
             .offset(y: highlightIndex != nil ? offset : -666)
