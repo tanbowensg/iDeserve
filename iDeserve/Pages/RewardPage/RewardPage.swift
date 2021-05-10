@@ -109,7 +109,7 @@ struct RewardPage: View {
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width)
                     .ignoresSafeArea()
-                CustomScrollView(showsIndicators: false) {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .trailing, spacing: 25) {
                         toolBar
                         rewardGridLayout(rewards: availableRewards)
