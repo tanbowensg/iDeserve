@@ -39,6 +39,7 @@ struct NutsAndSettings: View {
                         .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
                 )
         }
+        .buttonStyle(PlainButtonStyle())
     }
 
     var body: some View {
