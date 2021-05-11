@@ -11,11 +11,10 @@ import CoreData
 struct RewardGrid: View {
     @EnvironmentObject var gs: GlobalStore
     @ObservedObject var reward: Reward
+    var onTapRedeem: () -> Void
 
 //    这个和 isEditMode 是一起变化的。但是为了让删除按钮的动画和整个卡片分离开来，所以弄了两个变量
     @State var isTapped = false
-
-    @State var isShowRedeemAlert = false
     
     var disableRedeem: Bool {
         return !reward.isAvailable || gs.pointsStore.points < reward.value
@@ -55,21 +54,8 @@ struct RewardGrid: View {
         .padding(10)
     }
     
-    var redeemAlert: Alert {
-        let confirmButton = Alert.Button.default(Text("确定")) {
-            gs.rewardStore.redeemReward(reward)
-        }
-        let cancelButton = Alert.Button.cancel(Text("取消"))
-        return Alert(
-            title: Text("兑换奖励"),
-            message: Text("确定要兑换\(reward.name!)吗？"),
-            primaryButton: confirmButton,
-            secondaryButton: cancelButton
-        )
-    }
-    
     var redeemButton: some View {
-        Button(action: { isShowRedeemAlert.toggle() }) {
+        Button(action: { onTapRedeem() }) {
             NutIcon(value: Int(reward.value), hidePlus: true)
 //            HStack(alignment: .center, spacing: 4){
 //                Image("NutIcon")
@@ -87,7 +73,6 @@ struct RewardGrid: View {
             .shadow(color: Color.darkShadow, radius: 5, x: 2, y: 2)
             .saturation(disableRedeem ? 0 : 1)
         }
-        .alert(isPresented: $isShowRedeemAlert, content: { redeemAlert })
         .disabled(disableRedeem)
     }
 
@@ -155,7 +140,7 @@ struct RewardGrid_Previews: PreviewProvider {
                     spacing: 20
                 ) {
                     ForEach(rewards, id: \.id) { (reward: Reward) in
-                        RewardGrid(reward: reward)
+                        RewardGrid(reward: reward, onTapRedeem: emptyFunc)
                     }
                 }
                 .padding(20)

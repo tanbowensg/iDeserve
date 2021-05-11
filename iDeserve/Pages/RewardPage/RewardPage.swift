@@ -16,6 +16,8 @@ struct RewardPage: View {
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
 
     @State var filterType: RewardFilterType = RewardFilterType.createAsc
+    @State var isShowRedeemAlert: Bool = false
+    @State var currentReward: Reward? = nil
 
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
 
@@ -61,7 +63,10 @@ struct RewardPage: View {
             spacing: 25
         ) {
             ForEach(rewards, id: \.id) { (reward: Reward) in
-                RewardGrid(reward: reward)
+                RewardGrid(reward: reward, onTapRedeem: {
+                    isShowRedeemAlert.toggle()
+                    currentReward = reward
+                })
             }
         }
             .padding(.horizontal, 25)
@@ -103,24 +108,32 @@ struct RewardPage: View {
     }
 
     var body: some View {
-        VStack(spacing: 0.0) {
-            ZStack(alignment: .top) {
-                Image("headerBg")
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.size.width)
-                    .ignoresSafeArea()
-                ScrollView(showsIndicators: false) {
-                    VStack(alignment: .trailing, spacing: 25) {
-                        toolBar
-                        rewardGridLayout(rewards: availableRewards)
-                        soldoutRewards.count > 0 ? soldoutRewardsView : nil
-                    }
-                    .padding(.top, 30)
+        ZStack(alignment: .top) {
+            Image("headerBg")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.size.width)
+                .ignoresSafeArea()
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .trailing, spacing: 25) {
+                    toolBar
+                    rewardGridLayout(rewards: availableRewards)
+                    soldoutRewards.count > 0 ? soldoutRewardsView : nil
                 }
-                    .padding(.top, HEADER_HEIGHT - safeAreaHeight)
-                RewardPageHeader()
+                .padding(.top, 30)
             }
+                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+            RewardPageHeader()
+            isShowRedeemAlert ? Color.popupMask.ignoresSafeArea() : nil
         }
+        .popup(isPresented: $isShowRedeemAlert, type: .default, closeOnTap: false, closeOnTapOutside: false, view: {
+            RedeemRewardAlert(
+                reward: currentReward,
+                isShow: $isShowRedeemAlert,
+                onConfirm: {
+                    gs.rewardStore.redeemReward(currentReward!)
+                }
+            )
+        })
         .navigationBarHidden(true)
     }
 }
