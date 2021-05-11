@@ -14,7 +14,7 @@ struct Dot: View {
     
     var body: some View {
         Circle()
-            .fill(isActive ? Color.brandGreen : Color.g1)
+            .fill(isActive ? Color.customOrange : Color.g1)
             .frame(width: 8.0, height: 8.0)
     }
 }
