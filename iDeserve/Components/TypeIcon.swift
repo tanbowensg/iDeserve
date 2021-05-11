@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct GoalIcon: View {
-    var goalType: GoalType
+struct TypeIcon: View {
+    var type: String
     var size: CGFloat = 60
     
     var body: some View {
-        Image(goalType.rawValue)
+        Image(type)
             .resizable()
             .scaledToFit()
             .cornerRadius(size / 5)
@@ -23,6 +23,6 @@ struct GoalIcon: View {
 
 struct GoalIcon_Previews: PreviewProvider {
     static var previews: some View {
-        GoalIcon(goalType: .study)
+        TypeIcon(type: GoalType.study.rawValue)
     }
 }

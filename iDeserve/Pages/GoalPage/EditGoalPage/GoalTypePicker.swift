@@ -40,7 +40,7 @@ struct GoalTypePicker: View {
                             isShow.toggle()
                         }) {
                             VStack(spacing: 8.0) {
-                                GoalIcon(goalType: type, size: 80)
+                                TypeIcon(type: type.rawValue, size: 80)
                                 Text(GoalTypeText[type] ?? "")
                                     .foregroundColor(.b2)
                                     .font(.subheadCustom)

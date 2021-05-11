@@ -39,12 +39,7 @@ struct RewardTypePicker: View {
                             isShow.toggle()
                         }) {
                             VStack(spacing: 8.0) {
-                                Image(type.rawValue)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(16)
-                                    .frame(width: 80, height: 80)
-                                    .shadow(color: .darkShadow, radius: 16, x: 0, y: 0)
+                                TypeIcon(type: type.rawValue, size: 80)
                                 Text(RewardTypeText[type] ?? "")
                                     .foregroundColor(.b2)
                                     .font(.subheadCustom)

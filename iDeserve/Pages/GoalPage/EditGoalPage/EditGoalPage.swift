@@ -88,7 +88,7 @@ struct EditGoalPage: View {
                 isShowTypePicker.toggle()
             }
         }) {
-            GoalIcon(goalType: type, size: 85)
+            TypeIcon(type: type.rawValue, size: 85)
                 .frame(width: 100, height: 100, alignment: .center)
                 .background(
                     Color.white

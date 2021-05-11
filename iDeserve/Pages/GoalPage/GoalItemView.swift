@@ -72,7 +72,7 @@ struct GoalItemView: View {
     
     var mainView: some View {
         HStack(alignment: .center, spacing: 30.0) {
-            GoalIcon(goalType: type)
+            TypeIcon(type: type.rawValue)
             VStack(alignment: .leading, spacing: 14) {
                 HStack {
                     VStack(alignment: .leading, spacing: 8.0) {

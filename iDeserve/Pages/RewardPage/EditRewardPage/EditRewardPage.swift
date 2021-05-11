@@ -75,27 +75,29 @@ struct EditRewardPage: View {
         }
     }
 
-    var rewardTitle: some View {
-        Group {
-            TextField("奖励标题", text: $name)
-                .font(Font.titleCustom.weight(.bold))
-                .multilineTextAlignment(.leading)
-                .padding(.vertical, 20)
-            ExDivider()
+    var rewardType: some View {
+        Button(action: {
+            withAnimation {
+                dismissKeyboard()
+                isShowTypePicker.toggle()
+            }
+        }) {
+            TypeIcon(type: type.rawValue, size: 85)
+                .frame(width: 100, height: 100, alignment: .center)
+                .background(
+                    Color.white
+                        .cornerRadius(12)
+                        .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
+                )
         }
+            .padding(.top, 20)
     }
 
-    var rewardType: some View {
-        Group {
-            Button(action: { isShowTypePicker.toggle() }) {
-                FormItem(
-                    name: "类别",
-                    rightContent: Text(RewardTypeText[type] ?? "未知类别")
-                )
-            }
-            .disabled( type == .system )
-            ExDivider()
-        }
+    var rewardTitle: some View {
+        TextField("奖励标题", text: $name)
+            .font(Font.titleCustom.weight(.bold))
+            .multilineTextAlignment(.center)
+            .padding(.vertical, 20)
     }
 
     var rewardValue: some View {
@@ -146,10 +148,10 @@ struct EditRewardPage: View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0.0) {
                 header
-                VStack(alignment: .leading, spacing: 0.0) {
+                VStack(alignment: .center, spacing: 0.0) {
+                    rewardType
                     //                coverImage
                     rewardTitle
-                    rewardType
                     rewardValue
                     rewardRepeat
                     Spacer()

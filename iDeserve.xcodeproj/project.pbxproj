@@ -19,7 +19,7 @@
 		D01026692524242000653A52 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026682524242000653A52 /* Preview Assets.xcassets */; };
 		D01026742524242100653A52 /* iDeserveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01026732524242100653A52 /* iDeserveTests.swift */; };
 		D010267F2524242100653A52 /* iDeserveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010267E2524242100653A52 /* iDeserveUITests.swift */; };
-		D0119B4225ECE52F00F5E0F6 /* GoalIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0119B4125ECE52F00F5E0F6 /* GoalIcon.swift */; };
+		D0119B4225ECE52F00F5E0F6 /* TypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0119B4125ECE52F00F5E0F6 /* TypeIcon.swift */; };
 		D0119B4825ECE74C00F5E0F6 /* GoalTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0119B4725ECE74C00F5E0F6 /* GoalTypePicker.swift */; };
 		D0119B5725EE340F00F5E0F6 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = D0119B5625EE340F00F5E0F6 /* Sliders */; };
 		D0119B5D25EE367200F5E0F6 /* MySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0119B5C25EE367200F5E0F6 /* MySlider.swift */; };
@@ -196,7 +196,7 @@
 		D010267A2524242100653A52 /* iDeserveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDeserveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D010267E2524242100653A52 /* iDeserveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveUITests.swift; sourceTree = "<group>"; };
 		D01026802524242100653A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0119B4125ECE52F00F5E0F6 /* GoalIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalIcon.swift; sourceTree = "<group>"; };
+		D0119B4125ECE52F00F5E0F6 /* TypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeIcon.swift; sourceTree = "<group>"; };
 		D0119B4725ECE74C00F5E0F6 /* GoalTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTypePicker.swift; sourceTree = "<group>"; };
 		D0119B5C25EE367200F5E0F6 /* MySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySlider.swift; sourceTree = "<group>"; };
 		D0119B6225EE802700F5E0F6 /* if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = if.swift; sourceTree = "<group>"; };
@@ -459,7 +459,7 @@
 				D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */,
 				D01CAD9A25AC92A2009F1115 /* ExDivider.swift */,
 				D031ED9C25B13EDB00D64CF3 /* FormItem.swift */,
-				D0119B4125ECE52F00F5E0F6 /* GoalIcon.swift */,
+				D0119B4125ECE52F00F5E0F6 /* TypeIcon.swift */,
 				D041FF7325F8A15700F565C1 /* HelpTextModal.swift */,
 				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
 				D0119B5C25EE367200F5E0F6 /* MySlider.swift */,
@@ -539,10 +539,9 @@
 		D07242F425A1B68D00DCB674 /* RewardPage */ = {
 			isa = PBXGroup;
 			children = (
+				D0DCEFD9264A6E27007F7F68 /* EditRewardPage */,
 				D04BB023252AC93B0088912A /* RewardPage.swift */,
 				D042F195252D98DC00B08F97 /* RewardGrid.swift */,
-				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
-				D0119B7225EF2D3A00F5E0F6 /* RewardTypePicker.swift */,
 				D088869E263A82A8005624D1 /* RewardFilter.swift */,
 				D08886A4263B1363005624D1 /* RewardPageHeader.swift */,
 				D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */,
@@ -662,6 +661,15 @@
 				D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D0DCEFD9264A6E27007F7F68 /* EditRewardPage */ = {
+			isa = PBXGroup;
+			children = (
+				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
+				D0119B7225EF2D3A00F5E0F6 /* RewardTypePicker.swift */,
+			);
+			path = EditRewardPage;
 			sourceTree = "<group>";
 		};
 		D0F2DC9125E77CD200A75E12 /* CompleteGoalView */ = {
@@ -909,7 +917,7 @@
 				D03AF71025AEBAF000F8152D /* roundBorder.swift in Sources */,
 				D007CFB525873512008CA76D /* constants.swift in Sources */,
 				D08EE9AA25F9F3450020FBC2 /* dismissKeyboard.swift in Sources */,
-				D0119B4225ECE52F00F5E0F6 /* GoalIcon.swift in Sources */,
+				D0119B4225ECE52F00F5E0F6 /* TypeIcon.swift in Sources */,
 				D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */,
 				D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */,
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
