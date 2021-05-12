@@ -11,6 +11,7 @@ import CoreData
 struct RewardGrid: View {
     @EnvironmentObject var gs: GlobalStore
     @ObservedObject var reward: Reward
+    @AppStorage(PRO_IDENTIFIER) var isPro = false
     var onTapRedeem: () -> Void
 
 //    这个和 isEditMode 是一起变化的。但是为了让删除按钮的动画和整个卡片分离开来，所以弄了两个变量
@@ -57,7 +58,7 @@ struct RewardGrid: View {
     
     var redeemButton: some View {
         Button(action: {
-            if gs.pointsStore.points >= reward.value {
+            if gs.pointsStore.points >= reward.value || isPro {
                 onTapRedeem()
             } else {
                 isShowPurchase = true
@@ -81,7 +82,7 @@ struct RewardGrid: View {
     }
     
     var noEnoughNutsAlert: Alert {
-        let confirmButton = Alert.Button.destructive(Text("购买 Pro 版")) {
+        let confirmButton = Alert.Button.default(Text("购买 Pro 版")) {
             gs.isShowPayPage = true
         }
         let cancelButton = Alert.Button.cancel(Text("再攒攒吧"))

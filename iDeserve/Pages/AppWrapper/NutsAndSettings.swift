@@ -19,7 +19,7 @@ struct NutsAndSettings: View {
                 .zIndex(1)
                 .offset(y: -2)
             AnimatedPoints(points: points)
-                .padding(.trailing, 18)
+                .padding(.trailing, 12)
                 .frame(width: 100.0, height: 32.0, alignment: .trailing)
                 .background(Color.nutBg)
                 .cornerRadius(16)
