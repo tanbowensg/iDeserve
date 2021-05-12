@@ -100,5 +100,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64ED9299-8AC8-4C09-988A-049BD92DF624"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iDeserve/i18n.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "64ED9299-8AC8-4C09-988A-049BD92DF624 - 4989b5d336a8fff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_593D3CD90CC887D14AD6268F91F132AB_func44"
+                  moduleName = "iDeserve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tanbowensg/Documents/develop/iDeserve/iDeserve/i18n.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  uuid = "64ED9299-8AC8-4C09-988A-049BD92DF624 - bc55ecf18198650d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iDeserve.INIT_REWARD_4_TITLE.unsafeMutableAddressor : Swift.String"
+                  moduleName = "iDeserve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tanbowensg/Documents/develop/iDeserve/iDeserve/i18n.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -15,9 +15,10 @@ struct RewardGrid: View {
 
 //    这个和 isEditMode 是一起变化的。但是为了让删除按钮的动画和整个卡片分离开来，所以弄了两个变量
     @State var isTapped = false
+    @State var isShowPurchase = false
     
     var disableRedeem: Bool {
-        return !reward.isAvailable || gs.pointsStore.points < reward.value
+        return !reward.isAvailable
     }
 //    
 //    var cover: some View {
@@ -55,23 +56,20 @@ struct RewardGrid: View {
     }
     
     var redeemButton: some View {
-        Button(action: { onTapRedeem() }) {
+        Button(action: {
+            if gs.pointsStore.points >= reward.value {
+                onTapRedeem()
+            } else {
+                isShowPurchase = true
+            }
+        }) {
             NutIcon(value: Int(reward.value), hidePlus: true)
-//            HStack(alignment: .center, spacing: 4){
-//                Image("NutIcon")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 16, height: 16.0)
-//                Text(String(reward.value))
-//                    .font(.footnoteCustom)
-//                    .foregroundColor(.rewardGold)
-//            }
-            .frame(height: 24)
-            .padding(.horizontal, 16.0)
-            .background(Color.white)
-            .cornerRadius(12)
-            .shadow(color: Color.darkShadow, radius: 5, x: 2, y: 2)
-            .saturation(disableRedeem ? 0 : 1)
+                .frame(height: 24)
+                .padding(.horizontal, 16.0)
+                .background(Color.white)
+                .cornerRadius(12)
+                .shadow(color: Color.darkShadow, radius: 5, x: 2, y: 2)
+                .saturation(disableRedeem ? 0 : 1)
         }
         .disabled(disableRedeem)
     }
@@ -82,6 +80,19 @@ struct RewardGrid: View {
         }
     }
     
+    var noEnoughNutsAlert: Alert {
+        let confirmButton = Alert.Button.destructive(Text("购买 Pro 版")) {
+            gs.isShowPayPage = true
+        }
+        let cancelButton = Alert.Button.cancel(Text("再攒攒吧"))
+        return Alert(
+            title: Text("坚果不够"),
+            message: Text(NO_ENOUGH_NUTS_ALERT),
+            primaryButton: confirmButton,
+            secondaryButton: cancelButton
+        )
+    }
+
     var mainCard: some View {
         VStack(alignment: .center, spacing: 10) {
             Image(reward.type ?? "")
@@ -115,6 +126,7 @@ struct RewardGrid: View {
         .onTapGesture {
             isTapped.toggle()
         }
+        .alert(isPresented: $isShowPurchase, content: { noEnoughNutsAlert })
     }
 }
 

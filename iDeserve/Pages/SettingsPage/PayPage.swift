@@ -16,6 +16,7 @@ struct Feature {
 
 let FeatureList = [
     Feature(image: "infinity", title: "无数量限制", desc: "你可以创建无限个目标和奖励"),
+    Feature(image: "credit", title: "透支坚果", desc: "你的坚果数量可以变成负数，兑换坚果更灵活"),
     Feature(image: "reverse", title: "撤销历史记录", desc: "你可以撤销历史记录，恢复坚果数量"),
     Feature(image: "cloud", title: "数据云存储", desc: "你的数据可以通过 iCloud 备份")
 ]

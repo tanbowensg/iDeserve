@@ -107,7 +107,6 @@ struct RewardPage: View {
                 .foregroundColor(.b3)
 
         return HStack {
-            
             canCreateGoal ? NavigationLink(destination: EditRewardPage(initReward: nil)) {
                 createBtn
             } : nil
@@ -117,10 +116,11 @@ struct RewardPage: View {
             Spacer()
             RewardFilter(filterType: $filterType)
         }
+        .alert(isPresented: $isShowPurchase, content: { rewardLimitAlert })
         .padding(.horizontal, 25)
     }
 
-    var goalLimitAlert: Alert {
+    var rewardLimitAlert: Alert {
         let confirmButton = Alert.Button.default(Text("购买 Pro 版")) {
             gs.isShowPayPage = true
         }
@@ -159,7 +159,6 @@ struct RewardPage: View {
                 }
             )
         })
-        .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
         .navigationBarHidden(true)
     }
 }
