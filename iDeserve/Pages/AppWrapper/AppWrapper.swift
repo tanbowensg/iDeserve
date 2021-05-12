@@ -18,6 +18,7 @@ enum TabPages: String {
 struct AppWrapper: View {
     @EnvironmentObject var gs: GlobalStore
     @State var currentTab = TabPages.myDay
+    @State var isShowPayPage = false
     
     var tabs: [TabInfo] {
         return [
@@ -66,6 +67,12 @@ struct AppWrapper: View {
                     tabContent
                 }
         }
+        .onChange(of: gs.isShowPayPage, perform: { value in
+            isShowPayPage = value
+        })
+        .sheet(isPresented: $isShowPayPage, onDismiss: { gs.isShowPayPage = false }, content: {
+            PayPage()
+        })
     }
 }
 

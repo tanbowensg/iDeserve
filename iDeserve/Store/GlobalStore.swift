@@ -10,6 +10,8 @@ import SwiftUI
 import CoreData
 
 final class GlobalStore: ObservableObject {
+    @Published var isShowPayPage = false
+
     var moc = CoreDataContainer.shared.context
     static var shared = GlobalStore()
     var coreDataContainer = CoreDataContainer.shared

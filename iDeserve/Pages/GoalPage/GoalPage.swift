@@ -51,8 +51,7 @@ struct GoalPage: View {
     }
     
     var canCreateGoal: Bool {
-//        isPro || goals.count < MAX_GOAL
-        true
+        isPro || goals.count < MAX_GOAL
     }
     
     var reorderDivider: some View {
@@ -194,8 +193,8 @@ struct GoalPage: View {
             HelpTextModal(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
         }
         .popup(isPresented: $isShowPurchase, type: .default, closeOnTap: true, closeOnTapOutside: true) {
-            NavigationLink(destination: PayPage()) {
-                Text("点击购买PRO版本")
+            Button(action: { gs.isShowPayPage = true }) {
+                Text("了解详情")
             }
         }
     }

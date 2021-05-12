@@ -11,10 +11,11 @@ import StoreKit
 
 struct SettingsPage: View {
     @EnvironmentObject var gs: GlobalStore
-    @State var isShowTimePicker = false
     @AppStorage(PRO_IDENTIFIER) var isPro = false
     @AppStorage(START_TIME_OF_DAY) var startTimeOfDay: Int = 0
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
+
+    @State var isShowTimePicker = false
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
@@ -46,7 +47,7 @@ struct SettingsPage: View {
         ZStack(alignment: .bottom) {
             List {
                 Section(header: Text("App 基本信息")) {
-                    NavigationLink(destination: PayPage()) {
+                    Button(action: { gs.isShowPayPage = true }) {
                         HStack {
                             Text("Pro版本")
                             Spacer()
