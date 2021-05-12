@@ -24,6 +24,7 @@ let GOAL_ROW_PADDING: CGFloat = 20
 let HEADER_HEIGHT: CGFloat = 180
 
 let MAX_GOAL = 3
+let MAX_REWARD = 6
 
 //userdefaults的key
 let UNLOCK_CALENDAR: String = "unlockCalendar"

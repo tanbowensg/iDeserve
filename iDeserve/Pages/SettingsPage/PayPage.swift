@@ -130,14 +130,14 @@ struct PayPage: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10.0) {
+        VStack(alignment: .leading, spacing: 0) {
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
-                Image(systemName: "chevron.left")
+                Image(systemName: "xmark")
                     .foregroundColor(.b2)
                     .font(Font.headlineCustom.weight(.bold))
-                    .padding(.leading, 25)
+                    .padding(25)
             }
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 16) {

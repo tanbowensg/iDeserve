@@ -138,7 +138,7 @@ struct GoalPage: View {
     }
 
     var deleteConfirmAlert: Alert {
-        let confirmButton = Alert.Button.default(Text("删除")) {
+        let confirmButton = Alert.Button.destructive(Text("删除")) {
             gs.goalStore.removeGoal(deletingGoal!)
         }
         let cancelButton = Alert.Button.cancel(Text("取消"))
@@ -147,6 +147,18 @@ struct GoalPage: View {
             message: Text("确定要删除目标\(deletingGoal!.name!)吗？\n删除后无法恢复。"),
             primaryButton: confirmButton,
             secondaryButton: cancelButton
+        )
+    }
+
+    var goalLimitAlert: Alert {
+        let confirmButton = Alert.Button.default(Text("购买 Pro 版")) {
+            gs.isShowPayPage = true
+        }
+        return Alert(
+            title: Text("目标数量达到上限"),
+            message: Text(GOAL_LIMIT_ALERT),
+            primaryButton: confirmButton,
+            secondaryButton: Alert.Button.cancel(Text("以后再说"))
         )
     }
 
@@ -192,11 +204,7 @@ struct GoalPage: View {
         .popup(isPresented: $isShowHelp, type: .default, closeOnTap: false, closeOnTapOutside: true) {
             HelpTextModal(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
         }
-        .popup(isPresented: $isShowPurchase, type: .default, closeOnTap: true, closeOnTapOutside: true) {
-            Button(action: { gs.isShowPayPage = true }) {
-                Text("了解详情")
-            }
-        }
+        .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
     }
 }
 

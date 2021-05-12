@@ -14,10 +14,12 @@ struct RewardPage: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
+    @AppStorage(PRO_IDENTIFIER) var isPro = false
 
     @State var filterType: RewardFilterType = RewardFilterType.createAsc
     @State var isShowRedeemAlert: Bool = false
     @State var currentReward: Reward? = nil
+    @State private var isShowPurchase = false
 
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
 
@@ -55,6 +57,10 @@ struct RewardPage: View {
     private var rewardsArray: [Reward] {
         rewards.map{ return $0 }
     }
+
+    var canCreateGoal: Bool {
+        isPro || rewards.count < MAX_REWARD
+    }
     
     func rewardGridLayout (rewards: [Reward]) -> some View {
         LazyVGrid(
@@ -85,26 +91,45 @@ struct RewardPage: View {
     }
     
     var toolBar: some View {
-        HStack {
-            NavigationLink(destination: EditRewardPage(initReward: nil)) {
-                HStack(spacing: 10.0) {
-                    Image(systemName: "plus")
-                    Text("添加奖励")
-                }
-                    .font(Font.footnoteCustom.weight(.bold))
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 18)
-                    .background(
-                        Color.white
-                            .cornerRadius(20)
-                            .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
-                    )
-                    .foregroundColor(.b3)
+        let createBtn =
+            HStack(spacing: 10.0) {
+                Image(systemName: "plus")
+                Text("添加奖励")
             }
+                .font(Font.footnoteCustom.weight(.bold))
+                .padding(.vertical, 10)
+                .padding(.horizontal, 18)
+                .background(
+                    Color.white
+                        .cornerRadius(20)
+                        .shadow(color: Color.darkShadow, radius: 10, x: 0, y: 2)
+                )
+                .foregroundColor(.b3)
+
+        return HStack {
+            
+            canCreateGoal ? NavigationLink(destination: EditRewardPage(initReward: nil)) {
+                createBtn
+            } : nil
+            !canCreateGoal ? Button(action: { isShowPurchase.toggle() }) {
+                createBtn
+            } : nil
             Spacer()
             RewardFilter(filterType: $filterType)
         }
         .padding(.horizontal, 25)
+    }
+
+    var goalLimitAlert: Alert {
+        let confirmButton = Alert.Button.default(Text("购买 Pro 版")) {
+            gs.isShowPayPage = true
+        }
+        return Alert(
+            title: Text("奖励数量达到上限"),
+            message: Text(REWARD_LIMIT_ALERT),
+            primaryButton: confirmButton,
+            secondaryButton: Alert.Button.cancel(Text("以后再说"))
+        )
     }
 
     var body: some View {
@@ -134,6 +159,7 @@ struct RewardPage: View {
                 }
             )
         })
+        .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
         .navigationBarHidden(true)
     }
 }

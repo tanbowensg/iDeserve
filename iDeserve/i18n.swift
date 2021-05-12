@@ -117,3 +117,6 @@ let INIT_REWARD_2_TITLE = NSLocalizedString("一杯奶茶（示例）", comment:
 let INIT_REWARD_3_TITLE = NSLocalizedString("一台 Kindle（示例）", comment: "")
 let INIT_REWARD_4_TITLE = NSLocalizedString("打一个小时游戏（示例）", comment: "")
 let INIT_REWARD_5_TITLE = NSLocalizedString("新疆八日游（示例）", comment: "")
+
+let GOAL_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 3 个。你可以删除不需要的目标，或者购买 Pro 版解除限制。", comment: "")
+let REWARD_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 5 个。你可以删除不需要的奖励，或者购买 Pro 版解除限制。", comment: "")
