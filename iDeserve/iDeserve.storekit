@@ -1,7 +1,7 @@
 {
   "products" : [
     {
-      "displayPrice" : "6",
+      "displayPrice" : "25",
       "familyShareable" : false,
       "internalID" : "497EA68C",
       "localizations" : [
@@ -11,7 +11,7 @@
           "locale" : "en_US"
         },
         {
-          "description" : "这是高级版",
+          "description" : "目前在内测中，不会产生真实收费，请放心买",
           "displayName" : "Pro版本",
           "locale" : "zh_CN"
         }

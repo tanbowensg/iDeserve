@@ -39,34 +39,6 @@ struct PayPage: View {
             }
         }
     }
-    
-    var card: some View {
-        ZStack(alignment: .bottomLeading) {
-            Image("rewardBg")
-                .resizable()
-                .cornerRadius(25)
-                .padding(.horizontal, 25)
-                .frame(width: UIScreen.main.bounds.size.width)
-            Image("headerNuts")
-                .scaleEffect(x: -1)
-                .padding(.horizontal, 25)
-                .frame(width: UIScreen.main.bounds.size.width)
-            VStack(alignment: .leading) {
-                Text("坚果计划 Pro")
-                    .font(.bodyCustom)
-                    .fontWeight(.bold)
-                Spacer()
-                Text("已开通")
-                    .font(.bodyCustom)
-                    .fontWeight(.bold)
-            }
-                .foregroundColor(.b3)
-                .padding(.vertical, 25)
-                .padding(.horizontal, 50)
-        }
-            .frame(height: UIScreen.main.bounds.size.width * 0.6)
-            .shadow(color: Color.lightShadow, radius: 10, x: 0, y: 2)
-    }
 
     func featureView(_ feature: Feature) -> some View {
         return VStack(alignment: .center, spacing: 20.0) {
@@ -91,7 +63,7 @@ struct PayPage: View {
                 .foregroundColor(.b4)
             Pager(
                 page: page,
-                data: [0, 1, 2],
+                data: [0, 1, 2, 3],
                 id: \.self,
                 content: { i in
                     featureView(FeatureList[i])
@@ -99,8 +71,6 @@ struct PayPage: View {
                 .frame(height: 175)
             dots
         }
-        .padding(.vertical, 25)
-//        .background(Color.g1.cornerRadius(25))
         .padding(.horizontal, 25)
     }
     
@@ -140,39 +110,33 @@ struct PayPage: View {
                     .font(Font.headlineCustom.weight(.bold))
                     .padding(25)
             }
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 16) {
-                    VStack(spacing: 16) {
-                        card
-                        features
+            VStack(spacing: 25) {
+                features
+                price
+                Button(action: {
+                    gs.iapHelper.buyProduct(productIdentifier: PRO_IDENTIFIER) { (success) in
+                        print("购买成功\(success)")
+                        self.presentationMode.wrappedValue.dismiss()
                     }
-                    .background(
-                        Color.g1
-                            .opacity(0.5)
-                            .cornerRadius(25)
-                            .padding(.horizontal, 25)
-                    )
-                    price
-                    Button(action: {
-                        gs.iapHelper.buyProduct(productIdentifier: PRO_IDENTIFIER) { (success) in
-                            print("购买成功\(success)")
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    }) {
-                        Text("立即购买坚果计划 Pro")
-                            .font(.body)
-                            .fontWeight(.bold)
-                            .padding(16)
-                            .padding(.horizontal, 25)
-                            .background(Color.customOrange)
-                            .foregroundColor(.white)
-                            .cornerRadius(50)
-                    }
-                    Spacer()
+                }) {
+                    Text("立即购买坚果计划 Pro")
+                        .font(.body)
+                        .fontWeight(.bold)
+                        .padding(16)
+                        .padding(.horizontal, 25)
+                        .background(Color.customOrange)
+                        .foregroundColor(.white)
+                        .cornerRadius(50)
                 }
+                Spacer()
             }
         }
-            .background(Color.appBg.ignoresSafeArea())
+            .background(
+                Image("headerBg")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.size.width)
+                    .ignoresSafeArea()
+            )
             .navigationBarHidden(true)
     }
 }
