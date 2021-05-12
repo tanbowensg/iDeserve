@@ -7,12 +7,23 @@
 
 import SwiftUI
 
+struct AlertItem: Identifiable {
+    var id = UUID()
+    var title: Text
+    var message: Text
+    var primaryButton: Alert.Button
+    var secondaryButton: Alert.Button
+}
+
 struct RecordList: View {
     @EnvironmentObject var gs: GlobalStore
+    @AppStorage(PRO_IDENTIFIER) var isPro = false
     var records: [Record]
 
     @State private var deletingRecord: Record? = nil
     @State private var isShowAlert = false
+    @State private var isShowPurchase = false
+    @State private var alertItem: AlertItem?
 
     var subtotal: some View {
         let sum = records.reduce(0) { (result, record) -> Int in
@@ -43,15 +54,33 @@ struct RecordList: View {
         .background(Color.transparent)
     }
     
-    var deleteAlert: Alert {
-        Alert(
-            title: Text("删除记录"),
-            message: Text("删除记录以后，坚果数量可以恢复，但是目标、任务和奖励的状态不会改变。确定要删除这条记录吗？"),
-            primaryButton: Alert.Button.default(Text("删除")) {
-                gs.recordStore.deleteRecord(deletingRecord!)
-                deletingRecord = nil
+    var deleteAlert: AlertItem {
+        return AlertItem(
+            title: Text("撤销记录"),
+            message: Text("撤销记录以后，坚果数量可以恢复，但目标、任务和奖励的状态不会改变。\n确定要撤销这条记录吗？"),
+            primaryButton: Alert.Button.destructive(Text("撤销")) {
+                if isPro {
+                    gs.recordStore.deleteRecord(deletingRecord!)
+                    deletingRecord = nil
+                    alertItem = nil
+                } else {
+                    print("没买")
+                    alertItem = buyProAlert
+                }
             },
             secondaryButton: Alert.Button.cancel(Text("取消"))
+        )
+    }
+
+    var buyProAlert: AlertItem {
+        let confirmButton = Alert.Button.default(Text("购买 Pro 版")) {
+            gs.isShowPayPage = true
+        }
+        return AlertItem(
+            title: Text("撤销记录"),
+            message: Text(DELETE_RECORD_ALERT),
+            primaryButton: confirmButton,
+            secondaryButton: Alert.Button.cancel(Text("以后再说"))
         )
     }
 
@@ -63,19 +92,18 @@ struct RecordList: View {
                         content: RecordItem(record: record),
                         height: 38,
                         onRightSwipe: {
-                            isShowAlert.toggle()
+                            alertItem = deleteAlert
                             deletingRecord = record
                         }
-                    )
-                    .alert(
-                        isPresented: $isShowAlert,
-                        content: { deleteAlert }
                     )
                 }
             }
             records.count > 0 ? subtotal : nil
         }
         .font(.subheadCustom)
+        .alert(item: $alertItem) { item in
+            Alert(title: item.title, message: item.message, primaryButton: item.primaryButton, secondaryButton: item.secondaryButton)
+        }
     }
 }
 

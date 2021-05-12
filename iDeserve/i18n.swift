@@ -120,3 +120,4 @@ let INIT_REWARD_5_TITLE = NSLocalizedString("新疆八日游（示例）", comme
 
 let GOAL_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 3 个。你可以删除不需要的目标，或者购买 Pro 版解除限制。", comment: "")
 let REWARD_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 5 个。你可以删除不需要的奖励，或者购买 Pro 版解除限制。", comment: "")
+let DELETE_RECORD_ALERT = NSLocalizedString("撤销记录是购买 Pro 版的功能。\n购买 Pro 版即可解锁撤销记录功能。", comment: "")
