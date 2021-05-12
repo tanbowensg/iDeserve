@@ -29,6 +29,7 @@ struct EditGoalPage: View {
         self.initGoal = initGoal
         if let existGoal = initGoal {
             _name = State(initialValue: existGoal.name ?? "")
+            _type = State(initialValue: GoalType(rawValue: existGoal.type!) ?? GoalType.study)
             _importance = State(initialValue: Importance(rawValue: Int(existGoal.importance)) ?? Importance.normal)
             _desc = State(initialValue: existGoal.desc ?? "")
             if let existTasks = existGoal.tasks {
