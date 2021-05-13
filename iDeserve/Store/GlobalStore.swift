@@ -11,6 +11,7 @@ import CoreData
 
 final class GlobalStore: ObservableObject {
     @Published var isShowPayPage = false
+    @Published var isShowMask = false
 
     var moc = CoreDataContainer.shared.context
     static var shared = GlobalStore()

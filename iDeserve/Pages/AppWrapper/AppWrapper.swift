@@ -28,11 +28,6 @@ struct AppWrapper: View {
             TabInfo(id: TabPages.record.rawValue, title: RECORD_LIST_TEXT, imageName: "records", isActive: currentTab == .record)
         ]
     }
-
-//    var currentTabName: String {
-//        let tab = tabs.first{ $0.id == currentTab.rawValue }!
-//        return tab.title
-//    }
     
     var tabContent: some View {
         VStack(spacing: 0.0){
@@ -57,22 +52,16 @@ struct AppWrapper: View {
 
     var body: some View {
         NavigationView {
-//                TabView {
-//                    MyDayPage().tabItem { TabIcon(tabInfo: tabs[0]) }
-//                    TaskPage().tabItem { TabIcon(tabInfo: tabs[1]) }
-//                    RewardPage().tabItem { TabIcon(tabInfo: tabs[2]) }
-//                    RecordPage().tabItem { TabIcon(tabInfo: tabs[3]) }
-//                }
-                TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
-                    tabContent
-                }
+            TabContainer(tabInfos: tabs, onTabChange: onTabChange) {
+                tabContent
+            }
         }
-        .onChange(of: gs.isShowPayPage, perform: { value in
-            isShowPayPage = value
-        })
-        .sheet(isPresented: $isShowPayPage, onDismiss: { gs.isShowPayPage = false }, content: {
-            PayPage()
-        })
+            .onChange(of: gs.isShowPayPage, perform: { value in
+                isShowPayPage = value
+            })
+            .sheet(isPresented: $isShowPayPage, onDismiss: { gs.isShowPayPage = false }, content: {
+                PayPage()
+            })
     }
 }
 

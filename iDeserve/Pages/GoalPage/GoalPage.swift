@@ -67,10 +67,8 @@ struct GoalPage: View {
             goal: goal,
             hideTasks: draggedGoal != nil,
             onLeftSwipe: {
-                withAnimation {
-                    isShowCompleteGoalView = true
-                    completingGoal = goal
-                }
+                isShowCompleteGoalView = true
+                completingGoal = goal
             },
             onRightSwipe: {
                 deletingGoal = goal
@@ -183,11 +181,11 @@ struct GoalPage: View {
             !canCreateGoal ? Button(action: { isShowPurchase.toggle() }) {
                 CreateButton().padding(25)
             } : nil
-            isShowCompleteGoalView || isShowHelp ? Color.popupMask.ignoresSafeArea() : nil
+            isShowCompleteGoalView || isShowHelp ? PopupMask() : nil
         }
         .ignoresSafeArea()
         .navigationBarHidden(true)
-        .popup(isPresented: $isShowCompleteGoalView, type: .default, closeOnTap: false, closeOnTapOutside: true) {
+        .popup(isPresented: $isShowCompleteGoalView, type: .default, animation: .default, closeOnTap: false, closeOnTapOutside: true) {
             CompleteGoalView(
                 goalReward: completingGoal?.goalReward,
                 onClose: {
@@ -205,6 +203,9 @@ struct GoalPage: View {
             HelpTextModal(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
         }
         .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
+        .onChange(of: isShowCompleteGoalView, perform: { value in
+            gs.isShowMask = value
+        })
     }
 }
 

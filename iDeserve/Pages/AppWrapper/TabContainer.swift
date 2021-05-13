@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct TabContainer<Content: View>: View {
+    @EnvironmentObject var gs: GlobalStore
     var content: Content
     var tabInfos: [TabInfo]
     var onTabChange: (_ id: String) -> Void
+
+    @State var isShowMask = false
 
     init(
         tabInfos: [TabInfo],
@@ -23,22 +26,26 @@ struct TabContainer<Content: View>: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0.0) {
             content
-            Spacer()
-            HStack(alignment: .top, spacing: 20.0) {
-                ForEach(tabInfos) {tab in
-                    TabIcon(tabInfo: tab)
-                        .onTapGesture {
-                            onTabChange(tab.id)
-                        }
+            ZStack {
+                HStack(alignment: .top, spacing: 20.0) {
+                    ForEach(tabInfos) {tab in
+                        TabIcon(tabInfo: tab)
+                            .onTapGesture {
+                                onTabChange(tab.id)
+                            }
+                    }
                 }
+                    .padding(.horizontal, 38.0)
+                isShowMask ? PopupMask() : nil
             }
-//                .padding(.top, 11)
-                .padding(.horizontal, 38.0)
                 .frame(height: 58)
+                .background(Color.appBg.ignoresSafeArea())
         }
-        .background(Color.appBg.ignoresSafeArea())
+        .onChange(of: gs.isShowMask, perform: { value in
+            isShowMask = value
+        })
     }
 }
 
