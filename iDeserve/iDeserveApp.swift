@@ -43,9 +43,6 @@ struct iDeserveApp: App {
                 case .active:
                     resetRepeatTaskStatus()
                     resetGoalPos()
-                case .background:
-//                    这是为了解决直接进奖励商店会崩溃的bug
-                    resetRewardPos()
                 default:
                     print(phase)
             }

@@ -25,9 +25,7 @@ struct RewardPage: View {
 
     static var rewardRequest: NSFetchRequest<Reward> {
         let request: NSFetchRequest<Reward> = Reward.fetchRequest()
-        request.sortDescriptors = [
-            NSSortDescriptor(keyPath: \Reward.pos, ascending: true)
-        ] 
+        request.sortDescriptors = []
         return request
    }
     
