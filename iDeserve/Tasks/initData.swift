@@ -76,15 +76,6 @@ func initReward () -> Void {
         desc: "",
         cover: nil
     )
-    GlobalStore.shared.rewardStore.createReward(
-        name: INIT_REWARD_1_TITLE,
-        type: .system,
-        value: 240,
-        isRepeat: false,
-        desc: "",
-        cover: nil,
-        isUnlockCalendar: true
-    )
 }
 
 func initGoal () -> Void {

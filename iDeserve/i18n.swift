@@ -112,7 +112,6 @@ let INIT_TASK_6_DESC = NSLocalizedString("奖励机制是坚果计划的特色�
 let INIT_TASK_7_TITLE = NSLocalizedString("完成一个目标", comment: "")
 let INIT_TASK_7_DESC = NSLocalizedString("任何时候你都可以完成目标，即使目标下的任务没有全部完成。\n\n目标的奖励和任务的奖励时分开计算的。完成目标时会根据你在这个目标的任务中已经获得坚果数量，计算出完成目标的奖励。\n\n现在就完成这个目标试试看吧！", comment: "")
 
-let INIT_REWARD_1_TITLE = NSLocalizedString("解锁松鼠日历", comment: "初始奖项：解锁松鼠日历")
 let INIT_REWARD_2_TITLE = NSLocalizedString("一杯奶茶（示例）", comment: "")
 let INIT_REWARD_3_TITLE = NSLocalizedString("一台 Kindle（示例）", comment: "")
 let INIT_REWARD_4_TITLE = NSLocalizedString("打一个小时游戏（示例）", comment: "")

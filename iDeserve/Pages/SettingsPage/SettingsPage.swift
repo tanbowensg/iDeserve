@@ -123,12 +123,6 @@ struct SettingsPage: View {
                             Text("现有坚果清零")
                         }
                         Button(action: {
-                            let defaults = UserDefaults.standard
-                            defaults.setValue(true, forKey: UNLOCK_CALENDAR)
-                        }) {
-                            Text("直接解锁松鼠日历")
-                        }
-                        Button(action: {
                             isShowTimePicker.toggle()
                         }) {
                             HStack {

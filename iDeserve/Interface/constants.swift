@@ -27,7 +27,6 @@ let MAX_GOAL = 3
 let MAX_REWARD = 6
 
 //userdefaults的key
-let UNLOCK_CALENDAR: String = "unlockCalendar"
 let HAS_INITED: String = "hasInited"
 let START_TIME_OF_DAY: String = "startTimeOfDay"
 let HAS_LANDED = "hasLanded"

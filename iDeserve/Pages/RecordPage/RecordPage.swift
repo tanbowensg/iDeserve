@@ -10,7 +10,6 @@ import CoreData
 
 struct RecordPage: View {
     @EnvironmentObject var gs: GlobalStore
-    @AppStorage(UNLOCK_CALENDAR) var unlockCalendar = false
     @FetchRequest(fetchRequest: recordRequest) var records: FetchedResults<Record>
     
     @State var chosenDate: Date? = nil
@@ -135,13 +134,10 @@ struct RecordPage: View {
                 .padding(.top, 30)
                 .padding(.trailing, 150)
                 .rotationEffect(.init(degrees: 30))
-            Group {
-                unlockCalendar ? recordsView() : nil
-//                !unlockCalendar ? HelpTextModal(title: "历史记录还没有解锁", text: "请先到奖励商店中，解锁松鼠日历。") : nil
-            }
-            .padding(.top, HEADER_HEIGHT - safeAreaHeight)
-            .animation(.easeInOut, value: currentMonth)
-            .navigationBarHidden(true)
+            recordsView()
+                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                .animation(.easeInOut, value: currentMonth)
+                .navigationBarHidden(true)
         }
         .frame(width: UIScreen.main.bounds.size.width)
     }
