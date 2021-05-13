@@ -203,9 +203,6 @@ struct GoalPage: View {
             HelpTextModal(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
         }
         .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
-        .onChange(of: isShowCompleteGoalView, perform: { value in
-            gs.isShowMask = value
-        })
     }
 }
 

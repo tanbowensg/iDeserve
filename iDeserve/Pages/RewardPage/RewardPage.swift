@@ -157,9 +157,9 @@ struct RewardPage: View {
                 }
             )
         })
-        .onChange(of: isShowRedeemAlert, perform: { value in
-            gs.isShowMask = value
-        })
+//        .onChange(of: isShowRedeemAlert, perform: { value in
+//            gs.isShowMask = value
+//        })
         .navigationBarHidden(true)
     }
 }

@@ -19,7 +19,6 @@ struct HelpTextModal: View {
         .frame(width: 240.0)
         .padding(25.0)
         .background(Color.white.cornerRadius(25).shadow(color: .darkShadow, radius: 20, x: 0, y: 0))
-        
     }
 }
 

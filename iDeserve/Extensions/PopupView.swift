@@ -8,7 +8,6 @@
 import SwiftUI
 
 extension View {
-
     public func popup<PopupContent: View>(
         isPresented: Binding<Bool>,
         type: Popup<PopupContent>.PopupType = .`default`,
@@ -216,7 +215,11 @@ public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
                     }
                     return AnyView(EmptyView())
                 }
-            ).overlay(sheet())
+            )
+            .overlay(sheet())
+            .onChange(of: isPresented, perform: { value in
+                GlobalStore.shared.isShowMask = value
+            })
     }
 
     /// This is the builder for the sheet content
