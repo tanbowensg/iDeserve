@@ -137,7 +137,7 @@ struct RecordPage: View {
                 .rotationEffect(.init(degrees: 30))
             Group {
                 unlockCalendar ? recordsView() : nil
-                !unlockCalendar ? HelpTextModal(title: "历史记录还没有解锁", text: "请先到奖励商店中，解锁松鼠日历。") : nil
+//                !unlockCalendar ? HelpTextModal(title: "历史记录还没有解锁", text: "请先到奖励商店中，解锁松鼠日历。") : nil
             }
             .padding(.top, HEADER_HEIGHT - safeAreaHeight)
             .animation(.easeInOut, value: currentMonth)

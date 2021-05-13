@@ -200,7 +200,7 @@ struct GoalPage: View {
             )
         }
         .popup(isPresented: $isShowHelp, type: .default, closeOnTap: false, closeOnTapOutside: true) {
-            HelpTextModal(title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
+            HelpTextModal(isShow: $isShowHelp, title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
         }
         .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
     }
