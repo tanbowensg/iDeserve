@@ -32,5 +32,10 @@ let START_TIME_OF_DAY: String = "startTimeOfDay"
 let HAS_LANDED = "hasLanded"
 let POINTS = "points"
 
+let FIRST_MYDAY = "firstMyDay"
+let FIRST_GOAL_LIST = "firstGoalList"
+let FIRST_REWARD_STORE = "firstRewardStore"
+let FIRST_RECORDS = "firstRecords"
+
 //内购项目的identiier
 let PRO_IDENTIFIER = "com.iDeserve.pro.forever"

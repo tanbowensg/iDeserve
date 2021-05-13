@@ -15,11 +15,11 @@ struct HelpTextModal: View {
     var body: some View {
         VStack(spacing: 25.0) {
             Text(title)
-                .font(.titleCustom)
+                .font(.bodyCustom)
                 .fontWeight(.bold)
                 .padding(.top, 25)
             Text(text)
-                .font(.bodyCustom)
+                .font(.subheadCustom)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 25.0)
                 .lineSpacing(8)

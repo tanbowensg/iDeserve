@@ -10,9 +10,11 @@ import CoreData
 
 struct MyDayPage: View {
     @EnvironmentObject var gs: GlobalStore
+    @AppStorage(FIRST_MYDAY) var isFirstVisitPage = false
     @State var offsetY: Double = 0
     @State var shouldOpenSheet = false
     @State var currentTask: Task?
+    @State var isShowLanding: Bool = false
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
     
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
@@ -129,15 +131,24 @@ struct MyDayPage: View {
                         }
                     }
                 }
+                isShowLanding ? PopupMask() : nil
             }
             //                用来修复第一次点开sheet没有内容的bug
-            currentTask == nil ? Text("") : nil
+            currentTask == nil ? Group{} : nil
         }
         .ignoresSafeArea()
+        .navigationBarHidden(true)
         .sheet(isPresented: $shouldOpenSheet, content: {
             MyDayCreateTaskSheet(task: currentTask)
         })
-        .navigationBarHidden(true)
+        .popup(isPresented: $isShowLanding, type: .default, closeOnTap: false, closeOnTapOutside: false, dismissCallback: { isFirstVisitPage = false }) {
+            HelpTextModal(isShow: $isShowLanding, title: "今日任务介绍", text: FIRST_MYDAY_TEXT)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isShowLanding = isFirstVisitPage
+            }
+        }
     }
 }
 

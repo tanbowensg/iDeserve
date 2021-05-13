@@ -17,10 +17,12 @@ enum AlertType: Int, CaseIterable {
 struct GoalPage: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var gs: GlobalStore
+    @AppStorage(FIRST_GOAL_LIST) var isFirstVisitPage = true
     
     @FetchRequest(fetchRequest: goalRequest) var goals: FetchedResults<Goal>
     
     @AppStorage(PRO_IDENTIFIER) var isPro = false
+    @State var isShowLanding: Bool = false
     @State private var draggedGoal: Goal?
     @State private var highlightIndex: Int? = nil
     @State private var isShowAlert = false
@@ -181,7 +183,7 @@ struct GoalPage: View {
             !canCreateGoal ? Button(action: { isShowPurchase.toggle() }) {
                 CreateButton().padding(25)
             } : nil
-            isShowCompleteGoalView || isShowHelp ? PopupMask() : nil
+            isShowCompleteGoalView || isShowHelp || isShowLanding ? PopupMask() : nil
         }
         .ignoresSafeArea()
         .navigationBarHidden(true)
@@ -201,6 +203,14 @@ struct GoalPage: View {
         }
         .popup(isPresented: $isShowHelp, type: .default, closeOnTap: false, closeOnTapOutside: true) {
             HelpTextModal(isShow: $isShowHelp, title: GOAL_RESULT_DESC_TITLE, text: GOAL_RESULT_DESC)
+        }
+        .popup(isPresented: $isShowLanding, type: .default, closeOnTap: false, closeOnTapOutside: false, dismissCallback: { isFirstVisitPage = false }) {
+            HelpTextModal(isShow: $isShowLanding, title: "目标列表介绍", text: FIRST_GOAL_LIST_TEXT)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isShowLanding = isFirstVisitPage
+            }
         }
         .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
     }

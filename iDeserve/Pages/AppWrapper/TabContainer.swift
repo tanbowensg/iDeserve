@@ -44,8 +44,13 @@ struct TabContainer<Content: View>: View {
                 .background(Color.appBg.ignoresSafeArea())
         }
         .onChange(of: gs.isShowMask, perform: { value in
+            print(gs.isShowMask)
             isShowMask = value
         })
+        .onAppear {
+            print(gs.isShowMask)
+            isShowMask = gs.isShowMask
+        }
     }
 }
 

@@ -202,7 +202,6 @@ public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
             .addTapIfNotTV(if: closeOnTapOutside) {
                 self.dispatchWorkHolder.work?.cancel()
                 self.isPresented = false
-                self.dismissCallback()
             }
             .background(
                 GeometryReader { proxy -> AnyView in
@@ -217,8 +216,14 @@ public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
                 }
             )
             .overlay(sheet())
+//            .onAppear {
+//                GlobalStore.shared.isShowMask = isPresented
+//            }
             .onChange(of: isPresented, perform: { value in
                 GlobalStore.shared.isShowMask = value
+                if value == false {
+                    self.dismissCallback()
+                }
             })
     }
 
@@ -233,7 +238,6 @@ public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
             // which would create a retain cycle with the work holder itself.
             dispatchWorkHolder.work = DispatchWorkItem(block: { [weak isPresentedRef] in
                 isPresentedRef?.value.wrappedValue = false
-                dismissCallback()
             })
             if isPresented, let work = dispatchWorkHolder.work {
                 DispatchQueue.main.asyncAfter(deadline: .now() + autohideIn, execute: work)
@@ -248,7 +252,6 @@ public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
                             .addTapIfNotTV(if: closeOnTap) {
                                 self.dispatchWorkHolder.work?.cancel()
                                 self.isPresented = false
-                                self.dismissCallback()
                             }
                             .background(
                                 GeometryReader { proxy -> AnyView in

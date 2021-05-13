@@ -15,9 +15,11 @@ struct RewardPage: View {
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: rewardRequest) var rewards: FetchedResults<Reward>
     @AppStorage(PRO_IDENTIFIER) var isPro = false
+    @AppStorage(FIRST_REWARD_STORE) var isFirstVisitPage = true
 
     @State var filterType: RewardFilterType = RewardFilterType.createAsc
     @State var isShowRedeemAlert: Bool = false
+    @State var isShowLanding: Bool = false
     @State var currentReward: Reward? = nil
     @State private var isShowPurchase = false
 
@@ -146,7 +148,7 @@ struct RewardPage: View {
             }
                 .padding(.top, HEADER_HEIGHT - safeAreaHeight)
             RewardPageHeader()
-            isShowRedeemAlert ? PopupMask() : nil
+            isShowRedeemAlert || isShowLanding ? PopupMask() : nil
         }
         .popup(isPresented: $isShowRedeemAlert, type: .default, closeOnTap: false, closeOnTapOutside: false, view: {
             RedeemRewardAlert(
@@ -157,9 +159,14 @@ struct RewardPage: View {
                 }
             )
         })
-//        .onChange(of: isShowRedeemAlert, perform: { value in
-//            gs.isShowMask = value
-//        })
+        .popup(isPresented: $isShowLanding, type: .default, closeOnTap: false, closeOnTapOutside: false, dismissCallback: { isFirstVisitPage = false }) {
+            HelpTextModal(isShow: $isShowLanding, title: "奖励商店介绍", text: FIRST_REWARD_STORE_TEXT)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isShowLanding = isFirstVisitPage
+            }
+        }
         .navigationBarHidden(true)
     }
 }

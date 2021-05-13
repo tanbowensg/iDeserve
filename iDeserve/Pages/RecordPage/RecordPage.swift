@@ -11,10 +11,12 @@ import CoreData
 struct RecordPage: View {
     @EnvironmentObject var gs: GlobalStore
     @FetchRequest(fetchRequest: recordRequest) var records: FetchedResults<Record>
+    @AppStorage(FIRST_RECORDS) var isFirstVisitPage = true
     
     @State var chosenDate: Date? = nil
     @State var currentMonth: Int = Calendar.current.dateComponents([.month], from: Date()).month!
     @State var currentYear: Int = Calendar.current.dateComponents([.year], from: Date()).year!
+    @State var isShowLanding: Bool = false
 
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
 
@@ -138,8 +140,17 @@ struct RecordPage: View {
                 .padding(.top, HEADER_HEIGHT - safeAreaHeight)
                 .animation(.easeInOut, value: currentMonth)
                 .navigationBarHidden(true)
+            isShowLanding ? PopupMask() : nil
         }
         .frame(width: UIScreen.main.bounds.size.width)
+        .popup(isPresented: $isShowLanding, type: .default, closeOnTap: false, closeOnTapOutside: false, dismissCallback: { isFirstVisitPage = false }) {
+            HelpTextModal(isShow: $isShowLanding, title: "历史记录介绍", text: FIRST_RECORDS_TEXT)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isShowLanding = isFirstVisitPage
+            }
+        }
     }
     
     func onMonthChange(_ nextYear: Int, _ nextMonth: Int) -> Void {

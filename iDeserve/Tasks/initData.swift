@@ -40,7 +40,16 @@ func initData () -> Void {
     }
     initReward()
     initGoal()
+    initUserDefaults()
     defaults.setValue(true, forKey: HAS_INITED)
+}
+
+func initUserDefaults () -> Void {
+    let defaults = UserDefaults.standard
+    defaults.set(true, forKey: FIRST_RECORDS)
+    defaults.set(true, forKey: FIRST_REWARD_STORE)
+    defaults.set(true, forKey: FIRST_MYDAY)
+    defaults.set(true, forKey: FIRST_GOAL_LIST)
 }
 
 func initReward () -> Void {

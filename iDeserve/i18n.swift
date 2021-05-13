@@ -9,7 +9,7 @@ import Foundation
 
 let MYDAY_TEXT = NSLocalizedString("今日任务", comment: "")
 let REWARD_STORE_TEXT = NSLocalizedString("奖励商店", comment: "")
-let GOAL_LIST_TEXT = NSLocalizedString("目标任务", comment: "")
+let GOAL_LIST_TEXT = NSLocalizedString("目标列表", comment: "")
 let RECORD_LIST_TEXT = NSLocalizedString("历史记录", comment: "")
 
 let TODAY_TASK_TEXT = NSLocalizedString("今天的任务", comment: "")
@@ -121,3 +121,8 @@ let GOAL_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 3 �
 let REWARD_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 5 个。你可以删除不需要的奖励，或者购买 Pro 版解除限制。", comment: "")
 let DELETE_RECORD_ALERT = NSLocalizedString("撤销记录是购买 Pro 版的功能。\n购买 Pro 版即可解锁撤销记录功能。", comment: "")
 let NO_ENOUGH_NUTS_ALERT = NSLocalizedString("你的坚果不够了，再攒一攒吧。或者你可以购买 Pro 版，允许透支坚果", comment: "")
+
+let FIRST_MYDAY_TEXT = NSLocalizedString("欢迎！我们已经为你准备了一些示例任务，帮助你上手。\n\n这是“今日任务”界面，展现的是你今天要做的事情。右滑可以完成任务。\n\n更多用法可以在设置页面中查看“App上手指南”。", comment: "")
+let FIRST_GOAL_LIST_TEXT = NSLocalizedString("“目标列表”页面展示了你所有的目标。我们已经为你创建了一些示例目标。\n\n目标里还可以创建任务。把目标拆分成一个个任务，可以更有效率地达成目标哦。\n\n完成任务或目标以后，就可以得到坚果奖励。", comment: "")
+let FIRST_REWARD_STORE_TEXT = NSLocalizedString("“奖励商店”页面展示了你设置的所有奖励。\n\n在这里你可以花费坚果，兑换你设置的奖励。\n\n如果你不清楚对于奖励需要设置多少坚果，可以参考设置中的“App上手指南”。", comment: "")
+let FIRST_RECORDS_TEXT = NSLocalizedString("“历史记录”页面展示了你之前获取和花费坚果的记录。\n\n现在日历是一片空白，因为你还没有完成过任务。赶紧去完成任务吧！", comment: "")
