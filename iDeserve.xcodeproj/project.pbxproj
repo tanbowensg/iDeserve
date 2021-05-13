@@ -10,7 +10,6 @@
 		D0036DC8252B0B5900E4005B /* CreateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DC7252B0B5900E4005B /* CreateButton.swift */; };
 		D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */; };
 		D0036DD5252C56CD00E4005B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DD4252C56CD00E4005B /* Color.swift */; };
-		D0036E0A252C840D00E4005B /* MyPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036E09252C840D00E4005B /* MyPopup.swift */; };
 		D007CFB525873512008CA76D /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
 		D00CB07B2588B84800460D06 /* MyDayCreateTaskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */; };
 		D00CB089258A2FF900460D06 /* filterMyDayTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */; };
@@ -182,7 +181,6 @@
 		D0036DC7252B0B5900E4005B /* CreateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateButton.swift; sourceTree = "<group>"; };
 		D0036DCC252B0EDB00E4005B /* EditTaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPage.swift; sourceTree = "<group>"; };
 		D0036DD4252C56CD00E4005B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		D0036E09252C840D00E4005B /* MyPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPopup.swift; sourceTree = "<group>"; };
 		D007CFB425873512008CA76D /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		D00CB07A2588B84800460D06 /* MyDayCreateTaskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayCreateTaskSheet.swift; sourceTree = "<group>"; };
 		D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterMyDayTasks.swift; sourceTree = "<group>"; };
@@ -466,7 +464,6 @@
 				D06806AA2531A4CC008DE678 /* ImagePicker.swift */,
 				D0119B5C25EE367200F5E0F6 /* MySlider.swift */,
 				D07B6D3925B042E500087FC5 /* NutIcon.swift */,
-				D0036E09252C840D00E4005B /* MyPopup.swift */,
 				D07B6D4725B06C5400087FC5 /* ProgressBar.swift */,
 				D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */,
 				D0F3AFFD25636A36008B6EBB /* TaskItem.swift */,
@@ -957,7 +954,6 @@
 				D0F3B0312563D3E3008B6EBB /* demo.swift in Sources */,
 				D04BB01F252AC8330088912A /* AppWrapper.swift in Sources */,
 				D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */,
-				D0036E0A252C840D00E4005B /* MyPopup.swift in Sources */,
 				D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */,
 				D07242FE25A1CA4400DCB674 /* AppHeader.swift in Sources */,
 				D07B6D3A25B042E500087FC5 /* NutIcon.swift in Sources */,

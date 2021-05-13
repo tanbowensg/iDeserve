@@ -32,6 +32,7 @@ struct SettingsPage: View {
                 Text("确认")
             }
             .padding(16.0)
+
             Picker("一天的开始时间", selection: $startTimeOfDay) {
                 ForEach(0...23, id: \.self) {i in
                     Text("\(i):00").tag(i)
@@ -42,6 +43,7 @@ struct SettingsPage: View {
                 startTimeOfDay = startTimeOfDay
             }
         }
+        .background(Color.white)
     }
     
     var card: some View {
@@ -154,9 +156,11 @@ struct SettingsPage: View {
                 }
                 .listStyle(GroupedListStyle())
             }
-            MyPopup(isVisible: $isShowTimePicker, content: timePicker)
         }
         .navigationBarHidden(true)
+        .popup(isPresented: $isShowTimePicker, type: .toast, position: .bottom, closeOnTap: false, closeOnTapOutside: false) {
+            timePicker
+        }
         .onAppear {
             GlobalStore.shared.iapHelper.requestProducts { (success, products) in
                 print(success)

@@ -146,7 +146,7 @@ struct RewardPage: View {
             }
                 .padding(.top, HEADER_HEIGHT - safeAreaHeight)
             RewardPageHeader()
-            isShowRedeemAlert ? Color.popupMask.ignoresSafeArea() : nil
+            isShowRedeemAlert ? PopupMask() : nil
         }
         .popup(isPresented: $isShowRedeemAlert, type: .default, closeOnTap: false, closeOnTapOutside: false, view: {
             RedeemRewardAlert(
@@ -156,6 +156,9 @@ struct RewardPage: View {
                     gs.rewardStore.redeemReward(currentReward!)
                 }
             )
+        })
+        .onChange(of: isShowRedeemAlert, perform: { value in
+            gs.isShowMask = value
         })
         .navigationBarHidden(true)
     }

@@ -159,7 +159,7 @@ struct EditRewardPage: View {
                 .padding(.horizontal, 25.0)
                 .navigationBarHidden(true)
             }
-            isShowTypePicker || isShowHelp ? Color.popupMask.ignoresSafeArea() : nil
+            isShowTypePicker || isShowHelp ? PopupMask() : nil
         }
         .popup(
             isPresented: $isShowTypePicker,

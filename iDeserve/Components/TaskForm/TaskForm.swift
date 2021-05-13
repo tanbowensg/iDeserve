@@ -296,7 +296,7 @@ struct TaskForm: View {
             .onTapGesture {
                 dismissKeyboard()
             }
-            isShowDatePicker ? Color.popupMask : nil
+            isShowDatePicker ? PopupMask() : nil
         }
         .popup(isPresented: $isShowDatePicker, type: .floater(verticalPadding: 0), position: .bottom, animation: .easeOut(duration: 0.3), closeOnTap: false, closeOnTapOutside: true, view: { datePicker })
         .onAppear(perform: onAppear)
