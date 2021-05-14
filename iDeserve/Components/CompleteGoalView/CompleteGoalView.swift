@@ -17,8 +17,14 @@ struct CompleteGoalView: View {
 
     var mainView: some View {
         VStack(spacing: 6.0) {
-            HStack {
-                Spacer()
+            ZStack(alignment: .trailing) {
+                HStack {
+                    Spacer()
+                    Text("完成目标")
+                        .font(.headlineCustom)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
                 Image(systemName: "questionmark.circle")
                     .resizable()
                     .scaledToFit()
