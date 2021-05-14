@@ -24,7 +24,8 @@ func genTaskState(
     ts.repeatFrequency = repeatFrequency
     ts.repeatTimes = repeatTimes
     ts.hasDdl = hasDdl
-    ts.ddl = ddl
+//    50天以后
+    ts.ddl = ddl.addingTimeInterval(60 * 60 * 24 * 60)
     ts.starred = starred
     ts.timeCost = timeCost
     ts.difficulty = difficulty
@@ -89,20 +90,17 @@ func initReward () -> Void {
 
 func initGoal () -> Void {
     let tasks = [
-        genTaskState(name: INIT_TASK_0_TITLE, desc: INIT_TASK_0_DESC, starred: true),
-        genTaskState(name: INIT_TASK_1_TITLE, desc: INIT_TASK_1_DESC, starred: true),
-        genTaskState(name: INIT_TASK_2_TITLE, desc: INIT_TASK_2_DESC, starred: true),
-        genTaskState(name: INIT_TASK_3_TITLE, desc: INIT_TASK_3_DESC, hasDdl: true),
-        genTaskState(name: INIT_TASK_4_TITLE, desc: INIT_TASK_4_DESC, repeatFrequency: .unlimited, repeatTimes: 5),
-        genTaskState(name: INIT_TASK_5_TITLE, desc: INIT_TASK_5_DESC, starred: true),
-        genTaskState(name: INIT_TASK_6_TITLE, desc: INIT_TASK_6_DESC, starred: true),
-        genTaskState(name: INIT_TASK_7_TITLE, desc: INIT_TASK_7_DESC, starred: true)
+        genTaskState(name: INIT_TASK_0_TITLE, repeatFrequency: .daily, repeatTimes: 30, timeCost: 1, difficulty: .medium),
+        genTaskState(name: INIT_TASK_1_TITLE, repeatFrequency: .weekly, repeatTimes: 5, hasDdl: true, timeCost: 2, difficulty: .hard),
+        genTaskState(name: INIT_TASK_2_TITLE, repeatFrequency: .weekly, repeatTimes: 5, hasDdl: true, timeCost: 2, difficulty: .hard),
+        genTaskState(name: INIT_TASK_3_TITLE, repeatFrequency: .twoDays, repeatTimes: 10, timeCost: 1, difficulty: .hard),
+        genTaskState(name: INIT_TASK_4_TITLE, repeatFrequency: .daily, repeatTimes: 20, timeCost: 1, difficulty: .easy),
     ]
     
     GlobalStore.shared.goalStore.createGoal(
         name: INIT_GOAL_TITLE,
-        type: .hobby,
-        importance: .normal,
+        type: .exam,
+        importance: .important,
         desc: "",
         tasks: tasks
     )

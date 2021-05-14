@@ -34,6 +34,7 @@ struct CompleteGoalView: View {
 
             Text(goalReward?.name ?? "")
                 .font(.headlineCustom)
+                .fontWeight(.bold)
 
             if isShowResult {
                 VStack(spacing: 6.0) {

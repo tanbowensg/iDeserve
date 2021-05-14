@@ -96,7 +96,7 @@ struct SettingsPage: View {
                     Section(header: Text("App 基本信息")) {
                         NavigationLink(destination: HelpPage()) {
                             HStack {
-                                Text("App 介绍和帮助")
+                                Text("App 上手指南")
                             }
                         }
                         Button (action: {
