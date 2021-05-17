@@ -23,6 +23,7 @@ struct TaskForm: View {
 
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == false", "done")
         request.sortDescriptors = [
             NSSortDescriptor(keyPath: \Goal.pos, ascending: true)
         ]
