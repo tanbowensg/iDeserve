@@ -20,6 +20,8 @@ struct TaskForm: View {
     @State private var speed = 5
     @State var isShowRepeatPicker = false
     @State var isShowDatePicker = false
+    @State var isShowSaveAlert = false
+    @State var isModified = false
 
     static var goalRequest: NSFetchRequest<Goal> {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
@@ -48,7 +50,13 @@ struct TaskForm: View {
     var header: some View {
         Group {
             HStack {
-                Button(action: { onTapClose() }) {
+                Button(action: {
+                    if isModified {
+                        isShowSaveAlert = true
+                    } else {
+                        onTapClose()
+                    }
+                }) {
                     Image(systemName: "xmark")
                         .font(Font.headlineCustom.weight(.bold))
                         .foregroundColor(.b2)
@@ -273,6 +281,18 @@ struct TaskForm: View {
             .padding(.top, 10.0)
     }
 
+    var saveAlert: Alert {
+        let confirmButton = Alert.Button.default(Text("离开")) {
+            onTapClose()
+        }
+        return Alert(
+            title: Text("提示"),
+            message: Text("修改尚未保存，确定要离开页面吗？"),
+            primaryButton: confirmButton,
+            secondaryButton: Alert.Button.cancel(Text("取消"))
+        )
+    }
+
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0.0) {
@@ -299,8 +319,12 @@ struct TaskForm: View {
             }
             isShowDatePicker ? PopupMask() : nil
         }
+        .alert(isPresented: $isShowSaveAlert, content: { saveAlert })
         .popup(isPresented: $isShowDatePicker, type: .floater(verticalPadding: 0), position: .bottom, animation: .easeOut(duration: 0.3), closeOnTap: false, closeOnTapOutside: true, view: { datePicker })
         .onAppear(perform: onAppear)
+        .onChange(of: taskState, perform: { _ in
+            isModified = true
+        })
     }
 }
 
