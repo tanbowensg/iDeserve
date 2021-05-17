@@ -88,7 +88,6 @@
 		D07B6D3A25B042E500087FC5 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
 		D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D4725B06C5400087FC5 /* ProgressBar.swift */; };
 		D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088864F26365D5D005624D1 /* NutsAndSettings.swift */; };
-		D088866826385322005624D1 /* RecordPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088866726385322005624D1 /* RecordPageHeader.swift */; };
 		D088869F263A82A8005624D1 /* RewardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088869E263A82A8005624D1 /* RewardFilter.swift */; };
 		D08886A5263B1363005624D1 /* RewardPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886A4263B1363005624D1 /* RewardPageHeader.swift */; };
 		D08886B2263C0271005624D1 /* roundBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF70F25AEBAF000F8152D /* roundBorder.swift */; };
@@ -254,7 +253,6 @@
 		D07B6D3925B042E500087FC5 /* NutIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutIcon.swift; sourceTree = "<group>"; };
 		D07B6D4725B06C5400087FC5 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D088864F26365D5D005624D1 /* NutsAndSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutsAndSettings.swift; sourceTree = "<group>"; };
-		D088866726385322005624D1 /* RecordPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPageHeader.swift; sourceTree = "<group>"; };
 		D088869E263A82A8005624D1 /* RewardFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardFilter.swift; sourceTree = "<group>"; };
 		D08886A4263B1363005624D1 /* RewardPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPageHeader.swift; sourceTree = "<group>"; };
 		D089889D25466ECC0032BA96 /* PointsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsStore.swift; sourceTree = "<group>"; };
@@ -566,7 +564,6 @@
 				D072432A25A30B4400DCB674 /* Calendar */,
 				D03B57CB253D8B4900DC107F /* RecordPage.swift */,
 				D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */,
-				D088866726385322005624D1 /* RecordPageHeader.swift */,
 			);
 			path = RecordPage;
 			sourceTree = "<group>";
@@ -891,7 +888,6 @@
 				D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */,
 				D0D23CD4257882A700AAFE27 /* Font.swift in Sources */,
 				D030B6B2257E0A8900967015 /* resetPos.swift in Sources */,
-				D088866826385322005624D1 /* RecordPageHeader.swift in Sources */,
 				D072434A25A431C000DCB674 /* utils.swift in Sources */,
 				D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */,
 				D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */,

@@ -137,19 +137,20 @@ struct RewardPage: View {
             Image("headerBg")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.size.width)
-                .ignoresSafeArea()
-            ScrollView(showsIndicators: false) {
-                VStack(alignment: .trailing, spacing: 25) {
-                    toolBar
-                    rewardGridLayout(rewards: availableRewards)
-                    soldoutRewards.count > 0 ? soldoutRewardsView : nil
+            VStack(spacing: 0.0) {
+                RewardPageHeader()
+                toolBar
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .trailing, spacing: 25) {
+                        rewardGridLayout(rewards: availableRewards)
+                        soldoutRewards.count > 0 ? soldoutRewardsView : nil
+                    }
+                    .padding(.top, 30)
                 }
-                .padding(.top, 30)
             }
-                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
-            RewardPageHeader()
             isShowRedeemAlert || isShowLanding ? PopupMask() : nil
         }
+        .ignoresSafeArea()
         .popup(isPresented: $isShowRedeemAlert, type: .default, closeOnTap: false, closeOnTapOutside: false, view: {
             RedeemRewardAlert(
                 reward: currentReward,

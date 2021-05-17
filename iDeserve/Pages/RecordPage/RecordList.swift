@@ -49,7 +49,7 @@ struct RecordList: View {
                 NutIcon(value: sum)
             }
             .padding(.horizontal, 25)
-            .padding(.vertical, 20)
+            .padding(.vertical, 16)
         }
         .background(Color.transparent)
     }

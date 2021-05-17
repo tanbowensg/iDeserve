@@ -11,29 +11,22 @@ struct RewardPageHeader: View {
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
 
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            Image("headerCover")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.main.bounds.size.width)
-            Image("headerLeaf")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.main.bounds.size.width)
-            Image("headerNuts")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.main.bounds.size.width)
+        ZStack(alignment: .bottomTrailing) {
             Image("rabbit")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 116, height: 116)
-                .offset(x: UIScreen.main.bounds.size.width - 87, y: HEADER_HEIGHT - 116)
-            NutsAndSettings()
-                .padding(.top, 10 + safeAreaHeight)
-                .padding(.horizontal, 25)
+                .offset(x: 25, y: -10)
+            ZStack(alignment: .topLeading) {
+                Image("headerLeaf")
+                    .scaledToFit()
+                Image("headerNuts")
+                    .scaledToFit()
+                NutsAndSettings()
+                    .padding(.top, 10 + safeAreaHeight)
+                    .padding(.horizontal, 25)
+            }
         }
-        .ignoresSafeArea()
         .frame(width: UIScreen.main.bounds.size.width)
     }
 }

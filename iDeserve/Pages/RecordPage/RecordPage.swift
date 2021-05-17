@@ -110,39 +110,45 @@ struct RecordPage: View {
                 )
             }
             .frame(width: CalendarWidth)
-            .padding(25)
-            .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
-            .padding(.bottom, 25)
+            .padding(.horizontal,25)
+            .padding(.vertical, 16)
+            .background(Color.appBg.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
+            .padding(.bottom, 16)
+            .padding(.horizontal, 25)
     
             ExDivider()
             RecordList(records: chosenDateRecords)
                 .animation(.none)
         }
-        .padding(.horizontal, 25)
     }
 
     var body: some View {
         ZStack(alignment: .top) {
+            Image("headerBg")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.size.width)
+                .ignoresSafeArea()
+            Image("headerLeaf")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.size.width, height: 160)
+                .ignoresSafeArea()
             NutsAndSettings()
                 .padding(.top, 10)
                 .padding(.horizontal, 25)
                 .frame(width: UIScreen.main.bounds.size.width)
                 .zIndex(100)
-            RecordPageHeader()
             Image("bear")
                 .resizable()
-                .scaledToFit()
-                .frame(width: 293.0, height: 380.0)
-                .padding(.top, 30)
-                .padding(.trailing, 150)
+                .frame(width: 240.0, height: 260.0)
+                .padding(.top, 70)
+                .padding(.trailing, 135)
                 .rotationEffect(.init(degrees: 30))
             recordsView()
-                .padding(.top, HEADER_HEIGHT - safeAreaHeight)
+                .padding(.top, UIScreen.main.bounds.size.width * 0.35)
                 .animation(.easeInOut, value: currentMonth)
                 .navigationBarHidden(true)
             isShowLanding ? PopupMask() : nil
         }
-        .frame(width: UIScreen.main.bounds.size.width)
         .popup(isPresented: $isShowLanding, type: .default, closeOnTap: false, closeOnTapOutside: false, dismissCallback: { isFirstVisitPage = false }) {
             HelpTextModal(isShow: $isShowLanding, title: "历史记录介绍", text: FIRST_RECORDS_TEXT)
         }

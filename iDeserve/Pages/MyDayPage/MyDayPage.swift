@@ -118,7 +118,6 @@ struct MyDayPage: View {
                 Image("headerBg")
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width)
-                    .ignoresSafeArea()
                 VStack(spacing: 0.0){
                     AppHeader(title: "今日任务", image: "squirrel")
                     CustomScrollView(showsIndicators: false) {

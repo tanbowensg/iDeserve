@@ -168,7 +168,6 @@ struct GoalPage: View {
                 Image("headerBg")
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width)
-                    .ignoresSafeArea()
                 VStack(spacing: 0.0) {
                     AppHeader(title: "目标列表", image: "fox")
                     ZStack(alignment: .top) {
