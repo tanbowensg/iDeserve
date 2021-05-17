@@ -50,6 +50,11 @@ final class TaskStore: ObservableObject {
         targetTask.difficulty = Int16(taskState.difficulty.rawValue)
         targetTask.timeCost = Int16(taskState.timeCost)
         
+        // 如果修改了一个已完成的任务的重复次数，那就要重制任务完成状态
+        if taskState.done && taskState.completeTimes < taskState.repeatTimes {
+            targetTask.done = false
+        }
+        
         if targetTask.parent?.id != taskState.goalId && taskState.goalId != nil {
             updateTaskGoal(task: targetTask, goalId: taskState.goalId!)
         }
