@@ -181,6 +181,7 @@ struct GoalPage: View {
             } : nil
             !canCreateGoal ? Button(action: { isShowPurchase.toggle() }) {
                 CreateButton().padding(25)
+                    .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
             } : nil
             isShowCompleteGoalView || isShowHelp || isShowLanding ? PopupMask() : nil
         }
@@ -211,7 +212,6 @@ struct GoalPage: View {
                 isShowLanding = isFirstVisitPage
             }
         }
-        .alert(isPresented: $isShowPurchase, content: { goalLimitAlert })
     }
 }
 
