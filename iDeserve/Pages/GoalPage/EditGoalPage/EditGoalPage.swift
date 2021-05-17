@@ -17,13 +17,14 @@ struct EditGoalPage: View {
     @State var name: String = ""
     @State var type: GoalType = GoalType.study
     @State var importance: Importance = Importance.normal
-    @State var desc = ""
     @State var tasks: [TaskState] = []
 
     @State var taskCache: TaskState = TaskState(nil)
     
     @State var isShowTypePicker = false
     @State var isShowTaskSheet = false
+    @State var isShowSaveAlert = false
+    @State var isModified = false
 
     init (initGoal: Goal?) {
         self.initGoal = initGoal
@@ -31,7 +32,6 @@ struct EditGoalPage: View {
             _name = State(initialValue: existGoal.name ?? "")
             _type = State(initialValue: GoalType(rawValue: existGoal.type!) ?? GoalType.study)
             _importance = State(initialValue: Importance(rawValue: Int(existGoal.importance)) ?? Importance.normal)
-            _desc = State(initialValue: existGoal.desc ?? "")
             if let existTasks = existGoal.tasks {
                 let tasksArray = existTasks.allObjects as! [Task]
                 let taskStates = tasksArray
@@ -53,7 +53,11 @@ struct EditGoalPage: View {
             HStack {
                 Button(action: {
                     dismissKeyboard()
-                    self.presentationMode.wrappedValue.dismiss()
+                    if isModified {
+                        isShowSaveAlert = true
+                    } else {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 }) {
                     Image(systemName: isCreate ? "chevron.left" : "xmark")
                         .foregroundColor(.b2)
@@ -204,6 +208,18 @@ struct EditGoalPage: View {
         }
     }
 
+    var saveAlert: Alert {
+        let confirmButton = Alert.Button.default(Text("离开")) {
+            self.presentationMode.wrappedValue.dismiss()
+        }
+        return Alert(
+            title: Text("提示"),
+            message: Text("修改尚未保存，确定要离开页面吗？"),
+            primaryButton: confirmButton,
+            secondaryButton: Alert.Button.cancel(Text("取消"))
+        )
+    }
+
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0.0) {
@@ -226,6 +242,7 @@ struct EditGoalPage: View {
             }
             isShowTypePicker ? PopupMask() : nil
         }
+        .alert(isPresented: $isShowSaveAlert, content: { saveAlert })
         .popup(
             isPresented: $isShowTypePicker,
             type: .floater(verticalPadding: 0),
@@ -239,6 +256,18 @@ struct EditGoalPage: View {
             dismissKeyboard()
         }
         .navigationBarHidden(true)
+        .onChange(of: name, perform: { _ in
+            isModified = true
+        })
+        .onChange(of: type, perform: { _ in
+            isModified = true
+        })
+        .onChange(of: importance, perform: { _ in
+            isModified = true
+        })
+        .onChange(of: taskCache, perform: { _ in
+            isModified = true
+        })
     }
     
     func addTask () {
@@ -291,7 +320,7 @@ struct EditGoalPage: View {
                 name: name,
                 type: type,
                 importance: importance,
-                desc: desc,
+                desc: "",
                 tasks: tasks
             )
         } else {
@@ -300,7 +329,7 @@ struct EditGoalPage: View {
                 name: name,
                 type: type,
                 importance: importance,
-                desc: desc,
+                desc: "",
                 tasks: tasks
             )
         }
