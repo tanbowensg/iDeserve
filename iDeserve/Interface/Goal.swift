@@ -57,7 +57,11 @@ extension Goal {
     }
     
     var _tasks: Set<Task> {
-        tasks as! Set<Task>
+        if tasks == nil {
+            return Set<Task>()
+        } else {
+            return tasks as! Set<Task>
+        }
     }
 
     var goalReward: GoalReward {
@@ -76,7 +80,7 @@ extension Goal {
         })
         
         return GoalReward(
-            name: self.name!,
+            name: self.name ?? "",
             importance: Importance(rawValue: Int(self.importance)) ?? Importance.normal,
             basicRewardBase: self.gotValue,
             allRpeatRewardBase: allRpeatRewardBase,
