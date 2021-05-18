@@ -24,6 +24,7 @@ let FeatureList = [
 struct PayPage: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var gs: GlobalStore
+    @AppStorage(PRO_IDENTIFIER) var isPro = false
     
     @StateObject var page: Page = .first()
     
@@ -119,7 +120,7 @@ struct PayPage: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }) {
-                    Text("立即购买坚果计划 Pro")
+                    Text(isPro ? "已购买" : "立即购买坚果计划 Pro")
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(16)
@@ -128,6 +129,7 @@ struct PayPage: View {
                         .foregroundColor(.white)
                         .cornerRadius(50)
                 }
+                    .disabled(isPro)
                 Spacer()
             }
         }
