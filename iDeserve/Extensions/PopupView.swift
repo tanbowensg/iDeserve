@@ -216,12 +216,11 @@ public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
                 }
             )
             .overlay(sheet())
-//            .onAppear {
-//                GlobalStore.shared.isShowMask = isPresented
-//            }
             .onChange(of: isPresented, perform: { value in
-                GlobalStore.shared.isShowMask = value
-                if value == false {
+                if value {
+                    GlobalStore.shared.currentMaskNum += 1
+                } else {
+                    GlobalStore.shared.currentMaskNum -= 1
                     self.dismissCallback()
                 }
             })
