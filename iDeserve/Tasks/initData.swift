@@ -57,7 +57,7 @@ func initReward () -> Void {
     GlobalStore.shared.rewardStore.createReward(
         name: INIT_REWARD_2_TITLE,
         type: .drink,
-        value: 30,
+        value: 40,
         isRepeat: true,
         desc: "",
         cover: nil
