@@ -31,6 +31,7 @@ struct GoalPage: View {
     @State private var isShowPurchase = false
     @State private var completingGoal: Goal?
     @State private var deletingGoal: Goal?
+    @State var confettiTrigger = 0
 
     let padding: CGFloat = GOAL_ROW_PADDING
 
@@ -164,7 +165,7 @@ struct GoalPage: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            ZStack(alignment: .top) {
+            ZStack(alignment: .center) {
                 Image("headerBg")
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width)
@@ -175,6 +176,7 @@ struct GoalPage: View {
                         highlightIndex != nil ? reorderDivider : nil
                     }
                 }
+                Confetti(counter: $confettiTrigger)
             }
             canCreateGoal ? NavigationLink(destination: EditGoalPage(initGoal: nil)) {
                 CreateButton().padding(25)
@@ -189,12 +191,14 @@ struct GoalPage: View {
         .navigationBarHidden(true)
         .popup(isPresented: $isShowCompleteGoalView, type: .default, animation: .default, closeOnTap: false, closeOnTapOutside: true) {
             CompleteGoalView(
+                isShow: $isShowCompleteGoalView,
                 goalReward: completingGoal?.goalReward,
-                onClose: {
+                onConfirm: {
                     if let _goal = completingGoal {
                         withAnimation {
                             gs.goalStore.completeGoal(_goal)
                             isShowCompleteGoalView = false
+                            confettiTrigger += 1
                         }
                     }
                 },
