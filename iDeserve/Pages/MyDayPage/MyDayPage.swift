@@ -103,15 +103,20 @@ struct MyDayPage: View {
     }
     
     var emptyState: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 25) {
             Spacer()
+            Image("cabin")
+                .resizable()
+                .frame(width: 200, height: 200)
             Text("今天没有要做的事情！\n去奖励商店里好好犒赏自己吧！")
+                .font(.bodyCustom)
+                .foregroundColor(.b3)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 25)
                 .frame(maxWidth: .infinity)
-                .lineSpacing(/*@START_MENU_TOKEN@*/8.0/*@END_MENU_TOKEN@*/)
+                .lineSpacing(8)
             Spacer()
         }
+        .padding(.top, 60)
     }
     
     var body: some View {

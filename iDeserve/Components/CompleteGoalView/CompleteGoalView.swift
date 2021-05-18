@@ -78,7 +78,7 @@ struct CompleteGoalView: View {
             }
                 .padding(.horizontal, 25)
             
-            ExDivider().padding(.bottom, 10.0)
+            ExDivider().padding(.vertical, 10.0)
             
             Firework(onTap: { onConfirm() }, content: {
                 Text("完成！")
