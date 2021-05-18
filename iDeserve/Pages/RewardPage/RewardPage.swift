@@ -21,7 +21,8 @@ struct RewardPage: View {
     @State var isShowRedeemAlert: Bool = false
     @State var isShowLanding: Bool = false
     @State var currentReward: Reward? = nil
-    @State private var isShowPurchase = false
+    @State var isShowPurchase = false
+    @State var confettiTrigger = 0
 
     let safeAreaHeight: CGFloat = (UIApplication.shared.windows.first?.safeAreaInsets.top)!
 
@@ -133,7 +134,7 @@ struct RewardPage: View {
     }
 
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack(alignment: .center) {
             Image("headerBg")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.size.width)
@@ -149,6 +150,7 @@ struct RewardPage: View {
                 }
             }
             isShowRedeemAlert || isShowLanding ? PopupMask() : nil
+            Confetti(counter: $confettiTrigger)
         }
         .ignoresSafeArea()
         .popup(isPresented: $isShowRedeemAlert, type: .default, closeOnTap: false, closeOnTapOutside: false, view: {
@@ -156,7 +158,9 @@ struct RewardPage: View {
                 reward: currentReward,
                 isShow: $isShowRedeemAlert,
                 onConfirm: {
+                    confettiTrigger += 1
                     gs.rewardStore.redeemReward(currentReward!)
+                    print("出发")
                 }
             )
         })

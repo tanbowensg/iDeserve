@@ -126,6 +126,9 @@
 		D0D23CFB25788CD600AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0DCEFCA264A5746007F7F68 /* RedeemRewardAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */; };
 		D0DCF00D264CFEF4007F7F68 /* PopupMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCF00C264CFEF4007F7F68 /* PopupMask.swift */; };
+		D0DCF02C26538C06007F7F68 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D0DCF02B26538C06007F7F68 /* ConfettiSwiftUI */; };
+		D0DCF02D26538C06007F7F68 /* ConfettiSwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D0DCF02B26538C06007F7F68 /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D0DCF03326539049007F7F68 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCF03226539049007F7F68 /* Confetti.swift */; };
 		D0EE547C255908C80091302D /* GlobalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE547B255908C80091302D /* GlobalStore.swift */; };
 		D0EE548125591D1C0091302D /* GoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548025591D1C0091302D /* GoalStore.swift */; };
 		D0EE5486255944680091302D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE5485255944680091302D /* TaskStore.swift */; };
@@ -172,6 +175,17 @@
 				D07913412574F198007B9767 /* iDeserveWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0DCF02E26538C07007F7F68 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D0DCF02D26538C06007F7F68 /* ConfettiSwiftUI in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -279,6 +293,7 @@
 		D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W6.otf"; sourceTree = "<group>"; };
 		D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemRewardAlert.swift; sourceTree = "<group>"; };
 		D0DCF00C264CFEF4007F7F68 /* PopupMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMask.swift; sourceTree = "<group>"; };
+		D0DCF03226539049007F7F68 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		D0EE547B255908C80091302D /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
 		D0EE548025591D1C0091302D /* GoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStore.swift; sourceTree = "<group>"; };
 		D0EE5485255944680091302D /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
@@ -302,6 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DCF02C26538C06007F7F68 /* ConfettiSwiftUI in Frameworks */,
 				D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */,
 				D0119B5725EE340F00F5E0F6 /* Sliders in Frameworks */,
 			);
@@ -471,6 +487,7 @@
 				D08988B6254685C70032BA96 /* TaskForm */,
 				D03AF73025B0112B00F8152D /* WebView */,
 				D0DCF00C264CFEF4007F7F68 /* PopupMask.swift */,
+				D0DCF03226539049007F7F68 /* Confetti.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -700,6 +717,7 @@
 				D010265B2524241F00653A52 /* Frameworks */,
 				D010265C2524241F00653A52 /* Resources */,
 				D07913422574F198007B9767 /* Embed App Extensions */,
+				D0DCF02E26538C07007F7F68 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -709,6 +727,7 @@
 			packageProductDependencies = (
 				D0119B5625EE340F00F5E0F6 /* Sliders */,
 				D0B113EC262584AB00C93A59 /* SwiftUIPager */,
+				D0DCF02B26538C06007F7F68 /* ConfettiSwiftUI */,
 			);
 			productName = iDeserve;
 			productReference = D010265E2524241F00653A52 /* iDeserve.app */;
@@ -804,6 +823,7 @@
 			packageReferences = (
 				D0119B5525EE340F00F5E0F6 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 				D0B113EB262584AB00C93A59 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+				D0DCF02A26538C05007F7F68 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = D010265F2524241F00653A52 /* Products */;
 			projectDirPath = "";
@@ -906,6 +926,7 @@
 				D08988B2254685A60032BA96 /* TaskForm.swift in Sources */,
 				D03AF74225B01E2B00F8152D /* Loader.swift in Sources */,
 				D03B57C7253D471A00DC107F /* saveContext.swift in Sources */,
+				D0DCF03326539049007F7F68 /* Confetti.swift in Sources */,
 				D0036DD5252C56CD00E4005B /* Color.swift in Sources */,
 				D07913BF257768E9007B9767 /* TabContainer.swift in Sources */,
 				D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */,
@@ -1396,6 +1417,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		D0DCF02A26538C05007F7F68 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1408,6 +1437,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D0B113EB262584AB00C93A59 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
 			productName = SwiftUIPager;
+		};
+		D0DCF02B26538C06007F7F68 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0DCF02A26538C05007F7F68 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 
