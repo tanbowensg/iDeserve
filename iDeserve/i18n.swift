@@ -70,9 +70,9 @@ let DifficultyText: [Difficulty: String] = [
 ]
 
 let DifficultyDescText: [Difficulty: String] = [
-    .easy: NSLocalizedString("不费吹灰之力就能完成。不过，奖励也低。", comment: ""),
-    .medium: NSLocalizedString("跟平时学习工作差不多的难度，还能接受。", comment: ""),
-    .hard: NSLocalizedString("必须全力以赴才能完成。但奖励也很丰厚。", comment: "")
+    .easy: NSLocalizedString("不费吹灰之力就能完成。", comment: ""),
+    .medium: NSLocalizedString("跟平时学习工作差不多。", comment: ""),
+    .hard: NSLocalizedString("必须聚精会神、全力以赴。", comment: "")
 ]
 
 let ImportanceText: [Importance: String] = [
@@ -82,9 +82,9 @@ let ImportanceText: [Importance: String] = [
 ]
 
 let ImportanceDescText: [Importance: String] = [
-    .normal: NSLocalizedString("普通的目标。", comment: ""),
-    .important: NSLocalizedString("必须要完成。有额外奖励。", comment: ""),
-    .epic: NSLocalizedString("非完成不可，影响重大。有大量额外奖励。", comment: "")
+    .normal: NSLocalizedString("普通的目标，不完成也没关系。", comment: ""),
+    .important: NSLocalizedString("要尽力去完成。", comment: ""),
+    .epic: NSLocalizedString("非完成不可，影响重大。", comment: "")
 ]
 
 let GOAL_RESULT_DESC_TITLE = NSLocalizedString("目标结算说明", comment: "目标结算说明弹窗的标题")
