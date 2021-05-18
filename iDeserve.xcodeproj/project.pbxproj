@@ -39,7 +39,7 @@
 		D03AF71025AEBAF000F8152D /* roundBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF70F25AEBAF000F8152D /* roundBorder.swift */; };
 		D03AF72725AFECAD00F8152D /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF72625AFECAD00F8152D /* SettingsPage.swift */; };
 		D03AF73225B0113700F8152D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF73125B0113700F8152D /* WebView.swift */; };
-		D03AF73C25B01DEE00F8152D /* HelpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF73B25B01DEE00F8152D /* HelpPage.swift */; };
+		D03AF73C25B01DEE00F8152D /* WebPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF73B25B01DEE00F8152D /* WebPage.swift */; };
 		D03AF74225B01E2B00F8152D /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF74125B01E2B00F8152D /* Loader.swift */; };
 		D03AF74825B0283500F8152D /* MyWebview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF74725B0283500F8152D /* MyWebview.swift */; };
 		D03B57BE253D303A00DC107F /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
@@ -227,7 +227,7 @@
 		D03AF70F25AEBAF000F8152D /* roundBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundBorder.swift; sourceTree = "<group>"; };
 		D03AF72625AFECAD00F8152D /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		D03AF73125B0113700F8152D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		D03AF73B25B01DEE00F8152D /* HelpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPage.swift; sourceTree = "<group>"; };
+		D03AF73B25B01DEE00F8152D /* WebPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPage.swift; sourceTree = "<group>"; };
 		D03AF74125B01E2B00F8152D /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		D03AF74725B0283500F8152D /* MyWebview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWebview.swift; sourceTree = "<group>"; };
 		D03B57BD253D303A00DC107F /* iDeserve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDeserve.xcdatamodel; sourceTree = "<group>"; };
@@ -520,7 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				D03AF72625AFECAD00F8152D /* SettingsPage.swift */,
-				D03AF73B25B01DEE00F8152D /* HelpPage.swift */,
+				D03AF73B25B01DEE00F8152D /* WebPage.swift */,
 				D0B114282628236500C93A59 /* PayPage.swift */,
 			);
 			path = SettingsPage;
@@ -917,7 +917,7 @@
 				D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
-				D03AF73C25B01DEE00F8152D /* HelpPage.swift in Sources */,
+				D03AF73C25B01DEE00F8152D /* WebPage.swift in Sources */,
 				D0EE5486255944680091302D /* TaskStore.swift in Sources */,
 				D0036DCD252B0EDB00E4005B /* EditTaskPage.swift in Sources */,
 				D03C5D14255CE88400778EEE /* MyDayPage.swift in Sources */,

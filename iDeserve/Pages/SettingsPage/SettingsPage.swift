@@ -17,6 +17,8 @@ struct SettingsPage: View {
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
 
     @State var isShowTimePicker = false
+    let IntroUrl = "https://thoughts.teambition.com/share/605844ad2aee180046db20bd"
+    let ContactUrl = "https://thoughts.teambition.com/share/60a380f043b2b70046b09cd2"
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
@@ -94,10 +96,8 @@ struct SettingsPage: View {
                     .padding(.bottom, 25)
                 List {
                     Section(header: Text("App 基本信息")) {
-                        NavigationLink(destination: HelpPage()) {
-                            HStack {
-                                Text("App 上手指南")
-                            }
+                        NavigationLink(destination: WebPage(url: IntroUrl)) {
+                            Text("App 上手指南（推荐看）")
                         }
                         Button (action: {
     //                        UIApplication.shared.open(URL(string: "https://apps.apple.com/us/app/id1550900596?action=write-review")!)
@@ -105,9 +105,8 @@ struct SettingsPage: View {
                         }) {
                             Text("好评鼓励")
                         }
-                        Button (action: {
-                        }) {
-                            Text("联系我们")
+                        NavigationLink(destination: WebPage(url: ContactUrl)) {
+                            Text("反馈交流")
                         }
                     }
                     
