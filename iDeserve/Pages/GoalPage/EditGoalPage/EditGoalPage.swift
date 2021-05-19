@@ -24,6 +24,7 @@ struct EditGoalPage: View {
     @State var isShowTypePicker = false
     @State var isShowTaskSheet = false
     @State var isShowSaveAlert = false
+    @State var isShowImportanceHelper = false
     @State var isModified = false
 
     init (initGoal: Goal?) {
@@ -111,7 +112,11 @@ struct EditGoalPage: View {
 
     var goalImportance: some View {
         VStack(spacing: 0.0) {
-            FormItem(name: "重要性", rightContent: Text(""))
+            FormItem(
+                name: "重要性",
+                rightContent: Text(""),
+                onClickHelp: { isShowImportanceHelper = true }
+            )
             ImportancePicker(importance: $importance)
                 .padding(.bottom, 20.0)
             ExDivider()
@@ -202,9 +207,6 @@ struct EditGoalPage: View {
                 createTaskButton
                     .padding(.vertical, 20)
             }
-//            .padding(.vertical, 20)
-//            .padding(.horizontal, 25)
-//            .background(Color.white.cornerRadius(25).shadow(color: .lightShadow, radius: 20, x: 0, y: 0))
         }
     }
 
@@ -240,7 +242,7 @@ struct EditGoalPage: View {
                     }
                 }
             }
-            isShowTypePicker ? PopupMask() : nil
+            isShowTypePicker || isShowImportanceHelper ? PopupMask() : nil
         }
         .alert(isPresented: $isShowSaveAlert, content: { saveAlert })
         .popup(
@@ -251,6 +253,13 @@ struct EditGoalPage: View {
             closeOnTap: false,
             closeOnTapOutside: false,
             view: { GoalTypePicker(selectedType: $type, isShow: $isShowTypePicker) }
+        )
+        .popup(
+            isPresented: $isShowImportanceHelper,
+            type: .default,
+            closeOnTap: false,
+            closeOnTapOutside: false,
+            view: { HelpTextModal(isShow: $isShowImportanceHelper, title: "重要性", text: IMPORTANCE_HELP_DESC) }
         )
         .onTapGesture {
             dismissKeyboard()
