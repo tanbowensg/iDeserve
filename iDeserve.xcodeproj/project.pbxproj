@@ -129,6 +129,7 @@
 		D0DCF02C26538C06007F7F68 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D0DCF02B26538C06007F7F68 /* ConfettiSwiftUI */; };
 		D0DCF02D26538C06007F7F68 /* ConfettiSwiftUI in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D0DCF02B26538C06007F7F68 /* ConfettiSwiftUI */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D0DCF03326539049007F7F68 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCF03226539049007F7F68 /* Confetti.swift */; };
+		D0DCF03E2654E209007F7F68 /* RewardHelpModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCF03D2654E209007F7F68 /* RewardHelpModal.swift */; };
 		D0EE547C255908C80091302D /* GlobalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE547B255908C80091302D /* GlobalStore.swift */; };
 		D0EE548125591D1C0091302D /* GoalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548025591D1C0091302D /* GoalStore.swift */; };
 		D0EE5486255944680091302D /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE5485255944680091302D /* TaskStore.swift */; };
@@ -294,6 +295,7 @@
 		D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemRewardAlert.swift; sourceTree = "<group>"; };
 		D0DCF00C264CFEF4007F7F68 /* PopupMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMask.swift; sourceTree = "<group>"; };
 		D0DCF03226539049007F7F68 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
+		D0DCF03D2654E209007F7F68 /* RewardHelpModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardHelpModal.swift; sourceTree = "<group>"; };
 		D0EE547B255908C80091302D /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
 		D0EE548025591D1C0091302D /* GoalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStore.swift; sourceTree = "<group>"; };
 		D0EE5485255944680091302D /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 			children = (
 				D06806A025318E7F008DE678 /* EditRewardPage.swift */,
 				D0119B7225EF2D3A00F5E0F6 /* RewardTypePicker.swift */,
+				D0DCF03D2654E209007F7F68 /* RewardHelpModal.swift */,
 			);
 			path = EditRewardPage;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
+				D0DCF03E2654E209007F7F68 /* RewardHelpModal.swift in Sources */,
 				D08988A8254672390032BA96 /* Difficulty.swift in Sources */,
 				D03AF73C25B01DEE00F8152D /* WebPage.swift in Sources */,
 				D0EE5486255944680091302D /* TaskStore.swift in Sources */,

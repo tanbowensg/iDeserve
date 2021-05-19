@@ -171,7 +171,7 @@ struct EditRewardPage: View {
             view: { RewardTypePicker(selectedType: $type, isShow: $isShowTypePicker) }
         )
         .popup(isPresented: $isShowHelp, type: .default, animation: .easeOut(duration: 0.3), closeOnTap: true, closeOnTapOutside: true, view: {
-            HelpTextModal(isShow: $isShowHelp, title: REWARD_VALUE_DESC_TITLE, text: REWARD_VALUE_DESC)
+            RewardHelpModal(isShow: $isShowHelp)
         })
     }
     
