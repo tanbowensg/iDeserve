@@ -26,4 +26,8 @@ final class GlobalStore: ObservableObject {
     var recordStore = RecordStore.shared
     var rewardStore = RewardStore.shared
     var iapHelper = IAPHelper(productIds: [PRO_IDENTIFIER])
+    
+    init() {
+        CloudHelper.shared.read()
+    }
 }

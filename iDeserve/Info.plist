@@ -71,5 +71,17 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+    <key>NSUbiquitousContainers</key>
+        <dict>
+            <key>iCloud.iDeserve</key>
+            <dict>
+                <key>NSUbiquitousContainerIsDocumentScopePublic</key>
+                <true/>
+                <key>NSUbiquitousContainerName</key>
+                <string>[YOUR_IDENTIFIER]</string>
+                <key>NSUbiquitousContainerSupportedFolderLevels</key>
+                <string>Any</string>
+            </dict>
+        </dict>
 </dict>
 </plist>
