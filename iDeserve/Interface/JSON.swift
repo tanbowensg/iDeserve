@@ -38,7 +38,7 @@ struct TaskJson: Codable {
         desc = t.desc ?? ""
         done = t.done
         starred = t.starred
-        parent = t.parent!.id!
+        parent = t.parent?.id ?? UUID()
         timeCost = t.timeCost
         difficulty = t.difficulty
         completeTimes = t.completeTimes
@@ -48,3 +48,23 @@ struct TaskJson: Codable {
     }
 }
 
+func importTaskJson(taskJson: TaskJson) -> Task{
+    let t = Task(context: CoreDataContainer.shared.context)
+    
+    t.id = taskJson.id
+    t.name = taskJson.name
+    t.repeatFrequency = taskJson.repeatFrequency
+    t.repeatTimes = taskJson.repeatTimes
+    t.ddl = taskJson.ddl
+    t.desc = taskJson.desc
+    t.done = taskJson.done
+    t.starred = taskJson.starred
+//    TODO: 这里parent没处理好
+    t.timeCost = taskJson.timeCost
+    t.difficulty = taskJson.difficulty
+    t.completeTimes = taskJson.completeTimes
+    t.nextRefreshTime = taskJson.nextRefreshTime
+    t.createdTime = taskJson.createdTime
+    t.lastCompleteTime = taskJson.lastCompleteTime
+    return t
+}

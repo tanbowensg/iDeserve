@@ -28,6 +28,6 @@ final class GlobalStore: ObservableObject {
     var iapHelper = IAPHelper(productIds: [PRO_IDENTIFIER])
     
     init() {
-        CloudHelper.shared.read()
+//        CloudHelper.shared.read()
     }
 }

@@ -34,7 +34,12 @@ class CloudHelper {
 //            let json = try JSONSerialization.jsonObject(with: data, options: [])
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            print(try decoder.decode(TotalJsonData.self, from: data))
+            let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
+            totalJson.tasks.forEach{ tJson in
+                importTaskJson(taskJson: tJson)
+                CoreDataContainer.shared.saveContext()
+            }
+//            print(try decoder.decode(TotalJsonData.self, from: data))
         } catch let error  {
             print(error)
             print("读取错误")
