@@ -14,15 +14,14 @@ class CloudHelper {
     
     struct DocumentsDirectory {
         static let localDocumentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("hello.txt")
-        static let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents").appendingPathComponent("hello.txt")
+        static let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents").appendingPathComponent("coredata.json")
     }
     
     
-    func save() {
-        let text = "Hello, iCloud"
+    func save(data: Data) {
         print(DocumentsDirectory.iCloudDocumentsURL)
         do {
-            try text.write(to: DocumentsDirectory.iCloudDocumentsURL, atomically: true, encoding: .utf8)
+            try data.write(to: DocumentsDirectory.iCloudDocumentsURL)
         } catch let error  {
             print(error)
             print("写入错误")
@@ -31,9 +30,14 @@ class CloudHelper {
     
     func read() {
         do {
-            let text = try String(contentsOf: DocumentsDirectory.iCloudDocumentsURL)
-            print(text)
-        } catch {
+            let data = try Data(contentsOf: DocumentsDirectory.iCloudDocumentsURL)
+//            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            print(try decoder.decode(TotalJsonData.self, from: data))
+        } catch let error  {
+            print(error)
+            print("读取错误")
         }
     }
     
