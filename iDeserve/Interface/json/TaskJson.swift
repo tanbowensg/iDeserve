@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 struct TaskJson: Codable {
-    var id = UUID()
     var name: String = ""
     var repeatFrequency: Int16
     var repeatTimes: Int16
@@ -17,7 +16,6 @@ struct TaskJson: Codable {
     var desc: String
     var done: Bool = false
     var starred: Bool = true
-    var parent: UUID?
     var timeCost: Int16
     var difficulty: Int16
     var completeTimes: Int16
@@ -26,7 +24,6 @@ struct TaskJson: Codable {
     var lastCompleteTime: Date?
     
     init(t: Task) {
-        id = t.id!
         name = t.name!
         repeatFrequency = t.repeatFrequency
         repeatTimes = t.repeatTimes
@@ -34,7 +31,6 @@ struct TaskJson: Codable {
         desc = t.desc ?? ""
         done = t.done
         starred = t.starred
-        parent = t.parent?.id ?? UUID()
         timeCost = t.timeCost
         difficulty = t.difficulty
         completeTimes = t.completeTimes
@@ -44,10 +40,10 @@ struct TaskJson: Codable {
     }
 }
 
-func importTaskJson(taskJson: TaskJson) -> Task{
+func importTaskJson(taskJson: TaskJson, goal: Goal) -> Task{
     let t = Task(context: CoreDataContainer.shared.context)
     
-    t.id = taskJson.id
+    t.id = UUID()
     t.name = taskJson.name
     t.repeatFrequency = taskJson.repeatFrequency
     t.repeatTimes = taskJson.repeatTimes
@@ -55,7 +51,6 @@ func importTaskJson(taskJson: TaskJson) -> Task{
     t.desc = taskJson.desc
     t.done = taskJson.done
     t.starred = taskJson.starred
-//    TODO: 这里parent没处理好
     t.timeCost = taskJson.timeCost
     t.difficulty = taskJson.difficulty
     t.completeTimes = taskJson.completeTimes

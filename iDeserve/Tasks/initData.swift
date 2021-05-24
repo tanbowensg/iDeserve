@@ -93,7 +93,6 @@ func initGoal () -> Void {
         name: INIT_GOAL_TITLE,
         type: .exam,
         importance: .important,
-        desc: "",
         tasks: tasks
     )
 }

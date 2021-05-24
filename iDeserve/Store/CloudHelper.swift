@@ -28,23 +28,18 @@ class CloudHelper {
         }
     }
     
-    func read() {
+    func read() -> TotalJsonData? {
         do {
             let data = try Data(contentsOf: DocumentsDirectory.iCloudDocumentsURL)
-//            let json = try JSONSerialization.jsonObject(with: data, options: [])
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
-            print(totalJson)
-//            totalJson.tasks.forEach{ tJson in
-//                importTaskJson(taskJson: tJson)
-//                CoreDataContainer.shared.saveContext()
-//            }
-//            print(try decoder.decode(TotalJsonData.self, from: data))
+            return totalJson
         } catch let error  {
             print(error)
             print("读取错误")
         }
+        return nil
     }
     
     // Return the Document directory (Cloud OR Local)

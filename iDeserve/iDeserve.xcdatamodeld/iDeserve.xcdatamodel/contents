@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
-        <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="done" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="importance" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
@@ -44,7 +43,7 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="tasks" inverseEntity="Goal"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="163"/>
+        <element name="Goal" positionX="-443.296875" positionY="238.671875" width="128" height="28"/>
         <element name="Record" positionX="-100.51953125" positionY="21.6953125" width="128" height="118"/>
         <element name="Reward" positionX="-119.34765625" positionY="239.7578125" width="128" height="148"/>
         <element name="Task" positionX="-382.4375" positionY="-95.8515625" width="128" height="268"/>

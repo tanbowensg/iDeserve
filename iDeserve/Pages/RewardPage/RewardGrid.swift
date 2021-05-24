@@ -121,7 +121,7 @@ struct RewardGrid: View {
                     .saturation(reward.isAvailable ? 1 : 0)
                 !reward.isAvailable ? soldoutLogo : nil
             }
-            !reward.isAvailable ? removeButton : nil
+            removeButton
         }
         .id(reward.id)
         .onTapGesture {

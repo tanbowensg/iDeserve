@@ -329,7 +329,6 @@ struct EditGoalPage: View {
                 name: name,
                 type: type,
                 importance: importance,
-                desc: "",
                 tasks: tasks
             )
         } else {
@@ -338,7 +337,6 @@ struct EditGoalPage: View {
                 name: name,
                 type: type,
                 importance: importance,
-                desc: "",
                 tasks: tasks
             )
         }

@@ -53,7 +53,7 @@ struct GoalReward {
 
 extension Goal {
     var color: Color {
-        ImportanceColor[Importance(rawValue: Int(self.importance))!]!
+        ImportanceColor[Importance(rawValue: Int(self.importance)) ?? .normal]!
     }
     
     var _tasks: Set<Task> {

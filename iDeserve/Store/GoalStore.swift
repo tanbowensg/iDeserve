@@ -34,13 +34,11 @@ final class GoalStore: ObservableObject {
         name: String,
         type: GoalType,
         importance: Importance,
-        desc: String,
         tasks: [TaskState]
     ) {
         targetGoal.name = name
         targetGoal.type = type.rawValue
         targetGoal.importance = Int16(importance.rawValue)
-        targetGoal.desc = desc
         let goalTasks = tasks.map { taskState in
             return self.taskStore.updateOrCreate(taskState: taskState, goal: targetGoal)
         }
@@ -57,7 +55,6 @@ final class GoalStore: ObservableObject {
         name: String,
         type: GoalType,
         importance: Importance,
-        desc: String,
         tasks: [TaskState]
     ) {
         let newGoal = Goal(context: self.moc)
@@ -68,7 +65,6 @@ final class GoalStore: ObservableObject {
             name: name,
             type: type,
             importance: importance,
-            desc: desc,
             tasks: tasks
         )
     }

@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 struct RewardJson: Codable {
-    var id: UUID
     var name: String
     var type: String
     var value: Int16
@@ -18,7 +17,6 @@ struct RewardJson: Codable {
     var createdTime: Date
     
     init(r: Reward) {
-        id = r.id!
         name = r.name!
         type = r.type!
         value = r.value
@@ -30,7 +28,7 @@ struct RewardJson: Codable {
 
 func importRewardJson(rewardJson: RewardJson) -> Reward {
     let r = Reward(context: CoreDataContainer.shared.context)
-    r.id = rewardJson.id
+    r.id = UUID()
     r.name = rewardJson.name
     r.type = rewardJson.type
     r.value = rewardJson.value

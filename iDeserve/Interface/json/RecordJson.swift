@@ -8,14 +8,12 @@
 import Foundation
 
 struct RecordJson: Codable {
-    var id: UUID
     var name: String
     var kind: Int16
     var value: Int16
     var date: Date
     
     init(r: Record) {
-        id = r.id!
         name = r.name!
         kind = r.kind
         value = r.value
@@ -25,7 +23,7 @@ struct RecordJson: Codable {
 
 func importRewardJson(recordJson: RecordJson) -> Record {
     let r = Record(context: CoreDataContainer.shared.context)
-    r.id = recordJson.id
+    r.id = UUID()
     r.name = recordJson.name
     r.kind = recordJson.kind
     r.value = recordJson.value

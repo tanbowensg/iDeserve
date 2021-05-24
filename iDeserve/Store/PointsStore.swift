@@ -23,6 +23,13 @@ final class PointsStore: ObservableObject {
         defaults.set(self.points, forKey: POINTS)
     }
 
+    func setValue (
+        _ value: Int
+    ) {
+        self.points = value
+        self.saveUserDefaults()
+    }
+
     func minus (
         _ value: Int
     ) {

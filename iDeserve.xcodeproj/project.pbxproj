@@ -111,6 +111,7 @@
 		D0A07175265B534100952DAD /* RewardJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A07174265B534100952DAD /* RewardJson.swift */; };
 		D0A0717A265B534D00952DAD /* TotalJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A07179265B534D00952DAD /* TotalJson.swift */; };
 		D0A0717F265B55C500952DAD /* RecordJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0717E265B55C500952DAD /* RecordJson.swift */; };
+		D0A07189265B782900952DAD /* GoalJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A07188265B782900952DAD /* GoalJson.swift */; };
 		D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */; };
 		D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = D0B113EC262584AB00C93A59 /* SwiftUIPager */; };
 		D0B113F4262584E600C93A59 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B113F3262584E600C93A59 /* LandingPage.swift */; };
@@ -294,6 +295,7 @@
 		D0A07174265B534100952DAD /* RewardJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardJson.swift; sourceTree = "<group>"; };
 		D0A07179265B534D00952DAD /* TotalJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalJson.swift; sourceTree = "<group>"; };
 		D0A0717E265B55C500952DAD /* RecordJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordJson.swift; sourceTree = "<group>"; };
+		D0A07188265B782900952DAD /* GoalJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalJson.swift; sourceTree = "<group>"; };
 		D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordList.swift; sourceTree = "<group>"; };
 		D0B113F3262584E600C93A59 /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		D0B114012626FBC100C93A59 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				D0A07174265B534100952DAD /* RewardJson.swift */,
 				D0A07179265B534D00952DAD /* TotalJson.swift */,
 				D0A0717E265B55C500952DAD /* RecordJson.swift */,
+				D0A07188265B782900952DAD /* GoalJson.swift */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
 				D0F3B00325636C4B008B6EBB /* genMockData.swift in Sources */,
+				D0A07189265B782900952DAD /* GoalJson.swift in Sources */,
 				D03F21AE25270EC40055BF25 /* Record.swift in Sources */,
 				D041FF7425F8A15700F565C1 /* HelpTextModal.swift in Sources */,
 				D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */,
