@@ -96,7 +96,7 @@ func restoreData () {
 
         PointsStore.shared.setValue(totalJson.value)
     } else {
-        print("恢复备份失败")
+        print("还原数据失败")
     }
 }
 
