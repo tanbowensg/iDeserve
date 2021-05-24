@@ -13,31 +13,15 @@ class CloudHelper {
     static let shared = CloudHelper() // Singleton
     
     let localDocumentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("coredata.backup")
-    let iCloudDirectoryURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents").appendingPathComponent("iDeserve")
-    let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents").appendingPathComponent("iDeserve").appendingPathComponent("coredata.backup")
+    let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents").appendingPathComponent("coredata.backup")
     
     
     func save(data: Data) {
         do {
-            // check for container existence
-            //            if !FileManager.default.fileExists(atPath: iCloudDirectoryURL.path, isDirectory: nil) {
-            //                print("创建新目录")
-            //                try FileManager.default.createDirectory(at: iCloudDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-            //            }
-            try data.write(to: localDocumentsURL)
-            print("存储在本地成功：\(localDocumentsURL)")
-            try FileManager.default.createDirectory(at: iCloudDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-//            if try FileManager.default.fileExists(atPath: localDocumentsURL.path) {
-//                try FileManager.default.removeItem(at: iCloudDocumentsURL)
-//            }
-                
-            try FileManager.default.setUbiquitous(true,
-                                                  itemAt: localDocumentsURL,
-                                                  destinationURL: iCloudDocumentsURL
-            )
-            
-            print("移动到cloud成功:\(iCloudDocumentsURL)")
-            //            try data.write(to: iCloudDocumentsURL)
+            if FileManager.default.fileExists(atPath: iCloudDocumentsURL.path) {
+                try FileManager.default.removeItem(at: iCloudDocumentsURL)
+            }
+            try data.write(to: iCloudDocumentsURL)
         } catch let error  {
             print(error)
             print("写入错误")
@@ -45,17 +29,17 @@ class CloudHelper {
     }
     func read() -> TotalJsonData? {
         do {
-            //            print("local存在吗？\(try FileManager.default.fileExists(atPath: localDocumentsURL.path))")
-            print("icloud存在吗？\(try FileManager.default.attributesOfItem(atPath: iCloudDocumentsURL.path).values)")
-            if FileManager.default.fileExists(atPath: iCloudDocumentsURL.path) {
-                //                print("开始下载")
-                //                try FileManager.default.startDownloadingUbiquitousItem(at: iCloudDocumentsURL)
-                let data = try Data(contentsOf: iCloudDocumentsURL)
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
-                return totalJson
+            let isExist = FileManager.default.fileExists(atPath: iCloudDocumentsURL.path)
+            print("文件存在吗？\(isExist)")
+            if !isExist {
+                try FileManager.default.startDownloadingUbiquitousItem(at: iCloudDocumentsURL)
             }
+            let data = try Data(contentsOf: iCloudDocumentsURL)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
+            print(totalJson)
+            return totalJson
         } catch let error  {
             print(error)
             print("读取错误")
