@@ -47,7 +47,6 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     normalReward.name = "一款桌游"
     normalReward.value = 30
     normalReward.isRepeat = true
-    normalReward.desc = "一款300元以内的桌游"
     normalReward.isSoldout = false
     
     let longReward = Reward.init(context: context)
@@ -55,7 +54,6 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     longReward.name = "去九寨沟或者张家界旅游"
     longReward.value = 200
     normalReward.isRepeat = true
-    longReward.desc = "七日游"
     longReward.isSoldout = false
 
     let littleReward = Reward.init(context: context)
@@ -63,7 +61,6 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     littleReward.name = "一杯喜茶"
     littleReward.value = 3
     normalReward.isRepeat = true
-    littleReward.desc = "好喝的喜茶"
     littleReward.isSoldout = false
 
     let bigReward = Reward.init(context: context)
@@ -71,7 +68,6 @@ func genMockRewards (_ context: NSManagedObjectContext) -> [Reward] {
     normalReward.name = "顶配 Mackbook pro"
     normalReward.value = 1000
     normalReward.isRepeat = true
-    normalReward.desc = "七日游"
     normalReward.isSoldout = false
 
     return [normalReward, longReward, littleReward, bigReward]

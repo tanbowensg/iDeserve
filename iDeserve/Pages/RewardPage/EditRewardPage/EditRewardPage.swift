@@ -17,8 +17,7 @@ struct EditRewardPage: View {
     @State var type: RewardType = RewardType.entertainment
     @State var value: String = ""
     @State var isRepeat = true
-    @State var desc = ""
-    @State var cover: UIImage? = nil
+//    @State var cover: UIImage? = nil
 
     @State var isShowImagePicker: Bool = false
     @State var isShowTypePicker = false
@@ -33,11 +32,10 @@ struct EditRewardPage: View {
             _type = State(initialValue: RewardType.init(rawValue:existReward.type ?? "food") ?? RewardType.entertainment)
             _value = State(initialValue: String(existReward.value))
             _isRepeat = State(initialValue: existReward.isRepeat)
-            _desc = State(initialValue: existReward.desc ?? "")
             
-            if let existCover = existReward.cover {
-                _cover = State(initialValue: UIImage(data: existCover))
-            }
+//            if let existCover = existReward.cover {
+//                _cover = State(initialValue: UIImage(data: existCover))
+//            }
         }
     }
     
@@ -180,9 +178,9 @@ struct EditRewardPage: View {
             return
         }
         if initReward?.id != nil {
-            gs.rewardStore.updateReward(targetReward: initReward!, name: name, type: type, value: Int(value)!, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
+            gs.rewardStore.updateReward(targetReward: initReward!, name: name, type: type, value: Int(value)!, isRepeat: isRepeat)
         } else {
-            gs.rewardStore.createReward(name: name, type: type, value: Int(value) ?? 10, isRepeat: isRepeat, desc: desc, cover: cover?.pngData())
+            gs.rewardStore.createReward(name: name, type: type, value: Int(value) ?? 10, isRepeat: isRepeat)
         }
     }
 }

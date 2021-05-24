@@ -155,23 +155,6 @@ struct MyDayPage: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 isShowLanding = isFirstVisitPage
             }
-            var taskJsons: [TaskJson] = []
-            allTasks.forEach { task in
-                let taskJson = TaskJson(t: task)
-                taskJsons.append(taskJson)
-            }
-            do {
-                let encoder = JSONEncoder()
-                encoder.dateEncodingStrategy = .iso8601
-                let rawJson = TotalJsonData(tasks: taskJsons)
-                let json = try encoder.encode(rawJson)
-                print("写入的")
-                print(json)
-
-                CloudHelper.shared.save(data: json)
-            } catch {
-                print("失败了")
-            }
         }
     }
 }

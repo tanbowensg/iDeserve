@@ -108,6 +108,16 @@ struct SettingsPage: View {
                         NavigationLink(destination: WebPage(url: ContactUrl)) {
                             Text("反馈交流")
                         }
+                        Button(action: {
+                            backupData()
+                        }) {
+                            Text("备份数据")
+                        }
+                        Button(action: {
+                            restoreData()
+                        }) {
+                            Text("还原数据")
+                        }
                     }
                     
                     Section(header: Text("调试用按钮")) {

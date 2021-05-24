@@ -20,23 +20,18 @@ final class RewardStore: ObservableObject {
         name: String,
         type: RewardType,
         value: Int,
-        isRepeat: Bool,
-        desc: String,
-        cover: Data?
+        isRepeat: Bool
     ) {
         targetReward.name = name
         targetReward.type = type.rawValue
         targetReward.value = Int16(value)
         targetReward.isRepeat = isRepeat
-        targetReward.desc = desc
-        targetReward.cover = cover
         
 //        如果奖励从一次性变成可重复，那就要重置isSoldout
         if !targetReward.isRepeat && isRepeat {
             targetReward.isSoldout = true
         }
-        
-    
+
         do {
             try self.moc.save()
         } catch let error  {
@@ -49,9 +44,7 @@ final class RewardStore: ObservableObject {
         name: String,
         type: RewardType,
         value: Int,
-        isRepeat: Bool,
-        desc: String,
-        cover: Data?
+        isRepeat: Bool
     ) {
         let newReward = Reward(context: self.moc)
         newReward.id = UUID()
@@ -62,9 +55,7 @@ final class RewardStore: ObservableObject {
             name: name,
             type: type,
             value: value,
-            isRepeat: isRepeat,
-            desc: desc,
-            cover: cover
+            isRepeat: isRepeat
         )
     }
     

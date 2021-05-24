@@ -35,10 +35,11 @@ class CloudHelper {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
-            totalJson.tasks.forEach{ tJson in
-                importTaskJson(taskJson: tJson)
-                CoreDataContainer.shared.saveContext()
-            }
+            print(totalJson)
+//            totalJson.tasks.forEach{ tJson in
+//                importTaskJson(taskJson: tJson)
+//                CoreDataContainer.shared.saveContext()
+//            }
 //            print(try decoder.decode(TotalJsonData.self, from: data))
         } catch let error  {
             print(error)

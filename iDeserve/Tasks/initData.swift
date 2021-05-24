@@ -58,33 +58,25 @@ func initReward () -> Void {
         name: INIT_REWARD_2_TITLE,
         type: .drink,
         value: 40,
-        isRepeat: true,
-        desc: "",
-        cover: nil
+        isRepeat: true
     )
     GlobalStore.shared.rewardStore.createReward(
         name: INIT_REWARD_3_TITLE,
         type: .digital,
         value: 1000,
-        isRepeat: false,
-        desc: "",
-        cover: nil
+        isRepeat: false
     )
     GlobalStore.shared.rewardStore.createReward(
         name: INIT_REWARD_4_TITLE,
         type: .game,
         value: 20,
-        isRepeat: true,
-        desc: "",
-        cover: nil
+        isRepeat: true
     )
     GlobalStore.shared.rewardStore.createReward(
         name: INIT_REWARD_5_TITLE,
         type: .travel,
         value: 3500,
-        isRepeat: false,
-        desc: "",
-        cover: nil
+        isRepeat: false
     )
 }
 
