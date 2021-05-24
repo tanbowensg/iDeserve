@@ -12,29 +12,37 @@ import FileProvider
 class CloudHelper {
     static let shared = CloudHelper() // Singleton
     
-    struct DocumentsDirectory {
-        static let localDocumentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("hello.txt")
-        static let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents").appendingPathComponent("coredata.json")
-    }
+    let localDocumentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("coredata.json")
+    let iCloudDirectoryURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents")
+    let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)!.appendingPathComponent("Documents").appendingPathComponent("coredata.json")
     
     
     func save(data: Data) {
-        print(DocumentsDirectory.iCloudDocumentsURL)
+        print(iCloudDocumentsURL)
         do {
-            try data.write(to: DocumentsDirectory.iCloudDocumentsURL)
+            // check for container existence
+            if !FileManager.default.fileExists(atPath: iCloudDirectoryURL.path, isDirectory: nil) {
+                print("创建新目录")
+                try FileManager.default.createDirectory(at: iCloudDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+            }
+            try data.write(to: iCloudDocumentsURL)
         } catch let error  {
             print(error)
             print("写入错误")
         }
     }
-    
     func read() -> TotalJsonData? {
         do {
-            let data = try Data(contentsOf: DocumentsDirectory.iCloudDocumentsURL)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
-            return totalJson
+            print("存在吗？\(try FileManager.default.fileExists(atPath: iCloudDocumentsURL.path))")
+//            if FileManager.default.fileExists(atPath: iCloudDocumentsURL.path) {
+//                print("开始下载")
+//                try FileManager.default.startDownloadingUbiquitousItem(at: iCloudDocumentsURL)
+//                let data = try Data(contentsOf: iCloudDocumentsURL)
+//                let decoder = JSONDecoder()
+//                decoder.dateDecodingStrategy = .iso8601
+//                let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
+//                return totalJson
+//            }
         } catch let error  {
             print(error)
             print("读取错误")
@@ -46,20 +54,20 @@ class CloudHelper {
     // To do in a background thread
     
     func getDocumentDiretoryURL() -> URL {
-        print(DocumentsDirectory.iCloudDocumentsURL)
-        print(DocumentsDirectory.localDocumentsURL)
+        print(iCloudDocumentsURL)
+        print(localDocumentsURL)
         if isCloudEnabled()  {
-            return DocumentsDirectory.iCloudDocumentsURL
+            return iCloudDocumentsURL
         } else {
-            return DocumentsDirectory.localDocumentsURL
+            return localDocumentsURL
         }
     }
     
     // Return true if iCloud is enabled
     
     func isCloudEnabled() -> Bool {
-//        if DocumentsDirectory.iCloudDocumentsURL != nil { return true }
-//        else { return false }
+        //        if iCloudDocumentsURL != nil { return true }
+        //        else { return false }
         return true
     }
     
@@ -85,15 +93,15 @@ class CloudHelper {
     
     func moveFileToCloud() {
         if isCloudEnabled() {
-            deleteFilesInDirectory(url: DocumentsDirectory.iCloudDocumentsURL as NSURL) // Clear destination
+            deleteFilesInDirectory(url: iCloudDocumentsURL as NSURL) // Clear destination
             let fileManager = FileManager.default
-            let enumerator = fileManager.enumerator(atPath: DocumentsDirectory.localDocumentsURL.path)
+            let enumerator = fileManager.enumerator(atPath: localDocumentsURL.path)
             while let file = enumerator?.nextObject() as? String {
                 
                 do {
                     try fileManager.setUbiquitous(true,
-                                                  itemAt: DocumentsDirectory.localDocumentsURL.appendingPathComponent(file),
-                                                  destinationURL: DocumentsDirectory.iCloudDocumentsURL.appendingPathComponent(file))
+                                                  itemAt: localDocumentsURL.appendingPathComponent(file),
+                                                  destinationURL: iCloudDocumentsURL.appendingPathComponent(file))
                     print("Moved to iCloud")
                 } catch let error as NSError {
                     print("Failed to move file to Cloud : \(error)")
@@ -108,15 +116,15 @@ class CloudHelper {
     
     func moveFileToLocal() {
         if isCloudEnabled() {
-            deleteFilesInDirectory(url: DocumentsDirectory.localDocumentsURL as NSURL)
+            deleteFilesInDirectory(url: localDocumentsURL as NSURL)
             let fileManager = FileManager.default
-            let enumerator = fileManager.enumerator(atPath: DocumentsDirectory.iCloudDocumentsURL.path)
+            let enumerator = fileManager.enumerator(atPath: iCloudDocumentsURL.path)
             while let file = enumerator?.nextObject() as? String {
                 
                 do {
                     try fileManager.setUbiquitous(false,
-                                                  itemAt: DocumentsDirectory.iCloudDocumentsURL.appendingPathComponent(file),
-                                                  destinationURL: DocumentsDirectory.localDocumentsURL.appendingPathComponent(file))
+                                                  itemAt: iCloudDocumentsURL.appendingPathComponent(file),
+                                                  destinationURL: localDocumentsURL.appendingPathComponent(file))
                     print("Moved to local dir")
                 } catch let error as NSError {
                     print("Failed to move file to local dir : \(error)")

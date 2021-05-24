@@ -35,7 +35,7 @@ struct TaskJson: Codable {
         difficulty = t.difficulty
         completeTimes = t.completeTimes
         nextRefreshTime = t.nextRefreshTime
-        createdTime = t.createdTime!
+        createdTime = t.createdTime ?? Date()
         lastCompleteTime = t.lastCompleteTime
     }
 }
