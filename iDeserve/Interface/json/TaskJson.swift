@@ -8,10 +8,6 @@
 import Foundation
 import CoreData
 
-struct TotalJsonData: Codable {
-    var tasks: [TaskJson]
-}
-
 struct TaskJson: Codable {
     var id = UUID()
     var name: String = ""

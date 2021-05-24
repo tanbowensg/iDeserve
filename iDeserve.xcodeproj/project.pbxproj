@@ -107,7 +107,10 @@
 		D08FB32125A87CE300042124 /* AnimatedPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB32025A87CE300042124 /* AnimatedPoints.swift */; };
 		D09688E9258C5B2F00E41751 /* resetRepeatTaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */; };
 		D0A071212657DC9F00952DAD /* CloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A071202657DC9F00952DAD /* CloudHelper.swift */; };
-		D0A0716C2659341B00952DAD /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0716B2659341B00952DAD /* JSON.swift */; };
+		D0A0716C2659341B00952DAD /* TaskJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0716B2659341B00952DAD /* TaskJson.swift */; };
+		D0A07175265B534100952DAD /* RewardJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A07174265B534100952DAD /* RewardJson.swift */; };
+		D0A0717A265B534D00952DAD /* TotalJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A07179265B534D00952DAD /* TotalJson.swift */; };
+		D0A0717F265B55C500952DAD /* RecordJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0717E265B55C500952DAD /* RecordJson.swift */; };
 		D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */; };
 		D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = D0B113EC262584AB00C93A59 /* SwiftUIPager */; };
 		D0B113F4262584E600C93A59 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B113F3262584E600C93A59 /* LandingPage.swift */; };
@@ -287,7 +290,10 @@
 		D08FB32025A87CE300042124 /* AnimatedPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPoints.swift; sourceTree = "<group>"; };
 		D09688E8258C5B2F00E41751 /* resetRepeatTaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetRepeatTaskStatus.swift; sourceTree = "<group>"; };
 		D0A071202657DC9F00952DAD /* CloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudHelper.swift; sourceTree = "<group>"; };
-		D0A0716B2659341B00952DAD /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		D0A0716B2659341B00952DAD /* TaskJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskJson.swift; sourceTree = "<group>"; };
+		D0A07174265B534100952DAD /* RewardJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardJson.swift; sourceTree = "<group>"; };
+		D0A07179265B534D00952DAD /* TotalJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalJson.swift; sourceTree = "<group>"; };
+		D0A0717E265B55C500952DAD /* RecordJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordJson.swift; sourceTree = "<group>"; };
 		D0AE3B4825AC7CDB00428FC7 /* RecordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordList.swift; sourceTree = "<group>"; };
 		D0B113F3262584E600C93A59 /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		D0B114012626FBC100C93A59 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -456,6 +462,7 @@
 		D010268F2524243B00653A52 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D0A07170265B508800952DAD /* json */,
 				D0036DD4252C56CD00E4005B /* Color.swift */,
 				D007CFB425873512008CA76D /* constants.swift */,
 				D08988A7254672390032BA96 /* Difficulty.swift */,
@@ -467,7 +474,6 @@
 				D0119B6C25EF2C7600F5E0F6 /* Reward.swift */,
 				D08988DD2546BDDC0032BA96 /* Task.swift */,
 				D0B114012626FBC100C93A59 /* Events.swift */,
-				D0A0716B2659341B00952DAD /* JSON.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -653,6 +659,17 @@
 				D08FB2EC25A5D52200042124 /* draggableModifier.swift */,
 			);
 			path = Tasks;
+			sourceTree = "<group>";
+		};
+		D0A07170265B508800952DAD /* json */ = {
+			isa = PBXGroup;
+			children = (
+				D0A0716B2659341B00952DAD /* TaskJson.swift */,
+				D0A07174265B534100952DAD /* RewardJson.swift */,
+				D0A07179265B534D00952DAD /* TotalJson.swift */,
+				D0A0717E265B55C500952DAD /* RecordJson.swift */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 		D0B113F2262584DA00C93A59 /* LandingPage */ = {
@@ -905,6 +922,7 @@
 				D0F3B0362563F836008B6EBB /* emptyFunc.swift in Sources */,
 				D0EE5490255A6D140091302D /* RewardStore.swift in Sources */,
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
+				D0A07175265B534100952DAD /* RewardJson.swift in Sources */,
 				D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */,
 				D031EDE425B1964800D64CF3 /* DifficultyPicker.swift in Sources */,
 				D08FB2ED25A5D52200042124 /* draggableModifier.swift in Sources */,
@@ -923,7 +941,7 @@
 				D0AE3B4925AC7CDB00428FC7 /* RecordList.swift in Sources */,
 				D0B114022626FBC100C93A59 /* Events.swift in Sources */,
 				D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */,
-				D0A0716C2659341B00952DAD /* JSON.swift in Sources */,
+				D0A0716C2659341B00952DAD /* TaskJson.swift in Sources */,
 				D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */,
 				D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */,
 				D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */,
@@ -961,6 +979,7 @@
 				D0119B5D25EE367200F5E0F6 /* MySlider.swift in Sources */,
 				D0EE548125591D1C0091302D /* GoalStore.swift in Sources */,
 				D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */,
+				D0A0717A265B534D00952DAD /* TotalJson.swift in Sources */,
 				D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */,
 				D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */,
 				D03AF73225B0113700F8152D /* WebView.swift in Sources */,
@@ -971,6 +990,7 @@
 				D0119B6D25EF2C7600F5E0F6 /* Reward.swift in Sources */,
 				D07913C925776963007B9767 /* TabIcon.swift in Sources */,
 				D03B57D1253D8D5100DC107F /* CoreDataContainer.swift in Sources */,
+				D0A0717F265B55C500952DAD /* RecordJson.swift in Sources */,
 				D08B91B725AABCF0007F2358 /* dateTools.swift in Sources */,
 				D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */,
 				D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */,
