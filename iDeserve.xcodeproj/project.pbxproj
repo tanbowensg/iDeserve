@@ -59,7 +59,6 @@
 		D06806A125318E7F008DE678 /* EditRewardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A025318E7F008DE678 /* EditRewardPage.swift */; };
 		D06806A62531939D008DE678 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
 		D06806AB2531A4CC008DE678 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806AA2531A4CC008DE678 /* ImagePicker.swift */; };
-		D07242722599C8BB00DCB674 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D07242702599C8BB00DCB674 /* Localizable.strings */; };
 		D07242782599E1ED00DCB674 /* i18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242772599E1ED00DCB674 /* i18n.swift */; };
 		D07242FE25A1CA4400DCB674 /* AppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07242FD25A1CA4400DCB674 /* AppHeader.swift */; };
 		D072430425A2CCF200DCB674 /* HighPriorityButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072430325A2CCF200DCB674 /* HighPriorityButtonStyle.swift */; };
@@ -257,7 +256,6 @@
 		D06806A025318E7F008DE678 /* EditRewardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRewardPage.swift; sourceTree = "<group>"; };
 		D06806A52531939D008DE678 /* RepeatFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatFrequency.swift; sourceTree = "<group>"; };
 		D06806AA2531A4CC008DE678 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		D07242712599C8BB00DCB674 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D07242772599E1ED00DCB674 /* i18n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i18n.swift; sourceTree = "<group>"; };
 		D07242FD25A1CA4400DCB674 /* AppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeader.swift; sourceTree = "<group>"; };
 		D072430325A2CCF200DCB674 /* HighPriorityButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPriorityButtonStyle.swift; sourceTree = "<group>"; };
@@ -434,7 +432,6 @@
 				D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */,
 				D01026652524242000653A52 /* Assets.xcassets */,
 				D010266A2524242000653A52 /* Info.plist */,
-				D07242702599C8BB00DCB674 /* Localizable.strings */,
 				D01026672524242000653A52 /* Preview Content */,
 				D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */,
 				D07242772599E1ED00DCB674 /* i18n.swift */,
@@ -884,7 +881,6 @@
 			files = (
 				D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
 				D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */,
-				D07242722599C8BB00DCB674 /* Localizable.strings in Resources */,
 				D041FF7A25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */,
 				D01026692524242000653A52 /* Preview Assets.xcassets in Resources */,
 				D01026662524242000653A52 /* Assets.xcassets in Resources */,
@@ -1093,17 +1089,6 @@
 			targetProxy = D010267B2524242100653A52 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D07242702599C8BB00DCB674 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D07242712599C8BB00DCB674 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D01026812524242100653A52 /* Debug */ = {
