@@ -106,7 +106,6 @@ struct BackupPage: View {
                 
                 Button(action: {
                     if isPro {
-                        backupData()
                         alertItem = confirmRestoreAlert
                     } else {
                         alertItem = payAlert
