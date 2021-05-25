@@ -168,7 +168,9 @@ struct RewardPage: View {
             HelpTextModal(isShow: $isShowLanding, title: "奖励商店介绍", text: FIRST_REWARD_STORE_TEXT)
         }
         .onAppear {
-            isShowLanding = isFirstVisitPage
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isShowLanding = isFirstVisitPage
+            }
         }
         .navigationBarHidden(true)
     }
