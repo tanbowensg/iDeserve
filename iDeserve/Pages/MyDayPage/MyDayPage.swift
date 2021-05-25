@@ -151,7 +151,7 @@ struct MyDayPage: View {
             HelpTextModal(isShow: $isShowLanding, title: "今日任务介绍", text: FIRST_MYDAY_TEXT)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 isShowLanding = isFirstVisitPage
             }
         }
