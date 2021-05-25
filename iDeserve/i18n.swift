@@ -111,6 +111,7 @@ let GOAL_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 3 �
 let REWARD_LIMIT_ALERT = NSLocalizedString("你的目标数量已达到上限 5 个。你可以删除不需要的奖励，或者购买 Pro 版解除限制。", comment: "")
 let DELETE_RECORD_ALERT = NSLocalizedString("撤销记录是购买 Pro 版的功能。\n购买 Pro 版即可解锁撤销记录功能。", comment: "")
 let NO_ENOUGH_NUTS_ALERT = NSLocalizedString("你的坚果不够了，再攒一攒吧。或者你可以购买 Pro 版，允许透支坚果", comment: "")
+let BACKUP_DATA_PAY_ALERT = NSLocalizedString("iCloud 数据备份是 Pro 版的功能。购买 Pro 版后就能确保坚果安全，万无一失。", comment: "")
 
 let FIRST_MYDAY_TEXT = NSLocalizedString("欢迎！我们已经为你准备了一些示例任务，帮助你上手。\n\n这是“今日任务”界面，展现的是你今天要做的事情。右滑可以完成任务。\n\n更多用法可以在设置页面中查看“App上手指南”。", comment: "")
 let FIRST_GOAL_LIST_TEXT = NSLocalizedString("“目标列表”页面展示了你所有的目标。我们已经为你创建了一些示例目标。\n\n目标里还可以创建任务。把目标拆分成一个个任务，可以更有效率地达成目标哦。\n\n完成任务或目标以后，就可以得到坚果奖励。", comment: "")

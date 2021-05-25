@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-struct AlertItem: Identifiable {
-    var id = UUID()
-    var title: Text
-    var message: Text
-    var primaryButton: Alert.Button
-    var secondaryButton: Alert.Button
-}
-
 struct RecordList: View {
     @EnvironmentObject var gs: GlobalStore
     @AppStorage(PRO_IDENTIFIER) var isPro = false
@@ -64,7 +56,6 @@ struct RecordList: View {
                     deletingRecord = nil
                     alertItem = nil
                 } else {
-                    print("没买")
                     alertItem = buyProAlert
                 }
             },
@@ -102,7 +93,7 @@ struct RecordList: View {
         }
         .font(.subheadCustom)
         .alert(item: $alertItem) { item in
-            Alert(title: item.title, message: item.message, primaryButton: item.primaryButton, secondaryButton: item.secondaryButton)
+            Alert(title: item.title, message: item.message, primaryButton: item.primaryButton!, secondaryButton: item.secondaryButton!)
         }
     }
 }

@@ -17,7 +17,6 @@ struct SettingsPage: View {
     @FetchRequest(fetchRequest: taskRequest) var allTasks: FetchedResults<Task>
 
     @State var isShowTimePicker = false
-    @State var isShowRefreshSuccess = false
     let IntroUrl = "https://thoughts.teambition.com/share/605844ad2aee180046db20bd"
     let ContactUrl = "https://thoughts.teambition.com/share/60a380f043b2b70046b09cd2"
 
@@ -109,20 +108,9 @@ struct SettingsPage: View {
                         NavigationLink(destination: WebPage(url: ContactUrl)) {
                             Text("反馈交流")
                         }
-                        Button(action: {
-                            backupData()
-                        }) {
-                            Text("备份数据")
+                        NavigationLink(destination: BackupPage()) {
+                            Text("iCloud 数据备份")
                         }
-                        Button(action: {
-                            restoreData()
-                            isShowRefreshSuccess = true
-                        }) {
-                            Text("还原数据")
-                        }
-                            .alert(isPresented: $isShowRefreshSuccess) {
-                                Alert(title: Text("数据还原成功！"), dismissButton: .default(Text("确定") ))
-                            }
                     }
                     
                     Section(header: Text("调试用按钮")) {
