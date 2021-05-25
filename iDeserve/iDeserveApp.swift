@@ -17,6 +17,8 @@ struct iDeserveApp: App {
     
     init () {
         initData()
+        //            很重要，一开始要获取商品
+        GlobalStore.shared.iapHelper.requestProducts(completionHandler: {_,_ in })
     }
     
     var mainApp: some View {

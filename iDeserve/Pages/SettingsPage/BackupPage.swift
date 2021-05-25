@@ -109,7 +109,7 @@ struct BackupPage: View {
                         backupData()
                         alertItem = confirmRestoreAlert
                     } else {
-                        alertItem = restoreSuccessAlert
+                        alertItem = payAlert
                     }
                 }) {
                     btnText("还原数据", "download")

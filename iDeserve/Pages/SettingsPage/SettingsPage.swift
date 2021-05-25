@@ -113,6 +113,11 @@ struct SettingsPage: View {
                             Text("iCloud 数据备份")
                         }
                         Button(action: {
+                            gs.iapHelper.restorePurchases()
+                        }) {
+                            Text("恢复购买")
+                        }
+                        Button(action: {
                             isShowTimePicker.toggle()
                         }) {
                             HStack {
@@ -158,12 +163,6 @@ struct SettingsPage: View {
         .navigationBarHidden(true)
         .popup(isPresented: $isShowTimePicker, type: .toast, position: .bottom, closeOnTap: false, closeOnTapOutside: false) {
             timePicker
-        }
-        .onAppear {
-            GlobalStore.shared.iapHelper.requestProducts { (success, products) in
-                print(success)
-                print(products)
-            }
         }
     }
 }
