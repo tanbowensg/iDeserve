@@ -153,9 +153,7 @@ struct RecordPage: View {
             HelpTextModal(isShow: $isShowLanding, title: "历史记录介绍", text: FIRST_RECORDS_TEXT)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                isShowLanding = isFirstVisitPage
-            }
+            isShowLanding = isFirstVisitPage
         }
     }
     

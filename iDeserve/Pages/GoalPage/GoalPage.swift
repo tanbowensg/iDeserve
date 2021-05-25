@@ -212,9 +212,7 @@ struct GoalPage: View {
             HelpTextModal(isShow: $isShowLanding, title: "目标列表介绍", text: FIRST_GOAL_LIST_TEXT)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                isShowLanding = isFirstVisitPage
-            }
+            isShowLanding = isFirstVisitPage
         }
     }
 }
