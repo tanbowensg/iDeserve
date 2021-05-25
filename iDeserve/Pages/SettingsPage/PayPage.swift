@@ -120,7 +120,7 @@ struct PayPage: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }) {
-                    Text(isPro ? "已购买" : "立即购买坚果计划 Pro")
+                    Text(isPro ? "已购买" : "立即购买坚果目标 Pro")
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(16)

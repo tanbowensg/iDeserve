@@ -60,7 +60,7 @@ struct SettingsPage: View {
                 .padding(.horizontal, 25)
                 .frame(width: UIScreen.main.bounds.size.width)
             VStack(alignment: .leading) {
-                Text("坚果计划 Pro")
+                Text("坚果目标 Pro")
                     .font(.titleCustom)
                     .fontWeight(.bold)
                 Spacer()
