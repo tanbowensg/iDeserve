@@ -11,6 +11,7 @@ struct BackupPage: View {
     @EnvironmentObject var gs: GlobalStore
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @AppStorage(PRO_IDENTIFIER) var isPro = false
+    @AppStorage(AUTO_BACKUP) var autoBackup = false
     @State var backupDate: Date?
     @State var alertItem: AlertItem?
 
@@ -85,7 +86,7 @@ struct BackupPage: View {
             )
             FormItem(
                 name: "自动备份",
-                rightContent: Toggle("", isOn: .constant(true))
+                rightContent: Toggle("", isOn: $autoBackup)
             )
 
             Spacer()

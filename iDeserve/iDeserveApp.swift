@@ -12,6 +12,8 @@ import CoreData
 struct iDeserveApp: App {
     @AppStorage(HAS_LANDED) var hasLanded = false
     @Environment(\.scenePhase) private var scenePhase
+    @AppStorage(AUTO_BACKUP) var autoBackup = false
+    @AppStorage(PRO_IDENTIFIER) var isPro = false
     
     init () {
         initData()
@@ -43,6 +45,10 @@ struct iDeserveApp: App {
                 case .active:
                     resetRepeatTaskStatus()
                     resetGoalPos()
+                case .inactive:
+                    if isPro && autoBackup && CloudHelper.shared.isCloudEnabled() {
+                        backupData()
+                    }
                 default:
                     print(phase)
             }

@@ -36,6 +36,7 @@ let FIRST_MYDAY = "firstMyDay"
 let FIRST_GOAL_LIST = "firstGoalList"
 let FIRST_REWARD_STORE = "firstRewardStore"
 let FIRST_RECORDS = "firstRecords"
+let AUTO_BACKUP = "autoBackup"
 
 //内购项目的identiier
 let PRO_IDENTIFIER = "com.iDeserve.pro.forever"
