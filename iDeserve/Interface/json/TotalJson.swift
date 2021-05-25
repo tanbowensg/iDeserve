@@ -48,20 +48,14 @@ func backupData() {
             )
 
             let json = try encoder.encode(rawJson)
-            
-            print("写入的")
-            print(json)
 
             CloudHelper.shared.save(data: json)
         } catch {
-            print("失败了")
+            print("解析备份文件json失败了")
         }
     } catch {
-        fatalError("读取coredata的目标数据失败: \(error)")
+        fatalError("备份失败: \(error)")
     }
-}
-
-func delete(entityName: String) {
 }
 
 func restoreData () {
@@ -81,7 +75,6 @@ func restoreData () {
         context.refreshAllObjects()
     
 //    再还原
-        print(totalJson)
         totalJson.goals.forEach{ gJson in
             let _ = importGoal(goalJson: gJson)
         }

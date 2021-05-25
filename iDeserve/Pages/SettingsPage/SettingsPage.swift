@@ -85,7 +85,8 @@ struct SettingsPage: View {
         ZStack(alignment: .bottom) {
             VStack(alignment: .leading, spacing: 0) {
                 Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                    presentationMode.wrappedValue.dismiss()
+                    isShowTimePicker = false
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.b2)
@@ -111,6 +112,15 @@ struct SettingsPage: View {
                         NavigationLink(destination: BackupPage()) {
                             Text("iCloud 数据备份")
                         }
+                        Button(action: {
+                            isShowTimePicker.toggle()
+                        }) {
+                            HStack {
+                                Text("设定一天的起始时间")
+                                Spacer()
+                                Text("\(startTimeOfDay):00")
+                            }
+                        }
                     }
                     
                     Section(header: Text("调试用按钮")) {
@@ -123,15 +133,6 @@ struct SettingsPage: View {
                             gs.pointsStore.add(-gs.pointsStore.points)
                         }) {
                             Text("现有坚果清零")
-                        }
-                        Button(action: {
-                            isShowTimePicker.toggle()
-                        }) {
-                            HStack {
-                                Text("一天的起始时间")
-                                Spacer()
-                                Text("\(startTimeOfDay):00")
-                            }
                         }
                         Button(action: {
                             allTasks.forEach {task in
@@ -152,6 +153,7 @@ struct SettingsPage: View {
                 }
                 .listStyle(GroupedListStyle())
             }
+            isShowTimePicker ? PopupMask() : nil
         }
         .navigationBarHidden(true)
         .popup(isPresented: $isShowTimePicker, type: .toast, position: .bottom, closeOnTap: false, closeOnTapOutside: false) {

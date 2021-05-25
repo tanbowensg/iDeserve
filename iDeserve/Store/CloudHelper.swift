@@ -51,7 +51,6 @@ class CloudHelper {
     func read() -> TotalJsonData? {
         do {
             let isExist = FileManager.default.fileExists(atPath: iCloudDocumentsURL.path)
-            print("文件存在吗？\(isExist)")
             if !isExist {
                 try FileManager.default.startDownloadingUbiquitousItem(at: iCloudDocumentsURL)
             }
@@ -59,7 +58,6 @@ class CloudHelper {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let totalJson = try decoder.decode(TotalJsonData.self, from: data) as TotalJsonData
-            print(totalJson)
             return totalJson
         } catch let error  {
             print(error)
