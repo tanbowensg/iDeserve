@@ -51,8 +51,8 @@ struct RewardPage: View {
     }
 
     private var columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 20),
-        GridItem(.flexible(), spacing: 20)
+        GridItem(.flexible(minimum: 0, maximum: 170), spacing: 25),
+        GridItem(.flexible(minimum: 0, maximum: 170), spacing: 25)
     ]
     
     private var rewardsArray: [Reward] {
