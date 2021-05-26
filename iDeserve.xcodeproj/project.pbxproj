@@ -35,7 +35,6 @@
 		D031EE2125B7DCB500D64CF3 /* DragRelocateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE2025B7DCB500D64CF3 /* DragRelocateDelegate.swift */; };
 		D03AF6F625AD443700F8152D /* CalendarSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6F525AD443700F8152D /* CalendarSwiper.swift */; };
 		D03AF6FC25AD44B800F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
-		D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF6FB25AD44B800F8152D /* viberate.swift */; };
 		D03AF71025AEBAF000F8152D /* roundBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF70F25AEBAF000F8152D /* roundBorder.swift */; };
 		D03AF72725AFECAD00F8152D /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF72625AFECAD00F8152D /* SettingsPage.swift */; };
 		D03AF73225B0113700F8152D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF73125B0113700F8152D /* WebView.swift */; };
@@ -50,7 +49,6 @@
 		D03F21AE25270EC40055BF25 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D041FF7425F8A15700F565C1 /* HelpTextModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041FF7325F8A15700F565C1 /* HelpTextModal.swift */; };
 		D041FF7A25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */ = {isa = PBXBuildFile; fileRef = D041FF7925F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf */; };
-		D041FF7B25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */ = {isa = PBXBuildFile; fileRef = D041FF7925F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf */; };
 		D042F196252D98DC00B08F97 /* RewardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042F195252D98DC00B08F97 /* RewardGrid.swift */; };
 		D04BB017252AC7FB0088912A /* GoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB016252AC7FB0088912A /* GoalPage.swift */; };
 		D04BB01F252AC8330088912A /* AppWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BB01E252AC8330088912A /* AppWrapper.swift */; };
@@ -65,18 +63,6 @@
 		D072432C25A30B6400DCB674 /* CalendarGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072432B25A30B6400DCB674 /* CalendarGrid.swift */; };
 		D072433625A30EC800DCB674 /* CalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072433525A30EC800DCB674 /* CalendarLayout.swift */; };
 		D072434A25A431C000DCB674 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072434925A431C000DCB674 /* utils.swift */; };
-		D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
-		D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
-		D07913412574F198007B9767 /* iDeserveWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D07913652574F632007B9767 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
-		D07913662574F632007B9767 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DD4252C56CD00E4005B /* Color.swift */; };
-		D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
-		D07913682574F632007B9767 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
-		D07913692574F632007B9767 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* Task.swift */; };
-		D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0352563F836008B6EBB /* emptyFunc.swift */; };
-		D079137C2574F65B007B9767 /* saveContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57C6253D471A00DC107F /* saveContext.swift */; };
-		D079137D2574F65B007B9767 /* genMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockData.swift */; };
-		D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
 		D07913BF257768E9007B9767 /* TabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913BE257768E9007B9767 /* TabContainer.swift */; };
 		D07913C925776963007B9767 /* TabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913C825776963007B9767 /* TabIcon.swift */; };
 		D07B6D3425B037E200087FC5 /* GoalItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3325B037E200087FC5 /* GoalItemView.swift */; };
@@ -84,11 +70,9 @@
 		D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D4725B06C5400087FC5 /* ProgressBar.swift */; };
 		D07FC4E2265C9C36005E91F1 /* BackupPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FC4E1265C9C36005E91F1 /* BackupPage.swift */; };
 		D07FC4E7265CB5E6005E91F1 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FC4E6265CB5E6005E91F1 /* AlertItem.swift */; };
-		D07FC4EB265CB6C6005E91F1 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FC4E6265CB5E6005E91F1 /* AlertItem.swift */; };
 		D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088864F26365D5D005624D1 /* NutsAndSettings.swift */; };
 		D088869F263A82A8005624D1 /* RewardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088869E263A82A8005624D1 /* RewardFilter.swift */; };
 		D08886A5263B1363005624D1 /* RewardPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886A4263B1363005624D1 /* RewardPageHeader.swift */; };
-		D08886B2263C0271005624D1 /* roundBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AF70F25AEBAF000F8152D /* roundBorder.swift */; };
 		D089889E25466ECC0032BA96 /* PointsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089889D25466ECC0032BA96 /* PointsStore.swift */; };
 		D08988A3254671E60032BA96 /* EditGoalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A2254671E60032BA96 /* EditGoalPage.swift */; };
 		D08988A8254672390032BA96 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
@@ -96,7 +80,6 @@
 		D08988CA2546A9D00032BA96 /* GoalTasksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988C92546A9D00032BA96 /* GoalTasksSheet.swift */; };
 		D08988DE2546BDDC0032BA96 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* Task.swift */; };
 		D08B91B725AABCF0007F2358 /* dateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B91B625AABCF0007F2358 /* dateTools.swift */; };
-		D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B91B625AABCF0007F2358 /* dateTools.swift */; };
 		D08EE9A025F9EA300020FBC2 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE99F25F9EA300020FBC2 /* TextArea.swift */; };
 		D08EE9AA25F9F3450020FBC2 /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE9A925F9F3450020FBC2 /* dismissKeyboard.swift */; };
 		D08EE9B425FB35DD0020FBC2 /* initData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EE9B325FB35DD0020FBC2 /* initData.swift */; };
@@ -115,20 +98,11 @@
 		D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = D0B113EC262584AB00C93A59 /* SwiftUIPager */; };
 		D0B113F4262584E600C93A59 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B113F3262584E600C93A59 /* LandingPage.swift */; };
 		D0B114022626FBC100C93A59 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114012626FBC100C93A59 /* Events.swift */; };
-		D0B1140F262704BA00C93A59 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
-		D0B11414262704BE00C93A59 /* SwipeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B0152563BBFB008B6EBB /* SwipeWrapper.swift */; };
-		D0B11419262704CF00C93A59 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114012626FBC100C93A59 /* Events.swift */; };
 		D0B114292628236500C93A59 /* PayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114282628236500C93A59 /* PayPage.swift */; };
 		D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */; };
-		D0B11467262D9BCD00C93A59 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
-		D0B1146C262D9D3000C93A59 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
-		D0B1147D262EFFF200C93A59 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2FA25A82E1F00042124 /* Importance.swift */; };
-		D0B11482262F013400C93A59 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE1625B7CDEE00D64CF3 /* Goal.swift */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
-		D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
-		D0D23CFB25788CD600AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0DCEFCA264A5746007F7F68 /* RedeemRewardAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */; };
 		D0DCF00D264CFEF4007F7F68 /* PopupMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCF00C264CFEF4007F7F68 /* PopupMask.swift */; };
 		D0DCF02C26538C06007F7F68 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D0DCF02B26538C06007F7F68 /* ConfettiSwiftUI */; };
@@ -141,8 +115,6 @@
 		D0EE548B255A61F80091302D /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548A255A61F80091302D /* RecordStore.swift */; };
 		D0EE5490255A6D140091302D /* RewardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE548F255A6D140091302D /* RewardStore.swift */; };
 		D0F02A1F25789E2D0082CCB1 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F02A1E25789E2D0082CCB1 /* CustomScrollView.swift */; };
-		D0F02A36257912840082CCB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
-		D0F02A3B2579162D0082CCB1 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */; };
 		D0F2DC8C25E77A4B00A75E12 /* CompleteGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2DC8B25E77A4B00A75E12 /* CompleteGoalView.swift */; };
 		D0F3AFFE25636A36008B6EBB /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AFFD25636A36008B6EBB /* TaskItem.swift */; };
 		D0F3B00325636C4B008B6EBB /* genMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3B00225636C4B008B6EBB /* genMockData.swift */; };
@@ -178,7 +150,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D07913412574F198007B9767 /* iDeserveWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +229,6 @@
 		D072432B25A30B6400DCB674 /* CalendarGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGrid.swift; sourceTree = "<group>"; };
 		D072433525A30EC800DCB674 /* CalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayout.swift; sourceTree = "<group>"; };
 		D072434925A431C000DCB674 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
-		D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iDeserveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07913322574F198007B9767 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D07913342574F198007B9767 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		D079139D257748F2007B9767 /* iDeserveRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDeserveRelease.entitlements; sourceTree = "<group>"; };
@@ -349,15 +319,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D079132D2574F198007B9767 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */,
-				D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -402,7 +363,6 @@
 				D010265E2524241F00653A52 /* iDeserve.app */,
 				D010266F2524242000653A52 /* iDeserveTests.xctest */,
 				D010267A2524242100653A52 /* iDeserveUITests.xctest */,
-				D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -786,23 +746,6 @@
 			productReference = D010267A2524242100653A52 /* iDeserveUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		D079132F2574F198007B9767 /* iDeserveWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D07913452574F198007B9767 /* Build configuration list for PBXNativeTarget "iDeserveWidgetExtension" */;
-			buildPhases = (
-				D079132C2574F198007B9767 /* Sources */,
-				D079132D2574F198007B9767 /* Frameworks */,
-				D079132E2574F198007B9767 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = iDeserveWidgetExtension;
-			productName = iDeserveWidgetExtension;
-			productReference = D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -822,9 +765,6 @@
 					D01026792524242100653A52 = {
 						CreatedOnToolsVersion = 12.0.1;
 						TestTargetID = D010265D2524241F00653A52;
-					};
-					D079132F2574F198007B9767 = {
-						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -849,7 +789,6 @@
 				D010265D2524241F00653A52 /* iDeserve */,
 				D010266E2524242000653A52 /* iDeserveTests */,
 				D01026792524242100653A52 /* iDeserveUITests */,
-				D079132F2574F198007B9767 /* iDeserveWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -878,16 +817,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D079132E2574F198007B9767 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0F02A36257912840082CCB1 /* Assets.xcassets in Resources */,
-				D041FF7B25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */,
-				D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,35 +948,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D010267F2524242100653A52 /* iDeserveUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D079132C2574F198007B9767 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0F02A3B2579162D0082CCB1 /* CoreDataContainer.swift in Sources */,
-				D07FC4EB265CB6C6005E91F1 /* AlertItem.swift in Sources */,
-				D0D23CFB25788CD600AAFE27 /* Font.swift in Sources */,
-				D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */,
-				D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */,
-				D07913822574F671007B9767 /* iDeserve.xcdatamodeld in Sources */,
-				D0B11482262F013400C93A59 /* Goal.swift in Sources */,
-				D0B11419262704CF00C93A59 /* Events.swift in Sources */,
-				D07913682574F632007B9767 /* Difficulty.swift in Sources */,
-				D0B1147D262EFFF200C93A59 /* Importance.swift in Sources */,
-				D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */,
-				D079137C2574F65B007B9767 /* saveContext.swift in Sources */,
-				D08B91C025AAC0D6007F2358 /* dateTools.swift in Sources */,
-				D0B1140F262704BA00C93A59 /* TaskItem.swift in Sources */,
-				D07913652574F632007B9767 /* Record.swift in Sources */,
-				D08886B2263C0271005624D1 /* roundBorder.swift in Sources */,
-				D07913662574F632007B9767 /* Color.swift in Sources */,
-				D07913692574F632007B9767 /* Task.swift in Sources */,
-				D0B1146C262D9D3000C93A59 /* NutIcon.swift in Sources */,
-				D0B11414262704BE00C93A59 /* SwipeWrapper.swift in Sources */,
-				D079137D2574F65B007B9767 /* genMockData.swift in Sources */,
-				D0B11467262D9BCD00C93A59 /* constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1313,54 +1213,6 @@
 			};
 			name = Release;
 		};
-		D07913432574F198007B9767 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = iDeserve/iDeserveRelease.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SY3R68BT34;
-				INFOPLIST_FILE = iDeserveWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.6.5;
-				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D07913442574F198007B9767 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = iDeserveWidgetExtensionRelease.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SY3R68BT34;
-				INFOPLIST_FILE = iDeserveWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.6.5;
-				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1396,15 +1248,6 @@
 			buildConfigurations = (
 				D010268A2524242100653A52 /* Debug */,
 				D010268B2524242100653A52 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D07913452574F198007B9767 /* Build configuration list for PBXNativeTarget "iDeserveWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D07913432574F198007B9767 /* Debug */,
-				D07913442574F198007B9767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -19,6 +19,7 @@ struct SettingsPage: View {
     @State var isShowTimePicker = false
     let IntroUrl = "https://thoughts.teambition.com/share/605844ad2aee180046db20bd"
     let ContactUrl = "https://thoughts.teambition.com/share/60a380f043b2b70046b09cd2"
+    let FaqUrl = "https://thoughts.teambition.com/share/60ae2b888365b0004601f87e"
 
     static var taskRequest: NSFetchRequest<Task> {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
@@ -96,67 +97,39 @@ struct SettingsPage: View {
                 card
                     .padding(.bottom, 25)
                 List {
-                    Section(header: Text("App 基本信息")) {
-                        NavigationLink(destination: WebPage(url: IntroUrl)) {
-                            Text("App 上手指南（推荐看）")
-                        }
-                        Button (action: {
-    //                        UIApplication.shared.open(URL(string: "https://apps.apple.com/us/app/id1550900596?action=write-review")!)
-                            SKStoreReviewController.requestReview()
-                        }) {
-                            Text("好评鼓励")
-                        }
-                        NavigationLink(destination: WebPage(url: ContactUrl)) {
-                            Text("反馈交流")
-                        }
-                        NavigationLink(destination: BackupPage()) {
-                            Text("iCloud 数据备份")
-                        }
-                        Button(action: {
-                            gs.iapHelper.restorePurchases()
-                        }) {
-                            Text("恢复购买")
-                        }
-                        Button(action: {
-                            isShowTimePicker.toggle()
-                        }) {
-                            HStack {
-                                Text("设定一天的起始时间")
-                                Spacer()
-                                Text("\(startTimeOfDay):00")
-                            }
-                        }
+                    NavigationLink(destination: WebPage(url: IntroUrl)) {
+                        Text("上手指南")
                     }
-                    
-                    Section(header: Text("调试用按钮")) {
-                        Button(action: {
-                            gs.pointsStore.add(gs.pointsStore.points * 9)
-                        }) {
-                            Text("现有坚果变十倍")
-                        }
-                        Button(action: {
-                            gs.pointsStore.add(-gs.pointsStore.points)
-                        }) {
-                            Text("现有坚果清零")
-                        }
-                        Button(action: {
-                            allTasks.forEach {task in
-                                if task.done
-                                    && task.repeatFrequency != RepeatFrequency.never.rawValue
-                                    && task.completeTimes < task.repeatTimes
-                                {
-                                    task.nextRefreshTime = getNextRefreshTime(task)
-                                }
-                            }
-                            gs.coreDataContainer.saveContext()
-                        }) {
-                            HStack {
-                                Text("重新计算任务的刷新时间")
-                            }
+                    NavigationLink(destination: WebPage(url: FaqUrl)) {
+                        Text("常见问题")
+                    }
+                    NavigationLink(destination: BackupPage()) {
+                        Text("iCloud 数据备份")
+                    }
+                    Button (action: {
+//                        UIApplication.shared.open(URL(string: "https://apps.apple.com/us/app/id1550900596?action=write-review")!)
+                        SKStoreReviewController.requestReview()
+                    }) {
+                        Text("好评鼓励")
+                    }
+                    NavigationLink(destination: WebPage(url: ContactUrl)) {
+                        Text("反馈交流")
+                    }
+                    Button(action: {
+                        gs.iapHelper.restorePurchases()
+                    }) {
+                        Text("恢复购买")
+                    }
+                    Button(action: {
+                        isShowTimePicker.toggle()
+                    }) {
+                        HStack {
+                            Text("设定一天的起始时间")
+                            Spacer()
+                            Text("\(startTimeOfDay):00")
                         }
                     }
                 }
-                .listStyle(GroupedListStyle())
             }
             isShowTimePicker ? PopupMask() : nil
         }
