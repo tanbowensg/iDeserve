@@ -59,8 +59,6 @@
 	<dict>
 		<key>UIColorName</key>
 		<string>appBg</string>
-		<key>UIImageName</key>
-		<string>launchScreen</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<false/>
 	</dict>
