@@ -67,10 +67,6 @@
 		D072434A25A431C000DCB674 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072434925A431C000DCB674 /* utils.swift */; };
 		D07913332574F198007B9767 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
 		D07913352574F198007B9767 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
-		D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07913372574F198007B9767 /* iDeserveWidget.swift */; };
-		D079133B2574F198007B9767 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D079133A2574F198007B9767 /* Assets.xcassets */; };
-		D079133D2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */; };
-		D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */; };
 		D07913412574F198007B9767 /* iDeserveWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D07913652574F632007B9767 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
 		D07913662574F632007B9767 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DD4252C56CD00E4005B /* Color.swift */; };
@@ -265,10 +261,6 @@
 		D07913302574F198007B9767 /* iDeserveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iDeserveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07913322574F198007B9767 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D07913342574F198007B9767 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		D07913372574F198007B9767 /* iDeserveWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveWidget.swift; sourceTree = "<group>"; };
-		D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iDeserveWidget.intentdefinition; sourceTree = "<group>"; };
-		D079133A2574F198007B9767 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D079133C2574F198007B9767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D079139D257748F2007B9767 /* iDeserveRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDeserveRelease.entitlements; sourceTree = "<group>"; };
 		D07913BE257768E9007B9767 /* TabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainer.swift; sourceTree = "<group>"; };
 		D07913C825776963007B9767 /* TabIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIcon.swift; sourceTree = "<group>"; };
@@ -399,7 +391,6 @@
 				D01026602524241F00653A52 /* iDeserve */,
 				D01026722524242000653A52 /* iDeserveTests */,
 				D010267D2524242100653A52 /* iDeserveUITests */,
-				D07913362574F198007B9767 /* iDeserveWidget */,
 				D07913312574F198007B9767 /* Frameworks */,
 				D010265F2524241F00653A52 /* Products */,
 			);
@@ -616,17 +607,6 @@
 				D07913342574F198007B9767 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D07913362574F198007B9767 /* iDeserveWidget */ = {
-			isa = PBXGroup;
-			children = (
-				D07913372574F198007B9767 /* iDeserveWidget.swift */,
-				D07913392574F198007B9767 /* iDeserveWidget.intentdefinition */,
-				D079133A2574F198007B9767 /* Assets.xcassets */,
-				D079133C2574F198007B9767 /* Info.plist */,
-			);
-			path = iDeserveWidget;
 			sourceTree = "<group>";
 		};
 		D08988B6254685C70032BA96 /* TaskForm */ = {
@@ -905,7 +885,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D079133B2574F198007B9767 /* Assets.xcassets in Resources */,
 				D0F02A36257912840082CCB1 /* Assets.xcassets in Resources */,
 				D041FF7B25F8BD6F00F565C1 /* Hiragino-Sans-GB-W3.otf in Resources */,
 				D0D23CF22578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */,
@@ -939,7 +918,6 @@
 				D0F3B0272563D336008B6EBB /* SlidableModifier.swift in Sources */,
 				D088869F263A82A8005624D1 /* RewardFilter.swift in Sources */,
 				D07FC4E7265CB5E6005E91F1 /* AlertItem.swift in Sources */,
-				D079133E2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D0F2DC8C25E77A4B00A75E12 /* CompleteGoalView.swift in Sources */,
 				D03AF74825B0283500F8152D /* MyWebview.swift in Sources */,
 				D04BB024252AC93B0088912A /* RewardPage.swift in Sources */,
@@ -1050,7 +1028,6 @@
 			files = (
 				D0F02A3B2579162D0082CCB1 /* CoreDataContainer.swift in Sources */,
 				D07FC4EB265CB6C6005E91F1 /* AlertItem.swift in Sources */,
-				D07913382574F198007B9767 /* iDeserveWidget.swift in Sources */,
 				D0D23CFB25788CD600AAFE27 /* Font.swift in Sources */,
 				D03AF70125AD4FAF00F8152D /* viberate.swift in Sources */,
 				D07913672574F632007B9767 /* RepeatFrequency.swift in Sources */,
@@ -1058,7 +1035,6 @@
 				D0B11482262F013400C93A59 /* Goal.swift in Sources */,
 				D0B11419262704CF00C93A59 /* Events.swift in Sources */,
 				D07913682574F632007B9767 /* Difficulty.swift in Sources */,
-				D079133D2574F198007B9767 /* iDeserveWidget.intentdefinition in Sources */,
 				D0B1147D262EFFF200C93A59 /* Importance.swift in Sources */,
 				D079137B2574F65B007B9767 /* emptyFunc.swift in Sources */,
 				D079137C2574F65B007B9767 /* saveContext.swift in Sources */,
