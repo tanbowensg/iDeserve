@@ -101,6 +101,7 @@
 		D0B114292628236500C93A59 /* PayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114282628236500C93A59 /* PayPage.swift */; };
 		D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
+		D0D12DF8265F74CA000FE40E /* review.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D12DF7265F74CA000FE40E /* review.swift */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
 		D0DCEFCA264A5746007F7F68 /* RedeemRewardAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */; };
@@ -269,6 +270,7 @@
 		D0B114282628236500C93A59 /* PayPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPage.swift; sourceTree = "<group>"; };
 		D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = iDeserve.storekit; sourceTree = "<group>"; };
 		D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		D0D12DF7265F74CA000FE40E /* review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = review.swift; sourceTree = "<group>"; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W6.otf"; sourceTree = "<group>"; };
 		D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemRewardAlert.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				D03AF70F25AEBAF000F8152D /* roundBorder.swift */,
 				D031EDF425B5719200D64CF3 /* PopupView.swift */,
 				D0119B6225EE802700F5E0F6 /* if.swift */,
+				D0D12DF7265F74CA000FE40E /* review.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				D03B57CC253D8B4900DC107F /* RecordPage.swift in Sources */,
 				D0B114292628236500C93A59 /* PayPage.swift in Sources */,
 				D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */,
+				D0D12DF8265F74CA000FE40E /* review.swift in Sources */,
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
 				D0119B7325EF2D3A00F5E0F6 /* RewardTypePicker.swift in Sources */,
 				D04BB017252AC7FB0088912A /* GoalPage.swift in Sources */,
@@ -1100,7 +1104,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.9.2;
 				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1125,7 +1129,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.9.2;
 				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
