@@ -98,7 +98,7 @@ struct SettingsPage: View {
                     .padding(.bottom, 25)
                 List {
                     NavigationLink(destination: WebPage(url: IntroUrl)) {
-                        Text("上手指南")
+                        Text("上手指南（推荐阅读）")
                     }
                     NavigationLink(destination: WebPage(url: FaqUrl)) {
                         Text("常见问题")
