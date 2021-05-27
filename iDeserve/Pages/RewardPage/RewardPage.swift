@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import UniformTypeIdentifiers
+import StoreKit
 
 
 struct RewardPage: View {
@@ -160,7 +161,11 @@ struct RewardPage: View {
                 onConfirm: {
                     confettiTrigger += 1
                     gs.rewardStore.redeemReward(currentReward!)
-                    print("出发")
+//                    当用户坚果数量大于200，邀请评价
+                    if gs.pointsStore.points > 200 {
+                        SKStoreReviewController.requestReviewInCurrentScene()
+                    }
+                    
                 }
             )
         })

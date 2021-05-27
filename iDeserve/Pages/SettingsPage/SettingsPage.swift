@@ -107,8 +107,7 @@ struct SettingsPage: View {
                         Text("iCloud 数据备份")
                     }
                     Button (action: {
-//                        UIApplication.shared.open(URL(string: "https://apps.apple.com/us/app/id1550900596?action=write-review")!)
-                        SKStoreReviewController.requestReview()
+                        SKStoreReviewController.requestReviewInCurrentScene()
                     }) {
                         Text("好评鼓励")
                     }
