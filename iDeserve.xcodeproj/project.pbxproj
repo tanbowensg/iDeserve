@@ -102,6 +102,7 @@
 		D0B1142E2628275400C93A59 /* iDeserve.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */; };
 		D0CF9FD82611BF7F00DD4CB2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */; };
 		D0D12DF8265F74CA000FE40E /* review.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D12DF7265F74CA000FE40E /* review.swift */; };
+		D0D12E04265FEC30000FE40E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D12E03265FEC30000FE40E /* StoreKit.framework */; };
 		D0D23CD4257882A700AAFE27 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D0D23CF12578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf in Resources */ = {isa = PBXBuildFile; fileRef = D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */; };
 		D0DCEFCA264A5746007F7F68 /* RedeemRewardAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */; };
@@ -271,6 +272,7 @@
 		D0CF9FD02611AF3100DD4CB2 /* iDeserve.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = iDeserve.storekit; sourceTree = "<group>"; };
 		D0CF9FD72611BF7E00DD4CB2 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		D0D12DF7265F74CA000FE40E /* review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = review.swift; sourceTree = "<group>"; };
+		D0D12E03265FEC30000FE40E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0D23CD3257882A700AAFE27 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D0D23CF02578892F00AAFE27 /* Hiragino-Sans-GB-W6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hiragino-Sans-GB-W6.otf"; sourceTree = "<group>"; };
 		D0DCEFC9264A5746007F7F68 /* RedeemRewardAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemRewardAlert.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			files = (
 				D0DCF02C26538C06007F7F68 /* ConfettiSwiftUI in Frameworks */,
 				D0A07196265BEE7500952DAD /* CloudKit.framework in Frameworks */,
+				D0D12E04265FEC30000FE40E /* StoreKit.framework in Frameworks */,
 				D0B113ED262584AB00C93A59 /* SwiftUIPager in Frameworks */,
 				D0119B5725EE340F00F5E0F6 /* Sliders in Frameworks */,
 			);
@@ -565,6 +568,7 @@
 		D07913312574F198007B9767 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0D12E03265FEC30000FE40E /* StoreKit.framework */,
 				D0A07195265BEE7500952DAD /* CloudKit.framework */,
 				D07913322574F198007B9767 /* WidgetKit.framework */,
 				D07913342574F198007B9767 /* SwiftUI.framework */,
