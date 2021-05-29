@@ -76,20 +76,21 @@ struct PayPage: View {
     }
     
     var price: some View {
-        ZStack(alignment: .topLeading){
+        let priveValue: Int = Int(truncating: GlobalStore.shared.iapHelper.products[0].price)
+        return ZStack(alignment: .topLeading){
             VStack(spacing: 10.0) {
                 Text("50元 / 永久")
                     .font(.footnoteCustom)
                     .foregroundColor(.b1)
                     .strikethrough()
-                Text("25元 / 永久")
+                Text("\(priveValue)元 / 永久")
                     .font(.bodyCustom)
                     .foregroundColor(.b4)
                     .fontWeight(.bold)
             }
                 .padding(16)
                 .padding(.vertical, 20)
-            Text("限时-50%")
+            Text("限时-\(100 - priveValue * 2)%")
                 .font(.captionCustom)
                 .padding([.top, .leading], 12.0)
                 .padding([.bottom, .trailing], 4.0)

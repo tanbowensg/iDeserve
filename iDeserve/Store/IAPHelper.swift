@@ -47,7 +47,7 @@ open class IAPHelper: NSObject {
     private var productsRequest: SKProductsRequest?
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     private var purchaseCompletionHandler: PurchaseCompletionHandler?
-    private var products: [SKProduct] = []
+    var products: [SKProduct] = []
     
     public init(productIds: Set<ProductIdentifier>) {
         productIdentifiers = productIds
