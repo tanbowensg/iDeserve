@@ -46,23 +46,28 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         
-        do {
-            // 从 coredata 获取任务数据
-            let fetchRequest: NSFetchRequest<Task> = NSFetchRequest(entityName: "Task")
-            let tasks = try CoreDataContainer.shared.context.fetch(fetchRequest)
-            let myDayTasks = filterMyDayTask(tasks)
-            let taskStates = myDayTasks.map { TaskState($0) }
-            let entry = SimpleEntry(
-                date: Date(),
-                configuration: configuration,
-                taskStates: taskStates
-            )
-            entries.append(entry)
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
-        } catch {
-            fatalError("小组件中获取任务失败")
+        let currentDate = Date()
+        for minuteOffset in 0 ..< 60 {
+            let entryDate = Calendar.current.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
+
+            do {
+                // 从 coredata 获取任务数据
+                let fetchRequest: NSFetchRequest<Task> = NSFetchRequest(entityName: "Task")
+                let tasks = try CoreDataContainer.shared.context.fetch(fetchRequest)
+                let myDayTasks = filterMyDayTask(tasks)
+                let taskStates = myDayTasks.map { TaskState($0) }
+                let entry = SimpleEntry(
+                    date: entryDate,
+                    configuration: configuration,
+                    taskStates: taskStates
+                )
+                entries.append(entry)
+            } catch {
+                fatalError("小组件中获取任务失败")
+            }
         }
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 
@@ -95,7 +100,7 @@ struct iDeserveWidgetEntryView : View {
     }
 
     var body: some View {
-        return VStack(alignment: .leading, spacing: 5) {
+        return VStack(alignment: .leading, spacing: 0) {
             Text("今日任务")
                 .font(.subheadCustom)
                 .fontWeight(.bold)
@@ -103,6 +108,7 @@ struct iDeserveWidgetEntryView : View {
                 .padding(.bottom, 4)
             ForEach(tasks) {taskState in
                 WidgetTask(name: taskState.name, value: taskState.value, done: taskState.done)
+                    .padding(.top, 5)
             }
             Spacer()
         }
@@ -119,8 +125,8 @@ struct iDeserveWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             iDeserveWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("今日任务")
+        .description("呈现今日要做的任务")
     }
 }
 
