@@ -95,6 +95,8 @@
 		D083EC392667420000177072 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
 		D083EC3D2667420A00177072 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
 		D083EC482667462D00177072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
+		D083EC5A2667657100177072 /* WidgetTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D083EC2D266740F200177072 /* WidgetTask.swift */; };
+		D083EC622667671400177072 /* filterMyDayTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CB088258A2FF900460D06 /* filterMyDayTasks.swift */; };
 		D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088864F26365D5D005624D1 /* NutsAndSettings.swift */; };
 		D088869F263A82A8005624D1 /* RewardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088869E263A82A8005624D1 /* RewardFilter.swift */; };
 		D08886A5263B1363005624D1 /* RewardPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886A4263B1363005624D1 /* RewardPageHeader.swift */; };
@@ -280,6 +282,7 @@
 		D083EBEA2667275500177072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D083EBEC2667275500177072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D083EC2D266740F200177072 /* WidgetTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTask.swift; sourceTree = "<group>"; };
+		D083EC5E266766BD00177072 /* iDeserveWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDeserveWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D088864F26365D5D005624D1 /* NutsAndSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutsAndSettings.swift; sourceTree = "<group>"; };
 		D088869E263A82A8005624D1 /* RewardFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardFilter.swift; sourceTree = "<group>"; };
 		D08886A4263B1363005624D1 /* RewardPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPageHeader.swift; sourceTree = "<group>"; };
@@ -401,6 +404,7 @@
 		D01026552524241F00653A52 = {
 			isa = PBXGroup;
 			children = (
+				D083EC5E266766BD00177072 /* iDeserveWidgetExtension.entitlements */,
 				D0F02A28257901BA0082CCB1 /* iDeserveWidgetExtensionRelease.entitlements */,
 				D01026602524241F00653A52 /* iDeserve */,
 				D01026722524242000653A52 /* iDeserveTests */,
@@ -993,6 +997,7 @@
 				D031EE1725B7CDEE00D64CF3 /* Goal.swift in Sources */,
 				D0D12DF8265F74CA000FE40E /* review.swift in Sources */,
 				D0F3B01F2563D307008B6EBB /* Slot.swift in Sources */,
+				D083EC5A2667657100177072 /* WidgetTask.swift in Sources */,
 				D0119B7325EF2D3A00F5E0F6 /* RewardTypePicker.swift in Sources */,
 				D04BB017252AC7FB0088912A /* GoalPage.swift in Sources */,
 				D031EDF525B5719300D64CF3 /* PopupView.swift in Sources */,
@@ -1070,6 +1075,7 @@
 				D083EC282667334100177072 /* constants.swift in Sources */,
 				D083EC212667334100177072 /* Reward.swift in Sources */,
 				D083EC252667334100177072 /* RepeatFrequency.swift in Sources */,
+				D083EC622667671400177072 /* filterMyDayTasks.swift in Sources */,
 				D083EBE82667275200177072 /* iDeserveWidget.swift in Sources */,
 				D083EC1F2667334100177072 /* Goal.swift in Sources */,
 				D083EC392667420000177072 /* NutIcon.swift in Sources */,
@@ -1351,6 +1357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iDeserveWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SY3R68BT34;
 				INFOPLIST_FILE = iDeserveWidget/Info.plist;
@@ -1373,6 +1380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iDeserveWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SY3R68BT34;
 				INFOPLIST_FILE = iDeserveWidget/Info.plist;

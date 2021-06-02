@@ -25,11 +25,10 @@ struct Provider: IntentTimelineProvider {
         
         do {
             // 从 coredata 获取任务数据
-            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Task")
-            let tasks = try CoreDataContainer.shared.context.fetch(fetchRequest) as! [Task]
-            let uncompletedTasks = tasks.filter{ return !$0.done }
-            let taskStates = uncompletedTasks.map { TaskState($0) }
-            
+            let fetchRequest: NSFetchRequest<Task> = NSFetchRequest(entityName: "Task")
+            let tasks = try CoreDataContainer.shared.context.fetch(fetchRequest)
+            let myDayTasks = filterMyDayTask(tasks)
+            let taskStates = myDayTasks.map { TaskState($0) }
             let entry = SimpleEntry(
                 date: Date(),
                 configuration: configuration,
@@ -55,27 +54,32 @@ struct iDeserveWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
 
     var tasks: [TaskState] {
+        let completedTasks = entry.taskStates.filter { $0.done }
+        var uncompletedTasks = entry.taskStates.filter { return !$0.done }
+        uncompletedTasks.append(contentsOf: completedTasks)
+        let _tasks = completedTasks
+
         switch family {
         case .systemMedium:
-            return Array(entry.taskStates.prefix(4))
+            return Array(_tasks.prefix(4))
         case .systemLarge:
-            return entry.taskStates
+            return _tasks
         case .systemSmall:
-            return Array(entry.taskStates.prefix(4))
+            return Array(_tasks.prefix(4))
         @unknown default:
-            return entry.taskStates
+            return _tasks
         }
     }
-    
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        return VStack(alignment: .leading, spacing: 6) {
             Text("今日任务")
                 .font(.subheadCustom)
                 .fontWeight(.bold)
                 .foregroundColor(.b4)
                 .padding(.bottom, 4)
             ForEach(tasks) {taskState in
-                WidgetTask(name: taskState.name, value: taskState.value)
+                WidgetTask(name: taskState.name, value: taskState.value, done: taskState.done)
             }
             Spacer()
         }

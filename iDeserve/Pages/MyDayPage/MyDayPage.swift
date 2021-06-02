@@ -28,7 +28,7 @@ struct MyDayPage: View {
     }
     
     var myDayTasks: [Task] {
-        return filterMyDayTask(allTasks)
+        return filterMyDayTask(Array(allTasks) as! [Task])
     }
     
     var completedTasks: [Task] {
