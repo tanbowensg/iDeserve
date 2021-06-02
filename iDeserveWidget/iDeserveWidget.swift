@@ -12,12 +12,35 @@ import CoreData
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), taskStates: [TaskState(name: "placeholder")])
+        SimpleEntry(
+            date: Date(),
+            configuration: ConfigurationIntent(),
+            taskStates: [
+                TaskState(name: "锻炼 1 小时"),
+                TaskState(name: "写 1 篇作文"),
+                TaskState(name: "看书 1 小时"),
+                TaskState(name: "写日记")
+            ]
+        )
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, taskStates: [TaskState(name: "snapshot")])
-        completion(entry)
+        do {
+            // 从 coredata 获取任务数据
+            let fetchRequest: NSFetchRequest<Task> = NSFetchRequest(entityName: "Task")
+            let tasks = try CoreDataContainer.shared.context.fetch(fetchRequest)
+            let myDayTasks = filterMyDayTask(tasks)
+            let taskStates = myDayTasks.map { TaskState($0) }
+            let entry = SimpleEntry(
+                date: Date(),
+                configuration: configuration,
+                taskStates: taskStates
+            )
+            completion(entry)
+        } catch {
+            fatalError("小组件中获取任务失败")
+        }
+        
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
@@ -57,7 +80,7 @@ struct iDeserveWidgetEntryView : View {
         let completedTasks = entry.taskStates.filter { $0.done }
         var uncompletedTasks = entry.taskStates.filter { return !$0.done }
         uncompletedTasks.append(contentsOf: completedTasks)
-        let _tasks = completedTasks
+        let _tasks = uncompletedTasks
 
         switch family {
         case .systemMedium:
@@ -72,7 +95,7 @@ struct iDeserveWidgetEntryView : View {
     }
 
     var body: some View {
-        return VStack(alignment: .leading, spacing: 6) {
+        return VStack(alignment: .leading, spacing: 5) {
             Text("今日任务")
                 .font(.subheadCustom)
                 .fontWeight(.bold)
