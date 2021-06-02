@@ -77,6 +77,24 @@
 		D083EBED2667275500177072 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */; };
 		D083EBEE2667275500177072 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */; };
 		D083EBF12667275500177072 /* iDeserveWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D083EBE32667275200177072 /* iDeserveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D083EBFC2667319A00177072 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03B57D0253D8D5100DC107F /* CoreDataContainer.swift */; };
+		D083EC002667320C00177072 /* iDeserve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03B57BC253D303A00DC107F /* iDeserve.xcdatamodeld */; };
+		D083EC1E2667334100177072 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988A7254672390032BA96 /* Difficulty.swift */; };
+		D083EC1F2667334100177072 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D031EE1625B7CDEE00D64CF3 /* Goal.swift */; };
+		D083EC202667334100177072 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FB2FA25A82E1F00042124 /* Importance.swift */; };
+		D083EC212667334100177072 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0119B6C25EF2C7600F5E0F6 /* Reward.swift */; };
+		D083EC222667334100177072 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08988DD2546BDDC0032BA96 /* Task.swift */; };
+		D083EC232667334100177072 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0036DD4252C56CD00E4005B /* Color.swift */; };
+		D083EC242667334100177072 /* HighPriorityButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D072430325A2CCF200DCB674 /* HighPriorityButtonStyle.swift */; };
+		D083EC252667334100177072 /* RepeatFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06806A52531939D008DE678 /* RepeatFrequency.swift */; };
+		D083EC262667334100177072 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B114012626FBC100C93A59 /* Events.swift */; };
+		D083EC272667334100177072 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FC4E6265CB5E6005E91F1 /* AlertItem.swift */; };
+		D083EC282667334100177072 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007CFB425873512008CA76D /* constants.swift */; };
+		D083EC292667334100177072 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F21AD25270EC40055BF25 /* Record.swift */; };
+		D083EC32266741F100177072 /* WidgetTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D083EC2D266740F200177072 /* WidgetTask.swift */; };
+		D083EC392667420000177072 /* NutIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D3925B042E500087FC5 /* NutIcon.swift */; };
+		D083EC3D2667420A00177072 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D23CD3257882A700AAFE27 /* Font.swift */; };
+		D083EC482667462D00177072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D01026652524242000653A52 /* Assets.xcassets */; };
 		D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088864F26365D5D005624D1 /* NutsAndSettings.swift */; };
 		D088869F263A82A8005624D1 /* RewardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088869E263A82A8005624D1 /* RewardFilter.swift */; };
 		D08886A5263B1363005624D1 /* RewardPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886A4263B1363005624D1 /* RewardPageHeader.swift */; };
@@ -261,6 +279,7 @@
 		D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iDeserveWidget.intentdefinition; sourceTree = "<group>"; };
 		D083EBEA2667275500177072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D083EBEC2667275500177072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D083EC2D266740F200177072 /* WidgetTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTask.swift; sourceTree = "<group>"; };
 		D088864F26365D5D005624D1 /* NutsAndSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutsAndSettings.swift; sourceTree = "<group>"; };
 		D088869E263A82A8005624D1 /* RewardFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardFilter.swift; sourceTree = "<group>"; };
 		D08886A4263B1363005624D1 /* RewardPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPageHeader.swift; sourceTree = "<group>"; };
@@ -614,6 +633,7 @@
 				D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */,
 				D083EBEA2667275500177072 /* Assets.xcassets */,
 				D083EBEC2667275500177072 /* Info.plist */,
+				D083EC2D266740F200177072 /* WidgetTask.swift */,
 			);
 			path = iDeserveWidget;
 			sourceTree = "<group>";
@@ -895,6 +915,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D083EC482667462D00177072 /* Assets.xcassets in Resources */,
 				D083EBEB2667275500177072 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1036,7 +1057,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D083EC262667334100177072 /* Events.swift in Sources */,
+				D083EC002667320C00177072 /* iDeserve.xcdatamodeld in Sources */,
+				D083EBFC2667319A00177072 /* CoreDataContainer.swift in Sources */,
+				D083EC202667334100177072 /* Importance.swift in Sources */,
+				D083EC3D2667420A00177072 /* Font.swift in Sources */,
+				D083EC232667334100177072 /* Color.swift in Sources */,
+				D083EC1E2667334100177072 /* Difficulty.swift in Sources */,
+				D083EC292667334100177072 /* Record.swift in Sources */,
+				D083EC242667334100177072 /* HighPriorityButtonStyle.swift in Sources */,
+				D083EC272667334100177072 /* AlertItem.swift in Sources */,
+				D083EC282667334100177072 /* constants.swift in Sources */,
+				D083EC212667334100177072 /* Reward.swift in Sources */,
+				D083EC252667334100177072 /* RepeatFrequency.swift in Sources */,
 				D083EBE82667275200177072 /* iDeserveWidget.swift in Sources */,
+				D083EC1F2667334100177072 /* Goal.swift in Sources */,
+				D083EC392667420000177072 /* NutIcon.swift in Sources */,
+				D083EC222667334100177072 /* Task.swift in Sources */,
+				D083EC32266741F100177072 /* WidgetTask.swift in Sources */,
 				D083EBED2667275500177072 /* iDeserveWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

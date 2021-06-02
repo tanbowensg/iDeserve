@@ -52,53 +52,5 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "939FC234-50A0-404D-978B-AB1AB31C883C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iDeserve/Interface/Color.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "Color"
-            landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "939FC234-50A0-404D-978B-AB1AB31C883C - a4829921478d16b6"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "globalinit_33_C95EC5A8B2D9CA8EA1237B24FE29B247_func16"
-                  moduleName = "iDeserve"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanbowensg/Documents/develop/iDeserve/iDeserve/Interface/Color.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "14">
-               </Location>
-               <Location
-                  uuid = "939FC234-50A0-404D-978B-AB1AB31C883C - 9648c2bae9899c9c"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in iDeserve):SwiftUI.Color.brandGreen.unsafeMutableAddressor : SwiftUI.Color"
-                  moduleName = "iDeserve"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanbowensg/Documents/develop/iDeserve/iDeserve/Interface/Color.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
