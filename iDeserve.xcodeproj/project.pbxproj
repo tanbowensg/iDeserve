@@ -70,6 +70,13 @@
 		D07B6D4825B06C5400087FC5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07B6D4725B06C5400087FC5 /* ProgressBar.swift */; };
 		D07FC4E2265C9C36005E91F1 /* BackupPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FC4E1265C9C36005E91F1 /* BackupPage.swift */; };
 		D07FC4E7265CB5E6005E91F1 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FC4E6265CB5E6005E91F1 /* AlertItem.swift */; };
+		D083EBE42667275200177072 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913322574F198007B9767 /* WidgetKit.framework */; };
+		D083EBE52667275200177072 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07913342574F198007B9767 /* SwiftUI.framework */; };
+		D083EBE82667275200177072 /* iDeserveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D083EBE72667275200177072 /* iDeserveWidget.swift */; };
+		D083EBEB2667275500177072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D083EBEA2667275500177072 /* Assets.xcassets */; };
+		D083EBED2667275500177072 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */; };
+		D083EBEE2667275500177072 /* iDeserveWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */; };
+		D083EBF12667275500177072 /* iDeserveWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D083EBE32667275200177072 /* iDeserveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D088865026365D5D005624D1 /* NutsAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088864F26365D5D005624D1 /* NutsAndSettings.swift */; };
 		D088869F263A82A8005624D1 /* RewardFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D088869E263A82A8005624D1 /* RewardFilter.swift */; };
 		D08886A5263B1363005624D1 /* RewardPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08886A4263B1363005624D1 /* RewardPageHeader.swift */; };
@@ -143,6 +150,13 @@
 			remoteGlobalIDString = D010265D2524241F00653A52;
 			remoteInfo = iDeserve;
 		};
+		D083EBEF2667275500177072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D01026562524241F00653A52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D083EBE22667275200177072;
+			remoteInfo = iDeserveWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -152,6 +166,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				D083EBF12667275500177072 /* iDeserveWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +256,11 @@
 		D07B6D4725B06C5400087FC5 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D07FC4E1265C9C36005E91F1 /* BackupPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupPage.swift; sourceTree = "<group>"; };
 		D07FC4E6265CB5E6005E91F1 /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		D083EBE32667275200177072 /* iDeserveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iDeserveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D083EBE72667275200177072 /* iDeserveWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDeserveWidget.swift; sourceTree = "<group>"; };
+		D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iDeserveWidget.intentdefinition; sourceTree = "<group>"; };
+		D083EBEA2667275500177072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D083EBEC2667275500177072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D088864F26365D5D005624D1 /* NutsAndSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutsAndSettings.swift; sourceTree = "<group>"; };
 		D088869E263A82A8005624D1 /* RewardFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardFilter.swift; sourceTree = "<group>"; };
 		D08886A4263B1363005624D1 /* RewardPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPageHeader.swift; sourceTree = "<group>"; };
@@ -324,6 +344,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D083EBE02667275200177072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D083EBE52667275200177072 /* SwiftUI.framework in Frameworks */,
+				D083EBE42667275200177072 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -357,6 +386,7 @@
 				D01026602524241F00653A52 /* iDeserve */,
 				D01026722524242000653A52 /* iDeserveTests */,
 				D010267D2524242100653A52 /* iDeserveUITests */,
+				D083EBE62667275200177072 /* iDeserveWidget */,
 				D07913312574F198007B9767 /* Frameworks */,
 				D010265F2524241F00653A52 /* Products */,
 			);
@@ -368,6 +398,7 @@
 				D010265E2524241F00653A52 /* iDeserve.app */,
 				D010266F2524242000653A52 /* iDeserveTests.xctest */,
 				D010267A2524242100653A52 /* iDeserveUITests.xctest */,
+				D083EBE32667275200177072 /* iDeserveWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -576,6 +607,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D083EBE62667275200177072 /* iDeserveWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D083EBE72667275200177072 /* iDeserveWidget.swift */,
+				D083EBE92667275200177072 /* iDeserveWidget.intentdefinition */,
+				D083EBEA2667275500177072 /* Assets.xcassets */,
+				D083EBEC2667275500177072 /* Info.plist */,
+			);
+			path = iDeserveWidget;
+			sourceTree = "<group>";
+		};
 		D08988B6254685C70032BA96 /* TaskForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,6 +748,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D083EBF02667275500177072 /* PBXTargetDependency */,
 			);
 			name = iDeserve;
 			packageProductDependencies = (
@@ -753,13 +796,30 @@
 			productReference = D010267A2524242100653A52 /* iDeserveUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D083EBE22667275200177072 /* iDeserveWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D083EBF42667275500177072 /* Build configuration list for PBXNativeTarget "iDeserveWidgetExtension" */;
+			buildPhases = (
+				D083EBDF2667275200177072 /* Sources */,
+				D083EBE02667275200177072 /* Frameworks */,
+				D083EBE12667275200177072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iDeserveWidgetExtension;
+			productName = iDeserveWidgetExtension;
+			productReference = D083EBE32667275200177072 /* iDeserveWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D01026562524241F00653A52 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					D010265D2524241F00653A52 = {
@@ -772,6 +832,9 @@
 					D01026792524242100653A52 = {
 						CreatedOnToolsVersion = 12.0.1;
 						TestTargetID = D010265D2524241F00653A52;
+					};
+					D083EBE22667275200177072 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
@@ -796,6 +859,7 @@
 				D010265D2524241F00653A52 /* iDeserve */,
 				D010266E2524242000653A52 /* iDeserveTests */,
 				D01026792524242100653A52 /* iDeserveUITests */,
+				D083EBE22667275200177072 /* iDeserveWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -827,6 +891,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D083EBE12667275200177072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D083EBEB2667275500177072 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -846,6 +918,7 @@
 				D00CB089258A2FF900460D06 /* filterMyDayTasks.swift in Sources */,
 				D0F3B0362563F836008B6EBB /* emptyFunc.swift in Sources */,
 				D0EE5490255A6D140091302D /* RewardStore.swift in Sources */,
+				D083EBEE2667275500177072 /* iDeserveWidget.intentdefinition in Sources */,
 				D0EE548B255A61F80091302D /* RecordStore.swift in Sources */,
 				D0A07175265B534100952DAD /* RewardJson.swift in Sources */,
 				D0F3B02C2563D357008B6EBB /* Extensions.swift in Sources */,
@@ -959,6 +1032,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D083EBDF2667275200177072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D083EBE82667275200177072 /* iDeserveWidget.swift in Sources */,
+				D083EBED2667275500177072 /* iDeserveWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -971,6 +1053,11 @@
 			isa = PBXTargetDependency;
 			target = D010265D2524241F00653A52 /* iDeserve */;
 			targetProxy = D010267B2524242100653A52 /* PBXContainerItemProxy */;
+		};
+		D083EBF02667275500177072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D083EBE22667275200177072 /* iDeserveWidgetExtension */;
+			targetProxy = D083EBEF2667275500177072 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1221,6 +1308,50 @@
 			};
 			name = Release;
 		};
+		D083EBF22667275500177072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY3R68BT34;
+				INFOPLIST_FILE = iDeserveWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D083EBF32667275500177072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY3R68BT34;
+				INFOPLIST_FILE = iDeserveWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tanbowensg.iDeserve.iDeserveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1256,6 +1387,15 @@
 			buildConfigurations = (
 				D010268A2524242100653A52 /* Debug */,
 				D010268B2524242100653A52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D083EBF42667275500177072 /* Build configuration list for PBXNativeTarget "iDeserveWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D083EBF22667275500177072 /* Debug */,
+				D083EBF32667275500177072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
